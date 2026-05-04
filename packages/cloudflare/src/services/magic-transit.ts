@@ -1653,6 +1653,10 @@ export const GetConnectorEventResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     e: Schema.Union([
       Schema.Struct({
+        k: Schema.Literal("StartUpgrade"),
+        url: Schema.String,
+      }),
+      Schema.Struct({
         k: Schema.Literal("Init"),
       }),
       Schema.Struct({
@@ -1684,10 +1688,6 @@ export const GetConnectorEventResponse =
       }),
       Schema.Struct({
         k: Schema.Literal("FinishRotatePkiFailure"),
-      }),
-      Schema.Struct({
-        k: Schema.Literal("StartUpgrade"),
-        url: Schema.String,
       }),
       Schema.Struct({
         k: Schema.Literal("FinishUpgradeSuccess"),
@@ -1841,6 +1841,10 @@ export const ListConnectorEventLatestsResponse =
       Schema.Struct({
         e: Schema.Union([
           Schema.Struct({
+            k: Schema.Literal("StartUpgrade"),
+            url: Schema.String,
+          }),
+          Schema.Struct({
             k: Schema.Literal("Init"),
           }),
           Schema.Struct({
@@ -1872,10 +1876,6 @@ export const ListConnectorEventLatestsResponse =
           }),
           Schema.Struct({
             k: Schema.Literal("FinishRotatePkiFailure"),
-          }),
-          Schema.Struct({
-            k: Schema.Literal("StartUpgrade"),
-            url: Schema.String,
           }),
           Schema.Struct({
             k: Schema.Literal("FinishUpgradeSuccess"),

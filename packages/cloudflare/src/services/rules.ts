@@ -380,7 +380,9 @@ export const GetListBulkOperationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       id: Schema.String,
-      status: Schema.Literals(["pending", "running"]),
+      completed: Schema.String,
+      error: Schema.String,
+      status: Schema.Literal("failed"),
     }),
     Schema.Struct({
       id: Schema.String,
@@ -389,9 +391,7 @@ export const GetListBulkOperationResponse =
     }),
     Schema.Struct({
       id: Schema.String,
-      completed: Schema.String,
-      error: Schema.String,
-      status: Schema.Literal("failed"),
+      status: Schema.Literals(["pending", "running"]),
     }),
   ]).pipe(
     T.ResponsePath("result"),

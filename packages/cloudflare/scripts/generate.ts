@@ -993,8 +993,21 @@ function typeInfoToSchema(
         }
         return `Schema.Literals([${[...literalSet].join(", ")}])`;
       }
-      // General union - de-duplicate and filter unknowns
-      const unionParts = type.values
+      // General union - de-duplicate and filter unknowns.
+      // Sort object variants by required-property count (descending) so that
+      // more-specific shapes precede less-specific ones. Schema.Union is
+      // first-match-wins on encode; if `{ipv4, network}` is listed before
+      // `{ipv4, ipv6, network}`, dual-stack inputs match the first variant
+      // and `ipv6` is silently stripped on encode. Non-object variants keep
+      // their relative position thanks to stable sort.
+      const requiredPropCount = (v: TypeInfo): number =>
+        v.kind === "object" && v.properties
+          ? v.properties.filter((p) => p.required).length
+          : 0;
+      const sortedValues = [...type.values].sort(
+        (a, b) => requiredPropCount(b) - requiredPropCount(a),
+      );
+      const unionParts = sortedValues
         .filter((v) => v.kind !== "unknown")
         .map((v) =>
           typeInfoToSchema(v, indent, depth + 1, optionalObjectPropsNullable),

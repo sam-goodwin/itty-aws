@@ -1109,6 +1109,54 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     result: Schema.Array(
       Schema.Union([
         Schema.Struct({
+          id: Schema.String,
+          comment: Schema.String,
+          content: Schema.String,
+          createdOn: Schema.String,
+          meta: Schema.Unknown,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          proxiable: Schema.Boolean,
+          proxied: Schema.Boolean,
+          settings: Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          tags: Schema.Array(Schema.String),
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+          type: Schema.Literal("OPENPGPKEY"),
+          commentModifiedOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          tagsModifiedOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            comment: "comment",
+            content: "content",
+            createdOn: "created_on",
+            meta: "meta",
+            modifiedOn: "modified_on",
+            name: "name",
+            proxiable: "proxiable",
+            proxied: "proxied",
+            settings: "settings",
+            tags: "tags",
+            ttl: "ttl",
+            type: "type",
+            commentModifiedOn: "comment_modified_on",
+            tagsModifiedOn: "tags_modified_on",
+          }),
+        ),
+        Schema.Struct({
           name: Schema.String,
           ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("A"),
@@ -1400,54 +1448,6 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             meta: "meta",
             modifiedOn: "modified_on",
             proxiable: "proxiable",
-            commentModifiedOn: "comment_modified_on",
-            tagsModifiedOn: "tags_modified_on",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          comment: Schema.String,
-          content: Schema.String,
-          createdOn: Schema.String,
-          meta: Schema.Unknown,
-          modifiedOn: Schema.String,
-          name: Schema.String,
-          proxiable: Schema.Boolean,
-          proxied: Schema.Boolean,
-          settings: Schema.Struct({
-            ipv4Only: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            ipv6Only: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-          ),
-          tags: Schema.Array(Schema.String),
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("OPENPGPKEY"),
-          commentModifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          tagsModifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            comment: "comment",
-            content: "content",
-            createdOn: "created_on",
-            meta: "meta",
-            modifiedOn: "modified_on",
-            name: "name",
-            proxiable: "proxiable",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-            ttl: "ttl",
-            type: "type",
             commentModifiedOn: "comment_modified_on",
             tagsModifiedOn: "tags_modified_on",
           }),
@@ -3230,6 +3230,48 @@ export type GetRecordResponse =
 
 export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
+    id: Schema.String,
+    comment: Schema.String,
+    content: Schema.String,
+    createdOn: Schema.String,
+    meta: Schema.Unknown,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    proxiable: Schema.Boolean,
+    proxied: Schema.Boolean,
+    settings: Schema.Struct({
+      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+    ),
+    tags: Schema.Array(Schema.String),
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Literal("OPENPGPKEY"),
+    commentModifiedOn: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      comment: "comment",
+      content: "content",
+      createdOn: "created_on",
+      meta: "meta",
+      modifiedOn: "modified_on",
+      name: "name",
+      proxiable: "proxiable",
+      proxied: "proxied",
+      settings: "settings",
+      tags: "tags",
+      ttl: "ttl",
+      type: "type",
+      commentModifiedOn: "comment_modified_on",
+      tagsModifiedOn: "tags_modified_on",
+    }),
+  ),
+  Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("A"),
@@ -3499,48 +3541,6 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       meta: "meta",
       modifiedOn: "modified_on",
       proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
       commentModifiedOn: "comment_modified_on",
       tagsModifiedOn: "tags_modified_on",
     }),
@@ -5288,6 +5288,54 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Union([
       Schema.Struct({
+        id: Schema.String,
+        comment: Schema.String,
+        content: Schema.String,
+        createdOn: Schema.String,
+        meta: Schema.Unknown,
+        modifiedOn: Schema.String,
+        name: Schema.String,
+        proxiable: Schema.Boolean,
+        proxied: Schema.Boolean,
+        settings: Schema.Struct({
+          ipv4Only: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          ipv6Only: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+        ),
+        tags: Schema.Array(Schema.String),
+        ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+        type: Schema.Literal("OPENPGPKEY"),
+        commentModifiedOn: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        tagsModifiedOn: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          comment: "comment",
+          content: "content",
+          createdOn: "created_on",
+          meta: "meta",
+          modifiedOn: "modified_on",
+          name: "name",
+          proxiable: "proxiable",
+          proxied: "proxied",
+          settings: "settings",
+          tags: "tags",
+          ttl: "ttl",
+          type: "type",
+          commentModifiedOn: "comment_modified_on",
+          tagsModifiedOn: "tags_modified_on",
+        }),
+      ),
+      Schema.Struct({
         name: Schema.String,
         ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
         type: Schema.Literal("A"),
@@ -5579,54 +5627,6 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           meta: "meta",
           modifiedOn: "modified_on",
           proxiable: "proxiable",
-          commentModifiedOn: "comment_modified_on",
-          tagsModifiedOn: "tags_modified_on",
-        }),
-      ),
-      Schema.Struct({
-        id: Schema.String,
-        comment: Schema.String,
-        content: Schema.String,
-        createdOn: Schema.String,
-        meta: Schema.Unknown,
-        modifiedOn: Schema.String,
-        name: Schema.String,
-        proxiable: Schema.Boolean,
-        proxied: Schema.Boolean,
-        settings: Schema.Struct({
-          ipv4Only: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          ipv6Only: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-        ),
-        tags: Schema.Array(Schema.String),
-        ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-        type: Schema.Literal("OPENPGPKEY"),
-        commentModifiedOn: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        tagsModifiedOn: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          comment: "comment",
-          content: "content",
-          createdOn: "created_on",
-          meta: "meta",
-          modifiedOn: "modified_on",
-          name: "name",
-          proxiable: "proxiable",
-          proxied: "proxied",
-          settings: "settings",
-          tags: "tags",
-          ttl: "ttl",
-          type: "type",
           commentModifiedOn: "comment_modified_on",
           tagsModifiedOn: "tags_modified_on",
         }),
@@ -7399,6 +7399,48 @@ export type CreateRecordResponse =
 
 export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
+    id: Schema.String,
+    comment: Schema.String,
+    content: Schema.String,
+    createdOn: Schema.String,
+    meta: Schema.Unknown,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    proxiable: Schema.Boolean,
+    proxied: Schema.Boolean,
+    settings: Schema.Struct({
+      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+    ),
+    tags: Schema.Array(Schema.String),
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Literal("OPENPGPKEY"),
+    commentModifiedOn: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      comment: "comment",
+      content: "content",
+      createdOn: "created_on",
+      meta: "meta",
+      modifiedOn: "modified_on",
+      name: "name",
+      proxiable: "proxiable",
+      proxied: "proxied",
+      settings: "settings",
+      tags: "tags",
+      ttl: "ttl",
+      type: "type",
+      commentModifiedOn: "comment_modified_on",
+      tagsModifiedOn: "tags_modified_on",
+    }),
+  ),
+  Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("A"),
@@ -7668,48 +7710,6 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       meta: "meta",
       modifiedOn: "modified_on",
       proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
       commentModifiedOn: "comment_modified_on",
       tagsModifiedOn: "tags_modified_on",
     }),
@@ -9333,6 +9333,48 @@ export type UpdateRecordResponse =
 
 export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
+    id: Schema.String,
+    comment: Schema.String,
+    content: Schema.String,
+    createdOn: Schema.String,
+    meta: Schema.Unknown,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    proxiable: Schema.Boolean,
+    proxied: Schema.Boolean,
+    settings: Schema.Struct({
+      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+    ),
+    tags: Schema.Array(Schema.String),
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Literal("OPENPGPKEY"),
+    commentModifiedOn: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      comment: "comment",
+      content: "content",
+      createdOn: "created_on",
+      meta: "meta",
+      modifiedOn: "modified_on",
+      name: "name",
+      proxiable: "proxiable",
+      proxied: "proxied",
+      settings: "settings",
+      tags: "tags",
+      ttl: "ttl",
+      type: "type",
+      commentModifiedOn: "comment_modified_on",
+      tagsModifiedOn: "tags_modified_on",
+    }),
+  ),
+  Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("A"),
@@ -9602,48 +9644,6 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       meta: "meta",
       modifiedOn: "modified_on",
       proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
       commentModifiedOn: "comment_modified_on",
       tagsModifiedOn: "tags_modified_on",
     }),
@@ -11270,6 +11270,48 @@ export type PatchRecordResponse =
 
 export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
+    id: Schema.String,
+    comment: Schema.String,
+    content: Schema.String,
+    createdOn: Schema.String,
+    meta: Schema.Unknown,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    proxiable: Schema.Boolean,
+    proxied: Schema.Boolean,
+    settings: Schema.Struct({
+      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+    ),
+    tags: Schema.Array(Schema.String),
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Literal("OPENPGPKEY"),
+    commentModifiedOn: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      comment: "comment",
+      content: "content",
+      createdOn: "created_on",
+      meta: "meta",
+      modifiedOn: "modified_on",
+      name: "name",
+      proxiable: "proxiable",
+      proxied: "proxied",
+      settings: "settings",
+      tags: "tags",
+      ttl: "ttl",
+      type: "type",
+      commentModifiedOn: "comment_modified_on",
+      tagsModifiedOn: "tags_modified_on",
+    }),
+  ),
+  Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("A"),
@@ -11539,48 +11581,6 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       meta: "meta",
       modifiedOn: "modified_on",
       proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
       commentModifiedOn: "comment_modified_on",
       tagsModifiedOn: "tags_modified_on",
     }),
@@ -17354,6 +17354,57 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Union([
           Schema.Struct({
+            id: Schema.String,
+            comment: Schema.String,
+            content: Schema.String,
+            createdOn: Schema.String,
+            meta: Schema.Unknown,
+            modifiedOn: Schema.String,
+            name: Schema.String,
+            proxiable: Schema.Boolean,
+            proxied: Schema.Boolean,
+            settings: Schema.Struct({
+              ipv4Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ipv6Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                ipv4Only: "ipv4_only",
+                ipv6Only: "ipv6_only",
+              }),
+            ),
+            tags: Schema.Array(Schema.String),
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+            type: Schema.Literal("OPENPGPKEY"),
+            commentModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            tagsModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              comment: "comment",
+              content: "content",
+              createdOn: "created_on",
+              meta: "meta",
+              modifiedOn: "modified_on",
+              name: "name",
+              proxiable: "proxiable",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+              ttl: "ttl",
+              type: "type",
+              commentModifiedOn: "comment_modified_on",
+              tagsModifiedOn: "tags_modified_on",
+            }),
+          ),
+          Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("A"),
@@ -17677,57 +17728,6 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               meta: "meta",
               modifiedOn: "modified_on",
               proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
               commentModifiedOn: "comment_modified_on",
               tagsModifiedOn: "tags_modified_on",
             }),
@@ -19028,6 +19028,57 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Union([
           Schema.Struct({
+            id: Schema.String,
+            comment: Schema.String,
+            content: Schema.String,
+            createdOn: Schema.String,
+            meta: Schema.Unknown,
+            modifiedOn: Schema.String,
+            name: Schema.String,
+            proxiable: Schema.Boolean,
+            proxied: Schema.Boolean,
+            settings: Schema.Struct({
+              ipv4Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ipv6Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                ipv4Only: "ipv4_only",
+                ipv6Only: "ipv6_only",
+              }),
+            ),
+            tags: Schema.Array(Schema.String),
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+            type: Schema.Literal("OPENPGPKEY"),
+            commentModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            tagsModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              comment: "comment",
+              content: "content",
+              createdOn: "created_on",
+              meta: "meta",
+              modifiedOn: "modified_on",
+              name: "name",
+              proxiable: "proxiable",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+              ttl: "ttl",
+              type: "type",
+              commentModifiedOn: "comment_modified_on",
+              tagsModifiedOn: "tags_modified_on",
+            }),
+          ),
+          Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("A"),
@@ -19351,57 +19402,6 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               meta: "meta",
               modifiedOn: "modified_on",
               proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
               commentModifiedOn: "comment_modified_on",
               tagsModifiedOn: "tags_modified_on",
             }),
@@ -20702,6 +20702,57 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Union([
           Schema.Struct({
+            id: Schema.String,
+            comment: Schema.String,
+            content: Schema.String,
+            createdOn: Schema.String,
+            meta: Schema.Unknown,
+            modifiedOn: Schema.String,
+            name: Schema.String,
+            proxiable: Schema.Boolean,
+            proxied: Schema.Boolean,
+            settings: Schema.Struct({
+              ipv4Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ipv6Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                ipv4Only: "ipv4_only",
+                ipv6Only: "ipv6_only",
+              }),
+            ),
+            tags: Schema.Array(Schema.String),
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+            type: Schema.Literal("OPENPGPKEY"),
+            commentModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            tagsModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              comment: "comment",
+              content: "content",
+              createdOn: "created_on",
+              meta: "meta",
+              modifiedOn: "modified_on",
+              name: "name",
+              proxiable: "proxiable",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+              ttl: "ttl",
+              type: "type",
+              commentModifiedOn: "comment_modified_on",
+              tagsModifiedOn: "tags_modified_on",
+            }),
+          ),
+          Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("A"),
@@ -21025,57 +21076,6 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               meta: "meta",
               modifiedOn: "modified_on",
               proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
               commentModifiedOn: "comment_modified_on",
               tagsModifiedOn: "tags_modified_on",
             }),
@@ -22376,6 +22376,57 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Union([
           Schema.Struct({
+            id: Schema.String,
+            comment: Schema.String,
+            content: Schema.String,
+            createdOn: Schema.String,
+            meta: Schema.Unknown,
+            modifiedOn: Schema.String,
+            name: Schema.String,
+            proxiable: Schema.Boolean,
+            proxied: Schema.Boolean,
+            settings: Schema.Struct({
+              ipv4Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ipv6Only: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                ipv4Only: "ipv4_only",
+                ipv6Only: "ipv6_only",
+              }),
+            ),
+            tags: Schema.Array(Schema.String),
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+            type: Schema.Literal("OPENPGPKEY"),
+            commentModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            tagsModifiedOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              comment: "comment",
+              content: "content",
+              createdOn: "created_on",
+              meta: "meta",
+              modifiedOn: "modified_on",
+              name: "name",
+              proxiable: "proxiable",
+              proxied: "proxied",
+              settings: "settings",
+              tags: "tags",
+              ttl: "ttl",
+              type: "type",
+              commentModifiedOn: "comment_modified_on",
+              tagsModifiedOn: "tags_modified_on",
+            }),
+          ),
+          Schema.Struct({
             name: Schema.String,
             ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("A"),
@@ -22699,57 +22750,6 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               meta: "meta",
               modifiedOn: "modified_on",
               proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
               commentModifiedOn: "comment_modified_on",
               tagsModifiedOn: "tags_modified_on",
             }),
@@ -25584,6 +25584,57 @@ export const ScanReviewRecordResponse =
         Schema.Array(
           Schema.Union([
             Schema.Struct({
+              id: Schema.String,
+              comment: Schema.String,
+              content: Schema.String,
+              createdOn: Schema.String,
+              meta: Schema.Unknown,
+              modifiedOn: Schema.String,
+              name: Schema.String,
+              proxiable: Schema.Boolean,
+              proxied: Schema.Boolean,
+              settings: Schema.Struct({
+                ipv4Only: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                ipv6Only: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  ipv4Only: "ipv4_only",
+                  ipv6Only: "ipv6_only",
+                }),
+              ),
+              tags: Schema.Array(Schema.String),
+              ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+              type: Schema.Literal("OPENPGPKEY"),
+              commentModifiedOn: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              tagsModifiedOn: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                comment: "comment",
+                content: "content",
+                createdOn: "created_on",
+                meta: "meta",
+                modifiedOn: "modified_on",
+                name: "name",
+                proxiable: "proxiable",
+                proxied: "proxied",
+                settings: "settings",
+                tags: "tags",
+                ttl: "ttl",
+                type: "type",
+                commentModifiedOn: "comment_modified_on",
+                tagsModifiedOn: "tags_modified_on",
+              }),
+            ),
+            Schema.Struct({
               name: Schema.String,
               ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
               type: Schema.Literal("A"),
@@ -25907,57 +25958,6 @@ export const ScanReviewRecordResponse =
                 meta: "meta",
                 modifiedOn: "modified_on",
                 proxiable: "proxiable",
-                commentModifiedOn: "comment_modified_on",
-                tagsModifiedOn: "tags_modified_on",
-              }),
-            ),
-            Schema.Struct({
-              id: Schema.String,
-              comment: Schema.String,
-              content: Schema.String,
-              createdOn: Schema.String,
-              meta: Schema.Unknown,
-              modifiedOn: Schema.String,
-              name: Schema.String,
-              proxiable: Schema.Boolean,
-              proxied: Schema.Boolean,
-              settings: Schema.Struct({
-                ipv4Only: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                ipv6Only: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-              tags: Schema.Array(Schema.String),
-              ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-              type: Schema.Literal("OPENPGPKEY"),
-              commentModifiedOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              tagsModifiedOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                comment: "comment",
-                content: "content",
-                createdOn: "created_on",
-                meta: "meta",
-                modifiedOn: "modified_on",
-                name: "name",
-                proxiable: "proxiable",
-                proxied: "proxied",
-                settings: "settings",
-                tags: "tags",
-                ttl: "ttl",
-                type: "type",
                 commentModifiedOn: "comment_modified_on",
                 tagsModifiedOn: "tags_modified_on",
               }),

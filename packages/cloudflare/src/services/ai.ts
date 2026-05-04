@@ -99,24 +99,6 @@ export type RunAiResponse =
   | { description?: string | null };
 
 export const RunAiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Array(
-    Schema.Struct({
-      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }),
-  ),
-  UploadableSchema.pipe(T.HttpFormDataFile()),
-  Schema.Struct({
-    audio: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
-  Schema.Struct({
-    data: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Array(Schema.Number)), Schema.Null]),
-    ),
-    shape: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
-    ),
-  }),
   Schema.Struct({
     text: Schema.String,
     vtt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -139,23 +121,6 @@ export const RunAiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       vtt: "vtt",
       wordCount: "word_count",
       words: "words",
-    }),
-  ),
-  Schema.Array(
-    Schema.Struct({
-      box: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            xmax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            xmin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            ymax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            ymin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
   ),
   Schema.Struct({
@@ -200,6 +165,41 @@ export const RunAiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       response: "response",
       toolCalls: "tool_calls",
       usage: "usage",
+    }),
+  ),
+  Schema.Array(
+    Schema.Struct({
+      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ),
+  UploadableSchema.pipe(T.HttpFormDataFile()),
+  Schema.Struct({
+    audio: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+  Schema.Struct({
+    data: Schema.optional(
+      Schema.Union([Schema.Array(Schema.Array(Schema.Number)), Schema.Null]),
+    ),
+    shape: Schema.optional(
+      Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
+    ),
+  }),
+  Schema.Array(
+    Schema.Struct({
+      box: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            xmax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            xmin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            ymax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            ymin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
   ),
   Schema.Struct({

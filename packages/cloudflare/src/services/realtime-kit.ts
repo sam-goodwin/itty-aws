@@ -7362,7 +7362,6 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         canEditConfig: Schema.Boolean,
         canStart: Schema.Boolean,
         config: Schema.Union([
-          Schema.String,
           Schema.Struct({
             accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
             handlesViewOnly: Schema.Boolean,
@@ -7372,6 +7371,7 @@ export const CreatePresetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               handlesViewOnly: "handles_view_only",
             }),
           ),
+          Schema.String,
         ]),
       }).pipe(
         Schema.encodeKeys({
@@ -7728,7 +7728,6 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             canEditConfig: Schema.Boolean,
             canStart: Schema.Boolean,
             config: Schema.Union([
-              Schema.String,
               Schema.Struct({
                 accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
                 handlesViewOnly: Schema.Boolean,
@@ -7738,6 +7737,7 @@ export const CreatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   handlesViewOnly: "handles_view_only",
                 }),
               ),
+              Schema.String,
             ]),
           }).pipe(
             Schema.encodeKeys({
@@ -8502,7 +8502,6 @@ export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             canEditConfig: Schema.Boolean,
             canStart: Schema.Boolean,
             config: Schema.Union([
-              Schema.String,
               Schema.Struct({
                 accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
                 handlesViewOnly: Schema.Boolean,
@@ -8512,6 +8511,7 @@ export const PatchPresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   handlesViewOnly: "handles_view_only",
                 }),
               ),
+              Schema.String,
             ]),
           }).pipe(
             Schema.encodeKeys({
@@ -8902,7 +8902,6 @@ export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             canEditConfig: Schema.Boolean,
             canStart: Schema.Boolean,
             config: Schema.Union([
-              Schema.String,
               Schema.Struct({
                 accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
                 handlesViewOnly: Schema.Boolean,
@@ -8912,6 +8911,7 @@ export const DeletePresetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   handlesViewOnly: "handles_view_only",
                 }),
               ),
+              Schema.String,
             ]),
           }).pipe(
             Schema.encodeKeys({
@@ -9310,7 +9310,6 @@ export const GetPresetByIdPresetResponse =
               canEditConfig: Schema.Boolean,
               canStart: Schema.Boolean,
               config: Schema.Union([
-                Schema.String,
                 Schema.Struct({
                   accessControl: Schema.Literals(["FULL_ACCESS", "VIEW_ONLY"]),
                   handlesViewOnly: Schema.Boolean,
@@ -9320,6 +9319,7 @@ export const GetPresetByIdPresetResponse =
                     handlesViewOnly: "handles_view_only",
                   }),
                 ),
+                Schema.String,
               ]),
             }).pipe(
               Schema.encodeKeys({

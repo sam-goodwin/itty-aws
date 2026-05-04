@@ -10177,15 +10177,6 @@ export type InitialSetupCloudIntegrationResponse =
 export const InitialSetupCloudIntegrationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
-      awsTrustPolicy: Schema.String,
-      itemType: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        awsTrustPolicy: "aws_trust_policy",
-        itemType: "item_type",
-      }),
-    ),
-    Schema.Struct({
       azureConsentUrl: Schema.String,
       integrationIdentityTag: Schema.String,
       itemType: Schema.String,
@@ -10207,6 +10198,15 @@ export const InitialSetupCloudIntegrationResponse =
         integrationIdentityTag: "integration_identity_tag",
         itemType: "item_type",
         tagCliCommand: "tag_cli_command",
+      }),
+    ),
+    Schema.Struct({
+      awsTrustPolicy: Schema.String,
+      itemType: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        awsTrustPolicy: "aws_trust_policy",
+        itemType: "item_type",
       }),
     ),
   ]).pipe(

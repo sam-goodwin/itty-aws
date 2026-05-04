@@ -1365,6 +1365,10 @@ export const BulkPutRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Union([
             Schema.Struct({
+              id: Schema.String,
+              deleted: Schema.Boolean,
+            }),
+            Schema.Struct({
               id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               description: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
@@ -1376,10 +1380,6 @@ export const BulkPutRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Struct({
-              id: Schema.String,
-              deleted: Schema.Boolean,
             }),
           ]),
           Schema.Null,
@@ -1507,6 +1507,10 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
+          id: Schema.String,
+          deleted: Schema.Boolean,
+        }),
+        Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           description: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -1516,10 +1520,6 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          deleted: Schema.Boolean,
         }),
       ]),
       Schema.Null,
@@ -1655,6 +1655,10 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Union([
             Schema.Struct({
+              id: Schema.String,
+              deleted: Schema.Boolean,
+            }),
+            Schema.Struct({
               id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               description: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
@@ -1666,10 +1670,6 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Struct({
-              id: Schema.String,
-              deleted: Schema.Boolean,
             }),
           ]),
           Schema.Null,
@@ -1849,6 +1849,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Union([
             Schema.Struct({
+              id: Schema.String,
+              deleted: Schema.Boolean,
+            }),
+            Schema.Struct({
               id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               description: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
@@ -1860,10 +1864,6 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Struct({
-              id: Schema.String,
-              deleted: Schema.Boolean,
             }),
           ]),
           Schema.Null,
@@ -2029,6 +2029,10 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
+          id: Schema.String,
+          deleted: Schema.Boolean,
+        }),
+        Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           description: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -2038,10 +2042,6 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          deleted: Schema.Boolean,
         }),
       ]),
       Schema.Null,
@@ -2159,6 +2159,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Union([
             Schema.Struct({
+              id: Schema.String,
+              deleted: Schema.Boolean,
+            }),
+            Schema.Struct({
               id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               description: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
@@ -2170,10 +2174,6 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Struct({
-              id: Schema.String,
-              deleted: Schema.Boolean,
             }),
           ]),
           Schema.Null,
@@ -2300,6 +2300,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
+          id: Schema.String,
+          deleted: Schema.Boolean,
+        }),
+        Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           description: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -2309,10 +2313,6 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
           ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.String,
-          deleted: Schema.Boolean,
         }),
       ]),
       Schema.Null,
@@ -2434,6 +2434,10 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           Schema.Union([
             Schema.Union([
               Schema.Struct({
+                id: Schema.String,
+                deleted: Schema.Boolean,
+              }),
+              Schema.Struct({
                 id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
                 description: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
@@ -2447,10 +2451,6 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 ref: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                deleted: Schema.Boolean,
               }),
             ]),
             Schema.Null,
@@ -2576,6 +2576,10 @@ export const BulkDeleteRulesResponse =
           Schema.Union([
             Schema.Union([
               Schema.Struct({
+                id: Schema.String,
+                deleted: Schema.Boolean,
+              }),
+              Schema.Struct({
                 id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
                 description: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
@@ -2589,10 +2593,6 @@ export const BulkDeleteRulesResponse =
                 ref: Schema.optional(
                   Schema.Union([Schema.String, Schema.Null]),
                 ),
-              }),
-              Schema.Struct({
-                id: Schema.String,
-                deleted: Schema.Boolean,
               }),
             ]),
             Schema.Null,
@@ -4470,28 +4470,6 @@ export const ListWafPackageRulesResponse =
       Schema.Union([
         Schema.Struct({
           id: Schema.String,
-          allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
-          description: Schema.String,
-          group: Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          mode: Schema.Literals(["on", "off"]),
-          packageId: Schema.String,
-          priority: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            allowedModes: "allowed_modes",
-            description: "description",
-            group: "group",
-            mode: "mode",
-            packageId: "package_id",
-            priority: "priority",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
           allowedModes: Schema.Array(
             Schema.Literals([
               "default",
@@ -4526,6 +4504,28 @@ export const ListWafPackageRulesResponse =
             id: "id",
             allowedModes: "allowed_modes",
             defaultMode: "default_mode",
+            description: "description",
+            group: "group",
+            mode: "mode",
+            packageId: "package_id",
+            priority: "priority",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
+          description: Schema.String,
+          group: Schema.Struct({
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          mode: Schema.Literals(["on", "off"]),
+          packageId: Schema.String,
+          priority: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            allowedModes: "allowed_modes",
             description: "description",
             group: "group",
             mode: "mode",
@@ -4642,28 +4642,6 @@ export const PatchWafPackageRuleResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       id: Schema.String,
-      allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
-      description: Schema.String,
-      group: Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      mode: Schema.Literals(["on", "off"]),
-      packageId: Schema.String,
-      priority: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        allowedModes: "allowed_modes",
-        description: "description",
-        group: "group",
-        mode: "mode",
-        packageId: "package_id",
-        priority: "priority",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
       allowedModes: Schema.Array(
         Schema.Literals([
           "default",
@@ -4698,6 +4676,28 @@ export const PatchWafPackageRuleResponse =
         id: "id",
         allowedModes: "allowed_modes",
         defaultMode: "default_mode",
+        description: "description",
+        group: "group",
+        mode: "mode",
+        packageId: "package_id",
+        priority: "priority",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
+      description: Schema.String,
+      group: Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+      mode: Schema.Literals(["on", "off"]),
+      packageId: Schema.String,
+      priority: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        allowedModes: "allowed_modes",
         description: "description",
         group: "group",
         mode: "mode",

@@ -701,6 +701,29 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
+          parameterSchemas: Schema.Struct({
+            lastUpdated: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            parameterSchemas: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  parameters: Schema.optional(
+                    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+                  ),
+                  responses: Schema.optional(Schema.Null),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              lastUpdated: "last_updated",
+              parameterSchemas: "parameter_schemas",
+            }),
+          ),
+        }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
+        Schema.Struct({
           thresholds: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -748,29 +771,6 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ]),
           ),
         }),
-        Schema.Struct({
-          parameterSchemas: Schema.Struct({
-            lastUpdated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            parameterSchemas: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  parameters: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
-                  ),
-                  responses: Schema.optional(Schema.Null),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              lastUpdated: "last_updated",
-              parameterSchemas: "parameter_schemas",
-            }),
-          ),
-        }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
         Schema.Struct({
           apiRouting: Schema.optional(
             Schema.Union([
@@ -1104,6 +1104,34 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           Schema.Union([
             Schema.Union([
               Schema.Struct({
+                parameterSchemas: Schema.Struct({
+                  lastUpdated: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  parameterSchemas: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        parameters: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                        responses: Schema.optional(Schema.Null),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    lastUpdated: "last_updated",
+                    parameterSchemas: "parameter_schemas",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
+              ),
+              Schema.Struct({
                 thresholds: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
@@ -1151,34 +1179,6 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   ]),
                 ),
               }),
-              Schema.Struct({
-                parameterSchemas: Schema.Struct({
-                  lastUpdated: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  parameterSchemas: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        parameters: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                        responses: Schema.optional(Schema.Null),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    lastUpdated: "last_updated",
-                    parameterSchemas: "parameter_schemas",
-                  }),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-              ),
               Schema.Struct({
                 apiRouting: Schema.optional(
                   Schema.Union([
@@ -1545,6 +1545,29 @@ export const CreateOperationResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
+            parameterSchemas: Schema.Struct({
+              lastUpdated: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              parameterSchemas: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    parameters: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+                    ),
+                    responses: Schema.optional(Schema.Null),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                lastUpdated: "last_updated",
+                parameterSchemas: "parameter_schemas",
+              }),
+            ),
+          }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
+          Schema.Struct({
             thresholds: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -1592,29 +1615,6 @@ export const CreateOperationResponse =
               ]),
             ),
           }),
-          Schema.Struct({
-            parameterSchemas: Schema.Struct({
-              lastUpdated: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parameterSchemas: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    parameters: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
-                    ),
-                    responses: Schema.optional(Schema.Null),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                lastUpdated: "last_updated",
-                parameterSchemas: "parameter_schemas",
-              }),
-            ),
-          }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
           Schema.Struct({
             apiRouting: Schema.optional(
               Schema.Union([
@@ -2066,6 +2066,34 @@ export const BulkCreateOperationsResponse =
           Schema.Union([
             Schema.Union([
               Schema.Struct({
+                parameterSchemas: Schema.Struct({
+                  lastUpdated: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  parameterSchemas: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        parameters: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                        responses: Schema.optional(Schema.Null),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    lastUpdated: "last_updated",
+                    parameterSchemas: "parameter_schemas",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
+              ),
+              Schema.Struct({
                 thresholds: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
@@ -2113,34 +2141,6 @@ export const BulkCreateOperationsResponse =
                   ]),
                 ),
               }),
-              Schema.Struct({
-                parameterSchemas: Schema.Struct({
-                  lastUpdated: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  parameterSchemas: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        parameters: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                        responses: Schema.optional(Schema.Null),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    lastUpdated: "last_updated",
-                    parameterSchemas: "parameter_schemas",
-                  }),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-              ),
               Schema.Struct({
                 apiRouting: Schema.optional(
                   Schema.Union([
@@ -3632,6 +3632,34 @@ export const ListUserSchemaOperationsResponse =
             Schema.Union([
               Schema.Union([
                 Schema.Struct({
+                  parameterSchemas: Schema.Struct({
+                    lastUpdated: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    parameterSchemas: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          parameters: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.Unknown),
+                              Schema.Null,
+                            ]),
+                          ),
+                          responses: Schema.optional(Schema.Null),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      lastUpdated: "last_updated",
+                      parameterSchemas: "parameter_schemas",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
+                ),
+                Schema.Struct({
                   thresholds: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -3679,34 +3707,6 @@ export const ListUserSchemaOperationsResponse =
                     ]),
                   ),
                 }),
-                Schema.Struct({
-                  parameterSchemas: Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    parameterSchemas: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          parameters: Schema.optional(
-                            Schema.Union([
-                              Schema.Array(Schema.Unknown),
-                              Schema.Null,
-                            ]),
-                          ),
-                          responses: Schema.optional(Schema.Null),
-                        }),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      parameterSchemas: "parameter_schemas",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-                ),
                 Schema.Struct({
                   apiRouting: Schema.optional(
                     Schema.Union([

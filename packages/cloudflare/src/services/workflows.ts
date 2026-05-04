@@ -219,14 +219,9 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
         finished: Schema.Boolean,
         name: Schema.String,
+        output: Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
         start: Schema.String,
-        type: Schema.Literal("sleep"),
-      }),
-      Schema.Struct({
-        trigger: Schema.Struct({
-          source: Schema.String,
-        }),
-        type: Schema.Literal("termination"),
+        type: Schema.Literal("waitForEvent"),
       }),
       Schema.Struct({
         end: Schema.String,
@@ -239,9 +234,14 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
         finished: Schema.Boolean,
         name: Schema.String,
-        output: Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
         start: Schema.String,
-        type: Schema.Literal("waitForEvent"),
+        type: Schema.Literal("sleep"),
+      }),
+      Schema.Struct({
+        trigger: Schema.Struct({
+          source: Schema.String,
+        }),
+        type: Schema.Literal("termination"),
       }),
     ]),
   ),

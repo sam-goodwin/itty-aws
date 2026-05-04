@@ -79,20 +79,6 @@ export const GetConfigurationResponse =
       keys: Schema.Array(
         Schema.Union([
           Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
-            ]),
-            e: Schema.String,
-            kid: Schema.String,
-            kty: Schema.Literal("RSA"),
-            n: Schema.String,
-          }),
-          Schema.Struct({
             alg: Schema.Literal("ES256"),
             crv: Schema.Literal("P-256"),
             kid: Schema.String,
@@ -107,6 +93,20 @@ export const GetConfigurationResponse =
             kty: Schema.Literal("EC"),
             x: Schema.String,
             y: Schema.String,
+          }),
+          Schema.Struct({
+            alg: Schema.Literals([
+              "RS256",
+              "RS384",
+              "RS512",
+              "PS256",
+              "PS384",
+              "PS512",
+            ]),
+            e: Schema.String,
+            kid: Schema.String,
+            kty: Schema.Literal("RSA"),
+            n: Schema.String,
           }),
         ]),
       ),
@@ -217,20 +217,6 @@ export const ListConfigurationsResponse =
           keys: Schema.Array(
             Schema.Union([
               Schema.Struct({
-                alg: Schema.Literals([
-                  "RS256",
-                  "RS384",
-                  "RS512",
-                  "PS256",
-                  "PS384",
-                  "PS512",
-                ]),
-                e: Schema.String,
-                kid: Schema.String,
-                kty: Schema.Literal("RSA"),
-                n: Schema.String,
-              }),
-              Schema.Struct({
                 alg: Schema.Literal("ES256"),
                 crv: Schema.Literal("P-256"),
                 kid: Schema.String,
@@ -245,6 +231,20 @@ export const ListConfigurationsResponse =
                 kty: Schema.Literal("EC"),
                 x: Schema.String,
                 y: Schema.String,
+              }),
+              Schema.Struct({
+                alg: Schema.Literals([
+                  "RS256",
+                  "RS384",
+                  "RS512",
+                  "PS256",
+                  "PS384",
+                  "PS512",
+                ]),
+                e: Schema.String,
+                kid: Schema.String,
+                kty: Schema.Literal("RSA"),
+                n: Schema.String,
               }),
             ]),
           ),
@@ -352,20 +352,6 @@ export const CreateConfigurationRequest =
       keys: Schema.Array(
         Schema.Union([
           Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
-            ]),
-            e: Schema.String,
-            kid: Schema.String,
-            kty: Schema.Literal("RSA"),
-            n: Schema.String,
-          }),
-          Schema.Struct({
             alg: Schema.Literal("ES256"),
             crv: Schema.Literal("P-256"),
             kid: Schema.String,
@@ -380,6 +366,20 @@ export const CreateConfigurationRequest =
             kty: Schema.Literal("EC"),
             x: Schema.String,
             y: Schema.String,
+          }),
+          Schema.Struct({
+            alg: Schema.Literals([
+              "RS256",
+              "RS384",
+              "RS512",
+              "PS256",
+              "PS384",
+              "PS512",
+            ]),
+            e: Schema.String,
+            kid: Schema.String,
+            kty: Schema.Literal("RSA"),
+            n: Schema.String,
           }),
         ]),
       ),
@@ -448,20 +448,6 @@ export const CreateConfigurationResponse =
       keys: Schema.Array(
         Schema.Union([
           Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
-            ]),
-            e: Schema.String,
-            kid: Schema.String,
-            kty: Schema.Literal("RSA"),
-            n: Schema.String,
-          }),
-          Schema.Struct({
             alg: Schema.Literal("ES256"),
             crv: Schema.Literal("P-256"),
             kid: Schema.String,
@@ -476,6 +462,20 @@ export const CreateConfigurationResponse =
             kty: Schema.Literal("EC"),
             x: Schema.String,
             y: Schema.String,
+          }),
+          Schema.Struct({
+            alg: Schema.Literals([
+              "RS256",
+              "RS384",
+              "RS512",
+              "PS256",
+              "PS384",
+              "PS512",
+            ]),
+            e: Schema.String,
+            kid: Schema.String,
+            kty: Schema.Literal("RSA"),
+            n: Schema.String,
           }),
         ]),
       ),
@@ -669,20 +669,6 @@ export const PutConfigurationCredentialRequest =
     keys: Schema.Array(
       Schema.Union([
         Schema.Struct({
-          alg: Schema.Literals([
-            "RS256",
-            "RS384",
-            "RS512",
-            "PS256",
-            "PS384",
-            "PS512",
-          ]),
-          e: Schema.String,
-          kid: Schema.String,
-          kty: Schema.Literal("RSA"),
-          n: Schema.String,
-        }),
-        Schema.Struct({
           alg: Schema.Literal("ES256"),
           crv: Schema.Literal("P-256"),
           kid: Schema.String,
@@ -697,6 +683,20 @@ export const PutConfigurationCredentialRequest =
           kty: Schema.Literal("EC"),
           x: Schema.String,
           y: Schema.String,
+        }),
+        Schema.Struct({
+          alg: Schema.Literals([
+            "RS256",
+            "RS384",
+            "RS512",
+            "PS256",
+            "PS384",
+            "PS512",
+          ]),
+          e: Schema.String,
+          kid: Schema.String,
+          kty: Schema.Literal("RSA"),
+          n: Schema.String,
         }),
       ]),
     ),
@@ -780,20 +780,6 @@ export const PutConfigurationCredentialResponse =
     keys: Schema.Array(
       Schema.Union([
         Schema.Struct({
-          alg: Schema.Literals([
-            "RS256",
-            "RS384",
-            "RS512",
-            "PS256",
-            "PS384",
-            "PS512",
-          ]),
-          e: Schema.String,
-          kid: Schema.String,
-          kty: Schema.Literal("RSA"),
-          n: Schema.String,
-        }),
-        Schema.Struct({
           alg: Schema.Literal("ES256"),
           crv: Schema.Literal("P-256"),
           kid: Schema.String,
@@ -808,6 +794,20 @@ export const PutConfigurationCredentialResponse =
           kty: Schema.Literal("EC"),
           x: Schema.String,
           y: Schema.String,
+        }),
+        Schema.Struct({
+          alg: Schema.Literals([
+            "RS256",
+            "RS384",
+            "RS512",
+            "PS256",
+            "PS384",
+            "PS512",
+          ]),
+          e: Schema.String,
+          kid: Schema.String,
+          kty: Schema.Literal("RSA"),
+          n: Schema.String,
         }),
       ]),
     ),

@@ -13581,11 +13581,6 @@ export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   }),
   summary_0: Schema.Union([
-    Schema.Record(Schema.String, Schema.Unknown),
-    Schema.Struct({
-      rfc6962: Schema.String,
-      static: Schema.String,
-    }),
     Schema.Struct({
       gt_121d: Schema.String,
       gt_16dLte_31d: Schema.String,
@@ -13604,6 +13599,21 @@ export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
     Schema.Struct({
+      domain: Schema.String,
+      extended: Schema.String,
+      organization: Schema.String,
+      unknown: Schema.String,
+    }),
+    Schema.Struct({
+      dsa: Schema.String,
+      ecdsa: Schema.String,
+      rsa: Schema.String,
+    }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
+    Schema.Struct({
+      rfc6962: Schema.String,
+      static: Schema.String,
+    }),
+    Schema.Struct({
       certificate: Schema.String,
       precertificate: Schema.String,
     }).pipe(
@@ -13620,17 +13630,7 @@ export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       negative: Schema.String,
       positive: Schema.String,
     }).pipe(Schema.encodeKeys({ negative: "NEGATIVE", positive: "POSITIVE" })),
-    Schema.Struct({
-      dsa: Schema.String,
-      ecdsa: Schema.String,
-      rsa: Schema.String,
-    }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
-    Schema.Struct({
-      domain: Schema.String,
-      extended: Schema.String,
-      organization: Schema.String,
-      unknown: Schema.String,
-    }),
+    Schema.Record(Schema.String, Schema.Unknown),
   ]),
 }).pipe(
   T.ResponsePath("result"),
@@ -22839,13 +22839,6 @@ export const TimeseriesGroupsCtResponse =
     }),
     serie_0: Schema.Union([
       Schema.Struct({
-        timestamps: Schema.Array(Schema.String),
-      }),
-      Schema.Struct({
-        rfc6962: Schema.Array(Schema.String),
-        static: Schema.Array(Schema.String),
-      }),
-      Schema.Struct({
         gt_121d: Schema.Array(Schema.String),
         gt_16dLte_31d: Schema.Array(Schema.String),
         gt_31dLte_91d: Schema.Array(Schema.String),
@@ -22862,6 +22855,21 @@ export const TimeseriesGroupsCtResponse =
           lte_3d: "lte_3d",
         }),
       ),
+      Schema.Struct({
+        domain: Schema.Array(Schema.String),
+        extended: Schema.Array(Schema.String),
+        organization: Schema.Array(Schema.String),
+        unknown: Schema.Array(Schema.String),
+      }),
+      Schema.Struct({
+        dsa: Schema.Array(Schema.String),
+        ecdsa: Schema.Array(Schema.String),
+        rsa: Schema.Array(Schema.String),
+      }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
+      Schema.Struct({
+        rfc6962: Schema.Array(Schema.String),
+        static: Schema.Array(Schema.String),
+      }),
       Schema.Struct({
         certificate: Schema.Array(Schema.String),
         precertificate: Schema.Array(Schema.String),
@@ -22882,15 +22890,7 @@ export const TimeseriesGroupsCtResponse =
         Schema.encodeKeys({ negative: "NEGATIVE", positive: "POSITIVE" }),
       ),
       Schema.Struct({
-        dsa: Schema.Array(Schema.String),
-        ecdsa: Schema.Array(Schema.String),
-        rsa: Schema.Array(Schema.String),
-      }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
-      Schema.Struct({
-        domain: Schema.Array(Schema.String),
-        extended: Schema.Array(Schema.String),
-        organization: Schema.Array(Schema.String),
-        unknown: Schema.Array(Schema.String),
+        timestamps: Schema.Array(Schema.String),
       }),
     ]),
   }).pipe(

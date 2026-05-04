@@ -2868,6 +2868,19 @@ export const GetAccessApplicationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       domain: Schema.String,
+      targetCriteria: Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("RDP"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
       type: Schema.Literals([
         "self_hosted",
         "saas",
@@ -3792,15 +3805,6 @@ export const GetAccessApplicationResponse =
               Schema.Union([
                 Schema.Union([
                   Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
-                  Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
@@ -3820,6 +3824,11 @@ export const GetAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -3830,17 +3839,12 @@ export const GetAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -3864,6 +3868,11 @@ export const GetAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -3874,6 +3883,10 @@ export const GetAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -3967,6 +3980,7 @@ export const GetAccessApplicationResponse =
     }).pipe(
       Schema.encodeKeys({
         domain: "domain",
+        targetCriteria: "target_criteria",
         type: "type",
         id: "id",
         allowAuthenticateViaWarp: "allow_authenticate_via_warp",
@@ -3999,7 +4013,28 @@ export const GetAccessApplicationResponse =
       }),
     ),
     Schema.Struct({
+      domain: Schema.String,
+      type: Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
+      ]),
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      allowAuthenticateViaWarp: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       allowedIdps: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -4010,11 +4045,149 @@ export const GetAccessApplicationResponse =
       autoRedirectToIdentity: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
+      corsHeaders: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            allowAllHeaders: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowAllMethods: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowAllOrigins: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowCredentials: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowedHeaders: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            allowedMethods: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Literals([
+                    "GET",
+                    "POST",
+                    "HEAD",
+                    "PUT",
+                    "DELETE",
+                    "CONNECT",
+                    "OPTIONS",
+                    "TRACE",
+                    "PATCH",
+                  ]),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            allowedOrigins: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              allowAllHeaders: "allow_all_headers",
+              allowAllMethods: "allow_all_methods",
+              allowAllOrigins: "allow_all_origins",
+              allowCredentials: "allow_credentials",
+              allowedHeaders: "allowed_headers",
+              allowedMethods: "allowed_methods",
+              allowedOrigins: "allowed_origins",
+              maxAge: "max_age",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      customDenyMessage: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      customDenyUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      customNonIdentityDenyUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
       customPages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
+      destinations: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("public"), Schema.Null]),
+                ),
+                uri: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Struct({
+                cidr: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                hostname: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                l4Protocol: Schema.optional(
+                  Schema.Union([Schema.Literals(["tcp", "udp"]), Schema.Null]),
+                ),
+                portRange: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("private"), Schema.Null]),
+                ),
+                vnetId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  cidr: "cidr",
+                  hostname: "hostname",
+                  l4Protocol: "l4_protocol",
+                  portRange: "port_range",
+                  type: "type",
+                  vnetId: "vnet_id",
+                }),
+              ),
+              Schema.Struct({
+                mcpServerId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([
+                    Schema.Literal("via_mcp_server_portal"),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  mcpServerId: "mcp_server_id",
+                  type: "type",
+                }),
+              ),
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      enableBindingCookie: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      httpOnlyCookieAttribute: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      optionsPreflightBypass: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      pathCookieAttribute: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       policies: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -4750,282 +4923,11 @@ export const GetAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      saasApp: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Struct({
-              authType: Schema.optional(
-                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
-              ),
-              consumerServiceUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              customAttributes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      friendlyName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      nameFormat: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      source: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            nameByIdp: Schema.optional(
-                              Schema.Union([
-                                Schema.Array(
-                                  Schema.Struct({
-                                    idpId: Schema.optional(
-                                      Schema.Union([
-                                        Schema.String,
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                    sourceName: Schema.optional(
-                                      Schema.Union([
-                                        Schema.String,
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                  }).pipe(
-                                    Schema.encodeKeys({
-                                      idpId: "idp_id",
-                                      sourceName: "source_name",
-                                    }),
-                                  ),
-                                ),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              name: "name",
-                              nameByIdp: "name_by_idp",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        friendlyName: "friendly_name",
-                        name: "name",
-                        nameFormat: "name_format",
-                        required: "required",
-                        source: "source",
-                      }),
-                    ),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              defaultRelayState: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              idpEntityId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              nameIdFormat: Schema.optional(
-                Schema.Union([Schema.Literals(["id", "email"]), Schema.Null]),
-              ),
-              nameIdTransformJsonata: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              publicKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              samlAttributeTransformJsonata: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              spEntityId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              ssoEndpoint: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                authType: "auth_type",
-                consumerServiceUrl: "consumer_service_url",
-                customAttributes: "custom_attributes",
-                defaultRelayState: "default_relay_state",
-                idpEntityId: "idp_entity_id",
-                nameIdFormat: "name_id_format",
-                nameIdTransformJsonata: "name_id_transform_jsonata",
-                publicKey: "public_key",
-                samlAttributeTransformJsonata:
-                  "saml_attribute_transform_jsonata",
-                spEntityId: "sp_entity_id",
-                ssoEndpoint: "sso_endpoint",
-              }),
-            ),
-            Schema.Struct({
-              accessTokenLifetime: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              allowPkceWithoutClientSecret: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              appLauncherUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              authType: Schema.optional(
-                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
-              ),
-              clientId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              clientSecret: Schema.optional(
-                Schema.Union([SensitiveString, Schema.Null]),
-              ),
-              customClaims: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      scope: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "groups",
-                            "profile",
-                            "email",
-                            "openid",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      source: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            nameByIdp: Schema.optional(
-                              Schema.Union([
-                                Schema.Record(Schema.String, Schema.Unknown),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              name: "name",
-                              nameByIdp: "name_by_idp",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              grantTypes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals([
-                      "authorization_code",
-                      "authorization_code_with_pkce",
-                      "refresh_tokens",
-                      "hybrid",
-                      "implicit",
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              groupFilterRegex: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              hybridAndImplicitOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    returnIdTokenFromAuthorizationEndpoint: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      returnAccessTokenFromAuthorizationEndpoint:
-                        "return_access_token_from_authorization_endpoint",
-                      returnIdTokenFromAuthorizationEndpoint:
-                        "return_id_token_from_authorization_endpoint",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              publicKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              redirectUris: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              refreshTokenOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    lifetime: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              scopes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals(["openid", "groups", "email", "profile"]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                accessTokenLifetime: "access_token_lifetime",
-                allowPkceWithoutClientSecret:
-                  "allow_pkce_without_client_secret",
-                appLauncherUrl: "app_launcher_url",
-                authType: "auth_type",
-                clientId: "client_id",
-                clientSecret: "client_secret",
-                customClaims: "custom_claims",
-                grantTypes: "grant_types",
-                groupFilterRegex: "group_filter_regex",
-                hybridAndImplicitOptions: "hybrid_and_implicit_options",
-                publicKey: "public_key",
-                redirectUris: "redirect_uris",
-                refreshTokenOptions: "refresh_token_options",
-                scopes: "scopes",
-              }),
-            ),
-          ]),
-          Schema.Null,
-        ]),
+      readServiceTokensFromHeader: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      sameSiteCookieAttribute: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
       scimConfig: Schema.optional(
         Schema.Union([
@@ -5035,15 +4937,6 @@ export const GetAccessApplicationResponse =
             authentication: Schema.optional(
               Schema.Union([
                 Schema.Union([
-                  Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
                   Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
@@ -5064,6 +4957,11 @@ export const GetAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -5074,17 +4972,12 @@ export const GetAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -5108,6 +5001,11 @@ export const GetAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -5118,6 +5016,10 @@ export const GetAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -5193,45 +5095,805 @@ export const GetAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
+      selfHostedDomains: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      serviceAuth_401Redirect: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      sessionDuration: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      skipInterstitial: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      type: Schema.optional(
+    }).pipe(
+      Schema.encodeKeys({
+        domain: "domain",
+        type: "type",
+        id: "id",
+        allowAuthenticateViaWarp: "allow_authenticate_via_warp",
+        allowIframe: "allow_iframe",
+        allowedIdps: "allowed_idps",
+        appLauncherVisible: "app_launcher_visible",
+        aud: "aud",
+        autoRedirectToIdentity: "auto_redirect_to_identity",
+        corsHeaders: "cors_headers",
+        customDenyMessage: "custom_deny_message",
+        customDenyUrl: "custom_deny_url",
+        customNonIdentityDenyUrl: "custom_non_identity_deny_url",
+        customPages: "custom_pages",
+        destinations: "destinations",
+        enableBindingCookie: "enable_binding_cookie",
+        httpOnlyCookieAttribute: "http_only_cookie_attribute",
+        logoUrl: "logo_url",
+        name: "name",
+        optionsPreflightBypass: "options_preflight_bypass",
+        pathCookieAttribute: "path_cookie_attribute",
+        policies: "policies",
+        readServiceTokensFromHeader: "read_service_tokens_from_header",
+        sameSiteCookieAttribute: "same_site_cookie_attribute",
+        scimConfig: "scim_config",
+        selfHostedDomains: "self_hosted_domains",
+        serviceAuth_401Redirect: "service_auth_401_redirect",
+        sessionDuration: "session_duration",
+        skipInterstitial: "skip_interstitial",
+        tags: "tags",
+      }),
+    ),
+    Schema.Struct({
+      targetCriteria: Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("SSH"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
+      type: Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
+      ]),
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      policies: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              connectionRules: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    ssh: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          usernames: Schema.Array(Schema.String),
+                          allowEmailAlias: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            usernames: "usernames",
+                            allowEmailAlias: "allow_email_alias",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              createdAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              decision: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
+                  Schema.Null,
+                ]),
+              ),
+              exclude: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              include: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              require: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              updatedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                connectionRules: "connection_rules",
+                createdAt: "created_at",
+                decision: "decision",
+                exclude: "exclude",
+                include: "include",
+                name: "name",
+                require: "require",
+                updatedAt: "updated_at",
+              }),
+            ),
+          ),
           Schema.Null,
         ]),
       ),
     }).pipe(
       Schema.encodeKeys({
+        targetCriteria: "target_criteria",
+        type: "type",
         id: "id",
-        allowedIdps: "allowed_idps",
-        appLauncherVisible: "app_launcher_visible",
         aud: "aud",
-        autoRedirectToIdentity: "auto_redirect_to_identity",
-        customPages: "custom_pages",
-        logoUrl: "logo_url",
         name: "name",
         policies: "policies",
-        saasApp: "saas_app",
-        scimConfig: "scim_config",
-        tags: "tags",
-        type: "type",
       }),
     ),
     Schema.Struct({
@@ -6871,837 +7533,6 @@ export const GetAccessApplicationResponse =
     ),
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      appLauncherVisible: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        appLauncherVisible: "app_launcher_visible",
-        aud: "aud",
-        domain: "domain",
-        logoUrl: "logo_url",
-        name: "name",
-        tags: "tags",
-        type: "type",
-      }),
-    ),
-    Schema.Struct({
-      targetCriteria: Schema.Array(
-        Schema.Struct({
-          port: Schema.Number,
-          protocol: Schema.Literal("SSH"),
-          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            port: "port",
-            protocol: "protocol",
-            targetAttributes: "target_attributes",
-          }),
-        ),
-      ),
-      type: Schema.Literals([
-        "self_hosted",
-        "saas",
-        "ssh",
-        "vnc",
-        "app_launcher",
-        "warp",
-        "biso",
-        "bookmark",
-        "dash_sso",
-        "infrastructure",
-        "rdp",
-        "mcp",
-        "mcp_portal",
-        "proxy_endpoint",
-      ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              connectionRules: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    ssh: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          usernames: Schema.Array(Schema.String),
-                          allowEmailAlias: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            usernames: "usernames",
-                            allowEmailAlias: "allow_email_alias",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              createdAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              decision: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
-                  Schema.Null,
-                ]),
-              ),
-              exclude: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              include: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              require: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              updatedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                connectionRules: "connection_rules",
-                createdAt: "created_at",
-                decision: "decision",
-                exclude: "exclude",
-                include: "include",
-                name: "name",
-                require: "require",
-                updatedAt: "updated_at",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        targetCriteria: "target_criteria",
-        type: "type",
-        id: "id",
-        aud: "aud",
-        name: "name",
-        policies: "policies",
-      }),
-    ),
-    Schema.Struct({
-      domain: Schema.String,
-      targetCriteria: Schema.Array(
-        Schema.Struct({
-          port: Schema.Number,
-          protocol: Schema.Literal("RDP"),
-          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            port: "port",
-            protocol: "protocol",
-            targetAttributes: "target_attributes",
-          }),
-        ),
-      ),
-      type: Schema.Literals([
-        "self_hosted",
-        "saas",
-        "ssh",
-        "vnc",
-        "app_launcher",
-        "warp",
-        "biso",
-        "bookmark",
-        "dash_sso",
-        "infrastructure",
-        "rdp",
-        "mcp",
-        "mcp_portal",
-        "proxy_endpoint",
-      ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      allowAuthenticateViaWarp: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       allowedIdps: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -7712,149 +7543,11 @@ export const GetAccessApplicationResponse =
       autoRedirectToIdentity: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      corsHeaders: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            allowAllHeaders: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowAllMethods: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowAllOrigins: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowCredentials: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowedHeaders: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            allowedMethods: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Literals([
-                    "GET",
-                    "POST",
-                    "HEAD",
-                    "PUT",
-                    "DELETE",
-                    "CONNECT",
-                    "OPTIONS",
-                    "TRACE",
-                    "PATCH",
-                  ]),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            allowedOrigins: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              allowAllHeaders: "allow_all_headers",
-              allowAllMethods: "allow_all_methods",
-              allowAllOrigins: "allow_all_origins",
-              allowCredentials: "allow_credentials",
-              allowedHeaders: "allowed_headers",
-              allowedMethods: "allowed_methods",
-              allowedOrigins: "allowed_origins",
-              maxAge: "max_age",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      customDenyMessage: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customNonIdentityDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
       customPages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      destinations: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("public"), Schema.Null]),
-                ),
-                uri: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                cidr: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                hostname: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                l4Protocol: Schema.optional(
-                  Schema.Union([Schema.Literals(["tcp", "udp"]), Schema.Null]),
-                ),
-                portRange: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("private"), Schema.Null]),
-                ),
-                vnetId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  cidr: "cidr",
-                  hostname: "hostname",
-                  l4Protocol: "l4_protocol",
-                  portRange: "port_range",
-                  type: "type",
-                  vnetId: "vnet_id",
-                }),
-              ),
-              Schema.Struct({
-                mcpServerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([
-                    Schema.Literal("via_mcp_server_portal"),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  mcpServerId: "mcp_server_id",
-                  type: "type",
-                }),
-              ),
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      enableBindingCookie: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      httpOnlyCookieAttribute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      optionsPreflightBypass: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      pathCookieAttribute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       policies: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -8590,11 +8283,282 @@ export const GetAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      readServiceTokensFromHeader: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      sameSiteCookieAttribute: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
+      saasApp: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Struct({
+              authType: Schema.optional(
+                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
+              ),
+              consumerServiceUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              customAttributes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      friendlyName: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      nameFormat: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      required: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      source: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            name: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            nameByIdp: Schema.optional(
+                              Schema.Union([
+                                Schema.Array(
+                                  Schema.Struct({
+                                    idpId: Schema.optional(
+                                      Schema.Union([
+                                        Schema.String,
+                                        Schema.Null,
+                                      ]),
+                                    ),
+                                    sourceName: Schema.optional(
+                                      Schema.Union([
+                                        Schema.String,
+                                        Schema.Null,
+                                      ]),
+                                    ),
+                                  }).pipe(
+                                    Schema.encodeKeys({
+                                      idpId: "idp_id",
+                                      sourceName: "source_name",
+                                    }),
+                                  ),
+                                ),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              name: "name",
+                              nameByIdp: "name_by_idp",
+                            }),
+                          ),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        friendlyName: "friendly_name",
+                        name: "name",
+                        nameFormat: "name_format",
+                        required: "required",
+                        source: "source",
+                      }),
+                    ),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              defaultRelayState: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              idpEntityId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              nameIdFormat: Schema.optional(
+                Schema.Union([Schema.Literals(["id", "email"]), Schema.Null]),
+              ),
+              nameIdTransformJsonata: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              publicKey: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              samlAttributeTransformJsonata: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              spEntityId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              ssoEndpoint: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                authType: "auth_type",
+                consumerServiceUrl: "consumer_service_url",
+                customAttributes: "custom_attributes",
+                defaultRelayState: "default_relay_state",
+                idpEntityId: "idp_entity_id",
+                nameIdFormat: "name_id_format",
+                nameIdTransformJsonata: "name_id_transform_jsonata",
+                publicKey: "public_key",
+                samlAttributeTransformJsonata:
+                  "saml_attribute_transform_jsonata",
+                spEntityId: "sp_entity_id",
+                ssoEndpoint: "sso_endpoint",
+              }),
+            ),
+            Schema.Struct({
+              accessTokenLifetime: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              allowPkceWithoutClientSecret: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              appLauncherUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              authType: Schema.optional(
+                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              customClaims: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      required: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      scope: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "groups",
+                            "profile",
+                            "email",
+                            "openid",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      source: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            name: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            nameByIdp: Schema.optional(
+                              Schema.Union([
+                                Schema.Record(Schema.String, Schema.Unknown),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              name: "name",
+                              nameByIdp: "name_by_idp",
+                            }),
+                          ),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              grantTypes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Literals([
+                      "authorization_code",
+                      "authorization_code_with_pkce",
+                      "refresh_tokens",
+                      "hybrid",
+                      "implicit",
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              groupFilterRegex: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              hybridAndImplicitOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                    returnIdTokenFromAuthorizationEndpoint: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      returnAccessTokenFromAuthorizationEndpoint:
+                        "return_access_token_from_authorization_endpoint",
+                      returnIdTokenFromAuthorizationEndpoint:
+                        "return_id_token_from_authorization_endpoint",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              publicKey: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              redirectUris: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              refreshTokenOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    lifetime: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              scopes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Literals(["openid", "groups", "email", "profile"]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                accessTokenLifetime: "access_token_lifetime",
+                allowPkceWithoutClientSecret:
+                  "allow_pkce_without_client_secret",
+                appLauncherUrl: "app_launcher_url",
+                authType: "auth_type",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                customClaims: "custom_claims",
+                grantTypes: "grant_types",
+                groupFilterRegex: "group_filter_regex",
+                hybridAndImplicitOptions: "hybrid_and_implicit_options",
+                publicKey: "public_key",
+                redirectUris: "redirect_uris",
+                refreshTokenOptions: "refresh_token_options",
+                scopes: "scopes",
+              }),
+            ),
+          ]),
+          Schema.Null,
+        ]),
       ),
       scimConfig: Schema.optional(
         Schema.Union([
@@ -8604,15 +8568,6 @@ export const GetAccessApplicationResponse =
             authentication: Schema.optional(
               Schema.Union([
                 Schema.Union([
-                  Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
                   Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
@@ -8633,6 +8588,11 @@ export const GetAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -8643,17 +8603,12 @@ export const GetAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -8677,6 +8632,11 @@ export const GetAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -8687,6 +8647,10 @@ export const GetAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -8762,54 +8726,90 @@ export const GetAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      selfHostedDomains: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      serviceAuth_401Redirect: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sessionDuration: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      skipInterstitial: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
+          Schema.Null,
+        ]),
+      ),
     }).pipe(
       Schema.encodeKeys({
-        domain: "domain",
-        targetCriteria: "target_criteria",
-        type: "type",
         id: "id",
-        allowAuthenticateViaWarp: "allow_authenticate_via_warp",
-        allowIframe: "allow_iframe",
         allowedIdps: "allowed_idps",
         appLauncherVisible: "app_launcher_visible",
         aud: "aud",
         autoRedirectToIdentity: "auto_redirect_to_identity",
-        corsHeaders: "cors_headers",
-        customDenyMessage: "custom_deny_message",
-        customDenyUrl: "custom_deny_url",
-        customNonIdentityDenyUrl: "custom_non_identity_deny_url",
         customPages: "custom_pages",
-        destinations: "destinations",
-        enableBindingCookie: "enable_binding_cookie",
-        httpOnlyCookieAttribute: "http_only_cookie_attribute",
         logoUrl: "logo_url",
         name: "name",
-        optionsPreflightBypass: "options_preflight_bypass",
-        pathCookieAttribute: "path_cookie_attribute",
         policies: "policies",
-        readServiceTokensFromHeader: "read_service_tokens_from_header",
-        sameSiteCookieAttribute: "same_site_cookie_attribute",
+        saasApp: "saas_app",
         scimConfig: "scim_config",
-        selfHostedDomains: "self_hosted_domains",
-        serviceAuth_401Redirect: "service_auth_401_redirect",
-        sessionDuration: "session_duration",
-        skipInterstitial: "skip_interstitial",
         tags: "tags",
+        type: "type",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      appLauncherVisible: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        appLauncherVisible: "app_launcher_visible",
+        aud: "aud",
+        domain: "domain",
+        logoUrl: "logo_url",
+        name: "name",
+        tags: "tags",
+        type: "type",
       }),
     ),
   ]).pipe(
@@ -10551,6 +10551,19 @@ export const ListAccessApplicationsResponse =
       Schema.Union([
         Schema.Struct({
           domain: Schema.String,
+          targetCriteria: Schema.Array(
+            Schema.Struct({
+              port: Schema.Number,
+              protocol: Schema.Literal("RDP"),
+              targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+            }).pipe(
+              Schema.encodeKeys({
+                port: "port",
+                protocol: "protocol",
+                targetAttributes: "target_attributes",
+              }),
+            ),
+          ),
           type: Schema.Literals([
             "self_hosted",
             "saas",
@@ -11528,15 +11541,6 @@ export const ListAccessApplicationsResponse =
                   Schema.Union([
                     Schema.Union([
                       Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
-                      Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
@@ -11559,6 +11563,11 @@ export const ListAccessApplicationsResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -11569,17 +11578,12 @@ export const ListAccessApplicationsResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                       Schema.Array(
                         Schema.Union([
-                          Schema.Struct({
-                            password: SensitiveString,
-                            scheme: Schema.Literal("httpbasic"),
-                            user: Schema.String,
-                          }),
-                          Schema.Struct({
-                            token: Schema.String,
-                            scheme: Schema.Literal("oauthbearertoken"),
-                          }),
                           Schema.Struct({
                             authorizationUrl: Schema.String,
                             clientId: Schema.String,
@@ -11603,6 +11607,11 @@ export const ListAccessApplicationsResponse =
                             }),
                           ),
                           Schema.Struct({
+                            password: SensitiveString,
+                            scheme: Schema.Literal("httpbasic"),
+                            user: Schema.String,
+                          }),
+                          Schema.Struct({
                             clientId: Schema.String,
                             clientSecret: SensitiveString,
                             scheme: Schema.Literal("access_service_token"),
@@ -11613,6 +11622,10 @@ export const ListAccessApplicationsResponse =
                               scheme: "scheme",
                             }),
                           ),
+                          Schema.Struct({
+                            token: Schema.String,
+                            scheme: Schema.Literal("oauthbearertoken"),
+                          }),
                         ]),
                       ),
                     ]),
@@ -11706,6 +11719,7 @@ export const ListAccessApplicationsResponse =
         }).pipe(
           Schema.encodeKeys({
             domain: "domain",
+            targetCriteria: "target_criteria",
             type: "type",
             id: "id",
             allowAuthenticateViaWarp: "allow_authenticate_via_warp",
@@ -11738,7 +11752,30 @@ export const ListAccessApplicationsResponse =
           }),
         ),
         Schema.Struct({
+          domain: Schema.String,
+          type: Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          allowAuthenticateViaWarp: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          allowIframe: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           allowedIdps: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
@@ -11749,11 +11786,154 @@ export const ListAccessApplicationsResponse =
           autoRedirectToIdentity: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
           ),
+          corsHeaders: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                allowAllHeaders: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                allowAllMethods: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                allowAllOrigins: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                allowCredentials: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                allowedHeaders: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                allowedMethods: Schema.optional(
+                  Schema.Union([
+                    Schema.Array(
+                      Schema.Literals([
+                        "GET",
+                        "POST",
+                        "HEAD",
+                        "PUT",
+                        "DELETE",
+                        "CONNECT",
+                        "OPTIONS",
+                        "TRACE",
+                        "PATCH",
+                      ]),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                allowedOrigins: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                maxAge: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  allowAllHeaders: "allow_all_headers",
+                  allowAllMethods: "allow_all_methods",
+                  allowAllOrigins: "allow_all_origins",
+                  allowCredentials: "allow_credentials",
+                  allowedHeaders: "allowed_headers",
+                  allowedMethods: "allowed_methods",
+                  allowedOrigins: "allowed_origins",
+                  maxAge: "max_age",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          customDenyMessage: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          customDenyUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          customNonIdentityDenyUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
           customPages: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
+          destinations: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    type: Schema.optional(
+                      Schema.Union([Schema.Literal("public"), Schema.Null]),
+                    ),
+                    uri: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Struct({
+                    cidr: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    hostname: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    l4Protocol: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals(["tcp", "udp"]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    portRange: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    type: Schema.optional(
+                      Schema.Union([Schema.Literal("private"), Schema.Null]),
+                    ),
+                    vnetId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      cidr: "cidr",
+                      hostname: "hostname",
+                      l4Protocol: "l4_protocol",
+                      portRange: "port_range",
+                      type: "type",
+                      vnetId: "vnet_id",
+                    }),
+                  ),
+                  Schema.Struct({
+                    mcpServerId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    type: Schema.optional(
+                      Schema.Union([
+                        Schema.Literal("via_mcp_server_portal"),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      mcpServerId: "mcp_server_id",
+                      type: "type",
+                    }),
+                  ),
+                ]),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          enableBindingCookie: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          httpOnlyCookieAttribute: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          optionsPreflightBypass: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          pathCookieAttribute: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           policies: Schema.optional(
             Schema.Union([
               Schema.Array(
@@ -12535,300 +12715,11 @@ export const ListAccessApplicationsResponse =
               Schema.Null,
             ]),
           ),
-          saasApp: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Struct({
-                  authType: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["saml", "oidc"]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  consumerServiceUrl: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  customAttributes: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          friendlyName: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          name: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          nameFormat: Schema.optional(
-                            Schema.Union([
-                              Schema.Literals([
-                                "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-                                "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-                                "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
-                              ]),
-                              Schema.Null,
-                            ]),
-                          ),
-                          required: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                          source: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                name: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                nameByIdp: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Array(
-                                      Schema.Struct({
-                                        idpId: Schema.optional(
-                                          Schema.Union([
-                                            Schema.String,
-                                            Schema.Null,
-                                          ]),
-                                        ),
-                                        sourceName: Schema.optional(
-                                          Schema.Union([
-                                            Schema.String,
-                                            Schema.Null,
-                                          ]),
-                                        ),
-                                      }).pipe(
-                                        Schema.encodeKeys({
-                                          idpId: "idp_id",
-                                          sourceName: "source_name",
-                                        }),
-                                      ),
-                                    ),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                              }).pipe(
-                                Schema.encodeKeys({
-                                  name: "name",
-                                  nameByIdp: "name_by_idp",
-                                }),
-                              ),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            friendlyName: "friendly_name",
-                            name: "name",
-                            nameFormat: "name_format",
-                            required: "required",
-                            source: "source",
-                          }),
-                        ),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  defaultRelayState: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  idpEntityId: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  nameIdFormat: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["id", "email"]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  nameIdTransformJsonata: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  publicKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  samlAttributeTransformJsonata: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  spEntityId: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  ssoEndpoint: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    authType: "auth_type",
-                    consumerServiceUrl: "consumer_service_url",
-                    customAttributes: "custom_attributes",
-                    defaultRelayState: "default_relay_state",
-                    idpEntityId: "idp_entity_id",
-                    nameIdFormat: "name_id_format",
-                    nameIdTransformJsonata: "name_id_transform_jsonata",
-                    publicKey: "public_key",
-                    samlAttributeTransformJsonata:
-                      "saml_attribute_transform_jsonata",
-                    spEntityId: "sp_entity_id",
-                    ssoEndpoint: "sso_endpoint",
-                  }),
-                ),
-                Schema.Struct({
-                  accessTokenLifetime: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  allowPkceWithoutClientSecret: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  appLauncherUrl: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  authType: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["saml", "oidc"]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  clientId: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  clientSecret: Schema.optional(
-                    Schema.Union([SensitiveString, Schema.Null]),
-                  ),
-                  customClaims: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          required: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                          scope: Schema.optional(
-                            Schema.Union([
-                              Schema.Literals([
-                                "groups",
-                                "profile",
-                                "email",
-                                "openid",
-                              ]),
-                              Schema.Null,
-                            ]),
-                          ),
-                          source: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                name: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                nameByIdp: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Record(
-                                      Schema.String,
-                                      Schema.Unknown,
-                                    ),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                              }).pipe(
-                                Schema.encodeKeys({
-                                  name: "name",
-                                  nameByIdp: "name_by_idp",
-                                }),
-                              ),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  grantTypes: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Literals([
-                          "authorization_code",
-                          "authorization_code_with_pkce",
-                          "refresh_tokens",
-                          "hybrid",
-                          "implicit",
-                        ]),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  groupFilterRegex: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  hybridAndImplicitOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        returnAccessTokenFromAuthorizationEndpoint:
-                          Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                        returnIdTokenFromAuthorizationEndpoint: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          returnAccessTokenFromAuthorizationEndpoint:
-                            "return_access_token_from_authorization_endpoint",
-                          returnIdTokenFromAuthorizationEndpoint:
-                            "return_id_token_from_authorization_endpoint",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  publicKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  redirectUris: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  refreshTokenOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        lifetime: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  scopes: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Literals([
-                          "openid",
-                          "groups",
-                          "email",
-                          "profile",
-                        ]),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    accessTokenLifetime: "access_token_lifetime",
-                    allowPkceWithoutClientSecret:
-                      "allow_pkce_without_client_secret",
-                    appLauncherUrl: "app_launcher_url",
-                    authType: "auth_type",
-                    clientId: "client_id",
-                    clientSecret: "client_secret",
-                    customClaims: "custom_claims",
-                    grantTypes: "grant_types",
-                    groupFilterRegex: "group_filter_regex",
-                    hybridAndImplicitOptions: "hybrid_and_implicit_options",
-                    publicKey: "public_key",
-                    redirectUris: "redirect_uris",
-                    refreshTokenOptions: "refresh_token_options",
-                    scopes: "scopes",
-                  }),
-                ),
-              ]),
-              Schema.Null,
-            ]),
+          readServiceTokensFromHeader: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          sameSiteCookieAttribute: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
           scimConfig: Schema.optional(
             Schema.Union([
@@ -12838,15 +12729,6 @@ export const ListAccessApplicationsResponse =
                 authentication: Schema.optional(
                   Schema.Union([
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -12870,6 +12752,11 @@ export const ListAccessApplicationsResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -12880,17 +12767,12 @@ export const ListAccessApplicationsResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                       Schema.Array(
                         Schema.Union([
-                          Schema.Struct({
-                            password: SensitiveString,
-                            scheme: Schema.Literal("httpbasic"),
-                            user: Schema.String,
-                          }),
-                          Schema.Struct({
-                            token: Schema.String,
-                            scheme: Schema.Literal("oauthbearertoken"),
-                          }),
                           Schema.Struct({
                             authorizationUrl: Schema.String,
                             clientId: Schema.String,
@@ -12914,6 +12796,11 @@ export const ListAccessApplicationsResponse =
                             }),
                           ),
                           Schema.Struct({
+                            password: SensitiveString,
+                            scheme: Schema.Literal("httpbasic"),
+                            user: Schema.String,
+                          }),
+                          Schema.Struct({
                             clientId: Schema.String,
                             clientSecret: SensitiveString,
                             scheme: Schema.Literal("access_service_token"),
@@ -12924,6 +12811,10 @@ export const ListAccessApplicationsResponse =
                               scheme: "scheme",
                             }),
                           ),
+                          Schema.Struct({
+                            token: Schema.String,
+                            scheme: Schema.Literal("oauthbearertoken"),
+                          }),
                         ]),
                       ),
                     ]),
@@ -12999,45 +12890,850 @@ export const ListAccessApplicationsResponse =
               Schema.Null,
             ]),
           ),
+          selfHostedDomains: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          serviceAuth_401Redirect: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          sessionDuration: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          skipInterstitial: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
           tags: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
-          type: Schema.optional(
+        }).pipe(
+          Schema.encodeKeys({
+            domain: "domain",
+            type: "type",
+            id: "id",
+            allowAuthenticateViaWarp: "allow_authenticate_via_warp",
+            allowIframe: "allow_iframe",
+            allowedIdps: "allowed_idps",
+            appLauncherVisible: "app_launcher_visible",
+            aud: "aud",
+            autoRedirectToIdentity: "auto_redirect_to_identity",
+            corsHeaders: "cors_headers",
+            customDenyMessage: "custom_deny_message",
+            customDenyUrl: "custom_deny_url",
+            customNonIdentityDenyUrl: "custom_non_identity_deny_url",
+            customPages: "custom_pages",
+            destinations: "destinations",
+            enableBindingCookie: "enable_binding_cookie",
+            httpOnlyCookieAttribute: "http_only_cookie_attribute",
+            logoUrl: "logo_url",
+            name: "name",
+            optionsPreflightBypass: "options_preflight_bypass",
+            pathCookieAttribute: "path_cookie_attribute",
+            policies: "policies",
+            readServiceTokensFromHeader: "read_service_tokens_from_header",
+            sameSiteCookieAttribute: "same_site_cookie_attribute",
+            scimConfig: "scim_config",
+            selfHostedDomains: "self_hosted_domains",
+            serviceAuth_401Redirect: "service_auth_401_redirect",
+            sessionDuration: "session_duration",
+            skipInterstitial: "skip_interstitial",
+            tags: "tags",
+          }),
+        ),
+        Schema.Struct({
+          targetCriteria: Schema.Array(
+            Schema.Struct({
+              port: Schema.Number,
+              protocol: Schema.Literal("SSH"),
+              targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+            }).pipe(
+              Schema.encodeKeys({
+                port: "port",
+                protocol: "protocol",
+                targetAttributes: "target_attributes",
+              }),
+            ),
+          ),
+          type: Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          policies: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "self_hosted",
-                "saas",
-                "ssh",
-                "vnc",
-                "app_launcher",
-                "warp",
-                "biso",
-                "bookmark",
-                "dash_sso",
-                "infrastructure",
-                "rdp",
-                "mcp",
-                "mcp_portal",
-                "proxy_endpoint",
-              ]),
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  connectionRules: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        ssh: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              usernames: Schema.Array(Schema.String),
+                              allowEmailAlias: Schema.optional(
+                                Schema.Union([Schema.Boolean, Schema.Null]),
+                              ),
+                            }).pipe(
+                              Schema.encodeKeys({
+                                usernames: "usernames",
+                                allowEmailAlias: "allow_email_alias",
+                              }),
+                            ),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  createdAt: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  decision: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "allow",
+                        "deny",
+                        "non_identity",
+                        "bypass",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  exclude: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            group: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            anyValidServiceToken: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              anyValidServiceToken: "any_valid_service_token",
+                            }),
+                          ),
+                          Schema.Struct({
+                            authContext: Schema.Struct({
+                              id: Schema.String,
+                              acId: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                acId: "ac_id",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ authContext: "auth_context" }),
+                          ),
+                          Schema.Struct({
+                            authMethod: Schema.Struct({
+                              authMethod: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({ authMethod: "auth_method" }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ authMethod: "auth_method" }),
+                          ),
+                          Schema.Struct({
+                            azureAD: Schema.Struct({
+                              id: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            certificate: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            commonName: Schema.Struct({
+                              commonName: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({ commonName: "common_name" }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ commonName: "common_name" }),
+                          ),
+                          Schema.Struct({
+                            geo: Schema.Struct({
+                              countryCode: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                countryCode: "country_code",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            devicePosture: Schema.Struct({
+                              integrationUid: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                integrationUid: "integration_uid",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              devicePosture: "device_posture",
+                            }),
+                          ),
+                          Schema.Struct({
+                            emailDomain: Schema.Struct({
+                              domain: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ emailDomain: "email_domain" }),
+                          ),
+                          Schema.Struct({
+                            emailList: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ emailList: "email_list" }),
+                          ),
+                          Schema.Struct({
+                            email: Schema.Struct({
+                              email: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            everyone: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            externalEvaluation: Schema.Struct({
+                              evaluateUrl: Schema.String,
+                              keysUrl: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                evaluateUrl: "evaluate_url",
+                                keysUrl: "keys_url",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              externalEvaluation: "external_evaluation",
+                            }),
+                          ),
+                          Schema.Struct({
+                            githubOrganization: Schema.Struct({
+                              identityProviderId: Schema.String,
+                              name: Schema.String,
+                              team: Schema.optional(
+                                Schema.Union([Schema.String, Schema.Null]),
+                              ),
+                            }).pipe(
+                              Schema.encodeKeys({
+                                identityProviderId: "identity_provider_id",
+                                name: "name",
+                                team: "team",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              githubOrganization: "github-organization",
+                            }),
+                          ),
+                          Schema.Struct({
+                            gsuite: Schema.Struct({
+                              email: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                email: "email",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            loginMethod: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ loginMethod: "login_method" }),
+                          ),
+                          Schema.Struct({
+                            ipList: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                          Schema.Struct({
+                            ip: Schema.Struct({
+                              ip: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            okta: Schema.Struct({
+                              identityProviderId: Schema.String,
+                              name: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                identityProviderId: "identity_provider_id",
+                                name: "name",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            saml: Schema.Struct({
+                              attributeName: Schema.String,
+                              attributeValue: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                attributeName: "attribute_name",
+                                attributeValue: "attribute_value",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            oidc: Schema.Struct({
+                              claimName: Schema.String,
+                              claimValue: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                claimName: "claim_name",
+                                claimValue: "claim_value",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            serviceToken: Schema.Struct({
+                              tokenId: Schema.String,
+                            }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              serviceToken: "service_token",
+                            }),
+                          ),
+                          Schema.Struct({
+                            linkedAppToken: Schema.Struct({
+                              appUid: Schema.String,
+                            }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              linkedAppToken: "linked_app_token",
+                            }),
+                          ),
+                        ]),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  include: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            group: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            anyValidServiceToken: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              anyValidServiceToken: "any_valid_service_token",
+                            }),
+                          ),
+                          Schema.Struct({
+                            authContext: Schema.Struct({
+                              id: Schema.String,
+                              acId: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                acId: "ac_id",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ authContext: "auth_context" }),
+                          ),
+                          Schema.Struct({
+                            authMethod: Schema.Struct({
+                              authMethod: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({ authMethod: "auth_method" }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ authMethod: "auth_method" }),
+                          ),
+                          Schema.Struct({
+                            azureAD: Schema.Struct({
+                              id: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            certificate: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            commonName: Schema.Struct({
+                              commonName: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({ commonName: "common_name" }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ commonName: "common_name" }),
+                          ),
+                          Schema.Struct({
+                            geo: Schema.Struct({
+                              countryCode: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                countryCode: "country_code",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            devicePosture: Schema.Struct({
+                              integrationUid: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                integrationUid: "integration_uid",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              devicePosture: "device_posture",
+                            }),
+                          ),
+                          Schema.Struct({
+                            emailDomain: Schema.Struct({
+                              domain: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ emailDomain: "email_domain" }),
+                          ),
+                          Schema.Struct({
+                            emailList: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ emailList: "email_list" }),
+                          ),
+                          Schema.Struct({
+                            email: Schema.Struct({
+                              email: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            everyone: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            externalEvaluation: Schema.Struct({
+                              evaluateUrl: Schema.String,
+                              keysUrl: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                evaluateUrl: "evaluate_url",
+                                keysUrl: "keys_url",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              externalEvaluation: "external_evaluation",
+                            }),
+                          ),
+                          Schema.Struct({
+                            githubOrganization: Schema.Struct({
+                              identityProviderId: Schema.String,
+                              name: Schema.String,
+                              team: Schema.optional(
+                                Schema.Union([Schema.String, Schema.Null]),
+                              ),
+                            }).pipe(
+                              Schema.encodeKeys({
+                                identityProviderId: "identity_provider_id",
+                                name: "name",
+                                team: "team",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              githubOrganization: "github-organization",
+                            }),
+                          ),
+                          Schema.Struct({
+                            gsuite: Schema.Struct({
+                              email: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                email: "email",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            loginMethod: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ loginMethod: "login_method" }),
+                          ),
+                          Schema.Struct({
+                            ipList: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                          Schema.Struct({
+                            ip: Schema.Struct({
+                              ip: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            okta: Schema.Struct({
+                              identityProviderId: Schema.String,
+                              name: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                identityProviderId: "identity_provider_id",
+                                name: "name",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            saml: Schema.Struct({
+                              attributeName: Schema.String,
+                              attributeValue: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                attributeName: "attribute_name",
+                                attributeValue: "attribute_value",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            oidc: Schema.Struct({
+                              claimName: Schema.String,
+                              claimValue: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                claimName: "claim_name",
+                                claimValue: "claim_value",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            serviceToken: Schema.Struct({
+                              tokenId: Schema.String,
+                            }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              serviceToken: "service_token",
+                            }),
+                          ),
+                          Schema.Struct({
+                            linkedAppToken: Schema.Struct({
+                              appUid: Schema.String,
+                            }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              linkedAppToken: "linked_app_token",
+                            }),
+                          ),
+                        ]),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  require: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            group: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            anyValidServiceToken: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              anyValidServiceToken: "any_valid_service_token",
+                            }),
+                          ),
+                          Schema.Struct({
+                            authContext: Schema.Struct({
+                              id: Schema.String,
+                              acId: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                acId: "ac_id",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ authContext: "auth_context" }),
+                          ),
+                          Schema.Struct({
+                            authMethod: Schema.Struct({
+                              authMethod: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({ authMethod: "auth_method" }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ authMethod: "auth_method" }),
+                          ),
+                          Schema.Struct({
+                            azureAD: Schema.Struct({
+                              id: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            certificate: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            commonName: Schema.Struct({
+                              commonName: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({ commonName: "common_name" }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({ commonName: "common_name" }),
+                          ),
+                          Schema.Struct({
+                            geo: Schema.Struct({
+                              countryCode: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                countryCode: "country_code",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            devicePosture: Schema.Struct({
+                              integrationUid: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                integrationUid: "integration_uid",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              devicePosture: "device_posture",
+                            }),
+                          ),
+                          Schema.Struct({
+                            emailDomain: Schema.Struct({
+                              domain: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ emailDomain: "email_domain" }),
+                          ),
+                          Schema.Struct({
+                            emailList: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ emailList: "email_list" }),
+                          ),
+                          Schema.Struct({
+                            email: Schema.Struct({
+                              email: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            everyone: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            externalEvaluation: Schema.Struct({
+                              evaluateUrl: Schema.String,
+                              keysUrl: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                evaluateUrl: "evaluate_url",
+                                keysUrl: "keys_url",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              externalEvaluation: "external_evaluation",
+                            }),
+                          ),
+                          Schema.Struct({
+                            githubOrganization: Schema.Struct({
+                              identityProviderId: Schema.String,
+                              name: Schema.String,
+                              team: Schema.optional(
+                                Schema.Union([Schema.String, Schema.Null]),
+                              ),
+                            }).pipe(
+                              Schema.encodeKeys({
+                                identityProviderId: "identity_provider_id",
+                                name: "name",
+                                team: "team",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              githubOrganization: "github-organization",
+                            }),
+                          ),
+                          Schema.Struct({
+                            gsuite: Schema.Struct({
+                              email: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                email: "email",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            loginMethod: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(
+                            Schema.encodeKeys({ loginMethod: "login_method" }),
+                          ),
+                          Schema.Struct({
+                            ipList: Schema.Struct({
+                              id: Schema.String,
+                            }),
+                          }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                          Schema.Struct({
+                            ip: Schema.Struct({
+                              ip: Schema.String,
+                            }),
+                          }),
+                          Schema.Struct({
+                            okta: Schema.Struct({
+                              identityProviderId: Schema.String,
+                              name: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                identityProviderId: "identity_provider_id",
+                                name: "name",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            saml: Schema.Struct({
+                              attributeName: Schema.String,
+                              attributeValue: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                attributeName: "attribute_name",
+                                attributeValue: "attribute_value",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            oidc: Schema.Struct({
+                              claimName: Schema.String,
+                              claimValue: Schema.String,
+                              identityProviderId: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                claimName: "claim_name",
+                                claimValue: "claim_value",
+                                identityProviderId: "identity_provider_id",
+                              }),
+                            ),
+                          }),
+                          Schema.Struct({
+                            serviceToken: Schema.Struct({
+                              tokenId: Schema.String,
+                            }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              serviceToken: "service_token",
+                            }),
+                          ),
+                          Schema.Struct({
+                            linkedAppToken: Schema.Struct({
+                              appUid: Schema.String,
+                            }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              linkedAppToken: "linked_app_token",
+                            }),
+                          ),
+                        ]),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  updatedAt: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    id: "id",
+                    connectionRules: "connection_rules",
+                    createdAt: "created_at",
+                    decision: "decision",
+                    exclude: "exclude",
+                    include: "include",
+                    name: "name",
+                    require: "require",
+                    updatedAt: "updated_at",
+                  }),
+                ),
+              ),
               Schema.Null,
             ]),
           ),
         }).pipe(
           Schema.encodeKeys({
+            targetCriteria: "target_criteria",
+            type: "type",
             id: "id",
-            allowedIdps: "allowed_idps",
-            appLauncherVisible: "app_launcher_visible",
             aud: "aud",
-            autoRedirectToIdentity: "auto_redirect_to_identity",
-            customPages: "custom_pages",
-            logoUrl: "logo_url",
             name: "name",
             policies: "policies",
-            saasApp: "saas_app",
-            scimConfig: "scim_config",
-            tags: "tags",
-            type: "type",
           }),
         ),
         Schema.Struct({
@@ -14771,884 +15467,6 @@ export const ListAccessApplicationsResponse =
         ),
         Schema.Struct({
           id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          appLauncherVisible: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          tags: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          type: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "self_hosted",
-                "saas",
-                "ssh",
-                "vnc",
-                "app_launcher",
-                "warp",
-                "biso",
-                "bookmark",
-                "dash_sso",
-                "infrastructure",
-                "rdp",
-                "mcp",
-                "mcp_portal",
-                "proxy_endpoint",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            appLauncherVisible: "app_launcher_visible",
-            aud: "aud",
-            domain: "domain",
-            logoUrl: "logo_url",
-            name: "name",
-            tags: "tags",
-            type: "type",
-          }),
-        ),
-        Schema.Struct({
-          targetCriteria: Schema.Array(
-            Schema.Struct({
-              port: Schema.Number,
-              protocol: Schema.Literal("SSH"),
-              targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-            }).pipe(
-              Schema.encodeKeys({
-                port: "port",
-                protocol: "protocol",
-                targetAttributes: "target_attributes",
-              }),
-            ),
-          ),
-          type: Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          policies: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  connectionRules: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        ssh: Schema.optional(
-                          Schema.Union([
-                            Schema.Struct({
-                              usernames: Schema.Array(Schema.String),
-                              allowEmailAlias: Schema.optional(
-                                Schema.Union([Schema.Boolean, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                usernames: "usernames",
-                                allowEmailAlias: "allow_email_alias",
-                              }),
-                            ),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  createdAt: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  decision: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals([
-                        "allow",
-                        "deny",
-                        "non_identity",
-                        "bypass",
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  exclude: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Union([
-                          Schema.Struct({
-                            group: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            anyValidServiceToken: Schema.Unknown,
-                          }).pipe(
-                            Schema.encodeKeys({
-                              anyValidServiceToken: "any_valid_service_token",
-                            }),
-                          ),
-                          Schema.Struct({
-                            authContext: Schema.Struct({
-                              id: Schema.String,
-                              acId: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                acId: "ac_id",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ authContext: "auth_context" }),
-                          ),
-                          Schema.Struct({
-                            authMethod: Schema.Struct({
-                              authMethod: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({ authMethod: "auth_method" }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ authMethod: "auth_method" }),
-                          ),
-                          Schema.Struct({
-                            azureAD: Schema.Struct({
-                              id: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            certificate: Schema.Unknown,
-                          }),
-                          Schema.Struct({
-                            commonName: Schema.Struct({
-                              commonName: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({ commonName: "common_name" }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ commonName: "common_name" }),
-                          ),
-                          Schema.Struct({
-                            geo: Schema.Struct({
-                              countryCode: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                countryCode: "country_code",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            devicePosture: Schema.Struct({
-                              integrationUid: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                integrationUid: "integration_uid",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              devicePosture: "device_posture",
-                            }),
-                          ),
-                          Schema.Struct({
-                            emailDomain: Schema.Struct({
-                              domain: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ emailDomain: "email_domain" }),
-                          ),
-                          Schema.Struct({
-                            emailList: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ emailList: "email_list" }),
-                          ),
-                          Schema.Struct({
-                            email: Schema.Struct({
-                              email: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            everyone: Schema.Unknown,
-                          }),
-                          Schema.Struct({
-                            externalEvaluation: Schema.Struct({
-                              evaluateUrl: Schema.String,
-                              keysUrl: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                evaluateUrl: "evaluate_url",
-                                keysUrl: "keys_url",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              externalEvaluation: "external_evaluation",
-                            }),
-                          ),
-                          Schema.Struct({
-                            githubOrganization: Schema.Struct({
-                              identityProviderId: Schema.String,
-                              name: Schema.String,
-                              team: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                identityProviderId: "identity_provider_id",
-                                name: "name",
-                                team: "team",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              githubOrganization: "github-organization",
-                            }),
-                          ),
-                          Schema.Struct({
-                            gsuite: Schema.Struct({
-                              email: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                email: "email",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            loginMethod: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ loginMethod: "login_method" }),
-                          ),
-                          Schema.Struct({
-                            ipList: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                          Schema.Struct({
-                            ip: Schema.Struct({
-                              ip: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            okta: Schema.Struct({
-                              identityProviderId: Schema.String,
-                              name: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                identityProviderId: "identity_provider_id",
-                                name: "name",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            saml: Schema.Struct({
-                              attributeName: Schema.String,
-                              attributeValue: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                attributeName: "attribute_name",
-                                attributeValue: "attribute_value",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            oidc: Schema.Struct({
-                              claimName: Schema.String,
-                              claimValue: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                claimName: "claim_name",
-                                claimValue: "claim_value",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            serviceToken: Schema.Struct({
-                              tokenId: Schema.String,
-                            }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              serviceToken: "service_token",
-                            }),
-                          ),
-                          Schema.Struct({
-                            linkedAppToken: Schema.Struct({
-                              appUid: Schema.String,
-                            }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              linkedAppToken: "linked_app_token",
-                            }),
-                          ),
-                        ]),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  include: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Union([
-                          Schema.Struct({
-                            group: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            anyValidServiceToken: Schema.Unknown,
-                          }).pipe(
-                            Schema.encodeKeys({
-                              anyValidServiceToken: "any_valid_service_token",
-                            }),
-                          ),
-                          Schema.Struct({
-                            authContext: Schema.Struct({
-                              id: Schema.String,
-                              acId: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                acId: "ac_id",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ authContext: "auth_context" }),
-                          ),
-                          Schema.Struct({
-                            authMethod: Schema.Struct({
-                              authMethod: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({ authMethod: "auth_method" }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ authMethod: "auth_method" }),
-                          ),
-                          Schema.Struct({
-                            azureAD: Schema.Struct({
-                              id: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            certificate: Schema.Unknown,
-                          }),
-                          Schema.Struct({
-                            commonName: Schema.Struct({
-                              commonName: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({ commonName: "common_name" }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ commonName: "common_name" }),
-                          ),
-                          Schema.Struct({
-                            geo: Schema.Struct({
-                              countryCode: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                countryCode: "country_code",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            devicePosture: Schema.Struct({
-                              integrationUid: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                integrationUid: "integration_uid",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              devicePosture: "device_posture",
-                            }),
-                          ),
-                          Schema.Struct({
-                            emailDomain: Schema.Struct({
-                              domain: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ emailDomain: "email_domain" }),
-                          ),
-                          Schema.Struct({
-                            emailList: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ emailList: "email_list" }),
-                          ),
-                          Schema.Struct({
-                            email: Schema.Struct({
-                              email: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            everyone: Schema.Unknown,
-                          }),
-                          Schema.Struct({
-                            externalEvaluation: Schema.Struct({
-                              evaluateUrl: Schema.String,
-                              keysUrl: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                evaluateUrl: "evaluate_url",
-                                keysUrl: "keys_url",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              externalEvaluation: "external_evaluation",
-                            }),
-                          ),
-                          Schema.Struct({
-                            githubOrganization: Schema.Struct({
-                              identityProviderId: Schema.String,
-                              name: Schema.String,
-                              team: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                identityProviderId: "identity_provider_id",
-                                name: "name",
-                                team: "team",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              githubOrganization: "github-organization",
-                            }),
-                          ),
-                          Schema.Struct({
-                            gsuite: Schema.Struct({
-                              email: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                email: "email",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            loginMethod: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ loginMethod: "login_method" }),
-                          ),
-                          Schema.Struct({
-                            ipList: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                          Schema.Struct({
-                            ip: Schema.Struct({
-                              ip: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            okta: Schema.Struct({
-                              identityProviderId: Schema.String,
-                              name: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                identityProviderId: "identity_provider_id",
-                                name: "name",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            saml: Schema.Struct({
-                              attributeName: Schema.String,
-                              attributeValue: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                attributeName: "attribute_name",
-                                attributeValue: "attribute_value",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            oidc: Schema.Struct({
-                              claimName: Schema.String,
-                              claimValue: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                claimName: "claim_name",
-                                claimValue: "claim_value",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            serviceToken: Schema.Struct({
-                              tokenId: Schema.String,
-                            }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              serviceToken: "service_token",
-                            }),
-                          ),
-                          Schema.Struct({
-                            linkedAppToken: Schema.Struct({
-                              appUid: Schema.String,
-                            }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              linkedAppToken: "linked_app_token",
-                            }),
-                          ),
-                        ]),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  require: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Union([
-                          Schema.Struct({
-                            group: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            anyValidServiceToken: Schema.Unknown,
-                          }).pipe(
-                            Schema.encodeKeys({
-                              anyValidServiceToken: "any_valid_service_token",
-                            }),
-                          ),
-                          Schema.Struct({
-                            authContext: Schema.Struct({
-                              id: Schema.String,
-                              acId: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                acId: "ac_id",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ authContext: "auth_context" }),
-                          ),
-                          Schema.Struct({
-                            authMethod: Schema.Struct({
-                              authMethod: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({ authMethod: "auth_method" }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ authMethod: "auth_method" }),
-                          ),
-                          Schema.Struct({
-                            azureAD: Schema.Struct({
-                              id: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            certificate: Schema.Unknown,
-                          }),
-                          Schema.Struct({
-                            commonName: Schema.Struct({
-                              commonName: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({ commonName: "common_name" }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({ commonName: "common_name" }),
-                          ),
-                          Schema.Struct({
-                            geo: Schema.Struct({
-                              countryCode: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                countryCode: "country_code",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            devicePosture: Schema.Struct({
-                              integrationUid: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                integrationUid: "integration_uid",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              devicePosture: "device_posture",
-                            }),
-                          ),
-                          Schema.Struct({
-                            emailDomain: Schema.Struct({
-                              domain: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ emailDomain: "email_domain" }),
-                          ),
-                          Schema.Struct({
-                            emailList: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ emailList: "email_list" }),
-                          ),
-                          Schema.Struct({
-                            email: Schema.Struct({
-                              email: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            everyone: Schema.Unknown,
-                          }),
-                          Schema.Struct({
-                            externalEvaluation: Schema.Struct({
-                              evaluateUrl: Schema.String,
-                              keysUrl: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                evaluateUrl: "evaluate_url",
-                                keysUrl: "keys_url",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              externalEvaluation: "external_evaluation",
-                            }),
-                          ),
-                          Schema.Struct({
-                            githubOrganization: Schema.Struct({
-                              identityProviderId: Schema.String,
-                              name: Schema.String,
-                              team: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                identityProviderId: "identity_provider_id",
-                                name: "name",
-                                team: "team",
-                              }),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              githubOrganization: "github-organization",
-                            }),
-                          ),
-                          Schema.Struct({
-                            gsuite: Schema.Struct({
-                              email: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                email: "email",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            loginMethod: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(
-                            Schema.encodeKeys({ loginMethod: "login_method" }),
-                          ),
-                          Schema.Struct({
-                            ipList: Schema.Struct({
-                              id: Schema.String,
-                            }),
-                          }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                          Schema.Struct({
-                            ip: Schema.Struct({
-                              ip: Schema.String,
-                            }),
-                          }),
-                          Schema.Struct({
-                            okta: Schema.Struct({
-                              identityProviderId: Schema.String,
-                              name: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                identityProviderId: "identity_provider_id",
-                                name: "name",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            saml: Schema.Struct({
-                              attributeName: Schema.String,
-                              attributeValue: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                attributeName: "attribute_name",
-                                attributeValue: "attribute_value",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            oidc: Schema.Struct({
-                              claimName: Schema.String,
-                              claimValue: Schema.String,
-                              identityProviderId: Schema.String,
-                            }).pipe(
-                              Schema.encodeKeys({
-                                claimName: "claim_name",
-                                claimValue: "claim_value",
-                                identityProviderId: "identity_provider_id",
-                              }),
-                            ),
-                          }),
-                          Schema.Struct({
-                            serviceToken: Schema.Struct({
-                              tokenId: Schema.String,
-                            }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              serviceToken: "service_token",
-                            }),
-                          ),
-                          Schema.Struct({
-                            linkedAppToken: Schema.Struct({
-                              appUid: Schema.String,
-                            }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              linkedAppToken: "linked_app_token",
-                            }),
-                          ),
-                        ]),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  updatedAt: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    id: "id",
-                    connectionRules: "connection_rules",
-                    createdAt: "created_at",
-                    decision: "decision",
-                    exclude: "exclude",
-                    include: "include",
-                    name: "name",
-                    require: "require",
-                    updatedAt: "updated_at",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            targetCriteria: "target_criteria",
-            type: "type",
-            id: "id",
-            aud: "aud",
-            name: "name",
-            policies: "policies",
-          }),
-        ),
-        Schema.Struct({
-          domain: Schema.String,
-          targetCriteria: Schema.Array(
-            Schema.Struct({
-              port: Schema.Number,
-              protocol: Schema.Literal("RDP"),
-              targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-            }).pipe(
-              Schema.encodeKeys({
-                port: "port",
-                protocol: "protocol",
-                targetAttributes: "target_attributes",
-              }),
-            ),
-          ),
-          type: Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          allowAuthenticateViaWarp: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          allowIframe: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
           allowedIdps: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
@@ -15659,154 +15477,11 @@ export const ListAccessApplicationsResponse =
           autoRedirectToIdentity: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
           ),
-          corsHeaders: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                allowAllHeaders: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                allowAllMethods: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                allowAllOrigins: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                allowCredentials: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                allowedHeaders: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                allowedMethods: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Literals([
-                        "GET",
-                        "POST",
-                        "HEAD",
-                        "PUT",
-                        "DELETE",
-                        "CONNECT",
-                        "OPTIONS",
-                        "TRACE",
-                        "PATCH",
-                      ]),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                allowedOrigins: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                maxAge: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  allowAllHeaders: "allow_all_headers",
-                  allowAllMethods: "allow_all_methods",
-                  allowAllOrigins: "allow_all_origins",
-                  allowCredentials: "allow_credentials",
-                  allowedHeaders: "allowed_headers",
-                  allowedMethods: "allowed_methods",
-                  allowedOrigins: "allowed_origins",
-                  maxAge: "max_age",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          customDenyMessage: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          customDenyUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          customNonIdentityDenyUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
           customPages: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
-          destinations: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Union([
-                  Schema.Struct({
-                    type: Schema.optional(
-                      Schema.Union([Schema.Literal("public"), Schema.Null]),
-                    ),
-                    uri: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Struct({
-                    cidr: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    hostname: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    l4Protocol: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals(["tcp", "udp"]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    portRange: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    type: Schema.optional(
-                      Schema.Union([Schema.Literal("private"), Schema.Null]),
-                    ),
-                    vnetId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      cidr: "cidr",
-                      hostname: "hostname",
-                      l4Protocol: "l4_protocol",
-                      portRange: "port_range",
-                      type: "type",
-                      vnetId: "vnet_id",
-                    }),
-                  ),
-                  Schema.Struct({
-                    mcpServerId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    type: Schema.optional(
-                      Schema.Union([
-                        Schema.Literal("via_mcp_server_portal"),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      mcpServerId: "mcp_server_id",
-                      type: "type",
-                    }),
-                  ),
-                ]),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          enableBindingCookie: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          httpOnlyCookieAttribute: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
           logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          optionsPreflightBypass: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          pathCookieAttribute: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
           policies: Schema.optional(
             Schema.Union([
               Schema.Array(
@@ -16588,11 +16263,300 @@ export const ListAccessApplicationsResponse =
               Schema.Null,
             ]),
           ),
-          readServiceTokensFromHeader: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          sameSiteCookieAttribute: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
+          saasApp: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Struct({
+                  authType: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals(["saml", "oidc"]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  consumerServiceUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  customAttributes: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          friendlyName: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          name: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          nameFormat: Schema.optional(
+                            Schema.Union([
+                              Schema.Literals([
+                                "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+                                "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+                                "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          required: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                          source: Schema.optional(
+                            Schema.Union([
+                              Schema.Struct({
+                                name: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                                nameByIdp: Schema.optional(
+                                  Schema.Union([
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        idpId: Schema.optional(
+                                          Schema.Union([
+                                            Schema.String,
+                                            Schema.Null,
+                                          ]),
+                                        ),
+                                        sourceName: Schema.optional(
+                                          Schema.Union([
+                                            Schema.String,
+                                            Schema.Null,
+                                          ]),
+                                        ),
+                                      }).pipe(
+                                        Schema.encodeKeys({
+                                          idpId: "idp_id",
+                                          sourceName: "source_name",
+                                        }),
+                                      ),
+                                    ),
+                                    Schema.Null,
+                                  ]),
+                                ),
+                              }).pipe(
+                                Schema.encodeKeys({
+                                  name: "name",
+                                  nameByIdp: "name_by_idp",
+                                }),
+                              ),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            friendlyName: "friendly_name",
+                            name: "name",
+                            nameFormat: "name_format",
+                            required: "required",
+                            source: "source",
+                          }),
+                        ),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  defaultRelayState: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  idpEntityId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  nameIdFormat: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals(["id", "email"]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  nameIdTransformJsonata: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  publicKey: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  samlAttributeTransformJsonata: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  spEntityId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  ssoEndpoint: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    authType: "auth_type",
+                    consumerServiceUrl: "consumer_service_url",
+                    customAttributes: "custom_attributes",
+                    defaultRelayState: "default_relay_state",
+                    idpEntityId: "idp_entity_id",
+                    nameIdFormat: "name_id_format",
+                    nameIdTransformJsonata: "name_id_transform_jsonata",
+                    publicKey: "public_key",
+                    samlAttributeTransformJsonata:
+                      "saml_attribute_transform_jsonata",
+                    spEntityId: "sp_entity_id",
+                    ssoEndpoint: "sso_endpoint",
+                  }),
+                ),
+                Schema.Struct({
+                  accessTokenLifetime: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  allowPkceWithoutClientSecret: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  appLauncherUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  authType: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals(["saml", "oidc"]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  clientId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  clientSecret: Schema.optional(
+                    Schema.Union([SensitiveString, Schema.Null]),
+                  ),
+                  customClaims: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          required: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                          scope: Schema.optional(
+                            Schema.Union([
+                              Schema.Literals([
+                                "groups",
+                                "profile",
+                                "email",
+                                "openid",
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          source: Schema.optional(
+                            Schema.Union([
+                              Schema.Struct({
+                                name: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                                nameByIdp: Schema.optional(
+                                  Schema.Union([
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
+                                    Schema.Null,
+                                  ]),
+                                ),
+                              }).pipe(
+                                Schema.encodeKeys({
+                                  name: "name",
+                                  nameByIdp: "name_by_idp",
+                                }),
+                              ),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  grantTypes: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Literals([
+                          "authorization_code",
+                          "authorization_code_with_pkce",
+                          "refresh_tokens",
+                          "hybrid",
+                          "implicit",
+                        ]),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  groupFilterRegex: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  hybridAndImplicitOptions: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        returnAccessTokenFromAuthorizationEndpoint:
+                          Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        returnIdTokenFromAuthorizationEndpoint: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          returnAccessTokenFromAuthorizationEndpoint:
+                            "return_access_token_from_authorization_endpoint",
+                          returnIdTokenFromAuthorizationEndpoint:
+                            "return_id_token_from_authorization_endpoint",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  publicKey: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  redirectUris: Schema.optional(
+                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  refreshTokenOptions: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        lifetime: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  scopes: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Literals([
+                          "openid",
+                          "groups",
+                          "email",
+                          "profile",
+                        ]),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    accessTokenLifetime: "access_token_lifetime",
+                    allowPkceWithoutClientSecret:
+                      "allow_pkce_without_client_secret",
+                    appLauncherUrl: "app_launcher_url",
+                    authType: "auth_type",
+                    clientId: "client_id",
+                    clientSecret: "client_secret",
+                    customClaims: "custom_claims",
+                    grantTypes: "grant_types",
+                    groupFilterRegex: "group_filter_regex",
+                    hybridAndImplicitOptions: "hybrid_and_implicit_options",
+                    publicKey: "public_key",
+                    redirectUris: "redirect_uris",
+                    refreshTokenOptions: "refresh_token_options",
+                    scopes: "scopes",
+                  }),
+                ),
+              ]),
+              Schema.Null,
+            ]),
           ),
           scimConfig: Schema.optional(
             Schema.Union([
@@ -16602,15 +16566,6 @@ export const ListAccessApplicationsResponse =
                 authentication: Schema.optional(
                   Schema.Union([
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -16634,6 +16589,11 @@ export const ListAccessApplicationsResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -16644,17 +16604,12 @@ export const ListAccessApplicationsResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                       Schema.Array(
                         Schema.Union([
-                          Schema.Struct({
-                            password: SensitiveString,
-                            scheme: Schema.Literal("httpbasic"),
-                            user: Schema.String,
-                          }),
-                          Schema.Struct({
-                            token: Schema.String,
-                            scheme: Schema.Literal("oauthbearertoken"),
-                          }),
                           Schema.Struct({
                             authorizationUrl: Schema.String,
                             clientId: Schema.String,
@@ -16678,6 +16633,11 @@ export const ListAccessApplicationsResponse =
                             }),
                           ),
                           Schema.Struct({
+                            password: SensitiveString,
+                            scheme: Schema.Literal("httpbasic"),
+                            user: Schema.String,
+                          }),
+                          Schema.Struct({
                             clientId: Schema.String,
                             clientSecret: SensitiveString,
                             scheme: Schema.Literal("access_service_token"),
@@ -16688,6 +16648,10 @@ export const ListAccessApplicationsResponse =
                               scheme: "scheme",
                             }),
                           ),
+                          Schema.Struct({
+                            token: Schema.String,
+                            scheme: Schema.Literal("oauthbearertoken"),
+                          }),
                         ]),
                       ),
                     ]),
@@ -16763,54 +16727,90 @@ export const ListAccessApplicationsResponse =
               Schema.Null,
             ]),
           ),
-          selfHostedDomains: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          serviceAuth_401Redirect: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          sessionDuration: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          skipInterstitial: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
           tags: Schema.optional(
             Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "self_hosted",
+                "saas",
+                "ssh",
+                "vnc",
+                "app_launcher",
+                "warp",
+                "biso",
+                "bookmark",
+                "dash_sso",
+                "infrastructure",
+                "rdp",
+                "mcp",
+                "mcp_portal",
+                "proxy_endpoint",
+              ]),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
-            domain: "domain",
-            targetCriteria: "target_criteria",
-            type: "type",
             id: "id",
-            allowAuthenticateViaWarp: "allow_authenticate_via_warp",
-            allowIframe: "allow_iframe",
             allowedIdps: "allowed_idps",
             appLauncherVisible: "app_launcher_visible",
             aud: "aud",
             autoRedirectToIdentity: "auto_redirect_to_identity",
-            corsHeaders: "cors_headers",
-            customDenyMessage: "custom_deny_message",
-            customDenyUrl: "custom_deny_url",
-            customNonIdentityDenyUrl: "custom_non_identity_deny_url",
             customPages: "custom_pages",
-            destinations: "destinations",
-            enableBindingCookie: "enable_binding_cookie",
-            httpOnlyCookieAttribute: "http_only_cookie_attribute",
             logoUrl: "logo_url",
             name: "name",
-            optionsPreflightBypass: "options_preflight_bypass",
-            pathCookieAttribute: "path_cookie_attribute",
             policies: "policies",
-            readServiceTokensFromHeader: "read_service_tokens_from_header",
-            sameSiteCookieAttribute: "same_site_cookie_attribute",
+            saasApp: "saas_app",
             scimConfig: "scim_config",
-            selfHostedDomains: "self_hosted_domains",
-            serviceAuth_401Redirect: "service_auth_401_redirect",
-            sessionDuration: "session_duration",
-            skipInterstitial: "skip_interstitial",
             tags: "tags",
+            type: "type",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          appLauncherVisible: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          tags: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "self_hosted",
+                "saas",
+                "ssh",
+                "vnc",
+                "app_launcher",
+                "warp",
+                "biso",
+                "bookmark",
+                "dash_sso",
+                "infrastructure",
+                "rdp",
+                "mcp",
+                "mcp_portal",
+                "proxy_endpoint",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            appLauncherVisible: "app_launcher_visible",
+            aud: "aud",
+            domain: "domain",
+            logoUrl: "logo_url",
+            name: "name",
+            tags: "tags",
+            type: "type",
           }),
         ),
       ]),
@@ -17183,15 +17183,6 @@ export const CreateAccessApplicationRequest =
         authentication: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              password: SensitiveString,
-              scheme: Schema.Literal("httpbasic"),
-              user: Schema.String,
-            }),
-            Schema.Struct({
-              token: Schema.String,
-              scheme: Schema.Literal("oauthbearertoken"),
-            }),
-            Schema.Struct({
               authorizationUrl: Schema.String,
               clientId: Schema.String,
               clientSecret: SensitiveString,
@@ -17209,6 +17200,11 @@ export const CreateAccessApplicationRequest =
               }),
             ),
             Schema.Struct({
+              password: SensitiveString,
+              scheme: Schema.Literal("httpbasic"),
+              user: Schema.String,
+            }),
+            Schema.Struct({
               clientId: Schema.String,
               clientSecret: SensitiveString,
               scheme: Schema.Literal("access_service_token"),
@@ -17219,17 +17215,12 @@ export const CreateAccessApplicationRequest =
                 scheme: "scheme",
               }),
             ),
+            Schema.Struct({
+              token: Schema.String,
+              scheme: Schema.Literal("oauthbearertoken"),
+            }),
             Schema.Array(
               Schema.Union([
-                Schema.Struct({
-                  password: SensitiveString,
-                  scheme: Schema.Literal("httpbasic"),
-                  user: Schema.String,
-                }),
-                Schema.Struct({
-                  token: Schema.String,
-                  scheme: Schema.Literal("oauthbearertoken"),
-                }),
                 Schema.Struct({
                   authorizationUrl: Schema.String,
                   clientId: Schema.String,
@@ -17248,6 +17239,11 @@ export const CreateAccessApplicationRequest =
                   }),
                 ),
                 Schema.Struct({
+                  password: SensitiveString,
+                  scheme: Schema.Literal("httpbasic"),
+                  user: Schema.String,
+                }),
+                Schema.Struct({
                   clientId: Schema.String,
                   clientSecret: SensitiveString,
                   scheme: Schema.Literal("access_service_token"),
@@ -17258,6 +17254,10 @@ export const CreateAccessApplicationRequest =
                     scheme: "scheme",
                   }),
                 ),
+                Schema.Struct({
+                  token: Schema.String,
+                  scheme: Schema.Literal("oauthbearertoken"),
+                }),
               ]),
             ),
           ]),
@@ -19044,6 +19044,19 @@ export const CreateAccessApplicationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       domain: Schema.String,
+      targetCriteria: Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("RDP"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
       type: Schema.Literals([
         "self_hosted",
         "saas",
@@ -19968,15 +19981,6 @@ export const CreateAccessApplicationResponse =
               Schema.Union([
                 Schema.Union([
                   Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
-                  Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
@@ -19996,6 +20000,11 @@ export const CreateAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -20006,17 +20015,12 @@ export const CreateAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -20040,6 +20044,11 @@ export const CreateAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -20050,6 +20059,10 @@ export const CreateAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -20143,6 +20156,7 @@ export const CreateAccessApplicationResponse =
     }).pipe(
       Schema.encodeKeys({
         domain: "domain",
+        targetCriteria: "target_criteria",
         type: "type",
         id: "id",
         allowAuthenticateViaWarp: "allow_authenticate_via_warp",
@@ -20175,7 +20189,28 @@ export const CreateAccessApplicationResponse =
       }),
     ),
     Schema.Struct({
+      domain: Schema.String,
+      type: Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
+      ]),
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      allowAuthenticateViaWarp: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       allowedIdps: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -20186,11 +20221,149 @@ export const CreateAccessApplicationResponse =
       autoRedirectToIdentity: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
+      corsHeaders: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            allowAllHeaders: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowAllMethods: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowAllOrigins: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowCredentials: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowedHeaders: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            allowedMethods: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Literals([
+                    "GET",
+                    "POST",
+                    "HEAD",
+                    "PUT",
+                    "DELETE",
+                    "CONNECT",
+                    "OPTIONS",
+                    "TRACE",
+                    "PATCH",
+                  ]),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            allowedOrigins: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              allowAllHeaders: "allow_all_headers",
+              allowAllMethods: "allow_all_methods",
+              allowAllOrigins: "allow_all_origins",
+              allowCredentials: "allow_credentials",
+              allowedHeaders: "allowed_headers",
+              allowedMethods: "allowed_methods",
+              allowedOrigins: "allowed_origins",
+              maxAge: "max_age",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      customDenyMessage: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      customDenyUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      customNonIdentityDenyUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
       customPages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
+      destinations: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("public"), Schema.Null]),
+                ),
+                uri: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Struct({
+                cidr: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                hostname: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                l4Protocol: Schema.optional(
+                  Schema.Union([Schema.Literals(["tcp", "udp"]), Schema.Null]),
+                ),
+                portRange: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("private"), Schema.Null]),
+                ),
+                vnetId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  cidr: "cidr",
+                  hostname: "hostname",
+                  l4Protocol: "l4_protocol",
+                  portRange: "port_range",
+                  type: "type",
+                  vnetId: "vnet_id",
+                }),
+              ),
+              Schema.Struct({
+                mcpServerId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([
+                    Schema.Literal("via_mcp_server_portal"),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  mcpServerId: "mcp_server_id",
+                  type: "type",
+                }),
+              ),
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      enableBindingCookie: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      httpOnlyCookieAttribute: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      optionsPreflightBypass: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      pathCookieAttribute: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       policies: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -20926,282 +21099,11 @@ export const CreateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      saasApp: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Struct({
-              authType: Schema.optional(
-                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
-              ),
-              consumerServiceUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              customAttributes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      friendlyName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      nameFormat: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      source: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            nameByIdp: Schema.optional(
-                              Schema.Union([
-                                Schema.Array(
-                                  Schema.Struct({
-                                    idpId: Schema.optional(
-                                      Schema.Union([
-                                        Schema.String,
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                    sourceName: Schema.optional(
-                                      Schema.Union([
-                                        Schema.String,
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                  }).pipe(
-                                    Schema.encodeKeys({
-                                      idpId: "idp_id",
-                                      sourceName: "source_name",
-                                    }),
-                                  ),
-                                ),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              name: "name",
-                              nameByIdp: "name_by_idp",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        friendlyName: "friendly_name",
-                        name: "name",
-                        nameFormat: "name_format",
-                        required: "required",
-                        source: "source",
-                      }),
-                    ),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              defaultRelayState: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              idpEntityId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              nameIdFormat: Schema.optional(
-                Schema.Union([Schema.Literals(["id", "email"]), Schema.Null]),
-              ),
-              nameIdTransformJsonata: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              publicKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              samlAttributeTransformJsonata: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              spEntityId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              ssoEndpoint: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                authType: "auth_type",
-                consumerServiceUrl: "consumer_service_url",
-                customAttributes: "custom_attributes",
-                defaultRelayState: "default_relay_state",
-                idpEntityId: "idp_entity_id",
-                nameIdFormat: "name_id_format",
-                nameIdTransformJsonata: "name_id_transform_jsonata",
-                publicKey: "public_key",
-                samlAttributeTransformJsonata:
-                  "saml_attribute_transform_jsonata",
-                spEntityId: "sp_entity_id",
-                ssoEndpoint: "sso_endpoint",
-              }),
-            ),
-            Schema.Struct({
-              accessTokenLifetime: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              allowPkceWithoutClientSecret: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              appLauncherUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              authType: Schema.optional(
-                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
-              ),
-              clientId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              clientSecret: Schema.optional(
-                Schema.Union([SensitiveString, Schema.Null]),
-              ),
-              customClaims: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      scope: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "groups",
-                            "profile",
-                            "email",
-                            "openid",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      source: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            nameByIdp: Schema.optional(
-                              Schema.Union([
-                                Schema.Record(Schema.String, Schema.Unknown),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              name: "name",
-                              nameByIdp: "name_by_idp",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              grantTypes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals([
-                      "authorization_code",
-                      "authorization_code_with_pkce",
-                      "refresh_tokens",
-                      "hybrid",
-                      "implicit",
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              groupFilterRegex: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              hybridAndImplicitOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    returnIdTokenFromAuthorizationEndpoint: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      returnAccessTokenFromAuthorizationEndpoint:
-                        "return_access_token_from_authorization_endpoint",
-                      returnIdTokenFromAuthorizationEndpoint:
-                        "return_id_token_from_authorization_endpoint",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              publicKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              redirectUris: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              refreshTokenOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    lifetime: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              scopes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals(["openid", "groups", "email", "profile"]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                accessTokenLifetime: "access_token_lifetime",
-                allowPkceWithoutClientSecret:
-                  "allow_pkce_without_client_secret",
-                appLauncherUrl: "app_launcher_url",
-                authType: "auth_type",
-                clientId: "client_id",
-                clientSecret: "client_secret",
-                customClaims: "custom_claims",
-                grantTypes: "grant_types",
-                groupFilterRegex: "group_filter_regex",
-                hybridAndImplicitOptions: "hybrid_and_implicit_options",
-                publicKey: "public_key",
-                redirectUris: "redirect_uris",
-                refreshTokenOptions: "refresh_token_options",
-                scopes: "scopes",
-              }),
-            ),
-          ]),
-          Schema.Null,
-        ]),
+      readServiceTokensFromHeader: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      sameSiteCookieAttribute: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
       scimConfig: Schema.optional(
         Schema.Union([
@@ -21211,15 +21113,6 @@ export const CreateAccessApplicationResponse =
             authentication: Schema.optional(
               Schema.Union([
                 Schema.Union([
-                  Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
                   Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
@@ -21240,6 +21133,11 @@ export const CreateAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -21250,17 +21148,12 @@ export const CreateAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -21284,6 +21177,11 @@ export const CreateAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -21294,6 +21192,10 @@ export const CreateAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -21369,45 +21271,805 @@ export const CreateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
+      selfHostedDomains: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      serviceAuth_401Redirect: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      sessionDuration: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      skipInterstitial: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      type: Schema.optional(
+    }).pipe(
+      Schema.encodeKeys({
+        domain: "domain",
+        type: "type",
+        id: "id",
+        allowAuthenticateViaWarp: "allow_authenticate_via_warp",
+        allowIframe: "allow_iframe",
+        allowedIdps: "allowed_idps",
+        appLauncherVisible: "app_launcher_visible",
+        aud: "aud",
+        autoRedirectToIdentity: "auto_redirect_to_identity",
+        corsHeaders: "cors_headers",
+        customDenyMessage: "custom_deny_message",
+        customDenyUrl: "custom_deny_url",
+        customNonIdentityDenyUrl: "custom_non_identity_deny_url",
+        customPages: "custom_pages",
+        destinations: "destinations",
+        enableBindingCookie: "enable_binding_cookie",
+        httpOnlyCookieAttribute: "http_only_cookie_attribute",
+        logoUrl: "logo_url",
+        name: "name",
+        optionsPreflightBypass: "options_preflight_bypass",
+        pathCookieAttribute: "path_cookie_attribute",
+        policies: "policies",
+        readServiceTokensFromHeader: "read_service_tokens_from_header",
+        sameSiteCookieAttribute: "same_site_cookie_attribute",
+        scimConfig: "scim_config",
+        selfHostedDomains: "self_hosted_domains",
+        serviceAuth_401Redirect: "service_auth_401_redirect",
+        sessionDuration: "session_duration",
+        skipInterstitial: "skip_interstitial",
+        tags: "tags",
+      }),
+    ),
+    Schema.Struct({
+      targetCriteria: Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("SSH"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
+      type: Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
+      ]),
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      policies: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              connectionRules: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    ssh: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          usernames: Schema.Array(Schema.String),
+                          allowEmailAlias: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            usernames: "usernames",
+                            allowEmailAlias: "allow_email_alias",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              createdAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              decision: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
+                  Schema.Null,
+                ]),
+              ),
+              exclude: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              include: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              require: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              updatedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                connectionRules: "connection_rules",
+                createdAt: "created_at",
+                decision: "decision",
+                exclude: "exclude",
+                include: "include",
+                name: "name",
+                require: "require",
+                updatedAt: "updated_at",
+              }),
+            ),
+          ),
           Schema.Null,
         ]),
       ),
     }).pipe(
       Schema.encodeKeys({
+        targetCriteria: "target_criteria",
+        type: "type",
         id: "id",
-        allowedIdps: "allowed_idps",
-        appLauncherVisible: "app_launcher_visible",
         aud: "aud",
-        autoRedirectToIdentity: "auto_redirect_to_identity",
-        customPages: "custom_pages",
-        logoUrl: "logo_url",
         name: "name",
         policies: "policies",
-        saasApp: "saas_app",
-        scimConfig: "scim_config",
-        tags: "tags",
-        type: "type",
       }),
     ),
     Schema.Struct({
@@ -23047,837 +23709,6 @@ export const CreateAccessApplicationResponse =
     ),
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      appLauncherVisible: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        appLauncherVisible: "app_launcher_visible",
-        aud: "aud",
-        domain: "domain",
-        logoUrl: "logo_url",
-        name: "name",
-        tags: "tags",
-        type: "type",
-      }),
-    ),
-    Schema.Struct({
-      targetCriteria: Schema.Array(
-        Schema.Struct({
-          port: Schema.Number,
-          protocol: Schema.Literal("SSH"),
-          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            port: "port",
-            protocol: "protocol",
-            targetAttributes: "target_attributes",
-          }),
-        ),
-      ),
-      type: Schema.Literals([
-        "self_hosted",
-        "saas",
-        "ssh",
-        "vnc",
-        "app_launcher",
-        "warp",
-        "biso",
-        "bookmark",
-        "dash_sso",
-        "infrastructure",
-        "rdp",
-        "mcp",
-        "mcp_portal",
-        "proxy_endpoint",
-      ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              connectionRules: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    ssh: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          usernames: Schema.Array(Schema.String),
-                          allowEmailAlias: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            usernames: "usernames",
-                            allowEmailAlias: "allow_email_alias",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              createdAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              decision: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
-                  Schema.Null,
-                ]),
-              ),
-              exclude: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              include: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              require: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              updatedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                connectionRules: "connection_rules",
-                createdAt: "created_at",
-                decision: "decision",
-                exclude: "exclude",
-                include: "include",
-                name: "name",
-                require: "require",
-                updatedAt: "updated_at",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        targetCriteria: "target_criteria",
-        type: "type",
-        id: "id",
-        aud: "aud",
-        name: "name",
-        policies: "policies",
-      }),
-    ),
-    Schema.Struct({
-      domain: Schema.String,
-      targetCriteria: Schema.Array(
-        Schema.Struct({
-          port: Schema.Number,
-          protocol: Schema.Literal("RDP"),
-          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            port: "port",
-            protocol: "protocol",
-            targetAttributes: "target_attributes",
-          }),
-        ),
-      ),
-      type: Schema.Literals([
-        "self_hosted",
-        "saas",
-        "ssh",
-        "vnc",
-        "app_launcher",
-        "warp",
-        "biso",
-        "bookmark",
-        "dash_sso",
-        "infrastructure",
-        "rdp",
-        "mcp",
-        "mcp_portal",
-        "proxy_endpoint",
-      ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      allowAuthenticateViaWarp: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       allowedIdps: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -23888,149 +23719,11 @@ export const CreateAccessApplicationResponse =
       autoRedirectToIdentity: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      corsHeaders: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            allowAllHeaders: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowAllMethods: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowAllOrigins: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowCredentials: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowedHeaders: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            allowedMethods: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Literals([
-                    "GET",
-                    "POST",
-                    "HEAD",
-                    "PUT",
-                    "DELETE",
-                    "CONNECT",
-                    "OPTIONS",
-                    "TRACE",
-                    "PATCH",
-                  ]),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            allowedOrigins: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              allowAllHeaders: "allow_all_headers",
-              allowAllMethods: "allow_all_methods",
-              allowAllOrigins: "allow_all_origins",
-              allowCredentials: "allow_credentials",
-              allowedHeaders: "allowed_headers",
-              allowedMethods: "allowed_methods",
-              allowedOrigins: "allowed_origins",
-              maxAge: "max_age",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      customDenyMessage: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customNonIdentityDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
       customPages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      destinations: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("public"), Schema.Null]),
-                ),
-                uri: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                cidr: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                hostname: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                l4Protocol: Schema.optional(
-                  Schema.Union([Schema.Literals(["tcp", "udp"]), Schema.Null]),
-                ),
-                portRange: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("private"), Schema.Null]),
-                ),
-                vnetId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  cidr: "cidr",
-                  hostname: "hostname",
-                  l4Protocol: "l4_protocol",
-                  portRange: "port_range",
-                  type: "type",
-                  vnetId: "vnet_id",
-                }),
-              ),
-              Schema.Struct({
-                mcpServerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([
-                    Schema.Literal("via_mcp_server_portal"),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  mcpServerId: "mcp_server_id",
-                  type: "type",
-                }),
-              ),
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      enableBindingCookie: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      httpOnlyCookieAttribute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      optionsPreflightBypass: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      pathCookieAttribute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       policies: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -24766,11 +24459,282 @@ export const CreateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      readServiceTokensFromHeader: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      sameSiteCookieAttribute: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
+      saasApp: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Struct({
+              authType: Schema.optional(
+                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
+              ),
+              consumerServiceUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              customAttributes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      friendlyName: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      nameFormat: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      required: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      source: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            name: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            nameByIdp: Schema.optional(
+                              Schema.Union([
+                                Schema.Array(
+                                  Schema.Struct({
+                                    idpId: Schema.optional(
+                                      Schema.Union([
+                                        Schema.String,
+                                        Schema.Null,
+                                      ]),
+                                    ),
+                                    sourceName: Schema.optional(
+                                      Schema.Union([
+                                        Schema.String,
+                                        Schema.Null,
+                                      ]),
+                                    ),
+                                  }).pipe(
+                                    Schema.encodeKeys({
+                                      idpId: "idp_id",
+                                      sourceName: "source_name",
+                                    }),
+                                  ),
+                                ),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              name: "name",
+                              nameByIdp: "name_by_idp",
+                            }),
+                          ),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        friendlyName: "friendly_name",
+                        name: "name",
+                        nameFormat: "name_format",
+                        required: "required",
+                        source: "source",
+                      }),
+                    ),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              defaultRelayState: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              idpEntityId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              nameIdFormat: Schema.optional(
+                Schema.Union([Schema.Literals(["id", "email"]), Schema.Null]),
+              ),
+              nameIdTransformJsonata: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              publicKey: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              samlAttributeTransformJsonata: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              spEntityId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              ssoEndpoint: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                authType: "auth_type",
+                consumerServiceUrl: "consumer_service_url",
+                customAttributes: "custom_attributes",
+                defaultRelayState: "default_relay_state",
+                idpEntityId: "idp_entity_id",
+                nameIdFormat: "name_id_format",
+                nameIdTransformJsonata: "name_id_transform_jsonata",
+                publicKey: "public_key",
+                samlAttributeTransformJsonata:
+                  "saml_attribute_transform_jsonata",
+                spEntityId: "sp_entity_id",
+                ssoEndpoint: "sso_endpoint",
+              }),
+            ),
+            Schema.Struct({
+              accessTokenLifetime: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              allowPkceWithoutClientSecret: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              appLauncherUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              authType: Schema.optional(
+                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              customClaims: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      required: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      scope: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "groups",
+                            "profile",
+                            "email",
+                            "openid",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      source: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            name: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            nameByIdp: Schema.optional(
+                              Schema.Union([
+                                Schema.Record(Schema.String, Schema.Unknown),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              name: "name",
+                              nameByIdp: "name_by_idp",
+                            }),
+                          ),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              grantTypes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Literals([
+                      "authorization_code",
+                      "authorization_code_with_pkce",
+                      "refresh_tokens",
+                      "hybrid",
+                      "implicit",
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              groupFilterRegex: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              hybridAndImplicitOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                    returnIdTokenFromAuthorizationEndpoint: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      returnAccessTokenFromAuthorizationEndpoint:
+                        "return_access_token_from_authorization_endpoint",
+                      returnIdTokenFromAuthorizationEndpoint:
+                        "return_id_token_from_authorization_endpoint",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              publicKey: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              redirectUris: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              refreshTokenOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    lifetime: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              scopes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Literals(["openid", "groups", "email", "profile"]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                accessTokenLifetime: "access_token_lifetime",
+                allowPkceWithoutClientSecret:
+                  "allow_pkce_without_client_secret",
+                appLauncherUrl: "app_launcher_url",
+                authType: "auth_type",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                customClaims: "custom_claims",
+                grantTypes: "grant_types",
+                groupFilterRegex: "group_filter_regex",
+                hybridAndImplicitOptions: "hybrid_and_implicit_options",
+                publicKey: "public_key",
+                redirectUris: "redirect_uris",
+                refreshTokenOptions: "refresh_token_options",
+                scopes: "scopes",
+              }),
+            ),
+          ]),
+          Schema.Null,
+        ]),
       ),
       scimConfig: Schema.optional(
         Schema.Union([
@@ -24780,15 +24744,6 @@ export const CreateAccessApplicationResponse =
             authentication: Schema.optional(
               Schema.Union([
                 Schema.Union([
-                  Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
                   Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
@@ -24809,6 +24764,11 @@ export const CreateAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -24819,17 +24779,12 @@ export const CreateAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -24853,6 +24808,11 @@ export const CreateAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -24863,6 +24823,10 @@ export const CreateAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -24938,54 +24902,90 @@ export const CreateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      selfHostedDomains: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      serviceAuth_401Redirect: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sessionDuration: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      skipInterstitial: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
+          Schema.Null,
+        ]),
+      ),
     }).pipe(
       Schema.encodeKeys({
-        domain: "domain",
-        targetCriteria: "target_criteria",
-        type: "type",
         id: "id",
-        allowAuthenticateViaWarp: "allow_authenticate_via_warp",
-        allowIframe: "allow_iframe",
         allowedIdps: "allowed_idps",
         appLauncherVisible: "app_launcher_visible",
         aud: "aud",
         autoRedirectToIdentity: "auto_redirect_to_identity",
-        corsHeaders: "cors_headers",
-        customDenyMessage: "custom_deny_message",
-        customDenyUrl: "custom_deny_url",
-        customNonIdentityDenyUrl: "custom_non_identity_deny_url",
         customPages: "custom_pages",
-        destinations: "destinations",
-        enableBindingCookie: "enable_binding_cookie",
-        httpOnlyCookieAttribute: "http_only_cookie_attribute",
         logoUrl: "logo_url",
         name: "name",
-        optionsPreflightBypass: "options_preflight_bypass",
-        pathCookieAttribute: "path_cookie_attribute",
         policies: "policies",
-        readServiceTokensFromHeader: "read_service_tokens_from_header",
-        sameSiteCookieAttribute: "same_site_cookie_attribute",
+        saasApp: "saas_app",
         scimConfig: "scim_config",
-        selfHostedDomains: "self_hosted_domains",
-        serviceAuth_401Redirect: "service_auth_401_redirect",
-        sessionDuration: "session_duration",
-        skipInterstitial: "skip_interstitial",
         tags: "tags",
+        type: "type",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      appLauncherVisible: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        appLauncherVisible: "app_launcher_visible",
+        aud: "aud",
+        domain: "domain",
+        logoUrl: "logo_url",
+        name: "name",
+        tags: "tags",
+        type: "type",
       }),
     ),
   ]).pipe(
@@ -25336,15 +25336,6 @@ export const UpdateAccessApplicationRequest =
         authentication: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              password: SensitiveString,
-              scheme: Schema.Literal("httpbasic"),
-              user: Schema.String,
-            }),
-            Schema.Struct({
-              token: Schema.String,
-              scheme: Schema.Literal("oauthbearertoken"),
-            }),
-            Schema.Struct({
               authorizationUrl: Schema.String,
               clientId: Schema.String,
               clientSecret: SensitiveString,
@@ -25362,6 +25353,11 @@ export const UpdateAccessApplicationRequest =
               }),
             ),
             Schema.Struct({
+              password: SensitiveString,
+              scheme: Schema.Literal("httpbasic"),
+              user: Schema.String,
+            }),
+            Schema.Struct({
               clientId: Schema.String,
               clientSecret: SensitiveString,
               scheme: Schema.Literal("access_service_token"),
@@ -25372,17 +25368,12 @@ export const UpdateAccessApplicationRequest =
                 scheme: "scheme",
               }),
             ),
+            Schema.Struct({
+              token: Schema.String,
+              scheme: Schema.Literal("oauthbearertoken"),
+            }),
             Schema.Array(
               Schema.Union([
-                Schema.Struct({
-                  password: SensitiveString,
-                  scheme: Schema.Literal("httpbasic"),
-                  user: Schema.String,
-                }),
-                Schema.Struct({
-                  token: Schema.String,
-                  scheme: Schema.Literal("oauthbearertoken"),
-                }),
                 Schema.Struct({
                   authorizationUrl: Schema.String,
                   clientId: Schema.String,
@@ -25401,6 +25392,11 @@ export const UpdateAccessApplicationRequest =
                   }),
                 ),
                 Schema.Struct({
+                  password: SensitiveString,
+                  scheme: Schema.Literal("httpbasic"),
+                  user: Schema.String,
+                }),
+                Schema.Struct({
                   clientId: Schema.String,
                   clientSecret: SensitiveString,
                   scheme: Schema.Literal("access_service_token"),
@@ -25411,6 +25407,10 @@ export const UpdateAccessApplicationRequest =
                     scheme: "scheme",
                   }),
                 ),
+                Schema.Struct({
+                  token: Schema.String,
+                  scheme: Schema.Literal("oauthbearertoken"),
+                }),
               ]),
             ),
           ]),
@@ -27197,6 +27197,19 @@ export const UpdateAccessApplicationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       domain: Schema.String,
+      targetCriteria: Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("RDP"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
       type: Schema.Literals([
         "self_hosted",
         "saas",
@@ -28121,15 +28134,6 @@ export const UpdateAccessApplicationResponse =
               Schema.Union([
                 Schema.Union([
                   Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
-                  Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
@@ -28149,6 +28153,11 @@ export const UpdateAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -28159,17 +28168,12 @@ export const UpdateAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -28193,6 +28197,11 @@ export const UpdateAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -28203,6 +28212,10 @@ export const UpdateAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -28296,6 +28309,7 @@ export const UpdateAccessApplicationResponse =
     }).pipe(
       Schema.encodeKeys({
         domain: "domain",
+        targetCriteria: "target_criteria",
         type: "type",
         id: "id",
         allowAuthenticateViaWarp: "allow_authenticate_via_warp",
@@ -28328,7 +28342,28 @@ export const UpdateAccessApplicationResponse =
       }),
     ),
     Schema.Struct({
+      domain: Schema.String,
+      type: Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
+      ]),
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      allowAuthenticateViaWarp: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       allowedIdps: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -28339,11 +28374,149 @@ export const UpdateAccessApplicationResponse =
       autoRedirectToIdentity: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
+      corsHeaders: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            allowAllHeaders: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowAllMethods: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowAllOrigins: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowCredentials: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            allowedHeaders: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            allowedMethods: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Literals([
+                    "GET",
+                    "POST",
+                    "HEAD",
+                    "PUT",
+                    "DELETE",
+                    "CONNECT",
+                    "OPTIONS",
+                    "TRACE",
+                    "PATCH",
+                  ]),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            allowedOrigins: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              allowAllHeaders: "allow_all_headers",
+              allowAllMethods: "allow_all_methods",
+              allowAllOrigins: "allow_all_origins",
+              allowCredentials: "allow_credentials",
+              allowedHeaders: "allowed_headers",
+              allowedMethods: "allowed_methods",
+              allowedOrigins: "allowed_origins",
+              maxAge: "max_age",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      customDenyMessage: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      customDenyUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      customNonIdentityDenyUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
       customPages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
+      destinations: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("public"), Schema.Null]),
+                ),
+                uri: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Struct({
+                cidr: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                hostname: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                l4Protocol: Schema.optional(
+                  Schema.Union([Schema.Literals(["tcp", "udp"]), Schema.Null]),
+                ),
+                portRange: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("private"), Schema.Null]),
+                ),
+                vnetId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  cidr: "cidr",
+                  hostname: "hostname",
+                  l4Protocol: "l4_protocol",
+                  portRange: "port_range",
+                  type: "type",
+                  vnetId: "vnet_id",
+                }),
+              ),
+              Schema.Struct({
+                mcpServerId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([
+                    Schema.Literal("via_mcp_server_portal"),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  mcpServerId: "mcp_server_id",
+                  type: "type",
+                }),
+              ),
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      enableBindingCookie: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      httpOnlyCookieAttribute: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      optionsPreflightBypass: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      pathCookieAttribute: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       policies: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -29079,282 +29252,11 @@ export const UpdateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      saasApp: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Struct({
-              authType: Schema.optional(
-                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
-              ),
-              consumerServiceUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              customAttributes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      friendlyName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      nameFormat: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
-                            "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      source: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            nameByIdp: Schema.optional(
-                              Schema.Union([
-                                Schema.Array(
-                                  Schema.Struct({
-                                    idpId: Schema.optional(
-                                      Schema.Union([
-                                        Schema.String,
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                    sourceName: Schema.optional(
-                                      Schema.Union([
-                                        Schema.String,
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                  }).pipe(
-                                    Schema.encodeKeys({
-                                      idpId: "idp_id",
-                                      sourceName: "source_name",
-                                    }),
-                                  ),
-                                ),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              name: "name",
-                              nameByIdp: "name_by_idp",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        friendlyName: "friendly_name",
-                        name: "name",
-                        nameFormat: "name_format",
-                        required: "required",
-                        source: "source",
-                      }),
-                    ),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              defaultRelayState: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              idpEntityId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              nameIdFormat: Schema.optional(
-                Schema.Union([Schema.Literals(["id", "email"]), Schema.Null]),
-              ),
-              nameIdTransformJsonata: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              publicKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              samlAttributeTransformJsonata: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              spEntityId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              ssoEndpoint: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                authType: "auth_type",
-                consumerServiceUrl: "consumer_service_url",
-                customAttributes: "custom_attributes",
-                defaultRelayState: "default_relay_state",
-                idpEntityId: "idp_entity_id",
-                nameIdFormat: "name_id_format",
-                nameIdTransformJsonata: "name_id_transform_jsonata",
-                publicKey: "public_key",
-                samlAttributeTransformJsonata:
-                  "saml_attribute_transform_jsonata",
-                spEntityId: "sp_entity_id",
-                ssoEndpoint: "sso_endpoint",
-              }),
-            ),
-            Schema.Struct({
-              accessTokenLifetime: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              allowPkceWithoutClientSecret: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              appLauncherUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              authType: Schema.optional(
-                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
-              ),
-              clientId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              clientSecret: Schema.optional(
-                Schema.Union([SensitiveString, Schema.Null]),
-              ),
-              customClaims: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      scope: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "groups",
-                            "profile",
-                            "email",
-                            "openid",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      source: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            nameByIdp: Schema.optional(
-                              Schema.Union([
-                                Schema.Record(Schema.String, Schema.Unknown),
-                                Schema.Null,
-                              ]),
-                            ),
-                          }).pipe(
-                            Schema.encodeKeys({
-                              name: "name",
-                              nameByIdp: "name_by_idp",
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              grantTypes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals([
-                      "authorization_code",
-                      "authorization_code_with_pkce",
-                      "refresh_tokens",
-                      "hybrid",
-                      "implicit",
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              groupFilterRegex: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              hybridAndImplicitOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    returnIdTokenFromAuthorizationEndpoint: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      returnAccessTokenFromAuthorizationEndpoint:
-                        "return_access_token_from_authorization_endpoint",
-                      returnIdTokenFromAuthorizationEndpoint:
-                        "return_id_token_from_authorization_endpoint",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              publicKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              redirectUris: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              refreshTokenOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    lifetime: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              scopes: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals(["openid", "groups", "email", "profile"]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                accessTokenLifetime: "access_token_lifetime",
-                allowPkceWithoutClientSecret:
-                  "allow_pkce_without_client_secret",
-                appLauncherUrl: "app_launcher_url",
-                authType: "auth_type",
-                clientId: "client_id",
-                clientSecret: "client_secret",
-                customClaims: "custom_claims",
-                grantTypes: "grant_types",
-                groupFilterRegex: "group_filter_regex",
-                hybridAndImplicitOptions: "hybrid_and_implicit_options",
-                publicKey: "public_key",
-                redirectUris: "redirect_uris",
-                refreshTokenOptions: "refresh_token_options",
-                scopes: "scopes",
-              }),
-            ),
-          ]),
-          Schema.Null,
-        ]),
+      readServiceTokensFromHeader: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      sameSiteCookieAttribute: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
       ),
       scimConfig: Schema.optional(
         Schema.Union([
@@ -29364,15 +29266,6 @@ export const UpdateAccessApplicationResponse =
             authentication: Schema.optional(
               Schema.Union([
                 Schema.Union([
-                  Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
                   Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
@@ -29393,6 +29286,11 @@ export const UpdateAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -29403,17 +29301,12 @@ export const UpdateAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -29437,6 +29330,11 @@ export const UpdateAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -29447,6 +29345,10 @@ export const UpdateAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -29522,45 +29424,805 @@ export const UpdateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
+      selfHostedDomains: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      serviceAuth_401Redirect: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      sessionDuration: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      skipInterstitial: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      type: Schema.optional(
+    }).pipe(
+      Schema.encodeKeys({
+        domain: "domain",
+        type: "type",
+        id: "id",
+        allowAuthenticateViaWarp: "allow_authenticate_via_warp",
+        allowIframe: "allow_iframe",
+        allowedIdps: "allowed_idps",
+        appLauncherVisible: "app_launcher_visible",
+        aud: "aud",
+        autoRedirectToIdentity: "auto_redirect_to_identity",
+        corsHeaders: "cors_headers",
+        customDenyMessage: "custom_deny_message",
+        customDenyUrl: "custom_deny_url",
+        customNonIdentityDenyUrl: "custom_non_identity_deny_url",
+        customPages: "custom_pages",
+        destinations: "destinations",
+        enableBindingCookie: "enable_binding_cookie",
+        httpOnlyCookieAttribute: "http_only_cookie_attribute",
+        logoUrl: "logo_url",
+        name: "name",
+        optionsPreflightBypass: "options_preflight_bypass",
+        pathCookieAttribute: "path_cookie_attribute",
+        policies: "policies",
+        readServiceTokensFromHeader: "read_service_tokens_from_header",
+        sameSiteCookieAttribute: "same_site_cookie_attribute",
+        scimConfig: "scim_config",
+        selfHostedDomains: "self_hosted_domains",
+        serviceAuth_401Redirect: "service_auth_401_redirect",
+        sessionDuration: "session_duration",
+        skipInterstitial: "skip_interstitial",
+        tags: "tags",
+      }),
+    ),
+    Schema.Struct({
+      targetCriteria: Schema.Array(
+        Schema.Struct({
+          port: Schema.Number,
+          protocol: Schema.Literal("SSH"),
+          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
+        }).pipe(
+          Schema.encodeKeys({
+            port: "port",
+            protocol: "protocol",
+            targetAttributes: "target_attributes",
+          }),
+        ),
+      ),
+      type: Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
+      ]),
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      policies: Schema.optional(
         Schema.Union([
-          Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              connectionRules: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    ssh: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          usernames: Schema.Array(Schema.String),
+                          allowEmailAlias: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            usernames: "usernames",
+                            allowEmailAlias: "allow_email_alias",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              createdAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              decision: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
+                  Schema.Null,
+                ]),
+              ),
+              exclude: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              include: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              require: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        group: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        anyValidServiceToken: Schema.Unknown,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          anyValidServiceToken: "any_valid_service_token",
+                        }),
+                      ),
+                      Schema.Struct({
+                        authContext: Schema.Struct({
+                          id: Schema.String,
+                          acId: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            acId: "ac_id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ authContext: "auth_context" }),
+                      ),
+                      Schema.Struct({
+                        authMethod: Schema.Struct({
+                          authMethod: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ authMethod: "auth_method" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+                      Schema.Struct({
+                        azureAD: Schema.Struct({
+                          id: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            id: "id",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        certificate: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        commonName: Schema.Struct({
+                          commonName: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ commonName: "common_name" }),
+                        ),
+                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
+                      Schema.Struct({
+                        geo: Schema.Struct({
+                          countryCode: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({ countryCode: "country_code" }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        devicePosture: Schema.Struct({
+                          integrationUid: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            integrationUid: "integration_uid",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ devicePosture: "device_posture" }),
+                      ),
+                      Schema.Struct({
+                        emailDomain: Schema.Struct({
+                          domain: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ emailDomain: "email_domain" }),
+                      ),
+                      Schema.Struct({
+                        emailList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
+                      Schema.Struct({
+                        email: Schema.Struct({
+                          email: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        everyone: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        externalEvaluation: Schema.Struct({
+                          evaluateUrl: Schema.String,
+                          keysUrl: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            evaluateUrl: "evaluate_url",
+                            keysUrl: "keys_url",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          externalEvaluation: "external_evaluation",
+                        }),
+                      ),
+                      Schema.Struct({
+                        githubOrganization: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                          team: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                            team: "team",
+                          }),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          githubOrganization: "github-organization",
+                        }),
+                      ),
+                      Schema.Struct({
+                        gsuite: Schema.Struct({
+                          email: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            email: "email",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        loginMethod: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(
+                        Schema.encodeKeys({ loginMethod: "login_method" }),
+                      ),
+                      Schema.Struct({
+                        ipList: Schema.Struct({
+                          id: Schema.String,
+                        }),
+                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
+                      Schema.Struct({
+                        ip: Schema.Struct({
+                          ip: Schema.String,
+                        }),
+                      }),
+                      Schema.Struct({
+                        okta: Schema.Struct({
+                          identityProviderId: Schema.String,
+                          name: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            identityProviderId: "identity_provider_id",
+                            name: "name",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        saml: Schema.Struct({
+                          attributeName: Schema.String,
+                          attributeValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            attributeName: "attribute_name",
+                            attributeValue: "attribute_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        oidc: Schema.Struct({
+                          claimName: Schema.String,
+                          claimValue: Schema.String,
+                          identityProviderId: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            claimName: "claim_name",
+                            claimValue: "claim_value",
+                            identityProviderId: "identity_provider_id",
+                          }),
+                        ),
+                      }),
+                      Schema.Struct({
+                        serviceToken: Schema.Struct({
+                          tokenId: Schema.String,
+                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
+                      }).pipe(
+                        Schema.encodeKeys({ serviceToken: "service_token" }),
+                      ),
+                      Schema.Struct({
+                        linkedAppToken: Schema.Struct({
+                          appUid: Schema.String,
+                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          linkedAppToken: "linked_app_token",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              updatedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                connectionRules: "connection_rules",
+                createdAt: "created_at",
+                decision: "decision",
+                exclude: "exclude",
+                include: "include",
+                name: "name",
+                require: "require",
+                updatedAt: "updated_at",
+              }),
+            ),
+          ),
           Schema.Null,
         ]),
       ),
     }).pipe(
       Schema.encodeKeys({
+        targetCriteria: "target_criteria",
+        type: "type",
         id: "id",
-        allowedIdps: "allowed_idps",
-        appLauncherVisible: "app_launcher_visible",
         aud: "aud",
-        autoRedirectToIdentity: "auto_redirect_to_identity",
-        customPages: "custom_pages",
-        logoUrl: "logo_url",
         name: "name",
         policies: "policies",
-        saasApp: "saas_app",
-        scimConfig: "scim_config",
-        tags: "tags",
-        type: "type",
       }),
     ),
     Schema.Struct({
@@ -31200,837 +31862,6 @@ export const UpdateAccessApplicationResponse =
     ),
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      appLauncherVisible: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "self_hosted",
-            "saas",
-            "ssh",
-            "vnc",
-            "app_launcher",
-            "warp",
-            "biso",
-            "bookmark",
-            "dash_sso",
-            "infrastructure",
-            "rdp",
-            "mcp",
-            "mcp_portal",
-            "proxy_endpoint",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        appLauncherVisible: "app_launcher_visible",
-        aud: "aud",
-        domain: "domain",
-        logoUrl: "logo_url",
-        name: "name",
-        tags: "tags",
-        type: "type",
-      }),
-    ),
-    Schema.Struct({
-      targetCriteria: Schema.Array(
-        Schema.Struct({
-          port: Schema.Number,
-          protocol: Schema.Literal("SSH"),
-          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            port: "port",
-            protocol: "protocol",
-            targetAttributes: "target_attributes",
-          }),
-        ),
-      ),
-      type: Schema.Literals([
-        "self_hosted",
-        "saas",
-        "ssh",
-        "vnc",
-        "app_launcher",
-        "warp",
-        "biso",
-        "bookmark",
-        "dash_sso",
-        "infrastructure",
-        "rdp",
-        "mcp",
-        "mcp_portal",
-        "proxy_endpoint",
-      ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              connectionRules: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    ssh: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          usernames: Schema.Array(Schema.String),
-                          allowEmailAlias: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            usernames: "usernames",
-                            allowEmailAlias: "allow_email_alias",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              createdAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              decision: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
-                  Schema.Null,
-                ]),
-              ),
-              exclude: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              include: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              require: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        group: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        anyValidServiceToken: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          anyValidServiceToken: "any_valid_service_token",
-                        }),
-                      ),
-                      Schema.Struct({
-                        authContext: Schema.Struct({
-                          id: Schema.String,
-                          acId: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            acId: "ac_id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ authContext: "auth_context" }),
-                      ),
-                      Schema.Struct({
-                        authMethod: Schema.Struct({
-                          authMethod: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ authMethod: "auth_method" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
-                      Schema.Struct({
-                        azureAD: Schema.Struct({
-                          id: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        certificate: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        commonName: Schema.Struct({
-                          commonName: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ commonName: "common_name" }),
-                        ),
-                      }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
-                      Schema.Struct({
-                        geo: Schema.Struct({
-                          countryCode: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({ countryCode: "country_code" }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        devicePosture: Schema.Struct({
-                          integrationUid: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            integrationUid: "integration_uid",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({ devicePosture: "device_posture" }),
-                      ),
-                      Schema.Struct({
-                        emailDomain: Schema.Struct({
-                          domain: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ emailDomain: "email_domain" }),
-                      ),
-                      Schema.Struct({
-                        emailList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
-                      Schema.Struct({
-                        email: Schema.Struct({
-                          email: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        everyone: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        externalEvaluation: Schema.Struct({
-                          evaluateUrl: Schema.String,
-                          keysUrl: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            evaluateUrl: "evaluate_url",
-                            keysUrl: "keys_url",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          externalEvaluation: "external_evaluation",
-                        }),
-                      ),
-                      Schema.Struct({
-                        githubOrganization: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                          team: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                            team: "team",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          githubOrganization: "github-organization",
-                        }),
-                      ),
-                      Schema.Struct({
-                        gsuite: Schema.Struct({
-                          email: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            email: "email",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        loginMethod: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(
-                        Schema.encodeKeys({ loginMethod: "login_method" }),
-                      ),
-                      Schema.Struct({
-                        ipList: Schema.Struct({
-                          id: Schema.String,
-                        }),
-                      }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
-                      Schema.Struct({
-                        ip: Schema.Struct({
-                          ip: Schema.String,
-                        }),
-                      }),
-                      Schema.Struct({
-                        okta: Schema.Struct({
-                          identityProviderId: Schema.String,
-                          name: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            identityProviderId: "identity_provider_id",
-                            name: "name",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        saml: Schema.Struct({
-                          attributeName: Schema.String,
-                          attributeValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            attributeName: "attribute_name",
-                            attributeValue: "attribute_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        oidc: Schema.Struct({
-                          claimName: Schema.String,
-                          claimValue: Schema.String,
-                          identityProviderId: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            claimName: "claim_name",
-                            claimValue: "claim_value",
-                            identityProviderId: "identity_provider_id",
-                          }),
-                        ),
-                      }),
-                      Schema.Struct({
-                        serviceToken: Schema.Struct({
-                          tokenId: Schema.String,
-                        }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
-                      }).pipe(
-                        Schema.encodeKeys({ serviceToken: "service_token" }),
-                      ),
-                      Schema.Struct({
-                        linkedAppToken: Schema.Struct({
-                          appUid: Schema.String,
-                        }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          linkedAppToken: "linked_app_token",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              updatedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                connectionRules: "connection_rules",
-                createdAt: "created_at",
-                decision: "decision",
-                exclude: "exclude",
-                include: "include",
-                name: "name",
-                require: "require",
-                updatedAt: "updated_at",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        targetCriteria: "target_criteria",
-        type: "type",
-        id: "id",
-        aud: "aud",
-        name: "name",
-        policies: "policies",
-      }),
-    ),
-    Schema.Struct({
-      domain: Schema.String,
-      targetCriteria: Schema.Array(
-        Schema.Struct({
-          port: Schema.Number,
-          protocol: Schema.Literal("RDP"),
-          targetAttributes: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            port: "port",
-            protocol: "protocol",
-            targetAttributes: "target_attributes",
-          }),
-        ),
-      ),
-      type: Schema.Literals([
-        "self_hosted",
-        "saas",
-        "ssh",
-        "vnc",
-        "app_launcher",
-        "warp",
-        "biso",
-        "bookmark",
-        "dash_sso",
-        "infrastructure",
-        "rdp",
-        "mcp",
-        "mcp_portal",
-        "proxy_endpoint",
-      ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      allowAuthenticateViaWarp: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       allowedIdps: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -32041,149 +31872,11 @@ export const UpdateAccessApplicationResponse =
       autoRedirectToIdentity: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      corsHeaders: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            allowAllHeaders: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowAllMethods: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowAllOrigins: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowCredentials: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            allowedHeaders: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            allowedMethods: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Literals([
-                    "GET",
-                    "POST",
-                    "HEAD",
-                    "PUT",
-                    "DELETE",
-                    "CONNECT",
-                    "OPTIONS",
-                    "TRACE",
-                    "PATCH",
-                  ]),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            allowedOrigins: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              allowAllHeaders: "allow_all_headers",
-              allowAllMethods: "allow_all_methods",
-              allowAllOrigins: "allow_all_origins",
-              allowCredentials: "allow_credentials",
-              allowedHeaders: "allowed_headers",
-              allowedMethods: "allowed_methods",
-              allowedOrigins: "allowed_origins",
-              maxAge: "max_age",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      customDenyMessage: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customNonIdentityDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
       customPages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      destinations: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("public"), Schema.Null]),
-                ),
-                uri: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                cidr: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                hostname: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                l4Protocol: Schema.optional(
-                  Schema.Union([Schema.Literals(["tcp", "udp"]), Schema.Null]),
-                ),
-                portRange: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("private"), Schema.Null]),
-                ),
-                vnetId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  cidr: "cidr",
-                  hostname: "hostname",
-                  l4Protocol: "l4_protocol",
-                  portRange: "port_range",
-                  type: "type",
-                  vnetId: "vnet_id",
-                }),
-              ),
-              Schema.Struct({
-                mcpServerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([
-                    Schema.Literal("via_mcp_server_portal"),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  mcpServerId: "mcp_server_id",
-                  type: "type",
-                }),
-              ),
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      enableBindingCookie: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      httpOnlyCookieAttribute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      optionsPreflightBypass: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      pathCookieAttribute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       policies: Schema.optional(
         Schema.Union([
           Schema.Array(
@@ -32919,11 +32612,282 @@ export const UpdateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      readServiceTokensFromHeader: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      sameSiteCookieAttribute: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
+      saasApp: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Struct({
+              authType: Schema.optional(
+                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
+              ),
+              consumerServiceUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              customAttributes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      friendlyName: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      nameFormat: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+                            "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      required: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      source: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            name: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            nameByIdp: Schema.optional(
+                              Schema.Union([
+                                Schema.Array(
+                                  Schema.Struct({
+                                    idpId: Schema.optional(
+                                      Schema.Union([
+                                        Schema.String,
+                                        Schema.Null,
+                                      ]),
+                                    ),
+                                    sourceName: Schema.optional(
+                                      Schema.Union([
+                                        Schema.String,
+                                        Schema.Null,
+                                      ]),
+                                    ),
+                                  }).pipe(
+                                    Schema.encodeKeys({
+                                      idpId: "idp_id",
+                                      sourceName: "source_name",
+                                    }),
+                                  ),
+                                ),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              name: "name",
+                              nameByIdp: "name_by_idp",
+                            }),
+                          ),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        friendlyName: "friendly_name",
+                        name: "name",
+                        nameFormat: "name_format",
+                        required: "required",
+                        source: "source",
+                      }),
+                    ),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              defaultRelayState: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              idpEntityId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              nameIdFormat: Schema.optional(
+                Schema.Union([Schema.Literals(["id", "email"]), Schema.Null]),
+              ),
+              nameIdTransformJsonata: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              publicKey: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              samlAttributeTransformJsonata: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              spEntityId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              ssoEndpoint: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                authType: "auth_type",
+                consumerServiceUrl: "consumer_service_url",
+                customAttributes: "custom_attributes",
+                defaultRelayState: "default_relay_state",
+                idpEntityId: "idp_entity_id",
+                nameIdFormat: "name_id_format",
+                nameIdTransformJsonata: "name_id_transform_jsonata",
+                publicKey: "public_key",
+                samlAttributeTransformJsonata:
+                  "saml_attribute_transform_jsonata",
+                spEntityId: "sp_entity_id",
+                ssoEndpoint: "sso_endpoint",
+              }),
+            ),
+            Schema.Struct({
+              accessTokenLifetime: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              allowPkceWithoutClientSecret: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              appLauncherUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              authType: Schema.optional(
+                Schema.Union([Schema.Literals(["saml", "oidc"]), Schema.Null]),
+              ),
+              clientId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              clientSecret: Schema.optional(
+                Schema.Union([SensitiveString, Schema.Null]),
+              ),
+              customClaims: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      required: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      scope: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "groups",
+                            "profile",
+                            "email",
+                            "openid",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      source: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            name: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            nameByIdp: Schema.optional(
+                              Schema.Union([
+                                Schema.Record(Schema.String, Schema.Unknown),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              name: "name",
+                              nameByIdp: "name_by_idp",
+                            }),
+                          ),
+                          Schema.Null,
+                        ]),
+                      ),
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              grantTypes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Literals([
+                      "authorization_code",
+                      "authorization_code_with_pkce",
+                      "refresh_tokens",
+                      "hybrid",
+                      "implicit",
+                    ]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              groupFilterRegex: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              hybridAndImplicitOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                    returnIdTokenFromAuthorizationEndpoint: Schema.optional(
+                      Schema.Union([Schema.Boolean, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      returnAccessTokenFromAuthorizationEndpoint:
+                        "return_access_token_from_authorization_endpoint",
+                      returnIdTokenFromAuthorizationEndpoint:
+                        "return_id_token_from_authorization_endpoint",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+              publicKey: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              redirectUris: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              refreshTokenOptions: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    lifetime: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              scopes: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Literals(["openid", "groups", "email", "profile"]),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                accessTokenLifetime: "access_token_lifetime",
+                allowPkceWithoutClientSecret:
+                  "allow_pkce_without_client_secret",
+                appLauncherUrl: "app_launcher_url",
+                authType: "auth_type",
+                clientId: "client_id",
+                clientSecret: "client_secret",
+                customClaims: "custom_claims",
+                grantTypes: "grant_types",
+                groupFilterRegex: "group_filter_regex",
+                hybridAndImplicitOptions: "hybrid_and_implicit_options",
+                publicKey: "public_key",
+                redirectUris: "redirect_uris",
+                refreshTokenOptions: "refresh_token_options",
+                scopes: "scopes",
+              }),
+            ),
+          ]),
+          Schema.Null,
+        ]),
       ),
       scimConfig: Schema.optional(
         Schema.Union([
@@ -32933,15 +32897,6 @@ export const UpdateAccessApplicationResponse =
             authentication: Schema.optional(
               Schema.Union([
                 Schema.Union([
-                  Schema.Struct({
-                    password: SensitiveString,
-                    scheme: Schema.Literal("httpbasic"),
-                    user: Schema.String,
-                  }),
-                  Schema.Struct({
-                    token: Schema.String,
-                    scheme: Schema.Literal("oauthbearertoken"),
-                  }),
                   Schema.Struct({
                     authorizationUrl: Schema.String,
                     clientId: Schema.String,
@@ -32962,6 +32917,11 @@ export const UpdateAccessApplicationResponse =
                     }),
                   ),
                   Schema.Struct({
+                    password: SensitiveString,
+                    scheme: Schema.Literal("httpbasic"),
+                    user: Schema.String,
+                  }),
+                  Schema.Struct({
                     clientId: Schema.String,
                     clientSecret: SensitiveString,
                     scheme: Schema.Literal("access_service_token"),
@@ -32972,17 +32932,12 @@ export const UpdateAccessApplicationResponse =
                       scheme: "scheme",
                     }),
                   ),
+                  Schema.Struct({
+                    token: Schema.String,
+                    scheme: Schema.Literal("oauthbearertoken"),
+                  }),
                   Schema.Array(
                     Schema.Union([
-                      Schema.Struct({
-                        password: SensitiveString,
-                        scheme: Schema.Literal("httpbasic"),
-                        user: Schema.String,
-                      }),
-                      Schema.Struct({
-                        token: Schema.String,
-                        scheme: Schema.Literal("oauthbearertoken"),
-                      }),
                       Schema.Struct({
                         authorizationUrl: Schema.String,
                         clientId: Schema.String,
@@ -33006,6 +32961,11 @@ export const UpdateAccessApplicationResponse =
                         }),
                       ),
                       Schema.Struct({
+                        password: SensitiveString,
+                        scheme: Schema.Literal("httpbasic"),
+                        user: Schema.String,
+                      }),
+                      Schema.Struct({
                         clientId: Schema.String,
                         clientSecret: SensitiveString,
                         scheme: Schema.Literal("access_service_token"),
@@ -33016,6 +32976,10 @@ export const UpdateAccessApplicationResponse =
                           scheme: "scheme",
                         }),
                       ),
+                      Schema.Struct({
+                        token: Schema.String,
+                        scheme: Schema.Literal("oauthbearertoken"),
+                      }),
                     ]),
                   ),
                 ]),
@@ -33091,54 +33055,90 @@ export const UpdateAccessApplicationResponse =
           Schema.Null,
         ]),
       ),
-      selfHostedDomains: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      serviceAuth_401Redirect: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sessionDuration: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      skipInterstitial: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
+          Schema.Null,
+        ]),
+      ),
     }).pipe(
       Schema.encodeKeys({
-        domain: "domain",
-        targetCriteria: "target_criteria",
-        type: "type",
         id: "id",
-        allowAuthenticateViaWarp: "allow_authenticate_via_warp",
-        allowIframe: "allow_iframe",
         allowedIdps: "allowed_idps",
         appLauncherVisible: "app_launcher_visible",
         aud: "aud",
         autoRedirectToIdentity: "auto_redirect_to_identity",
-        corsHeaders: "cors_headers",
-        customDenyMessage: "custom_deny_message",
-        customDenyUrl: "custom_deny_url",
-        customNonIdentityDenyUrl: "custom_non_identity_deny_url",
         customPages: "custom_pages",
-        destinations: "destinations",
-        enableBindingCookie: "enable_binding_cookie",
-        httpOnlyCookieAttribute: "http_only_cookie_attribute",
         logoUrl: "logo_url",
         name: "name",
-        optionsPreflightBypass: "options_preflight_bypass",
-        pathCookieAttribute: "path_cookie_attribute",
         policies: "policies",
-        readServiceTokensFromHeader: "read_service_tokens_from_header",
-        sameSiteCookieAttribute: "same_site_cookie_attribute",
+        saasApp: "saas_app",
         scimConfig: "scim_config",
-        selfHostedDomains: "self_hosted_domains",
-        serviceAuth_401Redirect: "service_auth_401_redirect",
-        sessionDuration: "session_duration",
-        skipInterstitial: "skip_interstitial",
         tags: "tags",
+        type: "type",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      appLauncherVisible: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "self_hosted",
+            "saas",
+            "ssh",
+            "vnc",
+            "app_launcher",
+            "warp",
+            "biso",
+            "bookmark",
+            "dash_sso",
+            "infrastructure",
+            "rdp",
+            "mcp",
+            "mcp_portal",
+            "proxy_endpoint",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        appLauncherVisible: "app_launcher_visible",
+        aud: "aud",
+        domain: "domain",
+        logoUrl: "logo_url",
+        name: "name",
+        tags: "tags",
+        type: "type",
       }),
     ),
   ]).pipe(
@@ -58214,43 +58214,6 @@ export const GetDevicePostureResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
-            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-            path: Schema.String,
-            exists: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            thumbprint: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              path: "path",
-              exists: "exists",
-              sha256: "sha256",
-              thumbprint: "thumbprint",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              operatingSystem: "operating_system",
-            }),
-          ),
-          Schema.Struct({
-            operatingSystem: Schema.Literal("windows"),
-            domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              domain: "domain",
-            }),
-          ),
-          Schema.Struct({
             operatingSystem: Schema.Literal("windows"),
             operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
             version: Schema.String,
@@ -58272,47 +58235,6 @@ export const GetDevicePostureResponse =
               osDistroRevision: "os_distro_revision",
               osVersionExtra: "os_version_extra",
             }),
-          ),
-          Schema.Struct({
-            enabled: Schema.Boolean,
-            operatingSystem: Schema.Literals(["windows", "mac"]),
-          }).pipe(
-            Schema.encodeKeys({
-              enabled: "enabled",
-              operatingSystem: "operating_system",
-            }),
-          ),
-          Schema.Struct({
-            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-            path: Schema.String,
-            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            thumbprint: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              path: "path",
-              sha256: "sha256",
-              thumbprint: "thumbprint",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-          }),
-          Schema.Struct({
-            checkDisks: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            requireAll: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            certificateId: Schema.String,
-            cn: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
           ),
           Schema.Struct({
             certificateId: Schema.String,
@@ -58363,11 +58285,84 @@ export const GetDevicePostureResponse =
             }),
           ),
           Schema.Struct({
-            updateWindowDays: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
+            connectionId: Schema.String,
+            countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+            issueCount: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              connectionId: "connection_id",
+              countOperator: "countOperator",
+              issueCount: "issue_count",
+            }),
+          ),
+          Schema.Struct({
+            connectionId: Schema.String,
+            operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+            score: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              connectionId: "connection_id",
+              operator: "operator",
+              score: "score",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+            path: Schema.String,
+            exists: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            thumbprint: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
             ),
           }).pipe(
-            Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              path: "path",
+              exists: "exists",
+              sha256: "sha256",
+              thumbprint: "thumbprint",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              operatingSystem: "operating_system",
+            }),
+          ),
+          Schema.Struct({
+            enabled: Schema.Boolean,
+            operatingSystem: Schema.Literals(["windows", "mac"]),
+          }).pipe(
+            Schema.encodeKeys({
+              enabled: "enabled",
+              operatingSystem: "operating_system",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+            path: Schema.String,
+            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            thumbprint: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              path: "path",
+              sha256: "sha256",
+              thumbprint: "thumbprint",
+            }),
+          ),
+          Schema.Struct({
+            certificateId: Schema.String,
+            cn: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
           ),
           Schema.Struct({
             complianceStatus: Schema.Literals([
@@ -58382,6 +58377,34 @@ export const GetDevicePostureResponse =
               connectionId: "connection_id",
             }),
           ),
+          Schema.Struct({
+            complianceStatus: Schema.Literals([
+              "compliant",
+              "noncompliant",
+              "unknown",
+              "notapplicable",
+              "ingraceperiod",
+              "error",
+            ]),
+            connectionId: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              complianceStatus: "compliance_status",
+              connectionId: "connection_id",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literal("windows"),
+            domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              domain: "domain",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+          }),
           Schema.Struct({
             connectionId: Schema.String,
             lastSeen: Schema.optional(
@@ -58426,33 +58449,6 @@ export const GetDevicePostureResponse =
               state: "state",
               version: "version",
               versionOperator: "versionOperator",
-            }),
-          ),
-          Schema.Struct({
-            complianceStatus: Schema.Literals([
-              "compliant",
-              "noncompliant",
-              "unknown",
-              "notapplicable",
-              "ingraceperiod",
-              "error",
-            ]),
-            connectionId: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              complianceStatus: "compliance_status",
-              connectionId: "connection_id",
-            }),
-          ),
-          Schema.Struct({
-            connectionId: Schema.String,
-            countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-            issueCount: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              connectionId: "connection_id",
-              countOperator: "countOperator",
-              issueCount: "issue_count",
             }),
           ),
           Schema.Struct({
@@ -58545,15 +58541,19 @@ export const GetDevicePostureResponse =
             }),
           ),
           Schema.Struct({
-            connectionId: Schema.String,
-            operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-            score: Schema.Number,
+            checkDisks: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            requireAll: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            updateWindowDays: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
           }).pipe(
-            Schema.encodeKeys({
-              connectionId: "connection_id",
-              operator: "operator",
-              score: "score",
-            }),
+            Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
           ),
         ]),
         Schema.Null,
@@ -58808,51 +58808,6 @@ export const ListDevicePosturesResponse =
           Schema.Union([
             Schema.Union([
               Schema.Struct({
-                operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-                path: Schema.String,
-                exists: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                sha256: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                thumbprint: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  operatingSystem: "operating_system",
-                  path: "path",
-                  exists: "exists",
-                  sha256: "sha256",
-                  thumbprint: "thumbprint",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                operatingSystem: Schema.Literals([
-                  "android",
-                  "ios",
-                  "chromeos",
-                ]),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  operatingSystem: "operating_system",
-                }),
-              ),
-              Schema.Struct({
-                operatingSystem: Schema.Literal("windows"),
-                domain: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  operatingSystem: "operating_system",
-                  domain: "domain",
-                }),
-              ),
-              Schema.Struct({
                 operatingSystem: Schema.Literal("windows"),
                 operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
                 version: Schema.String,
@@ -58873,52 +58828,6 @@ export const ListDevicePosturesResponse =
                   osDistroName: "os_distro_name",
                   osDistroRevision: "os_distro_revision",
                   osVersionExtra: "os_version_extra",
-                }),
-              ),
-              Schema.Struct({
-                enabled: Schema.Boolean,
-                operatingSystem: Schema.Literals(["windows", "mac"]),
-              }).pipe(
-                Schema.encodeKeys({
-                  enabled: "enabled",
-                  operatingSystem: "operating_system",
-                }),
-              ),
-              Schema.Struct({
-                operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-                path: Schema.String,
-                sha256: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                thumbprint: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  operatingSystem: "operating_system",
-                  path: "path",
-                  sha256: "sha256",
-                  thumbprint: "thumbprint",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-              }),
-              Schema.Struct({
-                checkDisks: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                requireAll: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                certificateId: Schema.String,
-                cn: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  certificateId: "certificate_id",
-                  cn: "cn",
                 }),
               ),
               Schema.Struct({
@@ -58973,11 +58882,95 @@ export const ListDevicePosturesResponse =
                 }),
               ),
               Schema.Struct({
-                updateWindowDays: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
+                connectionId: Schema.String,
+                countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+                issueCount: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  connectionId: "connection_id",
+                  countOperator: "countOperator",
+                  issueCount: "issue_count",
+                }),
+              ),
+              Schema.Struct({
+                connectionId: Schema.String,
+                operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+                score: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  connectionId: "connection_id",
+                  operator: "operator",
+                  score: "score",
+                }),
+              ),
+              Schema.Struct({
+                operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+                path: Schema.String,
+                exists: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                sha256: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                thumbprint: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
                 ),
               }).pipe(
-                Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
+                Schema.encodeKeys({
+                  operatingSystem: "operating_system",
+                  path: "path",
+                  exists: "exists",
+                  sha256: "sha256",
+                  thumbprint: "thumbprint",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                operatingSystem: Schema.Literals([
+                  "android",
+                  "ios",
+                  "chromeos",
+                ]),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  operatingSystem: "operating_system",
+                }),
+              ),
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                operatingSystem: Schema.Literals(["windows", "mac"]),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  operatingSystem: "operating_system",
+                }),
+              ),
+              Schema.Struct({
+                operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+                path: Schema.String,
+                sha256: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                thumbprint: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  operatingSystem: "operating_system",
+                  path: "path",
+                  sha256: "sha256",
+                  thumbprint: "thumbprint",
+                }),
+              ),
+              Schema.Struct({
+                certificateId: Schema.String,
+                cn: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  certificateId: "certificate_id",
+                  cn: "cn",
+                }),
               ),
               Schema.Struct({
                 complianceStatus: Schema.Literals([
@@ -58992,6 +58985,36 @@ export const ListDevicePosturesResponse =
                   connectionId: "connection_id",
                 }),
               ),
+              Schema.Struct({
+                complianceStatus: Schema.Literals([
+                  "compliant",
+                  "noncompliant",
+                  "unknown",
+                  "notapplicable",
+                  "ingraceperiod",
+                  "error",
+                ]),
+                connectionId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  complianceStatus: "compliance_status",
+                  connectionId: "connection_id",
+                }),
+              ),
+              Schema.Struct({
+                operatingSystem: Schema.Literal("windows"),
+                domain: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  operatingSystem: "operating_system",
+                  domain: "domain",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+              }),
               Schema.Struct({
                 connectionId: Schema.String,
                 lastSeen: Schema.optional(
@@ -59036,33 +59059,6 @@ export const ListDevicePosturesResponse =
                   state: "state",
                   version: "version",
                   versionOperator: "versionOperator",
-                }),
-              ),
-              Schema.Struct({
-                complianceStatus: Schema.Literals([
-                  "compliant",
-                  "noncompliant",
-                  "unknown",
-                  "notapplicable",
-                  "ingraceperiod",
-                  "error",
-                ]),
-                connectionId: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  complianceStatus: "compliance_status",
-                  connectionId: "connection_id",
-                }),
-              ),
-              Schema.Struct({
-                connectionId: Schema.String,
-                countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-                issueCount: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  connectionId: "connection_id",
-                  countOperator: "countOperator",
-                  issueCount: "issue_count",
                 }),
               ),
               Schema.Struct({
@@ -59155,15 +59151,19 @@ export const ListDevicePosturesResponse =
                 }),
               ),
               Schema.Struct({
-                connectionId: Schema.String,
-                operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-                score: Schema.Number,
+                checkDisks: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                requireAll: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }),
+              Schema.Struct({
+                updateWindowDays: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
               }).pipe(
-                Schema.encodeKeys({
-                  connectionId: "connection_id",
-                  operator: "operator",
-                  score: "score",
-                }),
+                Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
               ),
             ]),
             Schema.Null,
@@ -59422,36 +59422,6 @@ export const CreateDevicePostureRequest =
     input: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-          path: Schema.String,
-          exists: Schema.optional(Schema.Boolean),
-          sha256: Schema.optional(Schema.String),
-          thumbprint: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({
-            operatingSystem: "operating_system",
-            path: "path",
-            exists: "exists",
-            sha256: "sha256",
-            thumbprint: "thumbprint",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
-        }).pipe(
-          Schema.encodeKeys({ id: "id", operatingSystem: "operating_system" }),
-        ),
-        Schema.Struct({
-          operatingSystem: Schema.Literal("windows"),
-          domain: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({
-            operatingSystem: "operating_system",
-            domain: "domain",
-          }),
-        ),
-        Schema.Struct({
           operatingSystem: Schema.Literal("windows"),
           operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
           version: Schema.String,
@@ -59467,41 +59437,6 @@ export const CreateDevicePostureRequest =
             osDistroRevision: "os_distro_revision",
             osVersionExtra: "os_version_extra",
           }),
-        ),
-        Schema.Struct({
-          enabled: Schema.Boolean,
-          operatingSystem: Schema.Literals(["windows", "mac"]),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            operatingSystem: "operating_system",
-          }),
-        ),
-        Schema.Struct({
-          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-          path: Schema.String,
-          sha256: Schema.optional(Schema.String),
-          thumbprint: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({
-            operatingSystem: "operating_system",
-            path: "path",
-            sha256: "sha256",
-            thumbprint: "thumbprint",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-        }),
-        Schema.Struct({
-          checkDisks: Schema.optional(Schema.Array(Schema.String)),
-          requireAll: Schema.optional(Schema.Boolean),
-        }),
-        Schema.Struct({
-          certificateId: Schema.String,
-          cn: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
         ),
         Schema.Struct({
           certificateId: Schema.String,
@@ -59537,8 +59472,76 @@ export const CreateDevicePostureRequest =
           }),
         ),
         Schema.Struct({
-          updateWindowDays: Schema.optional(Schema.Number),
-        }).pipe(Schema.encodeKeys({ updateWindowDays: "update_window_days" })),
+          connectionId: Schema.String,
+          countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+          issueCount: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            connectionId: "connection_id",
+            countOperator: "countOperator",
+            issueCount: "issue_count",
+          }),
+        ),
+        Schema.Struct({
+          connectionId: Schema.String,
+          operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+          score: Schema.Number,
+        }).pipe(
+          Schema.encodeKeys({
+            connectionId: "connection_id",
+            operator: "operator",
+            score: "score",
+          }),
+        ),
+        Schema.Struct({
+          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+          path: Schema.String,
+          exists: Schema.optional(Schema.Boolean),
+          sha256: Schema.optional(Schema.String),
+          thumbprint: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            operatingSystem: "operating_system",
+            path: "path",
+            exists: "exists",
+            sha256: "sha256",
+            thumbprint: "thumbprint",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
+        }).pipe(
+          Schema.encodeKeys({ id: "id", operatingSystem: "operating_system" }),
+        ),
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          operatingSystem: Schema.Literals(["windows", "mac"]),
+        }).pipe(
+          Schema.encodeKeys({
+            enabled: "enabled",
+            operatingSystem: "operating_system",
+          }),
+        ),
+        Schema.Struct({
+          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+          path: Schema.String,
+          sha256: Schema.optional(Schema.String),
+          thumbprint: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            operatingSystem: "operating_system",
+            path: "path",
+            sha256: "sha256",
+            thumbprint: "thumbprint",
+          }),
+        ),
+        Schema.Struct({
+          certificateId: Schema.String,
+          cn: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
+        ),
         Schema.Struct({
           complianceStatus: Schema.Literals([
             "compliant",
@@ -59552,6 +59555,34 @@ export const CreateDevicePostureRequest =
             connectionId: "connection_id",
           }),
         ),
+        Schema.Struct({
+          complianceStatus: Schema.Literals([
+            "compliant",
+            "noncompliant",
+            "unknown",
+            "notapplicable",
+            "ingraceperiod",
+            "error",
+          ]),
+          connectionId: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            complianceStatus: "compliance_status",
+            connectionId: "connection_id",
+          }),
+        ),
+        Schema.Struct({
+          operatingSystem: Schema.Literal("windows"),
+          domain: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            operatingSystem: "operating_system",
+            domain: "domain",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+        }),
         Schema.Struct({
           connectionId: Schema.String,
           lastSeen: Schema.optional(Schema.String),
@@ -59579,33 +59610,6 @@ export const CreateDevicePostureRequest =
             state: "state",
             version: "version",
             versionOperator: "versionOperator",
-          }),
-        ),
-        Schema.Struct({
-          complianceStatus: Schema.Literals([
-            "compliant",
-            "noncompliant",
-            "unknown",
-            "notapplicable",
-            "ingraceperiod",
-            "error",
-          ]),
-          connectionId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            complianceStatus: "compliance_status",
-            connectionId: "connection_id",
-          }),
-        ),
-        Schema.Struct({
-          connectionId: Schema.String,
-          countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-          issueCount: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            connectionId: "connection_id",
-            countOperator: "countOperator",
-            issueCount: "issue_count",
           }),
         ),
         Schema.Struct({
@@ -59670,16 +59674,12 @@ export const CreateDevicePostureRequest =
           }),
         ),
         Schema.Struct({
-          connectionId: Schema.String,
-          operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-          score: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            connectionId: "connection_id",
-            operator: "operator",
-            score: "score",
-          }),
-        ),
+          checkDisks: Schema.optional(Schema.Array(Schema.String)),
+          requireAll: Schema.optional(Schema.Boolean),
+        }),
+        Schema.Struct({
+          updateWindowDays: Schema.optional(Schema.Number),
+        }).pipe(Schema.encodeKeys({ updateWindowDays: "update_window_days" })),
       ]),
     ),
     match: Schema.optional(
@@ -59872,43 +59872,6 @@ export const CreateDevicePostureResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
-            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-            path: Schema.String,
-            exists: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            thumbprint: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              path: "path",
-              exists: "exists",
-              sha256: "sha256",
-              thumbprint: "thumbprint",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              operatingSystem: "operating_system",
-            }),
-          ),
-          Schema.Struct({
-            operatingSystem: Schema.Literal("windows"),
-            domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              domain: "domain",
-            }),
-          ),
-          Schema.Struct({
             operatingSystem: Schema.Literal("windows"),
             operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
             version: Schema.String,
@@ -59930,47 +59893,6 @@ export const CreateDevicePostureResponse =
               osDistroRevision: "os_distro_revision",
               osVersionExtra: "os_version_extra",
             }),
-          ),
-          Schema.Struct({
-            enabled: Schema.Boolean,
-            operatingSystem: Schema.Literals(["windows", "mac"]),
-          }).pipe(
-            Schema.encodeKeys({
-              enabled: "enabled",
-              operatingSystem: "operating_system",
-            }),
-          ),
-          Schema.Struct({
-            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-            path: Schema.String,
-            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            thumbprint: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              path: "path",
-              sha256: "sha256",
-              thumbprint: "thumbprint",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-          }),
-          Schema.Struct({
-            checkDisks: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            requireAll: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            certificateId: Schema.String,
-            cn: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
           ),
           Schema.Struct({
             certificateId: Schema.String,
@@ -60021,11 +59943,84 @@ export const CreateDevicePostureResponse =
             }),
           ),
           Schema.Struct({
-            updateWindowDays: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
+            connectionId: Schema.String,
+            countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+            issueCount: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              connectionId: "connection_id",
+              countOperator: "countOperator",
+              issueCount: "issue_count",
+            }),
+          ),
+          Schema.Struct({
+            connectionId: Schema.String,
+            operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+            score: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              connectionId: "connection_id",
+              operator: "operator",
+              score: "score",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+            path: Schema.String,
+            exists: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            thumbprint: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
             ),
           }).pipe(
-            Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              path: "path",
+              exists: "exists",
+              sha256: "sha256",
+              thumbprint: "thumbprint",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              operatingSystem: "operating_system",
+            }),
+          ),
+          Schema.Struct({
+            enabled: Schema.Boolean,
+            operatingSystem: Schema.Literals(["windows", "mac"]),
+          }).pipe(
+            Schema.encodeKeys({
+              enabled: "enabled",
+              operatingSystem: "operating_system",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+            path: Schema.String,
+            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            thumbprint: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              path: "path",
+              sha256: "sha256",
+              thumbprint: "thumbprint",
+            }),
+          ),
+          Schema.Struct({
+            certificateId: Schema.String,
+            cn: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
           ),
           Schema.Struct({
             complianceStatus: Schema.Literals([
@@ -60040,6 +60035,34 @@ export const CreateDevicePostureResponse =
               connectionId: "connection_id",
             }),
           ),
+          Schema.Struct({
+            complianceStatus: Schema.Literals([
+              "compliant",
+              "noncompliant",
+              "unknown",
+              "notapplicable",
+              "ingraceperiod",
+              "error",
+            ]),
+            connectionId: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              complianceStatus: "compliance_status",
+              connectionId: "connection_id",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literal("windows"),
+            domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              domain: "domain",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+          }),
           Schema.Struct({
             connectionId: Schema.String,
             lastSeen: Schema.optional(
@@ -60084,33 +60107,6 @@ export const CreateDevicePostureResponse =
               state: "state",
               version: "version",
               versionOperator: "versionOperator",
-            }),
-          ),
-          Schema.Struct({
-            complianceStatus: Schema.Literals([
-              "compliant",
-              "noncompliant",
-              "unknown",
-              "notapplicable",
-              "ingraceperiod",
-              "error",
-            ]),
-            connectionId: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              complianceStatus: "compliance_status",
-              connectionId: "connection_id",
-            }),
-          ),
-          Schema.Struct({
-            connectionId: Schema.String,
-            countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-            issueCount: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              connectionId: "connection_id",
-              countOperator: "countOperator",
-              issueCount: "issue_count",
             }),
           ),
           Schema.Struct({
@@ -60203,15 +60199,19 @@ export const CreateDevicePostureResponse =
             }),
           ),
           Schema.Struct({
-            connectionId: Schema.String,
-            operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-            score: Schema.Number,
+            checkDisks: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            requireAll: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            updateWindowDays: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
           }).pipe(
-            Schema.encodeKeys({
-              connectionId: "connection_id",
-              operator: "operator",
-              score: "score",
-            }),
+            Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
           ),
         ]),
         Schema.Null,
@@ -60468,36 +60468,6 @@ export const UpdateDevicePostureRequest =
     input: Schema.optional(
       Schema.Union([
         Schema.Struct({
-          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-          path: Schema.String,
-          exists: Schema.optional(Schema.Boolean),
-          sha256: Schema.optional(Schema.String),
-          thumbprint: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({
-            operatingSystem: "operating_system",
-            path: "path",
-            exists: "exists",
-            sha256: "sha256",
-            thumbprint: "thumbprint",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
-        }).pipe(
-          Schema.encodeKeys({ id: "id", operatingSystem: "operating_system" }),
-        ),
-        Schema.Struct({
-          operatingSystem: Schema.Literal("windows"),
-          domain: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({
-            operatingSystem: "operating_system",
-            domain: "domain",
-          }),
-        ),
-        Schema.Struct({
           operatingSystem: Schema.Literal("windows"),
           operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
           version: Schema.String,
@@ -60513,41 +60483,6 @@ export const UpdateDevicePostureRequest =
             osDistroRevision: "os_distro_revision",
             osVersionExtra: "os_version_extra",
           }),
-        ),
-        Schema.Struct({
-          enabled: Schema.Boolean,
-          operatingSystem: Schema.Literals(["windows", "mac"]),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            operatingSystem: "operating_system",
-          }),
-        ),
-        Schema.Struct({
-          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-          path: Schema.String,
-          sha256: Schema.optional(Schema.String),
-          thumbprint: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({
-            operatingSystem: "operating_system",
-            path: "path",
-            sha256: "sha256",
-            thumbprint: "thumbprint",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-        }),
-        Schema.Struct({
-          checkDisks: Schema.optional(Schema.Array(Schema.String)),
-          requireAll: Schema.optional(Schema.Boolean),
-        }),
-        Schema.Struct({
-          certificateId: Schema.String,
-          cn: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
         ),
         Schema.Struct({
           certificateId: Schema.String,
@@ -60583,8 +60518,76 @@ export const UpdateDevicePostureRequest =
           }),
         ),
         Schema.Struct({
-          updateWindowDays: Schema.optional(Schema.Number),
-        }).pipe(Schema.encodeKeys({ updateWindowDays: "update_window_days" })),
+          connectionId: Schema.String,
+          countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+          issueCount: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            connectionId: "connection_id",
+            countOperator: "countOperator",
+            issueCount: "issue_count",
+          }),
+        ),
+        Schema.Struct({
+          connectionId: Schema.String,
+          operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+          score: Schema.Number,
+        }).pipe(
+          Schema.encodeKeys({
+            connectionId: "connection_id",
+            operator: "operator",
+            score: "score",
+          }),
+        ),
+        Schema.Struct({
+          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+          path: Schema.String,
+          exists: Schema.optional(Schema.Boolean),
+          sha256: Schema.optional(Schema.String),
+          thumbprint: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            operatingSystem: "operating_system",
+            path: "path",
+            exists: "exists",
+            sha256: "sha256",
+            thumbprint: "thumbprint",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
+        }).pipe(
+          Schema.encodeKeys({ id: "id", operatingSystem: "operating_system" }),
+        ),
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          operatingSystem: Schema.Literals(["windows", "mac"]),
+        }).pipe(
+          Schema.encodeKeys({
+            enabled: "enabled",
+            operatingSystem: "operating_system",
+          }),
+        ),
+        Schema.Struct({
+          operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+          path: Schema.String,
+          sha256: Schema.optional(Schema.String),
+          thumbprint: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            operatingSystem: "operating_system",
+            path: "path",
+            sha256: "sha256",
+            thumbprint: "thumbprint",
+          }),
+        ),
+        Schema.Struct({
+          certificateId: Schema.String,
+          cn: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
+        ),
         Schema.Struct({
           complianceStatus: Schema.Literals([
             "compliant",
@@ -60598,6 +60601,34 @@ export const UpdateDevicePostureRequest =
             connectionId: "connection_id",
           }),
         ),
+        Schema.Struct({
+          complianceStatus: Schema.Literals([
+            "compliant",
+            "noncompliant",
+            "unknown",
+            "notapplicable",
+            "ingraceperiod",
+            "error",
+          ]),
+          connectionId: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            complianceStatus: "compliance_status",
+            connectionId: "connection_id",
+          }),
+        ),
+        Schema.Struct({
+          operatingSystem: Schema.Literal("windows"),
+          domain: Schema.optional(Schema.String),
+        }).pipe(
+          Schema.encodeKeys({
+            operatingSystem: "operating_system",
+            domain: "domain",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+        }),
         Schema.Struct({
           connectionId: Schema.String,
           lastSeen: Schema.optional(Schema.String),
@@ -60625,33 +60656,6 @@ export const UpdateDevicePostureRequest =
             state: "state",
             version: "version",
             versionOperator: "versionOperator",
-          }),
-        ),
-        Schema.Struct({
-          complianceStatus: Schema.Literals([
-            "compliant",
-            "noncompliant",
-            "unknown",
-            "notapplicable",
-            "ingraceperiod",
-            "error",
-          ]),
-          connectionId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            complianceStatus: "compliance_status",
-            connectionId: "connection_id",
-          }),
-        ),
-        Schema.Struct({
-          connectionId: Schema.String,
-          countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-          issueCount: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            connectionId: "connection_id",
-            countOperator: "countOperator",
-            issueCount: "issue_count",
           }),
         ),
         Schema.Struct({
@@ -60716,16 +60720,12 @@ export const UpdateDevicePostureRequest =
           }),
         ),
         Schema.Struct({
-          connectionId: Schema.String,
-          operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-          score: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            connectionId: "connection_id",
-            operator: "operator",
-            score: "score",
-          }),
-        ),
+          checkDisks: Schema.optional(Schema.Array(Schema.String)),
+          requireAll: Schema.optional(Schema.Boolean),
+        }),
+        Schema.Struct({
+          updateWindowDays: Schema.optional(Schema.Number),
+        }).pipe(Schema.encodeKeys({ updateWindowDays: "update_window_days" })),
       ]),
     ),
     match: Schema.optional(
@@ -60921,43 +60921,6 @@ export const UpdateDevicePostureResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
-            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-            path: Schema.String,
-            exists: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            thumbprint: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              path: "path",
-              exists: "exists",
-              sha256: "sha256",
-              thumbprint: "thumbprint",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              operatingSystem: "operating_system",
-            }),
-          ),
-          Schema.Struct({
-            operatingSystem: Schema.Literal("windows"),
-            domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              domain: "domain",
-            }),
-          ),
-          Schema.Struct({
             operatingSystem: Schema.Literal("windows"),
             operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
             version: Schema.String,
@@ -60979,47 +60942,6 @@ export const UpdateDevicePostureResponse =
               osDistroRevision: "os_distro_revision",
               osVersionExtra: "os_version_extra",
             }),
-          ),
-          Schema.Struct({
-            enabled: Schema.Boolean,
-            operatingSystem: Schema.Literals(["windows", "mac"]),
-          }).pipe(
-            Schema.encodeKeys({
-              enabled: "enabled",
-              operatingSystem: "operating_system",
-            }),
-          ),
-          Schema.Struct({
-            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
-            path: Schema.String,
-            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            thumbprint: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              operatingSystem: "operating_system",
-              path: "path",
-              sha256: "sha256",
-              thumbprint: "thumbprint",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-          }),
-          Schema.Struct({
-            checkDisks: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            requireAll: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }),
-          Schema.Struct({
-            certificateId: Schema.String,
-            cn: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
           ),
           Schema.Struct({
             certificateId: Schema.String,
@@ -61070,11 +60992,84 @@ export const UpdateDevicePostureResponse =
             }),
           ),
           Schema.Struct({
-            updateWindowDays: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
+            connectionId: Schema.String,
+            countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+            issueCount: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              connectionId: "connection_id",
+              countOperator: "countOperator",
+              issueCount: "issue_count",
+            }),
+          ),
+          Schema.Struct({
+            connectionId: Schema.String,
+            operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
+            score: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              connectionId: "connection_id",
+              operator: "operator",
+              score: "score",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+            path: Schema.String,
+            exists: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            thumbprint: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
             ),
           }).pipe(
-            Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              path: "path",
+              exists: "exists",
+              sha256: "sha256",
+              thumbprint: "thumbprint",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            operatingSystem: Schema.Literals(["android", "ios", "chromeos"]),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              operatingSystem: "operating_system",
+            }),
+          ),
+          Schema.Struct({
+            enabled: Schema.Boolean,
+            operatingSystem: Schema.Literals(["windows", "mac"]),
+          }).pipe(
+            Schema.encodeKeys({
+              enabled: "enabled",
+              operatingSystem: "operating_system",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literals(["windows", "linux", "mac"]),
+            path: Schema.String,
+            sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            thumbprint: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              path: "path",
+              sha256: "sha256",
+              thumbprint: "thumbprint",
+            }),
+          ),
+          Schema.Struct({
+            certificateId: Schema.String,
+            cn: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({ certificateId: "certificate_id", cn: "cn" }),
           ),
           Schema.Struct({
             complianceStatus: Schema.Literals([
@@ -61089,6 +61084,34 @@ export const UpdateDevicePostureResponse =
               connectionId: "connection_id",
             }),
           ),
+          Schema.Struct({
+            complianceStatus: Schema.Literals([
+              "compliant",
+              "noncompliant",
+              "unknown",
+              "notapplicable",
+              "ingraceperiod",
+              "error",
+            ]),
+            connectionId: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              complianceStatus: "compliance_status",
+              connectionId: "connection_id",
+            }),
+          ),
+          Schema.Struct({
+            operatingSystem: Schema.Literal("windows"),
+            domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              operatingSystem: "operating_system",
+              domain: "domain",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+          }),
           Schema.Struct({
             connectionId: Schema.String,
             lastSeen: Schema.optional(
@@ -61133,33 +61156,6 @@ export const UpdateDevicePostureResponse =
               state: "state",
               version: "version",
               versionOperator: "versionOperator",
-            }),
-          ),
-          Schema.Struct({
-            complianceStatus: Schema.Literals([
-              "compliant",
-              "noncompliant",
-              "unknown",
-              "notapplicable",
-              "ingraceperiod",
-              "error",
-            ]),
-            connectionId: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              complianceStatus: "compliance_status",
-              connectionId: "connection_id",
-            }),
-          ),
-          Schema.Struct({
-            connectionId: Schema.String,
-            countOperator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-            issueCount: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              connectionId: "connection_id",
-              countOperator: "countOperator",
-              issueCount: "issue_count",
             }),
           ),
           Schema.Struct({
@@ -61252,15 +61248,19 @@ export const UpdateDevicePostureResponse =
             }),
           ),
           Schema.Struct({
-            connectionId: Schema.String,
-            operator: Schema.Literals(["<", "<=", ">", ">=", "=="]),
-            score: Schema.Number,
+            checkDisks: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            requireAll: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            updateWindowDays: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
           }).pipe(
-            Schema.encodeKeys({
-              connectionId: "connection_id",
-              operator: "operator",
-              score: "score",
-            }),
+            Schema.encodeKeys({ updateWindowDays: "update_window_days" }),
           ),
         ]),
         Schema.Null,
@@ -61669,6 +61669,17 @@ export const CreateDevicePostureIntegrationRequest =
         }),
       ),
       Schema.Struct({
+        accessClientId: Schema.String,
+        accessClientSecret: SensitiveString,
+        apiUrl: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          accessClientId: "access_client_id",
+          accessClientSecret: "access_client_secret",
+          apiUrl: "api_url",
+        }),
+      ),
+      Schema.Struct({
         clientId: Schema.String,
         clientSecret: SensitiveString,
       }).pipe(
@@ -61695,17 +61706,6 @@ export const CreateDevicePostureIntegrationRequest =
         clientSecret: SensitiveString,
       }).pipe(
         Schema.encodeKeys({ apiUrl: "api_url", clientSecret: "client_secret" }),
-      ),
-      Schema.Struct({
-        accessClientId: Schema.String,
-        accessClientSecret: SensitiveString,
-        apiUrl: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          accessClientId: "access_client_id",
-          accessClientSecret: "access_client_secret",
-          apiUrl: "api_url",
-        }),
       ),
     ]),
     interval: Schema.String,
@@ -61909,6 +61909,17 @@ export const PatchDevicePostureIntegrationRequest =
           }),
         ),
         Schema.Struct({
+          accessClientId: Schema.String,
+          accessClientSecret: SensitiveString,
+          apiUrl: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            accessClientId: "access_client_id",
+            accessClientSecret: "access_client_secret",
+            apiUrl: "api_url",
+          }),
+        ),
+        Schema.Struct({
           clientId: Schema.String,
           clientSecret: SensitiveString,
         }).pipe(
@@ -61937,17 +61948,6 @@ export const PatchDevicePostureIntegrationRequest =
           Schema.encodeKeys({
             apiUrl: "api_url",
             clientSecret: "client_secret",
-          }),
-        ),
-        Schema.Struct({
-          accessClientId: Schema.String,
-          accessClientSecret: SensitiveString,
-          apiUrl: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            accessClientId: "access_client_id",
-            accessClientSecret: "access_client_secret",
-            apiUrl: "api_url",
           }),
         ),
       ]),
@@ -68142,6 +68142,53 @@ export type GetDlpEntryResponse =
 export const GetDlpEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
+    caseSensitive: Schema.Boolean,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    secret: Schema.Boolean,
+    type: Schema.Literal("exact_data"),
+    updatedAt: Schema.String,
+    profiles: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    uploadStatus: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "empty",
+          "uploading",
+          "pending",
+          "processing",
+          "failed",
+          "complete",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      caseSensitive: "case_sensitive",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      secret: "secret",
+      type: "type",
+      updatedAt: "updated_at",
+      profiles: "profiles",
+      uploadStatus: "upload_status",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
     createdAt: Schema.String,
     enabled: Schema.Boolean,
     name: Schema.String,
@@ -68188,6 +68235,141 @@ export const GetDlpEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       updatedAt: "updated_at",
       profileId: "profile_id",
+      profiles: "profiles",
+      uploadStatus: "upload_status",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    type: Schema.Literal("word_list"),
+    updatedAt: Schema.String,
+    wordList: Schema.Unknown,
+    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    profiles: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    uploadStatus: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "empty",
+          "uploading",
+          "pending",
+          "processing",
+          "failed",
+          "complete",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
+      wordList: "word_list",
+      profileId: "profile_id",
+      profiles: "profiles",
+      uploadStatus: "upload_status",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    type: Schema.Literal("integration"),
+    updatedAt: Schema.String,
+    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    profiles: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    uploadStatus: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "empty",
+          "uploading",
+          "pending",
+          "processing",
+          "failed",
+          "complete",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
+      profileId: "profile_id",
+      profiles: "profiles",
+      uploadStatus: "upload_status",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    type: Schema.Literal("document_fingerprint"),
+    updatedAt: Schema.String,
+    profiles: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    uploadStatus: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "empty",
+          "uploading",
+          "pending",
+          "processing",
+          "failed",
+          "complete",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
       profiles: "profiles",
       uploadStatus: "upload_status",
     }),
@@ -68260,188 +68442,6 @@ export const GetDlpEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       profiles: "profiles",
       uploadStatus: "upload_status",
       variant: "variant",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    type: Schema.Literal("integration"),
-    updatedAt: Schema.String,
-    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    profiles: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    uploadStatus: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "empty",
-          "uploading",
-          "pending",
-          "processing",
-          "failed",
-          "complete",
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      profileId: "profile_id",
-      profiles: "profiles",
-      uploadStatus: "upload_status",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    caseSensitive: Schema.Boolean,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    secret: Schema.Boolean,
-    type: Schema.Literal("exact_data"),
-    updatedAt: Schema.String,
-    profiles: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    uploadStatus: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "empty",
-          "uploading",
-          "pending",
-          "processing",
-          "failed",
-          "complete",
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      caseSensitive: "case_sensitive",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      secret: "secret",
-      type: "type",
-      updatedAt: "updated_at",
-      profiles: "profiles",
-      uploadStatus: "upload_status",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    type: Schema.Literal("document_fingerprint"),
-    updatedAt: Schema.String,
-    profiles: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    uploadStatus: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "empty",
-          "uploading",
-          "pending",
-          "processing",
-          "failed",
-          "complete",
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      profiles: "profiles",
-      uploadStatus: "upload_status",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    type: Schema.Literal("word_list"),
-    updatedAt: Schema.String,
-    wordList: Schema.Unknown,
-    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    profiles: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    uploadStatus: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "empty",
-          "uploading",
-          "pending",
-          "processing",
-          "failed",
-          "complete",
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      wordList: "word_list",
-      profileId: "profile_id",
-      profiles: "profiles",
-      uploadStatus: "upload_status",
     }),
   ),
 ]).pipe(
@@ -68590,6 +68590,41 @@ export const ListDlpEntriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.Union([
         Schema.Struct({
           id: Schema.String,
+          caseSensitive: Schema.Boolean,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          secret: Schema.Boolean,
+          type: Schema.Literal("exact_data"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            caseSensitive: "case_sensitive",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            secret: "secret",
+            type: "type",
+            updatedAt: "updated_at",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
           createdAt: Schema.String,
           enabled: Schema.Boolean,
           name: Schema.String,
@@ -68627,6 +68662,109 @@ export const ListDlpEntriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             type: "type",
             updatedAt: "updated_at",
             profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("word_list"),
+          updatedAt: Schema.String,
+          wordList: Schema.Unknown,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            wordList: "word_list",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
             uploadStatus: "upload_status",
           }),
         ),
@@ -68688,144 +68826,6 @@ export const ListDlpEntriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             profileId: "profile_id",
             uploadStatus: "upload_status",
             variant: "variant",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          caseSensitive: Schema.Boolean,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          secret: Schema.Boolean,
-          type: Schema.Literal("exact_data"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            caseSensitive: "case_sensitive",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            secret: "secret",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("word_list"),
-          updatedAt: Schema.String,
-          wordList: Schema.Unknown,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            wordList: "word_list",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
           }),
         ),
       ]),
@@ -69032,6 +69032,27 @@ export type UpdateDlpEntryResponse =
 export const UpdateDlpEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
+    caseSensitive: Schema.Boolean,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    secret: Schema.Boolean,
+    type: Schema.Literal("exact_data"),
+    updatedAt: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      caseSensitive: "case_sensitive",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      secret: "secret",
+      type: "type",
+      updatedAt: "updated_at",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
     createdAt: Schema.String,
     enabled: Schema.Boolean,
     name: Schema.String,
@@ -69054,6 +69075,63 @@ export const UpdateDlpEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       updatedAt: "updated_at",
       profileId: "profile_id",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    type: Schema.Literal("word_list"),
+    updatedAt: Schema.String,
+    wordList: Schema.Unknown,
+    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
+      wordList: "word_list",
+      profileId: "profile_id",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    type: Schema.Literal("integration"),
+    updatedAt: Schema.String,
+    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
+      profileId: "profile_id",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    type: Schema.Literal("document_fingerprint"),
+    updatedAt: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
     }),
   ),
   Schema.Struct({
@@ -69098,84 +69176,6 @@ export const UpdateDlpEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       type: "type",
       profileId: "profile_id",
       variant: "variant",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    type: Schema.Literal("integration"),
-    updatedAt: Schema.String,
-    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      profileId: "profile_id",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    caseSensitive: Schema.Boolean,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    secret: Schema.Boolean,
-    type: Schema.Literal("exact_data"),
-    updatedAt: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      caseSensitive: "case_sensitive",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      secret: "secret",
-      type: "type",
-      updatedAt: "updated_at",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    type: Schema.Literal("document_fingerprint"),
-    updatedAt: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    enabled: Schema.Boolean,
-    name: Schema.String,
-    type: Schema.Literal("word_list"),
-    updatedAt: Schema.String,
-    wordList: Schema.Unknown,
-    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      enabled: "enabled",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      wordList: "word_list",
-      profileId: "profile_id",
     }),
   ),
 ]).pipe(
@@ -69370,6 +69370,53 @@ export const GetDlpEntryCustomResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       id: Schema.String,
+      caseSensitive: Schema.Boolean,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      secret: Schema.Boolean,
+      type: Schema.Literal("exact_data"),
+      updatedAt: Schema.String,
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        caseSensitive: "case_sensitive",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        secret: "secret",
+        type: "type",
+        updatedAt: "updated_at",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       name: Schema.String,
@@ -69416,6 +69463,141 @@ export const GetDlpEntryCustomResponse =
         type: "type",
         updatedAt: "updated_at",
         profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("word_list"),
+      updatedAt: Schema.String,
+      wordList: Schema.Unknown,
+      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        wordList: "word_list",
+        profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("integration"),
+      updatedAt: Schema.String,
+      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("document_fingerprint"),
+      updatedAt: Schema.String,
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
         profiles: "profiles",
         uploadStatus: "upload_status",
       }),
@@ -69488,188 +69670,6 @@ export const GetDlpEntryCustomResponse =
         profiles: "profiles",
         uploadStatus: "upload_status",
         variant: "variant",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("integration"),
-      updatedAt: Schema.String,
-      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        profileId: "profile_id",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      caseSensitive: Schema.Boolean,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      secret: Schema.Boolean,
-      type: Schema.Literal("exact_data"),
-      updatedAt: Schema.String,
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        caseSensitive: "case_sensitive",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        secret: "secret",
-        type: "type",
-        updatedAt: "updated_at",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("document_fingerprint"),
-      updatedAt: Schema.String,
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("word_list"),
-      updatedAt: Schema.String,
-      wordList: Schema.Unknown,
-      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        wordList: "word_list",
-        profileId: "profile_id",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
       }),
     ),
   ]).pipe(
@@ -69819,6 +69819,41 @@ export const ListDlpEntryCustomsResponse =
       Schema.Union([
         Schema.Struct({
           id: Schema.String,
+          caseSensitive: Schema.Boolean,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          secret: Schema.Boolean,
+          type: Schema.Literal("exact_data"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            caseSensitive: "case_sensitive",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            secret: "secret",
+            type: "type",
+            updatedAt: "updated_at",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
           createdAt: Schema.String,
           enabled: Schema.Boolean,
           name: Schema.String,
@@ -69856,6 +69891,109 @@ export const ListDlpEntryCustomsResponse =
             type: "type",
             updatedAt: "updated_at",
             profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("word_list"),
+          updatedAt: Schema.String,
+          wordList: Schema.Unknown,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            wordList: "word_list",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
             uploadStatus: "upload_status",
           }),
         ),
@@ -69917,144 +70055,6 @@ export const ListDlpEntryCustomsResponse =
             profileId: "profile_id",
             uploadStatus: "upload_status",
             variant: "variant",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          caseSensitive: Schema.Boolean,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          secret: Schema.Boolean,
-          type: Schema.Literal("exact_data"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            caseSensitive: "case_sensitive",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            secret: "secret",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("word_list"),
-          updatedAt: Schema.String,
-          wordList: Schema.Unknown,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            wordList: "word_list",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
           }),
         ),
       ]),
@@ -70422,6 +70422,53 @@ export const GetDlpEntryIntegrationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       id: Schema.String,
+      caseSensitive: Schema.Boolean,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      secret: Schema.Boolean,
+      type: Schema.Literal("exact_data"),
+      updatedAt: Schema.String,
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        caseSensitive: "case_sensitive",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        secret: "secret",
+        type: "type",
+        updatedAt: "updated_at",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       name: Schema.String,
@@ -70468,6 +70515,141 @@ export const GetDlpEntryIntegrationResponse =
         type: "type",
         updatedAt: "updated_at",
         profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("word_list"),
+      updatedAt: Schema.String,
+      wordList: Schema.Unknown,
+      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        wordList: "word_list",
+        profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("integration"),
+      updatedAt: Schema.String,
+      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("document_fingerprint"),
+      updatedAt: Schema.String,
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
         profiles: "profiles",
         uploadStatus: "upload_status",
       }),
@@ -70540,188 +70722,6 @@ export const GetDlpEntryIntegrationResponse =
         profiles: "profiles",
         uploadStatus: "upload_status",
         variant: "variant",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("integration"),
-      updatedAt: Schema.String,
-      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        profileId: "profile_id",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      caseSensitive: Schema.Boolean,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      secret: Schema.Boolean,
-      type: Schema.Literal("exact_data"),
-      updatedAt: Schema.String,
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        caseSensitive: "case_sensitive",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        secret: "secret",
-        type: "type",
-        updatedAt: "updated_at",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("document_fingerprint"),
-      updatedAt: Schema.String,
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("word_list"),
-      updatedAt: Schema.String,
-      wordList: Schema.Unknown,
-      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        wordList: "word_list",
-        profileId: "profile_id",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
       }),
     ),
   ]).pipe(
@@ -70871,6 +70871,41 @@ export const ListDlpEntryIntegrationsResponse =
       Schema.Union([
         Schema.Struct({
           id: Schema.String,
+          caseSensitive: Schema.Boolean,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          secret: Schema.Boolean,
+          type: Schema.Literal("exact_data"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            caseSensitive: "case_sensitive",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            secret: "secret",
+            type: "type",
+            updatedAt: "updated_at",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
           createdAt: Schema.String,
           enabled: Schema.Boolean,
           name: Schema.String,
@@ -70908,6 +70943,109 @@ export const ListDlpEntryIntegrationsResponse =
             type: "type",
             updatedAt: "updated_at",
             profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("word_list"),
+          updatedAt: Schema.String,
+          wordList: Schema.Unknown,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            wordList: "word_list",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
             uploadStatus: "upload_status",
           }),
         ),
@@ -70969,144 +71107,6 @@ export const ListDlpEntryIntegrationsResponse =
             profileId: "profile_id",
             uploadStatus: "upload_status",
             variant: "variant",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          caseSensitive: Schema.Boolean,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          secret: Schema.Boolean,
-          type: Schema.Literal("exact_data"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            caseSensitive: "case_sensitive",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            secret: "secret",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("word_list"),
-          updatedAt: Schema.String,
-          wordList: Schema.Unknown,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            wordList: "word_list",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
           }),
         ),
       ]),
@@ -71445,6 +71445,53 @@ export const GetDlpEntryPredefinedResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       id: Schema.String,
+      caseSensitive: Schema.Boolean,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      secret: Schema.Boolean,
+      type: Schema.Literal("exact_data"),
+      updatedAt: Schema.String,
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        caseSensitive: "case_sensitive",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        secret: "secret",
+        type: "type",
+        updatedAt: "updated_at",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
       createdAt: Schema.String,
       enabled: Schema.Boolean,
       name: Schema.String,
@@ -71491,6 +71538,141 @@ export const GetDlpEntryPredefinedResponse =
         type: "type",
         updatedAt: "updated_at",
         profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("word_list"),
+      updatedAt: Schema.String,
+      wordList: Schema.Unknown,
+      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        wordList: "word_list",
+        profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("integration"),
+      updatedAt: Schema.String,
+      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        profileId: "profile_id",
+        profiles: "profiles",
+        uploadStatus: "upload_status",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      enabled: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Literal("document_fingerprint"),
+      updatedAt: Schema.String,
+      profiles: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      uploadStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        enabled: "enabled",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
         profiles: "profiles",
         uploadStatus: "upload_status",
       }),
@@ -71563,188 +71745,6 @@ export const GetDlpEntryPredefinedResponse =
         profiles: "profiles",
         uploadStatus: "upload_status",
         variant: "variant",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("integration"),
-      updatedAt: Schema.String,
-      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        profileId: "profile_id",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      caseSensitive: Schema.Boolean,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      secret: Schema.Boolean,
-      type: Schema.Literal("exact_data"),
-      updatedAt: Schema.String,
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        caseSensitive: "case_sensitive",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        secret: "secret",
-        type: "type",
-        updatedAt: "updated_at",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("document_fingerprint"),
-      updatedAt: Schema.String,
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("word_list"),
-      updatedAt: Schema.String,
-      wordList: Schema.Unknown,
-      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profiles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      uploadStatus: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "empty",
-            "uploading",
-            "pending",
-            "processing",
-            "failed",
-            "complete",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        wordList: "word_list",
-        profileId: "profile_id",
-        profiles: "profiles",
-        uploadStatus: "upload_status",
       }),
     ),
   ]).pipe(
@@ -71894,6 +71894,41 @@ export const ListDlpEntryPredefinedsResponse =
       Schema.Union([
         Schema.Struct({
           id: Schema.String,
+          caseSensitive: Schema.Boolean,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          secret: Schema.Boolean,
+          type: Schema.Literal("exact_data"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            caseSensitive: "case_sensitive",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            secret: "secret",
+            type: "type",
+            updatedAt: "updated_at",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
           createdAt: Schema.String,
           enabled: Schema.Boolean,
           name: Schema.String,
@@ -71931,6 +71966,109 @@ export const ListDlpEntryPredefinedsResponse =
             type: "type",
             updatedAt: "updated_at",
             profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("word_list"),
+          updatedAt: Schema.String,
+          wordList: Schema.Unknown,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            wordList: "word_list",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+            uploadStatus: "upload_status",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+          uploadStatus: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "empty",
+                "uploading",
+                "pending",
+                "processing",
+                "failed",
+                "complete",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
             uploadStatus: "upload_status",
           }),
         ),
@@ -71992,144 +72130,6 @@ export const ListDlpEntryPredefinedsResponse =
             profileId: "profile_id",
             uploadStatus: "upload_status",
             variant: "variant",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          caseSensitive: Schema.Boolean,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          secret: Schema.Boolean,
-          type: Schema.Literal("exact_data"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            caseSensitive: "case_sensitive",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            secret: "secret",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
-          updatedAt: Schema.String,
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            uploadStatus: "upload_status",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("word_list"),
-          updatedAt: Schema.String,
-          wordList: Schema.Unknown,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uploadStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "empty",
-                "uploading",
-                "pending",
-                "processing",
-                "failed",
-                "complete",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            wordList: "word_list",
-            profileId: "profile_id",
-            uploadStatus: "upload_status",
           }),
         ),
       ]),
@@ -72843,6 +72843,27 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
           Schema.Union([
             Schema.Struct({
               id: Schema.String,
+              caseSensitive: Schema.Boolean,
+              createdAt: Schema.String,
+              enabled: Schema.Boolean,
+              name: Schema.String,
+              secret: Schema.Boolean,
+              type: Schema.Literal("exact_data"),
+              updatedAt: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                caseSensitive: "case_sensitive",
+                createdAt: "created_at",
+                enabled: "enabled",
+                name: "name",
+                secret: "secret",
+                type: "type",
+                updatedAt: "updated_at",
+              }),
+            ),
+            Schema.Struct({
+              id: Schema.String,
               createdAt: Schema.String,
               enabled: Schema.Boolean,
               name: Schema.String,
@@ -72867,6 +72888,67 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
                 type: "type",
                 updatedAt: "updated_at",
                 profileId: "profile_id",
+              }),
+            ),
+            Schema.Struct({
+              id: Schema.String,
+              createdAt: Schema.String,
+              enabled: Schema.Boolean,
+              name: Schema.String,
+              type: Schema.Literal("word_list"),
+              updatedAt: Schema.String,
+              wordList: Schema.Unknown,
+              profileId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                createdAt: "created_at",
+                enabled: "enabled",
+                name: "name",
+                type: "type",
+                updatedAt: "updated_at",
+                wordList: "word_list",
+                profileId: "profile_id",
+              }),
+            ),
+            Schema.Struct({
+              id: Schema.String,
+              createdAt: Schema.String,
+              enabled: Schema.Boolean,
+              name: Schema.String,
+              type: Schema.Literal("integration"),
+              updatedAt: Schema.String,
+              profileId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                createdAt: "created_at",
+                enabled: "enabled",
+                name: "name",
+                type: "type",
+                updatedAt: "updated_at",
+                profileId: "profile_id",
+              }),
+            ),
+            Schema.Struct({
+              id: Schema.String,
+              createdAt: Schema.String,
+              enabled: Schema.Boolean,
+              name: Schema.String,
+              type: Schema.Literal("document_fingerprint"),
+              updatedAt: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                createdAt: "created_at",
+                enabled: "enabled",
+                name: "name",
+                type: "type",
+                updatedAt: "updated_at",
               }),
             ),
             Schema.Struct({
@@ -72915,88 +72997,6 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
                 variant: "variant",
               }),
             ),
-            Schema.Struct({
-              id: Schema.String,
-              createdAt: Schema.String,
-              enabled: Schema.Boolean,
-              name: Schema.String,
-              type: Schema.Literal("integration"),
-              updatedAt: Schema.String,
-              profileId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                createdAt: "created_at",
-                enabled: "enabled",
-                name: "name",
-                type: "type",
-                updatedAt: "updated_at",
-                profileId: "profile_id",
-              }),
-            ),
-            Schema.Struct({
-              id: Schema.String,
-              caseSensitive: Schema.Boolean,
-              createdAt: Schema.String,
-              enabled: Schema.Boolean,
-              name: Schema.String,
-              secret: Schema.Boolean,
-              type: Schema.Literal("exact_data"),
-              updatedAt: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                caseSensitive: "case_sensitive",
-                createdAt: "created_at",
-                enabled: "enabled",
-                name: "name",
-                secret: "secret",
-                type: "type",
-                updatedAt: "updated_at",
-              }),
-            ),
-            Schema.Struct({
-              id: Schema.String,
-              createdAt: Schema.String,
-              enabled: Schema.Boolean,
-              name: Schema.String,
-              type: Schema.Literal("document_fingerprint"),
-              updatedAt: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                createdAt: "created_at",
-                enabled: "enabled",
-                name: "name",
-                type: "type",
-                updatedAt: "updated_at",
-              }),
-            ),
-            Schema.Struct({
-              id: Schema.String,
-              createdAt: Schema.String,
-              enabled: Schema.Boolean,
-              name: Schema.String,
-              type: Schema.Literal("word_list"),
-              updatedAt: Schema.String,
-              wordList: Schema.Unknown,
-              profileId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                createdAt: "created_at",
-                enabled: "enabled",
-                name: "name",
-                type: "type",
-                updatedAt: "updated_at",
-                wordList: "word_list",
-                profileId: "profile_id",
-              }),
-            ),
           ]),
         ),
         Schema.Null,
@@ -73020,9 +73020,30 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.String,
-    allowedMatchCount: Schema.Number,
+    createdAt: Schema.String,
     entries: Schema.Array(
       Schema.Union([
+        Schema.Struct({
+          id: Schema.String,
+          caseSensitive: Schema.Boolean,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          secret: Schema.Boolean,
+          type: Schema.Literal("exact_data"),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            caseSensitive: "case_sensitive",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            secret: "secret",
+            type: "type",
+            updatedAt: "updated_at",
+          }),
+        ),
         Schema.Struct({
           id: Schema.String,
           createdAt: Schema.String,
@@ -73049,6 +73070,67 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             type: "type",
             updatedAt: "updated_at",
             profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("word_list"),
+          updatedAt: Schema.String,
+          wordList: Schema.Unknown,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            wordList: "word_list",
+            profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
           }),
         ),
         Schema.Struct({
@@ -73097,27 +73179,28 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             variant: "variant",
           }),
         ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-          }),
-        ),
+      ]),
+    ),
+    name: Schema.String,
+    type: Schema.Literal("integration"),
+    updatedAt: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      entries: "entries",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
+      description: "description",
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.String,
+    allowedMatchCount: Schema.Number,
+    entries: Schema.Array(
+      Schema.Union([
         Schema.Struct({
           id: Schema.String,
           caseSensitive: Schema.Boolean,
@@ -73144,16 +73227,27 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
           createdAt: Schema.String,
           enabled: Schema.Boolean,
           name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
+          pattern: Schema.Struct({
+            regex: Schema.String,
+            validation: Schema.optional(
+              Schema.Union([Schema.Literal("luhn"), Schema.Null]),
+            ),
+          }),
+          type: Schema.Literal("custom"),
           updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
             createdAt: "created_at",
             enabled: "enabled",
             name: "name",
+            pattern: "pattern",
             type: "type",
             updatedAt: "updated_at",
+            profileId: "profile_id",
           }),
         ),
         Schema.Struct({
@@ -73177,6 +73271,90 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             updatedAt: "updated_at",
             wordList: "word_list",
             profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          confidence: Schema.Struct({
+            aiContextAvailable: Schema.Boolean,
+            available: Schema.Boolean,
+          }).pipe(
+            Schema.encodeKeys({
+              aiContextAvailable: "ai_context_available",
+              available: "available",
+            }),
+          ),
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("predefined"),
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          variant: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                topicType: Schema.Literals(["Intent", "Content"]),
+                type: Schema.Literal("PromptTopic"),
+                description: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  topicType: "topic_type",
+                  type: "type",
+                  description: "description",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            confidence: "confidence",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            profileId: "profile_id",
+            variant: "variant",
           }),
         ),
       ]),
@@ -73217,184 +73395,6 @@ export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       contextAwareness: "context_awareness",
       ocrEnabled: "ocr_enabled",
       openAccess: "open_access",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    entries: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          pattern: Schema.Struct({
-            regex: Schema.String,
-            validation: Schema.optional(
-              Schema.Union([Schema.Literal("luhn"), Schema.Null]),
-            ),
-          }),
-          type: Schema.Literal("custom"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            pattern: "pattern",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          confidence: Schema.Struct({
-            aiContextAvailable: Schema.Boolean,
-            available: Schema.Boolean,
-          }).pipe(
-            Schema.encodeKeys({
-              aiContextAvailable: "ai_context_available",
-              available: "available",
-            }),
-          ),
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("predefined"),
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          variant: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                topicType: Schema.Literals(["Intent", "Content"]),
-                type: Schema.Literal("PromptTopic"),
-                description: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  topicType: "topic_type",
-                  type: "type",
-                  description: "description",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            confidence: "confidence",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            profileId: "profile_id",
-            variant: "variant",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          caseSensitive: Schema.Boolean,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          secret: Schema.Boolean,
-          type: Schema.Literal("exact_data"),
-          updatedAt: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            caseSensitive: "case_sensitive",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            secret: "secret",
-            type: "type",
-            updatedAt: "updated_at",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
-          updatedAt: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("word_list"),
-          updatedAt: Schema.String,
-          wordList: Schema.Unknown,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            wordList: "word_list",
-            profileId: "profile_id",
-          }),
-        ),
-      ]),
-    ),
-    name: Schema.String,
-    type: Schema.Literal("integration"),
-    updatedAt: Schema.String,
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      entries: "entries",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      description: "description",
     }),
   ),
 ]).pipe(
@@ -73705,6 +73705,27 @@ export const ListDlpProfilesResponse =
                 Schema.Union([
                   Schema.Struct({
                     id: Schema.String,
+                    caseSensitive: Schema.Boolean,
+                    createdAt: Schema.String,
+                    enabled: Schema.Boolean,
+                    name: Schema.String,
+                    secret: Schema.Boolean,
+                    type: Schema.Literal("exact_data"),
+                    updatedAt: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      caseSensitive: "case_sensitive",
+                      createdAt: "created_at",
+                      enabled: "enabled",
+                      name: "name",
+                      secret: "secret",
+                      type: "type",
+                      updatedAt: "updated_at",
+                    }),
+                  ),
+                  Schema.Struct({
+                    id: Schema.String,
                     createdAt: Schema.String,
                     enabled: Schema.Boolean,
                     name: Schema.String,
@@ -73729,6 +73750,67 @@ export const ListDlpProfilesResponse =
                       type: "type",
                       updatedAt: "updated_at",
                       profileId: "profile_id",
+                    }),
+                  ),
+                  Schema.Struct({
+                    id: Schema.String,
+                    createdAt: Schema.String,
+                    enabled: Schema.Boolean,
+                    name: Schema.String,
+                    type: Schema.Literal("word_list"),
+                    updatedAt: Schema.String,
+                    wordList: Schema.Unknown,
+                    profileId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      createdAt: "created_at",
+                      enabled: "enabled",
+                      name: "name",
+                      type: "type",
+                      updatedAt: "updated_at",
+                      wordList: "word_list",
+                      profileId: "profile_id",
+                    }),
+                  ),
+                  Schema.Struct({
+                    id: Schema.String,
+                    createdAt: Schema.String,
+                    enabled: Schema.Boolean,
+                    name: Schema.String,
+                    type: Schema.Literal("integration"),
+                    updatedAt: Schema.String,
+                    profileId: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      createdAt: "created_at",
+                      enabled: "enabled",
+                      name: "name",
+                      type: "type",
+                      updatedAt: "updated_at",
+                      profileId: "profile_id",
+                    }),
+                  ),
+                  Schema.Struct({
+                    id: Schema.String,
+                    createdAt: Schema.String,
+                    enabled: Schema.Boolean,
+                    name: Schema.String,
+                    type: Schema.Literal("document_fingerprint"),
+                    updatedAt: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      createdAt: "created_at",
+                      enabled: "enabled",
+                      name: "name",
+                      type: "type",
+                      updatedAt: "updated_at",
                     }),
                   ),
                   Schema.Struct({
@@ -73777,88 +73859,6 @@ export const ListDlpProfilesResponse =
                       variant: "variant",
                     }),
                   ),
-                  Schema.Struct({
-                    id: Schema.String,
-                    createdAt: Schema.String,
-                    enabled: Schema.Boolean,
-                    name: Schema.String,
-                    type: Schema.Literal("integration"),
-                    updatedAt: Schema.String,
-                    profileId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      createdAt: "created_at",
-                      enabled: "enabled",
-                      name: "name",
-                      type: "type",
-                      updatedAt: "updated_at",
-                      profileId: "profile_id",
-                    }),
-                  ),
-                  Schema.Struct({
-                    id: Schema.String,
-                    caseSensitive: Schema.Boolean,
-                    createdAt: Schema.String,
-                    enabled: Schema.Boolean,
-                    name: Schema.String,
-                    secret: Schema.Boolean,
-                    type: Schema.Literal("exact_data"),
-                    updatedAt: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      caseSensitive: "case_sensitive",
-                      createdAt: "created_at",
-                      enabled: "enabled",
-                      name: "name",
-                      secret: "secret",
-                      type: "type",
-                      updatedAt: "updated_at",
-                    }),
-                  ),
-                  Schema.Struct({
-                    id: Schema.String,
-                    createdAt: Schema.String,
-                    enabled: Schema.Boolean,
-                    name: Schema.String,
-                    type: Schema.Literal("document_fingerprint"),
-                    updatedAt: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      createdAt: "created_at",
-                      enabled: "enabled",
-                      name: "name",
-                      type: "type",
-                      updatedAt: "updated_at",
-                    }),
-                  ),
-                  Schema.Struct({
-                    id: Schema.String,
-                    createdAt: Schema.String,
-                    enabled: Schema.Boolean,
-                    name: Schema.String,
-                    type: Schema.Literal("word_list"),
-                    updatedAt: Schema.String,
-                    wordList: Schema.Unknown,
-                    profileId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      createdAt: "created_at",
-                      enabled: "enabled",
-                      name: "name",
-                      type: "type",
-                      updatedAt: "updated_at",
-                      wordList: "word_list",
-                      profileId: "profile_id",
-                    }),
-                  ),
                 ]),
               ),
               Schema.Null,
@@ -73882,9 +73882,30 @@ export const ListDlpProfilesResponse =
         ),
         Schema.Struct({
           id: Schema.String,
-          allowedMatchCount: Schema.Number,
+          createdAt: Schema.String,
           entries: Schema.Array(
             Schema.Union([
+              Schema.Struct({
+                id: Schema.String,
+                caseSensitive: Schema.Boolean,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                secret: Schema.Boolean,
+                type: Schema.Literal("exact_data"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  caseSensitive: "case_sensitive",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  secret: "secret",
+                  type: "type",
+                  updatedAt: "updated_at",
+                }),
+              ),
               Schema.Struct({
                 id: Schema.String,
                 createdAt: Schema.String,
@@ -73911,6 +73932,67 @@ export const ListDlpProfilesResponse =
                   type: "type",
                   updatedAt: "updated_at",
                   profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("word_list"),
+                updatedAt: Schema.String,
+                wordList: Schema.Unknown,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  wordList: "word_list",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("integration"),
+                updatedAt: Schema.String,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("document_fingerprint"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
                 }),
               ),
               Schema.Struct({
@@ -73959,27 +74041,30 @@ export const ListDlpProfilesResponse =
                   variant: "variant",
                 }),
               ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("integration"),
-                updatedAt: Schema.String,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  profileId: "profile_id",
-                }),
-              ),
+            ]),
+          ),
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            entries: "entries",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            description: "description",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          allowedMatchCount: Schema.Number,
+          entries: Schema.Array(
+            Schema.Union([
               Schema.Struct({
                 id: Schema.String,
                 caseSensitive: Schema.Boolean,
@@ -74006,16 +74091,27 @@ export const ListDlpProfilesResponse =
                 createdAt: Schema.String,
                 enabled: Schema.Boolean,
                 name: Schema.String,
-                type: Schema.Literal("document_fingerprint"),
+                pattern: Schema.Struct({
+                  regex: Schema.String,
+                  validation: Schema.optional(
+                    Schema.Union([Schema.Literal("luhn"), Schema.Null]),
+                  ),
+                }),
+                type: Schema.Literal("custom"),
                 updatedAt: Schema.String,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
               }).pipe(
                 Schema.encodeKeys({
                   id: "id",
                   createdAt: "created_at",
                   enabled: "enabled",
                   name: "name",
+                  pattern: "pattern",
                   type: "type",
                   updatedAt: "updated_at",
+                  profileId: "profile_id",
                 }),
               ),
               Schema.Struct({
@@ -74039,6 +74135,90 @@ export const ListDlpProfilesResponse =
                   updatedAt: "updated_at",
                   wordList: "word_list",
                   profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("integration"),
+                updatedAt: Schema.String,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("document_fingerprint"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                confidence: Schema.Struct({
+                  aiContextAvailable: Schema.Boolean,
+                  available: Schema.Boolean,
+                }).pipe(
+                  Schema.encodeKeys({
+                    aiContextAvailable: "ai_context_available",
+                    available: "available",
+                  }),
+                ),
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("predefined"),
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                variant: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      topicType: Schema.Literals(["Intent", "Content"]),
+                      type: Schema.Literal("PromptTopic"),
+                      description: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        topicType: "topic_type",
+                        type: "type",
+                        description: "description",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  confidence: "confidence",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  profileId: "profile_id",
+                  variant: "variant",
                 }),
               ),
             ]),
@@ -74083,186 +74263,6 @@ export const ListDlpProfilesResponse =
             contextAwareness: "context_awareness",
             ocrEnabled: "ocr_enabled",
             openAccess: "open_access",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          entries: Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                pattern: Schema.Struct({
-                  regex: Schema.String,
-                  validation: Schema.optional(
-                    Schema.Union([Schema.Literal("luhn"), Schema.Null]),
-                  ),
-                }),
-                type: Schema.Literal("custom"),
-                updatedAt: Schema.String,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  pattern: "pattern",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  profileId: "profile_id",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                confidence: Schema.Struct({
-                  aiContextAvailable: Schema.Boolean,
-                  available: Schema.Boolean,
-                }).pipe(
-                  Schema.encodeKeys({
-                    aiContextAvailable: "ai_context_available",
-                    available: "available",
-                  }),
-                ),
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("predefined"),
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                variant: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      topicType: Schema.Literals(["Intent", "Content"]),
-                      type: Schema.Literal("PromptTopic"),
-                      description: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        topicType: "topic_type",
-                        type: "type",
-                        description: "description",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  confidence: "confidence",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  profileId: "profile_id",
-                  variant: "variant",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("integration"),
-                updatedAt: Schema.String,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  profileId: "profile_id",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                caseSensitive: Schema.Boolean,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                secret: Schema.Boolean,
-                type: Schema.Literal("exact_data"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  caseSensitive: "case_sensitive",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  secret: "secret",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("document_fingerprint"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("word_list"),
-                updatedAt: Schema.String,
-                wordList: Schema.Unknown,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  wordList: "word_list",
-                  profileId: "profile_id",
-                }),
-              ),
-            ]),
-          ),
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            entries: "entries",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            description: "description",
           }),
         ),
       ]),
@@ -74565,6 +74565,27 @@ export const GetDlpProfileCustomResponse =
             Schema.Union([
               Schema.Struct({
                 id: Schema.String,
+                caseSensitive: Schema.Boolean,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                secret: Schema.Boolean,
+                type: Schema.Literal("exact_data"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  caseSensitive: "case_sensitive",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  secret: "secret",
+                  type: "type",
+                  updatedAt: "updated_at",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
                 createdAt: Schema.String,
                 enabled: Schema.Boolean,
                 name: Schema.String,
@@ -74589,6 +74610,67 @@ export const GetDlpProfileCustomResponse =
                   type: "type",
                   updatedAt: "updated_at",
                   profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("word_list"),
+                updatedAt: Schema.String,
+                wordList: Schema.Unknown,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  wordList: "word_list",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("integration"),
+                updatedAt: Schema.String,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("document_fingerprint"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
                 }),
               ),
               Schema.Struct({
@@ -74637,88 +74719,6 @@ export const GetDlpProfileCustomResponse =
                   variant: "variant",
                 }),
               ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("integration"),
-                updatedAt: Schema.String,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  profileId: "profile_id",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                caseSensitive: Schema.Boolean,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                secret: Schema.Boolean,
-                type: Schema.Literal("exact_data"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  caseSensitive: "case_sensitive",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  secret: "secret",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("document_fingerprint"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("word_list"),
-                updatedAt: Schema.String,
-                wordList: Schema.Unknown,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  wordList: "word_list",
-                  profileId: "profile_id",
-                }),
-              ),
             ]),
           ),
           Schema.Null,
@@ -74742,9 +74742,30 @@ export const GetDlpProfileCustomResponse =
     ),
     Schema.Struct({
       id: Schema.String,
-      allowedMatchCount: Schema.Number,
+      createdAt: Schema.String,
       entries: Schema.Array(
         Schema.Union([
+          Schema.Struct({
+            id: Schema.String,
+            caseSensitive: Schema.Boolean,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            secret: Schema.Boolean,
+            type: Schema.Literal("exact_data"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              caseSensitive: "case_sensitive",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              secret: "secret",
+              type: "type",
+              updatedAt: "updated_at",
+            }),
+          ),
           Schema.Struct({
             id: Schema.String,
             createdAt: Schema.String,
@@ -74771,6 +74792,67 @@ export const GetDlpProfileCustomResponse =
               type: "type",
               updatedAt: "updated_at",
               profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("word_list"),
+            updatedAt: Schema.String,
+            wordList: Schema.Unknown,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              wordList: "word_list",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("integration"),
+            updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("document_fingerprint"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
             }),
           ),
           Schema.Struct({
@@ -74819,27 +74901,28 @@ export const GetDlpProfileCustomResponse =
               variant: "variant",
             }),
           ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("integration"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
+        ]),
+      ),
+      name: Schema.String,
+      type: Schema.Literal("integration"),
+      updatedAt: Schema.String,
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        entries: "entries",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        description: "description",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      allowedMatchCount: Schema.Number,
+      entries: Schema.Array(
+        Schema.Union([
           Schema.Struct({
             id: Schema.String,
             caseSensitive: Schema.Boolean,
@@ -74866,16 +74949,27 @@ export const GetDlpProfileCustomResponse =
             createdAt: Schema.String,
             enabled: Schema.Boolean,
             name: Schema.String,
-            type: Schema.Literal("document_fingerprint"),
+            pattern: Schema.Struct({
+              regex: Schema.String,
+              validation: Schema.optional(
+                Schema.Union([Schema.Literal("luhn"), Schema.Null]),
+              ),
+            }),
+            type: Schema.Literal("custom"),
             updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               id: "id",
               createdAt: "created_at",
               enabled: "enabled",
               name: "name",
+              pattern: "pattern",
               type: "type",
               updatedAt: "updated_at",
+              profileId: "profile_id",
             }),
           ),
           Schema.Struct({
@@ -74899,6 +74993,90 @@ export const GetDlpProfileCustomResponse =
               updatedAt: "updated_at",
               wordList: "word_list",
               profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("integration"),
+            updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("document_fingerprint"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            confidence: Schema.Struct({
+              aiContextAvailable: Schema.Boolean,
+              available: Schema.Boolean,
+            }).pipe(
+              Schema.encodeKeys({
+                aiContextAvailable: "ai_context_available",
+                available: "available",
+              }),
+            ),
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("predefined"),
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            variant: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  topicType: Schema.Literals(["Intent", "Content"]),
+                  type: Schema.Literal("PromptTopic"),
+                  description: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    topicType: "topic_type",
+                    type: "type",
+                    description: "description",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              confidence: "confidence",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              profileId: "profile_id",
+              variant: "variant",
             }),
           ),
         ]),
@@ -74939,184 +75117,6 @@ export const GetDlpProfileCustomResponse =
         contextAwareness: "context_awareness",
         ocrEnabled: "ocr_enabled",
         openAccess: "open_access",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      entries: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            pattern: Schema.Struct({
-              regex: Schema.String,
-              validation: Schema.optional(
-                Schema.Union([Schema.Literal("luhn"), Schema.Null]),
-              ),
-            }),
-            type: Schema.Literal("custom"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              pattern: "pattern",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            confidence: Schema.Struct({
-              aiContextAvailable: Schema.Boolean,
-              available: Schema.Boolean,
-            }).pipe(
-              Schema.encodeKeys({
-                aiContextAvailable: "ai_context_available",
-                available: "available",
-              }),
-            ),
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("predefined"),
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            variant: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  topicType: Schema.Literals(["Intent", "Content"]),
-                  type: Schema.Literal("PromptTopic"),
-                  description: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    topicType: "topic_type",
-                    type: "type",
-                    description: "description",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              confidence: "confidence",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              profileId: "profile_id",
-              variant: "variant",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("integration"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            caseSensitive: Schema.Boolean,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            secret: Schema.Boolean,
-            type: Schema.Literal("exact_data"),
-            updatedAt: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              caseSensitive: "case_sensitive",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              secret: "secret",
-              type: "type",
-              updatedAt: "updated_at",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("document_fingerprint"),
-            updatedAt: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("word_list"),
-            updatedAt: Schema.String,
-            wordList: Schema.Unknown,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              wordList: "word_list",
-              profileId: "profile_id",
-            }),
-          ),
-        ]),
-      ),
-      name: Schema.String,
-      type: Schema.Literal("integration"),
-      updatedAt: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        entries: "entries",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        description: "description",
       }),
     ),
   ]).pipe(
@@ -75489,6 +75489,27 @@ export const CreateDlpProfileCustomResponse =
             Schema.Union([
               Schema.Struct({
                 id: Schema.String,
+                caseSensitive: Schema.Boolean,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                secret: Schema.Boolean,
+                type: Schema.Literal("exact_data"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  caseSensitive: "case_sensitive",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  secret: "secret",
+                  type: "type",
+                  updatedAt: "updated_at",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
                 createdAt: Schema.String,
                 enabled: Schema.Boolean,
                 name: Schema.String,
@@ -75513,6 +75534,67 @@ export const CreateDlpProfileCustomResponse =
                   type: "type",
                   updatedAt: "updated_at",
                   profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("word_list"),
+                updatedAt: Schema.String,
+                wordList: Schema.Unknown,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  wordList: "word_list",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("integration"),
+                updatedAt: Schema.String,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("document_fingerprint"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
                 }),
               ),
               Schema.Struct({
@@ -75561,88 +75643,6 @@ export const CreateDlpProfileCustomResponse =
                   variant: "variant",
                 }),
               ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("integration"),
-                updatedAt: Schema.String,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  profileId: "profile_id",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                caseSensitive: Schema.Boolean,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                secret: Schema.Boolean,
-                type: Schema.Literal("exact_data"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  caseSensitive: "case_sensitive",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  secret: "secret",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("document_fingerprint"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("word_list"),
-                updatedAt: Schema.String,
-                wordList: Schema.Unknown,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  wordList: "word_list",
-                  profileId: "profile_id",
-                }),
-              ),
             ]),
           ),
           Schema.Null,
@@ -75666,9 +75666,30 @@ export const CreateDlpProfileCustomResponse =
     ),
     Schema.Struct({
       id: Schema.String,
-      allowedMatchCount: Schema.Number,
+      createdAt: Schema.String,
       entries: Schema.Array(
         Schema.Union([
+          Schema.Struct({
+            id: Schema.String,
+            caseSensitive: Schema.Boolean,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            secret: Schema.Boolean,
+            type: Schema.Literal("exact_data"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              caseSensitive: "case_sensitive",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              secret: "secret",
+              type: "type",
+              updatedAt: "updated_at",
+            }),
+          ),
           Schema.Struct({
             id: Schema.String,
             createdAt: Schema.String,
@@ -75695,6 +75716,67 @@ export const CreateDlpProfileCustomResponse =
               type: "type",
               updatedAt: "updated_at",
               profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("word_list"),
+            updatedAt: Schema.String,
+            wordList: Schema.Unknown,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              wordList: "word_list",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("integration"),
+            updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("document_fingerprint"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
             }),
           ),
           Schema.Struct({
@@ -75743,27 +75825,28 @@ export const CreateDlpProfileCustomResponse =
               variant: "variant",
             }),
           ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("integration"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
+        ]),
+      ),
+      name: Schema.String,
+      type: Schema.Literal("integration"),
+      updatedAt: Schema.String,
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        entries: "entries",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        description: "description",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      allowedMatchCount: Schema.Number,
+      entries: Schema.Array(
+        Schema.Union([
           Schema.Struct({
             id: Schema.String,
             caseSensitive: Schema.Boolean,
@@ -75790,16 +75873,27 @@ export const CreateDlpProfileCustomResponse =
             createdAt: Schema.String,
             enabled: Schema.Boolean,
             name: Schema.String,
-            type: Schema.Literal("document_fingerprint"),
+            pattern: Schema.Struct({
+              regex: Schema.String,
+              validation: Schema.optional(
+                Schema.Union([Schema.Literal("luhn"), Schema.Null]),
+              ),
+            }),
+            type: Schema.Literal("custom"),
             updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               id: "id",
               createdAt: "created_at",
               enabled: "enabled",
               name: "name",
+              pattern: "pattern",
               type: "type",
               updatedAt: "updated_at",
+              profileId: "profile_id",
             }),
           ),
           Schema.Struct({
@@ -75823,6 +75917,90 @@ export const CreateDlpProfileCustomResponse =
               updatedAt: "updated_at",
               wordList: "word_list",
               profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("integration"),
+            updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("document_fingerprint"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            confidence: Schema.Struct({
+              aiContextAvailable: Schema.Boolean,
+              available: Schema.Boolean,
+            }).pipe(
+              Schema.encodeKeys({
+                aiContextAvailable: "ai_context_available",
+                available: "available",
+              }),
+            ),
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("predefined"),
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            variant: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  topicType: Schema.Literals(["Intent", "Content"]),
+                  type: Schema.Literal("PromptTopic"),
+                  description: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    topicType: "topic_type",
+                    type: "type",
+                    description: "description",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              confidence: "confidence",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              profileId: "profile_id",
+              variant: "variant",
             }),
           ),
         ]),
@@ -75863,184 +76041,6 @@ export const CreateDlpProfileCustomResponse =
         contextAwareness: "context_awareness",
         ocrEnabled: "ocr_enabled",
         openAccess: "open_access",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      entries: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            pattern: Schema.Struct({
-              regex: Schema.String,
-              validation: Schema.optional(
-                Schema.Union([Schema.Literal("luhn"), Schema.Null]),
-              ),
-            }),
-            type: Schema.Literal("custom"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              pattern: "pattern",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            confidence: Schema.Struct({
-              aiContextAvailable: Schema.Boolean,
-              available: Schema.Boolean,
-            }).pipe(
-              Schema.encodeKeys({
-                aiContextAvailable: "ai_context_available",
-                available: "available",
-              }),
-            ),
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("predefined"),
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            variant: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  topicType: Schema.Literals(["Intent", "Content"]),
-                  type: Schema.Literal("PromptTopic"),
-                  description: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    topicType: "topic_type",
-                    type: "type",
-                    description: "description",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              confidence: "confidence",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              profileId: "profile_id",
-              variant: "variant",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("integration"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            caseSensitive: Schema.Boolean,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            secret: Schema.Boolean,
-            type: Schema.Literal("exact_data"),
-            updatedAt: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              caseSensitive: "case_sensitive",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              secret: "secret",
-              type: "type",
-              updatedAt: "updated_at",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("document_fingerprint"),
-            updatedAt: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("word_list"),
-            updatedAt: Schema.String,
-            wordList: Schema.Unknown,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              wordList: "word_list",
-              profileId: "profile_id",
-            }),
-          ),
-        ]),
-      ),
-      name: Schema.String,
-      type: Schema.Literal("integration"),
-      updatedAt: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        entries: "entries",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        description: "description",
       }),
     ),
   ]).pipe(
@@ -76438,6 +76438,27 @@ export const UpdateDlpProfileCustomResponse =
             Schema.Union([
               Schema.Struct({
                 id: Schema.String,
+                caseSensitive: Schema.Boolean,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                secret: Schema.Boolean,
+                type: Schema.Literal("exact_data"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  caseSensitive: "case_sensitive",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  secret: "secret",
+                  type: "type",
+                  updatedAt: "updated_at",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
                 createdAt: Schema.String,
                 enabled: Schema.Boolean,
                 name: Schema.String,
@@ -76462,6 +76483,67 @@ export const UpdateDlpProfileCustomResponse =
                   type: "type",
                   updatedAt: "updated_at",
                   profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("word_list"),
+                updatedAt: Schema.String,
+                wordList: Schema.Unknown,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  wordList: "word_list",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("integration"),
+                updatedAt: Schema.String,
+                profileId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
+                  profileId: "profile_id",
+                }),
+              ),
+              Schema.Struct({
+                id: Schema.String,
+                createdAt: Schema.String,
+                enabled: Schema.Boolean,
+                name: Schema.String,
+                type: Schema.Literal("document_fingerprint"),
+                updatedAt: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  createdAt: "created_at",
+                  enabled: "enabled",
+                  name: "name",
+                  type: "type",
+                  updatedAt: "updated_at",
                 }),
               ),
               Schema.Struct({
@@ -76510,88 +76592,6 @@ export const UpdateDlpProfileCustomResponse =
                   variant: "variant",
                 }),
               ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("integration"),
-                updatedAt: Schema.String,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  profileId: "profile_id",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                caseSensitive: Schema.Boolean,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                secret: Schema.Boolean,
-                type: Schema.Literal("exact_data"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  caseSensitive: "case_sensitive",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  secret: "secret",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("document_fingerprint"),
-                updatedAt: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                }),
-              ),
-              Schema.Struct({
-                id: Schema.String,
-                createdAt: Schema.String,
-                enabled: Schema.Boolean,
-                name: Schema.String,
-                type: Schema.Literal("word_list"),
-                updatedAt: Schema.String,
-                wordList: Schema.Unknown,
-                profileId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  createdAt: "created_at",
-                  enabled: "enabled",
-                  name: "name",
-                  type: "type",
-                  updatedAt: "updated_at",
-                  wordList: "word_list",
-                  profileId: "profile_id",
-                }),
-              ),
             ]),
           ),
           Schema.Null,
@@ -76615,9 +76615,30 @@ export const UpdateDlpProfileCustomResponse =
     ),
     Schema.Struct({
       id: Schema.String,
-      allowedMatchCount: Schema.Number,
+      createdAt: Schema.String,
       entries: Schema.Array(
         Schema.Union([
+          Schema.Struct({
+            id: Schema.String,
+            caseSensitive: Schema.Boolean,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            secret: Schema.Boolean,
+            type: Schema.Literal("exact_data"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              caseSensitive: "case_sensitive",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              secret: "secret",
+              type: "type",
+              updatedAt: "updated_at",
+            }),
+          ),
           Schema.Struct({
             id: Schema.String,
             createdAt: Schema.String,
@@ -76644,6 +76665,67 @@ export const UpdateDlpProfileCustomResponse =
               type: "type",
               updatedAt: "updated_at",
               profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("word_list"),
+            updatedAt: Schema.String,
+            wordList: Schema.Unknown,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              wordList: "word_list",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("integration"),
+            updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("document_fingerprint"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
             }),
           ),
           Schema.Struct({
@@ -76692,27 +76774,28 @@ export const UpdateDlpProfileCustomResponse =
               variant: "variant",
             }),
           ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("integration"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
+        ]),
+      ),
+      name: Schema.String,
+      type: Schema.Literal("integration"),
+      updatedAt: Schema.String,
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        entries: "entries",
+        name: "name",
+        type: "type",
+        updatedAt: "updated_at",
+        description: "description",
+      }),
+    ),
+    Schema.Struct({
+      id: Schema.String,
+      allowedMatchCount: Schema.Number,
+      entries: Schema.Array(
+        Schema.Union([
           Schema.Struct({
             id: Schema.String,
             caseSensitive: Schema.Boolean,
@@ -76739,16 +76822,27 @@ export const UpdateDlpProfileCustomResponse =
             createdAt: Schema.String,
             enabled: Schema.Boolean,
             name: Schema.String,
-            type: Schema.Literal("document_fingerprint"),
+            pattern: Schema.Struct({
+              regex: Schema.String,
+              validation: Schema.optional(
+                Schema.Union([Schema.Literal("luhn"), Schema.Null]),
+              ),
+            }),
+            type: Schema.Literal("custom"),
             updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
           }).pipe(
             Schema.encodeKeys({
               id: "id",
               createdAt: "created_at",
               enabled: "enabled",
               name: "name",
+              pattern: "pattern",
               type: "type",
               updatedAt: "updated_at",
+              profileId: "profile_id",
             }),
           ),
           Schema.Struct({
@@ -76772,6 +76866,90 @@ export const UpdateDlpProfileCustomResponse =
               updatedAt: "updated_at",
               wordList: "word_list",
               profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("integration"),
+            updatedAt: Schema.String,
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+              profileId: "profile_id",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            createdAt: Schema.String,
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("document_fingerprint"),
+            updatedAt: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdAt: "created_at",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              updatedAt: "updated_at",
+            }),
+          ),
+          Schema.Struct({
+            id: Schema.String,
+            confidence: Schema.Struct({
+              aiContextAvailable: Schema.Boolean,
+              available: Schema.Boolean,
+            }).pipe(
+              Schema.encodeKeys({
+                aiContextAvailable: "ai_context_available",
+                available: "available",
+              }),
+            ),
+            enabled: Schema.Boolean,
+            name: Schema.String,
+            type: Schema.Literal("predefined"),
+            profileId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            variant: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  topicType: Schema.Literals(["Intent", "Content"]),
+                  type: Schema.Literal("PromptTopic"),
+                  description: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    topicType: "topic_type",
+                    type: "type",
+                    description: "description",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              confidence: "confidence",
+              enabled: "enabled",
+              name: "name",
+              type: "type",
+              profileId: "profile_id",
+              variant: "variant",
             }),
           ),
         ]),
@@ -76812,184 +76990,6 @@ export const UpdateDlpProfileCustomResponse =
         contextAwareness: "context_awareness",
         ocrEnabled: "ocr_enabled",
         openAccess: "open_access",
-      }),
-    ),
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      entries: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            pattern: Schema.Struct({
-              regex: Schema.String,
-              validation: Schema.optional(
-                Schema.Union([Schema.Literal("luhn"), Schema.Null]),
-              ),
-            }),
-            type: Schema.Literal("custom"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              pattern: "pattern",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            confidence: Schema.Struct({
-              aiContextAvailable: Schema.Boolean,
-              available: Schema.Boolean,
-            }).pipe(
-              Schema.encodeKeys({
-                aiContextAvailable: "ai_context_available",
-                available: "available",
-              }),
-            ),
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("predefined"),
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            variant: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  topicType: Schema.Literals(["Intent", "Content"]),
-                  type: Schema.Literal("PromptTopic"),
-                  description: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    topicType: "topic_type",
-                    type: "type",
-                    description: "description",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              confidence: "confidence",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              profileId: "profile_id",
-              variant: "variant",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("integration"),
-            updatedAt: Schema.String,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              profileId: "profile_id",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            caseSensitive: Schema.Boolean,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            secret: Schema.Boolean,
-            type: Schema.Literal("exact_data"),
-            updatedAt: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              caseSensitive: "case_sensitive",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              secret: "secret",
-              type: "type",
-              updatedAt: "updated_at",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("document_fingerprint"),
-            updatedAt: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            createdAt: Schema.String,
-            enabled: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.Literal("word_list"),
-            updatedAt: Schema.String,
-            wordList: Schema.Unknown,
-            profileId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdAt: "created_at",
-              enabled: "enabled",
-              name: "name",
-              type: "type",
-              updatedAt: "updated_at",
-              wordList: "word_list",
-              profileId: "profile_id",
-            }),
-          ),
-        ]),
-      ),
-      name: Schema.String,
-      type: Schema.Literal("integration"),
-      updatedAt: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        entries: "entries",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        description: "description",
       }),
     ),
   ]).pipe(
@@ -77152,6 +77152,27 @@ export const GetDlpProfilePredefinedResponse =
       Schema.Union([
         Schema.Struct({
           id: Schema.String,
+          caseSensitive: Schema.Boolean,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          secret: Schema.Boolean,
+          type: Schema.Literal("exact_data"),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            caseSensitive: "case_sensitive",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            secret: "secret",
+            type: "type",
+            updatedAt: "updated_at",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
           createdAt: Schema.String,
           enabled: Schema.Boolean,
           name: Schema.String,
@@ -77176,6 +77197,67 @@ export const GetDlpProfilePredefinedResponse =
             type: "type",
             updatedAt: "updated_at",
             profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("word_list"),
+          updatedAt: Schema.String,
+          wordList: Schema.Unknown,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            wordList: "word_list",
+            profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
           }),
         ),
         Schema.Struct({
@@ -77222,88 +77304,6 @@ export const GetDlpProfilePredefinedResponse =
             type: "type",
             profileId: "profile_id",
             variant: "variant",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          caseSensitive: Schema.Boolean,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          secret: Schema.Boolean,
-          type: Schema.Literal("exact_data"),
-          updatedAt: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            caseSensitive: "case_sensitive",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            secret: "secret",
-            type: "type",
-            updatedAt: "updated_at",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
-          updatedAt: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("word_list"),
-          updatedAt: Schema.String,
-          wordList: Schema.Unknown,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            wordList: "word_list",
-            profileId: "profile_id",
           }),
         ),
       ]),
@@ -77488,6 +77488,27 @@ export const PutDlpProfilePredefinedResponse =
       Schema.Union([
         Schema.Struct({
           id: Schema.String,
+          caseSensitive: Schema.Boolean,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          secret: Schema.Boolean,
+          type: Schema.Literal("exact_data"),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            caseSensitive: "case_sensitive",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            secret: "secret",
+            type: "type",
+            updatedAt: "updated_at",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
           createdAt: Schema.String,
           enabled: Schema.Boolean,
           name: Schema.String,
@@ -77512,6 +77533,67 @@ export const PutDlpProfilePredefinedResponse =
             type: "type",
             updatedAt: "updated_at",
             profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("word_list"),
+          updatedAt: Schema.String,
+          wordList: Schema.Unknown,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            wordList: "word_list",
+            profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("integration"),
+          updatedAt: Schema.String,
+          profileId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            profileId: "profile_id",
+          }),
+        ),
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          enabled: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Literal("document_fingerprint"),
+          updatedAt: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            enabled: "enabled",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
           }),
         ),
         Schema.Struct({
@@ -77558,88 +77640,6 @@ export const PutDlpProfilePredefinedResponse =
             type: "type",
             profileId: "profile_id",
             variant: "variant",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("integration"),
-          updatedAt: Schema.String,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            profileId: "profile_id",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          caseSensitive: Schema.Boolean,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          secret: Schema.Boolean,
-          type: Schema.Literal("exact_data"),
-          updatedAt: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            caseSensitive: "case_sensitive",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            secret: "secret",
-            type: "type",
-            updatedAt: "updated_at",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("document_fingerprint"),
-          updatedAt: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          enabled: Schema.Boolean,
-          name: Schema.String,
-          type: Schema.Literal("word_list"),
-          updatedAt: Schema.String,
-          wordList: Schema.Unknown,
-          profileId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            enabled: "enabled",
-            name: "name",
-            type: "type",
-            updatedAt: "updated_at",
-            wordList: "word_list",
-            profileId: "profile_id",
           }),
         ),
       ]),

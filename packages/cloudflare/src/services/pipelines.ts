@@ -1009,6 +1009,46 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
+          token: Schema.String,
+          accountId: Schema.String,
+          bucket: Schema.String,
+          tableName: Schema.String,
+          namespace: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          rollingPolicy: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                fileSizeBytes: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                inactivitySeconds: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                intervalSeconds: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  fileSizeBytes: "file_size_bytes",
+                  inactivitySeconds: "inactivity_seconds",
+                  intervalSeconds: "interval_seconds",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            token: "token",
+            accountId: "account_id",
+            bucket: "bucket",
+            tableName: "table_name",
+            namespace: "namespace",
+            rollingPolicy: "rolling_policy",
+          }),
+        ),
+        Schema.Struct({
           accountId: Schema.String,
           bucket: Schema.String,
           credentials: Schema.Struct({
@@ -1084,46 +1124,6 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             jurisdiction: "jurisdiction",
             partitioning: "partitioning",
             path: "path",
-            rollingPolicy: "rolling_policy",
-          }),
-        ),
-        Schema.Struct({
-          token: Schema.String,
-          accountId: Schema.String,
-          bucket: Schema.String,
-          tableName: Schema.String,
-          namespace: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          rollingPolicy: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                fileSizeBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                inactivitySeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                intervalSeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  fileSizeBytes: "file_size_bytes",
-                  inactivitySeconds: "inactivity_seconds",
-                  intervalSeconds: "interval_seconds",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            token: "token",
-            accountId: "account_id",
-            bucket: "bucket",
-            tableName: "table_name",
-            namespace: "namespace",
             rollingPolicy: "rolling_policy",
           }),
         ),
@@ -1700,6 +1700,46 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([
           Schema.Union([
             Schema.Struct({
+              token: Schema.String,
+              accountId: Schema.String,
+              bucket: Schema.String,
+              tableName: Schema.String,
+              namespace: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              rollingPolicy: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    fileSizeBytes: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    inactivitySeconds: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    intervalSeconds: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      fileSizeBytes: "file_size_bytes",
+                      inactivitySeconds: "inactivity_seconds",
+                      intervalSeconds: "interval_seconds",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                token: "token",
+                accountId: "account_id",
+                bucket: "bucket",
+                tableName: "table_name",
+                namespace: "namespace",
+                rollingPolicy: "rolling_policy",
+              }),
+            ),
+            Schema.Struct({
               accountId: Schema.String,
               bucket: Schema.String,
               credentials: Schema.Struct({
@@ -1775,46 +1815,6 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 jurisdiction: "jurisdiction",
                 partitioning: "partitioning",
                 path: "path",
-                rollingPolicy: "rolling_policy",
-              }),
-            ),
-            Schema.Struct({
-              token: Schema.String,
-              accountId: Schema.String,
-              bucket: Schema.String,
-              tableName: Schema.String,
-              namespace: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              rollingPolicy: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    fileSizeBytes: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    inactivitySeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    intervalSeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      fileSizeBytes: "file_size_bytes",
-                      inactivitySeconds: "inactivity_seconds",
-                      intervalSeconds: "interval_seconds",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                token: "token",
-                accountId: "account_id",
-                bucket: "bucket",
-                tableName: "table_name",
-                namespace: "namespace",
                 rollingPolicy: "rolling_policy",
               }),
             ),
@@ -2371,6 +2371,35 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.optional(
     Schema.Union([
       Schema.Struct({
+        token: Schema.String,
+        accountId: Schema.String,
+        bucket: Schema.String,
+        tableName: Schema.String,
+        namespace: Schema.optional(Schema.String),
+        rollingPolicy: Schema.optional(
+          Schema.Struct({
+            fileSizeBytes: Schema.optional(Schema.Number),
+            inactivitySeconds: Schema.optional(Schema.Number),
+            intervalSeconds: Schema.optional(Schema.Number),
+          }).pipe(
+            Schema.encodeKeys({
+              fileSizeBytes: "file_size_bytes",
+              inactivitySeconds: "inactivity_seconds",
+              intervalSeconds: "interval_seconds",
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          token: "token",
+          accountId: "account_id",
+          bucket: "bucket",
+          tableName: "table_name",
+          namespace: "namespace",
+          rollingPolicy: "rolling_policy",
+        }),
+      ),
+      Schema.Struct({
         accountId: Schema.String,
         bucket: Schema.String,
         credentials: Schema.Struct({
@@ -2420,35 +2449,6 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           jurisdiction: "jurisdiction",
           partitioning: "partitioning",
           path: "path",
-          rollingPolicy: "rolling_policy",
-        }),
-      ),
-      Schema.Struct({
-        token: Schema.String,
-        accountId: Schema.String,
-        bucket: Schema.String,
-        tableName: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        rollingPolicy: Schema.optional(
-          Schema.Struct({
-            fileSizeBytes: Schema.optional(Schema.Number),
-            inactivitySeconds: Schema.optional(Schema.Number),
-            intervalSeconds: Schema.optional(Schema.Number),
-          }).pipe(
-            Schema.encodeKeys({
-              fileSizeBytes: "file_size_bytes",
-              inactivitySeconds: "inactivity_seconds",
-              intervalSeconds: "interval_seconds",
-            }),
-          ),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          token: "token",
-          accountId: "account_id",
-          bucket: "bucket",
-          tableName: "table_name",
-          namespace: "namespace",
           rollingPolicy: "rolling_policy",
         }),
       ),
@@ -2880,6 +2880,46 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
+          token: Schema.String,
+          accountId: Schema.String,
+          bucket: Schema.String,
+          tableName: Schema.String,
+          namespace: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          rollingPolicy: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                fileSizeBytes: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                inactivitySeconds: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                intervalSeconds: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  fileSizeBytes: "file_size_bytes",
+                  inactivitySeconds: "inactivity_seconds",
+                  intervalSeconds: "interval_seconds",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            token: "token",
+            accountId: "account_id",
+            bucket: "bucket",
+            tableName: "table_name",
+            namespace: "namespace",
+            rollingPolicy: "rolling_policy",
+          }),
+        ),
+        Schema.Struct({
           accountId: Schema.String,
           bucket: Schema.String,
           credentials: Schema.Struct({
@@ -2955,46 +2995,6 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             jurisdiction: "jurisdiction",
             partitioning: "partitioning",
             path: "path",
-            rollingPolicy: "rolling_policy",
-          }),
-        ),
-        Schema.Struct({
-          token: Schema.String,
-          accountId: Schema.String,
-          bucket: Schema.String,
-          tableName: Schema.String,
-          namespace: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          rollingPolicy: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                fileSizeBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                inactivitySeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                intervalSeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  fileSizeBytes: "file_size_bytes",
-                  inactivitySeconds: "inactivity_seconds",
-                  intervalSeconds: "interval_seconds",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            token: "token",
-            accountId: "account_id",
-            bucket: "bucket",
-            tableName: "table_name",
-            namespace: "namespace",
             rollingPolicy: "rolling_policy",
           }),
         ),
