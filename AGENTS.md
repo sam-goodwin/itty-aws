@@ -16,6 +16,7 @@ distilled/
 │   ├── mongodb-atlas/    # @distilled.cloud/mongodb-atlas — MongoDB Atlas SDK from OpenAPI spec
 │   ├── neon/             # @distilled.cloud/neon — Neon SDK from OpenAPI spec
 │   ├── planetscale/      # @distilled.cloud/planetscale — PlanetScale SDK from OpenAPI spec
+│   ├── polar/            # @distilled.cloud/polar — Polar SDK from OpenAPI spec
 │   ├── prisma-postgres/  # @distilled.cloud/prisma-postgres — Prisma Postgres SDK from OpenAPI spec
 │   ├── stripe/           # @distilled.cloud/stripe — Stripe SDK from OpenAPI spec
 │   ├── supabase/         # @distilled.cloud/supabase — Supabase SDK from OpenAPI spec
@@ -127,6 +128,7 @@ Each SDK package has vendor API specifications stored as git submodules under `s
 | `mongodb-atlas` | `specs/distilled-spec-mongodb-atlas` | MongoDB Atlas OpenAPI spec |
 | `neon` | `specs/distilled-spec-neon` | Neon OpenAPI spec |
 | `planetscale` | `specs/distilled-spec-planetscale` | PlanetScale OpenAPI spec |
+| `polar` | `specs/distilled-spec-polar` | Polar OpenAPI spec |
 | `prisma-postgres` | `specs/distilled-spec-prisma-postgres` | Prisma Postgres OpenAPI spec |
 | `stripe` | `specs/stripe-openapi` | Stripe OpenAPI spec |
 | `supabase` | `specs/distilled-spec-supabase` | Supabase OpenAPI spec |

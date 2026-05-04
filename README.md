@@ -34,6 +34,7 @@ const functions = yield* Lambda.listFunctions
 | [`@distilled.cloud/mongodb-atlas`](./packages/mongodb-atlas) | MongoDB Atlas SDK from OpenAPI spec |
 | [`@distilled.cloud/neon`](./packages/neon) | Neon serverless Postgres SDK from OpenAPI spec |
 | [`@distilled.cloud/planetscale`](./packages/planetscale) | PlanetScale MySQL SDK from OpenAPI spec |
+| [`@distilled.cloud/polar`](./packages/polar) | Polar billing SDK from OpenAPI spec |
 | [`@distilled.cloud/prisma-postgres`](./packages/prisma-postgres) | Prisma Postgres SDK from OpenAPI spec |
 | [`@distilled.cloud/stripe`](./packages/stripe) | Stripe SDK from OpenAPI spec |
 | [`@distilled.cloud/supabase`](./packages/supabase) | Supabase Management API SDK from OpenAPI spec |
@@ -125,6 +126,7 @@ bun run specs:update   # run inside a package directory
 | `mongodb-atlas` | `distilled-spec-mongodb-atlas` |
 | `neon` | `distilled-spec-neon` |
 | `planetscale` | `distilled-spec-planetscale` |
+| `polar` | `distilled-spec-polar` |
 | `prisma-postgres` | `distilled-spec-prisma-postgres` |
 | `stripe` | `stripe-openapi` |
 | `supabase` | `distilled-spec-supabase` |
