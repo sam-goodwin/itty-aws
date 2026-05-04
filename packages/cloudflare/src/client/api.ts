@@ -15,6 +15,7 @@ import {
   type OperationMethod,
   type PaginatedOperationMethod,
 } from "@distilled.cloud/core/client";
+import { retryableKey } from "@distilled.cloud/core/category";
 import {
   paginateCursor,
   paginateSingle,
@@ -44,6 +45,32 @@ import { type ErrorMatcher, getErrorMatchers } from "../traits.ts";
 // ============================================================================
 
 /**
+ * Tag an error instance as retryable. Cloudflare's API maps several
+ * actually-transient blips (auth-edge hiccups, internal-error 403s,
+ * Workers 5xx wrapped as `WorkerNotFound`) to permanent-looking error
+ * tags. Marking the specific instance — not the whole class — keeps
+ * legitimate auth/auth failures non-retryable while letting the
+ * blanket retry policy ride out the transient cases.
+ */
+const tagRetryable = <E>(error: E): E => {
+  (error as Record<string, unknown>)[retryableKey] = {};
+  return error;
+};
+
+/**
+ * Heuristic: does the error message text indicate a Cloudflare auth-edge
+ * blip / internal hiccup rather than a permanent auth/permission failure?
+ * Cloudflare frequently surfaces brief edge / internal failures behind
+ * `Authentication error` (10000) or `internal error` (10001) envelopes;
+ * the API itself doesn't distinguish them from real auth failures, so we
+ * pattern-match on the message content.
+ */
+const isMisleadinglyTransientMessage = (message: string): boolean =>
+  /authentication error/i.test(message) ||
+  /internal error/i.test(message) ||
+  /unknown error has occurred/i.test(message);
+
+/**
  * Cloudflare error codes that map to global/default errors regardless of operation.
  * These are infrastructure-level errors that can occur on any endpoint.
  */
@@ -70,10 +97,20 @@ const GLOBAL_ERROR_CODE_MAP: Record<
   9106: (message) => new Unauthorized({ message }),
   // 9109: Unauthorized to access requested resource / Max auth failures reached
   9109: (message) => new Unauthorized({ message }),
-  // 10000: Authentication error / Authentication failed
-  10000: (message) => new Unauthorized({ message }),
-  // 10001: Method not allowed for token (authorization, not authentication)
-  10001: (message) => new Forbidden({ message }),
+  // 10000: Authentication error / Authentication failed.
+  // Sometimes a transient CF auth-edge blip — tag those instances as
+  // retryable so the blanket retry policy covers them.
+  10000: (message) => {
+    const error = new Unauthorized({ message });
+    return /authentication error/i.test(message) ? tagRetryable(error) : error;
+  },
+  // 10001: Method not allowed for token, BUT also returned with
+  // "internal error" message during CF-internal hiccups. Tag the
+  // internal-error variant as retryable.
+  10001: (message) => {
+    const error = new Forbidden({ message });
+    return /internal error/i.test(message) ? tagRetryable(error) : error;
+  },
 };
 
 /**
