@@ -146,11 +146,14 @@ export interface ClientConfig<Creds> {
    *  or Effect.fail(fallbackError) for unknown errors.
    *  The optional `errors` parameter provides per-operation typed error classes.
    *  The optional `headers` parameter is the response header bag (lowercase
-   *  keys) — implementations should use `parseRetryAfterForStatus(status, headers)`
-   *  from `@distilled.cloud/core/retry-after` to populate `retryAfter` on
-   *  retryable errors so the retry policy can honor server hints. The
-   *  status-gated helper avoids attaching stale `retryAfter` to non-retryable
-   *  classes (BadRequest/Unauthorized/etc.) whose schemas don't declare it.
+   *  keys) — for retryable status codes, pass `retryAfter: parseRetryAfterForStatus(status, headers)`
+   *  from `@distilled.cloud/core/retry-after` when a standard `Retry-After` /
+   *  `RateLimit` hint is present; omit `retryAfter` when there is no hint (the
+   *  default retry policy still uses exponential backoff). The status-gated
+   *  helper avoids attaching stale `retryAfter` to non-retryable classes
+   *  (BadRequest/401/404/etc.). The maximum honored hint is capped (default
+   *  60s) — override with \`DISTILLED_SERVER_RETRY_HINT_CAP_MS\` or provide
+   *  \`ServerRetryHintCapMs\` via \`Layer\` from \`@distilled.cloud/core/retry\`.
    */
   matchError: (
     status: number,

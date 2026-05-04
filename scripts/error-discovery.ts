@@ -132,12 +132,16 @@ const matchError = (
 \`\`\`
 When you construct a retryable error (TooManyRequests/429, InternalServerError/500,
 BadGateway/502, ServiceUnavailable/503, GatewayTimeout/504, Locked/423, or any
-class categorized retryable), you MUST pass \`retryAfter: parseRetryAfterForStatus(status, headers)\`
-so the retry policy honors server-provided wait hints (Retry-After / RateLimit headers).
+class categorized retryable), \`retryAfter\` on that instance is **optional**.
+If the response has standard \`Retry-After\` or \`RateLimit\` headers worth honoring,
+pass \`retryAfter: parseRetryAfterForStatus(status, headers)\`. If there is no
+usable hint, omit \`retryAfter\` entirely — the default retry policy still retries
+using exponential backoff starting at 100ms (you do not need to invent a wait).
 Import: \`import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";\`
+
 If this service uses bespoke headers or body fields for cooldown, parse them in
-\`matchError\` and pass the resulting \`Duration\` as \`retryAfter\` instead of (or
-in addition to, with \`??\` fallback) \`parseRetryAfterForStatus(status, headers)\`.
+\`matchError\` and pass the resulting \`Duration\` as \`retryAfter\` when present, still
+with \`??\` fallback to \`parseRetryAfterForStatus(status, headers)\` when appropriate.
 
 ### Step 2: Identify operations with weak error typing
 Look for operations that only have generic errors (DefaultErrors) and no

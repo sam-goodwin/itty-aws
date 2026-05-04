@@ -10,6 +10,8 @@
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import { pipe } from "effect/Function";
+import * as Layer from "effect/Layer";
+import * as Option from "effect/Option";
 import * as Ref from "effect/Ref";
 import * as Schedule from "effect/Schedule";
 import * as Context from "effect/Context";
@@ -90,22 +92,82 @@ export const capped = (max: Duration.Duration) =>
 // ============================================================================
 
 /**
- * Hard cap on how long we'll honor a server-provided `Retry-After` /
- * `RateLimit` hint. A misbehaving server can otherwise park us forever.
+ * Default cap (milliseconds) on how long we'll honor a server-provided
+ * `Retry-After` / `RateLimit` hint. A misbehaving server can otherwise park
+ * us forever.
  */
-const SERVER_HINT_CAP_MS = 60_000;
+export const DEFAULT_SERVER_RETRY_HINT_CAP_MS = 60_000;
+
+const ENV_SERVER_RETRY_HINT_CAP_MS = "DISTILLED_SERVER_RETRY_HINT_CAP_MS";
+
+/**
+ * Optional override for the server-hint cap, in milliseconds. When provided
+ * via `Layer.succeed(ServerRetryHintCapMs, n)`, that value wins over the
+ * environment.
+ *
+ * @example
+ * ```ts
+ * Effect.retry(op, policy).pipe(
+ *   Effect.provide(serverRetryHintCapLayer(120_000)),
+ * )
+ * ```
+ */
+export const ServerRetryHintCapMs = Context.Service<number>(
+  "@distilled.cloud/core/ServerRetryHintCapMs",
+);
+
+/**
+ * Layer that pins the server `retryAfter` cap to a fixed value (milliseconds).
+ */
+export const serverRetryHintCapLayer = (capMs: number) =>
+  Layer.succeed(ServerRetryHintCapMs, capMs);
+
+/**
+ * Effective cap when neither {@link ServerRetryHintCapMs} nor
+ * `DISTILLED_SERVER_RETRY_HINT_CAP_MS` is set: {@link DEFAULT_SERVER_RETRY_HINT_CAP_MS}.
+ *
+ * Reads `process.env.DISTILLED_SERVER_RETRY_HINT_CAP_MS` when present (must be
+ * a non-negative finite integer; invalid values are ignored). Undefined
+ * `process` (some edge runtimes) falls back to the default.
+ */
+export const readServerRetryHintCapMsFromEnv = (): number => {
+  if (typeof process === "undefined" || process.env === undefined) {
+    return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+  }
+  const raw = process.env[ENV_SERVER_RETRY_HINT_CAP_MS];
+  if (raw === undefined || raw === "") return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n < 0) return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+  return Math.trunc(n);
+};
+
+const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
+  Effect.gen(function* () {
+    const fromLayer = yield* Effect.serviceOption(ServerRetryHintCapMs);
+    return Option.match(fromLayer, {
+      onNone: () => readServerRetryHintCapMsFromEnv(),
+      onSome: (n) =>
+        Number.isFinite(n) && n >= 0
+          ? Math.trunc(n)
+          : readServerRetryHintCapMsFromEnv(),
+    });
+  });
 
 /**
  * Extract a server-provided retry hint (in milliseconds) from an error's
- * optional `retryAfter` field, capped at {@link SERVER_HINT_CAP_MS}.
+ * optional `retryAfter` field, capped by the effective server-hint cap
+ * (see {@link ServerRetryHintCapMs} and {@link readServerRetryHintCapMsFromEnv}).
  *
  * Returns `undefined` when the error doesn't carry a hint.
  */
-const serverHintMillis = (error: unknown): number | undefined => {
+const serverHintMillis = (
+  error: unknown,
+  capMs: number,
+): number | undefined => {
   const hint = (error as { retryAfter?: unknown } | null | undefined)
     ?.retryAfter;
   if (!Duration.isDuration(hint)) return undefined;
-  return Math.min(Duration.toMillis(hint), SERVER_HINT_CAP_MS);
+  return Math.min(Duration.toMillis(hint), capMs);
 };
 
 /**
@@ -120,8 +182,9 @@ const honorServerHint = (
 ) =>
   Schedule.modifyDelay(
     Effect.fnUntraced(function* (duration: Duration.Duration) {
+      const capMs = yield* resolveServerRetryHintCapMs();
       const error = yield* Ref.get(lastError);
-      const hint = serverHintMillis(error);
+      const hint = serverHintMillis(error, capMs);
       if (hint !== undefined) return hint;
       const adjusted = baseline ? baseline(duration, error) : duration;
       return Duration.toMillis(adjusted);
@@ -137,8 +200,9 @@ const honorServerHint = (
  *
  * This policy:
  * - Retries transient errors (throttling, server, network, locked errors)
- * - Honors `error.retryAfter` (server-provided hint) with precedence,
- *   capped at 60 seconds
+ * - Honors `error.retryAfter` (server-provided hint) with precedence, capped
+ *   by {@link DEFAULT_SERVER_RETRY_HINT_CAP_MS} by default; override with
+ *   `DISTILLED_SERVER_RETRY_HINT_CAP_MS` or {@link ServerRetryHintCapMs}
  * - Otherwise uses exponential backoff starting at 100ms with a factor of 2
  * - Ensures at least 500ms delay for throttling errors
  * - Limits to 5 retry attempts

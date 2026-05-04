@@ -1203,10 +1203,11 @@ const ApiErrorResponse = Schema.Struct({
 /**
  * Match a ${capitalName} API error response to the appropriate error class based on HTTP status.
  *
- * Retryable errors (429, 5xx) carry an optional \`retryAfter\` Duration parsed
- * from the standard \`Retry-After\` / \`RateLimit\` headers; the retry policy
- * honors it. If this service uses bespoke headers or body fields for rate-limit
- * cooldowns, parse them here and pass the result as \`retryAfter\`.
+ * For status codes whose error class declares \`retryAfter\`, pass
+ * \`retryAfter: parseRetryAfterForStatus(status, headers)\`. That is \`undefined\`
+ * when no standard \`Retry-After\` / \`RateLimit\` hint is present — omitting the
+ * field is fine; the default retry policy still uses exponential backoff.
+ * For bespoke rate-limit hints, parse them here and pass \`retryAfter\` when known.
  */
 const matchError = (
   status: number,
