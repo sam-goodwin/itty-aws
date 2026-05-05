@@ -591,10 +591,18 @@ function propertyToTsType(
       return "boolean";
 
     case "array":
+      // Emit `ReadonlyArray<T>` (not `Array<T>`) so the interface matches
+      // what `Schema.Type<typeof Schema.Array(...)>` produces. Without
+      // this, the schema-derived value type is `readonly T[]` while the
+      // hand-emitted interface declares mutable `T[]`, and TS rejects
+      // `readonly T[]` → `T[]` in operation method signatures (see e.g.
+      // cloudresourcemanager-v3 `getOperations` / `listTagBindings`).
+      // `ReadonlyArray<T>` is a supertype of `T[]`, so callers building
+      // requests with array literals stay compatible.
       if (prop.items) {
-        return `Array<${propertyToTsType(prop.items, allSchemas, renames)}>`;
+        return `ReadonlyArray<${propertyToTsType(prop.items, allSchemas, renames)}>`;
       }
-      return "Array<unknown>";
+      return "ReadonlyArray<unknown>";
 
     case "object":
       if (prop.additionalProperties) {
