@@ -2,6 +2,9 @@ import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { describe, expect, it } from "vitest";
 import { CustomFieldscreateOutput } from "../src/operations/customFieldscreate.ts";
+import { CustomerPortalbenefitGrantsgetOutput } from "../src/operations/customerPortalbenefitGrantsget.ts";
+import { CustomerPortalbenefitGrantslistOutput } from "../src/operations/customerPortalbenefitGrantslist.ts";
+import { CustomerPortalcustomerslistPaymentMethodsOutput } from "../src/operations/customerPortalcustomerslistPaymentMethods.ts";
 import { CustomerscreateOutput } from "../src/operations/customerscreate.ts";
 import { CustomersgetStateOutput } from "../src/operations/customersgetState.ts";
 import { DiscountscreateOutput } from "../src/operations/discountscreate.ts";
@@ -316,5 +319,104 @@ describe("generated Polar schema quality", () => {
     expect(decoded.processor).toBe("stripe");
     expect(decoded.status).toBe("succeeded");
     expect(listed.items[0].method).toBe("card");
+  });
+
+  it("types customer portal benefit grant outputs", () => {
+    const grant = {
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      granted_at: null,
+      is_granted: false,
+      revoked_at: null,
+      is_revoked: false,
+      subscription_id: null,
+      order_id: null,
+      customer_id: "00000000-0000-4000-8000-000000000000",
+      member_id: null,
+      benefit_id: "00000000-0000-4000-8000-000000000000",
+      error: null,
+      customer: {
+        id: "00000000-0000-4000-8000-000000000000",
+        created_at: "2026-01-01T00:00:00Z",
+        modified_at: null,
+        metadata: {},
+        external_id: null,
+        email: "customer@example.com",
+        email_verified: false,
+        type: "individual",
+        name: "Test Customer",
+        billing_address: null,
+        tax_id: null,
+        locale: null,
+        organization_id: "00000000-0000-4000-8000-000000000000",
+        deleted_at: null,
+        avatar_url: "https://www.gravatar.com/avatar/test?d=404",
+      },
+      member: null,
+      benefit: {
+        id: "00000000-0000-4000-8000-000000000000",
+        created_at: "2026-01-01T00:00:00Z",
+        modified_at: null,
+        metadata: {},
+        type: "custom",
+        description: "Test benefit",
+        selectable: true,
+        deletable: true,
+        is_deleted: false,
+        organization_id: "00000000-0000-4000-8000-000000000000",
+        properties: {},
+      },
+      properties: {
+        note: "portal-visible",
+      },
+    };
+
+    const decoded = Schema.decodeUnknownSync(
+      CustomerPortalbenefitGrantsgetOutput,
+    )(grant);
+    const listed = Schema.decodeUnknownSync(
+      CustomerPortalbenefitGrantslistOutput,
+    )({
+      items: [grant],
+      pagination: {
+        total_count: 1,
+        max_page: 1,
+      },
+    });
+
+    expect(decoded.benefit.type).toBe("custom");
+    expect(decoded.properties.note).toBe("portal-visible");
+    expect(listed.items[0].customer.email).toBe("customer@example.com");
+  });
+
+  it("types customer portal payment method list outputs", () => {
+    const listed = Schema.decodeUnknownSync(
+      CustomerPortalcustomerslistPaymentMethodsOutput,
+    )({
+      items: [
+        {
+          id: "00000000-0000-4000-8000-000000000000",
+          created_at: "2026-01-01T00:00:00Z",
+          modified_at: null,
+          processor: "stripe",
+          customer_id: "00000000-0000-4000-8000-000000000000",
+          type: "card",
+          method_metadata: {
+            brand: "visa",
+            last4: "4242",
+            exp_month: 12,
+            exp_year: 2030,
+          },
+        },
+      ],
+      pagination: {
+        total_count: 1,
+        max_page: 1,
+      },
+    });
+
+    expect(listed.items[0].type).toBe("card");
+    expect(listed.items[0].method_metadata?.last4).toBe("4242");
   });
 });

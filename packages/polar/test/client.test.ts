@@ -51,4 +51,27 @@ describe("formatPolarErrorMessage", () => {
       "RequestValidationError: body.filter.clauses.0.property: Field required; body.aggregation.func: Input should be 'count', 'sum', 'max', 'min', 'avg' or 'unique'",
     );
   });
+
+  it("formats object details when Polar returns a structured detail payload", () => {
+    const message = formatPolarErrorMessage({
+      message: "Payment failed",
+      detail: {
+        reason: "card_declined",
+        code: "insufficient_funds",
+      },
+    });
+
+    expect(message).toBe(
+      'Payment failed: {"reason":"card_declined","code":"insufficient_funds"}',
+    );
+  });
+
+  it("uses detail text without duplicating an identical summary", () => {
+    const message = formatPolarErrorMessage({
+      message: "Not found",
+      detail: "Not found",
+    });
+
+    expect(message).toBe("Not found");
+  });
 });

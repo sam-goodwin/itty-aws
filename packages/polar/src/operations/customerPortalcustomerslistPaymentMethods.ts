@@ -20,7 +20,19 @@ export type CustomerPortalcustomerslistPaymentMethodsInput =
 // Output Schema
 export const CustomerPortalcustomerslistPaymentMethodsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.Array(Schema.Unknown),
+    items: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        created_at: Schema.String,
+        modified_at: Schema.NullOr(Schema.String),
+        processor: Schema.Literals(["stripe"]),
+        customer_id: Schema.String,
+        type: Schema.String,
+        method_metadata: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+      }),
+    ),
     pagination: Schema.Struct({
       total_count: Schema.Number,
       max_page: Schema.Number,

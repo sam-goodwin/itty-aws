@@ -1,0 +1,132 @@
+{
+  "description": "Expose customer portal benefit grant and payment method list items through common typed fields instead of Schema.Unknown. These endpoints require customer/member session auth, so schema-quality tests cover the generated shapes without requiring live customer portal credentials.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/components/schemas/CustomerBenefitGrantCommon",
+      "value": {
+        "type": "object",
+        "title": "CustomerBenefitGrant",
+        "description": "A customer portal benefit grant.",
+        "required": [
+          "created_at",
+          "modified_at",
+          "id",
+          "is_granted",
+          "is_revoked",
+          "subscription_id",
+          "order_id",
+          "customer_id",
+          "benefit_id",
+          "customer",
+          "benefit",
+          "properties"
+        ],
+        "properties": {
+          "created_at": { "type": "string", "format": "date-time" },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "id": { "type": "string", "format": "uuid4" },
+          "granted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "is_granted": { "type": "boolean" },
+          "revoked_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "is_revoked": { "type": "boolean" },
+          "subscription_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }]
+          },
+          "order_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }]
+          },
+          "customer_id": { "type": "string", "format": "uuid4" },
+          "member_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }]
+          },
+          "benefit_id": { "type": "string", "format": "uuid4" },
+          "error": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
+          },
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
+          },
+          "member": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
+          },
+          "benefit": {
+            "$ref": "#/components/schemas/Benefit"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/CustomerBenefitGrant",
+      "value": {
+        "$ref": "#/components/schemas/CustomerBenefitGrantCommon"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/components/schemas/CustomerPaymentMethodCommon",
+      "value": {
+        "type": "object",
+        "title": "CustomerPaymentMethod",
+        "description": "A customer payment method.",
+        "required": [
+          "id",
+          "created_at",
+          "modified_at",
+          "processor",
+          "customer_id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "processor": {
+            "$ref": "#/components/schemas/PaymentProcessor"
+          },
+          "customer_id": {
+            "type": "string",
+            "format": "uuid4"
+          },
+          "type": {
+            "type": "string"
+          },
+          "method_metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/CustomerPaymentMethod",
+      "value": {
+        "$ref": "#/components/schemas/CustomerPaymentMethodCommon"
+      }
+    }
+  ]
+}
