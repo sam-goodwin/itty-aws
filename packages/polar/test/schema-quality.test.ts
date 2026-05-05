@@ -14,6 +14,8 @@ import { FilesupdateOutput } from "../src/operations/filesupdate.ts";
 import { MeterscreateOutput } from "../src/operations/meterscreate.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
+import { PaymentsgetOutput } from "../src/operations/paymentsget.ts";
+import { PaymentslistOutput } from "../src/operations/paymentslist.ts";
 
 describe("generated Polar schema quality", () => {
   it("redacts organization access token create responses", () => {
@@ -278,5 +280,41 @@ describe("generated Polar schema quality", () => {
     expect(updated.service).toBe("downloadable");
     expect(updated.is_uploaded).toBe(false);
     expect(listed.items[0].name).toBe("distilled-file.txt");
+  });
+
+  it("types common payment outputs", () => {
+    const payment = {
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      processor: "stripe",
+      status: "succeeded",
+      amount: 1000,
+      currency: "usd",
+      method: "card",
+      decline_reason: null,
+      decline_message: null,
+      organization_id: "00000000-0000-4000-8000-000000000000",
+      checkout_id: null,
+      order_id: null,
+      processor_metadata: {},
+      method_metadata: {
+        brand: "visa",
+        last4: "4242",
+      },
+    };
+
+    const decoded = Schema.decodeUnknownSync(PaymentsgetOutput)(payment);
+    const listed = Schema.decodeUnknownSync(PaymentslistOutput)({
+      items: [payment],
+      pagination: {
+        total_count: 1,
+        max_page: 1,
+      },
+    });
+
+    expect(decoded.processor).toBe("stripe");
+    expect(decoded.status).toBe("succeeded");
+    expect(listed.items[0].method).toBe("card");
   });
 });

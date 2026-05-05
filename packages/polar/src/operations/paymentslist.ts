@@ -19,7 +19,29 @@ export type PaymentslistInput = typeof PaymentslistInput.Type;
 
 // Output Schema
 export const PaymentslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.Array(Schema.Unknown),
+  items: Schema.Array(
+    Schema.Struct({
+      created_at: Schema.String,
+      modified_at: Schema.NullOr(Schema.String),
+      id: Schema.String,
+      processor: Schema.Literals(["stripe"]),
+      status: Schema.Literals(["pending", "succeeded", "failed"]),
+      amount: Schema.Number,
+      currency: Schema.String,
+      method: Schema.String,
+      decline_reason: Schema.NullOr(Schema.String),
+      decline_message: Schema.NullOr(Schema.String),
+      organization_id: Schema.String,
+      checkout_id: Schema.NullOr(Schema.String),
+      order_id: Schema.NullOr(Schema.String),
+      processor_metadata: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      method_metadata: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+    }),
+  ),
   pagination: Schema.Struct({
     total_count: Schema.Number,
     max_page: Schema.Number,

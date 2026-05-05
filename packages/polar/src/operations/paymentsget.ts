@@ -10,7 +10,27 @@ export const PaymentsgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PaymentsgetInput = typeof PaymentsgetInput.Type;
 
 // Output Schema
-export const PaymentsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const PaymentsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  created_at: Schema.String,
+  modified_at: Schema.NullOr(Schema.String),
+  id: Schema.String,
+  processor: Schema.Literals(["stripe"]),
+  status: Schema.Literals(["pending", "succeeded", "failed"]),
+  amount: Schema.Number,
+  currency: Schema.String,
+  method: Schema.String,
+  decline_reason: Schema.NullOr(Schema.String),
+  decline_message: Schema.NullOr(Schema.String),
+  organization_id: Schema.String,
+  checkout_id: Schema.NullOr(Schema.String),
+  order_id: Schema.NullOr(Schema.String),
+  processor_metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  method_metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+});
 export type PaymentsgetOutput = typeof PaymentsgetOutput.Type;
 
 // The operation

@@ -1,0 +1,88 @@
+{
+  "description": "Expose Payment read responses through common typed fields instead of Schema.Unknown. Polar models payments as card-or-generic variants; the SDK keeps the shared payment metadata and optional method metadata.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/components/schemas/PaymentCommon",
+      "value": {
+        "type": "object",
+        "title": "Payment",
+        "description": "A Polar payment.",
+        "required": [
+          "created_at",
+          "modified_at",
+          "id",
+          "processor",
+          "status",
+          "amount",
+          "currency",
+          "method",
+          "decline_reason",
+          "decline_message",
+          "organization_id",
+          "checkout_id",
+          "order_id"
+        ],
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid4"
+          },
+          "processor": {
+            "$ref": "#/components/schemas/PaymentProcessor"
+          },
+          "status": {
+            "$ref": "#/components/schemas/PaymentStatus"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "decline_reason": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "decline_message": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4"
+          },
+          "checkout_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }]
+          },
+          "order_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }]
+          },
+          "processor_metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "method_metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/Payment",
+      "value": {
+        "$ref": "#/components/schemas/PaymentCommon"
+      }
+    }
+  ]
+}
