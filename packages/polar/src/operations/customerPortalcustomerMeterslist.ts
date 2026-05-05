@@ -22,7 +22,7 @@ export const CustomerPortalcustomerMeterslistOutput =
       Schema.Struct({
         id: Schema.String,
         created_at: Schema.String,
-        modified_at: Schema.Unknown,
+        modified_at: Schema.NullOr(Schema.String),
         customer_id: Schema.String,
         meter_id: Schema.String,
         consumed_units: Schema.Number,
@@ -30,7 +30,7 @@ export const CustomerPortalcustomerMeterslistOutput =
         balance: Schema.Number,
         meter: Schema.Struct({
           created_at: Schema.String,
-          modified_at: Schema.Unknown,
+          modified_at: Schema.NullOr(Schema.String),
           id: Schema.String,
           name: Schema.String,
         }),

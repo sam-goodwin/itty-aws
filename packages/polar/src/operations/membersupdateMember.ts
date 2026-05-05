@@ -7,8 +7,10 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 export const MembersupdateMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-    name: Schema.optional(Schema.Unknown),
-    role: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
+    role: Schema.optional(
+      Schema.NullOr(Schema.Literals(["owner", "billing_manager", "member"])),
+    ),
   }).pipe(T.Http({ method: "PATCH", path: "/v1/members/{id}" }));
 export type MembersupdateMemberInput = typeof MembersupdateMemberInput.Type;
 
@@ -17,11 +19,11 @@ export const MembersupdateMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     customer_id: Schema.String,
     email: Schema.String,
-    name: Schema.Unknown,
-    external_id: Schema.Unknown,
+    name: Schema.NullOr(Schema.String),
+    external_id: Schema.NullOr(Schema.String),
     role: Schema.Literals(["owner", "billing_manager", "member"]),
   });
 export type MembersupdateMemberOutput = typeof MembersupdateMemberOutput.Type;

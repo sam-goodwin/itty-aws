@@ -6,8 +6,10 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const Oauth2revokeTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    token: Schema.String,
-    token_type_hint: Schema.optional(Schema.Unknown),
+    token: SensitiveString,
+    token_type_hint: Schema.optional(
+      Schema.NullOr(Schema.Literals(["access_token", "refresh_token"])),
+    ),
     client_id: Schema.String,
     client_secret: SensitiveString,
   },

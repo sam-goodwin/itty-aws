@@ -8,11 +8,55 @@ import { SensitiveString } from "../sensitive.ts";
 export const WebhooksupdateWebhookEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-    url: Schema.optional(Schema.Unknown),
-    name: Schema.optional(Schema.Unknown),
-    format: Schema.optional(Schema.Unknown),
-    events: Schema.optional(Schema.Unknown),
-    enabled: Schema.optional(Schema.Unknown),
+    url: Schema.optional(Schema.NullOr(Schema.String)),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
+    format: Schema.optional(
+      Schema.NullOr(Schema.Literals(["raw", "discord", "slack"])),
+    ),
+    events: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(
+          Schema.Literals([
+            "checkout.created",
+            "checkout.updated",
+            "checkout.expired",
+            "customer.created",
+            "customer.updated",
+            "customer.deleted",
+            "customer.state_changed",
+            "customer_seat.assigned",
+            "customer_seat.claimed",
+            "customer_seat.revoked",
+            "member.created",
+            "member.updated",
+            "member.deleted",
+            "order.created",
+            "order.updated",
+            "order.paid",
+            "order.refunded",
+            "subscription.created",
+            "subscription.updated",
+            "subscription.active",
+            "subscription.canceled",
+            "subscription.uncanceled",
+            "subscription.revoked",
+            "subscription.past_due",
+            "refund.created",
+            "refund.updated",
+            "product.created",
+            "product.updated",
+            "benefit.created",
+            "benefit.updated",
+            "benefit_grant.created",
+            "benefit_grant.cycled",
+            "benefit_grant.updated",
+            "benefit_grant.revoked",
+            "organization.updated",
+          ]),
+        ),
+      ),
+    ),
+    enabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
   }).pipe(T.Http({ method: "PATCH", path: "/v1/webhooks/endpoints/{id}" }));
 export type WebhooksupdateWebhookEndpointInput =
   typeof WebhooksupdateWebhookEndpointInput.Type;
@@ -21,10 +65,10 @@ export type WebhooksupdateWebhookEndpointInput =
 export const WebhooksupdateWebhookEndpointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
     url: Schema.String,
-    name: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     format: Schema.Literals(["raw", "discord", "slack"]),
     secret: SensitiveString,
     organization_id: Schema.String,

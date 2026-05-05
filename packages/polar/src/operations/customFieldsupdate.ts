@@ -9,42 +9,95 @@ export const CustomFieldsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.Unknown),
-      slug: Schema.optional(Schema.Unknown),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      slug: Schema.optional(Schema.NullOr(Schema.String)),
       type: Schema.Literal("text"),
-      properties: Schema.optional(Schema.Unknown),
+      properties: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            form_label: Schema.optional(Schema.String),
+            form_help_text: Schema.optional(Schema.String),
+            form_placeholder: Schema.optional(Schema.String),
+            textarea: Schema.optional(Schema.Boolean),
+            min_length: Schema.optional(Schema.Number),
+            max_length: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.Unknown),
-      slug: Schema.optional(Schema.Unknown),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      slug: Schema.optional(Schema.NullOr(Schema.String)),
       type: Schema.Literal("number"),
-      properties: Schema.optional(Schema.Unknown),
+      properties: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            form_label: Schema.optional(Schema.String),
+            form_help_text: Schema.optional(Schema.String),
+            form_placeholder: Schema.optional(Schema.String),
+            ge: Schema.optional(Schema.Number),
+            le: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.Unknown),
-      slug: Schema.optional(Schema.Unknown),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      slug: Schema.optional(Schema.NullOr(Schema.String)),
       type: Schema.Literal("date"),
-      properties: Schema.optional(Schema.Unknown),
+      properties: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            form_label: Schema.optional(Schema.String),
+            form_help_text: Schema.optional(Schema.String),
+            form_placeholder: Schema.optional(Schema.String),
+            ge: Schema.optional(Schema.Number),
+            le: Schema.optional(Schema.Number),
+          }),
+        ),
+      ),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.Unknown),
-      slug: Schema.optional(Schema.Unknown),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      slug: Schema.optional(Schema.NullOr(Schema.String)),
       type: Schema.Literal("checkbox"),
-      properties: Schema.optional(Schema.Unknown),
+      properties: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            form_label: Schema.optional(Schema.String),
+            form_help_text: Schema.optional(Schema.String),
+            form_placeholder: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.Unknown),
-      slug: Schema.optional(Schema.Unknown),
+      name: Schema.optional(Schema.NullOr(Schema.String)),
+      slug: Schema.optional(Schema.NullOr(Schema.String)),
       type: Schema.Literal("select"),
-      properties: Schema.optional(Schema.Unknown),
+      properties: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            form_label: Schema.optional(Schema.String),
+            form_help_text: Schema.optional(Schema.String),
+            form_placeholder: Schema.optional(Schema.String),
+            options: Schema.Array(
+              Schema.Struct({
+                value: Schema.String,
+                label: Schema.String,
+              }),
+            ),
+          }),
+        ),
+      ),
     }),
   ],
 ).pipe(T.Http({ method: "PATCH", path: "/v1/custom-fields/{id}" }));

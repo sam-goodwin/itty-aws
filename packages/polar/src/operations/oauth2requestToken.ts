@@ -25,8 +25,8 @@ export const Oauth2requestTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       client_secret: SensitiveString,
       session_token: SensitiveString,
       sub_type: Schema.optional(Schema.Literals(["user", "organization"])),
-      sub: Schema.optional(Schema.Unknown),
-      scope: Schema.optional(Schema.Unknown),
+      sub: Schema.optional(Schema.NullOr(Schema.String)),
+      scope: Schema.optional(Schema.NullOr(Schema.String)),
     }),
   ],
 ).pipe(
@@ -44,9 +44,9 @@ export const Oauth2requestTokenOutput =
     access_token: SensitiveString,
     token_type: Schema.Literal("Bearer"),
     expires_in: Schema.Number,
-    refresh_token: Schema.optional(Schema.Unknown),
+    refresh_token: Schema.optional(Schema.NullOr(Schema.String)),
     scope: Schema.String,
-    id_token: Schema.optional(Schema.Unknown),
+    id_token: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type Oauth2requestTokenOutput = typeof Oauth2requestTokenOutput.Type;
 

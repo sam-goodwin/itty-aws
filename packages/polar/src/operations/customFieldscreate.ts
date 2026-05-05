@@ -11,7 +11,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       type: Schema.Literal("text"),
       slug: Schema.String,
       name: Schema.String,
-      organization_id: Schema.optional(Schema.Unknown),
+      organization_id: Schema.optional(Schema.NullOr(Schema.String)),
       properties: Schema.Struct({
         form_label: Schema.optional(Schema.String),
         form_help_text: Schema.optional(Schema.String),
@@ -26,7 +26,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       type: Schema.Literal("number"),
       slug: Schema.String,
       name: Schema.String,
-      organization_id: Schema.optional(Schema.Unknown),
+      organization_id: Schema.optional(Schema.NullOr(Schema.String)),
       properties: Schema.Struct({
         form_label: Schema.optional(Schema.String),
         form_help_text: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       type: Schema.Literal("date"),
       slug: Schema.String,
       name: Schema.String,
-      organization_id: Schema.optional(Schema.Unknown),
+      organization_id: Schema.optional(Schema.NullOr(Schema.String)),
       properties: Schema.Struct({
         form_label: Schema.optional(Schema.String),
         form_help_text: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       type: Schema.Literal("checkbox"),
       slug: Schema.String,
       name: Schema.String,
-      organization_id: Schema.optional(Schema.Unknown),
+      organization_id: Schema.optional(Schema.NullOr(Schema.String)),
       properties: Schema.Struct({
         form_label: Schema.optional(Schema.String),
         form_help_text: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       type: Schema.Literal("select"),
       slug: Schema.String,
       name: Schema.String,
-      organization_id: Schema.optional(Schema.Unknown),
+      organization_id: Schema.optional(Schema.NullOr(Schema.String)),
       properties: Schema.Struct({
         form_label: Schema.optional(Schema.String),
         form_help_text: Schema.optional(Schema.String),

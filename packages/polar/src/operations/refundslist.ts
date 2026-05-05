@@ -23,7 +23,7 @@ export const RefundslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   items: Schema.Array(
     Schema.Struct({
       created_at: Schema.String,
-      modified_at: Schema.Unknown,
+      modified_at: Schema.NullOr(Schema.String),
       id: Schema.String,
       metadata: Schema.Record(Schema.String, Schema.Unknown),
       status: Schema.Literals(["pending", "succeeded", "failed", "canceled"]),
@@ -41,10 +41,31 @@ export const RefundslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       currency: Schema.String,
       organization_id: Schema.String,
       order_id: Schema.String,
-      subscription_id: Schema.Unknown,
+      subscription_id: Schema.NullOr(Schema.String),
       customer_id: Schema.String,
       revoke_benefits: Schema.Boolean,
-      dispute: Schema.Unknown,
+      dispute: Schema.NullOr(
+        Schema.Struct({
+          created_at: Schema.String,
+          modified_at: Schema.NullOr(Schema.String),
+          id: Schema.String,
+          status: Schema.Literals([
+            "prevented",
+            "early_warning",
+            "needs_response",
+            "under_review",
+            "lost",
+            "won",
+          ]),
+          resolved: Schema.Boolean,
+          closed: Schema.Boolean,
+          amount: Schema.Number,
+          tax_amount: Schema.Number,
+          currency: Schema.String,
+          order_id: Schema.String,
+          payment_id: Schema.String,
+        }),
+      ),
     }),
   ),
   pagination: Schema.Struct({

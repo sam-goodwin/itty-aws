@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, UnprocessableEntity } from "../errors.ts";
 export const CustomerPortalmembersaddMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.String,
-    name: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     role: Schema.optional(
       Schema.Literals(["owner", "billing_manager", "member"]),
     ),
@@ -19,10 +19,10 @@ export type CustomerPortalmembersaddMemberInput =
 export const CustomerPortalmembersaddMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
     email: Schema.String,
-    name: Schema.Unknown,
+    name: Schema.NullOr(Schema.String),
     role: Schema.Literals(["owner", "billing_manager", "member"]),
   });
 export type CustomerPortalmembersaddMemberOutput =

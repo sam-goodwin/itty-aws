@@ -11,16 +11,18 @@ import {
 // Input Schema
 export const CustomerPortalseatsassignSeatInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription_id: Schema.optional(Schema.Unknown),
-    checkout_id: Schema.optional(Schema.Unknown),
-    checkout_client_secret: Schema.optional(Schema.Unknown),
-    order_id: Schema.optional(Schema.Unknown),
-    email: Schema.optional(Schema.Unknown),
-    external_customer_id: Schema.optional(Schema.Unknown),
-    customer_id: Schema.optional(Schema.Unknown),
-    external_member_id: Schema.optional(Schema.Unknown),
-    member_id: Schema.optional(Schema.Unknown),
-    metadata: Schema.optional(Schema.Unknown),
+    subscription_id: Schema.optional(Schema.NullOr(Schema.String)),
+    checkout_id: Schema.optional(Schema.NullOr(Schema.String)),
+    checkout_client_secret: Schema.optional(Schema.NullOr(Schema.String)),
+    order_id: Schema.optional(Schema.NullOr(Schema.String)),
+    email: Schema.optional(Schema.NullOr(Schema.String)),
+    external_customer_id: Schema.optional(Schema.NullOr(Schema.String)),
+    customer_id: Schema.optional(Schema.NullOr(Schema.String)),
+    external_member_id: Schema.optional(Schema.NullOr(Schema.String)),
+    member_id: Schema.optional(Schema.NullOr(Schema.String)),
+    metadata: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
     immediate_claim: Schema.optional(Schema.Boolean),
   }).pipe(T.Http({ method: "POST", path: "/v1/customer-portal/seats" }));
 export type CustomerPortalseatsassignSeatInput =
@@ -30,20 +32,35 @@ export type CustomerPortalseatsassignSeatInput =
 export const CustomerPortalseatsassignSeatOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
-    subscription_id: Schema.optional(Schema.Unknown),
-    order_id: Schema.optional(Schema.Unknown),
+    subscription_id: Schema.optional(Schema.NullOr(Schema.String)),
+    order_id: Schema.optional(Schema.NullOr(Schema.String)),
     status: Schema.Literals(["pending", "claimed", "revoked"]),
-    customer_id: Schema.optional(Schema.Unknown),
-    member_id: Schema.optional(Schema.Unknown),
-    member: Schema.optional(Schema.Unknown),
-    email: Schema.optional(Schema.Unknown),
-    customer_email: Schema.optional(Schema.Unknown),
-    invitation_token_expires_at: Schema.optional(Schema.Unknown),
-    claimed_at: Schema.optional(Schema.Unknown),
-    revoked_at: Schema.optional(Schema.Unknown),
-    seat_metadata: Schema.optional(Schema.Unknown),
+    customer_id: Schema.optional(Schema.NullOr(Schema.String)),
+    member_id: Schema.optional(Schema.NullOr(Schema.String)),
+    member: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.String,
+          created_at: Schema.String,
+          modified_at: Schema.NullOr(Schema.String),
+          customer_id: Schema.String,
+          email: Schema.String,
+          name: Schema.NullOr(Schema.String),
+          external_id: Schema.NullOr(Schema.String),
+          role: Schema.Literals(["owner", "billing_manager", "member"]),
+        }),
+      ),
+    ),
+    email: Schema.optional(Schema.NullOr(Schema.String)),
+    customer_email: Schema.optional(Schema.NullOr(Schema.String)),
+    invitation_token_expires_at: Schema.optional(Schema.NullOr(Schema.String)),
+    claimed_at: Schema.optional(Schema.NullOr(Schema.String)),
+    revoked_at: Schema.optional(Schema.NullOr(Schema.String)),
+    seat_metadata: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
   });
 export type CustomerPortalseatsassignSeatOutput =
   typeof CustomerPortalseatsassignSeatOutput.Type;

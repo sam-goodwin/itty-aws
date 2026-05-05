@@ -10,14 +10,14 @@ export const CustomerPortalbenefitGrantsupdateInput =
       id: Schema.String.pipe(T.PathParam()),
       benefit_type: Schema.Literal("discord"),
       properties: Schema.Struct({
-        account_id: Schema.Unknown,
+        account_id: Schema.NullOr(Schema.String),
       }),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
       benefit_type: Schema.Literal("github_repository"),
       properties: Schema.Struct({
-        account_id: Schema.Unknown,
+        account_id: Schema.NullOr(Schema.String),
       }),
     }),
     Schema.Struct({

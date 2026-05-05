@@ -7,7 +7,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 export const EventTypesupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   label: Schema.String,
-  label_property_selector: Schema.optional(Schema.Unknown),
+  label_property_selector: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(T.Http({ method: "PATCH", path: "/v1/event-types/{id}" }));
 export type EventTypesupdateInput = typeof EventTypesupdateInput.Type;
 
@@ -15,11 +15,11 @@ export type EventTypesupdateInput = typeof EventTypesupdateInput.Type;
 export const EventTypesupdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
     name: Schema.String,
     label: Schema.String,
-    label_property_selector: Schema.optional(Schema.Unknown),
+    label_property_selector: Schema.optional(Schema.NullOr(Schema.String)),
     organization_id: Schema.String,
   },
 );

@@ -27,6 +27,7 @@ const ApiErrorResponse = Schema.Struct({
   code: Schema.optional(Schema.String),
   detail: Schema.optional(Schema.Unknown),
   error: Schema.optional(Schema.String),
+  error_description: Schema.optional(Schema.String),
   message: Schema.optional(Schema.String),
 });
 
@@ -51,7 +52,7 @@ const matchError = (
     if (ErrorClass) {
       return Effect.fail(
         new ErrorClass({
-          message: errorMessage(parsed),
+          message: formatPolarErrorMessage(parsed),
           retryAfter: parseRetryAfterForStatus(status, headers),
         }),
       );
@@ -59,7 +60,7 @@ const matchError = (
     return Effect.fail(
       new UnknownPolarError({
         code: parsed.code,
-        message: errorMessage(parsed),
+        message: formatPolarErrorMessage(parsed),
         body: errorBody,
       }),
     );
@@ -82,10 +83,48 @@ export const API = makeAPI<Credentials>({
   retry: Retry as any,
 });
 
-const errorMessage = (parsed: typeof ApiErrorResponse.Type): string => {
-  if (parsed.message) return parsed.message;
-  if (parsed.error) return parsed.error;
-  if (typeof parsed.detail === "string") return parsed.detail;
-  if (parsed.detail !== undefined) return JSON.stringify(parsed.detail);
+export const formatPolarErrorMessage = (
+  parsed: typeof ApiErrorResponse.Type,
+): string => {
+  const summary = parsed.message ?? parsed.error ?? parsed.code;
+  const detail = formatErrorDetail(parsed.detail);
+  const description = parsed.error_description;
+
+  if (summary && detail && detail !== summary) {
+    return `${summary}: ${detail}`;
+  }
+  if (summary && description && description !== summary) {
+    return `${summary}: ${description}`;
+  }
+  if (summary) return summary;
+  if (detail) return detail;
+  if (description) return description;
   return "";
+};
+
+const formatErrorDetail = (detail: unknown): string | undefined => {
+  if (typeof detail === "string") return detail;
+  if (!Array.isArray(detail)) {
+    return detail === undefined ? undefined : JSON.stringify(detail);
+  }
+
+  const formatted = detail
+    .map((entry) => {
+      if (!entry || typeof entry !== "object") {
+        return JSON.stringify(entry);
+      }
+
+      const record = entry as Record<string, unknown>;
+      const location = Array.isArray(record.loc)
+        ? record.loc.map(String).join(".")
+        : undefined;
+      const message = typeof record.msg === "string" ? record.msg : undefined;
+
+      if (location && message) return `${location}: ${message}`;
+      if (message) return message;
+      return JSON.stringify(entry);
+    })
+    .filter((part): part is string => Boolean(part));
+
+  return formatted.length === 0 ? undefined : formatted.join("; ");
 };

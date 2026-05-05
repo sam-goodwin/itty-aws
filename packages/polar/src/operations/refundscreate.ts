@@ -17,7 +17,7 @@ export const RefundscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "other",
   ]),
   amount: Schema.Number,
-  comment: Schema.optional(Schema.Unknown),
+  comment: Schema.optional(Schema.NullOr(Schema.String)),
   revoke_benefits: Schema.optional(Schema.Boolean),
 }).pipe(T.Http({ method: "POST", path: "/v1/refunds/" }));
 export type RefundscreateInput = typeof RefundscreateInput.Type;
@@ -25,7 +25,7 @@ export type RefundscreateInput = typeof RefundscreateInput.Type;
 // Output Schema
 export const RefundscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created_at: Schema.String,
-  modified_at: Schema.Unknown,
+  modified_at: Schema.NullOr(Schema.String),
   id: Schema.String,
   metadata: Schema.Record(Schema.String, Schema.Unknown),
   status: Schema.Literals(["pending", "succeeded", "failed", "canceled"]),
@@ -43,10 +43,31 @@ export const RefundscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   currency: Schema.String,
   organization_id: Schema.String,
   order_id: Schema.String,
-  subscription_id: Schema.Unknown,
+  subscription_id: Schema.NullOr(Schema.String),
   customer_id: Schema.String,
   revoke_benefits: Schema.Boolean,
-  dispute: Schema.Unknown,
+  dispute: Schema.NullOr(
+    Schema.Struct({
+      created_at: Schema.String,
+      modified_at: Schema.NullOr(Schema.String),
+      id: Schema.String,
+      status: Schema.Literals([
+        "prevented",
+        "early_warning",
+        "needs_response",
+        "under_review",
+        "lost",
+        "won",
+      ]),
+      resolved: Schema.Boolean,
+      closed: Schema.Boolean,
+      amount: Schema.Number,
+      tax_amount: Schema.Number,
+      currency: Schema.String,
+      order_id: Schema.String,
+      payment_id: Schema.String,
+    }),
+  ),
 });
 export type RefundscreateOutput = typeof RefundscreateOutput.Type;
 

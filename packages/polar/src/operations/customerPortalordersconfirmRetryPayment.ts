@@ -7,8 +7,8 @@ import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 export const CustomerPortalordersconfirmRetryPaymentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-    confirmation_token_id: Schema.optional(Schema.Unknown),
-    payment_method_id: Schema.optional(Schema.Unknown),
+    confirmation_token_id: Schema.optional(Schema.NullOr(Schema.String)),
+    payment_method_id: Schema.optional(Schema.NullOr(Schema.String)),
     payment_processor: Schema.optional(Schema.Literals(["stripe"])),
   }).pipe(
     T.Http({
@@ -23,8 +23,8 @@ export type CustomerPortalordersconfirmRetryPaymentInput =
 export const CustomerPortalordersconfirmRetryPaymentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.String,
-    client_secret: Schema.optional(Schema.Unknown),
-    error: Schema.optional(Schema.Unknown),
+    client_secret: Schema.optional(Schema.NullOr(Schema.String)),
+    error: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type CustomerPortalordersconfirmRetryPaymentOutput =
   typeof CustomerPortalordersconfirmRetryPaymentOutput.Type;

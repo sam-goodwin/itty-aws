@@ -29,11 +29,11 @@ export const CustomerPortaldownloadableslistOutput =
           path: Schema.String,
           mime_type: Schema.String,
           size: Schema.Number,
-          storage_version: Schema.Unknown,
-          checksum_etag: Schema.Unknown,
-          checksum_sha256_base64: Schema.Unknown,
-          checksum_sha256_hex: Schema.Unknown,
-          last_modified_at: Schema.Unknown,
+          storage_version: Schema.NullOr(Schema.String),
+          checksum_etag: Schema.NullOr(Schema.String),
+          checksum_sha256_base64: Schema.NullOr(Schema.String),
+          checksum_sha256_hex: Schema.NullOr(Schema.String),
+          last_modified_at: Schema.NullOr(Schema.String),
           download: Schema.Struct({
             url: Schema.String,
             headers: Schema.optional(
@@ -41,7 +41,7 @@ export const CustomerPortaldownloadableslistOutput =
             ),
             expires_at: Schema.String,
           }),
-          version: Schema.Unknown,
+          version: Schema.NullOr(Schema.String),
           is_uploaded: Schema.Boolean,
           service: Schema.Literals([
             "downloadable",

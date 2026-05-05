@@ -15,7 +15,7 @@ export const MetricslistDashboardsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
       created_at: Schema.String,
-      modified_at: Schema.Unknown,
+      modified_at: Schema.NullOr(Schema.String),
       id: Schema.String,
       name: Schema.String,
       metrics: Schema.Array(Schema.String),

@@ -12,7 +12,9 @@ import {
 export const CustomerPortalmembersupdateMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-    role: Schema.optional(Schema.Unknown),
+    role: Schema.optional(
+      Schema.NullOr(Schema.Literals(["owner", "billing_manager", "member"])),
+    ),
   }).pipe(
     T.Http({ method: "PATCH", path: "/v1/customer-portal/members/{id}" }),
   );
@@ -23,10 +25,10 @@ export type CustomerPortalmembersupdateMemberInput =
 export const CustomerPortalmembersupdateMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
     email: Schema.String,
-    name: Schema.Unknown,
+    name: Schema.NullOr(Schema.String),
     role: Schema.Literals(["owner", "billing_manager", "member"]),
   });
 export type CustomerPortalmembersupdateMemberOutput =

@@ -11,7 +11,7 @@ export const FilesuploadedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       number: Schema.Number,
       checksum_etag: Schema.String,
-      checksum_sha256_base64: Schema.Unknown,
+      checksum_sha256_base64: Schema.NullOr(Schema.String),
     }),
   ),
 }).pipe(T.Http({ method: "POST", path: "/v1/files/{id}/uploaded" }));

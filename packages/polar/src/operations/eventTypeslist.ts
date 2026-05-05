@@ -22,12 +22,12 @@ export type EventTypeslistInput = typeof EventTypeslistInput.Type;
 export const EventTypeslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   items: Schema.Array(
     Schema.Struct({
-      id: Schema.optional(Schema.Unknown),
-      created_at: Schema.optional(Schema.Unknown),
-      modified_at: Schema.optional(Schema.Unknown),
+      id: Schema.optional(Schema.NullOr(Schema.String)),
+      created_at: Schema.optional(Schema.NullOr(Schema.String)),
+      modified_at: Schema.optional(Schema.NullOr(Schema.String)),
       name: Schema.String,
       label: Schema.String,
-      label_property_selector: Schema.optional(Schema.Unknown),
+      label_property_selector: Schema.optional(Schema.NullOr(Schema.String)),
       organization_id: Schema.String,
       source: Schema.Literals(["system", "user"]),
       occurrences: Schema.Number,

@@ -20,7 +20,7 @@ export const OrganizationAccessTokenslistOutput =
     items: Schema.Array(
       Schema.Struct({
         created_at: Schema.String,
-        modified_at: Schema.Unknown,
+        modified_at: Schema.NullOr(Schema.String),
         id: Schema.String,
         scopes: Schema.Array(
           Schema.Literals([
@@ -90,9 +90,9 @@ export const OrganizationAccessTokenslistOutput =
             "organization_access_tokens:write",
           ]),
         ),
-        expires_at: Schema.Unknown,
+        expires_at: Schema.NullOr(Schema.String),
         comment: Schema.String,
-        last_used_at: Schema.Unknown,
+        last_used_at: Schema.NullOr(Schema.String),
         organization_id: Schema.String,
       }),
     ),

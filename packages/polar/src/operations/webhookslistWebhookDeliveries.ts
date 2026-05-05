@@ -25,19 +25,19 @@ export const WebhookslistWebhookDeliveriesOutput =
     items: Schema.Array(
       Schema.Struct({
         created_at: Schema.String,
-        modified_at: Schema.Unknown,
+        modified_at: Schema.NullOr(Schema.String),
         id: Schema.String,
         succeeded: Schema.Boolean,
-        http_code: Schema.Unknown,
-        response: Schema.Unknown,
+        http_code: Schema.NullOr(Schema.Number),
+        response: Schema.NullOr(Schema.String),
         webhook_event: Schema.Struct({
           created_at: Schema.String,
-          modified_at: Schema.Unknown,
+          modified_at: Schema.NullOr(Schema.String),
           id: Schema.String,
-          last_http_code: Schema.optional(Schema.Unknown),
-          succeeded: Schema.optional(Schema.Unknown),
+          last_http_code: Schema.optional(Schema.NullOr(Schema.Number)),
+          succeeded: Schema.optional(Schema.NullOr(Schema.Boolean)),
           skipped: Schema.Boolean,
-          payload: Schema.Unknown,
+          payload: Schema.NullOr(Schema.String),
           type: Schema.Literals([
             "checkout.created",
             "checkout.updated",

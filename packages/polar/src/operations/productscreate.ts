@@ -7,10 +7,10 @@ import { UnprocessableEntity } from "../errors.ts";
 export const ProductscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   name: Schema.String,
-  description: Schema.optional(Schema.Unknown),
+  description: Schema.optional(Schema.NullOr(Schema.String)),
   visibility: Schema.optional(Schema.Literals(["draft", "private", "public"])),
   prices: Schema.Array(Schema.Unknown),
-  medias: Schema.optional(Schema.Unknown),
+  medias: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
   attached_custom_fields: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -19,11 +19,15 @@ export const ProductscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  organization_id: Schema.optional(Schema.Unknown),
-  trial_interval: Schema.optional(Schema.Unknown),
-  trial_interval_count: Schema.optional(Schema.Unknown),
-  recurring_interval: Schema.optional(Schema.Unknown),
-  recurring_interval_count: Schema.optional(Schema.Unknown),
+  organization_id: Schema.optional(Schema.NullOr(Schema.String)),
+  trial_interval: Schema.optional(
+    Schema.NullOr(Schema.Literals(["day", "week", "month", "year"])),
+  ),
+  trial_interval_count: Schema.optional(Schema.NullOr(Schema.Number)),
+  recurring_interval: Schema.optional(
+    Schema.NullOr(Schema.Literals(["day", "week", "month", "year"])),
+  ),
+  recurring_interval_count: Schema.optional(Schema.NullOr(Schema.Number)),
 }).pipe(T.Http({ method: "POST", path: "/v1/products/" }));
 export type ProductscreateInput = typeof ProductscreateInput.Type;
 
@@ -31,14 +35,18 @@ export type ProductscreateInput = typeof ProductscreateInput.Type;
 export const ProductscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   created_at: Schema.String,
-  modified_at: Schema.Unknown,
-  trial_interval: Schema.Unknown,
-  trial_interval_count: Schema.Unknown,
+  modified_at: Schema.NullOr(Schema.String),
+  trial_interval: Schema.NullOr(
+    Schema.Literals(["day", "week", "month", "year"]),
+  ),
+  trial_interval_count: Schema.NullOr(Schema.Number),
   name: Schema.String,
-  description: Schema.Unknown,
+  description: Schema.NullOr(Schema.String),
   visibility: Schema.Literals(["draft", "private", "public"]),
-  recurring_interval: Schema.Unknown,
-  recurring_interval_count: Schema.Unknown,
+  recurring_interval: Schema.NullOr(
+    Schema.Literals(["day", "week", "month", "year"]),
+  ),
+  recurring_interval_count: Schema.NullOr(Schema.Number),
   is_recurring: Schema.Boolean,
   is_archived: Schema.Boolean,
   organization_id: Schema.String,
@@ -48,7 +56,7 @@ export const ProductscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.String,
       created_at: Schema.String,
-      modified_at: Schema.Unknown,
+      modified_at: Schema.NullOr(Schema.String),
       type: Schema.Literals([
         "custom",
         "discord",
@@ -75,12 +83,12 @@ export const ProductscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       path: Schema.String,
       mime_type: Schema.String,
       size: Schema.Number,
-      storage_version: Schema.Unknown,
-      checksum_etag: Schema.Unknown,
-      checksum_sha256_base64: Schema.Unknown,
-      checksum_sha256_hex: Schema.Unknown,
-      last_modified_at: Schema.Unknown,
-      version: Schema.Unknown,
+      storage_version: Schema.NullOr(Schema.String),
+      checksum_etag: Schema.NullOr(Schema.String),
+      checksum_sha256_base64: Schema.NullOr(Schema.String),
+      checksum_sha256_hex: Schema.NullOr(Schema.String),
+      last_modified_at: Schema.NullOr(Schema.String),
+      version: Schema.NullOr(Schema.String),
       service: Schema.Literal("product_media"),
       is_uploaded: Schema.Boolean,
       created_at: Schema.String,

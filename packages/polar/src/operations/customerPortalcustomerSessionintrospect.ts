@@ -17,7 +17,7 @@ export type CustomerPortalcustomerSessionintrospectInput =
 export const CustomerPortalcustomerSessionintrospectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expires_at: Schema.String,
-    return_url: Schema.Unknown,
+    return_url: Schema.NullOr(Schema.String),
   });
 export type CustomerPortalcustomerSessionintrospectOutput =
   typeof CustomerPortalcustomerSessionintrospectOutput.Type;

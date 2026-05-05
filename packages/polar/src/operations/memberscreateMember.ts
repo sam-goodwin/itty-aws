@@ -8,8 +8,8 @@ export const MemberscreateMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer_id: Schema.String,
     email: Schema.String,
-    name: Schema.optional(Schema.Unknown),
-    external_id: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
+    external_id: Schema.optional(Schema.NullOr(Schema.String)),
     role: Schema.optional(Schema.Literals(["member", "billing_manager"])),
   }).pipe(T.Http({ method: "POST", path: "/v1/members/" }));
 export type MemberscreateMemberInput = typeof MemberscreateMemberInput.Type;
@@ -19,11 +19,11 @@ export const MemberscreateMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     customer_id: Schema.String,
     email: Schema.String,
-    name: Schema.Unknown,
-    external_id: Schema.Unknown,
+    name: Schema.NullOr(Schema.String),
+    external_id: Schema.NullOr(Schema.String),
     role: Schema.Literals(["owner", "billing_manager", "member"]),
   });
 export type MemberscreateMemberOutput = typeof MemberscreateMemberOutput.Type;

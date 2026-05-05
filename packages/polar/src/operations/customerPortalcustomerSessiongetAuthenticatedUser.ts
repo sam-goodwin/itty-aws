@@ -17,11 +17,11 @@ export type CustomerPortalcustomerSessiongetAuthenticatedUserInput =
 export const CustomerPortalcustomerSessiongetAuthenticatedUserOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
-    name: Schema.Unknown,
+    name: Schema.NullOr(Schema.String),
     email: Schema.String,
     customer_id: Schema.String,
-    member_id: Schema.optional(Schema.Unknown),
-    role: Schema.optional(Schema.Unknown),
+    member_id: Schema.optional(Schema.NullOr(Schema.String)),
+    role: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type CustomerPortalcustomerSessiongetAuthenticatedUserOutput =
   typeof CustomerPortalcustomerSessiongetAuthenticatedUserOutput.Type;

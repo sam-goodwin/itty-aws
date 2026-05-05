@@ -16,7 +16,7 @@ export const CustomerPortalwalletsgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     customer_id: Schema.String,
     balance: Schema.Number,
     currency: Schema.String,

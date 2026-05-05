@@ -7,8 +7,8 @@ import { UnprocessableEntity } from "../errors.ts";
 export const MetricsupdateDashboardInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-    name: Schema.optional(Schema.Unknown),
-    metrics: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
+    metrics: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
   }).pipe(T.Http({ method: "PATCH", path: "/v1/metrics/dashboards/{id}" }));
 export type MetricsupdateDashboardInput =
   typeof MetricsupdateDashboardInput.Type;
@@ -17,7 +17,7 @@ export type MetricsupdateDashboardInput =
 export const MetricsupdateDashboardOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
     name: Schema.String,
     metrics: Schema.Array(Schema.String),

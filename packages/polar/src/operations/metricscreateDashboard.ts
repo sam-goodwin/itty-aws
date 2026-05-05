@@ -8,7 +8,7 @@ export const MetricscreateDashboardInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
     metrics: Schema.optional(Schema.Array(Schema.String)),
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(T.Http({ method: "POST", path: "/v1/metrics/dashboards" }));
 export type MetricscreateDashboardInput =
   typeof MetricscreateDashboardInput.Type;
@@ -17,7 +17,7 @@ export type MetricscreateDashboardInput =
 export const MetricscreateDashboardOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
     name: Schema.String,
     metrics: Schema.Array(Schema.String),

@@ -88,4 +88,23 @@ describeLive("Benefits", () => {
       expect(error._tag).toBe("NotFound");
     },
   );
+
+  it(
+    "surfaces validation details for invalid create requests",
+    { timeout: 30_000 },
+    async () => {
+      const error = await runEffect(
+        benefitscreate({
+          type: "custom",
+          description: "x".repeat(100),
+          organization_id: organizationId,
+          properties: {},
+        }).pipe(Effect.flip),
+      );
+
+      expect(error._tag).toBe("UnprocessableEntity");
+      expect(error.message).toContain("description");
+      expect(error.message).toContain("at most");
+    },
+  );
 });

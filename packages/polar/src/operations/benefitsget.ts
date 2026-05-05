@@ -13,7 +13,7 @@ export type BenefitsgetInput = typeof BenefitsgetInput.Type;
 export const BenefitsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   created_at: Schema.String,
-  modified_at: Schema.Unknown,
+  modified_at: Schema.NullOr(Schema.String),
   type: Schema.Literals([
     "custom",
     "discord",

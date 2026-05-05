@@ -9,16 +9,16 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.Literal("custom"),
     description: Schema.String,
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     properties: Schema.Struct({
-      note: Schema.optional(Schema.Unknown),
+      note: Schema.optional(Schema.NullOr(Schema.String)),
     }),
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.Literal("discord"),
     description: Schema.String,
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     properties: Schema.Struct({
       guild_token: Schema.String,
       role_id: Schema.String,
@@ -29,7 +29,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.Literal("github_repository"),
     description: Schema.String,
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     properties: Schema.Struct({
       repository_owner: Schema.String,
       repository_name: Schema.String,
@@ -46,7 +46,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.Literal("downloadables"),
     description: Schema.String,
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     properties: Schema.Struct({
       archived: Schema.optional(Schema.Record(Schema.String, Schema.Boolean)),
       files: Schema.Array(Schema.String),
@@ -56,19 +56,33 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.Literal("license_keys"),
     description: Schema.String,
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     properties: Schema.Struct({
-      prefix: Schema.optional(Schema.Unknown),
-      expires: Schema.optional(Schema.Unknown),
-      activations: Schema.optional(Schema.Unknown),
-      limit_usage: Schema.optional(Schema.Unknown),
+      prefix: Schema.optional(Schema.NullOr(Schema.String)),
+      expires: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            ttl: Schema.Number,
+            timeframe: Schema.Literals(["year", "month", "day"]),
+          }),
+        ),
+      ),
+      activations: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            limit: Schema.Number,
+            enable_customer_admin: Schema.Boolean,
+          }),
+        ),
+      ),
+      limit_usage: Schema.optional(Schema.NullOr(Schema.Number)),
     }),
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.Literal("meter_credit"),
     description: Schema.String,
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     properties: Schema.Struct({
       units: Schema.Number,
       rollover: Schema.Boolean,
@@ -79,7 +93,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.Literal("feature_flag"),
     description: Schema.String,
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     properties: Schema.Struct({}),
   }),
 ]).pipe(T.Http({ method: "POST", path: "/v1/benefits/" }));
@@ -89,7 +103,7 @@ export type BenefitscreateInput = typeof BenefitscreateInput.Type;
 export const BenefitscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   created_at: Schema.String,
-  modified_at: Schema.Unknown,
+  modified_at: Schema.NullOr(Schema.String),
   type: Schema.Literals([
     "custom",
     "discord",

@@ -18,10 +18,10 @@ export const CustomerPortalmemberslistMembersOutput =
     items: Schema.Array(
       Schema.Struct({
         created_at: Schema.String,
-        modified_at: Schema.Unknown,
+        modified_at: Schema.NullOr(Schema.String),
         id: Schema.String,
         email: Schema.String,
-        name: Schema.Unknown,
+        name: Schema.NullOr(Schema.String),
         role: Schema.Literals(["owner", "billing_manager", "member"]),
       }),
     ),

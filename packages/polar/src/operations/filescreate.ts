@@ -6,61 +6,61 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const FilescreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     name: Schema.String,
     mime_type: Schema.String,
     size: Schema.Number,
-    checksum_sha256_base64: Schema.optional(Schema.Unknown),
+    checksum_sha256_base64: Schema.optional(Schema.NullOr(Schema.String)),
     upload: Schema.Struct({
       parts: Schema.Array(
         Schema.Struct({
           number: Schema.Number,
           chunk_start: Schema.Number,
           chunk_end: Schema.Number,
-          checksum_sha256_base64: Schema.optional(Schema.Unknown),
+          checksum_sha256_base64: Schema.optional(Schema.NullOr(Schema.String)),
         }),
       ),
     }),
     service: Schema.Literal("downloadable"),
-    version: Schema.optional(Schema.Unknown),
+    version: Schema.optional(Schema.NullOr(Schema.String)),
   }),
   Schema.Struct({
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     name: Schema.String,
     mime_type: Schema.String,
     size: Schema.Number,
-    checksum_sha256_base64: Schema.optional(Schema.Unknown),
+    checksum_sha256_base64: Schema.optional(Schema.NullOr(Schema.String)),
     upload: Schema.Struct({
       parts: Schema.Array(
         Schema.Struct({
           number: Schema.Number,
           chunk_start: Schema.Number,
           chunk_end: Schema.Number,
-          checksum_sha256_base64: Schema.optional(Schema.Unknown),
+          checksum_sha256_base64: Schema.optional(Schema.NullOr(Schema.String)),
         }),
       ),
     }),
     service: Schema.Literal("product_media"),
-    version: Schema.optional(Schema.Unknown),
+    version: Schema.optional(Schema.NullOr(Schema.String)),
   }),
   Schema.Struct({
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     name: Schema.String,
     mime_type: Schema.String,
     size: Schema.Number,
-    checksum_sha256_base64: Schema.optional(Schema.Unknown),
+    checksum_sha256_base64: Schema.optional(Schema.NullOr(Schema.String)),
     upload: Schema.Struct({
       parts: Schema.Array(
         Schema.Struct({
           number: Schema.Number,
           chunk_start: Schema.Number,
           chunk_end: Schema.Number,
-          checksum_sha256_base64: Schema.optional(Schema.Unknown),
+          checksum_sha256_base64: Schema.optional(Schema.NullOr(Schema.String)),
         }),
       ),
     }),
     service: Schema.Literal("organization_avatar"),
-    version: Schema.optional(Schema.Unknown),
+    version: Schema.optional(Schema.NullOr(Schema.String)),
   }),
 ]).pipe(T.Http({ method: "POST", path: "/v1/files/" }));
 export type FilescreateInput = typeof FilescreateInput.Type;
@@ -73,11 +73,11 @@ export const FilescreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   path: Schema.String,
   mime_type: Schema.String,
   size: Schema.Number,
-  storage_version: Schema.Unknown,
-  checksum_etag: Schema.Unknown,
-  checksum_sha256_base64: Schema.Unknown,
-  checksum_sha256_hex: Schema.Unknown,
-  last_modified_at: Schema.Unknown,
+  storage_version: Schema.NullOr(Schema.String),
+  checksum_etag: Schema.NullOr(Schema.String),
+  checksum_sha256_base64: Schema.NullOr(Schema.String),
+  checksum_sha256_hex: Schema.NullOr(Schema.String),
+  last_modified_at: Schema.NullOr(Schema.String),
   upload: Schema.Struct({
     id: Schema.String,
     path: Schema.String,
@@ -86,14 +86,14 @@ export const FilescreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         number: Schema.Number,
         chunk_start: Schema.Number,
         chunk_end: Schema.Number,
-        checksum_sha256_base64: Schema.optional(Schema.Unknown),
+        checksum_sha256_base64: Schema.optional(Schema.NullOr(Schema.String)),
         url: Schema.String,
         expires_at: Schema.String,
         headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       }),
     ),
   }),
-  version: Schema.Unknown,
+  version: Schema.NullOr(Schema.String),
   is_uploaded: Schema.optional(Schema.Boolean),
   service: Schema.Literals([
     "downloadable",

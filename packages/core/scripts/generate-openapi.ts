@@ -316,6 +316,7 @@ const SENSITIVE_FIELD_PATTERNS: RegExp[] = [
   /secret[-_]?key/i,
   /[-_]secret$/i,
   /^client[-_]?secret$/i,
+  /^token$/i,
   /^access[-_]?token$/i,
   /^refresh[-_]?token$/i,
   /^api[-_]?key$/i,
@@ -372,6 +373,25 @@ function renderConstLiteral(value: string | number | boolean | null): string {
     return `Schema.Literal("${escapeStringLiteral(value)}")`;
   }
   return `Schema.Literal(${JSON.stringify(value)})`;
+}
+
+function isNullSchema(schema: SchemaObject): boolean {
+  return schema.type === "null";
+}
+
+function getNullableUnionMember(
+  schema: SchemaObject,
+): SchemaObject | undefined {
+  const members = schema.oneOf ?? schema.anyOf;
+  if (!members) return undefined;
+
+  const nonNullMembers = members.filter((member) => !isNullSchema(member));
+  const hasNullMember = nonNullMembers.length !== members.length;
+  if (!hasNullMember || nonNullMembers.length !== 1) {
+    return undefined;
+  }
+
+  return nonNullMembers[0];
 }
 
 function openApiTypeToEffectSchema(
@@ -452,6 +472,28 @@ function openApiTypeToEffectSchema(
     };
 
     return generateStructSchema(mergedSchema, spec, indent, seenRefs, ctx);
+  }
+
+  // Handle simple nullable unions. Arbitrary oneOf/anyOf output unions are
+  // still left as Unknown below because many specs use recursive unions.
+  const nullableUnionMember = getNullableUnionMember(prop);
+  if (nullableUnionMember) {
+    const mergedMember: SchemaObject = {
+      ...nullableUnionMember,
+      ...(prop["x-sensitive"] !== undefined
+        ? { "x-sensitive": prop["x-sensitive"] }
+        : {}),
+    };
+    const baseSchema = openApiTypeToEffectSchema(
+      mergedMember,
+      spec,
+      indent,
+      seenRefs,
+      ctx,
+    );
+    return baseSchema.startsWith("Schema.NullOr(")
+      ? baseSchema
+      : `Schema.NullOr(${baseSchema})`;
   }
 
   // Handle oneOf/anyOf - use Unknown for now. Request body unions are handled

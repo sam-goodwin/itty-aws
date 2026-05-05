@@ -9,8 +9,10 @@ export const MembersupdateMemberByExternalIdInput =
     external_id: Schema.String.pipe(T.PathParam()),
     customer_id: Schema.optional(Schema.String),
     external_customer_id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.Unknown),
-    role: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
+    role: Schema.optional(
+      Schema.NullOr(Schema.Literals(["owner", "billing_manager", "member"])),
+    ),
   }).pipe(
     T.Http({ method: "PATCH", path: "/v1/members/external/{external_id}" }),
   );
@@ -22,11 +24,11 @@ export const MembersupdateMemberByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     customer_id: Schema.String,
     email: Schema.String,
-    name: Schema.Unknown,
-    external_id: Schema.Unknown,
+    name: Schema.NullOr(Schema.String),
+    external_id: Schema.NullOr(Schema.String),
     role: Schema.Literals(["owner", "billing_manager", "member"]),
   });
 export type MembersupdateMemberByExternalIdOutput =

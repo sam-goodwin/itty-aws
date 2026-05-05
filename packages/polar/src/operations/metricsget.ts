@@ -741,61 +741,776 @@ export const MetricsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     seat_utilization_rate: Schema.optional(Schema.Unknown),
   }),
   metrics: Schema.Struct({
-    active_subscriptions: Schema.optional(Schema.Unknown),
-    committed_subscriptions: Schema.optional(Schema.Unknown),
-    monthly_recurring_revenue: Schema.optional(Schema.Unknown),
-    trial_monthly_recurring_revenue: Schema.optional(Schema.Unknown),
-    committed_monthly_recurring_revenue: Schema.optional(Schema.Unknown),
-    trial_committed_monthly_recurring_revenue: Schema.optional(Schema.Unknown),
-    average_revenue_per_user: Schema.optional(Schema.Unknown),
-    checkouts: Schema.optional(Schema.Unknown),
-    succeeded_checkouts: Schema.optional(Schema.Unknown),
-    churned_subscriptions: Schema.optional(Schema.Unknown),
-    churn_rate: Schema.optional(Schema.Unknown),
-    seats_total: Schema.optional(Schema.Unknown),
-    seats_claimed: Schema.optional(Schema.Unknown),
-    seats_pending: Schema.optional(Schema.Unknown),
-    seat_customers: Schema.optional(Schema.Unknown),
-    new_seat_customers: Schema.optional(Schema.Unknown),
-    churned_seat_customers: Schema.optional(Schema.Unknown),
-    orders: Schema.optional(Schema.Unknown),
-    revenue: Schema.optional(Schema.Unknown),
-    net_revenue: Schema.optional(Schema.Unknown),
-    cumulative_revenue: Schema.optional(Schema.Unknown),
-    net_cumulative_revenue: Schema.optional(Schema.Unknown),
-    costs: Schema.optional(Schema.Unknown),
-    cumulative_costs: Schema.optional(Schema.Unknown),
-    average_order_value: Schema.optional(Schema.Unknown),
-    net_average_order_value: Schema.optional(Schema.Unknown),
-    cost_per_user: Schema.optional(Schema.Unknown),
-    active_user_by_event: Schema.optional(Schema.Unknown),
-    one_time_products: Schema.optional(Schema.Unknown),
-    one_time_products_revenue: Schema.optional(Schema.Unknown),
-    one_time_products_net_revenue: Schema.optional(Schema.Unknown),
-    new_subscriptions: Schema.optional(Schema.Unknown),
-    new_subscriptions_revenue: Schema.optional(Schema.Unknown),
-    new_subscriptions_net_revenue: Schema.optional(Schema.Unknown),
-    renewed_subscriptions: Schema.optional(Schema.Unknown),
-    renewed_subscriptions_revenue: Schema.optional(Schema.Unknown),
-    renewed_subscriptions_net_revenue: Schema.optional(Schema.Unknown),
-    canceled_subscriptions: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_customer_service: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_low_quality: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_missing_features: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_switched_service: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_too_complex: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_too_expensive: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_unused: Schema.optional(Schema.Unknown),
-    canceled_subscriptions_other: Schema.optional(Schema.Unknown),
-    annual_recurring_revenue: Schema.optional(Schema.Unknown),
-    committed_annual_recurring_revenue: Schema.optional(Schema.Unknown),
-    checkouts_conversion: Schema.optional(Schema.Unknown),
-    ltv: Schema.optional(Schema.Unknown),
-    gross_margin: Schema.optional(Schema.Unknown),
-    gross_margin_percentage: Schema.optional(Schema.Unknown),
-    cashflow: Schema.optional(Schema.Unknown),
-    average_seats_per_customer: Schema.optional(Schema.Unknown),
-    seat_utilization_rate: Schema.optional(Schema.Unknown),
+    active_subscriptions: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    committed_subscriptions: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    monthly_recurring_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    trial_monthly_recurring_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    committed_monthly_recurring_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    trial_committed_monthly_recurring_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    average_revenue_per_user: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    checkouts: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    succeeded_checkouts: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    churned_subscriptions: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    churn_rate: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    seats_total: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    seats_claimed: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    seats_pending: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    seat_customers: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    new_seat_customers: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    churned_seat_customers: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    orders: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    net_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    cumulative_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    net_cumulative_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    costs: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    cumulative_costs: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    average_order_value: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    net_average_order_value: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    cost_per_user: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    active_user_by_event: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    one_time_products: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    one_time_products_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    one_time_products_net_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    new_subscriptions: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    new_subscriptions_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    new_subscriptions_net_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    renewed_subscriptions: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    renewed_subscriptions_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    renewed_subscriptions_net_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_customer_service: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_low_quality: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_missing_features: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_switched_service: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_too_complex: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_too_expensive: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_unused: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    canceled_subscriptions_other: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    annual_recurring_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    committed_annual_recurring_revenue: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    checkouts_conversion: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    ltv: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    gross_margin: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    gross_margin_percentage: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    cashflow: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    average_seats_per_customer: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
+    seat_utilization_rate: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          slug: Schema.String,
+          display_name: Schema.String,
+          type: Schema.Literals([
+            "scalar",
+            "currency",
+            "currency_sub_cent",
+            "percentage",
+          ]),
+        }),
+      ),
+    ),
   }),
 });
 export type MetricsgetOutput = typeof MetricsgetOutput.Type;

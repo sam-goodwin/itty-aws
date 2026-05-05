@@ -2,20 +2,21 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CustomerSessionscreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
-      member_id: Schema.optional(Schema.Unknown),
-      external_member_id: Schema.optional(Schema.Unknown),
-      return_url: Schema.optional(Schema.Unknown),
+      member_id: Schema.optional(Schema.NullOr(Schema.String)),
+      external_member_id: Schema.optional(Schema.NullOr(Schema.String)),
+      return_url: Schema.optional(Schema.NullOr(Schema.String)),
       customer_id: Schema.String,
     }),
     Schema.Struct({
-      member_id: Schema.optional(Schema.Unknown),
-      external_member_id: Schema.optional(Schema.Unknown),
-      return_url: Schema.optional(Schema.Unknown),
+      member_id: Schema.optional(Schema.NullOr(Schema.String)),
+      external_member_id: Schema.optional(Schema.NullOr(Schema.String)),
+      return_url: Schema.optional(Schema.NullOr(Schema.String)),
       external_customer_id: Schema.String,
     }),
   ]).pipe(T.Http({ method: "POST", path: "/v1/customer-sessions/" }));
@@ -26,11 +27,11 @@ export type CustomerSessionscreateInput =
 export const CustomerSessionscreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
-    token: Schema.String,
+    token: SensitiveString,
     expires_at: Schema.String,
-    return_url: Schema.Unknown,
+    return_url: Schema.NullOr(Schema.String),
     customer_portal_url: Schema.String,
     customer_id: Schema.String,
     customer: Schema.Unknown,

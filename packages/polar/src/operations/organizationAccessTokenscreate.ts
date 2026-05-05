@@ -2,13 +2,14 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const OrganizationAccessTokenscreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
     comment: Schema.String,
-    expires_in: Schema.optional(Schema.Unknown),
+    expires_in: Schema.optional(Schema.NullOr(Schema.String)),
     scopes: Schema.Array(
       Schema.Literals([
         "openid",
@@ -84,7 +85,7 @@ export const OrganizationAccessTokenscreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_access_token: Schema.Struct({
       created_at: Schema.String,
-      modified_at: Schema.Unknown,
+      modified_at: Schema.NullOr(Schema.String),
       id: Schema.String,
       scopes: Schema.Array(
         Schema.Literals([
@@ -154,12 +155,12 @@ export const OrganizationAccessTokenscreateOutput =
           "organization_access_tokens:write",
         ]),
       ),
-      expires_at: Schema.Unknown,
+      expires_at: Schema.NullOr(Schema.String),
       comment: Schema.String,
-      last_used_at: Schema.Unknown,
+      last_used_at: Schema.NullOr(Schema.String),
       organization_id: Schema.String,
     }),
-    token: Schema.String,
+    token: SensitiveString,
   });
 export type OrganizationAccessTokenscreateOutput =
   typeof OrganizationAccessTokenscreateOutput.Type;

@@ -8,7 +8,7 @@ import { SensitiveString } from "../sensitive.ts";
 export const WebhookscreateWebhookEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.String,
-    name: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     format: Schema.Literals(["raw", "discord", "slack"]),
     events: Schema.Array(
       Schema.Literals([
@@ -49,7 +49,7 @@ export const WebhookscreateWebhookEndpointInput =
         "organization.updated",
       ]),
     ),
-    organization_id: Schema.optional(Schema.Unknown),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(T.Http({ method: "POST", path: "/v1/webhooks/endpoints" }));
 export type WebhookscreateWebhookEndpointInput =
   typeof WebhookscreateWebhookEndpointInput.Type;
@@ -58,10 +58,10 @@ export type WebhookscreateWebhookEndpointInput =
 export const WebhookscreateWebhookEndpointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
-    modified_at: Schema.Unknown,
+    modified_at: Schema.NullOr(Schema.String),
     id: Schema.String,
     url: Schema.String,
-    name: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     format: Schema.Literals(["raw", "discord", "slack"]),
     secret: SensitiveString,
     organization_id: Schema.String,

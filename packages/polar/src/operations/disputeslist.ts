@@ -19,7 +19,7 @@ export const DisputeslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   items: Schema.Array(
     Schema.Struct({
       created_at: Schema.String,
-      modified_at: Schema.Unknown,
+      modified_at: Schema.NullOr(Schema.String),
       id: Schema.String,
       status: Schema.Literals([
         "prevented",

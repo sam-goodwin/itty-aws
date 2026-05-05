@@ -6,8 +6,8 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const FilesupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-  name: Schema.optional(Schema.Unknown),
-  version: Schema.optional(Schema.Unknown),
+  name: Schema.optional(Schema.NullOr(Schema.String)),
+  version: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(T.Http({ method: "PATCH", path: "/v1/files/{id}" }));
 export type FilesupdateInput = typeof FilesupdateInput.Type;
 

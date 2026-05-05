@@ -23,24 +23,45 @@ export const BenefitGrantslistOutput =
     items: Schema.Array(
       Schema.Struct({
         created_at: Schema.String,
-        modified_at: Schema.Unknown,
+        modified_at: Schema.NullOr(Schema.String),
         id: Schema.String,
-        granted_at: Schema.optional(Schema.Unknown),
+        granted_at: Schema.optional(Schema.NullOr(Schema.String)),
         is_granted: Schema.Boolean,
-        revoked_at: Schema.optional(Schema.Unknown),
+        revoked_at: Schema.optional(Schema.NullOr(Schema.String)),
         is_revoked: Schema.Boolean,
-        subscription_id: Schema.Unknown,
-        order_id: Schema.Unknown,
+        subscription_id: Schema.NullOr(Schema.String),
+        order_id: Schema.NullOr(Schema.String),
         customer_id: Schema.String,
-        member_id: Schema.optional(Schema.Unknown),
+        member_id: Schema.optional(Schema.NullOr(Schema.String)),
         benefit_id: Schema.String,
-        error: Schema.optional(Schema.Unknown),
+        error: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              message: Schema.String,
+              type: Schema.String,
+              timestamp: Schema.String,
+            }),
+          ),
+        ),
         customer: Schema.Unknown,
-        member: Schema.optional(Schema.Unknown),
+        member: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.String,
+              created_at: Schema.String,
+              modified_at: Schema.NullOr(Schema.String),
+              customer_id: Schema.String,
+              email: Schema.String,
+              name: Schema.NullOr(Schema.String),
+              external_id: Schema.NullOr(Schema.String),
+              role: Schema.Literals(["owner", "billing_manager", "member"]),
+            }),
+          ),
+        ),
         benefit: Schema.Struct({
           id: Schema.String,
           created_at: Schema.String,
-          modified_at: Schema.Unknown,
+          modified_at: Schema.NullOr(Schema.String),
           type: Schema.Literals([
             "custom",
             "discord",

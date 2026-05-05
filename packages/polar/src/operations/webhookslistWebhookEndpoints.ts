@@ -20,10 +20,10 @@ export const WebhookslistWebhookEndpointsOutput =
     items: Schema.Array(
       Schema.Struct({
         created_at: Schema.String,
-        modified_at: Schema.Unknown,
+        modified_at: Schema.NullOr(Schema.String),
         id: Schema.String,
         url: Schema.String,
-        name: Schema.optional(Schema.Unknown),
+        name: Schema.optional(Schema.NullOr(Schema.String)),
         format: Schema.Literals(["raw", "discord", "slack"]),
         secret: SensitiveString,
         organization_id: Schema.String,

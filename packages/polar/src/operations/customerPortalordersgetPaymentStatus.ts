@@ -20,7 +20,7 @@ export type CustomerPortalordersgetPaymentStatusInput =
 export const CustomerPortalordersgetPaymentStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.String,
-    error: Schema.optional(Schema.Unknown),
+    error: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type CustomerPortalordersgetPaymentStatusOutput =
   typeof CustomerPortalordersgetPaymentStatusOutput.Type;

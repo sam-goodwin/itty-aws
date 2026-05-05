@@ -2,6 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const Oauth2clientsoauth2updateClientInput =
@@ -17,10 +18,10 @@ export const Oauth2clientsoauth2updateClientInput =
     response_types: Schema.optional(Schema.Array(Schema.Literal("code"))),
     scope: Schema.optional(Schema.String),
     client_name: Schema.String,
-    client_uri: Schema.optional(Schema.Unknown),
-    logo_uri: Schema.optional(Schema.Unknown),
-    tos_uri: Schema.optional(Schema.Unknown),
-    policy_uri: Schema.optional(Schema.Unknown),
+    client_uri: Schema.optional(Schema.NullOr(Schema.String)),
+    logo_uri: Schema.optional(Schema.NullOr(Schema.String)),
+    tos_uri: Schema.optional(Schema.NullOr(Schema.String)),
+    policy_uri: Schema.optional(Schema.NullOr(Schema.String)),
     default_sub_type: Schema.optional(
       Schema.Literals(["user", "organization"]),
     ),
@@ -30,7 +31,26 @@ export type Oauth2clientsoauth2updateClientInput =
 
 // Output Schema
 export const Oauth2clientsoauth2updateClientOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    redirect_uris: Schema.Array(Schema.String),
+    token_endpoint_auth_method: Schema.Literals([
+      "client_secret_basic",
+      "client_secret_post",
+      "none",
+    ]),
+    grant_types: Schema.Array(
+      Schema.Literals(["authorization_code", "refresh_token"]),
+    ),
+    response_types: Schema.Array(Schema.Literal("code")),
+    client_name: Schema.String,
+    scope: Schema.String,
+    client_id: Schema.String,
+    client_secret: SensitiveString,
+    client_id_issued_at: Schema.Number,
+    client_secret_expires_at: Schema.Number,
+    registration_client_uri: Schema.String,
+    registration_access_token: SensitiveString,
+  });
 export type Oauth2clientsoauth2updateClientOutput =
   typeof Oauth2clientsoauth2updateClientOutput.Type;
 
