@@ -46,9 +46,10 @@ const matchError = (
   _errors?: readonly unknown[],
   headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
+  const ErrorClass = (HTTP_STATUS_MAP as any)[status];
+
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
-    const ErrorClass = (HTTP_STATUS_MAP as any)[status];
     if (ErrorClass) {
       return Effect.fail(
         new ErrorClass({
@@ -65,6 +66,14 @@ const matchError = (
       }),
     );
   } catch {
+    if (ErrorClass) {
+      return Effect.fail(
+        new ErrorClass({
+          message: "",
+          retryAfter: parseRetryAfterForStatus(status, headers),
+        }),
+      );
+    }
     return Effect.fail(new UnknownPolarError({ body: errorBody }));
   }
 };

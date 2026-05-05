@@ -1,0 +1,13 @@
+{
+  "description": "Simplify nullable boolean Meter list filters so the shared OpenAPI generator emits boolean query parameters instead of falling back to strings for anyOf(boolean, null).",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1meters~1/get/parameters/2/schema",
+      "value": {
+        "type": "boolean",
+        "description": "Filter on archived meters."
+      }
+    }
+  ]
+}

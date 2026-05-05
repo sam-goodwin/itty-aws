@@ -7,7 +7,7 @@ import { UnprocessableEntity } from "../errors.ts";
 export const MeterslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_id: Schema.optional(Schema.String),
   query: Schema.optional(Schema.String),
-  is_archived: Schema.optional(Schema.String),
+  is_archived: Schema.optional(Schema.Boolean),
   page: Schema.optional(Schema.Number),
   limit: Schema.optional(Schema.Number),
   sorting: Schema.optional(Schema.String),
@@ -31,7 +31,10 @@ export const MeterslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         conjunction: Schema.Literals(["and", "or"]),
         clauses: Schema.Array(Schema.Unknown),
       }),
-      aggregation: Schema.Unknown,
+      aggregation: Schema.Struct({
+        func: Schema.Literals(["count", "sum", "max", "min", "avg", "unique"]),
+        property: Schema.optional(Schema.String),
+      }),
       organization_id: Schema.String,
       archived_at: Schema.optional(Schema.NullOr(Schema.String)),
     }),

@@ -21,7 +21,14 @@ export const MetersupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  aggregation: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  aggregation: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        func: Schema.Literals(["count", "sum", "max", "min", "avg", "unique"]),
+        property: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
   is_archived: Schema.optional(Schema.NullOr(Schema.Boolean)),
 }).pipe(T.Http({ method: "PATCH", path: "/v1/meters/{id}" }));
 export type MetersupdateInput = typeof MetersupdateInput.Type;
@@ -40,7 +47,10 @@ export const MetersupdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conjunction: Schema.Literals(["and", "or"]),
     clauses: Schema.Array(Schema.Unknown),
   }),
-  aggregation: Schema.Unknown,
+  aggregation: Schema.Struct({
+    func: Schema.Literals(["count", "sum", "max", "min", "avg", "unique"]),
+    property: Schema.optional(Schema.String),
+  }),
   organization_id: Schema.String,
   archived_at: Schema.optional(Schema.NullOr(Schema.String)),
 });

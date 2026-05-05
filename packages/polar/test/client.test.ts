@@ -29,4 +29,26 @@ describe("formatPolarErrorMessage", () => {
       "invalid_token: Registration access token is invalid.",
     );
   });
+
+  it("joins multiple validation details", () => {
+    const message = formatPolarErrorMessage({
+      error: "RequestValidationError",
+      detail: [
+        {
+          loc: ["body", "filter", "clauses", 0, "property"],
+          msg: "Field required",
+          type: "missing",
+        },
+        {
+          loc: ["body", "aggregation", "func"],
+          msg: "Input should be 'count', 'sum', 'max', 'min', 'avg' or 'unique'",
+          type: "literal_error",
+        },
+      ],
+    });
+
+    expect(message).toBe(
+      "RequestValidationError: body.filter.clauses.0.property: Field required; body.aggregation.func: Input should be 'count', 'sum', 'max', 'min', 'avg' or 'unique'",
+    );
+  });
 });

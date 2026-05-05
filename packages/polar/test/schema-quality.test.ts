@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import { CustomFieldscreateOutput } from "../src/operations/customFieldscreate.ts";
 import { CustomerscreateOutput } from "../src/operations/customerscreate.ts";
 import { DiscountscreateOutput } from "../src/operations/discountscreate.ts";
+import { MeterscreateOutput } from "../src/operations/meterscreate.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
 
@@ -121,5 +122,30 @@ describe("generated Polar schema quality", () => {
     expect(decoded.type).toBe("percentage");
     expect(decoded.duration).toBe("once");
     expect(decoded.basis_points).toBe(1000);
+  });
+
+  it("types meter aggregation output fields", () => {
+    const decoded = Schema.decodeUnknownSync(MeterscreateOutput)({
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      metadata: { test: true },
+      name: "Test Meter",
+      unit: "scalar",
+      custom_label: null,
+      custom_multiplier: null,
+      filter: {
+        conjunction: "and",
+        clauses: [],
+      },
+      aggregation: {
+        func: "count",
+      },
+      organization_id: "00000000-0000-4000-8000-000000000000",
+      archived_at: null,
+    });
+
+    expect(decoded.aggregation.func).toBe("count");
+    expect(decoded.archived_at).toBeNull();
   });
 });
