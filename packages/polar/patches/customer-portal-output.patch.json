@@ -127,6 +127,36 @@
       "value": {
         "$ref": "#/components/schemas/CustomerPaymentMethodCommon"
       }
+    },
+    {
+      "op": "add",
+      "path": "/components/schemas/CustomerPaymentMethodCreateResponseCommon",
+      "value": {
+        "type": "object",
+        "title": "CustomerPaymentMethodCreateResponse",
+        "description": "Result of creating or confirming a customer payment method.",
+        "required": ["status"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["succeeded", "requires_action"]
+          },
+          "payment_method": {
+            "$ref": "#/components/schemas/CustomerPaymentMethodCommon"
+          },
+          "client_secret": {
+            "type": "string",
+            "x-sensitive": true
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/CustomerPaymentMethodCreateResponse",
+      "value": {
+        "$ref": "#/components/schemas/CustomerPaymentMethodCreateResponseCommon"
+      }
     }
   ]
 }

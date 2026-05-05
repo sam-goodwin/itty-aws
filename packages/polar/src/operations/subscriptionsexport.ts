@@ -12,7 +12,7 @@ export type SubscriptionsexportInput = typeof SubscriptionsexportInput.Type;
 
 // Output Schema
 export const SubscriptionsexportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type SubscriptionsexportOutput = typeof SubscriptionsexportOutput.Type;
 
 // The operation

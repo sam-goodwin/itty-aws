@@ -2,6 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CustomerPortalcustomersaddPaymentMethodInput =
@@ -20,7 +21,23 @@ export type CustomerPortalcustomersaddPaymentMethodInput =
 
 // Output Schema
 export const CustomerPortalcustomersaddPaymentMethodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.Literals(["succeeded", "requires_action"]),
+    payment_method: Schema.optional(
+      Schema.Struct({
+        id: Schema.String,
+        created_at: Schema.String,
+        modified_at: Schema.NullOr(Schema.String),
+        processor: Schema.Literals(["stripe"]),
+        customer_id: Schema.String,
+        type: Schema.String,
+        method_metadata: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+      }),
+    ),
+    client_secret: Schema.optional(SensitiveString),
+  });
 export type CustomerPortalcustomersaddPaymentMethodOutput =
   typeof CustomerPortalcustomersaddPaymentMethodOutput.Type;
 

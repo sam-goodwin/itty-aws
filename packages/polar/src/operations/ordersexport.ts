@@ -11,7 +11,7 @@ export const OrdersexportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OrdersexportInput = typeof OrdersexportInput.Type;
 
 // Output Schema
-export const OrdersexportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const OrdersexportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type OrdersexportOutput = typeof OrdersexportOutput.Type;
 
 // The operation

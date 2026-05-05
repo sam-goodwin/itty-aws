@@ -10,7 +10,7 @@ export const CustomersexportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CustomersexportInput = typeof CustomersexportInput.Type;
 
 // Output Schema
-export const CustomersexportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const CustomersexportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type CustomersexportOutput = typeof CustomersexportOutput.Type;
 
 // The operation

@@ -4,7 +4,10 @@ import { describe, expect, it } from "vitest";
 import { CustomFieldscreateOutput } from "../src/operations/customFieldscreate.ts";
 import { CustomerPortalbenefitGrantsgetOutput } from "../src/operations/customerPortalbenefitGrantsget.ts";
 import { CustomerPortalbenefitGrantslistOutput } from "../src/operations/customerPortalbenefitGrantslist.ts";
+import { CustomerPortalcustomersaddPaymentMethodOutput } from "../src/operations/customerPortalcustomersaddPaymentMethod.ts";
+import { CustomerPortalcustomersconfirmPaymentMethodOutput } from "../src/operations/customerPortalcustomersconfirmPaymentMethod.ts";
 import { CustomerPortalcustomerslistPaymentMethodsOutput } from "../src/operations/customerPortalcustomerslistPaymentMethods.ts";
+import { CustomersexportOutput } from "../src/operations/customersexport.ts";
 import { CustomerscreateOutput } from "../src/operations/customerscreate.ts";
 import { CustomersgetStateOutput } from "../src/operations/customersgetState.ts";
 import { DiscountscreateOutput } from "../src/operations/discountscreate.ts";
@@ -14,11 +17,16 @@ import { EventsingestInput } from "../src/operations/eventsingest.ts";
 import { EventslistOutput } from "../src/operations/eventslist.ts";
 import { FileslistOutput } from "../src/operations/fileslist.ts";
 import { FilesupdateOutput } from "../src/operations/filesupdate.ts";
+import { MetricsexportOutput } from "../src/operations/metricsexport.ts";
 import { MeterscreateOutput } from "../src/operations/meterscreate.ts";
+import { Oauth2authorizeOutput } from "../src/operations/oauth2authorize.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
+import { Oauth2userinfoOutput } from "../src/operations/oauth2userinfo.ts";
+import { OrdersexportOutput } from "../src/operations/ordersexport.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
 import { PaymentsgetOutput } from "../src/operations/paymentsget.ts";
 import { PaymentslistOutput } from "../src/operations/paymentslist.ts";
+import { SubscriptionsexportOutput } from "../src/operations/subscriptionsexport.ts";
 
 describe("generated Polar schema quality", () => {
   it("redacts organization access token create responses", () => {
@@ -418,5 +426,88 @@ describe("generated Polar schema quality", () => {
 
     expect(listed.items[0].type).toBe("card");
     expect(listed.items[0].method_metadata?.last4).toBe("4242");
+  });
+
+  it("types and redacts customer portal payment method create outputs", () => {
+    const action = Schema.decodeUnknownSync(
+      CustomerPortalcustomersaddPaymentMethodOutput,
+    )({
+      status: "requires_action",
+      client_secret: "setup-secret",
+    });
+    const succeeded = Schema.decodeUnknownSync(
+      CustomerPortalcustomersconfirmPaymentMethodOutput,
+    )({
+      status: "succeeded",
+      payment_method: {
+        id: "00000000-0000-4000-8000-000000000000",
+        created_at: "2026-01-01T00:00:00Z",
+        modified_at: null,
+        processor: "stripe",
+        customer_id: "00000000-0000-4000-8000-000000000000",
+        type: "card",
+        method_metadata: {},
+      },
+    });
+
+    expect(action.status).toBe("requires_action");
+    expect(Redacted.isRedacted(action.client_secret)).toBe(true);
+    expect(succeeded.payment_method?.processor).toBe("stripe");
+  });
+
+  it("types CSV export outputs as raw strings", () => {
+    const csv = "id,email\n00000000-0000-4000-8000-000000000000,test@example.com\n";
+
+    expect(Schema.decodeUnknownSync(CustomersexportOutput)(csv)).toBe(csv);
+    expect(Schema.decodeUnknownSync(OrdersexportOutput)(csv)).toBe(csv);
+    expect(Schema.decodeUnknownSync(SubscriptionsexportOutput)(csv)).toBe(csv);
+    expect(Schema.decodeUnknownSync(MetricsexportOutput)(csv)).toBe(csv);
+  });
+
+  it("types OAuth userinfo responses", () => {
+    const user = Schema.decodeUnknownSync(Oauth2userinfoOutput)({
+      sub: "user_123",
+      name: "Test User",
+      email: "user@example.com",
+      email_verified: true,
+    });
+    const organization = Schema.decodeUnknownSync(Oauth2userinfoOutput)({
+      sub: "org_123",
+      name: null,
+    });
+
+    expect(user.email_verified).toBe(true);
+    expect(organization.name).toBeNull();
+  });
+
+  it("types OAuth authorize responses", () => {
+    const decoded = Schema.decodeUnknownSync(Oauth2authorizeOutput)({
+      client: {
+        created_at: "2026-01-01T00:00:00Z",
+        modified_at: null,
+        client_id: "polar_client_123",
+        client_name: "Test client",
+        client_uri: null,
+        logo_uri: null,
+        tos_uri: null,
+        policy_uri: null,
+      },
+      sub_type: "organization",
+      sub: null,
+      scopes: ["openid", "profile", "organizations:read"],
+      scope_display_names: {
+        openid: "OpenID",
+      },
+      organizations: [
+        {
+          id: "00000000-0000-4000-8000-000000000000",
+          name: "Test Organization",
+        },
+      ],
+    });
+
+    expect(decoded.sub_type).toBe("organization");
+    expect(decoded.client.client_id).toBe("polar_client_123");
+    expect(decoded.organizations?.[0]?.name).toBe("Test Organization");
   });
 });

@@ -8,6 +8,15 @@ export default {
   test: {
     include: ["test/**/*.test.ts"],
     testTimeout: 120000,
+    // Polar live tests share one sandbox organization and create/update
+    // resources across many API surfaces. Running files in parallel can push
+    // the sandbox into slow responses and cross-file timeout failures.
+    pool: "forks",
+    poolOptions: {
+      forks: {
+        singleFork: true,
+      },
+    },
   },
   resolve: {
     alias: {

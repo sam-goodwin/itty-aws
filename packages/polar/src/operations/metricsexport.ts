@@ -620,7 +620,7 @@ export const MetricsexportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MetricsexportInput = typeof MetricsexportInput.Type;
 
 // Output Schema
-export const MetricsexportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const MetricsexportOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type MetricsexportOutput = typeof MetricsexportOutput.Type;
 
 // The operation
