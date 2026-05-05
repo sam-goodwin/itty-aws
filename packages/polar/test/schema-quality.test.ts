@@ -8,6 +8,8 @@ import { EventTypesupdateOutput } from "../src/operations/eventTypesupdate.ts";
 import { EventsgetOutput } from "../src/operations/eventsget.ts";
 import { EventsingestInput } from "../src/operations/eventsingest.ts";
 import { EventslistOutput } from "../src/operations/eventslist.ts";
+import { FileslistOutput } from "../src/operations/fileslist.ts";
+import { FilesupdateOutput } from "../src/operations/filesupdate.ts";
 import { MeterscreateOutput } from "../src/operations/meterscreate.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
@@ -213,5 +215,39 @@ describe("generated Polar schema quality", () => {
 
     expect(decoded.name).toBe("distilled.event.test");
     expect(decoded.label_property_selector).toBeNull();
+  });
+
+  it("types common file read outputs", () => {
+    const file = {
+      id: "00000000-0000-4000-8000-000000000000",
+      organization_id: "00000000-0000-4000-8000-000000000000",
+      name: "distilled-file.txt",
+      path: "/downloadable/distilled-file.txt",
+      mime_type: "text/plain",
+      size: 12,
+      storage_version: null,
+      checksum_etag: null,
+      checksum_sha256_base64: null,
+      checksum_sha256_hex: null,
+      last_modified_at: null,
+      version: "1.0.0",
+      service: "downloadable",
+      is_uploaded: false,
+      created_at: "2026-01-01T00:00:00Z",
+      size_readable: "12 B",
+    };
+
+    const updated = Schema.decodeUnknownSync(FilesupdateOutput)(file);
+    const listed = Schema.decodeUnknownSync(FileslistOutput)({
+      items: [file],
+      pagination: {
+        total_count: 1,
+        max_page: 1,
+      },
+    });
+
+    expect(updated.service).toBe("downloadable");
+    expect(updated.is_uploaded).toBe(false);
+    expect(listed.items[0].name).toBe("distilled-file.txt");
   });
 });
