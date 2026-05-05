@@ -904,7 +904,23 @@ export const CheckoutscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(
       Schema.Struct({
         custom_field_id: Schema.String,
-        custom_field: Schema.Unknown,
+        custom_field: Schema.Struct({
+          id: Schema.String,
+          created_at: Schema.String,
+          modified_at: Schema.NullOr(Schema.String),
+          metadata: Schema.Record(Schema.String, Schema.Unknown),
+          type: Schema.Literals([
+            "text",
+            "number",
+            "date",
+            "checkbox",
+            "select",
+          ]),
+          slug: Schema.String,
+          name: Schema.String,
+          organization_id: Schema.String,
+          properties: Schema.Record(Schema.String, Schema.Unknown),
+        }),
         order: Schema.Number,
         required: Schema.Boolean,
       }),

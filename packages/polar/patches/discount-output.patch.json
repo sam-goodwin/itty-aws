@@ -1,0 +1,104 @@
+{
+  "description": "Flatten Discount's top-level oneOf into common output fields shared by fixed/percentage and once/forever/repeating variants. Discounts are stable billing configuration and should return useful typed fields for create/get/list/update.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/components/schemas/Discount",
+      "value": {
+        "type": "object",
+        "title": "Discount",
+        "description": "A Polar discount.",
+        "required": [
+          "id",
+          "created_at",
+          "modified_at",
+          "metadata",
+          "name",
+          "code",
+          "starts_at",
+          "ends_at",
+          "max_redemptions",
+          "redemptions_count",
+          "duration",
+          "type",
+          "organization_id",
+          "products"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the discount."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp of the object."
+          },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "description": "Last modification timestamp of the object."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the discount."
+          },
+          "code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "Code customers can use to apply the discount during checkout."
+          },
+          "starts_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "ends_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "max_redemptions": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }]
+          },
+          "redemptions_count": {
+            "type": "integer"
+          },
+          "duration": {
+            "$ref": "#/components/schemas/DiscountDuration"
+          },
+          "duration_in_months": {
+            "type": "integer"
+          },
+          "type": {
+            "$ref": "#/components/schemas/DiscountType"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "amounts": {
+            "type": "object",
+            "additionalProperties": { "type": "integer" }
+          },
+          "basis_points": {
+            "type": "integer"
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The organization ID."
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

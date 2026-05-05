@@ -85,7 +85,17 @@ export type CustomFieldscreateInput = typeof CustomFieldscreateInput.Type;
 
 // Output Schema
 export const CustomFieldscreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    created_at: Schema.String,
+    modified_at: Schema.NullOr(Schema.String),
+    metadata: Schema.Record(Schema.String, Schema.Unknown),
+    type: Schema.Literals(["text", "number", "date", "checkbox", "select"]),
+    slug: Schema.String,
+    name: Schema.String,
+    organization_id: Schema.String,
+    properties: Schema.Record(Schema.String, Schema.Unknown),
+  });
 export type CustomFieldscreateOutput = typeof CustomFieldscreateOutput.Type;
 
 // The operation

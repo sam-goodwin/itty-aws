@@ -1,6 +1,9 @@
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { describe, expect, it } from "vitest";
+import { CustomFieldscreateOutput } from "../src/operations/customFieldscreate.ts";
+import { CustomerscreateOutput } from "../src/operations/customerscreate.ts";
+import { DiscountscreateOutput } from "../src/operations/discountscreate.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
 
@@ -50,5 +53,73 @@ describe("generated Polar schema quality", () => {
     expect(decoded.response_types).toEqual(["code"]);
     expect(Redacted.isRedacted(decoded.client_secret)).toBe(true);
     expect(Redacted.isRedacted(decoded.registration_access_token)).toBe(true);
+  });
+
+  it("types shared customer output fields", () => {
+    const decoded = Schema.decodeUnknownSync(CustomerscreateOutput)({
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      metadata: { test: true },
+      external_id: null,
+      email: "customer@example.com",
+      email_verified: false,
+      type: "individual",
+      name: "Test Customer",
+      billing_address: null,
+      tax_id: null,
+      locale: null,
+      organization_id: "00000000-0000-4000-8000-000000000000",
+      deleted_at: null,
+      avatar_url: "https://www.gravatar.com/avatar/test?d=404",
+    });
+
+    expect(decoded.type).toBe("individual");
+    expect(decoded.modified_at).toBeNull();
+    expect(decoded.billing_address).toBeNull();
+  });
+
+  it("types shared custom field output fields", () => {
+    const decoded = Schema.decodeUnknownSync(CustomFieldscreateOutput)({
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      metadata: { test: true },
+      type: "text",
+      slug: "test-field",
+      name: "Test Field",
+      organization_id: "00000000-0000-4000-8000-000000000000",
+      properties: {
+        form_label: "Test field",
+        textarea: false,
+      },
+    });
+
+    expect(decoded.type).toBe("text");
+    expect(decoded.properties.form_label).toBe("Test field");
+  });
+
+  it("types shared discount output fields", () => {
+    const decoded = Schema.decodeUnknownSync(DiscountscreateOutput)({
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      metadata: { test: true },
+      name: "Test Discount",
+      code: "TESTCODE",
+      starts_at: null,
+      ends_at: null,
+      max_redemptions: null,
+      redemptions_count: 0,
+      duration: "once",
+      type: "percentage",
+      basis_points: 1000,
+      organization_id: "00000000-0000-4000-8000-000000000000",
+      products: [],
+    });
+
+    expect(decoded.type).toBe("percentage");
+    expect(decoded.duration).toBe("once");
+    expect(decoded.basis_points).toBe(1000);
   });
 });

@@ -10,7 +10,17 @@ export const CustomFieldsgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CustomFieldsgetInput = typeof CustomFieldsgetInput.Type;
 
 // Output Schema
-export const CustomFieldsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const CustomFieldsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  created_at: Schema.String,
+  modified_at: Schema.NullOr(Schema.String),
+  metadata: Schema.Record(Schema.String, Schema.Unknown),
+  type: Schema.Literals(["text", "number", "date", "checkbox", "select"]),
+  slug: Schema.String,
+  name: Schema.String,
+  organization_id: Schema.String,
+  properties: Schema.Record(Schema.String, Schema.Unknown),
+});
 export type CustomFieldsgetOutput = typeof CustomFieldsgetOutput.Type;
 
 // The operation

@@ -1,0 +1,66 @@
+{
+  "description": "Flatten CustomField's top-level oneOf into common output fields shared by all field variants. This keeps create/get/list/update useful without asking the shared generator to expand arbitrary recursive output unions.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/components/schemas/CustomField",
+      "value": {
+        "type": "object",
+        "title": "CustomField",
+        "description": "A Polar custom field.",
+        "required": [
+          "id",
+          "created_at",
+          "modified_at",
+          "metadata",
+          "type",
+          "slug",
+          "name",
+          "organization_id",
+          "properties"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the custom field."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp of the object."
+          },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "description": "Last modification timestamp of the object."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/CustomFieldType",
+            "description": "The custom field type."
+          },
+          "slug": {
+            "type": "string",
+            "description": "Identifier used as the custom field value key."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the custom field."
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the organization owning the custom field."
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  ]
+}

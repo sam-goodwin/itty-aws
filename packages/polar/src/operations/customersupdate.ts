@@ -274,7 +274,23 @@ export const CustomersupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CustomersupdateInput = typeof CustomersupdateInput.Type;
 
 // Output Schema
-export const CustomersupdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const CustomersupdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  created_at: Schema.String,
+  modified_at: Schema.NullOr(Schema.String),
+  metadata: Schema.Record(Schema.String, Schema.Unknown),
+  external_id: Schema.optional(Schema.NullOr(Schema.String)),
+  email: Schema.NullOr(Schema.String),
+  email_verified: Schema.Boolean,
+  type: Schema.Literals(["individual", "team"]),
+  name: Schema.NullOr(Schema.String),
+  billing_address: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+  tax_id: Schema.NullOr(Schema.Unknown),
+  locale: Schema.optional(Schema.NullOr(Schema.String)),
+  organization_id: Schema.String,
+  deleted_at: Schema.NullOr(Schema.String),
+  avatar_url: Schema.String,
+});
 export type CustomersupdateOutput = typeof CustomersupdateOutput.Type;
 
 // The operation

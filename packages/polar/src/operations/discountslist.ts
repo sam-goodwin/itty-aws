@@ -15,7 +15,29 @@ export type DiscountslistInput = typeof DiscountslistInput.Type;
 
 // Output Schema
 export const DiscountslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.Array(Schema.Unknown),
+  items: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      created_at: Schema.String,
+      modified_at: Schema.NullOr(Schema.String),
+      metadata: Schema.Record(Schema.String, Schema.Unknown),
+      name: Schema.String,
+      code: Schema.NullOr(Schema.String),
+      starts_at: Schema.NullOr(Schema.String),
+      ends_at: Schema.NullOr(Schema.String),
+      max_redemptions: Schema.NullOr(Schema.Number),
+      redemptions_count: Schema.Number,
+      duration: Schema.Literals(["once", "forever", "repeating"]),
+      duration_in_months: Schema.optional(Schema.Number),
+      type: Schema.Literals(["fixed", "percentage"]),
+      amount: Schema.optional(Schema.Number),
+      currency: Schema.optional(Schema.String),
+      amounts: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+      basis_points: Schema.optional(Schema.Number),
+      organization_id: Schema.String,
+      products: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ),
   pagination: Schema.Struct({
     total_count: Schema.Number,
     max_page: Schema.Number,
