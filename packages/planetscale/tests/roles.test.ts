@@ -45,610 +45,681 @@ const isApiError = (error: unknown): boolean =>
   error instanceof UnknownPlanetScaleError ||
   (error !== null && typeof error === "object" && "_tag" in error);
 
-describe("roles", () => {
-  beforeAll(async () => {
-    await Effect.runPromise(setupTestDatabase(TEST_SUFFIX));
-  }, 300000); // 5 minute timeout for database creation
-
-  afterAll(async () => {
-    await Effect.runPromise(teardownTestDatabase(TEST_SUFFIX));
-  });
-
-  const getDb = () => getTestDatabase(TEST_SUFFIX);
-
-  // ============================================================================
-  // listRoles
-  // ============================================================================
-
-  describe("listRoles", () => {
-    it("can list roles (or returns error if not available for database type)", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        listRoles({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed({ error: e }),
-            onSuccess: (data) => Effect.succeed({ data }),
-          }),
-        ),
+describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
+  "roles",
+  ({ kind }) => {
+    beforeAll(async () => {
+      await Effect.runPromise(
+        setupTestDatabase(`${TEST_SUFFIX}-${kind}`, { kind }),
       );
+    }, 300000); // 5 minute timeout for database creation
 
-      // Roles may not be available for all database types (MySQL vs PostgreSQL)
-      if ("data" in result) {
-        expect(Array.isArray(result.data.data)).toBe(true);
-        expect(result.data.current_page).toBeDefined();
-      } else {
-        // NotFound or Forbidden is acceptable for MySQL databases or if feature not enabled
-        expect(isApiError(result.error)).toBe(true);
-      }
+    afterAll(async () => {
+      await Effect.runPromise(teardownTestDatabase(`${TEST_SUFFIX}-${kind}`));
     });
 
-    it("can list roles with pagination", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        listRoles({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          page: 1,
-          per_page: 10,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed({ error: e }),
-            onSuccess: (data) => Effect.succeed({ data }),
-          }),
-        ),
-      );
+    const getDb = () => getTestDatabase(`${TEST_SUFFIX}-${kind}`);
 
-      if ("data" in result) {
-        expect(Array.isArray(result.data.data)).toBe(true);
-        expect(result.data.current_page).toBe(1);
-      } else {
-        expect(isApiError(result.error)).toBe(true);
-      }
+    // ============================================================================
+    // listRoles
+    // ============================================================================
+
+    describe("listRoles", () => {
+      it("can list roles (or returns error if not available for database type)", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          listRoles({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed({ error: e }),
+              onSuccess: (data) => Effect.succeed({ data }),
+            }),
+          ),
+        );
+
+        // Roles may not be available for all database types (MySQL vs PostgreSQL)
+        if ("data" in result) {
+          expect(Array.isArray(result.data.data)).toBe(true);
+          expect(result.data.current_page).toBeDefined();
+        } else {
+          // NotFound or Forbidden is acceptable for MySQL databases or if feature not enabled
+          expect(isApiError(result.error)).toBe(true);
+        }
+      });
+
+      it("can list roles with pagination", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          listRoles({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            page: 1,
+            per_page: 10,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed({ error: e }),
+              onSuccess: (data) => Effect.succeed({ data }),
+            }),
+          ),
+        );
+
+        if ("data" in result) {
+          expect(Array.isArray(result.data.data)).toBe(true);
+          expect(result.data.current_page).toBe(1);
+        } else {
+          expect(isApiError(result.error)).toBe(true);
+        }
+      });
+
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          listRoles({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          listRoles({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          listRoles({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        listRoles({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // getRole
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
+    describe("getRole", () => {
+      it("returns NotFound for non-existent role", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getRole({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
+
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getRole({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getRole({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          getRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        listRoles({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // getDefaultRole
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+    describe("getDefaultRole", () => {
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getDefaultRole({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getDefaultRole({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          getDefaultRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        listRoles({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
+    // ============================================================================
+    // createRole
+    // ============================================================================
+
+    describe("createRole", () => {
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          createRole({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+            name: `test-role-${testRunId}`,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          createRole({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            name: `test-role-${testRunId}`,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          createRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            name: `test-role-${testRunId}`,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it.skipIf(kind === "mysql")(
+        "can create, get, and delete a role",
+        async () => {
+          const db = getDb();
+          const roleName = `test-role-${testRunId}`;
+          let createdRoleId: string | undefined;
+
+          try {
+            // Create role
+            const created = await runEffect(
+              createRole({
+                organization: db.organization,
+                database: db.name,
+                branch: "main",
+                name: roleName,
+                inherited_roles: [],
+              }),
+            );
+
+            expect(created.id).toBeDefined();
+            expect(created.name).toBe(roleName);
+            expect(created.inherited_roles).toBe([]);
+            expect(created.username).toBeDefined();
+            expect(created.access_host_url).toBeDefined();
+            expect(created.password).toBeDefined();
+
+            expect(created.ttl).toBeNull();
+            expect(created.deleted_at).toBeNull();
+            expect(created.expires_at).toBeNull();
+            expect(created.dropped_at).toBeNull();
+            expect(created.disabled_at).toBeNull();
+            expect(created.drop_failed).toBeNull();
+
+            createdRoleId = created.id;
+
+            // Get role
+            const fetched = await runEffect(
+              getRole({
+                organization: db.organization,
+                database: db.name,
+                branch: "main",
+                id: created.id,
+              }),
+            );
+
+            expect(fetched.id).toBe(created.id);
+            expect(fetched.name).toBe(roleName);
+            expect(fetched.inherited_roles).toBe([]);
+            // password should only be returned on creation and null on subsequent fetches
+            expect(fetched.password).toBeNull();
+          } finally {
+            // Cleanup: delete role
+            if (createdRoleId) {
+              await runEffect(
+                deleteRole({
+                  organization: db.organization,
+                  database: db.name,
+                  branch: "main",
+                  id: createdRoleId,
+                }).pipe(Effect.ignore),
+              );
+            }
+          }
+        },
       );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // getRole
-  // ============================================================================
-
-  describe("getRole", () => {
-    it("returns NotFound for non-existent role", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getRole({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getRole({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getRole({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        getRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // getDefaultRole
-  // ============================================================================
-
-  describe("getDefaultRole", () => {
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getDefaultRole({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getDefaultRole({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        getDefaultRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // updateRole
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
+    describe("updateRole", () => {
+      it("returns NotFound for non-existent role", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          updateRole({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+            name: "updated-name",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-  // ============================================================================
-  // createRole
-  // ============================================================================
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
 
-  describe("createRole", () => {
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        createRole({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-          name: `test-role-${testRunId}`,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          updateRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+            name: "updated-name",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        createRole({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          name: `test-role-${testRunId}`,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        createRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          name: `test-role-${testRunId}`,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // renewRole
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
+    describe("renewRole", () => {
+      it("returns NotFound for non-existent role", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          renewRole({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-  // ============================================================================
-  // updateRole
-  // ============================================================================
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
 
-  describe("updateRole", () => {
-    it("returns NotFound for non-existent role", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        updateRole({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-          name: "updated-name",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          renewRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        updateRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-          name: "updated-name",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // renewRole
-  // ============================================================================
-
-  describe("renewRole", () => {
-    it("returns NotFound for non-existent role", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        renewRole({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        renewRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // resetRole
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
+    describe("resetRole", () => {
+      it("returns NotFound for non-existent role", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          resetRole({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-  // ============================================================================
-  // resetRole
-  // ============================================================================
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
 
-  describe("resetRole", () => {
-    it("returns NotFound for non-existent role", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        resetRole({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          resetRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        resetRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // resetDefaultRole
-  // ============================================================================
-
-  describe("resetDefaultRole", () => {
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        resetDefaultRole({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        resetDefaultRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // resetDefaultRole
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
+    describe("resetDefaultRole", () => {
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          resetDefaultRole({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-  // ============================================================================
-  // reassignRoleObjects
-  // ============================================================================
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
 
-  describe("reassignRoleObjects", () => {
-    it("returns NotFound for non-existent role", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        reassignRoleObjects({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-          successor: "some-new-role-id",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          resetDefaultRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        reassignRoleObjects({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-          successor: "some-new-role-id",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // reassignRoleObjects
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+    describe("reassignRoleObjects", () => {
+      it("returns NotFound for non-existent role", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          reassignRoleObjects({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+            successor: "some-new-role-id",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          reassignRoleObjects({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+            successor: "some-new-role-id",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
-  });
 
-  // ============================================================================
-  // deleteRole
-  // ============================================================================
+    // ============================================================================
+    // deleteRole
+    // ============================================================================
 
-  describe("deleteRole", () => {
-    it("returns NotFound for non-existent role", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        deleteRole({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    describe("deleteRole", () => {
+      it("returns NotFound for non-existent role", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          deleteRole({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          deleteRole({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            id: NON_EXISTENT_ROLE_ID,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        deleteRole({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          id: NON_EXISTENT_ROLE_ID,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
-});
+  },
+);

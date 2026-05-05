@@ -76,817 +76,848 @@ const isApiError = (error: unknown): boolean =>
   error instanceof UnknownPlanetScaleError ||
   (error !== null && typeof error === "object" && "_tag" in error);
 
-describe("branches", () => {
-  beforeAll(async () => {
-    await Effect.runPromise(setupTestDatabase(TEST_SUFFIX));
-  }, 300000); // 5 minute timeout for database creation
-
-  afterAll(async () => {
-    await Effect.runPromise(teardownTestDatabase(TEST_SUFFIX));
-  });
-
-  const getDb = () => getTestDatabase(TEST_SUFFIX);
-
-  // ============================================================================
-  // listBranches
-  // ============================================================================
-
-  describe("listBranches", () => {
-    it("can list branches", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        listBranches({
-          organization: db.organization,
-          database: db.name,
-        }),
+describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
+  "branches > $kind",
+  ({ kind }) => {
+    beforeAll(async () => {
+      await Effect.runPromise(
+        setupTestDatabase(`${TEST_SUFFIX}-${kind}`, { kind }),
       );
+    }, 300000); // 5 minute timeout for database creation
 
-      expect(Array.isArray(result.data)).toBe(true);
-      expect(result.data.length).toBeGreaterThanOrEqual(1);
-      expect(result.current_page).toBeDefined();
+    afterAll(async () => {
+      await Effect.runPromise(teardownTestDatabase(`${TEST_SUFFIX}-${kind}`));
     });
 
-    it("can list branches with pagination", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        listBranches({
-          organization: db.organization,
-          database: db.name,
-          page: 1,
-          per_page: 10,
-        }),
-      );
+    const getDb = () => getTestDatabase(`${TEST_SUFFIX}-${kind}`);
 
-      expect(Array.isArray(result.data)).toBe(true);
-      expect(result.current_page).toBe(1);
-    });
+    // ============================================================================
+    // listBranches
+    // ============================================================================
 
-    it("can filter branches by production status", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        listBranches({
-          organization: db.organization,
-          database: db.name,
-          production: true,
-        }),
-      );
-
-      expect(Array.isArray(result.data)).toBe(true);
-      // All returned branches should be production
-      for (const branch of result.data) {
-        expect(branch.production).toBe(true);
-      }
-    });
-
-    it("can search branches by name", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        listBranches({
-          organization: db.organization,
-          database: db.name,
-          q: "main",
-        }),
-      );
-
-      expect(Array.isArray(result.data)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        listBranches({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
+    describe("listBranches", () => {
+      it("can list branches", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          listBranches({
+            organization: db.organization,
+            database: db.name,
           }),
-        ),
-      );
+        );
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
+        expect(Array.isArray(result.data)).toBe(true);
+        expect(result.data.length).toBeGreaterThanOrEqual(1);
+        expect(result.current_page).toBeDefined();
+      });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        listBranches({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
+      it("can list branches with pagination", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          listBranches({
+            organization: db.organization,
+            database: db.name,
+            page: 1,
+            per_page: 10,
           }),
-        ),
-      );
+        );
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
+        expect(Array.isArray(result.data)).toBe(true);
+        expect(result.current_page).toBe(1);
+      });
 
-  // ============================================================================
-  // getBranch
-  // ============================================================================
-
-  describe("getBranch", () => {
-    it("can get a branch", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        getBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-        }),
-      );
-
-      expect(result.name).toBe("main");
-      expect(result.id).toBeDefined();
-      expect(result.created_at).toBeDefined();
-      expect(result.state).toBeDefined();
-    });
-
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
+      it("can filter branches by production status", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          listBranches({
+            organization: db.organization,
+            database: db.name,
+            production: true,
           }),
-        ),
-      );
+        );
 
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
-    });
+        expect(Array.isArray(result.data)).toBe(true);
+        // All returned branches should be production
+        for (const branch of result.data) {
+          expect(branch.production).toBe(true);
+        }
+      });
 
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getBranch({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
+      it("can search branches by name", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          listBranches({
+            organization: db.organization,
+            database: db.name,
+            q: "main",
           }),
-        ),
-      );
+        );
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+        expect(Array.isArray(result.data)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          listBranches({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          listBranches({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        getBranch({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
+    // ============================================================================
+    // getBranch
+    // ============================================================================
+
+    describe("getBranch", () => {
+      it("can get a branch", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          getBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
           }),
-        ),
-      );
+        );
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+        expect(result.name).toBe("main");
+        expect(result.id).toBeDefined();
+        expect(result.created_at).toBeDefined();
+        expect(result.deleted_at).toBeNull();
+        expect(result.state).toBeDefined();
+
+        // Some properties are only present for MySQL databases
+        if (kind === "postgresql") {
+          expect(result.mysql_address).toBeNull();
+          expect(result.mysql_edge_address).toBeNull();
+          expect(result.direct_vtgate).toBeNull();
+          expect(result.vtgate_size).toBeNull();
+          expect(result.vtgate_count).toBeNull();
+          expect(result.vtgate_options).toBeNull();
+          expect(result.schema_ready).toBeNull();
+          expect(result.sharded).toBeNull();
+          expect(result.shard_count).toBeNull();
+        } else if (kind === "mysql") {
+          expect(result.mysql_address).not.toBeNull();
+          expect(result.mysql_edge_address).not.toBeNull();
+          expect(result.direct_vtgate).not.toBeNull();
+          expect(result.vtgate_size).not.toBeNull();
+          expect(result.vtgate_count).not.toBeNull();
+          expect(result.vtgate_options).not.toBeNull();
+          expect(result.schema_ready).not.toBeNull();
+          expect(result.sharded).not.toBeNull();
+          expect(result.shard_count).not.toBeNull();
+        }
+      });
+
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getBranch({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          getBranch({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
     });
-  });
 
-  // ============================================================================
-  // getBranchSchema
-  // ============================================================================
+    // ============================================================================
+    // getBranchSchema
+    // ============================================================================
 
-  describe("getBranchSchema", () => {
-    it("can get branch schema (or handles empty schema)", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        getBranchSchema({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed({ error: e }),
-            onSuccess: (data) => Effect.succeed({ data }),
+    describe("getBranchSchema", () => {
+      it("can get branch schema (or handles empty schema)", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          getBranchSchema({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed({ error: e }),
+              onSuccess: (data) => Effect.succeed({ data }),
+            }),
+          ),
+        );
+
+        // The API may return NotFound for branches without tables
+        // or return an empty schema array
+        if ("data" in result) {
+          expect(Array.isArray(result.data.data)).toBe(true);
+        } else {
+          // NotFound is acceptable for empty databases
+          expect(isApiError(result.error)).toBe(true);
+        }
+      });
+
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getBranchSchema({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          getBranchSchema({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          getBranchSchema({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+    });
+
+    // ============================================================================
+    // lintBranchSchema
+    // ============================================================================
+
+    describe("lintBranchSchema", () => {
+      it("can lint branch schema (or handles empty schema)", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          lintBranchSchema({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed({ error: e }),
+              onSuccess: (data) => Effect.succeed({ data }),
+            }),
+          ),
+        );
+
+        // The API may return NotFound for branches without tables
+        if ("data" in result) {
+          expect(Array.isArray(result.data.data)).toBe(true);
+          expect(result.data.current_page).toBeDefined();
+        } else {
+          // NotFound is acceptable for empty databases
+          expect(isApiError(result.error)).toBe(true);
+        }
+      });
+
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          lintBranchSchema({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          lintBranchSchema({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          lintBranchSchema({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+    });
+
+    // ============================================================================
+    // createBranch
+    // ============================================================================
+
+    describe("createBranch", () => {
+      it("returns NotFound or Forbidden for non-existent parent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          createBranch({
+            organization: db.organization,
+            database: db.name,
+            name: `test-branch-${testRunId}`,
+            parent_branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          createBranch({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            name: `test-branch-${testRunId}`,
+            parent_branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          createBranch({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            name: `test-branch-${testRunId}`,
+            parent_branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      // This test creates an actual branch - it's slow due to provisioning time
+      it("can create and delete a branch", { timeout: 120000 }, async () => {
+        const db = getDb();
+        const branchName = `test-${testRunId}`;
+
+        // Create branch
+        const created = await runEffect(
+          createBranch({
+            organization: db.organization,
+            database: db.name,
+            name: branchName,
+            parent_branch: "main",
           }),
-        ),
-      );
+        );
+        expect(created.name).toBe(branchName);
+        expect(created.id).toBeDefined();
+        expect(created.parent_branch).toBe("main");
 
-      // The API may return NotFound for branches without tables
-      // or return an empty schema array
-      if ("data" in result) {
-        expect(Array.isArray(result.data.data)).toBe(true);
-      } else {
-        // NotFound is acceptable for empty databases
-        expect(isApiError(result.error)).toBe(true);
-      }
-    });
+        // Wait for ready
+        await runEffect(
+          waitForBranchReady(db.organization, db.name, branchName),
+        );
 
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getBranchSchema({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
+        // Delete branch
+        await runEffect(
+          deleteBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: branchName,
           }),
-        ),
-      );
+        );
 
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
+        // Verify deleted
+        const error = await runEffect(
+          getBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: branchName,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        getBranchSchema({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // deleteBranch
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+    describe("deleteBranch", () => {
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          deleteBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          deleteBranch({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          deleteBranch({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns error when trying to delete production branch (main)", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          deleteBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        // Deleting production branch should fail with some error
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        getBranchSchema({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // promoteBranch
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
+    describe("promoteBranch", () => {
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          promoteBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-  // ============================================================================
-  // lintBranchSchema
-  // ============================================================================
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
 
-  describe("lintBranchSchema", () => {
-    it("can lint branch schema (or handles empty schema)", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        lintBranchSchema({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed({ error: e }),
-            onSuccess: (data) => Effect.succeed({ data }),
-          }),
-        ),
-      );
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          promoteBranch({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-      // The API may return NotFound for branches without tables
-      if ("data" in result) {
-        expect(Array.isArray(result.data.data)).toBe(true);
-        expect(result.data.current_page).toBeDefined();
-      } else {
-        // NotFound is acceptable for empty databases
-        expect(isApiError(result.error)).toBe(true);
-      }
-    });
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
 
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        lintBranchSchema({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          promoteBranch({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
 
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
-    });
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
 
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        lintBranchSchema({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+      it("handles promoting already production branch (idempotent or error)", async () => {
+        const db = getDb();
+        const result = await runEffect(
+          promoteBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed({ error: e }),
+              onSuccess: (data) => Effect.succeed({ data }),
+            }),
+          ),
+        );
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        lintBranchSchema({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // createBranch
-  // ============================================================================
-
-  describe("createBranch", () => {
-    it("returns NotFound or Forbidden for non-existent parent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        createBranch({
-          organization: db.organization,
-          database: db.name,
-          name: `test-branch-${testRunId}`,
-          parent_branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+        // Promoting an already production branch may:
+        // 1. Be idempotent (succeed and return the branch)
+        // 2. Return an error
+        if ("data" in result) {
+          expect(result.data.production).toBe(true);
+          expect(result.data.name).toBe("main");
+        } else {
+          expect(isApiError(result.error)).toBe(true);
+        }
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        createBranch({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          name: `test-branch-${testRunId}`,
-          parent_branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // demoteBranch
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+    describe("demoteBranch", () => {
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          demoteBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          demoteBranch({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          demoteBranch({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns error when trying to demote the only production branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          demoteBranch({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        // Demoting the only production branch should fail
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
     });
 
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        createBranch({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          name: `test-branch-${testRunId}`,
-          parent_branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
+    // ============================================================================
+    // updateBranchClusterConfig
+    // ============================================================================
 
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
+    describe("updateBranchClusterConfig", () => {
+      it("returns NotFound for non-existent branch", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          updateBranchClusterConfig({
+            organization: db.organization,
+            database: db.name,
+            branch: NON_EXISTENT_BRANCH,
+            cluster_size: "PS_10",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect((error as { _tag: string })._tag).toBe("NotFound");
+      });
+
+      it("returns NotFound or Forbidden for non-existent database", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          updateBranchClusterConfig({
+            organization: db.organization,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            cluster_size: "PS_10",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns NotFound or Forbidden for non-existent organization", async () => {
+        const error = await runEffect(
+          updateBranchClusterConfig({
+            organization: NON_EXISTENT_ORG,
+            database: NON_EXISTENT_DB,
+            branch: "main",
+            cluster_size: "PS_10",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        expect(error).not.toBeNull();
+        expect(isNotFoundOrForbidden(error)).toBe(true);
+      });
+
+      it("returns error for invalid cluster size", async () => {
+        const db = getDb();
+        const error = await runEffect(
+          updateBranchClusterConfig({
+            organization: db.organization,
+            database: db.name,
+            branch: "main",
+            cluster_size: "INVALID_SIZE_12345",
+          }).pipe(
+            Effect.matchEffect({
+              onFailure: (e) => Effect.succeed(e),
+              onSuccess: () => Effect.succeed(null),
+            }),
+          ),
+        );
+
+        // Invalid cluster size should return an error
+        expect(error).not.toBeNull();
+        expect(isApiError(error)).toBe(true);
+      });
     });
-
-    // This test creates an actual branch - it's slow due to provisioning time
-    it("can create and delete a branch", { timeout: 120000 }, async () => {
-      const db = getDb();
-      const branchName = `test-${testRunId}`;
-
-      // Create branch
-      const created = await runEffect(
-        createBranch({
-          organization: db.organization,
-          database: db.name,
-          name: branchName,
-          parent_branch: "main",
-        }),
-      );
-      expect(created.name).toBe(branchName);
-      expect(created.id).toBeDefined();
-      expect(created.parent_branch).toBe("main");
-
-      // Wait for ready
-      await runEffect(waitForBranchReady(db.organization, db.name, branchName));
-
-      // Delete branch
-      await runEffect(
-        deleteBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: branchName,
-        }),
-      );
-
-      // Verify deleted
-      const error = await runEffect(
-        getBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: branchName,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
-    });
-  });
-
-  // ============================================================================
-  // deleteBranch
-  // ============================================================================
-
-  describe("deleteBranch", () => {
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        deleteBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        deleteBranch({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        deleteBranch({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns error when trying to delete production branch (main)", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        deleteBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      // Deleting production branch should fail with some error
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // promoteBranch
-  // ============================================================================
-
-  describe("promoteBranch", () => {
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        promoteBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        promoteBranch({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        promoteBranch({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("handles promoting already production branch (idempotent or error)", async () => {
-      const db = getDb();
-      const result = await runEffect(
-        promoteBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed({ error: e }),
-            onSuccess: (data) => Effect.succeed({ data }),
-          }),
-        ),
-      );
-
-      // Promoting an already production branch may:
-      // 1. Be idempotent (succeed and return the branch)
-      // 2. Return an error
-      if ("data" in result) {
-        expect(result.data.production).toBe(true);
-        expect(result.data.name).toBe("main");
-      } else {
-        expect(isApiError(result.error)).toBe(true);
-      }
-    });
-  });
-
-  // ============================================================================
-  // demoteBranch
-  // ============================================================================
-
-  describe("demoteBranch", () => {
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        demoteBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        demoteBranch({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        demoteBranch({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns error when trying to demote the only production branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        demoteBranch({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      // Demoting the only production branch should fail
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // updateBranchClusterConfig
-  // ============================================================================
-
-  describe("updateBranchClusterConfig", () => {
-    it("returns NotFound for non-existent branch", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        updateBranchClusterConfig({
-          organization: db.organization,
-          database: db.name,
-          branch: NON_EXISTENT_BRANCH,
-          cluster_size: "PS_10",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect((error as { _tag: string })._tag).toBe("NotFound");
-    });
-
-    it("returns NotFound or Forbidden for non-existent database", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        updateBranchClusterConfig({
-          organization: db.organization,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          cluster_size: "PS_10",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns NotFound or Forbidden for non-existent organization", async () => {
-      const error = await runEffect(
-        updateBranchClusterConfig({
-          organization: NON_EXISTENT_ORG,
-          database: NON_EXISTENT_DB,
-          branch: "main",
-          cluster_size: "PS_10",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-
-    it("returns error for invalid cluster size", async () => {
-      const db = getDb();
-      const error = await runEffect(
-        updateBranchClusterConfig({
-          organization: db.organization,
-          database: db.name,
-          branch: "main",
-          cluster_size: "INVALID_SIZE_12345",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      // Invalid cluster size should return an error
-      expect(error).not.toBeNull();
-      expect(isApiError(error)).toBe(true);
-    });
-  });
-});
+  },
+);

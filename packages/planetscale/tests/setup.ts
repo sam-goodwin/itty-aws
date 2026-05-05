@@ -67,15 +67,28 @@ const log = (prefix: string, message: string) => {
 };
 
 /**
+ * Setup options for the test database.
+ */
+export interface SetupTestDatabaseOptions {
+  /** Database engine kind. Defaults to "mysql". */
+  readonly kind?: "mysql" | "postgresql";
+}
+
+/**
  * Setup the test database. Call this in beforeAll.
  * Creates the database if it doesn't exist and waits for it to be ready.
  * @param suffix - Optional suffix to identify the database (e.g., "branches" -> "distilled-test-db-branches")
+ * @param options - Optional setup options (e.g., kind: "postgresql")
  */
-export const setupTestDatabase = (suffix?: string) =>
+export const setupTestDatabase = (
+  suffix?: string,
+  options?: SetupTestDatabaseOptions,
+) =>
   Effect.gen(function* () {
     const { organization } = yield* Credentials;
     const databaseName = getDatabaseName(suffix);
     const prefix = suffix ?? "default";
+    const requestedKind = options?.kind ?? "mysql";
 
     log(prefix, "checking for existing database...");
 
@@ -103,12 +116,12 @@ export const setupTestDatabase = (suffix?: string) =>
     if (existing !== null) {
       kind = existing.kind;
     } else {
-      log(prefix, "creating database...");
+      log(prefix, `creating ${requestedKind} database...`);
       const created = yield* createDatabase({
         organization,
         name: databaseName,
         cluster_size: "PS_10",
-        kind: "mysql",
+        kind: requestedKind,
       });
       log(prefix, `created database: state=${created.state}`);
       kind = created.kind;
