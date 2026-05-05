@@ -46,16 +46,13 @@ const isApiError = (error: unknown): boolean =>
   (error !== null && typeof error === "object" && "_tag" in error);
 
 describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
-  "roles",
+  "roles > $kind",
   ({ kind }) => {
-    beforeAll(
-      async () => {
-        await Effect.runPromise(
-          setupTestDatabase(`${TEST_SUFFIX}-${kind}`, { kind }),
-        );
-      },
-      kind === "postgresql" ? 900000 : 300000,
-    ); // timeout for database creation, 5 minute for mysql, 15 minute for postgres
+    beforeAll(async () => {
+      await Effect.runPromise(
+        setupTestDatabase(`${TEST_SUFFIX}-${kind}`, { kind }),
+      );
+    }, 300000); // 5 minute timeout for database creation
 
     afterAll(async () => {
       await Effect.runPromise(teardownTestDatabase(`${TEST_SUFFIX}-${kind}`));

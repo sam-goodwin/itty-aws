@@ -214,25 +214,25 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
 
         // Some properties are only present for MySQL databases
         if (kind === "postgresql") {
-          expect(result.mysql_address).toBeNull();
-          expect(result.mysql_edge_address).toBeNull();
-          expect(result.direct_vtgate).toBeNull();
-          expect(result.vtgate_size).toBeNull();
-          expect(result.vtgate_count).toBeNull();
-          expect(result.vtgate_options).toBeNull();
-          expect(result.schema_ready).toBeNull();
-          expect(result.sharded).toBeNull();
-          expect(result.shard_count).toBeNull();
+          expect(result.mysql_address).toBeUndefined();
+          expect(result.mysql_edge_address).toBeUndefined();
+          expect(result.direct_vtgate).toBeUndefined();
+          expect(result.vtgate_size).toBeUndefined();
+          expect(result.vtgate_count).toBeUndefined();
+          expect(result.vtgate_options).toBeUndefined();
+          expect(result.schema_ready).toBeUndefined();
+          expect(result.sharded).toBeUndefined();
+          expect(result.shard_count).toBeUndefined();
         } else if (kind === "mysql") {
-          expect(result.mysql_address).not.toBeNull();
-          expect(result.mysql_edge_address).not.toBeNull();
-          expect(result.direct_vtgate).not.toBeNull();
-          expect(result.vtgate_size).not.toBeNull();
-          expect(result.vtgate_count).not.toBeNull();
-          expect(result.vtgate_options).not.toBeNull();
-          expect(result.schema_ready).not.toBeNull();
-          expect(result.sharded).not.toBeNull();
-          expect(result.shard_count).not.toBeNull();
+          expect(result.mysql_address).toBeDefined();
+          expect(result.mysql_edge_address).toBeDefined();
+          expect(result.direct_vtgate).toBeDefined();
+          expect(result.vtgate_size).toBeDefined();
+          expect(result.vtgate_count).toBeDefined();
+          expect(result.vtgate_options).toBeDefined();
+          expect(result.schema_ready).toBeDefined();
+          expect(result.sharded).toBeDefined();
+          expect(result.shard_count).toBeDefined();
         }
       });
 
@@ -532,7 +532,7 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
       });
 
       // This test creates an actual branch - it's slow due to provisioning time
-      it("can create and delete a branch", { timeout: 120000 }, async () => {
+      it("can create and delete a branch", { timeout: 300000 }, async () => {
         const db = getDb();
         const branchName = `test-${testRunId}`;
 
