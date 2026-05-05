@@ -48,11 +48,14 @@ const isApiError = (error: unknown): boolean =>
 describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
   "roles",
   ({ kind }) => {
-    beforeAll(async () => {
-      await Effect.runPromise(
-        setupTestDatabase(`${TEST_SUFFIX}-${kind}`, { kind }),
-      );
-    }, 300000); // 5 minute timeout for database creation
+    beforeAll(
+      async () => {
+        await Effect.runPromise(
+          setupTestDatabase(`${TEST_SUFFIX}-${kind}`, { kind }),
+        );
+      },
+      kind === "postgresql" ? 900000 : 300000,
+    ); // timeout for database creation, 5 minute for mysql, 15 minute for postgres
 
     afterAll(async () => {
       await Effect.runPromise(teardownTestDatabase(`${TEST_SUFFIX}-${kind}`));
@@ -404,7 +407,7 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
 
             expect(created.id).toBeDefined();
             expect(created.name).toBe(roleName);
-            expect(created.inherited_roles).toBe([]);
+            expect(created.inherited_roles).toStrictEqual([]);
             expect(created.username).toBeDefined();
             expect(created.access_host_url).toBeDefined();
             expect(created.password).toBeDefined();
@@ -430,7 +433,7 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
 
             expect(fetched.id).toBe(created.id);
             expect(fetched.name).toBe(roleName);
-            expect(fetched.inherited_roles).toBe([]);
+            expect(fetched.inherited_roles).toStrictEqual([]);
             // password should only be returned on creation and null on subsequent fetches
             expect(fetched.password).toBeNull();
           } finally {

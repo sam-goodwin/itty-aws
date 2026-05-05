@@ -72,6 +72,13 @@ const log = (prefix: string, message: string) => {
 export interface SetupTestDatabaseOptions {
   /** Database engine kind. Defaults to "mysql". */
   readonly kind?: "mysql" | "postgresql";
+  /**
+   * Maximum number of polling attempts (5 seconds apart) while waiting for
+   * the database to reach `state === "ready"`. Defaults to 60 (5 minutes)
+   * for mysql. Postgres typically provisions slower; pass a larger value
+   * (e.g. 180 — 15 minutes) when kind is "postgresql".
+   */
+  readonly maxReadyPollAttempts?: number;
 }
 
 /**
@@ -89,6 +96,11 @@ export const setupTestDatabase = (
     const databaseName = getDatabaseName(suffix);
     const prefix = suffix ?? "default";
     const requestedKind = options?.kind ?? "mysql";
+    // Postgres provisioning is slower than mysql — give it more headroom
+    // unless the caller explicitly overrides.
+    const maxAttempts =
+      options?.maxReadyPollAttempts ??
+      (requestedKind === "postgresql" ? 180 : 60);
 
     log(prefix, "checking for existing database...");
 
@@ -142,7 +154,7 @@ export const setupTestDatabase = (
       ),
       {
         schedule: Schedule.both(
-          Schedule.recurs(60),
+          Schedule.recurs(maxAttempts),
           Schedule.spaced("5 seconds"),
         ),
         while: (e) => "_tag" in e && e._tag === "NotReady",
