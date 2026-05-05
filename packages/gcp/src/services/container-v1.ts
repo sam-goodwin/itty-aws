@@ -5053,6 +5053,52 @@ export const SetMonitoringServiceRequest =
   }).annotate({ identifier: "SetMonitoringServiceRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5161,7 +5207,12 @@ export type SetAddonsProjectsLocationsClustersResponse = Operation;
 export const SetAddonsProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetAddonsProjectsLocationsClustersError = DefaultErrors;
+export type SetAddonsProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the addons for a specific cluster. */
 export const setAddonsProjectsLocationsClusters: API.OperationMethod<
@@ -5172,7 +5223,7 @@ export const setAddonsProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAddonsProjectsLocationsClustersRequest,
   output: SetAddonsProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface SetMasterAuthProjectsLocationsClustersRequest {
@@ -5195,7 +5246,11 @@ export type SetMasterAuthProjectsLocationsClustersResponse = Operation;
 export const SetMasterAuthProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetMasterAuthProjectsLocationsClustersError = DefaultErrors;
+export type SetMasterAuthProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden;
 
 /** Sets master auth materials. Currently supports changing the admin password or a specific cluster, either via password generation or explicitly setting the password. */
 export const setMasterAuthProjectsLocationsClusters: API.OperationMethod<
@@ -5206,7 +5261,7 @@ export const setMasterAuthProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMasterAuthProjectsLocationsClustersRequest,
   output: SetMasterAuthProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden],
 }));
 
 export interface SetMonitoringProjectsLocationsClustersRequest {
@@ -5229,7 +5284,12 @@ export type SetMonitoringProjectsLocationsClustersResponse = Operation;
 export const SetMonitoringProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetMonitoringProjectsLocationsClustersError = DefaultErrors;
+export type SetMonitoringProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the monitoring service for a specific cluster. */
 export const setMonitoringProjectsLocationsClusters: API.OperationMethod<
@@ -5240,7 +5300,7 @@ export const setMonitoringProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMonitoringProjectsLocationsClustersRequest,
   output: SetMonitoringProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface SetResourceLabelsProjectsLocationsClustersRequest {
@@ -5267,7 +5327,12 @@ export type SetResourceLabelsProjectsLocationsClustersResponse = Operation;
 export const SetResourceLabelsProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetResourceLabelsProjectsLocationsClustersError = DefaultErrors;
+export type SetResourceLabelsProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets labels on a cluster. */
 export const setResourceLabelsProjectsLocationsClusters: API.OperationMethod<
@@ -5278,7 +5343,7 @@ export const setResourceLabelsProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetResourceLabelsProjectsLocationsClustersRequest,
   output: SetResourceLabelsProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface SetLocationsProjectsLocationsClustersRequest {
@@ -5301,7 +5366,12 @@ export type SetLocationsProjectsLocationsClustersResponse = Operation;
 export const SetLocationsProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLocationsProjectsLocationsClustersError = DefaultErrors;
+export type SetLocationsProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the locations for a specific cluster. Deprecated. Use [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update) instead. */
 export const setLocationsProjectsLocationsClusters: API.OperationMethod<
@@ -5312,7 +5382,7 @@ export const setLocationsProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLocationsProjectsLocationsClustersRequest,
   output: SetLocationsProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface GetProjectsLocationsClustersRequest {
@@ -5341,7 +5411,10 @@ export type GetProjectsLocationsClustersResponse = Cluster;
 export const GetProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cluster;
 
-export type GetProjectsLocationsClustersError = DefaultErrors;
+export type GetProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific cluster. */
 export const getProjectsLocationsClusters: API.OperationMethod<
@@ -5352,7 +5425,7 @@ export const getProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersRequest,
   output: GetProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FetchClusterUpgradeInfoProjectsLocationsClustersRequest {
@@ -5411,7 +5484,11 @@ export type CreateProjectsLocationsClustersResponse = Operation;
 export const CreateProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsClustersError = DefaultErrors;
+export type CreateProjectsLocationsClustersError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project's [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster is using. */
 export const createProjectsLocationsClusters: API.OperationMethod<
@@ -5422,7 +5499,7 @@ export const createProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsClustersRequest,
   output: CreateProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersRequest {
@@ -5488,7 +5565,12 @@ export type DeleteProjectsLocationsClustersResponse = Operation;
 export const DeleteProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsClustersError = DefaultErrors;
+export type DeleteProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and routes that were configured during cluster creation are also deleted. Other Google Compute Engine resources that might be in use by the cluster, such as load balancer resources, are not deleted if they weren't present when the cluster was initially created. */
 export const deleteProjectsLocationsClusters: API.OperationMethod<
@@ -5499,7 +5581,7 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersRequest,
   output: DeleteProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface CheckAutopilotCompatibilityProjectsLocationsClustersRequest {
@@ -5559,7 +5641,12 @@ export type SetNetworkPolicyProjectsLocationsClustersResponse = Operation;
 export const SetNetworkPolicyProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetNetworkPolicyProjectsLocationsClustersError = DefaultErrors;
+export type SetNetworkPolicyProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Enables or disables Network Policy for a cluster. */
 export const setNetworkPolicyProjectsLocationsClusters: API.OperationMethod<
@@ -5570,7 +5657,7 @@ export const setNetworkPolicyProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetNetworkPolicyProjectsLocationsClustersRequest,
   output: SetNetworkPolicyProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface CompleteIpRotationProjectsLocationsClustersRequest {
@@ -5631,7 +5718,12 @@ export type SetLoggingProjectsLocationsClustersResponse = Operation;
 export const SetLoggingProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLoggingProjectsLocationsClustersError = DefaultErrors;
+export type SetLoggingProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the logging service for a specific cluster. */
 export const setLoggingProjectsLocationsClusters: API.OperationMethod<
@@ -5642,7 +5734,7 @@ export const setLoggingProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLoggingProjectsLocationsClustersRequest,
   output: SetLoggingProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface UpdateProjectsLocationsClustersRequest {
@@ -5665,7 +5757,12 @@ export type UpdateProjectsLocationsClustersResponse = Operation;
 export const UpdateProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateProjectsLocationsClustersError = DefaultErrors;
+export type UpdateProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Updates the settings of a specific cluster. */
 export const updateProjectsLocationsClusters: API.OperationMethod<
@@ -5676,7 +5773,7 @@ export const updateProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsClustersRequest,
   output: UpdateProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface GetJwksProjectsLocationsClustersRequest {
@@ -5768,7 +5865,12 @@ export type SetMaintenancePolicyProjectsLocationsClustersResponse = Operation;
 export const SetMaintenancePolicyProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetMaintenancePolicyProjectsLocationsClustersError = DefaultErrors;
+export type SetMaintenancePolicyProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the maintenance policy for a cluster. */
 export const setMaintenancePolicyProjectsLocationsClusters: API.OperationMethod<
@@ -5779,7 +5881,7 @@ export const setMaintenancePolicyProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMaintenancePolicyProjectsLocationsClustersRequest,
   output: SetMaintenancePolicyProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface StartIpRotationProjectsLocationsClustersRequest {
@@ -5840,7 +5942,11 @@ export type SetLegacyAbacProjectsLocationsClustersResponse = Operation;
 export const SetLegacyAbacProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLegacyAbacProjectsLocationsClustersError = DefaultErrors;
+export type SetLegacyAbacProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden;
 
 /** Enables or disables the ABAC authorization mechanism on a cluster. */
 export const setLegacyAbacProjectsLocationsClusters: API.OperationMethod<
@@ -5851,7 +5957,7 @@ export const setLegacyAbacProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLegacyAbacProjectsLocationsClustersRequest,
   output: SetLegacyAbacProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden],
 }));
 
 export interface GetProjectsLocationsClustersNodePoolsRequest {
@@ -5883,7 +5989,10 @@ export type GetProjectsLocationsClustersNodePoolsResponse = NodePool;
 export const GetProjectsLocationsClustersNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodePool;
 
-export type GetProjectsLocationsClustersNodePoolsError = DefaultErrors;
+export type GetProjectsLocationsClustersNodePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the requested node pool. */
 export const getProjectsLocationsClustersNodePools: API.OperationMethod<
@@ -5894,7 +6003,7 @@ export const getProjectsLocationsClustersNodePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersNodePoolsRequest,
   output: GetProjectsLocationsClustersNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateProjectsLocationsClustersNodePoolsRequest {
@@ -5917,7 +6026,12 @@ export type UpdateProjectsLocationsClustersNodePoolsResponse = Operation;
 export const UpdateProjectsLocationsClustersNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateProjectsLocationsClustersNodePoolsError = DefaultErrors;
+export type UpdateProjectsLocationsClustersNodePoolsError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Updates the version and/or image type for the specified node pool. */
 export const updateProjectsLocationsClustersNodePools: API.OperationMethod<
@@ -5928,7 +6042,7 @@ export const updateProjectsLocationsClustersNodePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsClustersNodePoolsRequest,
   output: UpdateProjectsLocationsClustersNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface CreateProjectsLocationsClustersNodePoolsRequest {
@@ -5951,7 +6065,11 @@ export type CreateProjectsLocationsClustersNodePoolsResponse = Operation;
 export const CreateProjectsLocationsClustersNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsClustersNodePoolsError = DefaultErrors;
+export type CreateProjectsLocationsClustersNodePoolsError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Creates a node pool for a cluster. */
 export const createProjectsLocationsClustersNodePools: API.OperationMethod<
@@ -5962,7 +6080,7 @@ export const createProjectsLocationsClustersNodePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsClustersNodePoolsRequest,
   output: CreateProjectsLocationsClustersNodePoolsResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, Conflict],
 }));
 
 export interface SetManagementProjectsLocationsClustersNodePoolsRequest {
@@ -5986,7 +6104,11 @@ export const SetManagementProjectsLocationsClustersNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetManagementProjectsLocationsClustersNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the NodeManagement options for a node pool. */
 export const setManagementProjectsLocationsClustersNodePools: API.OperationMethod<
@@ -5997,7 +6119,7 @@ export const setManagementProjectsLocationsClustersNodePools: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetManagementProjectsLocationsClustersNodePoolsRequest,
   output: SetManagementProjectsLocationsClustersNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersNodePoolsRequest {
@@ -6131,7 +6253,12 @@ export type SetSizeProjectsLocationsClustersNodePoolsResponse = Operation;
 export const SetSizeProjectsLocationsClustersNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSizeProjectsLocationsClustersNodePoolsError = DefaultErrors;
+export type SetSizeProjectsLocationsClustersNodePoolsError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the size for a specific node pool. The new size will be used for all replicas, including future replicas created by modifying NodePool.locations. */
 export const setSizeProjectsLocationsClustersNodePools: API.OperationMethod<
@@ -6142,7 +6269,7 @@ export const setSizeProjectsLocationsClustersNodePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSizeProjectsLocationsClustersNodePoolsRequest,
   output: SetSizeProjectsLocationsClustersNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface DeleteProjectsLocationsClustersNodePoolsRequest {
@@ -6174,7 +6301,12 @@ export type DeleteProjectsLocationsClustersNodePoolsResponse = Operation;
 export const DeleteProjectsLocationsClustersNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsClustersNodePoolsError = DefaultErrors;
+export type DeleteProjectsLocationsClustersNodePoolsError =
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Deletes a node pool from a cluster. */
 export const deleteProjectsLocationsClustersNodePools: API.OperationMethod<
@@ -6185,7 +6317,7 @@ export const deleteProjectsLocationsClustersNodePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersNodePoolsRequest,
   output: DeleteProjectsLocationsClustersNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface CompleteUpgradeProjectsLocationsClustersNodePoolsRequest {
@@ -6253,7 +6385,11 @@ export const SetAutoscalingProjectsLocationsClustersNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetAutoscalingProjectsLocationsClustersNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Sets the autoscaling settings for the specified node pool. */
 export const setAutoscalingProjectsLocationsClustersNodePools: API.OperationMethod<
@@ -6264,7 +6400,7 @@ export const setAutoscalingProjectsLocationsClustersNodePools: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAutoscalingProjectsLocationsClustersNodePoolsRequest,
   output: SetAutoscalingProjectsLocationsClustersNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface GetOpenid_configurationProjectsLocationsClustersWell_knownRequest {
@@ -6402,7 +6538,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified operation. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -6413,7 +6552,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetServerconfigProjectsZonesRequest {

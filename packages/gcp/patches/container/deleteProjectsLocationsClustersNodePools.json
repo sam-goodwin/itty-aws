@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "NotFound": [{ "httpStatus": 404 }],
+    "BadRequest": [{ "httpStatus": 400 }],
+    "Forbidden": [{ "httpStatus": 403 }],
+    "Conflict": [{ "httpStatus": 409 }]
+  }
+}
