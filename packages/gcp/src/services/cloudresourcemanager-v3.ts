@@ -940,6 +940,52 @@ export const TestIamPermissionsRequest =
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1702,7 +1748,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetProjectsError = DefaultErrors;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the project identified by the specified `name` (for example, `projects/415104041262`). The caller must have `resourcemanager.projects.get` permission for this project. */
 export const getProjects: API.OperationMethod<
@@ -1713,7 +1759,7 @@ export const getProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsRequest {
@@ -1731,7 +1777,11 @@ export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteProjectsResponse = Operation;
 export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsError = DefaultErrors;
+export type DeleteProjectsError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | NotFound;
 
 /** Marks the project identified by the specified `name` (for example, `projects/415104041262`) for deletion. This method will only affect the project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the project with GetProject, and the project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the project is not retrievable by the GetProject, ListProjects, and SearchProjects methods. The caller must have `resourcemanager.projects.delete` permissions for this project. */
 export const deleteProjects: API.OperationMethod<
@@ -1742,7 +1792,7 @@ export const deleteProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRequest,
   output: DeleteProjectsResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, NotFound],
 }));
 
 export interface PatchProjectsRequest {
@@ -1766,7 +1816,11 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchProjectsResponse = Operation;
 export const PatchProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsError = DefaultErrors;
+export type PatchProjectsError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | NotFound;
 
 /** Updates the `display_name` and labels of the project identified by the specified `name` (for example, `projects/415104041262`). Deleting all labels requires an update mask for labels field. The caller must have `resourcemanager.projects.update` permission for this project. */
 export const patchProjects: API.OperationMethod<
@@ -1777,7 +1831,7 @@ export const patchProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsRequest,
   output: PatchProjectsResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, NotFound],
 }));
 
 export interface SetIamPolicyProjectsRequest {
@@ -2063,7 +2117,11 @@ export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateProjectsResponse = Operation;
 export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsError = DefaultErrors;
+export type CreateProjectsError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`. */
 export const createProjects: API.OperationMethod<
@@ -2074,7 +2132,7 @@ export const createProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRequest,
   output: CreateProjectsResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, Conflict],
 }));
 
 export interface SetIamPolicyOrganizationsRequest {
@@ -2601,7 +2659,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | Forbidden | NotFound;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2612,7 +2670,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [Forbidden, NotFound],
 }));
 
 export interface ListTagValuesRequest {
