@@ -476,9 +476,7 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
     typeInfo.values
   ) {
     for (const variant of patch.appendUnion) {
-      typeInfo.values.push(
-        JSON.parse(JSON.stringify(variant)) as TypeInfo,
-      );
+      typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
     }
   }
 
@@ -534,14 +532,40 @@ interface ResolvedOperationModel {
   errors: OperationErrorInfo[];
 }
 
+const ACCOUNT_OR_ZONE_SCOPE_PATH_PARAMS = new Set([
+  "accountOrZone",
+  "accountOrZoneId",
+]);
+
+const withMissingUrlPathParams = (op: ParsedOperation): ParamInfo[] => {
+  const existing = new Set(op.pathParams.map((param) => param.name));
+  const missing = op.urlPathParams.filter(
+    (name) =>
+      !existing.has(name) && !ACCOUNT_OR_ZONE_SCOPE_PATH_PARAMS.has(name),
+  );
+  if (missing.length === 0) return op.pathParams;
+  return [
+    ...op.pathParams,
+    ...missing.map(
+      (name): ParamInfo => ({
+        name,
+        type: { kind: "primitive", value: "string" },
+        location: "path",
+        required: true,
+      }),
+    ),
+  ];
+};
+
 function resolveOperationModel(
   op: ParsedOperation,
   patch?: OperationPatch,
 ): ResolvedOperationModel {
   const syntheticHeaderParams = getSyntheticHeaderParams(op);
+  const pathParams = withMissingUrlPathParams(op);
 
   const nonBodyParamNames = new Set([
-    ...op.pathParams.map((p) => toCamelCase(p.name)),
+    ...pathParams.map((p) => toCamelCase(p.name)),
     ...op.queryParams.map((p) => toCamelCase(p.name)),
     ...op.headerParams.map((p) => toCamelCase(p.name)),
     ...syntheticHeaderParams.map((p) => toCamelCase(p.name)),
@@ -552,7 +576,7 @@ function resolveOperationModel(
   );
 
   const allParams = [
-    ...op.pathParams,
+    ...pathParams,
     ...op.queryParams,
     ...op.headerParams,
     ...syntheticHeaderParams,
@@ -562,7 +586,7 @@ function resolveOperationModel(
     type: resolveOperationTypeInfo(op, param.type),
   }));
 
-  const resolvedPathParams = op.pathParams.map((p) => ({
+  const resolvedPathParams = pathParams.map((p) => ({
     ...p,
     type: resolveOperationTypeInfo(op, p.type),
   }));
@@ -1233,9 +1257,10 @@ function generateOperationSchemaAst(
   }
 
   const syntheticHeaderParams = getSyntheticHeaderParams(op);
+  const pathParams = withMissingUrlPathParams(op);
 
   const nonBodyParamNames = new Set([
-    ...op.pathParams.map((p) => toCamelCase(p.name)),
+    ...pathParams.map((p) => toCamelCase(p.name)),
     ...op.queryParams.map((p) => toCamelCase(p.name)),
     ...op.headerParams.map((p) => toCamelCase(p.name)),
     ...syntheticHeaderParams.map((p) => toCamelCase(p.name)),
@@ -1246,7 +1271,7 @@ function generateOperationSchemaAst(
   );
 
   const allParams = [
-    ...op.pathParams,
+    ...pathParams,
     ...op.queryParams,
     ...op.headerParams,
     ...syntheticHeaderParams,
@@ -1256,7 +1281,7 @@ function generateOperationSchemaAst(
     type: resolveTypeInfoDeep(param.type, op.registry!),
   }));
 
-  const resolvedPathParams = op.pathParams.map((p) => ({
+  const resolvedPathParams = pathParams.map((p) => ({
     ...p,
     type: resolveTypeInfoDeep(p.type, op.registry!),
   }));
@@ -1336,7 +1361,10 @@ function generateOperationSchemaAst(
   for (const param of resolvedPathParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    const schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
     requestProps.push(
       `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
     );
@@ -1684,7 +1712,10 @@ function generateOperationSchema(
   for (const param of resolvedPathParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    const schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
     requestProps.push(
       `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
     );

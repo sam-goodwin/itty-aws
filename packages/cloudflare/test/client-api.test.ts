@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { buildRequestParts, getHttpTrait } from "@distilled.cloud/core/traits";
 import { transformCloudflareRequestParts } from "~/client/api";
+import { PutPhasRequest } from "~/services/rulesets";
 import { CreateAssetUploadRequest, PutScriptRequest } from "~/services/workers";
 
 describe("client api", () => {
@@ -26,6 +27,12 @@ describe("client api", () => {
     expect(parts.body).toEqual({ asset: "ZGF0YQ==" });
 
     const transformed = transformCloudflareRequestParts({
+      input: {
+        accountId: "account-123",
+        base64: true,
+        jwtToken: "upload-session-jwt",
+        body: { asset: "ZGF0YQ==" },
+      },
       pathTemplate: httpTrait!.path,
       parts,
     });
@@ -38,6 +45,7 @@ describe("client api", () => {
 
   it("does not double-prefix an existing bearer header", () => {
     const transformed = transformCloudflareRequestParts({
+      input: {},
       pathTemplate: "/accounts/{account_id}/workers/assets/upload",
       parts: {
         path: "/accounts/account-123/workers/assets/upload",
@@ -104,5 +112,52 @@ describe("client api", () => {
         ],
       },
     });
+  });
+
+  it("maps account-or-zone scoped ruleset paths to zones", () => {
+    const httpTrait = getHttpTrait(PutPhasRequest.ast);
+    expect(httpTrait).toBeDefined();
+
+    const input = {
+      zoneId: "zone-123",
+      rulesetPhase: "http_request_firewall_custom",
+      rules: [
+        {
+          action: "block" as const,
+          expression: "true",
+          description: "Block everything",
+        },
+      ],
+    };
+
+    const parts = buildRequestParts(
+      PutPhasRequest.ast,
+      httpTrait!,
+      input,
+      PutPhasRequest,
+    );
+
+    expect(parts.path).toEqual(
+      "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/http_request_firewall_custom/entrypoint",
+    );
+    expect(parts.body).toEqual({
+      rules: [
+        {
+          action: "block",
+          expression: "true",
+          description: "Block everything",
+        },
+      ],
+    });
+
+    const transformed = transformCloudflareRequestParts({
+      input,
+      pathTemplate: httpTrait!.path,
+      parts,
+    });
+
+    expect(transformed.path).toEqual(
+      "/zones/zone-123/rulesets/phases/http_request_firewall_custom/entrypoint",
+    );
   });
 });

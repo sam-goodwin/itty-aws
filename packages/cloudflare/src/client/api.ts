@@ -402,25 +402,56 @@ class CloudflareDecodeError extends CloudflareHttpError {
 const ASSET_UPLOAD_PATH = "/accounts/{account_id}/workers/assets/upload";
 
 export const transformCloudflareRequestParts = ({
+  input,
   pathTemplate,
   parts,
 }: {
+  input?: Record<string, unknown>;
   pathTemplate: string;
   parts: RequestParts;
 }): RequestParts => {
-  if (pathTemplate !== ASSET_UPLOAD_PATH) {
-    return parts;
+  let next = parts;
+
+  if (
+    pathTemplate.includes("/{accountOrZone}/{accountOrZoneId}/") &&
+    next.path.includes("{accountOrZone}") &&
+    next.path.includes("{accountOrZoneId}")
+  ) {
+    const accountId = input?.accountId;
+    const zoneId = input?.zoneId;
+    const hasAccountId = accountId !== undefined && accountId !== null;
+    const hasZoneId = zoneId !== undefined && zoneId !== null;
+
+    if (hasAccountId === hasZoneId) {
+      throw new Error(
+        "Cloudflare account-or-zone scoped requests require exactly one of accountId or zoneId",
+      );
+    }
+
+    next = {
+      ...next,
+      path: next.path
+        .replace("{accountOrZone}", hasAccountId ? "accounts" : "zones")
+        .replace(
+          "{accountOrZoneId}",
+          encodeURIComponent(String(hasAccountId ? accountId : zoneId)),
+        ),
+    };
   }
 
-  const authorization = parts.headers.Authorization;
+  if (pathTemplate !== ASSET_UPLOAD_PATH) {
+    return next;
+  }
+
+  const authorization = next.headers.Authorization;
   if (!authorization || authorization.startsWith("Bearer ")) {
-    return parts;
+    return next;
   }
 
   return {
-    ...parts,
+    ...next,
     headers: {
-      ...parts.headers,
+      ...next.headers,
       Authorization: `Bearer ${authorization}`,
     },
   };
@@ -432,8 +463,8 @@ const _API = makeAPI<Credentials>({
   getAuthHeaders: formatHeaders as any,
   matchError,
   ParseError: CloudflareDecodeError as any,
-  transformRequestParts: ({ pathTemplate, parts }) =>
-    transformCloudflareRequestParts({ pathTemplate, parts }),
+  transformRequestParts: ({ input, pathTemplate, parts }) =>
+    transformCloudflareRequestParts({ input, pathTemplate, parts }),
   retry: Retry as any,
 });
 

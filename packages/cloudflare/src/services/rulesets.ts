@@ -17,11 +17,13 @@ import { SensitiveString } from "../sensitive.ts";
 // Pha
 // =============================================================================
 
-export interface GetPhasRequest {}
+export interface GetPhasRequest {
+  rulesetPhase: string;
+}
 
-export const GetPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint",
@@ -3516,6 +3518,7 @@ export interface PutPhasRequest {
   accountId?: string;
   /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId?: string;
+  rulesetPhase: string;
   /** Body param: An informative description of the ruleset. */
   description?: string;
   /** Body param: The human-readable name of the ruleset. */
@@ -4141,8 +4144,9 @@ export interface PutPhasRequest {
 }
 
 export const PutPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  accountId: Schema.optional(Schema.String).pipe(T.HttpPath("account_id")),
+  zoneId: Schema.optional(Schema.String).pipe(T.HttpPath("zone_id")),
+  rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
   description: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   rules: Schema.optional(
@@ -9340,10 +9344,12 @@ export const putPhas: API.OperationMethod<
 
 export interface GetPhasVersionRequest {
   rulesetVersion: string;
+  rulesetPhase: string;
 }
 
 export const GetPhasVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
+  rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -12888,10 +12894,14 @@ export const getPhasVersion: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListPhasVersionsRequest {}
+export interface ListPhasVersionsRequest {
+  rulesetPhase: string;
+}
 
 export const ListPhasVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions",
@@ -13051,8 +13061,8 @@ export interface CreateRuleRequest {
 
 export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  accountId: Schema.optional(Schema.String).pipe(T.HttpPath("account_id")),
+  zoneId: Schema.optional(Schema.String).pipe(T.HttpPath("zone_id")),
   id: Schema.optional(Schema.String),
   action: Schema.optional(Schema.Literal("block")),
   actionParameters: Schema.optional(
@@ -16681,8 +16691,8 @@ export interface PatchRuleRequest {
 export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  accountId: Schema.optional(Schema.String).pipe(T.HttpPath("account_id")),
+  zoneId: Schema.optional(Schema.String).pipe(T.HttpPath("zone_id")),
   id: Schema.optional(Schema.String),
   action: Schema.optional(Schema.Literal("block")),
   actionParameters: Schema.optional(
@@ -28054,8 +28064,8 @@ export interface CreateRulesetRequest {
 }
 
 export const CreateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  accountId: Schema.optional(Schema.String).pipe(T.HttpPath("account_id")),
+  zoneId: Schema.optional(Schema.String).pipe(T.HttpPath("zone_id")),
   kind: Schema.Literals(["managed", "custom", "root", "zone"]),
   name: Schema.String,
   phase: Schema.Literals([
@@ -33934,8 +33944,8 @@ export interface UpdateRulesetRequest {
 
 export const UpdateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  accountId: Schema.optional(Schema.String).pipe(T.HttpPath("account_id")),
+  zoneId: Schema.optional(Schema.String).pipe(T.HttpPath("zone_id")),
   description: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.Literals(["managed", "custom", "root", "zone"])),
   name: Schema.optional(Schema.String),
