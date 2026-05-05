@@ -6715,6 +6715,31 @@ paths:
                               - name
                               - type
                               - namespace
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - ratelimit
+                              namespace_id:
+                                type: string
+                              simple:
+                                type: object
+                                properties:
+                                  limit:
+                                    type: number
+                                  period:
+                                    type: number
+                                required:
+                                  - limit
+                                  - period
+                            required:
+                              - name
+                              - type
+                              - namespace_id
+                              - simple
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
                         https://developers.cloudflare.com/workers/configuration\

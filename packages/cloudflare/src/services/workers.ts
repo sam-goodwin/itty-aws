@@ -6611,6 +6611,12 @@ export interface PutScriptRequest {
       | { name: string; part: string; type: "wasm_module" }
       | { name: string; type: "worker_loader" }
       | { name: string; type: "artifacts"; namespace: string }
+      | {
+          name: string;
+          type: "ratelimit";
+          namespaceId: string;
+          simple: { limit: number; period: number };
+        }
     )[];
     bodyPart?: string;
     compatibilityDate?: string;
@@ -6759,6 +6765,22 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               secretName: "secret_name",
               storeId: "store_id",
               type: "type",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("ratelimit"),
+            namespaceId: Schema.String,
+            simple: Schema.Struct({
+              limit: Schema.Number,
+              period: Schema.Number,
+            }),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              namespaceId: "namespace_id",
+              simple: "simple",
             }),
           ),
           Schema.Struct({

@@ -11,7 +11,9 @@
     "DuplicateMigrationTarget": [
       {
         "code": 10074,
-        "message": { "includes": "cannot be the target of more than one migration" }
+        "message": {
+          "includes": "cannot be the target of more than one migration"
+        }
       }
     ],
     "ScriptStartupError": [{ "code": 10021 }],
@@ -58,6 +60,45 @@
                 "name": "namespace",
                 "required": true,
                 "type": { "kind": "primitive", "value": "string" }
+              }
+            ]
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "name",
+                "required": true,
+                "type": { "kind": "primitive", "value": "string" }
+              },
+              {
+                "name": "type",
+                "required": true,
+                "type": { "kind": "literal", "value": "ratelimit" }
+              },
+              {
+                "name": "namespace_id",
+                "required": true,
+                "type": { "kind": "primitive", "value": "string" }
+              },
+              {
+                "name": "simple",
+                "required": true,
+                "type": {
+                  "kind": "object",
+                  "properties": [
+                    {
+                      "name": "limit",
+                      "required": true,
+                      "type": { "kind": "primitive", "value": "number" }
+                    },
+                    {
+                      "name": "period",
+                      "required": true,
+                      "type": { "kind": "primitive", "value": "number" }
+                    }
+                  ]
+                }
               }
             ]
           }
