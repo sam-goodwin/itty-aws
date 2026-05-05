@@ -192,7 +192,7 @@ export const ListLocationsPlaceActionLinksRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/placeActionLinks" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/placeActionLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsPlaceActionLinksRequest>;
 
@@ -233,7 +233,7 @@ export const CreateLocationsPlaceActionLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/placeActionLinks",
+      path: "v1/{+parent}/placeActionLinks",
       hasBody: true,
     }),
     svc,
@@ -272,7 +272,7 @@ export const PatchLocationsPlaceActionLinksRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PlaceActionLink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchLocationsPlaceActionLinksRequest>;
 
@@ -303,7 +303,7 @@ export const GetLocationsPlaceActionLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLocationsPlaceActionLinksRequest>;
 
@@ -334,7 +334,7 @@ export const DeleteLocationsPlaceActionLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLocationsPlaceActionLinksRequest>;
 

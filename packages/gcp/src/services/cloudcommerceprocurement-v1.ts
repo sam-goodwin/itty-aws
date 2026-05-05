@@ -321,7 +321,7 @@ export const ApproveProvidersEntitlementsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProvidersEntitlementsRequest>;
 
@@ -359,7 +359,7 @@ export const RejectPlanChangeProvidersEntitlementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:rejectPlanChange",
+      path: "v1/{+name}:rejectPlanChange",
       hasBody: true,
     }),
     svc,
@@ -392,7 +392,7 @@ export const GetProvidersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProvidersEntitlementsRequest>;
 
@@ -429,7 +429,7 @@ export const PatchProvidersEntitlementsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Entitlement).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProvidersEntitlementsRequest>;
 
@@ -463,7 +463,7 @@ export const RejectProvidersEntitlementsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:reject", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:reject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RejectProvidersEntitlementsRequest>;
 
@@ -503,7 +503,7 @@ export const ListProvidersEntitlementsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/entitlements" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/entitlements" }),
     svc,
   ) as unknown as Schema.Schema<ListProvidersEntitlementsRequest>;
 
@@ -545,7 +545,7 @@ export const ApprovePlanChangeProvidersEntitlementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:approvePlanChange",
+      path: "v1/{+name}:approvePlanChange",
       hasBody: true,
     }),
     svc,
@@ -581,7 +581,7 @@ export const SuspendProvidersEntitlementsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:suspend", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:suspend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SuspendProvidersEntitlementsRequest>;
 
@@ -615,7 +615,7 @@ export const RejectProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:reject", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:reject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RejectProvidersAccountsRequest>;
 
@@ -652,7 +652,7 @@ export const ListProvidersAccountsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/accounts" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/accounts" }),
     svc,
   ) as unknown as Schema.Schema<ListProvidersAccountsRequest>;
 
@@ -690,7 +690,7 @@ export const ApproveProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProvidersAccountsRequest>;
 
@@ -728,7 +728,7 @@ export const GetProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProvidersAccountsRequest>;
 
@@ -761,7 +761,7 @@ export const ResetProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResetAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:reset", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:reset", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResetProvidersAccountsRequest>;
 

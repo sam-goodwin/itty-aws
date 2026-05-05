@@ -6084,7 +6084,7 @@ export const GetSearchAds360FieldsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v0/{resourceName}" }),
+    T.Http({ method: "GET", path: "v0/{+resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<GetSearchAds360FieldsRequest>;
 
@@ -6143,7 +6143,7 @@ export const ListCustomersCustomColumnsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v0/customers/{customerId}/customColumns" }),
+    T.Http({ method: "GET", path: "v0/customers/{+customerId}/customColumns" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersCustomColumnsRequest>;
 
@@ -6175,7 +6175,7 @@ export const GetCustomersCustomColumnsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v0/{resourceName}" }),
+    T.Http({ method: "GET", path: "v0/{+resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersCustomColumnsRequest>;
 
@@ -6214,7 +6214,7 @@ export const SearchCustomersSearchAds360Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v0/customers/{customerId}/searchAds360:search",
+      path: "v0/customers/{+customerId}/searchAds360:search",
       hasBody: true,
     }),
     svc,

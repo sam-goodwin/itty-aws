@@ -7134,7 +7134,7 @@ export const SetAddonsOrganizationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{org}:setAddons", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+org}:setAddons", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetAddonsOrganizationsRequest>;
 
@@ -7172,7 +7172,7 @@ export const GetSyncAuthorizationOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:getSyncAuthorization",
+      path: "v1/{+name}:getSyncAuthorization",
       hasBody: true,
     }),
     svc,
@@ -7206,7 +7206,7 @@ export const GetRuntimeConfigOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRuntimeConfigOrganizationsRequest>;
 
@@ -7238,7 +7238,7 @@ export const ListOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}" }),
+    T.Http({ method: "GET", path: "v1/{+parent}" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsRequest>;
 
@@ -7304,7 +7304,7 @@ export const GetProjectMappingOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:getProjectMapping" }),
+    T.Http({ method: "GET", path: "v1/{+name}:getProjectMapping" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectMappingOrganizationsRequest>;
 
@@ -7339,7 +7339,7 @@ export const UpdateOrganizationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Organization).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsRequest>;
 
@@ -7373,7 +7373,7 @@ export const DeleteOrganizationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     retention: Schema.optional(Schema.String).pipe(T.HttpQuery("retention")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsRequest>;
 
@@ -7404,7 +7404,7 @@ export const GetControlPlaneAccessOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetControlPlaneAccessOrganizationsRequest>;
 
@@ -7444,7 +7444,7 @@ export const UpdateControlPlaneAccessOrganizationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateControlPlaneAccessOrganizationsRequest>;
 
@@ -7476,7 +7476,7 @@ export const GetOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsRequest>;
 
@@ -7514,7 +7514,7 @@ export const SetSyncAuthorizationOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:setSyncAuthorization",
+      path: "v1/{+name}:setSyncAuthorization",
       hasBody: true,
     }),
     svc,
@@ -7551,7 +7551,7 @@ export const GetDeployedIngressConfigOrganizationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDeployedIngressConfigOrganizationsRequest>;
 
@@ -7583,7 +7583,7 @@ export const GetSecuritySettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecuritySettingsOrganizationsRequest>;
 
@@ -7623,7 +7623,7 @@ export const UpdateSecuritySettingsOrganizationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecuritySettingsOrganizationsRequest>;
 
@@ -7661,7 +7661,7 @@ export const CreateOrganizationsDnsZonesRequest =
     dnsZoneId: Schema.optional(Schema.String).pipe(T.HttpQuery("dnsZoneId")),
     body: Schema.optional(GoogleCloudApigeeV1DnsZone).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/dnsZones", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/dnsZones", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsDnsZonesRequest>;
 
@@ -7692,7 +7692,7 @@ export const GetOrganizationsDnsZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDnsZonesRequest>;
 
@@ -7729,7 +7729,7 @@ export const ListOrganizationsDnsZonesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/dnsZones" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/dnsZones" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDnsZonesRequest>;
 
@@ -7765,7 +7765,7 @@ export const DeleteOrganizationsDnsZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDnsZonesRequest>;
 
@@ -7799,7 +7799,7 @@ export const PatchOrganizationsSitesApicategoriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ApiCategory).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSitesApicategoriesRequest>;
 
@@ -7831,7 +7831,7 @@ export const DeleteOrganizationsSitesApicategoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSitesApicategoriesRequest>;
 
@@ -7868,7 +7868,7 @@ export const CreateOrganizationsSitesApicategoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/apicategories",
+      path: "v1/{+parent}/apicategories",
       hasBody: true,
     }),
     svc,
@@ -7902,7 +7902,7 @@ export const GetOrganizationsSitesApicategoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSitesApicategoriesRequest>;
 
@@ -7934,7 +7934,7 @@ export const ListOrganizationsSitesApicategoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apicategories" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apicategories" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSitesApicategoriesRequest>;
 
@@ -7971,7 +7971,7 @@ export const UpdateDocumentationOrganizationsSitesApidocsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDocumentationOrganizationsSitesApidocsRequest>;
 
@@ -8006,7 +8006,7 @@ export const UpdateOrganizationsSitesApidocsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ApiDoc).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsSitesApidocsRequest>;
 
@@ -8038,7 +8038,7 @@ export const DeleteOrganizationsSitesApidocsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSitesApidocsRequest>;
 
@@ -8070,7 +8070,7 @@ export const GetDocumentationOrganizationsSitesApidocsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDocumentationOrganizationsSitesApidocsRequest>;
 
@@ -8102,7 +8102,7 @@ export const GetOrganizationsSitesApidocsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSitesApidocsRequest>;
 
@@ -8137,7 +8137,7 @@ export const CreateOrganizationsSitesApidocsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1ApiDoc).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/apidocs", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/apidocs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsSitesApidocsRequest>;
 
@@ -8175,7 +8175,7 @@ export const ListOrganizationsSitesApidocsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apidocs" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apidocs" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSitesApidocsRequest>;
 
@@ -8257,7 +8257,7 @@ export const GetOrganizationsHostStatsRequest =
     timeRange: Schema.optional(Schema.String).pipe(T.HttpQuery("timeRange")),
     tzo: Schema.optional(Schema.String).pipe(T.HttpQuery("tzo")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsHostStatsRequest>;
 
@@ -8288,7 +8288,7 @@ export const GetResultOrganizationsHostQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResultOrganizationsHostQueriesRequest>;
 
@@ -8322,7 +8322,7 @@ export const CreateOrganizationsHostQueriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Query).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/hostQueries", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/hostQueries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsHostQueriesRequest>;
 
@@ -8354,7 +8354,7 @@ export const GetOrganizationsHostQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsHostQueriesRequest>;
 
@@ -8385,7 +8385,7 @@ export const GetResultViewOrganizationsHostQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResultViewOrganizationsHostQueriesRequest>;
 
@@ -8443,7 +8443,7 @@ export const ListOrganizationsHostQueriesRequest =
     dataset: Schema.optional(Schema.String).pipe(T.HttpQuery("dataset")),
     from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/hostQueries" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/hostQueries" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsHostQueriesRequest>;
 
@@ -8478,7 +8478,11 @@ export const CreateOrganizationsKeyvaluemapsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keyvaluemaps", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/keyvaluemaps",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsKeyvaluemapsRequest>;
 
@@ -8510,7 +8514,7 @@ export const DeleteOrganizationsKeyvaluemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsKeyvaluemapsRequest>;
 
@@ -8542,7 +8546,7 @@ export const GetOrganizationsKeyvaluemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsKeyvaluemapsRequest>;
 
@@ -8577,7 +8581,7 @@ export const UpdateOrganizationsKeyvaluemapsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsKeyvaluemapsRequest>;
 
@@ -8609,7 +8613,7 @@ export const DeleteOrganizationsKeyvaluemapsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsKeyvaluemapsEntriesRequest>;
 
@@ -8644,7 +8648,7 @@ export const UpdateOrganizationsKeyvaluemapsEntriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsKeyvaluemapsEntriesRequest>;
 
@@ -8676,7 +8680,7 @@ export const GetOrganizationsKeyvaluemapsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsKeyvaluemapsEntriesRequest>;
 
@@ -8711,7 +8715,7 @@ export const CreateOrganizationsKeyvaluemapsEntriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/entries", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/entries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsKeyvaluemapsEntriesRequest>;
 
@@ -8749,7 +8753,7 @@ export const ListOrganizationsKeyvaluemapsEntriesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/entries" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/entries" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsKeyvaluemapsEntriesRequest>;
 
@@ -8794,7 +8798,7 @@ export const DeleteOrganizationsSecurityMonitoringConditionsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSecurityMonitoringConditionsRequest>;
 
@@ -8835,7 +8839,7 @@ export const PatchOrganizationsSecurityMonitoringConditionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSecurityMonitoringConditionsRequest>;
 
@@ -8879,7 +8883,7 @@ export const CreateOrganizationsSecurityMonitoringConditionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/securityMonitoringConditions",
+      path: "v1/{+parent}/securityMonitoringConditions",
       hasBody: true,
     }),
     svc,
@@ -8923,7 +8927,7 @@ export const GetOrganizationsSecurityMonitoringConditionsRequest =
       T.HttpQuery("riskAssessmentType"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSecurityMonitoringConditionsRequest>;
 
@@ -8973,7 +8977,10 @@ export const ListOrganizationsSecurityMonitoringConditionsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/securityMonitoringConditions" }),
+    T.Http({
+      method: "GET",
+      path: "v1/{+parent}/securityMonitoringConditions",
+    }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSecurityMonitoringConditionsRequest>;
 
@@ -9015,7 +9022,7 @@ export const PatchOrganizationsApisRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1ApiProxy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsApisRequest>;
 
@@ -9051,7 +9058,7 @@ export const MoveOrganizationsApisRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveOrganizationsApisRequest>;
 
@@ -9082,7 +9089,7 @@ export const DeleteOrganizationsApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApisRequest>;
 
@@ -9126,7 +9133,7 @@ export const ListOrganizationsApisRequest =
       T.HttpQuery("includeRevisions"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apis" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apis" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApisRequest>;
 
@@ -9158,7 +9165,7 @@ export const GetOrganizationsApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApisRequest>;
 
@@ -9204,7 +9211,7 @@ export const CreateOrganizationsApisRequest =
     validate: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("validate")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/apis", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/apis", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsApisRequest>;
 
@@ -9242,7 +9249,7 @@ export const ListOrganizationsApisDebugsessionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/debugsessions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/debugsessions" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApisDebugsessionsRequest>;
 
@@ -9284,7 +9291,7 @@ export const UpdateApiProxyRevisionOrganizationsApisRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateApiProxyRevisionOrganizationsApisRevisionsRequest>;
 
@@ -9320,7 +9327,7 @@ export const GetOrganizationsApisRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApisRevisionsRequest>;
 
@@ -9351,7 +9358,7 @@ export const DeleteOrganizationsApisRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApisRevisionsRequest>;
 
@@ -9383,7 +9390,7 @@ export const ListOrganizationsApisRevisionsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApisRevisionsDeploymentsRequest>;
 
@@ -9415,7 +9422,7 @@ export const ListOrganizationsApisDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApisDeploymentsRequest>;
 
@@ -9447,7 +9454,7 @@ export const GetOrganizationsApisKeyvaluemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApisKeyvaluemapsRequest>;
 
@@ -9482,7 +9489,7 @@ export const UpdateOrganizationsApisKeyvaluemapsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsApisKeyvaluemapsRequest>;
 
@@ -9517,7 +9524,11 @@ export const CreateOrganizationsApisKeyvaluemapsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keyvaluemaps", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/keyvaluemaps",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsApisKeyvaluemapsRequest>;
 
@@ -9549,7 +9560,7 @@ export const DeleteOrganizationsApisKeyvaluemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApisKeyvaluemapsRequest>;
 
@@ -9581,7 +9592,7 @@ export const GetOrganizationsApisKeyvaluemapsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApisKeyvaluemapsEntriesRequest>;
 
@@ -9616,7 +9627,7 @@ export const CreateOrganizationsApisKeyvaluemapsEntriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/entries", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/entries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsApisKeyvaluemapsEntriesRequest>;
 
@@ -9654,7 +9665,7 @@ export const ListOrganizationsApisKeyvaluemapsEntriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/entries" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/entries" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApisKeyvaluemapsEntriesRequest>;
 
@@ -9690,7 +9701,7 @@ export const DeleteOrganizationsApisKeyvaluemapsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApisKeyvaluemapsEntriesRequest>;
 
@@ -9725,7 +9736,7 @@ export const UpdateOrganizationsApisKeyvaluemapsEntriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsApisKeyvaluemapsEntriesRequest>;
 
@@ -9757,7 +9768,7 @@ export const DeleteOrganizationsAnalyticsDatastoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsAnalyticsDatastoresRequest>;
 
@@ -9792,7 +9803,7 @@ export const UpdateOrganizationsAnalyticsDatastoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Datastore).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsAnalyticsDatastoresRequest>;
 
@@ -9829,7 +9840,7 @@ export const TestOrganizationsAnalyticsDatastoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/analytics/datastores:test",
+      path: "v1/{+parent}/analytics/datastores:test",
       hasBody: true,
     }),
     svc,
@@ -9868,7 +9879,7 @@ export const CreateOrganizationsAnalyticsDatastoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/analytics/datastores",
+      path: "v1/{+parent}/analytics/datastores",
       hasBody: true,
     }),
     svc,
@@ -9902,7 +9913,7 @@ export const GetOrganizationsAnalyticsDatastoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsAnalyticsDatastoresRequest>;
 
@@ -9937,7 +9948,7 @@ export const ListOrganizationsAnalyticsDatastoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     targetType: Schema.optional(Schema.String).pipe(T.HttpQuery("targetType")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/analytics/datastores" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/analytics/datastores" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAnalyticsDatastoresRequest>;
 
@@ -9974,7 +9985,7 @@ export const UpdateMonetizationConfigOrganizationsDevelopersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateMonetizationConfigOrganizationsDevelopersRequest>;
 
@@ -10010,7 +10021,7 @@ export const CreateOrganizationsDevelopersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Developer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/developers", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/developers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsDevelopersRequest>;
 
@@ -10062,7 +10073,7 @@ export const ListOrganizationsDevelopersRequest =
       T.HttpQuery("includeCompany"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/developers" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/developers" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDevelopersRequest>;
 
@@ -10097,7 +10108,7 @@ export const SetDeveloperStatusOrganizationsDevelopersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetDeveloperStatusOrganizationsDevelopersRequest>;
 
@@ -10129,7 +10140,7 @@ export const GetBalanceOrganizationsDevelopersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBalanceOrganizationsDevelopersRequest>;
 
@@ -10164,7 +10175,7 @@ export const UpdateOrganizationsDevelopersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Developer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsDevelopersRequest>;
 
@@ -10196,7 +10207,7 @@ export const DeleteOrganizationsDevelopersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersRequest>;
 
@@ -10231,7 +10242,7 @@ export const AttributesOrganizationsDevelopersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Attributes).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/attributes", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/attributes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AttributesOrganizationsDevelopersRequest>;
 
@@ -10266,7 +10277,7 @@ export const GetOrganizationsDevelopersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDevelopersRequest>;
 
@@ -10297,7 +10308,7 @@ export const GetMonetizationConfigOrganizationsDevelopersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMonetizationConfigOrganizationsDevelopersRequest>;
 
@@ -10329,7 +10340,7 @@ export const GetOrganizationsDevelopersAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDevelopersAttributesRequest>;
 
@@ -10361,7 +10372,7 @@ export const DeleteOrganizationsDevelopersAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAttributesRequest>;
 
@@ -10396,7 +10407,7 @@ export const UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attribute).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest>;
 
@@ -10429,7 +10440,7 @@ export const ListOrganizationsDevelopersAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/attributes" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDevelopersAttributesRequest>;
 
@@ -10466,7 +10477,7 @@ export const AdjustOrganizationsDevelopersBalanceRequest =
       GoogleCloudApigeeV1AdjustDeveloperBalanceRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:adjust", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:adjust", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AdjustOrganizationsDevelopersBalanceRequest>;
 
@@ -10503,7 +10514,7 @@ export const CreditOrganizationsDevelopersBalanceRequest =
       GoogleCloudApigeeV1CreditDeveloperBalanceRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:credit", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:credit", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreditOrganizationsDevelopersBalanceRequest>;
 
@@ -10541,7 +10552,7 @@ export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest>;
 
@@ -10579,7 +10590,7 @@ export const CreateOrganizationsDevelopersAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/apps", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/apps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsDevelopersAppsRequest>;
 
@@ -10617,7 +10628,7 @@ export const GetOrganizationsDevelopersAppsRequest =
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     entity: Schema.optional(Schema.String).pipe(T.HttpQuery("entity")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDevelopersAppsRequest>;
 
@@ -10663,7 +10674,7 @@ export const ListOrganizationsDevelopersAppsRequest =
     startKey: Schema.optional(Schema.String).pipe(T.HttpQuery("startKey")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apps" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDevelopersAppsRequest>;
 
@@ -10698,7 +10709,7 @@ export const AttributesOrganizationsDevelopersAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attributes).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}/attributes", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}/attributes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AttributesOrganizationsDevelopersAppsRequest>;
 
@@ -10730,7 +10741,7 @@ export const DeleteOrganizationsDevelopersAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsRequest>;
 
@@ -10765,7 +10776,7 @@ export const UpdateOrganizationsDevelopersAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DeveloperApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsDevelopersAppsRequest>;
 
@@ -10802,7 +10813,7 @@ export const CreateOrganizationsDevelopersAppsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keys", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/keys", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsDevelopersAppsKeysRequest>;
 
@@ -10834,7 +10845,7 @@ export const GetOrganizationsDevelopersAppsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDevelopersAppsKeysRequest>;
 
@@ -10874,7 +10885,7 @@ export const UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>;
 
@@ -10912,7 +10923,7 @@ export const ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest>;
 
@@ -10945,7 +10956,7 @@ export const DeleteOrganizationsDevelopersAppsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsKeysRequest>;
 
@@ -10977,7 +10988,7 @@ export const DeleteOrganizationsDevelopersAppsKeysApiproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsKeysApiproductsRequest>;
 
@@ -11013,7 +11024,7 @@ export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest>;
 
@@ -11053,7 +11064,7 @@ export const CreateOrganizationsDevelopersAppsKeysCreateRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keys/create", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/keys/create", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsDevelopersAppsKeysCreateRequest>;
 
@@ -11088,7 +11099,7 @@ export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesReq
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attribute).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest>;
 
@@ -11123,7 +11134,7 @@ export const GetOrganizationsDevelopersAppsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDevelopersAppsAttributesRequest>;
 
@@ -11155,7 +11166,7 @@ export const DeleteOrganizationsDevelopersAppsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDevelopersAppsAttributesRequest>;
 
@@ -11187,7 +11198,7 @@ export const ListOrganizationsDevelopersAppsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/attributes" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDevelopersAppsAttributesRequest>;
 
@@ -11226,7 +11237,7 @@ export const CreateOrganizationsDevelopersSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/subscriptions",
+      path: "v1/{+parent}/subscriptions",
       hasBody: true,
     }),
     svc,
@@ -11260,7 +11271,7 @@ export const GetOrganizationsDevelopersSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDevelopersSubscriptionsRequest>;
 
@@ -11298,7 +11309,7 @@ export const ListOrganizationsDevelopersSubscriptionsRequest =
     startKey: Schema.optional(Schema.String).pipe(T.HttpQuery("startKey")),
     count: Schema.optional(Schema.Number).pipe(T.HttpQuery("count")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/subscriptions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/subscriptions" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDevelopersSubscriptionsRequest>;
 
@@ -11335,7 +11346,7 @@ export const ExpireOrganizationsDevelopersSubscriptionsRequest =
       GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:expire", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:expire", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExpireOrganizationsDevelopersSubscriptionsRequest>;
 
@@ -11376,7 +11387,7 @@ export const DeleteOrganizationsSecurityProfilesV2Request =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSecurityProfilesV2Request>;
 
@@ -11415,7 +11426,7 @@ export const PatchOrganizationsSecurityProfilesV2Request =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSecurityProfilesV2Request>;
 
@@ -11459,7 +11470,7 @@ export const CreateOrganizationsSecurityProfilesV2Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/securityProfilesV2",
+      path: "v1/{+parent}/securityProfilesV2",
       hasBody: true,
     }),
     svc,
@@ -11502,7 +11513,7 @@ export const GetOrganizationsSecurityProfilesV2Request =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSecurityProfilesV2Request>;
 
@@ -11549,7 +11560,7 @@ export const ListOrganizationsSecurityProfilesV2Request =
       T.HttpQuery("riskAssessmentType"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/securityProfilesV2" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/securityProfilesV2" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSecurityProfilesV2Request>;
 
@@ -11598,7 +11609,7 @@ export const ListOrganizationsSharedflowsRequest =
       T.HttpQuery("includeMetaData"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/sharedflows" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/sharedflows" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSharedflowsRequest>;
 
@@ -11630,7 +11641,7 @@ export const GetOrganizationsSharedflowsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSharedflowsRequest>;
 
@@ -11673,7 +11684,7 @@ export const CreateOrganizationsSharedflowsRequest =
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/sharedflows", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/sharedflows", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsSharedflowsRequest>;
 
@@ -11705,7 +11716,7 @@ export const DeleteOrganizationsSharedflowsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSharedflowsRequest>;
 
@@ -11742,7 +11753,7 @@ export const MoveOrganizationsSharedflowsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveOrganizationsSharedflowsRequest>;
 
@@ -11774,7 +11785,7 @@ export const ListOrganizationsSharedflowsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSharedflowsDeploymentsRequest>;
 
@@ -11809,7 +11820,7 @@ export const GetOrganizationsSharedflowsRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     format: Schema.optional(Schema.String).pipe(T.HttpQuery("format")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSharedflowsRevisionsRequest>;
 
@@ -11840,7 +11851,7 @@ export const DeleteOrganizationsSharedflowsRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSharedflowsRevisionsRequest>;
 
@@ -11878,7 +11889,7 @@ export const UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest>;
 
@@ -11911,7 +11922,7 @@ export const ListOrganizationsSharedflowsRevisionsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSharedflowsRevisionsDeploymentsRequest>;
 
@@ -11944,7 +11955,7 @@ export const DeleteOrganizationsSecurityProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSecurityProfilesRequest>;
 
@@ -11983,7 +11994,7 @@ export const PatchOrganizationsSecurityProfilesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSecurityProfilesRequest>;
 
@@ -12021,7 +12032,7 @@ export const ListRevisionsOrganizationsSecurityProfilesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:listRevisions" }),
+    T.Http({ method: "GET", path: "v1/{+name}:listRevisions" }),
     svc,
   ) as unknown as Schema.Schema<ListRevisionsOrganizationsSecurityProfilesRequest>;
 
@@ -12069,7 +12080,7 @@ export const CreateOrganizationsSecurityProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/securityProfiles",
+      path: "v1/{+parent}/securityProfiles",
       hasBody: true,
     }),
     svc,
@@ -12103,7 +12114,7 @@ export const GetOrganizationsSecurityProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSecurityProfilesRequest>;
 
@@ -12141,7 +12152,7 @@ export const ListOrganizationsSecurityProfilesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/securityProfiles" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/securityProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSecurityProfilesRequest>;
 
@@ -12182,7 +12193,11 @@ export const CreateOrganizationsSecurityProfilesEnvironmentsRequest =
       GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/environments", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/environments",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsSecurityProfilesEnvironmentsRequest>;
 
@@ -12215,7 +12230,7 @@ export const DeleteOrganizationsSecurityProfilesEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSecurityProfilesEnvironmentsRequest>;
 
@@ -12255,7 +12270,7 @@ export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{profileEnvironment}:computeEnvironmentScores",
+      path: "v1/{+profileEnvironment}:computeEnvironmentScores",
       hasBody: true,
     }),
     svc,
@@ -12304,7 +12319,7 @@ export const CreateOrganizationsApimServiceExtensionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/apimServiceExtensions",
+      path: "v1/{+parent}/apimServiceExtensions",
       hasBody: true,
     }),
     svc,
@@ -12338,7 +12353,7 @@ export const GetOrganizationsApimServiceExtensionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApimServiceExtensionsRequest>;
 
@@ -12376,7 +12391,7 @@ export const ListOrganizationsApimServiceExtensionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apimServiceExtensions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apimServiceExtensions" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApimServiceExtensionsRequest>;
 
@@ -12425,7 +12440,7 @@ export const PatchOrganizationsApimServiceExtensionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsApimServiceExtensionsRequest>;
 
@@ -12457,7 +12472,7 @@ export const DeleteOrganizationsApimServiceExtensionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApimServiceExtensionsRequest>;
 
@@ -12496,7 +12511,7 @@ export const CreateOrganizationsHostSecurityReportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/hostSecurityReports",
+      path: "v1/{+parent}/hostSecurityReports",
       hasBody: true,
     }),
     svc,
@@ -12530,7 +12545,7 @@ export const GetOrganizationsHostSecurityReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsHostSecurityReportsRequest>;
 
@@ -12562,7 +12577,7 @@ export const GetResultViewOrganizationsHostSecurityReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResultViewOrganizationsHostSecurityReportsRequest>;
 
@@ -12622,7 +12637,7 @@ export const ListOrganizationsHostSecurityReportsRequest =
     from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/hostSecurityReports" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/hostSecurityReports" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsHostSecurityReportsRequest>;
 
@@ -12658,7 +12673,7 @@ export const GetResultOrganizationsHostSecurityReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResultOrganizationsHostSecurityReportsRequest>;
 
@@ -12693,7 +12708,7 @@ export const UpdateOrganizationsReportsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1CustomReport).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsReportsRequest>;
 
@@ -12725,7 +12740,7 @@ export const DeleteOrganizationsReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsReportsRequest>;
 
@@ -12760,7 +12775,7 @@ export const CreateOrganizationsReportsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1CustomReport).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/reports", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/reports", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsReportsRequest>;
 
@@ -12792,7 +12807,7 @@ export const GetOrganizationsReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsReportsRequest>;
 
@@ -12826,7 +12841,7 @@ export const ListOrganizationsReportsRequest =
     expand: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("expand")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/reports" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/reports" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsReportsRequest>;
 
@@ -12870,7 +12885,7 @@ export const CreateOrganizationsEndpointAttachmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/endpointAttachments",
+      path: "v1/{+parent}/endpointAttachments",
       hasBody: true,
     }),
     svc,
@@ -12904,7 +12919,7 @@ export const GetOrganizationsEndpointAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEndpointAttachmentsRequest>;
 
@@ -12942,7 +12957,7 @@ export const ListOrganizationsEndpointAttachmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/endpointAttachments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/endpointAttachments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEndpointAttachmentsRequest>;
 
@@ -12978,7 +12993,7 @@ export const DeleteOrganizationsEndpointAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEndpointAttachmentsRequest>;
 
@@ -13010,7 +13025,7 @@ export const DeleteOrganizationsSecurityFeedbackRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSecurityFeedbackRequest>;
 
@@ -13049,7 +13064,7 @@ export const PatchOrganizationsSecurityFeedbackRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSecurityFeedbackRequest>;
 
@@ -13093,7 +13108,7 @@ export const CreateOrganizationsSecurityFeedbackRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/securityFeedback",
+      path: "v1/{+parent}/securityFeedback",
       hasBody: true,
     }),
     svc,
@@ -13127,7 +13142,7 @@ export const GetOrganizationsSecurityFeedbackRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSecurityFeedbackRequest>;
 
@@ -13165,7 +13180,7 @@ export const ListOrganizationsSecurityFeedbackRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/securityFeedback" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/securityFeedback" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSecurityFeedbackRequest>;
 
@@ -13247,7 +13262,7 @@ export const GetOrganizationsOptimizedHostStatsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     accuracy: Schema.optional(Schema.String).pipe(T.HttpQuery("accuracy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsOptimizedHostStatsRequest>;
 
@@ -13284,7 +13299,7 @@ export const BatchComputeOrganizationsSecurityAssessmentResultsRequest =
       GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:batchCompute", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:batchCompute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchComputeOrganizationsSecurityAssessmentResultsRequest>;
 
@@ -13327,7 +13342,7 @@ export const CreateOrganizationsDatacollectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/datacollectors",
+      path: "v1/{+parent}/datacollectors",
       hasBody: true,
     }),
     svc,
@@ -13367,7 +13382,7 @@ export const ListOrganizationsDatacollectorsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/datacollectors" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/datacollectors" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDatacollectorsRequest>;
 
@@ -13403,7 +13418,7 @@ export const GetOrganizationsDatacollectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDatacollectorsRequest>;
 
@@ -13435,7 +13450,7 @@ export const DeleteOrganizationsDatacollectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDatacollectorsRequest>;
 
@@ -13472,7 +13487,7 @@ export const PatchOrganizationsDatacollectorsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1DataCollector).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsDatacollectorsRequest>;
 
@@ -13504,7 +13519,7 @@ export const GetOrganizationsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsAppsRequest>;
 
@@ -13573,7 +13588,7 @@ export const ListOrganizationsAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     apiProduct: Schema.optional(Schema.String).pipe(T.HttpQuery("apiProduct")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apps" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAppsRequest>;
 
@@ -13622,7 +13637,7 @@ export const ListOrganizationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsOperationsRequest>;
 
@@ -13658,7 +13673,7 @@ export const GetOrganizationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsOperationsRequest>;
 
@@ -13700,7 +13715,7 @@ export const UpdateDebugmaskOrganizationsEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1DebugMask).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDebugmaskOrganizationsEnvironmentsRequest>;
 
@@ -13732,7 +13747,7 @@ export const GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest>;
 
@@ -13770,7 +13785,7 @@ export const SetIamPolicyOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -13803,7 +13818,7 @@ export const SubscribeOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}:subscribe", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}:subscribe", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SubscribeOrganizationsEnvironmentsRequest>;
 
@@ -13841,7 +13856,11 @@ export const CreateOrganizationsEnvironmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/environments", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/environments",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsRequest>;
 
@@ -13876,7 +13895,7 @@ export const UpdateEnvironmentOrganizationsEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEnvironmentOrganizationsEnvironmentsRequest>;
 
@@ -13915,7 +13934,7 @@ export const TestIamPermissionsOrganizationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -13955,7 +13974,7 @@ export const ModifyEnvironmentOrganizationsEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ModifyEnvironmentOrganizationsEnvironmentsRequest>;
 
@@ -13987,7 +14006,7 @@ export const GetSecurityActionsConfigOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecurityActionsConfigOrganizationsEnvironmentsRequest>;
 
@@ -14026,7 +14045,7 @@ export const UpdateTraceConfigOrganizationsEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1TraceConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateTraceConfigOrganizationsEnvironmentsRequest>;
 
@@ -14061,7 +14080,7 @@ export const UnsubscribeOrganizationsEnvironmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Subscription).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}:unsubscribe", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}:unsubscribe", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UnsubscribeOrganizationsEnvironmentsRequest>;
 
@@ -14092,7 +14111,7 @@ export const GetTraceConfigOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTraceConfigOrganizationsEnvironmentsRequest>;
 
@@ -14129,7 +14148,7 @@ export const GetIamPolicyOrganizationsEnvironmentsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyOrganizationsEnvironmentsRequest>;
 
@@ -14160,7 +14179,7 @@ export const GetDeployedConfigOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDeployedConfigOrganizationsEnvironmentsRequest>;
 
@@ -14200,7 +14219,7 @@ export const UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest>;
 
@@ -14233,7 +14252,7 @@ export const GetDebugmaskOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDebugmaskOrganizationsEnvironmentsRequest>;
 
@@ -14265,7 +14284,7 @@ export const DeleteOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsRequest>;
 
@@ -14300,7 +14319,7 @@ export const UpdateOrganizationsEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Environment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsRequest>;
 
@@ -14332,7 +14351,7 @@ export const GetAddonsConfigOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAddonsConfigOrganizationsEnvironmentsRequest>;
 
@@ -14364,7 +14383,7 @@ export const GetOrganizationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsRequest>;
 
@@ -14409,7 +14428,7 @@ export const DeployOrganizationsEnvironmentsApisRevisionsRequest =
       T.HttpQuery("serviceAccount"),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}/deployments", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}/deployments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeployOrganizationsEnvironmentsApisRevisionsRequest>;
 
@@ -14441,7 +14460,7 @@ export const GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+name}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest>;
 
@@ -14479,7 +14498,7 @@ export const UndeployOrganizationsEnvironmentsApisRevisionsRequest =
       T.HttpQuery("sequencedRollout"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}/deployments" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<UndeployOrganizationsEnvironmentsApisRevisionsRequest>;
 
@@ -14513,7 +14532,7 @@ export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}/deployments:generateUndeployChangeReport",
+      path: "v1/{+name}/deployments:generateUndeployChangeReport",
       hasBody: true,
     }),
     svc,
@@ -14555,7 +14574,7 @@ export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}/deployments:generateDeployChangeReport",
+      path: "v1/{+name}/deployments:generateDeployChangeReport",
       hasBody: true,
     }),
     svc,
@@ -14592,7 +14611,7 @@ export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}/data" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}/data" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
 
@@ -14633,7 +14652,7 @@ export const CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/debugsessions",
+      path: "v1/{+parent}/debugsessions",
       hasBody: true,
     }),
     svc,
@@ -14668,7 +14687,7 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
 
@@ -14707,7 +14726,7 @@ export const ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/debugsessions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/debugsessions" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest>;
 
@@ -14744,7 +14763,7 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest>;
 
@@ -14777,7 +14796,7 @@ export const ListOrganizationsEnvironmentsApisDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsApisDeploymentsRequest>;
 
@@ -14814,7 +14833,7 @@ export const CreateOrganizationsEnvironmentsAnalyticsExportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/analytics/exports",
+      path: "v1/{+parent}/analytics/exports",
       hasBody: true,
     }),
     svc,
@@ -14849,7 +14868,7 @@ export const GetOrganizationsEnvironmentsAnalyticsExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsAnalyticsExportsRequest>;
 
@@ -14881,7 +14900,7 @@ export const ListOrganizationsEnvironmentsAnalyticsExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/analytics/exports" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/analytics/exports" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsAnalyticsExportsRequest>;
 
@@ -14921,7 +14940,7 @@ export const GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest =
       T.HttpQuery("disableCache"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest>;
 
@@ -14962,7 +14981,7 @@ export const DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     override: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("override")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}/deployments", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}/deployments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
 
@@ -14995,7 +15014,7 @@ export const GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+name}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
 
@@ -15028,7 +15047,7 @@ export const UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}/deployments" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest>;
 
@@ -15061,7 +15080,7 @@ export const ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest>;
 
@@ -15094,7 +15113,7 @@ export const DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
@@ -15135,7 +15154,7 @@ export const PatchOrganizationsEnvironmentsTraceConfigOverridesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
@@ -15173,7 +15192,7 @@ export const CreateOrganizationsEnvironmentsTraceConfigOverridesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/overrides", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/overrides", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
@@ -15212,7 +15231,7 @@ export const ListOrganizationsEnvironmentsTraceConfigOverridesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/overrides" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/overrides" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
@@ -15249,7 +15268,7 @@ export const GetOrganizationsEnvironmentsTraceConfigOverridesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsTraceConfigOverridesRequest>;
 
@@ -15290,7 +15309,7 @@ export const PatchOrganizationsEnvironmentsArchiveDeploymentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
@@ -15323,7 +15342,7 @@ export const DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
@@ -15356,7 +15375,7 @@ export const GetOrganizationsEnvironmentsArchiveDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
@@ -15397,7 +15416,7 @@ export const ListOrganizationsEnvironmentsArchiveDeploymentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/archiveDeployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/archiveDeployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsArchiveDeploymentsRequest>;
 
@@ -15441,7 +15460,7 @@ export const CreateOrganizationsEnvironmentsArchiveDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/archiveDeployments",
+      path: "v1/{+parent}/archiveDeployments",
       hasBody: true,
     }),
     svc,
@@ -15483,7 +15502,7 @@ export const GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/archiveDeployments:generateUploadUrl",
+      path: "v1/{+parent}/archiveDeployments:generateUploadUrl",
       hasBody: true,
     }),
     svc,
@@ -15525,7 +15544,7 @@ export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:generateDownloadUrl",
+      path: "v1/{+name}:generateDownloadUrl",
       hasBody: true,
     }),
     svc,
@@ -15568,7 +15587,7 @@ export const CreateOrganizationsEnvironmentsSecurityReportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/securityReports",
+      path: "v1/{+parent}/securityReports",
       hasBody: true,
     }),
     svc,
@@ -15602,7 +15621,7 @@ export const GetOrganizationsEnvironmentsSecurityReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsSecurityReportsRequest>;
 
@@ -15634,7 +15653,7 @@ export const GetResultViewOrganizationsEnvironmentsSecurityReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResultViewOrganizationsEnvironmentsSecurityReportsRequest>;
 
@@ -15690,7 +15709,7 @@ export const ListOrganizationsEnvironmentsSecurityReportsRequest =
     from: Schema.optional(Schema.String).pipe(T.HttpQuery("from")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/securityReports" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/securityReports" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSecurityReportsRequest>;
 
@@ -15726,7 +15745,7 @@ export const GetResultOrganizationsEnvironmentsSecurityReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResultOrganizationsEnvironmentsSecurityReportsRequest>;
 
@@ -15762,7 +15781,7 @@ export const CreateOrganizationsEnvironmentsReferencesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Reference).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/references", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/references", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsReferencesRequest>;
 
@@ -15794,7 +15813,7 @@ export const DeleteOrganizationsEnvironmentsReferencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsReferencesRequest>;
 
@@ -15826,7 +15845,7 @@ export const GetOrganizationsEnvironmentsReferencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsReferencesRequest>;
 
@@ -15861,7 +15880,7 @@ export const UpdateOrganizationsEnvironmentsReferencesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Reference).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsReferencesRequest>;
 
@@ -15898,7 +15917,7 @@ export const GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest>;
 
@@ -15936,7 +15955,7 @@ export const ListOrganizationsEnvironmentsDeploymentsRequest =
       T.HttpQuery("sharedFlows"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsDeploymentsRequest>;
 
@@ -15968,7 +15987,7 @@ export const GetOrganizationsEnvironmentsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsDeploymentsRequest>;
 
@@ -16007,7 +16026,7 @@ export const TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -16047,7 +16066,7 @@ export const SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -16092,7 +16111,7 @@ export const CreateOrganizationsEnvironmentsSecurityActionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/securityActions",
+      path: "v1/{+parent}/securityActions",
       hasBody: true,
     }),
     svc,
@@ -16126,7 +16145,7 @@ export const GetOrganizationsEnvironmentsSecurityActionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsSecurityActionsRequest>;
 
@@ -16167,7 +16186,7 @@ export const ListOrganizationsEnvironmentsSecurityActionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/securityActions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/securityActions" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSecurityActionsRequest>;
 
@@ -16209,7 +16228,7 @@ export const PatchOrganizationsEnvironmentsSecurityActionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1SecurityAction).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsSecurityActionsRequest>;
 
@@ -16246,7 +16265,7 @@ export const EnableOrganizationsEnvironmentsSecurityActionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:enable", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableOrganizationsEnvironmentsSecurityActionsRequest>;
 
@@ -16278,7 +16297,7 @@ export const DeleteOrganizationsEnvironmentsSecurityActionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsSecurityActionsRequest>;
 
@@ -16315,7 +16334,7 @@ export const DisableOrganizationsEnvironmentsSecurityActionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:disable", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableOrganizationsEnvironmentsSecurityActionsRequest>;
 
@@ -16348,7 +16367,7 @@ export const GetOrganizationsEnvironmentsFlowhooksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsFlowhooksRequest>;
 
@@ -16380,7 +16399,7 @@ export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksReque
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest>;
 
@@ -16417,7 +16436,7 @@ export const AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1FlowHook).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest>;
 
@@ -16457,7 +16476,7 @@ export const SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:setAddonEnablement",
+      path: "v1/{+name}:setAddonEnablement",
       hasBody: true,
     }),
     svc,
@@ -16539,7 +16558,7 @@ export const GetOrganizationsEnvironmentsOptimizedStatsRequest =
     limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
     aggTable: Schema.optional(Schema.String).pipe(T.HttpQuery("aggTable")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsOptimizedStatsRequest>;
 
@@ -16582,7 +16601,7 @@ export const UpdateOrganizationsEnvironmentsResourcefilesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "v1/{parent}/resourcefiles/{type}/{name}",
+      path: "v1/{+parent}/resourcefiles/{type}/{name}",
       hasBody: true,
     }),
     svc,
@@ -16624,7 +16643,7 @@ export const DeleteOrganizationsEnvironmentsResourcefilesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v1/{parent}/resourcefiles/{type}/{name}",
+      path: "v1/{+parent}/resourcefiles/{type}/{name}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsResourcefilesRequest>;
@@ -16668,7 +16687,7 @@ export const CreateOrganizationsEnvironmentsResourcefilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/resourcefiles",
+      path: "v1/{+parent}/resourcefiles",
       hasBody: true,
     }),
     svc,
@@ -16708,7 +16727,7 @@ export const GetOrganizationsEnvironmentsResourcefilesRequest =
     type: Schema.String.pipe(T.HttpPath("type")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/resourcefiles/{type}/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/resourcefiles/{type}/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsResourcefilesRequest>;
 
@@ -16743,7 +16762,7 @@ export const ListOrganizationsEnvironmentsResourcefilesRequest =
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/resourcefiles" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/resourcefiles" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsResourcefilesRequest>;
 
@@ -16778,7 +16797,7 @@ export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesReque
     type: Schema.String.pipe(T.HttpPath("type")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/resourcefiles/{type}" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/resourcefiles/{type}" }),
     svc,
   ) as unknown as Schema.Schema<ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest>;
 
@@ -16818,7 +16837,7 @@ export const CreateOrganizationsEnvironmentsKeystoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Keystore).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keystores", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/keystores", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeystoresRequest>;
 
@@ -16850,7 +16869,7 @@ export const DeleteOrganizationsEnvironmentsKeystoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeystoresRequest>;
 
@@ -16882,7 +16901,7 @@ export const GetOrganizationsEnvironmentsKeystoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeystoresRequest>;
 
@@ -16936,7 +16955,7 @@ export const CreateOrganizationsEnvironmentsKeystoresAliasesRequest =
     _password: Schema.optional(Schema.String).pipe(T.HttpQuery("_password")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/aliases", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/aliases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
@@ -16969,7 +16988,7 @@ export const GetOrganizationsEnvironmentsKeystoresAliasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
@@ -17001,7 +17020,7 @@ export const DeleteOrganizationsEnvironmentsKeystoresAliasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
@@ -17047,7 +17066,7 @@ export const UpdateOrganizationsEnvironmentsKeystoresAliasesRequest =
     ),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
@@ -17080,7 +17099,7 @@ export const GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/certificate" }),
+    T.Http({ method: "GET", path: "v1/{+name}/certificate" }),
     svc,
   ) as unknown as Schema.Schema<GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
@@ -17113,7 +17132,7 @@ export const CsrOrganizationsEnvironmentsKeystoresAliasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/csr" }),
+    T.Http({ method: "GET", path: "v1/{+name}/csr" }),
     svc,
   ) as unknown as Schema.Schema<CsrOrganizationsEnvironmentsKeystoresAliasesRequest>;
 
@@ -17148,7 +17167,11 @@ export const CreateOrganizationsEnvironmentsKeyvaluemapsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keyvaluemaps", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/keyvaluemaps",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
@@ -17180,7 +17203,7 @@ export const GetOrganizationsEnvironmentsKeyvaluemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
@@ -17215,7 +17238,7 @@ export const UpdateOrganizationsEnvironmentsKeyvaluemapsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
@@ -17247,7 +17270,7 @@ export const DeleteOrganizationsEnvironmentsKeyvaluemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeyvaluemapsRequest>;
 
@@ -17279,7 +17302,7 @@ export const GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
@@ -17315,7 +17338,7 @@ export const CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/entries", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/entries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
@@ -17354,7 +17377,7 @@ export const ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/entries" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/entries" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
@@ -17391,7 +17414,7 @@ export const DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
@@ -17427,7 +17450,7 @@ export const UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1KeyValueEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest>;
 
@@ -17460,7 +17483,7 @@ export const DeleteOrganizationsEnvironmentsCachesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsCachesRequest>;
 
@@ -17498,7 +17521,7 @@ export const QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{orgenv}/securityStats:queryTabularStats",
+      path: "v1/{+orgenv}/securityStats:queryTabularStats",
       hasBody: true,
     }),
     svc,
@@ -17540,7 +17563,7 @@ export const QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{orgenv}/securityStats:queryTimeSeriesStats",
+      path: "v1/{+orgenv}/securityStats:queryTimeSeriesStats",
       hasBody: true,
     }),
     svc,
@@ -17575,7 +17598,7 @@ export const GetOrganizationsEnvironmentsSecurityIncidentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
@@ -17616,7 +17639,7 @@ export const ListOrganizationsEnvironmentsSecurityIncidentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/securityIncidents" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/securityIncidents" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
@@ -17660,7 +17683,7 @@ export const PatchOrganizationsEnvironmentsSecurityIncidentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
@@ -17700,7 +17723,7 @@ export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/securityIncidents:batchUpdate",
+      path: "v1/{+parent}/securityIncidents:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -17743,7 +17766,7 @@ export const CreateOrganizationsEnvironmentsTargetserversRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/targetservers",
+      path: "v1/{+parent}/targetservers",
       hasBody: true,
     }),
     svc,
@@ -17777,7 +17800,7 @@ export const DeleteOrganizationsEnvironmentsTargetserversRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvironmentsTargetserversRequest>;
 
@@ -17809,7 +17832,7 @@ export const GetOrganizationsEnvironmentsTargetserversRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsTargetserversRequest>;
 
@@ -17844,7 +17867,7 @@ export const UpdateOrganizationsEnvironmentsTargetserversRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1TargetServer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsEnvironmentsTargetserversRequest>;
 
@@ -17923,7 +17946,7 @@ export const GetOrganizationsEnvironmentsStatsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     accuracy: Schema.optional(Schema.String).pipe(T.HttpQuery("accuracy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsStatsRequest>;
 
@@ -17958,7 +17981,7 @@ export const CreateOrganizationsEnvironmentsQueriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Query).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/queries", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/queries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvironmentsQueriesRequest>;
 
@@ -17990,7 +18013,7 @@ export const GetOrganizationsEnvironmentsQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvironmentsQueriesRequest>;
 
@@ -18044,7 +18067,7 @@ export const ListOrganizationsEnvironmentsQueriesRequest =
     to: Schema.optional(Schema.String).pipe(T.HttpQuery("to")),
     dataset: Schema.optional(Schema.String).pipe(T.HttpQuery("dataset")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/queries" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/queries" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvironmentsQueriesRequest>;
 
@@ -18076,7 +18099,7 @@ export const GetResulturlOrganizationsEnvironmentsQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResulturlOrganizationsEnvironmentsQueriesRequest>;
 
@@ -18108,7 +18131,7 @@ export const GetResultOrganizationsEnvironmentsQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetResultOrganizationsEnvironmentsQueriesRequest>;
 
@@ -18145,7 +18168,7 @@ export const UpdateMonetizationConfigOrganizationsAppgroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateMonetizationConfigOrganizationsAppgroupsRequest>;
 
@@ -18177,7 +18200,7 @@ export const DeleteOrganizationsAppgroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsRequest>;
 
@@ -18214,7 +18237,7 @@ export const UpdateOrganizationsAppgroupsRequest =
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsAppgroupsRequest>;
 
@@ -18245,7 +18268,7 @@ export const GetMonetizationConfigOrganizationsAppgroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMonetizationConfigOrganizationsAppgroupsRequest>;
 
@@ -18280,7 +18303,7 @@ export const CreateOrganizationsAppgroupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/appgroups", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/appgroups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsAppgroupsRequest>;
 
@@ -18311,7 +18334,7 @@ export const GetOrganizationsAppgroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsAppgroupsRequest>;
 
@@ -18351,7 +18374,7 @@ export const ListOrganizationsAppgroupsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/appgroups" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/appgroups" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAppgroupsRequest>;
 
@@ -18387,7 +18410,7 @@ export const GetBalanceOrganizationsAppgroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBalanceOrganizationsAppgroupsRequest>;
 
@@ -18422,7 +18445,7 @@ export const CreateOrganizationsAppgroupsAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/apps", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/apps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsAppgroupsAppsRequest>;
 
@@ -18454,7 +18477,7 @@ export const GetOrganizationsAppgroupsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsAppgroupsAppsRequest>;
 
@@ -18492,7 +18515,7 @@ export const ListOrganizationsAppgroupsAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apps" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAppgroupsAppsRequest>;
 
@@ -18528,7 +18551,7 @@ export const DeleteOrganizationsAppgroupsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsAppsRequest>;
 
@@ -18566,7 +18589,7 @@ export const UpdateOrganizationsAppgroupsAppsRequest =
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsAppgroupsAppsRequest>;
 
@@ -18601,7 +18624,7 @@ export const CreateOrganizationsAppgroupsAppsKeysRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1AppGroupAppKey).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keys", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/keys", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsAppgroupsAppsKeysRequest>;
 
@@ -18633,7 +18656,7 @@ export const DeleteOrganizationsAppgroupsAppsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsAppsKeysRequest>;
 
@@ -18665,7 +18688,7 @@ export const GetOrganizationsAppgroupsAppsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsAppgroupsAppsKeysRequest>;
 
@@ -18702,7 +18725,7 @@ export const UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest>;
 
@@ -18738,7 +18761,7 @@ export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
     name: Schema.String.pipe(T.HttpPath("name")),
     action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest>;
 
@@ -18773,7 +18796,7 @@ export const DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest>;
 
@@ -18811,7 +18834,7 @@ export const ExpireOrganizationsAppgroupsSubscriptionsRequest =
       GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:expire", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:expire", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExpireOrganizationsAppgroupsSubscriptionsRequest>;
 
@@ -18850,7 +18873,7 @@ export const CreateOrganizationsAppgroupsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/subscriptions",
+      path: "v1/{+parent}/subscriptions",
       hasBody: true,
     }),
     svc,
@@ -18884,7 +18907,7 @@ export const GetOrganizationsAppgroupsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsAppgroupsSubscriptionsRequest>;
 
@@ -18922,7 +18945,7 @@ export const ListOrganizationsAppgroupsSubscriptionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/subscriptions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/subscriptions" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAppgroupsSubscriptionsRequest>;
 
@@ -18963,7 +18986,7 @@ export const AdjustOrganizationsAppgroupsBalanceRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:adjust", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:adjust", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AdjustOrganizationsAppgroupsBalanceRequest>;
 
@@ -19000,7 +19023,7 @@ export const CreditOrganizationsAppgroupsBalanceRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:credit", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:credit", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreditOrganizationsAppgroupsBalanceRequest>;
 
@@ -19039,7 +19062,7 @@ export const ReportStatusOrganizationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{instance}:reportStatus",
+      path: "v1/{+instance}:reportStatus",
       hasBody: true,
     }),
     svc,
@@ -19076,7 +19099,7 @@ export const CreateOrganizationsInstancesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/instances", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsInstancesRequest>;
 
@@ -19107,7 +19130,7 @@ export const GetOrganizationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsInstancesRequest>;
 
@@ -19144,7 +19167,7 @@ export const ListOrganizationsInstancesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/instances" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsInstancesRequest>;
 
@@ -19186,7 +19209,7 @@ export const PatchOrganizationsInstancesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApigeeV1Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsInstancesRequest>;
 
@@ -19217,7 +19240,7 @@ export const DeleteOrganizationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsInstancesRequest>;
 
@@ -19254,7 +19277,7 @@ export const ListOrganizationsInstancesNatAddressesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/natAddresses" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/natAddresses" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsInstancesNatAddressesRequest>;
 
@@ -19290,7 +19313,7 @@ export const GetOrganizationsInstancesNatAddressesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsInstancesNatAddressesRequest>;
 
@@ -19325,7 +19348,11 @@ export const CreateOrganizationsInstancesNatAddressesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1NatAddress).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/natAddresses", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/natAddresses",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsInstancesNatAddressesRequest>;
 
@@ -19362,7 +19389,7 @@ export const ActivateOrganizationsInstancesNatAddressesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateOrganizationsInstancesNatAddressesRequest>;
 
@@ -19394,7 +19421,7 @@ export const DeleteOrganizationsInstancesNatAddressesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsInstancesNatAddressesRequest>;
 
@@ -19433,7 +19460,7 @@ export const CreateOrganizationsInstancesCanaryevaluationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/canaryevaluations",
+      path: "v1/{+parent}/canaryevaluations",
       hasBody: true,
     }),
     svc,
@@ -19467,7 +19494,7 @@ export const GetOrganizationsInstancesCanaryevaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsInstancesCanaryevaluationsRequest>;
 
@@ -19504,7 +19531,7 @@ export const CreateOrganizationsInstancesAttachmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/attachments", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/attachments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsInstancesAttachmentsRequest>;
 
@@ -19542,7 +19569,7 @@ export const ListOrganizationsInstancesAttachmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/attachments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/attachments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsInstancesAttachmentsRequest>;
 
@@ -19578,7 +19605,7 @@ export const GetOrganizationsInstancesAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsInstancesAttachmentsRequest>;
 
@@ -19610,7 +19637,7 @@ export const DeleteOrganizationsInstancesAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsInstancesAttachmentsRequest>;
 
@@ -19650,7 +19677,7 @@ export const CreateOrganizationsEnvgroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/envgroups", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/envgroups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvgroupsRequest>;
 
@@ -19687,7 +19714,7 @@ export const ListOrganizationsEnvgroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/envgroups" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/envgroups" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvgroupsRequest>;
 
@@ -19723,7 +19750,7 @@ export const GetOrganizationsEnvgroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvgroupsRequest>;
 
@@ -19763,7 +19790,7 @@ export const PatchOrganizationsEnvgroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsEnvgroupsRequest>;
 
@@ -19797,7 +19824,7 @@ export const GetDeployedIngressConfigOrganizationsEnvgroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDeployedIngressConfigOrganizationsEnvgroupsRequest>;
 
@@ -19829,7 +19856,7 @@ export const DeleteOrganizationsEnvgroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvgroupsRequest>;
 
@@ -19865,7 +19892,7 @@ export const CreateOrganizationsEnvgroupsAttachmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/attachments", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/attachments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsEnvgroupsAttachmentsRequest>;
 
@@ -19903,7 +19930,7 @@ export const ListOrganizationsEnvgroupsAttachmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/attachments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/attachments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEnvgroupsAttachmentsRequest>;
 
@@ -19939,7 +19966,7 @@ export const GetOrganizationsEnvgroupsAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEnvgroupsAttachmentsRequest>;
 
@@ -19971,7 +19998,7 @@ export const DeleteOrganizationsEnvgroupsAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEnvgroupsAttachmentsRequest>;
 
@@ -20008,7 +20035,7 @@ export const ListOrganizationsDeploymentsRequest =
       T.HttpQuery("sharedFlows"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDeploymentsRequest>;
 
@@ -20045,7 +20072,7 @@ export const GetIamPolicyOrganizationsSpacesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyOrganizationsSpacesRequest>;
 
@@ -20082,7 +20109,7 @@ export const CreateOrganizationsSpacesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1Space).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/spaces", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/spaces", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsSpacesRequest>;
 
@@ -20113,7 +20140,7 @@ export const GetOrganizationsSpacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSpacesRequest>;
 
@@ -20150,7 +20177,7 @@ export const ListOrganizationsSpacesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/spaces" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/spaces" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSpacesRequest>;
 
@@ -20193,7 +20220,7 @@ export const TestIamPermissionsOrganizationsSpacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -20227,7 +20254,7 @@ export const DeleteOrganizationsSpacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSpacesRequest>;
 
@@ -20263,7 +20290,7 @@ export const SetIamPolicyOrganizationsSpacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -20302,7 +20329,7 @@ export const PatchOrganizationsSpacesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Space).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSpacesRequest>;
 
@@ -20338,7 +20365,7 @@ export const MoveOrganizationsApiproductsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveOrganizationsApiproductsRequest>;
 
@@ -20370,7 +20397,7 @@ export const DeleteOrganizationsApiproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApiproductsRequest>;
 
@@ -20405,7 +20432,7 @@ export const UpdateOrganizationsApiproductsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1ApiProduct).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsApiproductsRequest>;
 
@@ -20440,7 +20467,7 @@ export const AttributesOrganizationsApiproductsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attributes).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}/attributes", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}/attributes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AttributesOrganizationsApiproductsRequest>;
 
@@ -20475,7 +20502,7 @@ export const CreateOrganizationsApiproductsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1ApiProduct).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/apiproducts", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/apiproducts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsApiproductsRequest>;
 
@@ -20507,7 +20534,7 @@ export const GetOrganizationsApiproductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApiproductsRequest>;
 
@@ -20560,7 +20587,7 @@ export const ListOrganizationsApiproductsRequest =
     count: Schema.optional(Schema.String).pipe(T.HttpQuery("count")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apiproducts" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apiproducts" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApiproductsRequest>;
 
@@ -20595,7 +20622,7 @@ export const UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest 
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1Attribute).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest>;
 
@@ -20628,7 +20655,7 @@ export const GetOrganizationsApiproductsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApiproductsAttributesRequest>;
 
@@ -20660,7 +20687,7 @@ export const DeleteOrganizationsApiproductsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApiproductsAttributesRequest>;
 
@@ -20692,7 +20719,7 @@ export const ListOrganizationsApiproductsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/attributes" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApiproductsAttributesRequest>;
 
@@ -20727,7 +20754,7 @@ export const CreateOrganizationsApiproductsRateplansRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudApigeeV1RatePlan).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/rateplans", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/rateplans", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsApiproductsRateplansRequest>;
 
@@ -20759,7 +20786,7 @@ export const GetOrganizationsApiproductsRateplansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApiproductsRateplansRequest>;
 
@@ -20806,7 +20833,7 @@ export const ListOrganizationsApiproductsRateplansRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     state: Schema.optional(Schema.String).pipe(T.HttpQuery("state")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/rateplans" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/rateplans" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApiproductsRateplansRequest>;
 
@@ -20841,7 +20868,7 @@ export const UpdateOrganizationsApiproductsRateplansRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudApigeeV1RatePlan).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationsApiproductsRateplansRequest>;
 
@@ -20873,7 +20900,7 @@ export const DeleteOrganizationsApiproductsRateplansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsApiproductsRateplansRequest>;
 
@@ -20905,7 +20932,7 @@ export const ListHybridIssuersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<ListHybridIssuersRequest>;
 
@@ -20944,7 +20971,7 @@ export const ProvisionOrganizationProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{project}:provisionOrganization",
+      path: "v1/{+project}:provisionOrganization",
       hasBody: true,
     }),
     svc,

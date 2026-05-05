@@ -242,7 +242,7 @@ export const CreateAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "conversions/v1/{parent}/conversionSources",
+      path: "conversions/v1/{+parent}/conversionSources",
       hasBody: true,
     }),
     svc,
@@ -281,7 +281,7 @@ export const PatchAccountsConversionSourcesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ConversionSource).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "conversions/v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "conversions/v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsConversionSourcesRequest>;
 
@@ -312,7 +312,7 @@ export const GetAccountsConversionSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "conversions/v1/{name}" }),
+    T.Http({ method: "GET", path: "conversions/v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsConversionSourcesRequest>;
 
@@ -356,7 +356,7 @@ export const ListAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "conversions/v1/{parent}/conversionSources",
+      path: "conversions/v1/{+parent}/conversionSources",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsConversionSourcesRequest>;
@@ -398,7 +398,7 @@ export const UndeleteAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "conversions/v1/{name}:undelete",
+      path: "conversions/v1/{+name}:undelete",
       hasBody: true,
     }),
     svc,
@@ -431,7 +431,7 @@ export const DeleteAccountsConversionSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "conversions/v1/{name}" }),
+    T.Http({ method: "DELETE", path: "conversions/v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsConversionSourcesRequest>;
 

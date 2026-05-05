@@ -267,7 +267,7 @@ export const GetKeyStringProjectsLocationsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}/keyString" }),
+    T.Http({ method: "GET", path: "v2/{+name}/keyString" }),
     svc,
   ) as unknown as Schema.Schema<GetKeyStringProjectsLocationsKeysRequest>;
 
@@ -304,7 +304,7 @@ export const CreateProjectsLocationsKeysRequest =
     keyId: Schema.optional(Schema.String).pipe(T.HttpQuery("keyId")),
     body: Schema.optional(V2Key).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{parent}/keys", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+parent}/keys", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsKeysRequest>;
 
@@ -335,7 +335,7 @@ export const GetProjectsLocationsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKeysRequest>;
 
@@ -369,7 +369,7 @@ export const UndeleteProjectsLocationsKeysRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(V2UndeleteKeyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{name}:undelete", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsLocationsKeysRequest>;
 
@@ -411,7 +411,7 @@ export const ListProjectsLocationsKeysRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/keys" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/keys" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKeysRequest>;
 
@@ -452,7 +452,7 @@ export const PatchProjectsLocationsKeysRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(V2Key).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsKeysRequest>;
 
@@ -486,7 +486,7 @@ export const DeleteProjectsLocationsKeysRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{name}" }),
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsKeysRequest>;
 
@@ -516,7 +516,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/{name}" }),
+  T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 

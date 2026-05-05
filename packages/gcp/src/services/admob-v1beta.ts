@@ -1054,7 +1054,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/{name}" }),
+  T.Http({ method: "GET", path: "v1beta/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -1126,7 +1126,7 @@ export const GenerateAccountsNetworkReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/networkReport:generate",
+      path: "v1beta/{+parent}/networkReport:generate",
       hasBody: true,
     }),
     svc,
@@ -1166,7 +1166,7 @@ export const ListAccountsAdSourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/adSources" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/adSources" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdSourcesRequest>;
 
@@ -1207,7 +1207,7 @@ export const ListAccountsAdSourcesAdaptersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/adapters" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/adapters" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdSourcesAdaptersRequest>;
 
@@ -1251,7 +1251,7 @@ export const ListAccountsMediationGroupsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/mediationGroups" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/mediationGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsMediationGroupsRequest>;
 
@@ -1291,7 +1291,7 @@ export const CreateAccountsMediationGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/mediationGroups",
+      path: "v1beta/{+parent}/mediationGroups",
       hasBody: true,
     }),
     svc,
@@ -1330,7 +1330,7 @@ export const PatchAccountsMediationGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MediationGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsMediationGroupsRequest>;
 
@@ -1366,7 +1366,7 @@ export const CreateAccountsMediationGroupsMediationAbExperimentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/mediationAbExperiments",
+      path: "v1beta/{+parent}/mediationAbExperiments",
       hasBody: true,
     }),
     svc,
@@ -1404,7 +1404,7 @@ export const StopAccountsMediationGroupsMediationAbExperimentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopMediationAbExperimentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:stop", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopAccountsMediationGroupsMediationAbExperimentsRequest>;
 
@@ -1442,7 +1442,7 @@ export const BatchCreateAccountsAdUnitMappingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/adUnitMappings:batchCreate",
+      path: "v1beta/{+parent}/adUnitMappings:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -1481,7 +1481,7 @@ export const GenerateAccountsCampaignReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/campaignReport:generate",
+      path: "v1beta/{+parent}/campaignReport:generate",
       hasBody: true,
     }),
     svc,
@@ -1521,7 +1521,7 @@ export const ListAccountsAdUnitsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/adUnits" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/adUnits" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdUnitsRequest>;
 
@@ -1559,7 +1559,7 @@ export const CreateAccountsAdUnitsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AdUnit).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{parent}/adUnits", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+parent}/adUnits", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsAdUnitsRequest>;
 
@@ -1594,7 +1594,7 @@ export const CreateAccountsAdUnitsAdUnitMappingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/adUnitMappings",
+      path: "v1beta/{+parent}/adUnitMappings",
       hasBody: true,
     }),
     svc,
@@ -1636,7 +1636,7 @@ export const ListAccountsAdUnitsAdUnitMappingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/adUnitMappings" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/adUnitMappings" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdUnitsAdUnitMappingsRequest>;
 
@@ -1677,7 +1677,7 @@ export const GenerateAccountsMediationReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/mediationReport:generate",
+      path: "v1beta/{+parent}/mediationReport:generate",
       hasBody: true,
     }),
     svc,
@@ -1717,7 +1717,7 @@ export const ListAccountsAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/apps" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAppsRequest>;
 
@@ -1755,7 +1755,7 @@ export const CreateAccountsAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(App).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{parent}/apps", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+parent}/apps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsAppsRequest>;
 

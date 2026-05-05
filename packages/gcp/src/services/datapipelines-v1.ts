@@ -515,7 +515,7 @@ export const CreateProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/pipelines", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/pipelines", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsPipelinesRequest>;
 
@@ -555,7 +555,7 @@ export const PatchProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPipelinesRequest>;
 
@@ -587,7 +587,7 @@ export const DeleteProjectsLocationsPipelinesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPipelinesRequest>;
 
@@ -627,7 +627,7 @@ export const ListProjectsLocationsPipelinesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/pipelines" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/pipelines" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPipelinesRequest>;
 
@@ -663,7 +663,7 @@ export const GetProjectsLocationsPipelinesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPipelinesRequest>;
 
@@ -700,7 +700,7 @@ export const StopProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsPipelinesRequest>;
 
@@ -737,7 +737,7 @@ export const RunProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:run", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsPipelinesRequest>;
 
@@ -775,7 +775,7 @@ export const ListProjectsLocationsPipelinesJobsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPipelinesJobsRequest>;
 

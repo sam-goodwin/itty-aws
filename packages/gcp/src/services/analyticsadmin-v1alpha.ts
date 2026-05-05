@@ -3600,7 +3600,7 @@ export const GetDataSharingSettingsAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataSharingSettingsAccountsRequest>;
 
@@ -3639,7 +3639,7 @@ export const RunAccessReportAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{entity}:runAccessReport",
+      path: "v1alpha/{+entity}:runAccessReport",
       hasBody: true,
     }),
     svc,
@@ -3672,7 +3672,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha/{name}" }),
+  T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -3710,7 +3710,7 @@ export const SearchChangeHistoryEventsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{account}:searchChangeHistoryEvents",
+      path: "v1alpha/{+account}:searchChangeHistoryEvents",
       hasBody: true,
     }),
     svc,
@@ -3784,7 +3784,7 @@ export interface DeleteAccountsRequest {
 export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+  T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteAccountsRequest>;
 
@@ -3820,7 +3820,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(GoogleAnalyticsAdminV1alphaAccount).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchAccountsRequest>;
 
@@ -3889,7 +3889,7 @@ export const DeleteAccountsAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsAccessBindingsRequest>;
 
@@ -3925,7 +3925,10 @@ export const BatchGetAccountsAccessBindingsRequest =
       T.HttpQuery("names"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/accessBindings:batchGet" }),
+    T.Http({
+      method: "GET",
+      path: "v1alpha/{+parent}/accessBindings:batchGet",
+    }),
     svc,
   ) as unknown as Schema.Schema<BatchGetAccountsAccessBindingsRequest>;
 
@@ -3964,7 +3967,7 @@ export const CreateAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings",
+      path: "v1alpha/{+parent}/accessBindings",
       hasBody: true,
     }),
     svc,
@@ -4005,7 +4008,7 @@ export const BatchUpdateAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings:batchUpdate",
+      path: "v1alpha/{+parent}/accessBindings:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -4046,7 +4049,7 @@ export const BatchDeleteAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings:batchDelete",
+      path: "v1alpha/{+parent}/accessBindings:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -4085,7 +4088,7 @@ export const ListAccountsAccessBindingsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/accessBindings" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/accessBindings" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAccessBindingsRequest>;
 
@@ -4126,7 +4129,7 @@ export const PatchAccountsAccessBindingsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsAccessBindingsRequest>;
 
@@ -4165,7 +4168,7 @@ export const BatchCreateAccountsAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings:batchCreate",
+      path: "v1alpha/{+parent}/accessBindings:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -4199,7 +4202,7 @@ export const GetAccountsAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsAccessBindingsRequest>;
 
@@ -4278,7 +4281,7 @@ export const UpdateDataRetentionSettingsPropertiesRequest =
       GoogleAnalyticsAdminV1alphaDataRetentionSettings,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDataRetentionSettingsPropertiesRequest>;
 
@@ -4363,7 +4366,7 @@ export const PatchPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
   },
 ).pipe(
-  T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchPropertiesRequest>;
 
@@ -4402,7 +4405,7 @@ export const UpdateGoogleSignalsSettingsPropertiesRequest =
       GoogleAnalyticsAdminV1alphaGoogleSignalsSettings,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateGoogleSignalsSettingsPropertiesRequest>;
 
@@ -4441,7 +4444,7 @@ export const RunAccessReportPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{entity}:runAccessReport",
+      path: "v1alpha/{+entity}:runAccessReport",
       hasBody: true,
     }),
     svc,
@@ -4474,7 +4477,7 @@ export interface GetPropertiesRequest {
 export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha/{name}" }),
+  T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPropertiesRequest>;
 
@@ -4505,7 +4508,7 @@ export const GetAttributionSettingsPropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAttributionSettingsPropertiesRequest>;
 
@@ -4583,7 +4586,7 @@ export const UpdateAttributionSettingsPropertiesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAttributionSettingsPropertiesRequest>;
 
@@ -4615,7 +4618,7 @@ export const GetDataRetentionSettingsPropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataRetentionSettingsPropertiesRequest>;
 
@@ -4647,7 +4650,7 @@ export const DeletePropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesRequest>;
 
@@ -4685,7 +4688,7 @@ export const AcknowledgeUserDataCollectionPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{property}:acknowledgeUserDataCollection",
+      path: "v1alpha/{+property}:acknowledgeUserDataCollection",
       hasBody: true,
     }),
     svc,
@@ -4757,7 +4760,7 @@ export const GetGoogleSignalsSettingsPropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleSignalsSettingsPropertiesRequest>;
 
@@ -4796,7 +4799,7 @@ export const SubmitUserDeletionPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{name}:submitUserDeletion",
+      path: "v1alpha/{+name}:submitUserDeletion",
       hasBody: true,
     }),
     svc,
@@ -4863,7 +4866,7 @@ export const GetReportingIdentitySettingsPropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReportingIdentitySettingsPropertiesRequest>;
 
@@ -4903,7 +4906,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/displayVideo360AdvertiserLinkProposals",
+      path: "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
@@ -4941,7 +4944,7 @@ export const DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
@@ -4979,7 +4982,7 @@ export const CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
       GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
@@ -5019,7 +5022,7 @@ export const CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/displayVideo360AdvertiserLinkProposals",
+      path: "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals",
       hasBody: true,
     }),
     svc,
@@ -5059,7 +5062,7 @@ export const ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
       GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:approve", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
@@ -5092,7 +5095,7 @@ export const GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
@@ -5125,7 +5128,7 @@ export const GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
 
@@ -5164,7 +5167,7 @@ export const ListPropertiesDataStreamsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/dataStreams" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/dataStreams" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDataStreamsRequest>;
 
@@ -5208,7 +5211,7 @@ export const PatchPropertiesDataStreamsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDataStreamsRequest>;
 
@@ -5240,7 +5243,7 @@ export const GetDataRedactionSettingsPropertiesDataStreamsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataRedactionSettingsPropertiesDataStreamsRequest>;
 
@@ -5272,7 +5275,7 @@ export const GetPropertiesDataStreamsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDataStreamsRequest>;
 
@@ -5311,7 +5314,7 @@ export const CreatePropertiesDataStreamsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/dataStreams",
+      path: "v1alpha/{+parent}/dataStreams",
       hasBody: true,
     }),
     svc,
@@ -5353,7 +5356,7 @@ export const UpdateDataRedactionSettingsPropertiesDataStreamsRequest =
       GoogleAnalyticsAdminV1alphaDataRedactionSettings,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDataRedactionSettingsPropertiesDataStreamsRequest>;
 
@@ -5386,7 +5389,7 @@ export const DeletePropertiesDataStreamsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDataStreamsRequest>;
 
@@ -5425,7 +5428,7 @@ export const UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest =
       GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
 
@@ -5458,7 +5461,7 @@ export const GetGlobalSiteTagPropertiesDataStreamsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetGlobalSiteTagPropertiesDataStreamsRequest>;
 
@@ -5490,7 +5493,7 @@ export const GetPropertiesDataStreamsEventEditRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDataStreamsEventEditRulesRequest>;
 
@@ -5529,7 +5532,7 @@ export const ReorderPropertiesDataStreamsEventEditRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/eventEditRules:reorder",
+      path: "v1alpha/{+parent}/eventEditRules:reorder",
       hasBody: true,
     }),
     svc,
@@ -5570,7 +5573,7 @@ export const CreatePropertiesDataStreamsEventEditRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/eventEditRules",
+      path: "v1alpha/{+parent}/eventEditRules",
       hasBody: true,
     }),
     svc,
@@ -5610,7 +5613,7 @@ export const ListPropertiesDataStreamsEventEditRulesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/eventEditRules" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/eventEditRules" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDataStreamsEventEditRulesRequest>;
 
@@ -5654,7 +5657,7 @@ export const PatchPropertiesDataStreamsEventEditRulesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDataStreamsEventEditRulesRequest>;
 
@@ -5686,7 +5689,7 @@ export const DeletePropertiesDataStreamsEventEditRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDataStreamsEventEditRulesRequest>;
 
@@ -5718,7 +5721,7 @@ export const GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
@@ -5758,7 +5761,7 @@ export const CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sKAdNetworkConversionValueSchema",
+      path: "v1alpha/{+parent}/sKAdNetworkConversionValueSchema",
       hasBody: true,
     }),
     svc,
@@ -5793,7 +5796,7 @@ export const DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
@@ -5834,7 +5837,7 @@ export const PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
       GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
@@ -5875,7 +5878,7 @@ export const ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/sKAdNetworkConversionValueSchema",
+      path: "v1alpha/{+parent}/sKAdNetworkConversionValueSchema",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
@@ -5913,7 +5916,7 @@ export const GetPropertiesDataStreamsEventCreateRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDataStreamsEventCreateRulesRequest>;
 
@@ -5951,7 +5954,7 @@ export const ListPropertiesDataStreamsEventCreateRulesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/eventCreateRules" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/eventCreateRules" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDataStreamsEventCreateRulesRequest>;
 
@@ -5995,7 +5998,7 @@ export const PatchPropertiesDataStreamsEventCreateRulesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDataStreamsEventCreateRulesRequest>;
 
@@ -6027,7 +6030,7 @@ export const DeletePropertiesDataStreamsEventCreateRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDataStreamsEventCreateRulesRequest>;
 
@@ -6066,7 +6069,7 @@ export const CreatePropertiesDataStreamsEventCreateRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/eventCreateRules",
+      path: "v1alpha/{+parent}/eventCreateRules",
       hasBody: true,
     }),
     svc,
@@ -6100,7 +6103,7 @@ export const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
@@ -6141,7 +6144,7 @@ export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/measurementProtocolSecrets",
+      path: "v1alpha/{+parent}/measurementProtocolSecrets",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -6179,7 +6182,7 @@ export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
@@ -6220,7 +6223,7 @@ export const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest =
       GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
@@ -6260,7 +6263,7 @@ export const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/measurementProtocolSecrets",
+      path: "v1alpha/{+parent}/measurementProtocolSecrets",
       hasBody: true,
     }),
     svc,
@@ -6301,7 +6304,7 @@ export const ListPropertiesAccessBindingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/accessBindings" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/accessBindings" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesAccessBindingsRequest>;
 
@@ -6342,7 +6345,7 @@ export const PatchPropertiesAccessBindingsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesAccessBindingsRequest>;
 
@@ -6381,7 +6384,7 @@ export const BatchCreatePropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings:batchCreate",
+      path: "v1alpha/{+parent}/accessBindings:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -6415,7 +6418,7 @@ export const GetPropertiesAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesAccessBindingsRequest>;
 
@@ -6447,7 +6450,7 @@ export const DeletePropertiesAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesAccessBindingsRequest>;
 
@@ -6483,7 +6486,10 @@ export const BatchGetPropertiesAccessBindingsRequest =
       T.HttpQuery("names"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/accessBindings:batchGet" }),
+    T.Http({
+      method: "GET",
+      path: "v1alpha/{+parent}/accessBindings:batchGet",
+    }),
     svc,
   ) as unknown as Schema.Schema<BatchGetPropertiesAccessBindingsRequest>;
 
@@ -6522,7 +6528,7 @@ export const CreatePropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings",
+      path: "v1alpha/{+parent}/accessBindings",
       hasBody: true,
     }),
     svc,
@@ -6563,7 +6569,7 @@ export const BatchUpdatePropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings:batchUpdate",
+      path: "v1alpha/{+parent}/accessBindings:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -6604,7 +6610,7 @@ export const BatchDeletePropertiesAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/accessBindings:batchDelete",
+      path: "v1alpha/{+parent}/accessBindings:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -6644,7 +6650,7 @@ export const CreatePropertiesGoogleAdsLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/googleAdsLinks",
+      path: "v1alpha/{+parent}/googleAdsLinks",
       hasBody: true,
     }),
     svc,
@@ -6684,7 +6690,7 @@ export const ListPropertiesGoogleAdsLinksRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/googleAdsLinks" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/googleAdsLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesGoogleAdsLinksRequest>;
 
@@ -6728,7 +6734,7 @@ export const PatchPropertiesGoogleAdsLinksRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesGoogleAdsLinksRequest>;
 
@@ -6760,7 +6766,7 @@ export const DeletePropertiesGoogleAdsLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesGoogleAdsLinksRequest>;
 
@@ -6798,7 +6804,7 @@ export const CreatePropertiesFirebaseLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/firebaseLinks",
+      path: "v1alpha/{+parent}/firebaseLinks",
       hasBody: true,
     }),
     svc,
@@ -6832,7 +6838,7 @@ export const DeletePropertiesFirebaseLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesFirebaseLinksRequest>;
 
@@ -6869,7 +6875,7 @@ export const ListPropertiesFirebaseLinksRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/firebaseLinks" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/firebaseLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesFirebaseLinksRequest>;
 
@@ -6905,7 +6911,7 @@ export const GetPropertiesCustomMetricsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesCustomMetricsRequest>;
 
@@ -6944,7 +6950,7 @@ export const CreatePropertiesCustomMetricsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/customMetrics",
+      path: "v1alpha/{+parent}/customMetrics",
       hasBody: true,
     }),
     svc,
@@ -6983,7 +6989,7 @@ export const ArchivePropertiesCustomMetricsRequest =
       GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:archive", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:archive", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ArchivePropertiesCustomMetricsRequest>;
 
@@ -7020,7 +7026,7 @@ export const ListPropertiesCustomMetricsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/customMetrics" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/customMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesCustomMetricsRequest>;
 
@@ -7064,7 +7070,7 @@ export const PatchPropertiesCustomMetricsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesCustomMetricsRequest>;
 
@@ -7108,7 +7114,7 @@ export const CreatePropertiesCalculatedMetricsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/calculatedMetrics",
+      path: "v1alpha/{+parent}/calculatedMetrics",
       hasBody: true,
     }),
     svc,
@@ -7148,7 +7154,7 @@ export const ListPropertiesCalculatedMetricsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/calculatedMetrics" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/calculatedMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesCalculatedMetricsRequest>;
 
@@ -7192,7 +7198,7 @@ export const PatchPropertiesCalculatedMetricsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesCalculatedMetricsRequest>;
 
@@ -7224,7 +7230,7 @@ export const DeletePropertiesCalculatedMetricsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesCalculatedMetricsRequest>;
 
@@ -7255,7 +7261,7 @@ export const GetPropertiesCalculatedMetricsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesCalculatedMetricsRequest>;
 
@@ -7294,7 +7300,7 @@ export const CreatePropertiesReportingDataAnnotationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/reportingDataAnnotations",
+      path: "v1alpha/{+parent}/reportingDataAnnotations",
       hasBody: true,
     }),
     svc,
@@ -7336,7 +7342,7 @@ export const PatchPropertiesReportingDataAnnotationsRequest =
       GoogleAnalyticsAdminV1alphaReportingDataAnnotation,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesReportingDataAnnotationsRequest>;
 
@@ -7368,7 +7374,7 @@ export const DeletePropertiesReportingDataAnnotationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesReportingDataAnnotationsRequest>;
 
@@ -7411,7 +7417,7 @@ export const ListPropertiesReportingDataAnnotationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/reportingDataAnnotations",
+      path: "v1alpha/{+parent}/reportingDataAnnotations",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesReportingDataAnnotationsRequest>;
@@ -7448,7 +7454,7 @@ export const GetPropertiesReportingDataAnnotationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesReportingDataAnnotationsRequest>;
 
@@ -7480,7 +7486,7 @@ export const GetPropertiesSearchAds360LinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesSearchAds360LinksRequest>;
 
@@ -7519,7 +7525,7 @@ export const CreatePropertiesSearchAds360LinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/searchAds360Links",
+      path: "v1alpha/{+parent}/searchAds360Links",
       hasBody: true,
     }),
     svc,
@@ -7559,7 +7565,7 @@ export const ListPropertiesSearchAds360LinksRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/searchAds360Links" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/searchAds360Links" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesSearchAds360LinksRequest>;
 
@@ -7595,7 +7601,7 @@ export const DeletePropertiesSearchAds360LinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesSearchAds360LinksRequest>;
 
@@ -7634,7 +7640,7 @@ export const PatchPropertiesSearchAds360LinksRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesSearchAds360LinksRequest>;
 
@@ -7673,7 +7679,7 @@ export const CreatePropertiesSubpropertyEventFiltersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/subpropertyEventFilters",
+      path: "v1alpha/{+parent}/subpropertyEventFilters",
       hasBody: true,
     }),
     svc,
@@ -7715,7 +7721,7 @@ export const PatchPropertiesSubpropertyEventFiltersRequest =
       GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesSubpropertyEventFiltersRequest>;
 
@@ -7747,7 +7753,7 @@ export const DeletePropertiesSubpropertyEventFiltersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesSubpropertyEventFiltersRequest>;
 
@@ -7785,7 +7791,10 @@ export const ListPropertiesSubpropertyEventFiltersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/subpropertyEventFilters" }),
+    T.Http({
+      method: "GET",
+      path: "v1alpha/{+parent}/subpropertyEventFilters",
+    }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesSubpropertyEventFiltersRequest>;
 
@@ -7821,7 +7830,7 @@ export const GetPropertiesSubpropertyEventFiltersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesSubpropertyEventFiltersRequest>;
 
@@ -7860,7 +7869,7 @@ export const CreatePropertiesChannelGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/channelGroups",
+      path: "v1alpha/{+parent}/channelGroups",
       hasBody: true,
     }),
     svc,
@@ -7900,7 +7909,7 @@ export const ListPropertiesChannelGroupsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/channelGroups" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/channelGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesChannelGroupsRequest>;
 
@@ -7944,7 +7953,7 @@ export const PatchPropertiesChannelGroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesChannelGroupsRequest>;
 
@@ -7976,7 +7985,7 @@ export const DeletePropertiesChannelGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesChannelGroupsRequest>;
 
@@ -8007,7 +8016,7 @@ export const GetPropertiesChannelGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesChannelGroupsRequest>;
 
@@ -8039,7 +8048,7 @@ export const GetPropertiesBigQueryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesBigQueryLinksRequest>;
 
@@ -8071,7 +8080,7 @@ export const DeletePropertiesBigQueryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesBigQueryLinksRequest>;
 
@@ -8110,7 +8119,7 @@ export const PatchPropertiesBigQueryLinksRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesBigQueryLinksRequest>;
 
@@ -8148,7 +8157,7 @@ export const ListPropertiesBigQueryLinksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/bigQueryLinks" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/bigQueryLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesBigQueryLinksRequest>;
 
@@ -8191,7 +8200,7 @@ export const CreatePropertiesBigQueryLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/bigQueryLinks",
+      path: "v1alpha/{+parent}/bigQueryLinks",
       hasBody: true,
     }),
     svc,
@@ -8225,7 +8234,7 @@ export const GetPropertiesAdSenseLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesAdSenseLinksRequest>;
 
@@ -8264,7 +8273,7 @@ export const CreatePropertiesAdSenseLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/adSenseLinks",
+      path: "v1alpha/{+parent}/adSenseLinks",
       hasBody: true,
     }),
     svc,
@@ -8304,7 +8313,7 @@ export const ListPropertiesAdSenseLinksRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/adSenseLinks" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/adSenseLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesAdSenseLinksRequest>;
 
@@ -8340,7 +8349,7 @@ export const DeletePropertiesAdSenseLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesAdSenseLinksRequest>;
 
@@ -8378,7 +8387,7 @@ export const CreatePropertiesAudiencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/audiences",
+      path: "v1alpha/{+parent}/audiences",
       hasBody: true,
     }),
     svc,
@@ -8417,7 +8426,7 @@ export const ArchivePropertiesAudiencesRequest =
       GoogleAnalyticsAdminV1alphaArchiveAudienceRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:archive", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:archive", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ArchivePropertiesAudiencesRequest>;
 
@@ -8456,7 +8465,7 @@ export const PatchPropertiesAudiencesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesAudiencesRequest>;
 
@@ -8494,7 +8503,7 @@ export const ListPropertiesAudiencesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/audiences" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/audiences" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesAudiencesRequest>;
 
@@ -8530,7 +8539,7 @@ export const GetPropertiesAudiencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesAudiencesRequest>;
 
@@ -8570,7 +8579,7 @@ export const PatchPropertiesCustomDimensionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesCustomDimensionsRequest>;
 
@@ -8608,7 +8617,7 @@ export const ListPropertiesCustomDimensionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/customDimensions" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/customDimensions" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesCustomDimensionsRequest>;
 
@@ -8651,7 +8660,7 @@ export const CreatePropertiesCustomDimensionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/customDimensions",
+      path: "v1alpha/{+parent}/customDimensions",
       hasBody: true,
     }),
     svc,
@@ -8690,7 +8699,7 @@ export const ArchivePropertiesCustomDimensionsRequest =
       GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:archive", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:archive", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ArchivePropertiesCustomDimensionsRequest>;
 
@@ -8721,7 +8730,7 @@ export const GetPropertiesCustomDimensionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesCustomDimensionsRequest>;
 
@@ -8753,7 +8762,7 @@ export const DeletePropertiesRollupPropertySourceLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesRollupPropertySourceLinksRequest>;
 
@@ -8793,7 +8802,7 @@ export const ListPropertiesRollupPropertySourceLinksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/rollupPropertySourceLinks",
+      path: "v1alpha/{+parent}/rollupPropertySourceLinks",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesRollupPropertySourceLinksRequest>;
@@ -8830,7 +8839,7 @@ export const GetPropertiesRollupPropertySourceLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesRollupPropertySourceLinksRequest>;
 
@@ -8869,7 +8878,7 @@ export const CreatePropertiesRollupPropertySourceLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/rollupPropertySourceLinks",
+      path: "v1alpha/{+parent}/rollupPropertySourceLinks",
       hasBody: true,
     }),
     svc,
@@ -8910,7 +8919,7 @@ export const CreatePropertiesConversionEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/conversionEvents",
+      path: "v1alpha/{+parent}/conversionEvents",
       hasBody: true,
     }),
     svc,
@@ -8952,7 +8961,7 @@ export const PatchPropertiesConversionEventsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesConversionEventsRequest>;
 
@@ -8984,7 +8993,7 @@ export const DeletePropertiesConversionEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesConversionEventsRequest>;
 
@@ -9021,7 +9030,7 @@ export const ListPropertiesConversionEventsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/conversionEvents" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/conversionEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesConversionEventsRequest>;
 
@@ -9057,7 +9066,7 @@ export const GetPropertiesConversionEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesConversionEventsRequest>;
 
@@ -9089,7 +9098,7 @@ export const GetPropertiesKeyEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesKeyEventsRequest>;
 
@@ -9127,7 +9136,7 @@ export const ListPropertiesKeyEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/keyEvents" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/keyEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesKeyEventsRequest>;
 
@@ -9171,7 +9180,7 @@ export const PatchPropertiesKeyEventsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesKeyEventsRequest>;
 
@@ -9203,7 +9212,7 @@ export const DeletePropertiesKeyEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesKeyEventsRequest>;
 
@@ -9241,7 +9250,7 @@ export const CreatePropertiesKeyEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/keyEvents",
+      path: "v1alpha/{+parent}/keyEvents",
       hasBody: true,
     }),
     svc,
@@ -9282,7 +9291,7 @@ export const CreatePropertiesDisplayVideo360AdvertiserLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/displayVideo360AdvertiserLinks",
+      path: "v1alpha/{+parent}/displayVideo360AdvertiserLinks",
       hasBody: true,
     }),
     svc,
@@ -9324,7 +9333,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/displayVideo360AdvertiserLinks",
+      path: "v1alpha/{+parent}/displayVideo360AdvertiserLinks",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDisplayVideo360AdvertiserLinksRequest>;
@@ -9361,7 +9370,7 @@ export const DeletePropertiesDisplayVideo360AdvertiserLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDisplayVideo360AdvertiserLinksRequest>;
 
@@ -9401,7 +9410,7 @@ export const PatchPropertiesDisplayVideo360AdvertiserLinksRequest =
       GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDisplayVideo360AdvertiserLinksRequest>;
 
@@ -9433,7 +9442,7 @@ export const GetPropertiesDisplayVideo360AdvertiserLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDisplayVideo360AdvertiserLinksRequest>;
 
@@ -9472,7 +9481,7 @@ export const CreatePropertiesExpandedDataSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/expandedDataSets",
+      path: "v1alpha/{+parent}/expandedDataSets",
       hasBody: true,
     }),
     svc,
@@ -9512,7 +9521,7 @@ export const ListPropertiesExpandedDataSetsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/expandedDataSets" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/expandedDataSets" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesExpandedDataSetsRequest>;
 
@@ -9556,7 +9565,7 @@ export const PatchPropertiesExpandedDataSetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesExpandedDataSetsRequest>;
 
@@ -9588,7 +9597,7 @@ export const DeletePropertiesExpandedDataSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesExpandedDataSetsRequest>;
 
@@ -9619,7 +9628,7 @@ export const GetPropertiesExpandedDataSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesExpandedDataSetsRequest>;
 
@@ -9651,7 +9660,7 @@ export const GetPropertiesSubpropertySyncConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesSubpropertySyncConfigsRequest>;
 
@@ -9689,7 +9698,7 @@ export const ListPropertiesSubpropertySyncConfigsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/subpropertySyncConfigs" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/subpropertySyncConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesSubpropertySyncConfigsRequest>;
 
@@ -9733,7 +9742,7 @@ export const PatchPropertiesSubpropertySyncConfigsRequest =
       GoogleAnalyticsAdminV1alphaSubpropertySyncConfig,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesSubpropertySyncConfigsRequest>;
 

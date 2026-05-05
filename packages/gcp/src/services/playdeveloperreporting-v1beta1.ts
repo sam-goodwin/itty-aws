@@ -1142,7 +1142,7 @@ export const QueryVitalsAnrrateRequest =
       GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsAnrrateRequest>;
 
@@ -1174,7 +1174,7 @@ export const GetVitalsAnrrateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsAnrrateRequest>;
 
@@ -1211,7 +1211,7 @@ export const QueryVitalsLmkrateRequest =
       GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsLmkrateRequest>;
 
@@ -1243,7 +1243,7 @@ export const GetVitalsLmkrateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsLmkrateRequest>;
 
@@ -1280,7 +1280,7 @@ export const QueryVitalsSlowstartrateRequest =
       GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsSlowstartrateRequest>;
 
@@ -1312,7 +1312,7 @@ export const GetVitalsSlowstartrateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsSlowstartrateRequest>;
 
@@ -1349,7 +1349,7 @@ export const QueryVitalsSlowrenderingrateRequest =
       GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsSlowrenderingrateRequest>;
 
@@ -1381,7 +1381,7 @@ export const GetVitalsSlowrenderingrateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsSlowrenderingrateRequest>;
 
@@ -1413,7 +1413,7 @@ export const GetVitalsExcessivewakeuprateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsExcessivewakeuprateRequest>;
 
@@ -1450,7 +1450,7 @@ export const QueryVitalsExcessivewakeuprateRequest =
       GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsExcessivewakeuprateRequest>;
 
@@ -1482,7 +1482,7 @@ export const GetVitalsCrashrateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsCrashrateRequest>;
 
@@ -1519,7 +1519,7 @@ export const QueryVitalsCrashrateRequest =
       GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsCrashrateRequest>;
 
@@ -1551,7 +1551,7 @@ export const GetVitalsStuckbackgroundwakelockrateRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsStuckbackgroundwakelockrateRequest>;
 
@@ -1588,7 +1588,7 @@ export const QueryVitalsStuckbackgroundwakelockrateRequest =
       GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsStuckbackgroundwakelockrateRequest>;
 
@@ -1737,7 +1737,7 @@ export const SearchVitalsErrorsIssuesRequest =
       T.HttpQuery("interval.startTime.minutes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/errorIssues:search" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/errorIssues:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchVitalsErrorsIssuesRequest>;
 
@@ -1882,7 +1882,7 @@ export const SearchVitalsErrorsReportsRequest =
       T.HttpQuery("interval.endTime.utcOffset"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/errorReports:search" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/errorReports:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchVitalsErrorsReportsRequest>;
 
@@ -1923,7 +1923,7 @@ export const QueryVitalsErrorsCountsRequest =
       GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:query", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryVitalsErrorsCountsRequest>;
 
@@ -1955,7 +1955,7 @@ export const GetVitalsErrorsCountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVitalsErrorsCountsRequest>;
 
@@ -1987,7 +1987,10 @@ export const FetchReleaseFilterOptionsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}:fetchReleaseFilterOptions" }),
+    T.Http({
+      method: "GET",
+      path: "v1beta1/{+name}:fetchReleaseFilterOptions",
+    }),
     svc,
   ) as unknown as Schema.Schema<FetchReleaseFilterOptionsAppsRequest>;
 
@@ -2065,7 +2068,7 @@ export const ListAnomaliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/{parent}/anomalies" }),
+  T.Http({ method: "GET", path: "v1beta1/{+parent}/anomalies" }),
   svc,
 ) as unknown as Schema.Schema<ListAnomaliesRequest>;
 

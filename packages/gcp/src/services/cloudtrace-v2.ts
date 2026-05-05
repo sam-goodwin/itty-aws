@@ -325,7 +325,7 @@ export const BatchWriteProjectsTracesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{name}/traces:batchWrite",
+      path: "v2/{+name}/traces:batchWrite",
       hasBody: true,
     }),
     svc,
@@ -361,7 +361,7 @@ export const CreateSpanProjectsTracesSpansRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Span).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpanProjectsTracesSpansRequest>;
 

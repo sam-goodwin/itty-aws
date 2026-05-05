@@ -75248,7 +75248,7 @@ export const GetReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetReservationSlotsRequest>;
@@ -75305,7 +75305,7 @@ export const ListReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots",
     }),
     svc,
   ) as unknown as Schema.Schema<ListReservationSlotsRequest>;
@@ -75359,7 +75359,7 @@ export const GetVersionReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}/getVersion",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getVersion",
       hasBody: true,
     }),
     svc,
@@ -75409,7 +75409,7 @@ export const UpdateReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}",
       hasBody: true,
     }),
     svc,
@@ -75460,7 +75460,7 @@ export const GetReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetReservationSubBlocksRequest>;
@@ -75517,7 +75517,7 @@ export const ListReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks",
     }),
     svc,
   ) as unknown as Schema.Schema<ListReservationSubBlocksRequest>;
@@ -75570,7 +75570,7 @@ export const GetIamPolicyReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/getIamPolicy",
+      path: "projects/{project}/zones/{zone}/{+parentResource}/reservationSubBlocks/{resource}/getIamPolicy",
     }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyReservationSubBlocksRequest>;
@@ -75616,7 +75616,7 @@ export const SetIamPolicyReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/setIamPolicy",
+      path: "projects/{project}/zones/{zone}/{+parentResource}/reservationSubBlocks/{resource}/setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -75663,7 +75663,7 @@ export const TestIamPermissionsReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/testIamPermissions",
+      path: "projects/{project}/zones/{zone}/{+parentResource}/reservationSubBlocks/{resource}/testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -75711,7 +75711,7 @@ export const PerformMaintenanceReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance",
       hasBody: true,
     }),
     svc,
@@ -75763,7 +75763,7 @@ export const ReportFaultyReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty",
       hasBody: true,
     }),
     svc,
@@ -75815,7 +75815,7 @@ export const GetVersionReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/getVersion",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/getVersion",
       hasBody: true,
     }),
     svc,

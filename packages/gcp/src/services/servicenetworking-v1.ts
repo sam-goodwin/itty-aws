@@ -2340,7 +2340,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -2374,7 +2374,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -2404,7 +2404,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -2437,7 +2437,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -2472,7 +2472,7 @@ export const DisableVpcServiceControlsServicesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/{parent}:disableVpcServiceControls",
+      path: "v1/{+parent}:disableVpcServiceControls",
       hasBody: true,
     }),
     svc,
@@ -2510,7 +2510,7 @@ export const EnableVpcServiceControlsServicesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/{parent}:enableVpcServiceControls",
+      path: "v1/{+parent}:enableVpcServiceControls",
       hasBody: true,
     }),
     svc,
@@ -2548,7 +2548,7 @@ export const AddSubnetworkServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}:addSubnetwork",
+      path: "v1/{+parent}:addSubnetwork",
       hasBody: true,
     }),
     svc,
@@ -2584,7 +2584,7 @@ export const SearchRangeServicesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SearchRangeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}:searchRange", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}:searchRange", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SearchRangeServicesRequest>;
 
@@ -2618,7 +2618,7 @@ export const ValidateServicesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ValidateConsumerConfigRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}:validate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}:validate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ValidateServicesRequest>;
 
@@ -2652,7 +2652,7 @@ export const ListServicesConnectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     network: Schema.optional(Schema.String).pipe(T.HttpQuery("network")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/connections" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesConnectionsRequest>;
 
@@ -2686,7 +2686,7 @@ export const CreateServicesConnectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Connection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/connections", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/connections", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateServicesConnectionsRequest>;
 
@@ -2720,7 +2720,7 @@ export const DeleteConnectionServicesConnectionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeleteConnectionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeleteConnectionServicesConnectionsRequest>;
 
@@ -2760,7 +2760,7 @@ export const PatchServicesConnectionsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     body: Schema.optional(Connection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchServicesConnectionsRequest>;
 
@@ -2791,7 +2791,7 @@ export const GetVpcServiceControlsServicesProjectsGlobalNetworksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/vpcServiceControls" }),
+    T.Http({ method: "GET", path: "v1/{+name}/vpcServiceControls" }),
     svc,
   ) as unknown as Schema.Schema<GetVpcServiceControlsServicesProjectsGlobalNetworksRequest>;
 
@@ -2829,7 +2829,7 @@ export const UpdateConsumerConfigServicesProjectsGlobalNetworksRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/{parent}:updateConsumerConfig",
+      path: "v1/{+parent}:updateConsumerConfig",
       hasBody: true,
     }),
     svc,
@@ -2869,7 +2869,7 @@ export const GetServicesProjectsGlobalNetworksRequest =
       T.HttpQuery("includeUsedIpRanges"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServicesProjectsGlobalNetworksRequest>;
 
@@ -2900,7 +2900,7 @@ export const ListServicesProjectsGlobalNetworksDnsZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/dnsZones:list" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/dnsZones:list" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesProjectsGlobalNetworksDnsZonesRequest>;
 
@@ -2932,7 +2932,7 @@ export const GetServicesProjectsGlobalNetworksDnsZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServicesProjectsGlobalNetworksDnsZonesRequest>;
 
@@ -2969,7 +2969,7 @@ export const CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/peeredDnsDomains",
+      path: "v1/{+parent}/peeredDnsDomains",
       hasBody: true,
     }),
     svc,
@@ -3004,7 +3004,7 @@ export const DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
@@ -3037,7 +3037,7 @@ export const ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/peeredDnsDomains" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/peeredDnsDomains" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
@@ -3073,7 +3073,7 @@ export const AddServicesRolesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AddRolesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/roles:add", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/roles:add", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddServicesRolesRequest>;
 
@@ -3106,7 +3106,11 @@ export const AddServicesDnsZonesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AddDnsZoneRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/dnsZones:add", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/dnsZones:add",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<AddServicesDnsZonesRequest>;
 
@@ -3142,7 +3146,7 @@ export const RemoveServicesDnsZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/dnsZones:remove",
+      path: "v1/{+parent}/dnsZones:remove",
       hasBody: true,
     }),
     svc,
@@ -3180,7 +3184,7 @@ export const AddServicesDnsRecordSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/dnsRecordSets:add",
+      path: "v1/{+parent}/dnsRecordSets:add",
       hasBody: true,
     }),
     svc,
@@ -3218,7 +3222,7 @@ export const RemoveServicesDnsRecordSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/dnsRecordSets:remove",
+      path: "v1/{+parent}/dnsRecordSets:remove",
       hasBody: true,
     }),
     svc,
@@ -3256,7 +3260,7 @@ export const UpdateServicesDnsRecordSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/dnsRecordSets:update",
+      path: "v1/{+parent}/dnsRecordSets:update",
       hasBody: true,
     }),
     svc,
@@ -3303,7 +3307,7 @@ export const GetServicesDnsRecordSetsRequest =
     domain: Schema.optional(Schema.String).pipe(T.HttpQuery("domain")),
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/dnsRecordSets:get" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/dnsRecordSets:get" }),
     svc,
   ) as unknown as Schema.Schema<GetServicesDnsRecordSetsRequest>;
 
@@ -3342,7 +3346,7 @@ export const ListServicesDnsRecordSetsRequest =
     ),
     zone: Schema.optional(Schema.String).pipe(T.HttpQuery("zone")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/dnsRecordSets:list" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/dnsRecordSets:list" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesDnsRecordSetsRequest>;
 

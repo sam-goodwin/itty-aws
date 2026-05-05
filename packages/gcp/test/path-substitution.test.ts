@@ -1,60 +1,44 @@
+import { buildRequestParts, getHttpTrait } from "@distilled.cloud/core/traits";
 import { describe, expect, it } from "vitest";
 import {
-  buildRequestParts,
-  getHttpTrait,
-} from "@distilled.cloud/core/traits";
-import {
-  GetProjectsRequest,
   DeleteProjectsRequest,
+  GetProjectsRequest,
 } from "../src/services/cloudresourcemanager-v3.ts";
 
-/**
- * Regression tests for the `flatPath` vs `path` mismatch in the GCP
- * generator. Discovery Documents publish two URL forms per method —
- * `path` (with RFC 6570 reserved-expansion variables, e.g. `v3/{+name}`)
- * and `flatPath` (used purely for documentation, e.g.
- * `v3/projects/{projectsId}`). The generator must emit URL templates
- * whose variable names match the `T.HttpPath(<name>)` annotations on the
- * request schema, otherwise `buildRequestParts` cannot substitute the
- * placeholder and the request URL is left malformed.
- *
- * These tests assert path resolution at the trait level — no live HTTP.
- */
+// Pins `T.HttpPath` substitution on real generated GCP services. No
+// live HTTP — assertions are at the trait level.
 describe("GCP HTTP path template substitution", () => {
-  it("substitutes {name} for cloudresourcemanager.getProjects", () => {
+  it("getProjects: `/` inside `name` is preserved on the wire", () => {
     const ast = (GetProjectsRequest as unknown as { ast: any }).ast;
     const trait = getHttpTrait(ast);
     expect(trait).toBeDefined();
 
     const parts = buildRequestParts(ast, trait!, {
-      name: "projects/microagi-research",
+      name: "projects/my-project",
     });
 
-    // The resolved path must NOT still contain a `{...}` placeholder.
-    expect(parts.path).not.toMatch(/\{[^}]+\}/);
-
-    // GCP REST accepts `%2F` as equivalent to `/` in resource-name
-    // path segments — both forms are acceptable as long as the
-    // template variable was substituted.
-    expect([
-      "v3/projects/microagi-research",
-      "v3/projects%2Fmicroagi-research",
-    ]).toContain(parts.path);
+    expect(parts.path).toBe("v3/projects/my-project");
   });
 
-  it("substitutes {name} for cloudresourcemanager.deleteProjects", () => {
+  it("deleteProjects: `/` inside `name` is preserved on the wire", () => {
     const ast = (DeleteProjectsRequest as unknown as { ast: any }).ast;
     const trait = getHttpTrait(ast);
     expect(trait).toBeDefined();
 
     const parts = buildRequestParts(ast, trait!, {
-      name: "projects/microagi-research",
+      name: "projects/my-project",
     });
 
-    expect(parts.path).not.toMatch(/\{[^}]+\}/);
-    expect([
-      "v3/projects/microagi-research",
-      "v3/projects%2Fmicroagi-research",
-    ]).toContain(parts.path);
+    expect(parts.path).toBe("v3/projects/my-project");
+  });
+
+  it("non-reserved characters in `name` are still percent-encoded", () => {
+    const ast = (GetProjectsRequest as unknown as { ast: any }).ast;
+    const trait = getHttpTrait(ast);
+    const parts = buildRequestParts(ast, trait!, {
+      name: "projects/with space",
+    });
+
+    expect(parts.path).toBe("v3/projects/with%20space");
   });
 });

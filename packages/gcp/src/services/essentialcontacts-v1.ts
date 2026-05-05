@@ -147,7 +147,7 @@ export const CreateProjectsContactsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/contacts", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/contacts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsContactsRequest>;
 
@@ -187,7 +187,7 @@ export const PatchProjectsContactsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsContactsRequest>;
 
@@ -225,7 +225,7 @@ export const ListProjectsContactsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/contacts" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/contacts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsContactsRequest>;
 
@@ -261,7 +261,7 @@ export const GetProjectsContactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsContactsRequest>;
 
@@ -292,7 +292,7 @@ export const DeleteProjectsContactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsContactsRequest>;
 
@@ -344,7 +344,7 @@ export const ComputeProjectsContactsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/contacts:compute" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/contacts:compute" }),
     svc,
   ) as unknown as Schema.Schema<ComputeProjectsContactsRequest>;
 
@@ -387,7 +387,7 @@ export const SendTestMessageProjectsContactsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}/contacts:sendTestMessage",
+      path: "v1/{+resource}/contacts:sendTestMessage",
       hasBody: true,
     }),
     svc,
@@ -425,7 +425,7 @@ export const CreateFoldersContactsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/contacts", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/contacts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateFoldersContactsRequest>;
 
@@ -465,7 +465,7 @@ export const PatchFoldersContactsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersContactsRequest>;
 
@@ -503,7 +503,7 @@ export const ListFoldersContactsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/contacts" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/contacts" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersContactsRequest>;
 
@@ -539,7 +539,7 @@ export const GetFoldersContactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersContactsRequest>;
 
@@ -570,7 +570,7 @@ export const DeleteFoldersContactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersContactsRequest>;
 
@@ -622,7 +622,7 @@ export const ComputeFoldersContactsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/contacts:compute" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/contacts:compute" }),
     svc,
   ) as unknown as Schema.Schema<ComputeFoldersContactsRequest>;
 
@@ -665,7 +665,7 @@ export const SendTestMessageFoldersContactsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}/contacts:sendTestMessage",
+      path: "v1/{+resource}/contacts:sendTestMessage",
       hasBody: true,
     }),
     svc,
@@ -703,7 +703,7 @@ export const CreateOrganizationsContactsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/contacts", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/contacts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsContactsRequest>;
 
@@ -743,7 +743,7 @@ export const PatchOrganizationsContactsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsContactsRequest>;
 
@@ -781,7 +781,7 @@ export const ListOrganizationsContactsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/contacts" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/contacts" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsContactsRequest>;
 
@@ -817,7 +817,7 @@ export const GetOrganizationsContactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsContactsRequest>;
 
@@ -849,7 +849,7 @@ export const DeleteOrganizationsContactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsContactsRequest>;
 
@@ -901,7 +901,7 @@ export const ComputeOrganizationsContactsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/contacts:compute" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/contacts:compute" }),
     svc,
   ) as unknown as Schema.Schema<ComputeOrganizationsContactsRequest>;
 
@@ -944,7 +944,7 @@ export const SendTestMessageOrganizationsContactsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}/contacts:sendTestMessage",
+      path: "v1/{+resource}/contacts:sendTestMessage",
       hasBody: true,
     }),
     svc,

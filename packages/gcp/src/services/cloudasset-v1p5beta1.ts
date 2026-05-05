@@ -906,7 +906,7 @@ export const ListAssetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1p5beta1/{parent}/assets" }),
+  T.Http({ method: "GET", path: "v1p5beta1/{+parent}/assets" }),
   svc,
 ) as unknown as Schema.Schema<ListAssetsRequest>;
 

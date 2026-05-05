@@ -782,7 +782,7 @@ export const ListProjectsGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/groups" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/groups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGroupsRequest>;
 
@@ -823,7 +823,7 @@ export const BatchLeaveProjectsGroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{group}:batchLeave", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+group}:batchLeave", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchLeaveProjectsGroupsRequest>;
 
@@ -854,7 +854,7 @@ export const DeleteProjectsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsGroupsRequest>;
 
@@ -885,7 +885,7 @@ export const GetProjectsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsGroupsRequest>;
 
@@ -922,7 +922,7 @@ export const CreateProjectsGroupsRequest =
     groupId: Schema.optional(Schema.String).pipe(T.HttpQuery("groupId")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/groups", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/groups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsGroupsRequest>;
 
@@ -959,7 +959,7 @@ export const PatchProjectsGroupsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsGroupsRequest>;
 
@@ -995,7 +995,7 @@ export const BatchJoinProjectsGroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{group}:batchJoin", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+group}:batchJoin", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchJoinProjectsGroupsRequest>;
 
@@ -1035,7 +1035,7 @@ export const ListProjectsTestersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/testers" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/testers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTestersRequest>;
 
@@ -1078,7 +1078,7 @@ export const BatchRemoveProjectsTestersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{project}/testers:batchRemove",
+      path: "v1/{+project}/testers:batchRemove",
       hasBody: true,
     }),
     svc,
@@ -1118,7 +1118,7 @@ export const PatchProjectsTestersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Tester).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsTestersRequest>;
 
@@ -1156,7 +1156,7 @@ export const BatchAddProjectsTestersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{project}/testers:batchAdd",
+      path: "v1/{+project}/testers:batchAdd",
       hasBody: true,
     }),
     svc,
@@ -1190,7 +1190,7 @@ export const GetAabInfoProjectsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAabInfoProjectsAppsRequest>;
 
@@ -1221,7 +1221,7 @@ export const GetProjectsAppsReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsReleasesRequest>;
 
@@ -1259,7 +1259,7 @@ export const BatchDeleteProjectsAppsReleasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/releases:batchDelete",
+      path: "v1/{+parent}/releases:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -1304,7 +1304,7 @@ export const ListProjectsAppsReleasesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/releases" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/releases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsReleasesRequest>;
 
@@ -1346,7 +1346,7 @@ export const PatchProjectsAppsReleasesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Release).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsReleasesRequest>;
 
@@ -1383,7 +1383,7 @@ export const DistributeProjectsAppsReleasesRequest =
       GoogleFirebaseAppdistroV1DistributeReleaseRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:distribute", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:distribute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DistributeProjectsAppsReleasesRequest>;
 
@@ -1420,7 +1420,7 @@ export const WaitProjectsAppsReleasesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsAppsReleasesOperationsRequest>;
 
@@ -1457,7 +1457,7 @@ export const CancelProjectsAppsReleasesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsAppsReleasesOperationsRequest>;
 
@@ -1488,7 +1488,7 @@ export const DeleteProjectsAppsReleasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAppsReleasesOperationsRequest>;
 
@@ -1519,7 +1519,7 @@ export const GetProjectsAppsReleasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsReleasesOperationsRequest>;
 
@@ -1565,7 +1565,7 @@ export const ListProjectsAppsReleasesOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsReleasesOperationsRequest>;
 
@@ -1607,7 +1607,7 @@ export const ListProjectsAppsReleasesFeedbackReportsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/feedbackReports" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/feedbackReports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsReleasesFeedbackReportsRequest>;
 
@@ -1643,7 +1643,7 @@ export const GetProjectsAppsReleasesFeedbackReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsReleasesFeedbackReportsRequest>;
 
@@ -1675,7 +1675,7 @@ export const DeleteProjectsAppsReleasesFeedbackReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAppsReleasesFeedbackReportsRequest>;
 
@@ -1711,7 +1711,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpBody(),
   ),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{app}/releases:upload", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{+app}/releases:upload", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UploadMediaRequest>;
 

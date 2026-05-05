@@ -1474,7 +1474,7 @@ export const ListBillingAccountsServicesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/services" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsServicesRequest>;
 
@@ -1510,7 +1510,7 @@ export const GetBillingAccountsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsServicesRequest>;
 
@@ -1548,7 +1548,7 @@ export const ListBillingAccountsSkuGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/skuGroups" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/skuGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkuGroupsRequest>;
 
@@ -1584,7 +1584,7 @@ export const GetBillingAccountsSkuGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkuGroupsRequest>;
 
@@ -1622,7 +1622,7 @@ export const ListBillingAccountsSkuGroupsSkusRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/skus" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkuGroupsSkusRequest>;
 
@@ -1658,7 +1658,7 @@ export const GetBillingAccountsSkuGroupsSkusRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkuGroupsSkusRequest>;
 
@@ -1699,7 +1699,7 @@ export const ListBillingAccountsSkusRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/skus" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkusRequest>;
 
@@ -1735,7 +1735,7 @@ export const GetBillingAccountsSkusRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkusRequest>;
 
@@ -1772,7 +1772,7 @@ export const GetBillingAccountsSkusPriceRequest =
       T.HttpQuery("currencyCode"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkusPriceRequest>;
 
@@ -1815,7 +1815,7 @@ export const ListBillingAccountsSkusPricesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/prices" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/prices" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkusPricesRequest>;
 
@@ -1855,7 +1855,7 @@ export const GetSkusPriceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("currencyCode"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/{name}" }),
+  T.Http({ method: "GET", path: "v1beta/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSkusPriceRequest>;
 
@@ -1896,7 +1896,7 @@ export const ListSkusPricesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("currencyCode"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/{parent}/prices" }),
+  T.Http({ method: "GET", path: "v1beta/{+parent}/prices" }),
   svc,
 ) as unknown as Schema.Schema<ListSkusPricesRequest>;
 
@@ -1969,7 +1969,7 @@ export interface GetSkuGroupsRequest {
 export const GetSkuGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/{name}" }),
+  T.Http({ method: "GET", path: "v1beta/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSkuGroupsRequest>;
 
@@ -2006,7 +2006,7 @@ export const ListSkuGroupsSkusRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/skus" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListSkuGroupsSkusRequest>;
 
@@ -2042,7 +2042,7 @@ export const GetSkuGroupsSkusRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSkuGroupsSkusRequest>;
 

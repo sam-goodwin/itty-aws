@@ -2884,7 +2884,7 @@ export const GetPresentationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     presentationId: Schema.String.pipe(T.HttpPath("presentationId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/presentations/{presentationId}" }),
+    T.Http({ method: "GET", path: "v1/presentations/{+presentationId}" }),
     svc,
   ) as unknown as Schema.Schema<GetPresentationsRequest>;
 

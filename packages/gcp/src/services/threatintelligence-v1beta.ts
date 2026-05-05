@@ -1012,7 +1012,7 @@ export const GenerateOrgProfileProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{name}:generateOrgProfile",
+      path: "v1beta/{+name}:generateOrgProfile",
       hasBody: true,
     }),
     svc,
@@ -1057,7 +1057,7 @@ export const ListProjectsAlertsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/alerts" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/alerts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAlertsRequest>;
 
@@ -1095,7 +1095,7 @@ export const ReadProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsReadRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:read", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:read", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReadProjectsAlertsRequest>;
 
@@ -1128,7 +1128,7 @@ export const EscalateProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsEscalatedRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:escalate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:escalate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EscalateProjectsAlertsRequest>;
 
@@ -1163,7 +1163,7 @@ export const NotActionableProjectsAlertsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{name}:notActionable",
+      path: "v1beta/{+name}:notActionable",
       hasBody: true,
     }),
     svc,
@@ -1199,7 +1199,7 @@ export const DuplicateProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsDuplicateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:duplicate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:duplicate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DuplicateProjectsAlertsRequest>;
 
@@ -1230,7 +1230,7 @@ export const GetProjectsAlertsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAlertsRequest>;
 
@@ -1263,7 +1263,7 @@ export const EnumerateFacetsProjectsAlertsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/alerts:enumerateFacets" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/alerts:enumerateFacets" }),
     svc,
   ) as unknown as Schema.Schema<EnumerateFacetsProjectsAlertsRequest>;
 
@@ -1298,7 +1298,7 @@ export const TriageProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsTriagedRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:triage", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:triage", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TriageProjectsAlertsRequest>;
 
@@ -1335,7 +1335,7 @@ export const TrackExternallyProjectsAlertsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{name}:trackExternally",
+      path: "v1beta/{+name}:trackExternally",
       hasBody: true,
     }),
     svc,
@@ -1373,7 +1373,7 @@ export const FalsePositiveProjectsAlertsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{name}:falsePositive",
+      path: "v1beta/{+name}:falsePositive",
       hasBody: true,
     }),
     svc,
@@ -1409,7 +1409,7 @@ export const ResolveProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsResolvedRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:resolve", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:resolve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResolveProjectsAlertsRequest>;
 
@@ -1442,7 +1442,7 @@ export const BenignProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsBenignRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:benign", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:benign", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BenignProjectsAlertsRequest>;
 
@@ -1472,7 +1472,7 @@ export const GetProjectsAlertsDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAlertsDocumentsRequest>;
 
@@ -1515,7 +1515,7 @@ export const ListProjectsFindingsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/findings" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/findings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsFindingsRequest>;
 
@@ -1562,7 +1562,7 @@ export const SearchProjectsFindingsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/findings:search" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/findings:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsFindingsRequest>;
 
@@ -1597,7 +1597,7 @@ export const GetProjectsFindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsFindingsRequest>;
 
@@ -1639,7 +1639,7 @@ export const ListProjectsConfigurationsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/configurations" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/configurations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConfigurationsRequest>;
 
@@ -1674,7 +1674,7 @@ export const GetProjectsConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsConfigurationsRequest>;
 
@@ -1715,7 +1715,7 @@ export const UpsertProjectsConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/configurations:upsert",
+      path: "v1beta/{+parent}/configurations:upsert",
       hasBody: true,
     }),
     svc,
@@ -1760,7 +1760,7 @@ export const ListProjectsConfigurationsRevisionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/revisions" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConfigurationsRevisionsRequest>;
 

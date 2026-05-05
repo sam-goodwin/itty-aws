@@ -197,7 +197,7 @@ export interface GetDomainsRequest {
 export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/{name}" }),
+  T.Http({ method: "GET", path: "v1beta1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDomainsRequest>;
 
@@ -300,7 +300,7 @@ export const ListDomainsTrafficStatsRequest =
       T.HttpQuery("endDate.day"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/trafficStats" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/trafficStats" }),
     svc,
   ) as unknown as Schema.Schema<ListDomainsTrafficStatsRequest>;
 
@@ -335,7 +335,7 @@ export const GetDomainsTrafficStatsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDomainsTrafficStatsRequest>;
 

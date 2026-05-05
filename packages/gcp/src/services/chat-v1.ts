@@ -3267,7 +3267,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("useAdminAccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSpacesRequest>;
 
@@ -3333,7 +3333,7 @@ export const DeleteSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("useAdminAccess"),
   ),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/{name}" }),
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteSpacesRequest>;
 
@@ -3406,7 +3406,11 @@ export const CompleteImportSpacesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CompleteImportSpaceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:completeImport", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+name}:completeImport",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CompleteImportSpacesRequest>;
 
@@ -3497,7 +3501,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Space).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchSpacesRequest>;
 
@@ -3575,7 +3579,7 @@ export const ListSpacesMessagesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/messages" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/messages" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesMessagesRequest>;
 
@@ -3621,7 +3625,7 @@ export const PatchSpacesMessagesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSpacesMessagesRequest>;
 
@@ -3662,7 +3666,7 @@ export const UpdateSpacesMessagesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSpacesMessagesRequest>;
 
@@ -3713,7 +3717,7 @@ export const CreateSpacesMessagesRequest =
     messageId: Schema.optional(Schema.String).pipe(T.HttpQuery("messageId")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/messages", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/messages", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpacesMessagesRequest>;
 
@@ -3743,7 +3747,7 @@ export const GetSpacesMessagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesMessagesRequest>;
 
@@ -3776,7 +3780,7 @@ export const DeleteSpacesMessagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSpacesMessagesRequest>;
 
@@ -3806,7 +3810,7 @@ export const GetSpacesMessagesAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesMessagesAttachmentsRequest>;
 
@@ -3846,7 +3850,7 @@ export const ListSpacesMessagesReactionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/reactions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/reactions" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesMessagesReactionsRequest>;
 
@@ -3884,7 +3888,7 @@ export const CreateSpacesMessagesReactionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Reaction).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/reactions", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/reactions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpacesMessagesReactionsRequest>;
 
@@ -3915,7 +3919,7 @@ export const DeleteSpacesMessagesReactionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSpacesMessagesReactionsRequest>;
 
@@ -3968,7 +3972,7 @@ export const ListSpacesMembersRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/members" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/members" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesMembersRequest>;
 
@@ -4014,7 +4018,7 @@ export const PatchSpacesMembersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Membership).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSpacesMembersRequest>;
 
@@ -4050,7 +4054,7 @@ export const GetSpacesMembersRequest =
       T.HttpQuery("useAdminAccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesMembersRequest>;
 
@@ -4088,7 +4092,7 @@ export const CreateSpacesMembersRequest =
     ),
     body: Schema.optional(Membership).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/members", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/members", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpacesMembersRequest>;
 
@@ -4124,7 +4128,7 @@ export const DeleteSpacesMembersRequest =
       T.HttpQuery("useAdminAccess"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSpacesMembersRequest>;
 
@@ -4164,7 +4168,7 @@ export const ListSpacesSpaceEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/spaceEvents" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/spaceEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesSpaceEventsRequest>;
 
@@ -4199,7 +4203,7 @@ export const GetSpacesSpaceEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesSpaceEventsRequest>;
 
@@ -4303,7 +4307,7 @@ export const GetCustomEmojisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetCustomEmojisRequest>;
 
@@ -4333,7 +4337,7 @@ export const DeleteCustomEmojisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomEmojisRequest>;
 
@@ -4362,7 +4366,7 @@ export interface DownloadMediaRequest {
 export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/media/{resourceName}" }),
+  T.Http({ method: "GET", path: "v1/media/{+resourceName}" }),
   svc,
 ) as unknown as Schema.Schema<DownloadMediaRequest>;
 
@@ -4396,7 +4400,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "v1/{parent}/attachments:upload",
+    path: "v1/{+parent}/attachments:upload",
     hasBody: true,
   }),
   svc,
@@ -4432,7 +4436,7 @@ export const PositionUsersSectionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PositionSectionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:position", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:position", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PositionUsersSectionsRequest>;
 
@@ -4469,7 +4473,7 @@ export const ListUsersSectionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/sections" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/sections" }),
     svc,
   ) as unknown as Schema.Schema<ListUsersSectionsRequest>;
 
@@ -4510,7 +4514,7 @@ export const PatchUsersSectionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleChatV1Section).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchUsersSectionsRequest>;
 
@@ -4544,7 +4548,7 @@ export const CreateUsersSectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleChatV1Section).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/sections", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/sections", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateUsersSectionsRequest>;
 
@@ -4575,7 +4579,7 @@ export const DeleteUsersSectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteUsersSectionsRequest>;
 
@@ -4614,7 +4618,7 @@ export const ListUsersSectionsItemsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/items" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/items" }),
     svc,
   ) as unknown as Schema.Schema<ListUsersSectionsItemsRequest>;
 
@@ -4652,7 +4656,7 @@ export const MoveUsersSectionsItemsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MoveSectionItemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveUsersSectionsItemsRequest>;
 
@@ -4689,7 +4693,7 @@ export const UpdateSpaceReadStateUsersSpacesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SpaceReadState).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSpaceReadStateUsersSpacesRequest>;
 
@@ -4720,7 +4724,7 @@ export const GetSpaceReadStateUsersSpacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpaceReadStateUsersSpacesRequest>;
 
@@ -4751,7 +4755,7 @@ export const GetThreadReadStateUsersSpacesThreadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetThreadReadStateUsersSpacesThreadsRequest>;
 
@@ -4782,7 +4786,7 @@ export const GetUsersSpacesSpaceNotificationSettingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetUsersSpacesSpaceNotificationSettingRequest>;
 
@@ -4820,7 +4824,7 @@ export const PatchUsersSpacesSpaceNotificationSettingRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SpaceNotificationSetting).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchUsersSpacesSpaceNotificationSettingRequest>;
 

@@ -135,7 +135,7 @@ export const GetIamPolicyV1beta1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{resource}:getIamPolicy",
+      path: "v1beta1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -172,7 +172,7 @@ export const TestIamPermissionsV1beta1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{resource}:testIamPermissions",
+      path: "v1beta1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -210,7 +210,7 @@ export const SetIamPolicyV1beta1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{resource}:setIamPolicy",
+      path: "v1beta1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,

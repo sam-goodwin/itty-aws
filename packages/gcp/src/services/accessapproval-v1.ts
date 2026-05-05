@@ -380,7 +380,7 @@ export const UpdateAccessApprovalSettingsFoldersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AccessApprovalSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccessApprovalSettingsFoldersRequest>;
 
@@ -412,7 +412,7 @@ export const GetServiceAccountFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServiceAccountFoldersRequest>;
 
@@ -443,7 +443,7 @@ export const DeleteAccessApprovalSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessApprovalSettingsFoldersRequest>;
 
@@ -474,7 +474,7 @@ export const GetAccessApprovalSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessApprovalSettingsFoldersRequest>;
 
@@ -505,7 +505,7 @@ export const GetFoldersApprovalRequestsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersApprovalRequestsRequest>;
 
@@ -539,7 +539,7 @@ export const DismissFoldersApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DismissApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:dismiss", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:dismiss", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DismissFoldersApprovalRequestsRequest>;
 
@@ -573,7 +573,7 @@ export const ApproveFoldersApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveFoldersApprovalRequestsRequest>;
 
@@ -607,7 +607,7 @@ export const InvalidateFoldersApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(InvalidateApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:invalidate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:invalidate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<InvalidateFoldersApprovalRequestsRequest>;
 
@@ -647,7 +647,7 @@ export const ListFoldersApprovalRequestsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/approvalRequests" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/approvalRequests" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersApprovalRequestsRequest>;
 
@@ -688,7 +688,7 @@ export const UpdateAccessApprovalSettingsProjectsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessApprovalSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccessApprovalSettingsProjectsRequest>;
 
@@ -720,7 +720,7 @@ export const GetServiceAccountProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServiceAccountProjectsRequest>;
 
@@ -751,7 +751,7 @@ export const DeleteAccessApprovalSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessApprovalSettingsProjectsRequest>;
 
@@ -782,7 +782,7 @@ export const GetAccessApprovalSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessApprovalSettingsProjectsRequest>;
 
@@ -813,7 +813,7 @@ export const GetProjectsApprovalRequestsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsApprovalRequestsRequest>;
 
@@ -847,7 +847,7 @@ export const DismissProjectsApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DismissApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:dismiss", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:dismiss", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DismissProjectsApprovalRequestsRequest>;
 
@@ -881,7 +881,7 @@ export const ApproveProjectsApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProjectsApprovalRequestsRequest>;
 
@@ -915,7 +915,7 @@ export const InvalidateProjectsApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(InvalidateApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:invalidate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:invalidate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<InvalidateProjectsApprovalRequestsRequest>;
 
@@ -955,7 +955,7 @@ export const ListProjectsApprovalRequestsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/approvalRequests" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/approvalRequests" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsApprovalRequestsRequest>;
 
@@ -990,7 +990,7 @@ export const DeleteAccessApprovalSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessApprovalSettingsOrganizationsRequest>;
 
@@ -1027,7 +1027,7 @@ export const UpdateAccessApprovalSettingsOrganizationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AccessApprovalSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccessApprovalSettingsOrganizationsRequest>;
 
@@ -1059,7 +1059,7 @@ export const GetServiceAccountOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServiceAccountOrganizationsRequest>;
 
@@ -1091,7 +1091,7 @@ export const GetAccessApprovalSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessApprovalSettingsOrganizationsRequest>;
 
@@ -1123,7 +1123,7 @@ export const GetOrganizationsApprovalRequestsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsApprovalRequestsRequest>;
 
@@ -1157,7 +1157,7 @@ export const DismissOrganizationsApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DismissApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:dismiss", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:dismiss", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DismissOrganizationsApprovalRequestsRequest>;
 
@@ -1197,7 +1197,7 @@ export const ListOrganizationsApprovalRequestsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/approvalRequests" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/approvalRequests" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsApprovalRequestsRequest>;
 
@@ -1236,7 +1236,7 @@ export const ApproveOrganizationsApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveOrganizationsApprovalRequestsRequest>;
 
@@ -1270,7 +1270,7 @@ export const InvalidateOrganizationsApprovalRequestsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(InvalidateApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:invalidate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:invalidate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<InvalidateOrganizationsApprovalRequestsRequest>;
 

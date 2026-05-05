@@ -843,7 +843,7 @@ export const ApplyConfigurationCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/devices:applyConfiguration",
+      path: "v1/{+parent}/devices:applyConfiguration",
       hasBody: true,
     }),
     svc,
@@ -883,7 +883,7 @@ export const RemoveConfigurationCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/devices:removeConfiguration",
+      path: "v1/{+parent}/devices:removeConfiguration",
       hasBody: true,
     }),
     svc,
@@ -922,7 +922,7 @@ export const ListCustomersDevicesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.String).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/devices" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersDevicesRequest>;
 
@@ -957,7 +957,7 @@ export const GetCustomersDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersDevicesRequest>;
 
@@ -992,7 +992,7 @@ export const UnclaimCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/devices:unclaim",
+      path: "v1/{+parent}/devices:unclaim",
       hasBody: true,
     }),
     svc,
@@ -1025,7 +1025,7 @@ export const ListCustomersDpcsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/dpcs" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/dpcs" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersDpcsRequest>;
 
@@ -1061,7 +1061,7 @@ export const CreateCustomersConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/configurations",
+      path: "v1/{+parent}/configurations",
       hasBody: true,
     }),
     svc,
@@ -1094,7 +1094,7 @@ export const GetCustomersConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersConfigurationsRequest>;
 
@@ -1125,7 +1125,7 @@ export const DeleteCustomersConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersConfigurationsRequest>;
 
@@ -1156,7 +1156,7 @@ export const ListCustomersConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/configurations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/configurations" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersConfigurationsRequest>;
 
@@ -1194,7 +1194,7 @@ export const PatchCustomersConfigurationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Configuration).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCustomersConfigurationsRequest>;
 
@@ -1224,7 +1224,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1260,7 +1260,7 @@ export const ListPartnersVendorsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/vendors" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/vendors" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersVendorsRequest>;
 
@@ -1301,7 +1301,7 @@ export const ListPartnersVendorsCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/customers" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersVendorsCustomersRequest>;
 
@@ -1339,7 +1339,7 @@ export const CreatePartnersCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateCustomerRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/customers", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/customers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreatePartnersCustomersRequest>;
 
@@ -1376,7 +1376,7 @@ export const ListPartnersCustomersRequest =
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/partners/{partnerId}/customers" }),
+    T.Http({ method: "GET", path: "v1/partners/{+partnerId}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersCustomersRequest>;
 
@@ -1416,7 +1416,7 @@ export const UnclaimAsyncPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:unclaimAsync",
+      path: "v1/partners/{+partnerId}/devices:unclaimAsync",
       hasBody: true,
     }),
     svc,
@@ -1454,7 +1454,7 @@ export const FindByOwnerPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:findByOwner",
+      path: "v1/partners/{+partnerId}/devices:findByOwner",
       hasBody: true,
     }),
     svc,
@@ -1492,7 +1492,7 @@ export const GetSimLockStatePartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:getSimLockState",
+      path: "v1/partners/{+partnerId}/devices:getSimLockState",
       hasBody: true,
     }),
     svc,
@@ -1534,7 +1534,7 @@ export const MetadataPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{metadataOwnerId}/devices/{deviceId}/metadata",
+      path: "v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata",
       hasBody: true,
     }),
     svc,
@@ -1572,7 +1572,7 @@ export const ClaimAsyncPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:claimAsync",
+      path: "v1/partners/{+partnerId}/devices:claimAsync",
       hasBody: true,
     }),
     svc,
@@ -1612,7 +1612,7 @@ export const UpdateMetadataAsyncPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:updateMetadataAsync",
+      path: "v1/partners/{+partnerId}/devices:updateMetadataAsync",
       hasBody: true,
     }),
     svc,
@@ -1650,7 +1650,7 @@ export const ClaimPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:claim",
+      path: "v1/partners/{+partnerId}/devices:claim",
       hasBody: true,
     }),
     svc,
@@ -1690,7 +1690,7 @@ export const FindByIdentifierPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:findByIdentifier",
+      path: "v1/partners/{+partnerId}/devices:findByIdentifier",
       hasBody: true,
     }),
     svc,
@@ -1724,7 +1724,7 @@ export const GetPartnersDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnersDevicesRequest>;
 
@@ -1759,7 +1759,7 @@ export const UnclaimPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnerId}/devices:unclaim",
+      path: "v1/partners/{+partnerId}/devices:unclaim",
       hasBody: true,
     }),
     svc,

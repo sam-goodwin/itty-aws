@@ -85,7 +85,7 @@ export const ListProjectsTraceSinksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{parent}/traceSinks" }),
+    T.Http({ method: "GET", path: "v2beta1/{+parent}/traceSinks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTraceSinksRequest>;
 
@@ -125,7 +125,7 @@ export const CreateProjectsTraceSinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/{parent}/traceSinks",
+      path: "v2beta1/{+parent}/traceSinks",
       hasBody: true,
     }),
     svc,
@@ -158,7 +158,7 @@ export const DeleteProjectsTraceSinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsTraceSinksRequest>;
 
@@ -189,7 +189,7 @@ export const GetProjectsTraceSinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{name}" }),
+    T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsTraceSinksRequest>;
 
@@ -226,7 +226,7 @@ export const PatchProjectsTraceSinksRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(TraceSink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v2beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsTraceSinksRequest>;
 

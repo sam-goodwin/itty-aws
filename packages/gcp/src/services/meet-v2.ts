@@ -581,7 +581,7 @@ export interface GetSpacesRequest {
 export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/{name}" }),
+  T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSpacesRequest>;
 
@@ -616,7 +616,7 @@ export const EndActiveConferenceSpacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{name}:endActiveConference",
+      path: "v2/{+name}:endActiveConference",
       hasBody: true,
     }),
     svc,
@@ -654,7 +654,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Space).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchSpacesRequest>;
 
@@ -684,7 +684,7 @@ export const GetConferenceRecordsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsRequest>;
 
@@ -756,7 +756,7 @@ export const GetConferenceRecordsRecordingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsRecordingsRequest>;
 
@@ -793,7 +793,7 @@ export const ListConferenceRecordsRecordingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/recordings" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/recordings" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsRecordingsRequest>;
 
@@ -828,7 +828,7 @@ export const GetConferenceRecordsParticipantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsRequest>;
 
@@ -868,7 +868,7 @@ export const ListConferenceRecordsParticipantsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/participants" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/participants" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsRequest>;
 
@@ -904,7 +904,7 @@ export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
 
@@ -946,7 +946,7 @@ export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/participantSessions" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/participantSessions" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
 
@@ -983,7 +983,7 @@ export const GetConferenceRecordsTranscriptsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsTranscriptsRequest>;
 
@@ -1020,7 +1020,7 @@ export const ListConferenceRecordsTranscriptsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/transcripts" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/transcripts" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsTranscriptsRequest>;
 
@@ -1055,7 +1055,7 @@ export const GetConferenceRecordsTranscriptsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsTranscriptsEntriesRequest>;
 
@@ -1092,7 +1092,7 @@ export const ListConferenceRecordsTranscriptsEntriesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/entries" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/entries" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsTranscriptsEntriesRequest>;
 
@@ -1128,7 +1128,7 @@ export const GetConferenceRecordsSmartNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsSmartNotesRequest>;
 
@@ -1165,7 +1165,7 @@ export const ListConferenceRecordsSmartNotesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/smartNotes" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/smartNotes" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsSmartNotesRequest>;
 

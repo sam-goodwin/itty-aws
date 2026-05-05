@@ -1051,7 +1051,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "v1/{customer}/policies/files:uploadPolicyFile",
+    path: "v1/{+customer}/policies/files:uploadPolicyFile",
     hasBody: true,
   }),
   svc,
@@ -1092,7 +1092,7 @@ export const ResolveCustomersPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies:resolve",
+      path: "v1/{+customer}/policies:resolve",
       hasBody: true,
     }),
     svc,
@@ -1133,7 +1133,7 @@ export const BatchDeleteCustomersPoliciesGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/groups:batchDelete",
+      path: "v1/{+customer}/policies/groups:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -1173,7 +1173,7 @@ export const UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/groups:updateGroupPriorityOrdering",
+      path: "v1/{+customer}/policies/groups:updateGroupPriorityOrdering",
       hasBody: true,
     }),
     svc,
@@ -1215,7 +1215,7 @@ export const BatchModifyCustomersPoliciesGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/groups:batchModify",
+      path: "v1/{+customer}/policies/groups:batchModify",
       hasBody: true,
     }),
     svc,
@@ -1255,7 +1255,7 @@ export const ListGroupPriorityOrderingCustomersPoliciesGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/groups:listGroupPriorityOrdering",
+      path: "v1/{+customer}/policies/groups:listGroupPriorityOrdering",
       hasBody: true,
     }),
     svc,
@@ -1297,7 +1297,7 @@ export const DefineNetworkCustomersPoliciesNetworksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/networks:defineNetwork",
+      path: "v1/{+customer}/policies/networks:defineNetwork",
       hasBody: true,
     }),
     svc,
@@ -1338,7 +1338,7 @@ export const RemoveCertificateCustomersPoliciesNetworksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/networks:removeCertificate",
+      path: "v1/{+customer}/policies/networks:removeCertificate",
       hasBody: true,
     }),
     svc,
@@ -1379,7 +1379,7 @@ export const RemoveNetworkCustomersPoliciesNetworksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/networks:removeNetwork",
+      path: "v1/{+customer}/policies/networks:removeNetwork",
       hasBody: true,
     }),
     svc,
@@ -1420,7 +1420,7 @@ export const DefineCertificateCustomersPoliciesNetworksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/networks:defineCertificate",
+      path: "v1/{+customer}/policies/networks:defineCertificate",
       hasBody: true,
     }),
     svc,
@@ -1461,7 +1461,7 @@ export const BatchInheritCustomersPoliciesOrgunitsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/orgunits:batchInherit",
+      path: "v1/{+customer}/policies/orgunits:batchInherit",
       hasBody: true,
     }),
     svc,
@@ -1501,7 +1501,7 @@ export const BatchModifyCustomersPoliciesOrgunitsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{customer}/policies/orgunits:batchModify",
+      path: "v1/{+customer}/policies/orgunits:batchModify",
       hasBody: true,
     }),
     svc,
@@ -1534,7 +1534,7 @@ export const GetCustomersPolicySchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersPolicySchemasRequest>;
 
@@ -1575,7 +1575,7 @@ export const ListCustomersPolicySchemasRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/policySchemas" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/policySchemas" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersPolicySchemasRequest>;
 

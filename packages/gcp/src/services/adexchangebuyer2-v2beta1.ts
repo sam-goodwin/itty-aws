@@ -2265,7 +2265,7 @@ export const CreateBuyersFilterSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/{ownerName}/filterSets",
+      path: "v2beta1/{+ownerName}/filterSets",
       hasBody: true,
     }),
     svc,
@@ -2304,7 +2304,7 @@ export const ListBuyersFilterSetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{ownerName}/filterSets" }),
+    T.Http({ method: "GET", path: "v2beta1/{+ownerName}/filterSets" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsRequest>;
 
@@ -2339,7 +2339,7 @@ export const GetBuyersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{name}" }),
+    T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersFilterSetsRequest>;
 
@@ -2370,7 +2370,7 @@ export const DeleteBuyersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBuyersFilterSetsRequest>;
 
@@ -2408,7 +2408,7 @@ export const ListBuyersFilterSetsBidResponsesWithoutBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/bidResponsesWithoutBids",
+      path: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>;
@@ -2453,7 +2453,7 @@ export const ListBuyersFilterSetsBidResponseErrorsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/bidResponseErrors",
+      path: "v2beta1/{+filterSetName}/bidResponseErrors",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsBidResponseErrorsRequest>;
@@ -2498,7 +2498,7 @@ export const ListBuyersFilterSetsFilteredBidRequestsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBidRequests",
+      path: "v2beta1/{+filterSetName}/filteredBidRequests",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidRequestsRequest>;
@@ -2541,7 +2541,7 @@ export const ListBuyersFilterSetsLosingBidsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/losingBids" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/losingBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsLosingBidsRequest>;
 
@@ -2584,7 +2584,7 @@ export const ListBuyersFilterSetsImpressionMetricsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/impressionMetrics",
+      path: "v2beta1/{+filterSetName}/impressionMetrics",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsImpressionMetricsRequest>;
@@ -2629,7 +2629,7 @@ export const ListBuyersFilterSetsNonBillableWinningBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/nonBillableWinningBids",
+      path: "v2beta1/{+filterSetName}/nonBillableWinningBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsNonBillableWinningBidsRequest>;
@@ -2672,7 +2672,7 @@ export const ListBuyersFilterSetsFilteredBidsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/filteredBids" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/filteredBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsRequest>;
 
@@ -2718,7 +2718,7 @@ export const ListBuyersFilterSetsFilteredBidsDetailsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/details",
+      path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsDetailsRequest>;
@@ -2766,7 +2766,7 @@ export const ListBuyersFilterSetsFilteredBidsCreativesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/creatives",
+      path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsCreativesRequest>;
@@ -2809,7 +2809,7 @@ export const ListBuyersFilterSetsBidMetricsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/bidMetrics" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/bidMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsBidMetricsRequest>;
 
@@ -2844,7 +2844,7 @@ export const GetBiddersAccountsFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{name}" }),
+    T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersAccountsFilterSetsRequest>;
 
@@ -2875,7 +2875,7 @@ export const DeleteBiddersAccountsFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBiddersAccountsFilterSetsRequest>;
 
@@ -2916,7 +2916,7 @@ export const CreateBiddersAccountsFilterSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/{ownerName}/filterSets",
+      path: "v2beta1/{+ownerName}/filterSets",
       hasBody: true,
     }),
     svc,
@@ -2955,7 +2955,7 @@ export const ListBiddersAccountsFilterSetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{ownerName}/filterSets" }),
+    T.Http({ method: "GET", path: "v2beta1/{+ownerName}/filterSets" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsRequest>;
 
@@ -2998,7 +2998,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidRequestsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBidRequests",
+      path: "v2beta1/{+filterSetName}/filteredBidRequests",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidRequestsRequest>;
@@ -3042,7 +3042,7 @@ export const ListBiddersAccountsFilterSetsLosingBidsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/losingBids" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/losingBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsLosingBidsRequest>;
 
@@ -3086,7 +3086,7 @@ export const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/bidResponsesWithoutBids",
+      path: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>;
@@ -3132,7 +3132,7 @@ export const ListBiddersAccountsFilterSetsBidResponseErrorsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/bidResponseErrors",
+      path: "v2beta1/{+filterSetName}/bidResponseErrors",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidResponseErrorsRequest>;
@@ -3175,7 +3175,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/filteredBids" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/filteredBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsRequest>;
 
@@ -3222,7 +3222,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/creatives",
+      path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>;
@@ -3271,7 +3271,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/details",
+      path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest>;
@@ -3315,7 +3315,7 @@ export const ListBiddersAccountsFilterSetsBidMetricsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/bidMetrics" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/bidMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidMetricsRequest>;
 
@@ -3359,7 +3359,7 @@ export const ListBiddersAccountsFilterSetsImpressionMetricsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/impressionMetrics",
+      path: "v2beta1/{+filterSetName}/impressionMetrics",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsImpressionMetricsRequest>;
@@ -3404,7 +3404,7 @@ export const ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/nonBillableWinningBids",
+      path: "v2beta1/{+filterSetName}/nonBillableWinningBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>;
@@ -3442,7 +3442,7 @@ export const GetBiddersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{name}" }),
+    T.Http({ method: "GET", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersFilterSetsRequest>;
 
@@ -3473,7 +3473,7 @@ export const DeleteBiddersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v2beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBiddersFilterSetsRequest>;
 
@@ -3510,7 +3510,7 @@ export const ListBiddersFilterSetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{ownerName}/filterSets" }),
+    T.Http({ method: "GET", path: "v2beta1/{+ownerName}/filterSets" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsRequest>;
 
@@ -3555,7 +3555,7 @@ export const CreateBiddersFilterSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/{ownerName}/filterSets",
+      path: "v2beta1/{+ownerName}/filterSets",
       hasBody: true,
     }),
     svc,
@@ -3596,7 +3596,7 @@ export const ListBiddersFilterSetsBidResponsesWithoutBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/bidResponsesWithoutBids",
+      path: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>;
@@ -3641,7 +3641,7 @@ export const ListBiddersFilterSetsBidResponseErrorsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/bidResponseErrors",
+      path: "v2beta1/{+filterSetName}/bidResponseErrors",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsBidResponseErrorsRequest>;
@@ -3686,7 +3686,7 @@ export const ListBiddersFilterSetsFilteredBidRequestsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBidRequests",
+      path: "v2beta1/{+filterSetName}/filteredBidRequests",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidRequestsRequest>;
@@ -3729,7 +3729,7 @@ export const ListBiddersFilterSetsLosingBidsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/losingBids" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/losingBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsLosingBidsRequest>;
 
@@ -3772,7 +3772,7 @@ export const ListBiddersFilterSetsImpressionMetricsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/impressionMetrics",
+      path: "v2beta1/{+filterSetName}/impressionMetrics",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsImpressionMetricsRequest>;
@@ -3817,7 +3817,7 @@ export const ListBiddersFilterSetsNonBillableWinningBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/nonBillableWinningBids",
+      path: "v2beta1/{+filterSetName}/nonBillableWinningBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsNonBillableWinningBidsRequest>;
@@ -3860,7 +3860,7 @@ export const ListBiddersFilterSetsFilteredBidsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/filteredBids" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/filteredBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsRequest>;
 
@@ -3907,7 +3907,7 @@ export const ListBiddersFilterSetsFilteredBidsCreativesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/creatives",
+      path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsCreativesRequest>;
@@ -3955,7 +3955,7 @@ export const ListBiddersFilterSetsFilteredBidsDetailsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/details",
+      path: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsDetailsRequest>;
@@ -3998,7 +3998,7 @@ export const ListBiddersFilterSetsBidMetricsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/bidMetrics" }),
+    T.Http({ method: "GET", path: "v2beta1/{+filterSetName}/bidMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsBidMetricsRequest>;
 

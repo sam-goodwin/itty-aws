@@ -2185,7 +2185,7 @@ export const AccessibilityClustersProjectsHistoriesExecutionsStepsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "toolresults/v1beta3/{name}:accessibilityClusters",
+      path: "toolresults/v1beta3/{+name}:accessibilityClusters",
     }),
     svc,
   ) as unknown as Schema.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>;

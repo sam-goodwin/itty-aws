@@ -309,7 +309,7 @@ export const DeleteAgentUsersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     agentUserId: Schema.String.pipe(T.HttpPath("agentUserId")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{agentUserId}" }),
+    T.Http({ method: "DELETE", path: "v1/{+agentUserId}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAgentUsersRequest>;
 

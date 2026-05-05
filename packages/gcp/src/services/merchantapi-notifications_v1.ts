@@ -159,7 +159,7 @@ export const CreateAccountsNotificationsubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "notifications/v1/{parent}/notificationsubscriptions",
+      path: "notifications/v1/{+parent}/notificationsubscriptions",
       hasBody: true,
     }),
     svc,
@@ -193,7 +193,7 @@ export const GetAccountsNotificationsubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "notifications/v1/{name}" }),
+    T.Http({ method: "GET", path: "notifications/v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsNotificationsubscriptionsRequest>;
 
@@ -225,7 +225,7 @@ export const DeleteAccountsNotificationsubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "notifications/v1/{name}" }),
+    T.Http({ method: "DELETE", path: "notifications/v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsNotificationsubscriptionsRequest>;
 
@@ -264,7 +264,7 @@ export const ListAccountsNotificationsubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "notifications/v1/{parent}/notificationsubscriptions",
+      path: "notifications/v1/{+parent}/notificationsubscriptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsNotificationsubscriptionsRequest>;
@@ -307,7 +307,11 @@ export const PatchAccountsNotificationsubscriptionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(NotificationSubscription).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "notifications/v1/{name}", hasBody: true }),
+    T.Http({
+      method: "PATCH",
+      path: "notifications/v1/{+name}",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsNotificationsubscriptionsRequest>;
 

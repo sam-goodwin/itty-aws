@@ -694,7 +694,7 @@ export const GetAccountsProductsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/products/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/products/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsProductsRequest>;
 
@@ -727,7 +727,7 @@ export const DeleteAccountsProductsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{parent}/products/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+parent}/products/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductsRequest>;
 
@@ -773,7 +773,7 @@ export const ListAccountsProductsRequest =
       T.HttpQuery("include"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/products" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/products" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsRequest>;
 
@@ -816,7 +816,7 @@ export const UpdateAccountsProductsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "v1/{parent}/products/{name}",
+      path: "v1/{+parent}/products/{+name}",
       hasBody: true,
     }),
     svc,
@@ -854,7 +854,7 @@ export const ListAccountsLanguagesProductCertificationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/productCertifications" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/productCertifications" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLanguagesProductCertificationsRequest>;
 
@@ -896,7 +896,7 @@ export const PatchAccountsLanguagesProductCertificationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ProductCertification).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsLanguagesProductCertificationsRequest>;
 
@@ -928,7 +928,7 @@ export const GetAccountsLanguagesProductCertificationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsLanguagesProductCertificationsRequest>;
 
@@ -960,7 +960,7 @@ export const DeleteAccountsLanguagesProductCertificationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsLanguagesProductCertificationsRequest>;
 

@@ -686,7 +686,7 @@ export const ListAccountsAggregateProductStatusesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "issueresolution/v1beta/{parent}/aggregateProductStatuses",
+      path: "issueresolution/v1beta/{+parent}/aggregateProductStatuses",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAggregateProductStatusesRequest>;
@@ -736,7 +736,7 @@ export const RenderaccountissuesIssueresolutionRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "issueresolution/v1beta/{name}:renderaccountissues",
+      path: "issueresolution/v1beta/{+name}:renderaccountissues",
       hasBody: true,
     }),
     svc,
@@ -783,7 +783,7 @@ export const RenderproductissuesIssueresolutionRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "issueresolution/v1beta/{name}:renderproductissues",
+      path: "issueresolution/v1beta/{+name}:renderproductissues",
       hasBody: true,
     }),
     svc,
@@ -827,7 +827,7 @@ export const TriggeractionIssueresolutionRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "issueresolution/v1beta/{name}:triggeraction",
+      path: "issueresolution/v1beta/{+name}:triggeraction",
       hasBody: true,
     }),
     svc,

@@ -1337,7 +1337,7 @@ export const DeleteAccountsProductInputsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     dataSource: Schema.optional(Schema.String).pipe(T.HttpQuery("dataSource")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "products/v1/{name}" }),
+    T.Http({ method: "DELETE", path: "products/v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductInputsRequest>;
 
@@ -1376,7 +1376,7 @@ export const InsertAccountsProductInputsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "products/v1/{parent}/productInputs:insert",
+      path: "products/v1/{+parent}/productInputs:insert",
       hasBody: true,
     }),
     svc,
@@ -1418,7 +1418,7 @@ export const PatchAccountsProductInputsRequest =
     dataSource: Schema.optional(Schema.String).pipe(T.HttpQuery("dataSource")),
     body: Schema.optional(ProductInput).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "products/v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "products/v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsProductInputsRequest>;
 
@@ -1449,7 +1449,7 @@ export const GetAccountsProductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "products/v1/{name}" }),
+    T.Http({ method: "GET", path: "products/v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsProductsRequest>;
 
@@ -1485,7 +1485,7 @@ export const ListAccountsProductsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "products/v1/{parent}/products" }),
+    T.Http({ method: "GET", path: "products/v1/{+parent}/products" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsRequest>;
 

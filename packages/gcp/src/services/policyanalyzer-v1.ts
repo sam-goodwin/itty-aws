@@ -95,7 +95,7 @@ export const QueryOrganizationsLocationsActivityTypesActivitiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/activities:query" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/activities:query" }),
     svc,
   ) as unknown as Schema.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
 
@@ -141,7 +141,7 @@ export const QueryFoldersLocationsActivityTypesActivitiesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/activities:query" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/activities:query" }),
     svc,
   ) as unknown as Schema.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
 
@@ -186,7 +186,7 @@ export const QueryProjectsLocationsActivityTypesActivitiesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/activities:query" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/activities:query" }),
     svc,
   ) as unknown as Schema.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>;
 

@@ -373,7 +373,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets",
+    path: "userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets",
     hasBody: true,
   }),
   svc,

@@ -2099,7 +2099,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/{name}/locations" }),
+    T.Http({ method: "GET", path: "v2beta/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2134,7 +2134,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/{name}" }),
+    T.Http({ method: "GET", path: "v2beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2168,7 +2168,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2beta/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v2beta/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2213,7 +2213,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/{name}/operations" }),
+    T.Http({ method: "GET", path: "v2beta/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2248,7 +2248,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/{name}" }),
+    T.Http({ method: "GET", path: "v2beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2279,7 +2279,7 @@ export const GetProjectsLocationsMembershipsFeaturesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/{name}" }),
+    T.Http({ method: "GET", path: "v2beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsFeaturesRequest>;
 
@@ -2322,7 +2322,7 @@ export const ListProjectsLocationsMembershipsFeaturesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/{parent}/features" }),
+    T.Http({ method: "GET", path: "v2beta/{+parent}/features" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsFeaturesRequest>;
 
@@ -2372,7 +2372,7 @@ export const PatchProjectsLocationsMembershipsFeaturesRequest =
     ),
     body: Schema.optional(MembershipFeature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v2beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v2beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsFeaturesRequest>;
 
@@ -2412,7 +2412,11 @@ export const CreateProjectsLocationsMembershipsFeaturesRequest =
     featureId: Schema.optional(Schema.String).pipe(T.HttpQuery("featureId")),
     body: Schema.optional(MembershipFeature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2beta/{parent}/features", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v2beta/{+parent}/features",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsMembershipsFeaturesRequest>;
 
@@ -2446,7 +2450,7 @@ export const DeleteProjectsLocationsMembershipsFeaturesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2beta/{name}" }),
+    T.Http({ method: "DELETE", path: "v2beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsFeaturesRequest>;
 

@@ -920,7 +920,7 @@ export const ListPartnersProductsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/products" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/products" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersProductsRequest>;
 
@@ -960,7 +960,7 @@ export const FindEligiblePartnersPromotionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/promotions:findEligible",
+      path: "v1/{+parent}/promotions:findEligible",
       hasBody: true,
     }),
     svc,
@@ -1003,7 +1003,7 @@ export const ListPartnersPromotionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/promotions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/promotions" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersPromotionsRequest>;
 
@@ -1041,7 +1041,7 @@ export const ExtendPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExtendSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:extend", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:extend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExtendPartnersSubscriptionsRequest>;
 
@@ -1097,7 +1097,7 @@ export const ProvisionPartnersSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/subscriptions:provision",
+      path: "v1/{+parent}/subscriptions:provision",
       hasBody: true,
     }),
     svc,
@@ -1133,7 +1133,7 @@ export const EntitlePartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EntitleSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:entitle", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:entitle", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EntitlePartnersSubscriptionsRequest>;
 
@@ -1167,7 +1167,7 @@ export const SuspendPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:suspend", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:suspend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SuspendPartnersSubscriptionsRequest>;
 
@@ -1201,7 +1201,7 @@ export const ResumePartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumeSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumePartnersSubscriptionsRequest>;
 
@@ -1235,7 +1235,7 @@ export const CancelPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelPartnersSubscriptionsRequest>;
 
@@ -1269,7 +1269,7 @@ export const UndoCancelPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndoCancelSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:undoCancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:undoCancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndoCancelPartnersSubscriptionsRequest>;
 
@@ -1301,7 +1301,7 @@ export const GetPartnersSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnersSubscriptionsRequest>;
 
@@ -1342,7 +1342,7 @@ export const CreatePartnersSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/subscriptions",
+      path: "v1/{+parent}/subscriptions",
       hasBody: true,
     }),
     svc,
@@ -1381,7 +1381,7 @@ export const PatchPartnersSubscriptionsLineItemsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SubscriptionLineItem).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPartnersSubscriptionsLineItemsRequest>;
 
@@ -1417,7 +1417,7 @@ export const GeneratePartnersUserSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/userSessions:generate",
+      path: "v1/{+parent}/userSessions:generate",
       hasBody: true,
     }),
     svc,

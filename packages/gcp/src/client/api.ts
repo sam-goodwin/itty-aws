@@ -48,13 +48,13 @@ const matchError = (
 };
 
 /**
- * GCP API client.
- * Note: GCP uses per-service base URLs from the Discovery Documents,
- * so the base URL is set per-service via the Service trait, not globally.
+ * GCP API client. Per-service hosts come from each service file's
+ * `T.Service({ rootUrl })` trait; `core.makeAPI` reads the trait when
+ * `getBaseUrl` returns an empty string.
  */
 const _API = makeAPI<Credentials>({
   credentials: Credentials as any,
-  getBaseUrl: (_creds: any) => "", // Set per-service via Http trait
+  getBaseUrl: (_creds: any) => "",
   getAuthHeaders: (creds: any) => ({
     Authorization: `Bearer ${Redacted.value(creds.accessToken)}`,
   }),

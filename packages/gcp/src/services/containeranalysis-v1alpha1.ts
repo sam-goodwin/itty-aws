@@ -4399,7 +4399,7 @@ export const GetProjectsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOccurrencesRequest>;
 
@@ -4464,7 +4464,7 @@ export const ListProjectsOccurrencesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{parent}/occurrences" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/occurrences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOccurrencesRequest>;
 
@@ -4499,7 +4499,7 @@ export const DeleteProjectsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsOccurrencesRequest>;
 
@@ -4538,7 +4538,7 @@ export const CreateProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{parent}/occurrences",
+      path: "v1alpha1/{+parent}/occurrences",
       hasBody: true,
     }),
     svc,
@@ -4577,7 +4577,7 @@ export const PatchProjectsOccurrencesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Occurrence).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsOccurrencesRequest>;
 
@@ -4608,7 +4608,7 @@ export const GetNotesProjectsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}/notes" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}/notes" }),
     svc,
   ) as unknown as Schema.Schema<GetNotesProjectsOccurrencesRequest>;
 
@@ -4644,7 +4644,7 @@ export const GetVulnerabilitySummaryProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha1/{parent}/occurrences:vulnerabilitySummary",
+      path: "v1alpha1/{+parent}/occurrences:vulnerabilitySummary",
     }),
     svc,
   ) as unknown as Schema.Schema<GetVulnerabilitySummaryProjectsOccurrencesRequest>;
@@ -4682,7 +4682,7 @@ export const SetIamPolicyProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:setIamPolicy",
+      path: "v1alpha1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4720,7 +4720,7 @@ export const GetIamPolicyProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:getIamPolicy",
+      path: "v1alpha1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4758,7 +4758,7 @@ export const TestIamPermissionsProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:testIamPermissions",
+      path: "v1alpha1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4792,7 +4792,7 @@ export const GetProjectsNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsNotesRequest>;
 
@@ -4834,7 +4834,7 @@ export const ListProjectsNotesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{parent}/notes" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/notes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsNotesRequest>;
 
@@ -4869,7 +4869,7 @@ export const DeleteProjectsNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsNotesRequest>;
 
@@ -4908,7 +4908,7 @@ export const CreateProjectsNotesRequest =
     noteId: Schema.optional(Schema.String).pipe(T.HttpQuery("noteId")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{parent}/notes", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha1/{+parent}/notes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsNotesRequest>;
 
@@ -4944,7 +4944,7 @@ export const PatchProjectsNotesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsNotesRequest>;
 
@@ -4979,7 +4979,7 @@ export const SetIamPolicyProjectsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:setIamPolicy",
+      path: "v1alpha1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5017,7 +5017,7 @@ export const GetIamPolicyProjectsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:getIamPolicy",
+      path: "v1alpha1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5055,7 +5055,7 @@ export const TestIamPermissionsProjectsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:testIamPermissions",
+      path: "v1alpha1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5098,7 +5098,7 @@ export const ListProjectsNotesOccurrencesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}/occurrences" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}/occurrences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsNotesOccurrencesRequest>;
 
@@ -5138,7 +5138,7 @@ export const CreateProjectsOperationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{parent}/operations",
+      path: "v1alpha1/{+parent}/operations",
       hasBody: true,
     }),
     svc,
@@ -5174,7 +5174,7 @@ export const PatchProjectsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsOperationsRequest>;
 
@@ -5205,7 +5205,7 @@ export const GetProjectsScanConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsScanConfigsRequest>;
 
@@ -5245,7 +5245,7 @@ export const ListProjectsScanConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{parent}/scanConfigs" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/scanConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsScanConfigsRequest>;
 
@@ -5286,7 +5286,7 @@ export const PatchProjectsScanConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsScanConfigsRequest>;
 
@@ -5317,7 +5317,7 @@ export const GetProvidersNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProvidersNotesRequest>;
 
@@ -5359,7 +5359,7 @@ export const ListProvidersNotesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}/notes" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}/notes" }),
     svc,
   ) as unknown as Schema.Schema<ListProvidersNotesRequest>;
 
@@ -5394,7 +5394,7 @@ export const DeleteProvidersNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProvidersNotesRequest>;
 
@@ -5433,7 +5433,7 @@ export const CreateProvidersNotesRequest =
     noteId: Schema.optional(Schema.String).pipe(T.HttpQuery("noteId")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{name}/notes", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha1/{+name}/notes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProvidersNotesRequest>;
 
@@ -5469,7 +5469,7 @@ export const PatchProvidersNotesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProvidersNotesRequest>;
 
@@ -5504,7 +5504,7 @@ export const SetIamPolicyProvidersNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:setIamPolicy",
+      path: "v1alpha1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5542,7 +5542,7 @@ export const GetIamPolicyProvidersNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:getIamPolicy",
+      path: "v1alpha1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5580,7 +5580,7 @@ export const TestIamPermissionsProvidersNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{resource}:testIamPermissions",
+      path: "v1alpha1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5623,7 +5623,7 @@ export const ListProvidersNotesOccurrencesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{name}/occurrences" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+name}/occurrences" }),
     svc,
   ) as unknown as Schema.Schema<ListProvidersNotesOccurrencesRequest>;
 

@@ -41676,7 +41676,7 @@ export const ListZoneOrganizationOperationsRequest =
     ),
     zone: Schema.String.pipe(T.HttpPath("zone")),
   }).pipe(
-    T.Http({ method: "GET", path: "{organization}/zones/{zone}/operations" }),
+    T.Http({ method: "GET", path: "{+organization}/zones/{zone}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListZoneOrganizationOperationsRequest>;
 
@@ -41720,7 +41720,7 @@ export const GetZoneOrganizationOperationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "{organization}/zones/{zone}/operations/{operation}",
+      path: "{+organization}/zones/{zone}/operations/{operation}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetZoneOrganizationOperationsRequest>;
@@ -41769,7 +41769,7 @@ export const ListGlobalFolderOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "{folder}/global/operations" }),
+    T.Http({ method: "GET", path: "{+folder}/global/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListGlobalFolderOperationsRequest>;
 
@@ -41808,7 +41808,7 @@ export const GetGlobalFolderOperationsRequest =
     folder: Schema.String.pipe(T.HttpPath("folder")),
     operation: Schema.String.pipe(T.HttpPath("operation")),
   }).pipe(
-    T.Http({ method: "GET", path: "{folder}/global/operations/{operation}" }),
+    T.Http({ method: "GET", path: "{+folder}/global/operations/{operation}" }),
     svc,
   ) as unknown as Schema.Schema<GetGlobalFolderOperationsRequest>;
 
@@ -41847,7 +41847,7 @@ export const GetZoneFolderOperationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "{folder}/zones/{zone}/operations/{operation}",
+      path: "{+folder}/zones/{zone}/operations/{operation}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetZoneFolderOperationsRequest>;
@@ -41899,7 +41899,7 @@ export const ListZoneFolderOperationsRequest =
     ),
     zone: Schema.String.pipe(T.HttpPath("zone")),
   }).pipe(
-    T.Http({ method: "GET", path: "{folder}/zones/{zone}/operations" }),
+    T.Http({ method: "GET", path: "{+folder}/zones/{zone}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListZoneFolderOperationsRequest>;
 
@@ -81826,7 +81826,7 @@ export const GetReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetReservationSlotsRequest>;
@@ -81883,7 +81883,7 @@ export const ListReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots",
     }),
     svc,
   ) as unknown as Schema.Schema<ListReservationSlotsRequest>;
@@ -81937,7 +81937,7 @@ export const GetVersionReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}/getVersion",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getVersion",
       hasBody: true,
     }),
     svc,
@@ -81987,7 +81987,7 @@ export const UpdateReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}",
       hasBody: true,
     }),
     svc,
@@ -82038,7 +82038,7 @@ export const GetReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetReservationSubBlocksRequest>;
@@ -82095,7 +82095,7 @@ export const ListReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks",
     }),
     svc,
   ) as unknown as Schema.Schema<ListReservationSubBlocksRequest>;
@@ -82146,7 +82146,7 @@ export const PerformMaintenanceReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance",
       hasBody: true,
     }),
     svc,
@@ -82198,7 +82198,7 @@ export const ReportFaultyReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty",
       hasBody: true,
     }),
     svc,
@@ -82250,7 +82250,7 @@ export const GetVersionReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/getVersion",
+      path: "projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks/{reservationSubBlock}/getVersion",
       hasBody: true,
     }),
     svc,
@@ -85339,7 +85339,7 @@ export const GetOrganizationSnapshotRecycleBinPolicyRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "{organization}/global/snapshotRecycleBinPolicy",
+      path: "{+organization}/global/snapshotRecycleBinPolicy",
     }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationSnapshotRecycleBinPolicyRequest>;
@@ -85380,7 +85380,7 @@ export const PatchOrganizationSnapshotRecycleBinPolicyRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "{organization}/global/snapshotRecycleBinPolicy",
+      path: "{+organization}/global/snapshotRecycleBinPolicy",
       hasBody: true,
     }),
     svc,

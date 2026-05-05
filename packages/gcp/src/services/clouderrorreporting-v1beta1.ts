@@ -281,7 +281,7 @@ export const DeleteEventsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectName: Schema.String.pipe(T.HttpPath("projectName")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{projectName}/events" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEventsProjectsRequest>;
 
@@ -312,7 +312,7 @@ export const GetProjectsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupName: Schema.String.pipe(T.HttpPath("groupName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{groupName}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+groupName}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsGroupsRequest>;
 
@@ -345,7 +345,7 @@ export const UpdateProjectsGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ErrorGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsGroupsRequest>;
 
@@ -440,7 +440,7 @@ export const ListProjectsGroupStatsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{projectName}/groupStats" }),
+    T.Http({ method: "GET", path: "v1beta1/{+projectName}/groupStats" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGroupStatsRequest>;
 
@@ -511,7 +511,7 @@ export const ListProjectsEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{projectName}/events" }),
+    T.Http({ method: "GET", path: "v1beta1/{+projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsEventsRequest>;
 
@@ -551,7 +551,7 @@ export const ReportProjectsEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{projectName}/events:report",
+      path: "v1beta1/{+projectName}/events:report",
       hasBody: true,
     }),
     svc,
@@ -584,7 +584,7 @@ export const DeleteEventsProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectName: Schema.String.pipe(T.HttpPath("projectName")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{projectName}/events" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEventsProjectsLocationsRequest>;
 
@@ -615,7 +615,7 @@ export const GetProjectsLocationsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupName: Schema.String.pipe(T.HttpPath("groupName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{groupName}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+groupName}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGroupsRequest>;
 
@@ -649,7 +649,7 @@ export const UpdateProjectsLocationsGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ErrorGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsGroupsRequest>;
 
@@ -744,7 +744,7 @@ export const ListProjectsLocationsGroupStatsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{projectName}/groupStats" }),
+    T.Http({ method: "GET", path: "v1beta1/{+projectName}/groupStats" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGroupStatsRequest>;
 
@@ -815,7 +815,7 @@ export const ListProjectsLocationsEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{projectName}/events" }),
+    T.Http({ method: "GET", path: "v1beta1/{+projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEventsRequest>;
 

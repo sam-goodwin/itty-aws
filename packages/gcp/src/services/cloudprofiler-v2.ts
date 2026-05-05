@@ -126,7 +126,7 @@ export const CreateProjectsProfilesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateProfileRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{parent}/profiles", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+parent}/profiles", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsProfilesRequest>;
 
@@ -162,7 +162,7 @@ export const CreateOfflineProjectsProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{parent}/profiles:createOffline",
+      path: "v2/{+parent}/profiles:createOffline",
       hasBody: true,
     }),
     svc,
@@ -201,7 +201,7 @@ export const PatchProjectsProfilesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Profile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsProfilesRequest>;
 
@@ -238,7 +238,7 @@ export const ListProjectsProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}/profiles" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/profiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsProfilesRequest>;
 

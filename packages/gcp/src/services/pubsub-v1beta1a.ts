@@ -370,7 +370,7 @@ export interface GetTopicsRequest {
 export const GetTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   topic: Schema.String.pipe(T.HttpPath("topic")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1a/topics/{topic}" }),
+  T.Http({ method: "GET", path: "v1beta1a/topics/{+topic}" }),
   svc,
 ) as unknown as Schema.Schema<GetTopicsRequest>;
 
@@ -439,7 +439,7 @@ export interface DeleteTopicsRequest {
 export const DeleteTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   topic: Schema.String.pipe(T.HttpPath("topic")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1beta1a/topics/{topic}" }),
+  T.Http({ method: "DELETE", path: "v1beta1a/topics/{+topic}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteTopicsRequest>;
 
@@ -500,7 +500,7 @@ export const GetSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1a/subscriptions/{subscription}" }),
+    T.Http({ method: "GET", path: "v1beta1a/subscriptions/{+subscription}" }),
     svc,
   ) as unknown as Schema.Schema<GetSubscriptionsRequest>;
 
@@ -572,7 +572,10 @@ export const DeleteSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1a/subscriptions/{subscription}" }),
+    T.Http({
+      method: "DELETE",
+      path: "v1beta1a/subscriptions/{+subscription}",
+    }),
     svc,
   ) as unknown as Schema.Schema<DeleteSubscriptionsRequest>;
 

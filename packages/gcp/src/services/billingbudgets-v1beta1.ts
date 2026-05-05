@@ -280,7 +280,11 @@ export const CreateBillingAccountsBudgetsRequest =
       GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{parent}/budgets", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+parent}/budgets",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateBillingAccountsBudgetsRequest>;
 
@@ -317,7 +321,7 @@ export const PatchBillingAccountsBudgetsRequest =
       GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBillingAccountsBudgetsRequest>;
 
@@ -349,7 +353,7 @@ export const GetBillingAccountsBudgetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsBudgetsRequest>;
 
@@ -390,7 +394,7 @@ export const ListBillingAccountsBudgetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/budgets" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/budgets" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsBudgetsRequest>;
 
@@ -426,7 +430,7 @@ export const DeleteBillingAccountsBudgetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBillingAccountsBudgetsRequest>;
 

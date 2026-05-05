@@ -2920,7 +2920,7 @@ export const SearchResourcesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{location}:searchResources",
+      path: "v1/{+location}:searchResources",
       hasBody: true,
     }),
     svc,
@@ -2970,7 +2970,7 @@ export const RetrieveApiViewsProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}:retrieveApiViews" }),
+    T.Http({ method: "GET", path: "v1/{+parent}:retrieveApiViews" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveApiViewsProjectsLocationsRequest>;
 
@@ -3013,7 +3013,7 @@ export const CollectApiDataProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{location}:collectApiData",
+      path: "v1/{+location}:collectApiData",
       hasBody: true,
     }),
     svc,
@@ -3047,7 +3047,10 @@ export const LookupRuntimeProjectAttachmentProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:lookupRuntimeProjectAttachment" }),
+    T.Http({
+      method: "GET",
+      path: "v1/{+name}:lookupRuntimeProjectAttachment",
+    }),
     svc,
   ) as unknown as Schema.Schema<LookupRuntimeProjectAttachmentProjectsLocationsRequest>;
 
@@ -3094,7 +3097,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/locations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -3130,7 +3133,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -3175,7 +3178,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -3211,7 +3214,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -3242,7 +3245,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -3278,7 +3281,7 @@ export const CancelProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -3309,7 +3312,7 @@ export const GetProjectsLocationsAddonsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAddonsRequest>;
 
@@ -3345,7 +3348,7 @@ export const ManageConfigProjectsLocationsAddonsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:manageConfig", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:manageConfig", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ManageConfigProjectsLocationsAddonsRequest>;
 
@@ -3386,7 +3389,7 @@ export const ListProjectsLocationsAddonsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/addons" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/addons" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAddonsRequest>;
 
@@ -3422,7 +3425,7 @@ export const GetProjectsLocationsPluginsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPluginsRequest>;
 
@@ -3458,7 +3461,7 @@ export const EnableProjectsLocationsPluginsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:enable", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableProjectsLocationsPluginsRequest>;
 
@@ -3494,7 +3497,7 @@ export const DisableProjectsLocationsPluginsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:disable", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsLocationsPluginsRequest>;
 
@@ -3531,7 +3534,7 @@ export const CreateProjectsLocationsPluginsRequest =
     pluginId: Schema.optional(Schema.String).pipe(T.HttpQuery("pluginId")),
     body: Schema.optional(GoogleCloudApihubV1Plugin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/plugins", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/plugins", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsPluginsRequest>;
 
@@ -3571,7 +3574,7 @@ export const ListProjectsLocationsPluginsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/plugins" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/plugins" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPluginsRequest>;
 
@@ -3607,7 +3610,7 @@ export const DeleteProjectsLocationsPluginsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPluginsRequest>;
 
@@ -3638,7 +3641,7 @@ export const GetStyleGuideProjectsLocationsPluginsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStyleGuideProjectsLocationsPluginsRequest>;
 
@@ -3676,7 +3679,7 @@ export const UpdateStyleGuideProjectsLocationsPluginsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1StyleGuide).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateStyleGuideProjectsLocationsPluginsRequest>;
 
@@ -3716,7 +3719,7 @@ export const CreateProjectsLocationsPluginsInstancesRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1PluginInstance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/instances", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsPluginsInstancesRequest>;
 
@@ -3753,7 +3756,7 @@ export const ExecuteActionProjectsLocationsPluginsInstancesRequest =
       GoogleCloudApihubV1ExecutePluginInstanceActionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:executeAction", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:executeAction", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteActionProjectsLocationsPluginsInstancesRequest>;
 
@@ -3785,7 +3788,7 @@ export const GetProjectsLocationsPluginsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPluginsInstancesRequest>;
 
@@ -3826,7 +3829,7 @@ export const ListProjectsLocationsPluginsInstancesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/instances" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPluginsInstancesRequest>;
 
@@ -3867,7 +3870,7 @@ export const EnableActionProjectsLocationsPluginsInstancesRequest =
       GoogleCloudApihubV1EnablePluginInstanceActionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:enableAction", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:enableAction", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableActionProjectsLocationsPluginsInstancesRequest>;
 
@@ -3904,7 +3907,7 @@ export const DisableActionProjectsLocationsPluginsInstancesRequest =
       GoogleCloudApihubV1DisablePluginInstanceActionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:disableAction", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:disableAction", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableActionProjectsLocationsPluginsInstancesRequest>;
 
@@ -3942,7 +3945,7 @@ export const PatchProjectsLocationsPluginsInstancesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1PluginInstance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPluginsInstancesRequest>;
 
@@ -3974,7 +3977,7 @@ export const DeleteProjectsLocationsPluginsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPluginsInstancesRequest>;
 
@@ -4013,7 +4016,7 @@ export const ManageSourceDataProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:manageSourceData",
+      path: "v1/{+name}:manageSourceData",
       hasBody: true,
     }),
     svc,
@@ -4048,7 +4051,7 @@ export const GetContentsProjectsLocationsPluginsStyleGuideRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:contents" }),
+    T.Http({ method: "GET", path: "v1/{+name}:contents" }),
     svc,
   ) as unknown as Schema.Schema<GetContentsProjectsLocationsPluginsStyleGuideRequest>;
 
@@ -4086,7 +4089,7 @@ export const CreateProjectsLocationsApisRequest =
     apiId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiId")),
     body: Schema.optional(GoogleCloudApihubV1Api).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/apis", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/apis", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisRequest>;
 
@@ -4117,7 +4120,7 @@ export const GetProjectsLocationsApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisRequest>;
 
@@ -4157,7 +4160,7 @@ export const ListProjectsLocationsApisRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apis" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apis" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisRequest>;
 
@@ -4199,7 +4202,7 @@ export const PatchProjectsLocationsApisRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Api).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisRequest>;
 
@@ -4233,7 +4236,7 @@ export const DeleteProjectsLocationsApisRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisRequest>;
 
@@ -4270,7 +4273,7 @@ export const CreateProjectsLocationsApisVersionsRequest =
     versionId: Schema.optional(Schema.String).pipe(T.HttpQuery("versionId")),
     body: Schema.optional(GoogleCloudApihubV1Version).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/versions", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsRequest>;
 
@@ -4302,7 +4305,7 @@ export const GetProjectsLocationsApisVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsRequest>;
 
@@ -4343,7 +4346,7 @@ export const ListProjectsLocationsApisVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsRequest>;
 
@@ -4385,7 +4388,7 @@ export const PatchProjectsLocationsApisVersionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Version).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsRequest>;
 
@@ -4420,7 +4423,7 @@ export const DeleteProjectsLocationsApisVersionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsRequest>;
 
@@ -4457,7 +4460,7 @@ export const CreateProjectsLocationsApisVersionsSpecsRequest =
     specId: Schema.optional(Schema.String).pipe(T.HttpQuery("specId")),
     body: Schema.optional(GoogleCloudApihubV1Spec).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/specs", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/specs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4489,7 +4492,7 @@ export const GetProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4521,7 +4524,7 @@ export const GetContentsProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:contents" }),
+    T.Http({ method: "GET", path: "v1/{+name}:contents" }),
     svc,
   ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4562,7 +4565,7 @@ export const FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest
       T.HttpQuery("specContentType"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:fetchAdditionalSpecContent" }),
+    T.Http({ method: "GET", path: "v1/{+name}:fetchAdditionalSpecContent" }),
     svc,
   ) as unknown as Schema.Schema<FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4604,7 +4607,7 @@ export const ListProjectsLocationsApisVersionsSpecsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/specs" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/specs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4646,7 +4649,7 @@ export const PatchProjectsLocationsApisVersionsSpecsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Spec).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4678,7 +4681,7 @@ export const DeleteProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4714,7 +4717,7 @@ export const LintProjectsLocationsApisVersionsSpecsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:lint", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:lint", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<LintProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4753,7 +4756,7 @@ export const CreateProjectsLocationsApisVersionsOperationsRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1ApiOperation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/operations", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/operations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -4785,7 +4788,7 @@ export const GetProjectsLocationsApisVersionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -4826,7 +4829,7 @@ export const ListProjectsLocationsApisVersionsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/operations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -4868,7 +4871,7 @@ export const PatchProjectsLocationsApisVersionsOperationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1ApiOperation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -4900,7 +4903,7 @@ export const DeleteProjectsLocationsApisVersionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -4931,7 +4934,7 @@ export const GetProjectsLocationsApisVersionsDefinitionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsDefinitionsRequest>;
 
@@ -4971,7 +4974,7 @@ export const CreateProjectsLocationsDeploymentsRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1Deployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/deployments", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/deployments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentsRequest>;
 
@@ -5003,7 +5006,7 @@ export const GetProjectsLocationsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentsRequest>;
 
@@ -5044,7 +5047,7 @@ export const ListProjectsLocationsDeploymentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentsRequest>;
 
@@ -5086,7 +5089,7 @@ export const PatchProjectsLocationsDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Deployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDeploymentsRequest>;
 
@@ -5118,7 +5121,7 @@ export const DeleteProjectsLocationsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentsRequest>;
 
@@ -5157,7 +5160,7 @@ export const CreateProjectsLocationsAttributesRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1Attribute).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/attributes", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/attributes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAttributesRequest>;
 
@@ -5189,7 +5192,7 @@ export const GetProjectsLocationsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAttributesRequest>;
 
@@ -5227,7 +5230,7 @@ export const PatchProjectsLocationsAttributesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Attribute).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAttributesRequest>;
 
@@ -5259,7 +5262,7 @@ export const DeleteProjectsLocationsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAttributesRequest>;
 
@@ -5299,7 +5302,7 @@ export const ListProjectsLocationsAttributesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/attributes" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/attributes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAttributesRequest>;
 
@@ -5343,7 +5346,11 @@ export const CreateProjectsLocationsExternalApisRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1ExternalApi).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/externalApis", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/externalApis",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsExternalApisRequest>;
 
@@ -5375,7 +5382,7 @@ export const GetProjectsLocationsExternalApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsExternalApisRequest>;
 
@@ -5413,7 +5420,7 @@ export const PatchProjectsLocationsExternalApisRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1ExternalApi).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsExternalApisRequest>;
 
@@ -5445,7 +5452,7 @@ export const DeleteProjectsLocationsExternalApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsExternalApisRequest>;
 
@@ -5482,7 +5489,7 @@ export const ListProjectsLocationsExternalApisRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/externalApis" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/externalApis" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsExternalApisRequest>;
 
@@ -5526,7 +5533,11 @@ export const CreateProjectsLocationsDependenciesRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1Dependency).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/dependencies", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/dependencies",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDependenciesRequest>;
 
@@ -5558,7 +5569,7 @@ export const GetProjectsLocationsDependenciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDependenciesRequest>;
 
@@ -5596,7 +5607,7 @@ export const PatchProjectsLocationsDependenciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Dependency).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDependenciesRequest>;
 
@@ -5628,7 +5639,7 @@ export const DeleteProjectsLocationsDependenciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDependenciesRequest>;
 
@@ -5668,7 +5679,7 @@ export const ListProjectsLocationsDependenciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/dependencies" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/dependencies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDependenciesRequest>;
 
@@ -5710,7 +5721,7 @@ export const CreateProjectsLocationsCurationsRequest =
     curationId: Schema.optional(Schema.String).pipe(T.HttpQuery("curationId")),
     body: Schema.optional(GoogleCloudApihubV1Curation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/curations", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/curations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCurationsRequest>;
 
@@ -5742,7 +5753,7 @@ export const GetProjectsLocationsCurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCurationsRequest>;
 
@@ -5782,7 +5793,7 @@ export const ListProjectsLocationsCurationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/curations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/curations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCurationsRequest>;
 
@@ -5824,7 +5835,7 @@ export const PatchProjectsLocationsCurationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Curation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCurationsRequest>;
 
@@ -5856,7 +5867,7 @@ export const DeleteProjectsLocationsCurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCurationsRequest>;
 
@@ -5893,7 +5904,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/discoveredApiObservations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/discoveredApiObservations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredApiObservationsRequest>;
 
@@ -5929,7 +5940,7 @@ export const GetProjectsLocationsDiscoveredApiObservationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredApiObservationsRequest>;
 
@@ -5967,7 +5978,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/discoveredApiOperations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/discoveredApiOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
 
@@ -6006,7 +6017,7 @@ export const GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
 
@@ -6053,7 +6064,7 @@ export const CreateProjectsLocationsHostProjectRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/hostProjectRegistrations",
+      path: "v1/{+parent}/hostProjectRegistrations",
       hasBody: true,
     }),
     svc,
@@ -6088,7 +6099,7 @@ export const GetProjectsLocationsHostProjectRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsHostProjectRegistrationsRequest>;
 
@@ -6132,7 +6143,7 @@ export const ListProjectsLocationsHostProjectRegistrationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/hostProjectRegistrations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/hostProjectRegistrations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsHostProjectRegistrationsRequest>;
 
@@ -6178,7 +6189,7 @@ export const CreateProjectsLocationsApiHubInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/apiHubInstances",
+      path: "v1/{+parent}/apiHubInstances",
       hasBody: true,
     }),
     svc,
@@ -6212,7 +6223,7 @@ export const DeleteProjectsLocationsApiHubInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApiHubInstancesRequest>;
 
@@ -6244,7 +6255,7 @@ export const GetProjectsLocationsApiHubInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApiHubInstancesRequest>;
 
@@ -6282,7 +6293,7 @@ export const PatchProjectsLocationsApiHubInstancesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1ApiHubInstance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApiHubInstancesRequest>;
 
@@ -6314,7 +6325,7 @@ export const LookupProjectsLocationsApiHubInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apiHubInstances:lookup" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apiHubInstances:lookup" }),
     svc,
   ) as unknown as Schema.Schema<LookupProjectsLocationsApiHubInstancesRequest>;
 
@@ -6358,7 +6369,7 @@ export const CreateProjectsLocationsRuntimeProjectAttachmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/runtimeProjectAttachments",
+      path: "v1/{+parent}/runtimeProjectAttachments",
       hasBody: true,
     }),
     svc,
@@ -6393,7 +6404,7 @@ export const GetProjectsLocationsRuntimeProjectAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
@@ -6437,7 +6448,7 @@ export const ListProjectsLocationsRuntimeProjectAttachmentsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/runtimeProjectAttachments" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/runtimeProjectAttachments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
@@ -6473,7 +6484,7 @@ export const DeleteProjectsLocationsRuntimeProjectAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRuntimeProjectAttachmentsRequest>;
 

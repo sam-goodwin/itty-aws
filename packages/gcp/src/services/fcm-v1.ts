@@ -351,7 +351,7 @@ export const SendProjectsMessagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/messages:send",
+      path: "v1/{+parent}/messages:send",
       hasBody: true,
     }),
     svc,

@@ -584,7 +584,7 @@ export const GetConfigProjectsLocationsRecommendersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsLocationsRecommendersRequest>;
 
@@ -629,7 +629,7 @@ export const UpdateConfigProjectsLocationsRecommendersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsRecommendersRequest>;
 
@@ -666,7 +666,7 @@ export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationFailedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markFailed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markFailed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -704,7 +704,7 @@ export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationDismissedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markDismissed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markDismissed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -742,7 +742,7 @@ export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationSucceededRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markSucceeded", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markSucceeded", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -784,7 +784,7 @@ export const ListProjectsLocationsRecommendersRecommendationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -826,7 +826,7 @@ export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationClaimedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markClaimed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markClaimed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -859,7 +859,7 @@ export const GetProjectsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -892,7 +892,7 @@ export const GetConfigProjectsLocationsInsightTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsLocationsInsightTypesRequest>;
 
@@ -937,7 +937,7 @@ export const UpdateConfigProjectsLocationsInsightTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsInsightTypesRequest>;
 
@@ -969,7 +969,7 @@ export const GetProjectsLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInsightTypesInsightsRequest>;
 
@@ -1006,7 +1006,7 @@ export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest =
       GoogleCloudRecommenderV1MarkInsightAcceptedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markAccepted", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markAccepted", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkAcceptedProjectsLocationsInsightTypesInsightsRequest>;
 
@@ -1048,7 +1048,7 @@ export const ListProjectsLocationsInsightTypesInsightsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInsightTypesInsightsRequest>;
 
@@ -1097,7 +1097,7 @@ export const UpdateConfigBillingAccountsLocationsRecommendersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigBillingAccountsLocationsRecommendersRequest>;
 
@@ -1130,7 +1130,7 @@ export const GetConfigBillingAccountsLocationsRecommendersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigBillingAccountsLocationsRecommendersRequest>;
 
@@ -1167,7 +1167,7 @@ export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsReq
       GoogleCloudRecommenderV1MarkRecommendationDismissedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markDismissed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markDismissed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -1207,7 +1207,7 @@ export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsReq
       GoogleCloudRecommenderV1MarkRecommendationSucceededRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markSucceeded", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markSucceeded", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -1247,7 +1247,7 @@ export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsReques
       GoogleCloudRecommenderV1MarkRecommendationFailedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markFailed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markFailed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -1289,7 +1289,7 @@ export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -1331,7 +1331,7 @@ export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsReque
       GoogleCloudRecommenderV1MarkRecommendationClaimedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markClaimed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markClaimed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -1365,7 +1365,7 @@ export const GetBillingAccountsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -1411,7 +1411,7 @@ export const UpdateConfigBillingAccountsLocationsInsightTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigBillingAccountsLocationsInsightTypesRequest>;
 
@@ -1444,7 +1444,7 @@ export const GetConfigBillingAccountsLocationsInsightTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigBillingAccountsLocationsInsightTypesRequest>;
 
@@ -1485,7 +1485,7 @@ export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
 
@@ -1522,7 +1522,7 @@ export const GetBillingAccountsLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>;
 
@@ -1560,7 +1560,7 @@ export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
       GoogleCloudRecommenderV1MarkInsightAcceptedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markAccepted", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markAccepted", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>;
 
@@ -1593,7 +1593,7 @@ export const GetConfigOrganizationsLocationsRecommendersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigOrganizationsLocationsRecommendersRequest>;
 
@@ -1638,7 +1638,7 @@ export const UpdateConfigOrganizationsLocationsRecommendersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigOrganizationsLocationsRecommendersRequest>;
 
@@ -1679,7 +1679,7 @@ export const ListOrganizationsLocationsRecommendersRecommendationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -1721,7 +1721,7 @@ export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest
       GoogleCloudRecommenderV1MarkRecommendationClaimedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markClaimed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markClaimed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -1754,7 +1754,7 @@ export const GetOrganizationsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -1792,7 +1792,7 @@ export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsReque
       GoogleCloudRecommenderV1MarkRecommendationDismissedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markDismissed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markDismissed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -1831,7 +1831,7 @@ export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsReque
       GoogleCloudRecommenderV1MarkRecommendationSucceededRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markSucceeded", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markSucceeded", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -1870,7 +1870,7 @@ export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest 
       GoogleCloudRecommenderV1MarkRecommendationFailedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markFailed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markFailed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -1916,7 +1916,7 @@ export const UpdateConfigOrganizationsLocationsInsightTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigOrganizationsLocationsInsightTypesRequest>;
 
@@ -1948,7 +1948,7 @@ export const GetConfigOrganizationsLocationsInsightTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigOrganizationsLocationsInsightTypesRequest>;
 
@@ -1989,7 +1989,7 @@ export const ListOrganizationsLocationsInsightTypesInsightsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsInsightTypesInsightsRequest>;
 
@@ -2025,7 +2025,7 @@ export const GetOrganizationsLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsInsightTypesInsightsRequest>;
 
@@ -2062,7 +2062,7 @@ export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest =
       GoogleCloudRecommenderV1MarkInsightAcceptedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markAccepted", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markAccepted", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>;
 
@@ -2095,7 +2095,7 @@ export const GetFoldersLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsInsightTypesInsightsRequest>;
 
@@ -2132,7 +2132,7 @@ export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest =
       GoogleCloudRecommenderV1MarkInsightAcceptedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markAccepted", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markAccepted", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkAcceptedFoldersLocationsInsightTypesInsightsRequest>;
 
@@ -2174,7 +2174,7 @@ export const ListFoldersLocationsInsightTypesInsightsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsInsightTypesInsightsRequest>;
 
@@ -2215,7 +2215,7 @@ export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationFailedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markFailed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markFailed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>;
 
@@ -2253,7 +2253,7 @@ export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationDismissedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markDismissed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markDismissed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>;
 
@@ -2291,7 +2291,7 @@ export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationSucceededRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markSucceeded", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markSucceeded", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>;
 
@@ -2324,7 +2324,7 @@ export const GetFoldersLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsRecommendersRecommendationsRequest>;
 
@@ -2365,7 +2365,7 @@ export const ListFoldersLocationsRecommendersRecommendationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsRecommendersRecommendationsRequest>;
 
@@ -2407,7 +2407,7 @@ export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest =
       GoogleCloudRecommenderV1MarkRecommendationClaimedRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:markClaimed", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:markClaimed", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>;
 

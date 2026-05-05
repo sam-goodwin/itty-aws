@@ -3470,7 +3470,7 @@ export const GetLodgingLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLodgingLocationsRequest>;
 
@@ -3506,7 +3506,7 @@ export const UpdateLodgingLocationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Lodging).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateLodgingLocationsRequest>;
 
@@ -3540,7 +3540,7 @@ export const GetGoogleUpdatedLocationsLodgingRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:getGoogleUpdated" }),
+    T.Http({ method: "GET", path: "v1/{+name}:getGoogleUpdated" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleUpdatedLocationsLodgingRequest>;
 

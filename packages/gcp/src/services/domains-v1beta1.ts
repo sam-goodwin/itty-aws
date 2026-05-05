@@ -1141,7 +1141,7 @@ export const ListProjectsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}/locations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1176,7 +1176,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1221,7 +1221,7 @@ export const ListProjectsLocationsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1256,7 +1256,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1292,7 +1292,7 @@ export const TestIamPermissionsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{resource}:testIamPermissions",
+      path: "v1beta1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1332,7 +1332,7 @@ export const TransferProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/registrations:transfer",
+      path: "v1beta1/{+parent}/registrations:transfer",
       hasBody: true,
     }),
     svc,
@@ -1370,7 +1370,7 @@ export const ConfigureDnsSettingsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{registration}:configureDnsSettings",
+      path: "v1beta1/{+registration}:configureDnsSettings",
       hasBody: true,
     }),
     svc,
@@ -1410,7 +1410,7 @@ export const ConfigureContactSettingsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{registration}:configureContactSettings",
+      path: "v1beta1/{+registration}:configureContactSettings",
       hasBody: true,
     }),
     svc,
@@ -1454,7 +1454,7 @@ export const ListProjectsLocationsRegistrationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/registrations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/registrations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRegistrationsRequest>;
 
@@ -1495,7 +1495,7 @@ export const InitiatePushTransferProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{registration}:initiatePushTransfer",
+      path: "v1beta1/{+registration}:initiatePushTransfer",
       hasBody: true,
     }),
     svc,
@@ -1535,7 +1535,7 @@ export const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{registration}:resetAuthorizationCode",
+      path: "v1beta1/{+registration}:resetAuthorizationCode",
       hasBody: true,
     }),
     svc,
@@ -1578,7 +1578,7 @@ export const RetrieveImportableDomainsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/{location}/registrations:retrieveImportableDomains",
+      path: "v1beta1/{+location}/registrations:retrieveImportableDomains",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveImportableDomainsProjectsLocationsRegistrationsRequest>;
@@ -1619,7 +1619,7 @@ export const ExportProjectsLocationsRegistrationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportRegistrationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{name}:export", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta1/{+name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsRegistrationsRequest>;
 
@@ -1655,7 +1655,7 @@ export const RetrieveTransferParametersProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/{location}/registrations:retrieveTransferParameters",
+      path: "v1beta1/{+location}/registrations:retrieveTransferParameters",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveTransferParametersProjectsLocationsRegistrationsRequest>;
@@ -1694,7 +1694,7 @@ export const RetrieveRegisterParametersProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/{location}/registrations:retrieveRegisterParameters",
+      path: "v1beta1/{+location}/registrations:retrieveRegisterParameters",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveRegisterParametersProjectsLocationsRegistrationsRequest>;
@@ -1733,7 +1733,7 @@ export const RegisterProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/registrations:register",
+      path: "v1beta1/{+parent}/registrations:register",
       hasBody: true,
     }),
     svc,
@@ -1768,7 +1768,7 @@ export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/{registration}:retrieveGoogleDomainsForwardingConfig",
+      path: "v1beta1/{+registration}:retrieveGoogleDomainsForwardingConfig",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>;
@@ -1809,7 +1809,7 @@ export const RenewDomainProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{registration}:renewDomain",
+      path: "v1beta1/{+registration}:renewDomain",
       hasBody: true,
     }),
     svc,
@@ -1847,7 +1847,7 @@ export const SetIamPolicyProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{resource}:setIamPolicy",
+      path: "v1beta1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1887,7 +1887,7 @@ export const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{registration}:configureManagementSettings",
+      path: "v1beta1/{+registration}:configureManagementSettings",
       hasBody: true,
     }),
     svc,
@@ -1924,7 +1924,7 @@ export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/{registration}:retrieveAuthorizationCode",
+      path: "v1beta1/{+registration}:retrieveAuthorizationCode",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest>;
@@ -1964,7 +1964,7 @@ export const PatchProjectsLocationsRegistrationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Registration).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsRegistrationsRequest>;
 
@@ -2000,7 +2000,7 @@ export const ImportProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/registrations:import",
+      path: "v1beta1/{+parent}/registrations:import",
       hasBody: true,
     }),
     svc,
@@ -2033,7 +2033,7 @@ export const DeleteProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRegistrationsRequest>;
 
@@ -2072,7 +2072,7 @@ export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsReques
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/{registration}:retrieveGoogleDomainsDnsRecords",
+      path: "v1beta1/{+registration}:retrieveGoogleDomainsDnsRecords",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
@@ -2115,7 +2115,7 @@ export const GetIamPolicyProjectsLocationsRegistrationsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{resource}:getIamPolicy" }),
+    T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>;
 
@@ -2151,7 +2151,7 @@ export const SearchDomainsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/{location}/registrations:searchDomains",
+      path: "v1beta1/{+location}/registrations:searchDomains",
     }),
     svc,
   ) as unknown as Schema.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
@@ -2184,7 +2184,7 @@ export const GetProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRegistrationsRequest>;
 

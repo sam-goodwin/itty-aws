@@ -517,7 +517,7 @@ export const CreateCuratorsCuratedPackagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/curatedPackages",
+      path: "v1beta/{+parent}/curatedPackages",
       hasBody: true,
     }),
     svc,
@@ -556,7 +556,7 @@ export const PatchCuratorsCuratedPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CuratedPackage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCuratorsCuratedPackagesRequest>;
 
@@ -587,7 +587,7 @@ export const GetCuratorsCuratedPackagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCuratorsCuratedPackagesRequest>;
 
@@ -627,7 +627,7 @@ export const ListCuratorsCuratedPackagesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/curatedPackages" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/curatedPackages" }),
     svc,
   ) as unknown as Schema.Schema<ListCuratorsCuratedPackagesRequest>;
 
@@ -665,7 +665,11 @@ export const DeactivateCuratorsCuratedPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateCuratedPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:deactivate", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+name}:deactivate",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<DeactivateCuratorsCuratedPackagesRequest>;
 
@@ -699,7 +703,7 @@ export const ActivateCuratorsCuratedPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateCuratedPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:activate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateCuratorsCuratedPackagesRequest>;
 
@@ -736,7 +740,7 @@ export const ListCuratorsDataSegmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/dataSegments" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/dataSegments" }),
     svc,
   ) as unknown as Schema.Schema<ListCuratorsDataSegmentsRequest>;
 
@@ -774,7 +778,11 @@ export const DeactivateCuratorsDataSegmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateDataSegmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:deactivate", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+name}:deactivate",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<DeactivateCuratorsDataSegmentsRequest>;
 
@@ -808,7 +816,7 @@ export const ActivateCuratorsDataSegmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateDataSegmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{name}:activate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1beta/{+name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateCuratorsDataSegmentsRequest>;
 
@@ -844,7 +852,7 @@ export const CreateCuratorsDataSegmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/dataSegments",
+      path: "v1beta/{+parent}/dataSegments",
       hasBody: true,
     }),
     svc,
@@ -883,7 +891,7 @@ export const PatchCuratorsDataSegmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DataSegment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCuratorsDataSegmentsRequest>;
 
@@ -914,7 +922,7 @@ export const GetCuratorsDataSegmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCuratorsDataSegmentsRequest>;
 

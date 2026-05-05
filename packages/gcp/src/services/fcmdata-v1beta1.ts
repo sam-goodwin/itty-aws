@@ -220,7 +220,7 @@ export const ListProjectsAndroidAppsDeliveryDataRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/deliveryData" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/deliveryData" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAndroidAppsDeliveryDataRequest>;
 

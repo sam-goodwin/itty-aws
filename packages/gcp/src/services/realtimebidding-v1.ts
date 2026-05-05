@@ -1262,7 +1262,7 @@ export interface GetBiddersRequest {
 export const GetBiddersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetBiddersRequest>;
 
@@ -1335,7 +1335,7 @@ export const PatchBiddersEndpointsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Endpoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBiddersEndpointsRequest>;
 
@@ -1366,7 +1366,7 @@ export const GetBiddersEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersEndpointsRequest>;
 
@@ -1402,7 +1402,7 @@ export const ListBiddersEndpointsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/endpoints" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/endpoints" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersEndpointsRequest>;
 
@@ -1442,7 +1442,7 @@ export const WatchBiddersCreativesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/creatives:watch",
+      path: "v1/{+parent}/creatives:watch",
       hasBody: true,
     }),
     svc,
@@ -1491,7 +1491,7 @@ export const ListBiddersCreativesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/creatives" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/creatives" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersCreativesRequest>;
 
@@ -1529,7 +1529,7 @@ export const ActivateBiddersPretargetingConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivatePretargetingConfigRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateBiddersPretargetingConfigsRequest>;
 
@@ -1565,7 +1565,7 @@ export const CreateBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/pretargetingConfigs",
+      path: "v1/{+parent}/pretargetingConfigs",
       hasBody: true,
     }),
     svc,
@@ -1603,7 +1603,7 @@ export const RemoveTargetedPublishersBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{pretargetingConfig}:removeTargetedPublishers",
+      path: "v1/{+pretargetingConfig}:removeTargetedPublishers",
       hasBody: true,
     }),
     svc,
@@ -1643,7 +1643,7 @@ export const AddTargetedPublishersBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{pretargetingConfig}:addTargetedPublishers",
+      path: "v1/{+pretargetingConfig}:addTargetedPublishers",
       hasBody: true,
     }),
     svc,
@@ -1678,7 +1678,7 @@ export const DeleteBiddersPretargetingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBiddersPretargetingConfigsRequest>;
 
@@ -1715,7 +1715,7 @@ export const ListBiddersPretargetingConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/pretargetingConfigs" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/pretargetingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersPretargetingConfigsRequest>;
 
@@ -1756,7 +1756,7 @@ export const RemoveTargetedSitesBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{pretargetingConfig}:removeTargetedSites",
+      path: "v1/{+pretargetingConfig}:removeTargetedSites",
       hasBody: true,
     }),
     svc,
@@ -1796,7 +1796,7 @@ export const PatchBiddersPretargetingConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PretargetingConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBiddersPretargetingConfigsRequest>;
 
@@ -1832,7 +1832,7 @@ export const RemoveTargetedAppsBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{pretargetingConfig}:removeTargetedApps",
+      path: "v1/{+pretargetingConfig}:removeTargetedApps",
       hasBody: true,
     }),
     svc,
@@ -1866,7 +1866,7 @@ export const GetBiddersPretargetingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersPretargetingConfigsRequest>;
 
@@ -1900,7 +1900,7 @@ export const SuspendBiddersPretargetingConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendPretargetingConfigRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:suspend", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:suspend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SuspendBiddersPretargetingConfigsRequest>;
 
@@ -1936,7 +1936,7 @@ export const AddTargetedSitesBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{pretargetingConfig}:addTargetedSites",
+      path: "v1/{+pretargetingConfig}:addTargetedSites",
       hasBody: true,
     }),
     svc,
@@ -1975,7 +1975,7 @@ export const AddTargetedAppsBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{pretargetingConfig}:addTargetedApps",
+      path: "v1/{+pretargetingConfig}:addTargetedApps",
       hasBody: true,
     }),
     svc,
@@ -2016,7 +2016,7 @@ export const BatchApproveBiddersPublisherConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/publisherConnections:batchApprove",
+      path: "v1/{+parent}/publisherConnections:batchApprove",
       hasBody: true,
     }),
     svc,
@@ -2050,7 +2050,7 @@ export const GetBiddersPublisherConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersPublisherConnectionsRequest>;
 
@@ -2093,7 +2093,7 @@ export const ListBiddersPublisherConnectionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/publisherConnections" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/publisherConnections" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersPublisherConnectionsRequest>;
 
@@ -2136,7 +2136,7 @@ export const BatchRejectBiddersPublisherConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/publisherConnections:batchReject",
+      path: "v1/{+parent}/publisherConnections:batchReject",
       hasBody: true,
     }),
     svc,
@@ -2169,7 +2169,7 @@ export interface GetBuyersRequest {
 export const GetBuyersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetBuyersRequest>;
 
@@ -2236,7 +2236,7 @@ export const GetRemarketingTagBuyersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:getRemarketingTag" }),
+    T.Http({ method: "GET", path: "v1/{+name}:getRemarketingTag" }),
     svc,
   ) as unknown as Schema.Schema<GetRemarketingTagBuyersRequest>;
 
@@ -2273,7 +2273,7 @@ export const PatchBuyersCreativesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Creative).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersCreativesRequest>;
 
@@ -2311,7 +2311,7 @@ export const GetBuyersCreativesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersCreativesRequest>;
 
@@ -2357,7 +2357,7 @@ export const ListBuyersCreativesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/creatives" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/creatives" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersCreativesRequest>;
 
@@ -2395,7 +2395,7 @@ export const CreateBuyersCreativesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Creative).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/creatives", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/creatives", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersCreativesRequest>;
 
@@ -2426,7 +2426,7 @@ export const GetBuyersUserListsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersUserListsRequest>;
 
@@ -2459,7 +2459,7 @@ export const UpdateBuyersUserListsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UserList).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBuyersUserListsRequest>;
 
@@ -2493,7 +2493,7 @@ export const CreateBuyersUserListsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(UserList).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/userLists", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/userLists", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersUserListsRequest>;
 
@@ -2527,7 +2527,7 @@ export const CloseBuyersUserListsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CloseUserListRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:close", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:close", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CloseBuyersUserListsRequest>;
 
@@ -2561,7 +2561,7 @@ export const OpenBuyersUserListsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(OpenUserListRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:open", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:open", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<OpenBuyersUserListsRequest>;
 
@@ -2591,7 +2591,7 @@ export const GetRemarketingTagBuyersUserListsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:getRemarketingTag" }),
+    T.Http({ method: "GET", path: "v1/{+name}:getRemarketingTag" }),
     svc,
   ) as unknown as Schema.Schema<GetRemarketingTagBuyersUserListsRequest>;
 
@@ -2629,7 +2629,7 @@ export const ListBuyersUserListsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/userLists" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/userLists" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersUserListsRequest>;
 

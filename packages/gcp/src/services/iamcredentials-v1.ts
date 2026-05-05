@@ -181,7 +181,7 @@ export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/allowedLocations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
     svc,
   ) as unknown as Schema.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>;
 
@@ -214,7 +214,7 @@ export const GetAllowedLocationsProjectsServiceAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/allowedLocations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
     svc,
   ) as unknown as Schema.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>;
 
@@ -251,7 +251,7 @@ export const GenerateAccessTokenProjectsServiceAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:generateAccessToken",
+      path: "v1/{+name}:generateAccessToken",
       hasBody: true,
     }),
     svc,
@@ -288,7 +288,7 @@ export const SignBlobProjectsServiceAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SignBlobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:signBlob", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:signBlob", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SignBlobProjectsServiceAccountsRequest>;
 
@@ -324,7 +324,7 @@ export const GenerateIdTokenProjectsServiceAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:generateIdToken",
+      path: "v1/{+name}:generateIdToken",
       hasBody: true,
     }),
     svc,
@@ -361,7 +361,7 @@ export const SignJwtProjectsServiceAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SignJwtRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:signJwt", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:signJwt", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SignJwtProjectsServiceAccountsRequest>;
 
@@ -392,7 +392,7 @@ export const GetAllowedLocationsLocationsWorkforcePoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/allowedLocations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
     svc,
   ) as unknown as Schema.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>;
 

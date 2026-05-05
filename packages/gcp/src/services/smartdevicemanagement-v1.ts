@@ -165,7 +165,7 @@ export const GetEnterprisesStructuresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesStructuresRequest>;
 
@@ -200,7 +200,7 @@ export const ListEnterprisesStructuresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/structures" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/structures" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesStructuresRequest>;
 
@@ -232,7 +232,7 @@ export const GetEnterprisesStructuresRoomsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesStructuresRoomsRequest>;
 
@@ -264,7 +264,7 @@ export const ListEnterprisesStructuresRoomsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/rooms" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/rooms" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesStructuresRoomsRequest>;
 
@@ -299,7 +299,7 @@ export const ListEnterprisesDevicesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/devices" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesDevicesRequest>;
 
@@ -331,7 +331,7 @@ export const GetEnterprisesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesDevicesRequest>;
 
@@ -367,7 +367,11 @@ export const ExecuteCommandEnterprisesDevicesRequest =
       GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:executeCommand", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+name}:executeCommand",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<ExecuteCommandEnterprisesDevicesRequest>;
 

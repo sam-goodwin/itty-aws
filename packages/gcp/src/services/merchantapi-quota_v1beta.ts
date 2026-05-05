@@ -166,7 +166,7 @@ export const ListAccountsQuotasRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "quota/v1beta/{parent}/quotas" }),
+    T.Http({ method: "GET", path: "quota/v1beta/{+parent}/quotas" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsQuotasRequest>;
 

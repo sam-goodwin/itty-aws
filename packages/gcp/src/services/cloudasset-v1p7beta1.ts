@@ -938,7 +938,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1p7beta1/{name}" }),
+  T.Http({ method: "GET", path: "v1p7beta1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -975,7 +975,7 @@ export const ExportAssetsV1p7beta1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p7beta1/{parent}:exportAssets",
+      path: "v1p7beta1/{+parent}:exportAssets",
       hasBody: true,
     }),
     svc,

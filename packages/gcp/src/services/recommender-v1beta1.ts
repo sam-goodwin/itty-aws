@@ -712,7 +712,7 @@ export const ListOrganizationsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}/locations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsRequest>;
 
@@ -748,7 +748,7 @@ export const GetConfigOrganizationsLocationsRecommendersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigOrganizationsLocationsRecommendersRequest>;
 
@@ -793,7 +793,7 @@ export const UpdateConfigOrganizationsLocationsRecommendersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigOrganizationsLocationsRecommendersRequest>;
 
@@ -825,7 +825,7 @@ export const GetOrganizationsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -865,7 +865,7 @@ export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markSucceeded",
+      path: "v1beta1/{+name}:markSucceeded",
       hasBody: true,
     }),
     svc,
@@ -908,7 +908,7 @@ export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markClaimed",
+      path: "v1beta1/{+name}:markClaimed",
       hasBody: true,
     }),
     svc,
@@ -950,7 +950,7 @@ export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markFailed",
+      path: "v1beta1/{+name}:markFailed",
       hasBody: true,
     }),
     svc,
@@ -994,7 +994,7 @@ export const ListOrganizationsLocationsRecommendersRecommendationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsRecommendersRecommendationsRequest>;
 
@@ -1038,7 +1038,7 @@ export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markDismissed",
+      path: "v1beta1/{+name}:markDismissed",
       hasBody: true,
     }),
     svc,
@@ -1074,7 +1074,7 @@ export const GetConfigOrganizationsLocationsInsightTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigOrganizationsLocationsInsightTypesRequest>;
 
@@ -1119,7 +1119,7 @@ export const UpdateConfigOrganizationsLocationsInsightTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigOrganizationsLocationsInsightTypesRequest>;
 
@@ -1151,7 +1151,7 @@ export const GetOrganizationsLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsInsightTypesInsightsRequest>;
 
@@ -1190,7 +1190,7 @@ export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markAccepted",
+      path: "v1beta1/{+name}:markAccepted",
       hasBody: true,
     }),
     svc,
@@ -1234,7 +1234,7 @@ export const ListOrganizationsLocationsInsightTypesInsightsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsInsightTypesInsightsRequest>;
 
@@ -1284,7 +1284,7 @@ export const ListProjectsLocationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}/locations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1320,7 +1320,7 @@ export const GetConfigProjectsLocationsRecommendersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsLocationsRecommendersRequest>;
 
@@ -1365,7 +1365,7 @@ export const UpdateConfigProjectsLocationsRecommendersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsRecommendersRequest>;
 
@@ -1397,7 +1397,7 @@ export const GetProjectsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -1437,7 +1437,7 @@ export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markSucceeded",
+      path: "v1beta1/{+name}:markSucceeded",
       hasBody: true,
     }),
     svc,
@@ -1479,7 +1479,7 @@ export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markFailed",
+      path: "v1beta1/{+name}:markFailed",
       hasBody: true,
     }),
     svc,
@@ -1521,7 +1521,7 @@ export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markClaimed",
+      path: "v1beta1/{+name}:markClaimed",
       hasBody: true,
     }),
     svc,
@@ -1563,7 +1563,7 @@ export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markDismissed",
+      path: "v1beta1/{+name}:markDismissed",
       hasBody: true,
     }),
     svc,
@@ -1607,7 +1607,7 @@ export const ListProjectsLocationsRecommendersRecommendationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRecommendersRecommendationsRequest>;
 
@@ -1644,7 +1644,7 @@ export const GetConfigProjectsLocationsInsightTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsLocationsInsightTypesRequest>;
 
@@ -1689,7 +1689,7 @@ export const UpdateConfigProjectsLocationsInsightTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsInsightTypesRequest>;
 
@@ -1730,7 +1730,7 @@ export const ListProjectsLocationsInsightTypesInsightsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInsightTypesInsightsRequest>;
 
@@ -1773,7 +1773,7 @@ export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markAccepted",
+      path: "v1beta1/{+name}:markAccepted",
       hasBody: true,
     }),
     svc,
@@ -1808,7 +1808,7 @@ export const GetProjectsLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInsightTypesInsightsRequest>;
 
@@ -1932,7 +1932,7 @@ export const ListFoldersLocationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}/locations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsRequest>;
 
@@ -1977,7 +1977,7 @@ export const ListFoldersLocationsInsightTypesInsightsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsInsightTypesInsightsRequest>;
 
@@ -2020,7 +2020,7 @@ export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markAccepted",
+      path: "v1beta1/{+name}:markAccepted",
       hasBody: true,
     }),
     svc,
@@ -2055,7 +2055,7 @@ export const GetFoldersLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsInsightTypesInsightsRequest>;
 
@@ -2087,7 +2087,7 @@ export const GetFoldersLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsRecommendersRecommendationsRequest>;
 
@@ -2126,7 +2126,7 @@ export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markSucceeded",
+      path: "v1beta1/{+name}:markSucceeded",
       hasBody: true,
     }),
     svc,
@@ -2168,7 +2168,7 @@ export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markFailed",
+      path: "v1beta1/{+name}:markFailed",
       hasBody: true,
     }),
     svc,
@@ -2210,7 +2210,7 @@ export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markClaimed",
+      path: "v1beta1/{+name}:markClaimed",
       hasBody: true,
     }),
     svc,
@@ -2252,7 +2252,7 @@ export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markDismissed",
+      path: "v1beta1/{+name}:markDismissed",
       hasBody: true,
     }),
     svc,
@@ -2296,7 +2296,7 @@ export const ListFoldersLocationsRecommendersRecommendationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsRecommendersRecommendationsRequest>;
 
@@ -2347,7 +2347,7 @@ export const ListBillingAccountsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}/locations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsLocationsRequest>;
 
@@ -2383,7 +2383,7 @@ export const GetConfigBillingAccountsLocationsRecommendersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigBillingAccountsLocationsRecommendersRequest>;
 
@@ -2428,7 +2428,7 @@ export const UpdateConfigBillingAccountsLocationsRecommendersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigBillingAccountsLocationsRecommendersRequest>;
 
@@ -2461,7 +2461,7 @@ export const GetBillingAccountsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -2501,7 +2501,7 @@ export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markSucceeded",
+      path: "v1beta1/{+name}:markSucceeded",
       hasBody: true,
     }),
     svc,
@@ -2545,7 +2545,7 @@ export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markFailed",
+      path: "v1beta1/{+name}:markFailed",
       hasBody: true,
     }),
     svc,
@@ -2587,7 +2587,7 @@ export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markClaimed",
+      path: "v1beta1/{+name}:markClaimed",
       hasBody: true,
     }),
     svc,
@@ -2630,7 +2630,7 @@ export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markDismissed",
+      path: "v1beta1/{+name}:markDismissed",
       hasBody: true,
     }),
     svc,
@@ -2676,7 +2676,7 @@ export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/recommendations" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/recommendations" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
@@ -2713,7 +2713,7 @@ export const GetConfigBillingAccountsLocationsInsightTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigBillingAccountsLocationsInsightTypesRequest>;
 
@@ -2758,7 +2758,7 @@ export const UpdateConfigBillingAccountsLocationsInsightTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigBillingAccountsLocationsInsightTypesRequest>;
 
@@ -2791,7 +2791,7 @@ export const GetBillingAccountsLocationsInsightTypesInsightsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>;
 
@@ -2833,7 +2833,7 @@ export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/insights" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/insights" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
 
@@ -2877,7 +2877,7 @@ export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:markAccepted",
+      path: "v1beta1/{+name}:markAccepted",
       hasBody: true,
     }),
     svc,

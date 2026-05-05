@@ -2219,7 +2219,7 @@ export const AcceptTermsOfServiceRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:accept",
+      path: "accounts/v1beta/{+name}:accept",
       hasBody: true,
     }),
     svc,
@@ -2292,7 +2292,7 @@ export const GetTermsOfServiceRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTermsOfServiceRequest>;
 
@@ -2322,7 +2322,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+  T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -2357,7 +2357,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Account).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchAccountsRequest>;
 
@@ -2395,7 +2395,7 @@ export const ListSubaccountsAccountsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "accounts/v1beta/{provider}:listSubaccounts",
+      path: "accounts/v1beta/{+provider}:listSubaccounts",
     }),
     svc,
   ) as unknown as Schema.Schema<ListSubaccountsAccountsRequest>;
@@ -2471,7 +2471,7 @@ export const CreateTestAccountAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}:createTestAccount",
+      path: "accounts/v1beta/{+parent}:createTestAccount",
       hasBody: true,
     }),
     svc,
@@ -2546,7 +2546,7 @@ export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "accounts/v1beta/{name}" }),
+  T.Http({ method: "DELETE", path: "accounts/v1beta/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteAccountsRequest>;
 
@@ -2576,7 +2576,7 @@ export const GetAccountsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsUsersRequest>;
 
@@ -2612,7 +2612,7 @@ export const PatchAccountsUsersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(User).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsUsersRequest>;
 
@@ -2650,7 +2650,7 @@ export const CreateAccountsUsersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/users",
+      path: "accounts/v1beta/{+parent}/users",
       hasBody: true,
     }),
     svc,
@@ -2682,7 +2682,7 @@ export const DeleteAccountsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "DELETE", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsUsersRequest>;
 
@@ -2718,7 +2718,7 @@ export const ListAccountsUsersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{parent}/users" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+parent}/users" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsUsersRequest>;
 
@@ -2758,7 +2758,7 @@ export const VerifySelfAccountsUsersMeRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "accounts/v1beta/{account}/users/me:verifySelf",
+      path: "accounts/v1beta/{+account}/users/me:verifySelf",
       hasBody: true,
     }),
     svc,
@@ -2796,7 +2796,7 @@ export const DisableAccountsProgramsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:disable",
+      path: "accounts/v1beta/{+name}:disable",
       hasBody: true,
     }),
     svc,
@@ -2835,7 +2835,7 @@ export const ListAccountsProgramsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{parent}/programs" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+parent}/programs" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProgramsRequest>;
 
@@ -2870,7 +2870,7 @@ export const GetAccountsProgramsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsProgramsRequest>;
 
@@ -2905,7 +2905,7 @@ export const EnableAccountsProgramsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:enable",
+      path: "accounts/v1beta/{+name}:enable",
       hasBody: true,
     }),
     svc,
@@ -2943,7 +2943,7 @@ export const CreateAccountsProgramsCheckoutSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/checkoutSettings",
+      path: "accounts/v1beta/{+parent}/checkoutSettings",
       hasBody: true,
     }),
     svc,
@@ -2982,7 +2982,7 @@ export const UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CheckoutSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
@@ -3015,7 +3015,7 @@ export const DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "DELETE", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
@@ -3048,7 +3048,7 @@ export const GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
@@ -3117,7 +3117,7 @@ export const RegisterGcpAccountsDeveloperRegistrationRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:registerGcp",
+      path: "accounts/v1beta/{+name}:registerGcp",
       hasBody: true,
     }),
     svc,
@@ -3151,7 +3151,7 @@ export const GetDeveloperRegistrationAccountsDeveloperRegistrationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDeveloperRegistrationAccountsDeveloperRegistrationRequest>;
 
@@ -3189,7 +3189,7 @@ export const UnregisterGcpAccountsDeveloperRegistrationRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:unregisterGcp",
+      path: "accounts/v1beta/{+name}:unregisterGcp",
       hasBody: true,
     }),
     svc,
@@ -3228,7 +3228,7 @@ export const ListAccountsGbpAccountsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{parent}/gbpAccounts" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+parent}/gbpAccounts" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsGbpAccountsRequest>;
 
@@ -3268,7 +3268,7 @@ export const LinkGbpAccountAccountsGbpAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/gbpAccounts:linkGbpAccount",
+      path: "accounts/v1beta/{+parent}/gbpAccounts:linkGbpAccount",
       hasBody: true,
     }),
     svc,
@@ -3301,7 +3301,7 @@ export const GetEmailPreferencesAccountsEmailPreferencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEmailPreferencesAccountsEmailPreferencesRequest>;
 
@@ -3339,7 +3339,7 @@ export const UpdateEmailPreferencesAccountsEmailPreferencesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EmailPreferences).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEmailPreferencesAccountsEmailPreferencesRequest>;
 
@@ -3385,7 +3385,7 @@ export const ListAccountsIssuesRequest =
     timeZone: Schema.optional(Schema.String).pipe(T.HttpQuery("timeZone")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{parent}/issues" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+parent}/issues" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsIssuesRequest>;
 
@@ -3426,7 +3426,7 @@ export const ListAccountsRelationshipsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{parent}/relationships" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+parent}/relationships" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsRelationshipsRequest>;
 
@@ -3462,7 +3462,7 @@ export const GetAccountsRelationshipsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsRelationshipsRequest>;
 
@@ -3499,7 +3499,7 @@ export const PatchAccountsRelationshipsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AccountRelationship).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsRelationshipsRequest>;
 
@@ -3530,7 +3530,7 @@ export const GetBusinessIdentityAccountsBusinessIdentityRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBusinessIdentityAccountsBusinessIdentityRequest>;
 
@@ -3568,7 +3568,7 @@ export const UpdateBusinessIdentityAccountsBusinessIdentityRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BusinessIdentity).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBusinessIdentityAccountsBusinessIdentityRequest>;
 
@@ -3605,7 +3605,7 @@ export const InsertAccountsShippingSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/shippingSettings:insert",
+      path: "accounts/v1beta/{+parent}/shippingSettings:insert",
       hasBody: true,
     }),
     svc,
@@ -3638,7 +3638,7 @@ export const GetShippingSettingsAccountsShippingSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetShippingSettingsAccountsShippingSettingsRequest>;
 
@@ -3672,7 +3672,7 @@ export const RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest 
   }).pipe(
     T.Http({
       method: "GET",
-      path: "accounts/v1beta/{parent}/termsOfServiceAgreementStates:retrieveForApplication",
+      path: "accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest>;
@@ -3706,7 +3706,7 @@ export const GetAccountsTermsOfServiceAgreementStatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsTermsOfServiceAgreementStatesRequest>;
 
@@ -3744,7 +3744,7 @@ export const UpdateAutofeedSettingsAccountsAutofeedSettingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AutofeedSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAutofeedSettingsAccountsAutofeedSettingsRequest>;
 
@@ -3776,7 +3776,7 @@ export const GetAutofeedSettingsAccountsAutofeedSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAutofeedSettingsAccountsAutofeedSettingsRequest>;
 
@@ -3808,7 +3808,7 @@ export const GetBusinessInfoAccountsBusinessInfoRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBusinessInfoAccountsBusinessInfoRequest>;
 
@@ -3845,7 +3845,7 @@ export const UpdateBusinessInfoAccountsBusinessInfoRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BusinessInfo).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBusinessInfoAccountsBusinessInfoRequest>;
 
@@ -3882,7 +3882,7 @@ export const ListAccountsServicesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{parent}/services" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsServicesRequest>;
 
@@ -3922,7 +3922,7 @@ export const ApproveAccountsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:approve",
+      path: "accounts/v1beta/{+name}:approve",
       hasBody: true,
     }),
     svc,
@@ -3960,7 +3960,7 @@ export const ProposeAccountsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/services:propose",
+      path: "accounts/v1beta/{+parent}/services:propose",
       hasBody: true,
     }),
     svc,
@@ -3998,7 +3998,7 @@ export const RejectAccountsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:reject",
+      path: "accounts/v1beta/{+name}:reject",
       hasBody: true,
     }),
     svc,
@@ -4030,7 +4030,7 @@ export const GetAccountsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsServicesRequest>;
 
@@ -4069,7 +4069,7 @@ export const CreateAccountsRegionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/regions",
+      path: "accounts/v1beta/{+parent}/regions",
       hasBody: true,
     }),
     svc,
@@ -4101,7 +4101,7 @@ export const GetAccountsRegionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsRegionsRequest>;
 
@@ -4137,7 +4137,7 @@ export const PatchAccountsRegionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Region).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsRegionsRequest>;
 
@@ -4173,7 +4173,7 @@ export const ListAccountsRegionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{parent}/regions" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+parent}/regions" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsRegionsRequest>;
 
@@ -4208,7 +4208,7 @@ export const DeleteAccountsRegionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "DELETE", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsRegionsRequest>;
 
@@ -4243,7 +4243,7 @@ export const CreateAccountsOnlineReturnPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/onlineReturnPolicies",
+      path: "accounts/v1beta/{+parent}/onlineReturnPolicies",
       hasBody: true,
     }),
     svc,
@@ -4276,7 +4276,7 @@ export const GetAccountsOnlineReturnPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsOnlineReturnPoliciesRequest>;
 
@@ -4313,7 +4313,7 @@ export const PatchAccountsOnlineReturnPoliciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(OnlineReturnPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsOnlineReturnPoliciesRequest>;
 
@@ -4352,7 +4352,7 @@ export const ListAccountsOnlineReturnPoliciesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "accounts/v1beta/{parent}/onlineReturnPolicies",
+      path: "accounts/v1beta/{+parent}/onlineReturnPolicies",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsOnlineReturnPoliciesRequest>;
@@ -4389,7 +4389,7 @@ export const DeleteAccountsOnlineReturnPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "DELETE", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsOnlineReturnPoliciesRequest>;
 
@@ -4425,7 +4425,7 @@ export const UnclaimAccountsHomepageRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:unclaim",
+      path: "accounts/v1beta/{+name}:unclaim",
       hasBody: true,
     }),
     svc,
@@ -4458,7 +4458,7 @@ export const GetHomepageAccountsHomepageRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetHomepageAccountsHomepageRequest>;
 
@@ -4494,7 +4494,7 @@ export const ClaimAccountsHomepageRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:claim",
+      path: "accounts/v1beta/{+name}:claim",
       hasBody: true,
     }),
     svc,
@@ -4533,7 +4533,7 @@ export const UpdateHomepageAccountsHomepageRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Homepage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateHomepageAccountsHomepageRequest>;
 
@@ -4572,7 +4572,7 @@ export const ListAccountsOmnichannelSettingsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "accounts/v1beta/{parent}/omnichannelSettings",
+      path: "accounts/v1beta/{+parent}/omnichannelSettings",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsOmnichannelSettingsRequest>;
@@ -4614,7 +4614,7 @@ export const CreateAccountsOmnichannelSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{parent}/omnichannelSettings",
+      path: "accounts/v1beta/{+parent}/omnichannelSettings",
       hasBody: true,
     }),
     svc,
@@ -4647,7 +4647,7 @@ export const GetAccountsOmnichannelSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsOmnichannelSettingsRequest>;
 
@@ -4684,7 +4684,7 @@ export const PatchAccountsOmnichannelSettingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(OmnichannelSetting).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsOmnichannelSettingsRequest>;
 
@@ -4722,7 +4722,7 @@ export const RequestInventoryVerificationAccountsOmnichannelSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:requestInventoryVerification",
+      path: "accounts/v1beta/{+name}:requestInventoryVerification",
       hasBody: true,
     }),
     svc,
@@ -4765,7 +4765,7 @@ export const FindAccountsOmnichannelSettingsLfpProvidersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "accounts/v1beta/{parent}/lfpProviders:find",
+      path: "accounts/v1beta/{+parent}/lfpProviders:find",
     }),
     svc,
   ) as unknown as Schema.Schema<FindAccountsOmnichannelSettingsLfpProvidersRequest>;
@@ -4807,7 +4807,7 @@ export const LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1beta/{name}:linkLfpProvider",
+      path: "accounts/v1beta/{+name}:linkLfpProvider",
       hasBody: true,
     }),
     svc,
@@ -4848,7 +4848,7 @@ export const UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AutomaticImprovements).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "accounts/v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "accounts/v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
 
@@ -4881,7 +4881,7 @@ export const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "accounts/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
 

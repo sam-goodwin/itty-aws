@@ -296,7 +296,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -330,7 +330,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -360,7 +360,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -393,7 +393,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -429,7 +429,7 @@ export const GenerateAccessTokenUsersEnvironmentsRequest =
     expireTime: Schema.optional(Schema.String).pipe(T.HttpQuery("expireTime")),
     ttl: Schema.optional(Schema.String).pipe(T.HttpQuery("ttl")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{environment}:generateAccessToken" }),
+    T.Http({ method: "GET", path: "v1/{+environment}:generateAccessToken" }),
     svc,
   ) as unknown as Schema.Schema<GenerateAccessTokenUsersEnvironmentsRequest>;
 
@@ -461,7 +461,7 @@ export const GetUsersEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetUsersEnvironmentsRequest>;
 
@@ -495,7 +495,7 @@ export const StartUsersEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartEnvironmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:start", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartUsersEnvironmentsRequest>;
 
@@ -529,7 +529,7 @@ export const AuthorizeUsersEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AuthorizeEnvironmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:authorize", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:authorize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AuthorizeUsersEnvironmentsRequest>;
 
@@ -565,7 +565,7 @@ export const AddPublicKeyUsersEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{environment}:addPublicKey",
+      path: "v1/{+environment}:addPublicKey",
       hasBody: true,
     }),
     svc,
@@ -603,7 +603,7 @@ export const RemovePublicKeyUsersEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{environment}:removePublicKey",
+      path: "v1/{+environment}:removePublicKey",
       hasBody: true,
     }),
     svc,

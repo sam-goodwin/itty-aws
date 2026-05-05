@@ -457,7 +457,7 @@ export const TriggerPubsubExecutionProjectsLocationsWorkflowsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{workflow}:triggerPubsubExecution",
+      path: "v1/{+workflow}:triggerPubsubExecution",
       hasBody: true,
     }),
     svc,
@@ -507,7 +507,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/executions" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -546,7 +546,7 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Execution).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/executions", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/executions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -580,7 +580,7 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -614,7 +614,7 @@ export const CancelProjectsLocationsWorkflowsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelExecutionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -645,7 +645,7 @@ export const ExportDataProjectsLocationsWorkflowsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:exportData" }),
+    T.Http({ method: "GET", path: "v1/{+name}:exportData" }),
     svc,
   ) as unknown as Schema.Schema<ExportDataProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -682,7 +682,7 @@ export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:deleteExecutionHistory",
+      path: "v1/{+name}:deleteExecutionHistory",
       hasBody: true,
     }),
     svc,
@@ -723,7 +723,7 @@ export const ListProjectsLocationsWorkflowsExecutionsCallbacksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/callbacks" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/callbacks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsCallbacksRequest>;
 
@@ -782,7 +782,7 @@ export const ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/stepEntries" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/stepEntries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest>;
 
@@ -826,7 +826,7 @@ export const GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest>;
 

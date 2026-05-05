@@ -574,7 +574,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/{name}:importDocuments",
+      path: "v1beta2/{+name}:importDocuments",
       hasBody: true,
     }),
     svc,
@@ -615,7 +615,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/{name}:exportDocuments",
+      path: "v1beta2/{+name}:exportDocuments",
       hasBody: true,
     }),
     svc,
@@ -658,7 +658,7 @@ export const ListProjectsDatabasesCollectionGroupsIndexesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{parent}/indexes" }),
+    T.Http({ method: "GET", path: "v1beta2/{+parent}/indexes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -697,7 +697,11 @@ export const CreateProjectsDatabasesCollectionGroupsIndexesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleFirestoreAdminV1beta2Index).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta2/{parent}/indexes", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1beta2/{+parent}/indexes",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -729,7 +733,7 @@ export const GetProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -761,7 +765,7 @@ export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta2/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -792,7 +796,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -830,7 +834,7 @@ export const PatchProjectsDatabasesCollectionGroupsFieldsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirestoreAdminV1beta2Field).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -871,7 +875,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{parent}/fields" }),
+    T.Http({ method: "GET", path: "v1beta2/{+parent}/fields" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 

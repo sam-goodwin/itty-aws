@@ -1439,7 +1439,7 @@ export const GetPeopleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("personFields"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{resourceName}" }),
+  T.Http({ method: "GET", path: "v1/{+resourceName}" }),
   svc,
 ) as unknown as Schema.Schema<GetPeopleRequest>;
 
@@ -1590,7 +1590,7 @@ export const UpdateContactPhotoPeopleRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/{resourceName}:updateContactPhoto",
+      path: "v1/{+resourceName}:updateContactPhoto",
       hasBody: true,
     }),
     svc,
@@ -1741,7 +1741,7 @@ export const DeleteContactPhotoPeopleRequest =
       T.HttpQuery("sources"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{resourceName}:deleteContactPhoto" }),
+    T.Http({ method: "DELETE", path: "v1/{+resourceName}:deleteContactPhoto" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContactPhotoPeopleRequest>;
 
@@ -1899,7 +1899,7 @@ export const UpdateContactPeopleRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/{resourceName}:updateContact",
+      path: "v1/{+resourceName}:updateContact",
       hasBody: true,
     }),
     svc,
@@ -1992,7 +1992,7 @@ export const DeleteContactPeopleRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{resourceName}:deleteContact" }),
+    T.Http({ method: "DELETE", path: "v1/{+resourceName}:deleteContact" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContactPeopleRequest>;
 
@@ -2065,7 +2065,7 @@ export const ListPeopleConnectionsRequest =
     sortOrder: Schema.optional(Schema.String).pipe(T.HttpQuery("sortOrder")),
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{resourceName}/connections" }),
+    T.Http({ method: "GET", path: "v1/{+resourceName}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListPeopleConnectionsRequest>;
 
@@ -2167,7 +2167,7 @@ export const CopyOtherContactToMyContactsGroupOtherContactsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resourceName}:copyOtherContactToMyContactsGroup",
+      path: "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
       hasBody: true,
     }),
     svc,
@@ -2242,7 +2242,7 @@ export const DeleteContactGroupsRequest =
       T.HttpQuery("deleteContacts"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{resourceName}" }),
+    T.Http({ method: "DELETE", path: "v1/{+resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContactGroupsRequest>;
 
@@ -2280,7 +2280,7 @@ export const GetContactGroupsRequest =
       T.HttpQuery("groupFields"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{resourceName}" }),
+    T.Http({ method: "GET", path: "v1/{+resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<GetContactGroupsRequest>;
 
@@ -2314,7 +2314,7 @@ export const UpdateContactGroupsRequest =
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(UpdateContactGroupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{resourceName}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+resourceName}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateContactGroupsRequest>;
 
@@ -2468,7 +2468,7 @@ export const ModifyContactGroupsMembersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resourceName}/members:modify",
+      path: "v1/{+resourceName}/members:modify",
       hasBody: true,
     }),
     svc,

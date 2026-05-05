@@ -1979,7 +1979,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/{name}" }),
+  T.Http({ method: "GET", path: "v1beta/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -2022,7 +2022,7 @@ export const UpdateConnectionsServicesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1beta/{name}/connections",
+      path: "v1beta/{+name}/connections",
       hasBody: true,
     }),
     svc,
@@ -2060,7 +2060,7 @@ export const AddSubnetworkServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}:addSubnetwork",
+      path: "v1beta/{+parent}:addSubnetwork",
       hasBody: true,
     }),
     svc,
@@ -2098,7 +2098,7 @@ export const SearchRangeServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}:searchRange",
+      path: "v1beta/{+parent}:searchRange",
       hasBody: true,
     }),
     svc,
@@ -2134,7 +2134,7 @@ export const ListServicesConnectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     network: Schema.optional(Schema.String).pipe(T.HttpQuery("network")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/connections" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesConnectionsRequest>;
 
@@ -2172,7 +2172,7 @@ export const CreateServicesConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/connections",
+      path: "v1beta/{+parent}/connections",
       hasBody: true,
     }),
     svc,

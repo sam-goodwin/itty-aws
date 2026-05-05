@@ -376,7 +376,7 @@ export const DeleteAccountsLfpStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "lfp/v1beta/{name}" }),
+    T.Http({ method: "DELETE", path: "lfp/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsLfpStoresRequest>;
 
@@ -407,7 +407,7 @@ export const GetAccountsLfpStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "lfp/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "lfp/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsLfpStoresRequest>;
 
@@ -443,7 +443,7 @@ export const InsertAccountsLfpStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "lfp/v1beta/{parent}/lfpStores:insert",
+      path: "lfp/v1beta/{+parent}/lfpStores:insert",
       hasBody: true,
     }),
     svc,
@@ -487,7 +487,7 @@ export const ListAccountsLfpStoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "lfp/v1beta/{parent}/lfpStores" }),
+    T.Http({ method: "GET", path: "lfp/v1beta/{+parent}/lfpStores" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLfpStoresRequest>;
 
@@ -522,7 +522,7 @@ export const GetAccountsLfpMerchantStatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "lfp/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "lfp/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsLfpMerchantStatesRequest>;
 
@@ -558,7 +558,7 @@ export const InsertAccountsLfpSalesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "lfp/v1beta/{parent}/lfpSales:insert",
+      path: "lfp/v1beta/{+parent}/lfpSales:insert",
       hasBody: true,
     }),
     svc,
@@ -596,7 +596,7 @@ export const InsertAccountsLfpInventoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "lfp/v1beta/{parent}/lfpInventories:insert",
+      path: "lfp/v1beta/{+parent}/lfpInventories:insert",
       hasBody: true,
     }),
     svc,

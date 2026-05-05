@@ -483,7 +483,7 @@ export const PatchAccountsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "datasources/v1beta/{name}",
+      path: "datasources/v1beta/{+name}",
       hasBody: true,
     }),
     svc,
@@ -521,7 +521,7 @@ export const FetchAccountsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "datasources/v1beta/{name}:fetch",
+      path: "datasources/v1beta/{+name}:fetch",
       hasBody: true,
     }),
     svc,
@@ -559,7 +559,7 @@ export const CreateAccountsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "datasources/v1beta/{parent}/dataSources",
+      path: "datasources/v1beta/{+parent}/dataSources",
       hasBody: true,
     }),
     svc,
@@ -592,7 +592,7 @@ export const GetAccountsDataSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "datasources/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "datasources/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsDataSourcesRequest>;
 
@@ -629,7 +629,7 @@ export const ListAccountsDataSourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "datasources/v1beta/{parent}/dataSources" }),
+    T.Http({ method: "GET", path: "datasources/v1beta/{+parent}/dataSources" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsDataSourcesRequest>;
 
@@ -664,7 +664,7 @@ export const DeleteAccountsDataSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "datasources/v1beta/{name}" }),
+    T.Http({ method: "DELETE", path: "datasources/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsDataSourcesRequest>;
 
@@ -695,7 +695,7 @@ export const GetAccountsDataSourcesFileUploadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "datasources/v1beta/{name}" }),
+    T.Http({ method: "GET", path: "datasources/v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsDataSourcesFileUploadsRequest>;
 

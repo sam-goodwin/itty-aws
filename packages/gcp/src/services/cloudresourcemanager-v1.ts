@@ -949,7 +949,7 @@ export interface GetLiensRequest {
 export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetLiensRequest>;
 
@@ -1007,7 +1007,7 @@ export interface DeleteLiensRequest {
 export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/{name}" }),
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteLiensRequest>;
 
@@ -1042,7 +1042,7 @@ export const ListOrgPoliciesProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:listOrgPolicies",
+      path: "v1/{+resource}:listOrgPolicies",
       hasBody: true,
     }),
     svc,
@@ -1080,7 +1080,7 @@ export const SetOrgPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setOrgPolicy",
+      path: "v1/{+resource}:setOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1266,7 +1266,7 @@ export const ClearOrgPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:clearOrgPolicy",
+      path: "v1/{+resource}:clearOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1335,7 +1335,7 @@ export const GetEffectiveOrgPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getEffectiveOrgPolicy",
+      path: "v1/{+resource}:getEffectiveOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1375,7 +1375,7 @@ export const ListAvailableOrgPolicyConstraintsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:listAvailableOrgPolicyConstraints",
+      path: "v1/{+resource}:listAvailableOrgPolicyConstraints",
       hasBody: true,
     }),
     svc,
@@ -1550,7 +1550,7 @@ export const GetOrgPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getOrgPolicy",
+      path: "v1/{+resource}:getOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1620,7 +1620,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1655,7 +1655,7 @@ export const GetIamPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getIamPolicy",
+      path: "v1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1695,7 +1695,7 @@ export const ListAvailableOrgPolicyConstraintsOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:listAvailableOrgPolicyConstraints",
+      path: "v1/{+resource}:listAvailableOrgPolicyConstraints",
       hasBody: true,
     }),
     svc,
@@ -1734,7 +1734,7 @@ export const GetEffectiveOrgPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getEffectiveOrgPolicy",
+      path: "v1/{+resource}:getEffectiveOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1772,7 +1772,7 @@ export const SetOrgPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setOrgPolicy",
+      path: "v1/{+resource}:setOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1810,7 +1810,7 @@ export const TestIamPermissionsOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1849,7 +1849,7 @@ export const ListOrgPoliciesOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:listOrgPolicies",
+      path: "v1/{+resource}:listOrgPolicies",
       hasBody: true,
     }),
     svc,
@@ -1887,7 +1887,7 @@ export const ClearOrgPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:clearOrgPolicy",
+      path: "v1/{+resource}:clearOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1956,7 +1956,7 @@ export const GetOrgPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getOrgPolicy",
+      path: "v1/{+resource}:getOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -1994,7 +1994,7 @@ export const SetIamPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2027,7 +2027,7 @@ export const GetOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsRequest>;
 
@@ -2065,7 +2065,7 @@ export const ListAvailableOrgPolicyConstraintsFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:listAvailableOrgPolicyConstraints",
+      path: "v1/{+resource}:listAvailableOrgPolicyConstraints",
       hasBody: true,
     }),
     svc,
@@ -2104,7 +2104,7 @@ export const GetOrgPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getOrgPolicy",
+      path: "v1/{+resource}:getOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -2142,7 +2142,7 @@ export const ClearOrgPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:clearOrgPolicy",
+      path: "v1/{+resource}:clearOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -2179,7 +2179,7 @@ export const ListOrgPoliciesFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:listOrgPolicies",
+      path: "v1/{+resource}:listOrgPolicies",
       hasBody: true,
     }),
     svc,
@@ -2217,7 +2217,7 @@ export const GetEffectiveOrgPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getEffectiveOrgPolicy",
+      path: "v1/{+resource}:getEffectiveOrgPolicy",
       hasBody: true,
     }),
     svc,
@@ -2255,7 +2255,7 @@ export const SetOrgPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setOrgPolicy",
+      path: "v1/{+resource}:setOrgPolicy",
       hasBody: true,
     }),
     svc,

@@ -308,7 +308,7 @@ export interface GetNotesRequest {
 export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetNotesRequest>;
 
@@ -337,7 +337,7 @@ export interface DeleteNotesRequest {
 export const DeleteNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/{name}" }),
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteNotesRequest>;
 
@@ -372,7 +372,7 @@ export const BatchDeleteNotesPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/permissions:batchDelete",
+      path: "v1/{+parent}/permissions:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -410,7 +410,7 @@ export const BatchCreateNotesPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/permissions:batchCreate",
+      path: "v1/{+parent}/permissions:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -446,7 +446,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   mimeType: Schema.optional(Schema.String).pipe(T.HttpQuery("mimeType")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DownloadMediaRequest>;
 

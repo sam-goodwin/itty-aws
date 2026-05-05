@@ -1066,7 +1066,7 @@ export const ListOrganizationsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
 
@@ -1102,7 +1102,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
 
@@ -1142,7 +1142,7 @@ export const CreateOrganizationsLocationsWorkloadsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/workloads", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/workloads", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsLocationsWorkloadsRequest>;
 
@@ -1182,7 +1182,7 @@ export const PatchOrganizationsLocationsWorkloadsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsWorkloadsRequest>;
 
@@ -1221,7 +1221,7 @@ export const RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:restrictAllowedResources",
+      path: "v1/{+name}:restrictAllowedResources",
       hasBody: true,
     }),
     svc,
@@ -1259,7 +1259,7 @@ export const DeleteOrganizationsLocationsWorkloadsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsWorkloadsRequest>;
 
@@ -1290,7 +1290,7 @@ export const GetOrganizationsLocationsWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsWorkloadsRequest>;
 
@@ -1336,7 +1336,7 @@ export const AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest =
       T.HttpQuery("assetTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{target}:analyzeWorkloadMove" }),
+    T.Http({ method: "GET", path: "v1/{+target}:analyzeWorkloadMove" }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest>;
 
@@ -1382,7 +1382,7 @@ export const ListOrganizationsLocationsWorkloadsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/workloads" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/workloads" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsRequest>;
 
@@ -1425,7 +1425,7 @@ export const MutatePartnerPermissionsOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/{name}:mutatePartnerPermissions",
+      path: "v1/{+name}:mutatePartnerPermissions",
       hasBody: true,
     }),
     svc,
@@ -1462,7 +1462,7 @@ export const EnableResourceMonitoringOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:enableResourceMonitoring",
+      path: "v1/{+name}:enableResourceMonitoring",
       hasBody: true,
     }),
     svc,
@@ -1499,7 +1499,7 @@ export const EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "v1/{name}:enableComplianceUpdates",
+      path: "v1/{+name}:enableComplianceUpdates",
       hasBody: true,
     }),
     svc,
@@ -1553,7 +1553,7 @@ export const ListOrganizationsLocationsWorkloadsViolationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/violations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/violations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsViolationsRequest>;
 
@@ -1589,7 +1589,7 @@ export const GetOrganizationsLocationsWorkloadsViolationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsWorkloadsViolationsRequest>;
 
@@ -1626,7 +1626,7 @@ export const AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest =
       GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:acknowledge", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:acknowledge", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest>;
 
@@ -1665,7 +1665,7 @@ export const ListOrganizationsLocationsWorkloadsUpdatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/updates" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/updates" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsUpdatesRequest>;
 
@@ -1706,7 +1706,7 @@ export const ApplyOrganizationsLocationsWorkloadsUpdatesRequest =
       GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:apply", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:apply", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApplyOrganizationsLocationsWorkloadsUpdatesRequest>;
 

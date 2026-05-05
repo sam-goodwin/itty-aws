@@ -615,7 +615,7 @@ export const StartProjectsScanConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartScanRunRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:start", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartProjectsScanConfigsRequest>;
 
@@ -646,7 +646,7 @@ export const DeleteProjectsScanConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsScanConfigsRequest>;
 
@@ -680,7 +680,7 @@ export const CreateProjectsScanConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/scanConfigs", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/scanConfigs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsScanConfigsRequest>;
 
@@ -717,7 +717,7 @@ export const ListProjectsScanConfigsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/scanConfigs" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/scanConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsScanConfigsRequest>;
 
@@ -752,7 +752,7 @@ export const GetProjectsScanConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsScanConfigsRequest>;
 
@@ -789,7 +789,7 @@ export const PatchProjectsScanConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ScanConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsScanConfigsRequest>;
 
@@ -820,7 +820,7 @@ export const GetProjectsScanConfigsScanRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsScanConfigsScanRunsRequest>;
 
@@ -857,7 +857,7 @@ export const ListProjectsScanConfigsScanRunsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/scanRuns" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/scanRuns" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsRequest>;
 
@@ -895,7 +895,7 @@ export const StopProjectsScanConfigsScanRunsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopScanRunRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsScanConfigsScanRunsRequest>;
 
@@ -926,7 +926,7 @@ export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/findingTypeStats" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/findingTypeStats" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
 
@@ -968,7 +968,7 @@ export const ListProjectsScanConfigsScanRunsFindingsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/findings" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/findings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
 
@@ -1004,7 +1004,7 @@ export const GetProjectsScanConfigsScanRunsFindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>;
 
@@ -1041,7 +1041,7 @@ export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/crawledUrls" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/crawledUrls" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
 

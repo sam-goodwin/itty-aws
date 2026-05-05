@@ -2693,7 +2693,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -2725,7 +2725,7 @@ export const ExportAssetsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(ExportAssetsRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{parent}:exportAssets", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{+parent}:exportAssets", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<ExportAssetsV1Request>;
 
@@ -2788,7 +2788,7 @@ export const BatchGetAssetsHistoryV1Request =
       T.HttpQuery("relationshipTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}:batchGetAssetsHistory" }),
+    T.Http({ method: "GET", path: "v1/{+parent}:batchGetAssetsHistory" }),
     svc,
   ) as unknown as Schema.Schema<BatchGetAssetsHistoryV1Request>;
 
@@ -2839,7 +2839,7 @@ export const SearchAllResourcesV1Request =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{scope}:searchAllResources" }),
+    T.Http({ method: "GET", path: "v1/{+scope}:searchAllResources" }),
     svc,
   ) as unknown as Schema.Schema<SearchAllResourcesV1Request>;
 
@@ -2891,7 +2891,7 @@ export const SearchAllIamPoliciesV1Request =
     ),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{scope}:searchAllIamPolicies" }),
+    T.Http({ method: "GET", path: "v1/{+scope}:searchAllIamPolicies" }),
     svc,
   ) as unknown as Schema.Schema<SearchAllIamPoliciesV1Request>;
 
@@ -2993,7 +2993,7 @@ export const AnalyzeIamPolicyV1Request =
       T.HttpQuery("executionTimeout"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{scope}:analyzeIamPolicy" }),
+    T.Http({ method: "GET", path: "v1/{+scope}:analyzeIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeIamPolicyV1Request>;
 
@@ -3031,7 +3031,7 @@ export const AnalyzeIamPolicyLongrunningV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{scope}:analyzeIamPolicyLongrunning",
+      path: "v1/{+scope}:analyzeIamPolicyLongrunning",
       hasBody: true,
     }),
     svc,
@@ -3071,7 +3071,7 @@ export const AnalyzeMoveV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{resource}:analyzeMove" }),
+  T.Http({ method: "GET", path: "v1/{+resource}:analyzeMove" }),
   svc,
 ) as unknown as Schema.Schema<AnalyzeMoveV1Request>;
 
@@ -3104,7 +3104,7 @@ export const QueryAssetsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(QueryAssetsRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{parent}:queryAssets", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{+parent}:queryAssets", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<QueryAssetsV1Request>;
 
@@ -3147,7 +3147,7 @@ export const AnalyzeOrgPoliciesV1Request =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{scope}:analyzeOrgPolicies" }),
+    T.Http({ method: "GET", path: "v1/{+scope}:analyzeOrgPolicies" }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeOrgPoliciesV1Request>;
 
@@ -3196,7 +3196,7 @@ export const AnalyzeOrgPolicyGovernedContainersV1Request =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/{scope}:analyzeOrgPolicyGovernedContainers",
+      path: "v1/{+scope}:analyzeOrgPolicyGovernedContainers",
     }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeOrgPolicyGovernedContainersV1Request>;
@@ -3247,7 +3247,7 @@ export const AnalyzeOrgPolicyGovernedAssetsV1Request =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/{scope}:analyzeOrgPolicyGovernedAssets",
+      path: "v1/{+scope}:analyzeOrgPolicyGovernedAssets",
     }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeOrgPolicyGovernedAssetsV1Request>;
@@ -3313,7 +3313,7 @@ export const ListAssetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("relationshipTypes"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{parent}/assets" }),
+  T.Http({ method: "GET", path: "v1/{+parent}/assets" }),
   svc,
 ) as unknown as Schema.Schema<ListAssetsRequest>;
 
@@ -3350,7 +3350,7 @@ export const CreateFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(CreateFeedRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{parent}/feeds", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{+parent}/feeds", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<CreateFeedsRequest>;
 
@@ -3379,7 +3379,7 @@ export interface GetFeedsRequest {
 export const GetFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetFeedsRequest>;
 
@@ -3408,7 +3408,7 @@ export interface ListFeedsRequest {
 export const ListFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{parent}/feeds" }),
+  T.Http({ method: "GET", path: "v1/{+parent}/feeds" }),
   svc,
 ) as unknown as Schema.Schema<ListFeedsRequest>;
 
@@ -3441,7 +3441,7 @@ export const PatchFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(UpdateFeedRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchFeedsRequest>;
 
@@ -3470,7 +3470,7 @@ export interface DeleteFeedsRequest {
 export const DeleteFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/{name}" }),
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteFeedsRequest>;
 
@@ -3508,7 +3508,11 @@ export const CreateSavedQueriesRequest =
     ),
     body: Schema.optional(SavedQuery).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/savedQueries", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/savedQueries",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateSavedQueriesRequest>;
 
@@ -3540,7 +3544,7 @@ export const GetSavedQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSavedQueriesRequest>;
 
@@ -3579,7 +3583,7 @@ export const ListSavedQueriesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/savedQueries" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/savedQueries" }),
     svc,
   ) as unknown as Schema.Schema<ListSavedQueriesRequest>;
 
@@ -3620,7 +3624,7 @@ export const PatchSavedQueriesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SavedQuery).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSavedQueriesRequest>;
 
@@ -3650,7 +3654,7 @@ export const DeleteSavedQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSavedQueriesRequest>;
 
@@ -3685,7 +3689,10 @@ export const BatchGetEffectiveIamPoliciesRequest =
       T.HttpQuery("names"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{scope}/effectiveIamPolicies:batchGet" }),
+    T.Http({
+      method: "GET",
+      path: "v1/{+scope}/effectiveIamPolicies:batchGet",
+    }),
     svc,
   ) as unknown as Schema.Schema<BatchGetEffectiveIamPoliciesRequest>;
 

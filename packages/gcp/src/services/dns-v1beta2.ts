@@ -2578,7 +2578,7 @@ export const GetIamPolicyManagedZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "dns/v1beta2/{resource}:getIamPolicy",
+      path: "dns/v1beta2/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2618,7 +2618,7 @@ export const TestIamPermissionsManagedZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "dns/v1beta2/{resource}:testIamPermissions",
+      path: "dns/v1beta2/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2701,7 +2701,7 @@ export const SetIamPolicyManagedZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "dns/v1beta2/{resource}:setIamPolicy",
+      path: "dns/v1beta2/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,

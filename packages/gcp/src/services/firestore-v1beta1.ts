@@ -1644,7 +1644,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:importDocuments",
+      path: "v1beta1/{+name}:importDocuments",
       hasBody: true,
     }),
     svc,
@@ -1685,7 +1685,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{name}:exportDocuments",
+      path: "v1beta1/{+name}:exportDocuments",
       hasBody: true,
     }),
     svc,
@@ -1729,7 +1729,7 @@ export const DeleteProjectsDatabasesDocumentsRequest =
       T.HttpQuery("currentDocument.updateTime"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesDocumentsRequest>;
 
@@ -1765,7 +1765,7 @@ export const RollbackProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:rollback",
+      path: "v1beta1/{+database}/documents:rollback",
       hasBody: true,
     }),
     svc,
@@ -1803,7 +1803,7 @@ export const WriteProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:write",
+      path: "v1beta1/{+database}/documents:write",
       hasBody: true,
     }),
     svc,
@@ -1841,7 +1841,7 @@ export const BeginTransactionProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:beginTransaction",
+      path: "v1beta1/{+database}/documents:beginTransaction",
       hasBody: true,
     }),
     svc,
@@ -1888,7 +1888,7 @@ export const GetProjectsDatabasesDocumentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readTime: Schema.optional(Schema.String).pipe(T.HttpQuery("readTime")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesDocumentsRequest>;
 
@@ -1924,7 +1924,7 @@ export const CommitProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:commit",
+      path: "v1beta1/{+database}/documents:commit",
       hasBody: true,
     }),
     svc,
@@ -1962,7 +1962,7 @@ export const RunAggregationQueryProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}:runAggregationQuery",
+      path: "v1beta1/{+parent}:runAggregationQuery",
       hasBody: true,
     }),
     svc,
@@ -2001,7 +2001,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}:partitionQuery",
+      path: "v1beta1/{+parent}:partitionQuery",
       hasBody: true,
     }),
     svc,
@@ -2040,7 +2040,7 @@ export const BatchWriteProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:batchWrite",
+      path: "v1beta1/{+database}/documents:batchWrite",
       hasBody: true,
     }),
     svc,
@@ -2089,7 +2089,7 @@ export const CreateDocumentProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/{collectionId}",
+      path: "v1beta1/{+parent}/{collectionId}",
       hasBody: true,
     }),
     svc,
@@ -2145,7 +2145,7 @@ export const PatchProjectsDatabasesDocumentsRequest =
     ),
     body: Schema.optional(Document).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesDocumentsRequest>;
 
@@ -2181,7 +2181,7 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:executePipeline",
+      path: "v1beta1/{+database}/documents:executePipeline",
       hasBody: true,
     }),
     svc,
@@ -2220,7 +2220,7 @@ export const ListCollectionIdsProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}:listCollectionIds",
+      path: "v1beta1/{+parent}:listCollectionIds",
       hasBody: true,
     }),
     svc,
@@ -2284,7 +2284,7 @@ export const ListProjectsDatabasesDocumentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     readTime: Schema.optional(Schema.String).pipe(T.HttpQuery("readTime")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/{collectionId}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/{collectionId}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesDocumentsRequest>;
 
@@ -2324,7 +2324,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:batchGet",
+      path: "v1beta1/{+database}/documents:batchGet",
       hasBody: true,
     }),
     svc,
@@ -2388,7 +2388,7 @@ export const ListDocumentsProjectsDatabasesDocumentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     readTime: Schema.optional(Schema.String).pipe(T.HttpQuery("readTime")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/{collectionId}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/{collectionId}" }),
     svc,
   ) as unknown as Schema.Schema<ListDocumentsProjectsDatabasesDocumentsRequest>;
 
@@ -2429,7 +2429,7 @@ export const RunQueryProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}:runQuery",
+      path: "v1beta1/{+parent}:runQuery",
       hasBody: true,
     }),
     svc,
@@ -2467,7 +2467,7 @@ export const ListenProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{database}/documents:listen",
+      path: "v1beta1/{+database}/documents:listen",
       hasBody: true,
     }),
     svc,
@@ -2508,7 +2508,7 @@ export const ListProjectsDatabasesIndexesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/indexes" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/indexes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesIndexesRequest>;
 
@@ -2547,7 +2547,11 @@ export const CreateProjectsDatabasesIndexesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleFirestoreAdminV1beta1Index).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{parent}/indexes", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+parent}/indexes",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesIndexesRequest>;
 
@@ -2578,7 +2582,7 @@ export const GetProjectsDatabasesIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesIndexesRequest>;
 
@@ -2610,7 +2614,7 @@ export const DeleteProjectsDatabasesIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesIndexesRequest>;
 

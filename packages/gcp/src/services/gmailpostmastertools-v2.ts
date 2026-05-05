@@ -451,7 +451,7 @@ export const GetComplianceStatusDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetComplianceStatusDomainsRequest>;
 
@@ -481,7 +481,7 @@ export interface GetDomainsRequest {
 export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/{name}" }),
+  T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDomainsRequest>;
 
@@ -516,7 +516,7 @@ export const QueryDomainsDomainStatsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{parent}/domainStats:query",
+      path: "v2/{+parent}/domainStats:query",
       hasBody: true,
     }),
     svc,

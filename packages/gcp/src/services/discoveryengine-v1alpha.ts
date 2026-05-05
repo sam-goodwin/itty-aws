@@ -21788,7 +21788,7 @@ export const ListBillingAccountsBillingAccountLicenseConfigsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/billingAccountLicenseConfigs",
+      path: "v1alpha/{+parent}/billingAccountLicenseConfigs",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsBillingAccountLicenseConfigsRequest>;
@@ -21835,7 +21835,7 @@ export const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{billingAccountLicenseConfig}:distributeLicenseConfig",
+      path: "v1alpha/{+billingAccountLicenseConfig}:distributeLicenseConfig",
       hasBody: true,
     }),
     svc,
@@ -21872,7 +21872,7 @@ export const GetBillingAccountsBillingAccountLicenseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsBillingAccountLicenseConfigsRequest>;
 
@@ -21913,7 +21913,7 @@ export const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{billingAccountLicenseConfig}:retractLicenseConfig",
+      path: "v1alpha/{+billingAccountLicenseConfig}:retractLicenseConfig",
       hasBody: true,
     }),
     svc,
@@ -21956,7 +21956,7 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpBody(),
   ),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchProjectsRequest>;
 
@@ -21986,7 +21986,7 @@ export interface GetProjectsRequest {
 export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha/{name}" }),
+  T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsRequest>;
 
@@ -22024,7 +22024,7 @@ export const ReportConsentChangeProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{project}:reportConsentChange",
+      path: "v1alpha/{+project}:reportConsentChange",
       hasBody: true,
     }),
     svc,
@@ -22063,7 +22063,11 @@ export const ProvisionProjectsRequest =
       GoogleCloudDiscoveryengineV1alphaProvisionProjectRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:provision", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1alpha/{+name}:provision",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<ProvisionProjectsRequest>;
 
@@ -22094,7 +22098,7 @@ export const GetAclConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAclConfigProjectsLocationsRequest>;
 
@@ -22131,7 +22135,7 @@ export const UpdateAclConfigProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAclConfigProjectsLocationsRequest>;
 
@@ -22189,7 +22193,7 @@ export const CompleteExternalIdentitiesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}:completeExternalIdentities",
+      path: "v1alpha/{+parent}:completeExternalIdentities",
     }),
     svc,
   ) as unknown as Schema.Schema<CompleteExternalIdentitiesProjectsLocationsRequest>;
@@ -22269,7 +22273,7 @@ export const QueryConfigurablePricingUsageStatsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{project}/locations/{location}:queryConfigurablePricingUsageStats",
+      path: "v1alpha/{+project}/locations/{location}:queryConfigurablePricingUsageStats",
     }),
     svc,
   ) as unknown as Schema.Schema<QueryConfigurablePricingUsageStatsProjectsLocationsRequest>;
@@ -22310,7 +22314,7 @@ export const SetUpDataConnectorProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}:setUpDataConnector",
+      path: "v1alpha/{+parent}:setUpDataConnector",
       hasBody: true,
     }),
     svc,
@@ -22351,7 +22355,7 @@ export const RemoveDedicatedCrawlRateProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{location}:removeDedicatedCrawlRate",
+      path: "v1alpha/{+location}:removeDedicatedCrawlRate",
       hasBody: true,
     }),
     svc,
@@ -22393,7 +22397,7 @@ export const UpdateCmekConfigProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateCmekConfigProjectsLocationsRequest>;
 
@@ -22442,7 +22446,7 @@ export const SetUpDataConnectorV2ProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}:setUpDataConnectorV2",
+      path: "v1alpha/{+parent}:setUpDataConnectorV2",
       hasBody: true,
     }),
     svc,
@@ -22483,7 +22487,7 @@ export const EstimateDataSizeProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{location}:estimateDataSize",
+      path: "v1alpha/{+location}:estimateDataSize",
       hasBody: true,
     }),
     svc,
@@ -22524,7 +22528,7 @@ export const SetDedicatedCrawlRateProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{location}:setDedicatedCrawlRate",
+      path: "v1alpha/{+location}:setDedicatedCrawlRate",
       hasBody: true,
     }),
     svc,
@@ -22565,7 +22569,7 @@ export const ObtainCrawlRateProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{location}:obtainCrawlRate",
+      path: "v1alpha/{+location}:obtainCrawlRate",
       hasBody: true,
     }),
     svc,
@@ -22599,7 +22603,7 @@ export const GetCmekConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCmekConfigProjectsLocationsRequest>;
 
@@ -22643,7 +22647,7 @@ export const CreateProjectsLocationsSampleQuerySetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sampleQuerySets",
+      path: "v1alpha/{+parent}/sampleQuerySets",
       hasBody: true,
     }),
     svc,
@@ -22677,7 +22681,7 @@ export const GetProjectsLocationsSampleQuerySetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSampleQuerySetsRequest>;
 
@@ -22709,7 +22713,7 @@ export const DeleteProjectsLocationsSampleQuerySetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSampleQuerySetsRequest>;
 
@@ -22747,7 +22751,7 @@ export const ListProjectsLocationsSampleQuerySetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/sampleQuerySets" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/sampleQuerySets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSampleQuerySetsRequest>;
 
@@ -22791,7 +22795,7 @@ export const PatchProjectsLocationsSampleQuerySetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSampleQuerySetsRequest>;
 
@@ -22835,7 +22839,7 @@ export const CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sampleQueries",
+      path: "v1alpha/{+parent}/sampleQueries",
       hasBody: true,
     }),
     svc,
@@ -22877,7 +22881,7 @@ export const ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sampleQueries:import",
+      path: "v1alpha/{+parent}/sampleQueries:import",
       hasBody: true,
     }),
     svc,
@@ -22920,7 +22924,7 @@ export const PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
@@ -22953,7 +22957,7 @@ export const DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
@@ -22986,7 +22990,7 @@ export const GetProjectsLocationsSampleQuerySetsSampleQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
@@ -23025,7 +23029,7 @@ export const ListProjectsLocationsSampleQuerySetsSampleQueriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/sampleQueries" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/sampleQueries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
 
@@ -23062,7 +23066,7 @@ export const GetProjectsLocationsSampleQuerySetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSampleQuerySetsOperationsRequest>;
 
@@ -23101,7 +23105,7 @@ export const CheckProjectsLocationsGroundingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{groundingConfig}:check",
+      path: "v1alpha/{+groundingConfig}:check",
       hasBody: true,
     }),
     svc,
@@ -23143,7 +23147,7 @@ export const PatchProjectsLocationsLicenseConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsLicenseConfigsRequest>;
 
@@ -23175,7 +23179,7 @@ export const GetProjectsLocationsLicenseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLicenseConfigsRequest>;
 
@@ -23219,7 +23223,7 @@ export const CreateProjectsLocationsLicenseConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/licenseConfigs",
+      path: "v1alpha/{+parent}/licenseConfigs",
       hasBody: true,
     }),
     svc,
@@ -23253,7 +23257,7 @@ export const GetProjectsLocationsUserStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsUserStoresRequest>;
 
@@ -23293,7 +23297,7 @@ export const PatchProjectsLocationsUserStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsUserStoresRequest>;
 
@@ -23332,7 +23336,7 @@ export const BatchUpdateUserLicensesProjectsLocationsUserStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}:batchUpdateUserLicenses",
+      path: "v1alpha/{+parent}:batchUpdateUserLicenses",
       hasBody: true,
     }),
     svc,
@@ -23369,7 +23373,7 @@ export const ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/licenseConfigsUsageStats",
+      path: "v1alpha/{+parent}/licenseConfigsUsageStats",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest>;
@@ -23403,7 +23407,7 @@ export const GetProjectsLocationsUserStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsUserStoresOperationsRequest>;
 
@@ -23449,7 +23453,7 @@ export const ListProjectsLocationsUserStoresOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresOperationsRequest>;
 
@@ -23497,7 +23501,7 @@ export const ListProjectsLocationsUserStoresUserLicensesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/userLicenses" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/userLicenses" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresUserLicensesRequest>;
 
@@ -23545,7 +23549,7 @@ export const CreateProjectsLocationsAuthorizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/authorizations",
+      path: "v1alpha/{+parent}/authorizations",
       hasBody: true,
     }),
     svc,
@@ -23585,7 +23589,7 @@ export const ListProjectsLocationsAuthorizationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/authorizations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/authorizations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizationsRequest>;
 
@@ -23621,7 +23625,7 @@ export const DeleteProjectsLocationsAuthorizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizationsRequest>;
 
@@ -23652,7 +23656,7 @@ export const GetProjectsLocationsAuthorizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizationsRequest>;
 
@@ -23692,7 +23696,7 @@ export const PatchProjectsLocationsAuthorizationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizationsRequest>;
 
@@ -23724,7 +23728,7 @@ export const GetProjectsLocationsCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsRequest>;
 
@@ -23756,7 +23760,7 @@ export const GetDataConnectorProjectsLocationsCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataConnectorProjectsLocationsCollectionsRequest>;
 
@@ -23796,7 +23800,7 @@ export const PatchProjectsLocationsCollectionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsRequest>;
 
@@ -23837,7 +23841,7 @@ export const ListProjectsLocationsCollectionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/collections" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/collections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsRequest>;
 
@@ -23873,7 +23877,7 @@ export const DeleteProjectsLocationsCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsRequest>;
 
@@ -23913,7 +23917,7 @@ export const UpdateDataConnectorProjectsLocationsCollectionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDataConnectorProjectsLocationsCollectionsRequest>;
 
@@ -23951,7 +23955,7 @@ export const TuneProjectsLocationsCollectionsEnginesRequest =
       GoogleCloudDiscoveryengineV1alphaTuneEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:tune", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:tune", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TuneProjectsLocationsCollectionsEnginesRequest>;
 
@@ -23988,7 +23992,7 @@ export const SetIamPolicyProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{resource}:setIamPolicy",
+      path: "v1alpha/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -24028,7 +24032,7 @@ export const GetIamPolicyProjectsLocationsCollectionsEnginesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{resource}:getIamPolicy" }),
+    T.Http({ method: "GET", path: "v1alpha/{+resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24070,7 +24074,7 @@ export const ListProjectsLocationsCollectionsEnginesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/engines" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/engines" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24114,7 +24118,11 @@ export const CreateProjectsLocationsCollectionsEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{parent}/engines", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1alpha/{+parent}/engines",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24146,7 +24154,7 @@ export const DeleteProjectsLocationsCollectionsEnginesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24178,7 +24186,7 @@ export const GetWorkspaceSettingsProjectsLocationsCollectionsEnginesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}:getWorkspaceSettings" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}:getWorkspaceSettings" }),
     svc,
   ) as unknown as Schema.Schema<GetWorkspaceSettingsProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24216,7 +24224,7 @@ export const ResumeProjectsLocationsCollectionsEnginesRequest =
       GoogleCloudDiscoveryengineV1alphaResumeEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:resume", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24248,7 +24256,7 @@ export const GetProjectsLocationsCollectionsEnginesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24288,7 +24296,7 @@ export const PatchProjectsLocationsCollectionsEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24325,7 +24333,7 @@ export const PauseProjectsLocationsCollectionsEnginesRequest =
       GoogleCloudDiscoveryengineV1alphaPauseEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:pause", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseProjectsLocationsCollectionsEnginesRequest>;
 
@@ -24357,7 +24365,7 @@ export const GetProjectsLocationsCollectionsEnginesControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -24399,7 +24407,7 @@ export const CreateProjectsLocationsCollectionsEnginesControlsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/controls",
+      path: "v1alpha/{+parent}/controls",
       hasBody: true,
     }),
     svc,
@@ -24442,7 +24450,7 @@ export const PatchProjectsLocationsCollectionsEnginesControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -24484,7 +24492,7 @@ export const ListProjectsLocationsCollectionsEnginesControlsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/controls" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/controls" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -24521,7 +24529,7 @@ export const DeleteProjectsLocationsCollectionsEnginesControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -24561,7 +24569,7 @@ export const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{completionConfig}:completeQuery",
+      path: "v1alpha/{+completionConfig}:completeQuery",
       hasBody: true,
     }),
     svc,
@@ -24605,7 +24613,7 @@ export const RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfig
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{completionConfig}:removeSuggestion",
+      path: "v1alpha/{+completionConfig}:removeSuggestion",
       hasBody: true,
     }),
     svc,
@@ -24647,7 +24655,7 @@ export const ConverseProjectsLocationsCollectionsEnginesConversationsRequest =
       GoogleCloudDiscoveryengineV1alphaConverseConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:converse", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:converse", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConverseProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -24688,7 +24696,7 @@ export const PatchProjectsLocationsCollectionsEnginesConversationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -24733,7 +24741,7 @@ export const ListProjectsLocationsCollectionsEnginesConversationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/conversations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -24770,7 +24778,7 @@ export const DeleteProjectsLocationsCollectionsEnginesConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -24803,7 +24811,7 @@ export const GetProjectsLocationsCollectionsEnginesConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -24843,7 +24851,7 @@ export const CreateProjectsLocationsCollectionsEnginesConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/conversations",
+      path: "v1alpha/{+parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -24878,7 +24886,7 @@ export const GetConfigProjectsLocationsCollectionsEnginesAnalyticsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsLocationsCollectionsEnginesAnalyticsRequest>;
 
@@ -24919,7 +24927,7 @@ export const UpdateConfigProjectsLocationsCollectionsEnginesAnalyticsRequest =
       GoogleCloudDiscoveryengineV1alphaAnalyticsConfig,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateConfigProjectsLocationsCollectionsEnginesAnalyticsRequest>;
 
@@ -24959,7 +24967,7 @@ export const ExportMetricsProjectsLocationsCollectionsEnginesAnalyticsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{analytics}:exportMetrics",
+      path: "v1alpha/{+analytics}:exportMetrics",
       hasBody: true,
     }),
     svc,
@@ -24994,7 +25002,7 @@ export const GetProjectsLocationsCollectionsEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesOperationsRequest>;
 
@@ -25041,7 +25049,7 @@ export const ListProjectsLocationsCollectionsEnginesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesOperationsRequest>;
 
@@ -25086,7 +25094,7 @@ export const PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
 
@@ -25131,7 +25139,7 @@ export const GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
 
@@ -25171,7 +25179,7 @@ export const AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:answer",
+      path: "v1alpha/{+servingConfig}:answer",
       hasBody: true,
     }),
     svc,
@@ -25212,7 +25220,7 @@ export const ListProjectsLocationsCollectionsEnginesServingConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/servingConfigs" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/servingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -25256,7 +25264,7 @@ export const SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:searchLite",
+      path: "v1alpha/{+servingConfig}:searchLite",
       hasBody: true,
     }),
     svc,
@@ -25298,7 +25306,7 @@ export const SearchProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:search",
+      path: "v1alpha/{+servingConfig}:search",
       hasBody: true,
     }),
     svc,
@@ -25333,7 +25341,7 @@ export const DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -25378,7 +25386,7 @@ export const CreateProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/servingConfigs",
+      path: "v1alpha/{+parent}/servingConfigs",
       hasBody: true,
     }),
     svc,
@@ -25420,7 +25428,7 @@ export const RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:recommend",
+      path: "v1alpha/{+servingConfig}:recommend",
       hasBody: true,
     }),
     svc,
@@ -25463,7 +25471,7 @@ export const PatchProjectsLocationsCollectionsEnginesServingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -25503,7 +25511,7 @@ export const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:streamAnswer",
+      path: "v1alpha/{+servingConfig}:streamAnswer",
       hasBody: true,
     }),
     svc,
@@ -25538,7 +25546,7 @@ export const GetProjectsLocationsCollectionsEnginesServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -25579,7 +25587,7 @@ export const PatchProjectsLocationsCollectionsEnginesSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -25624,7 +25632,7 @@ export const ListProjectsLocationsCollectionsEnginesSessionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/sessions" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -25666,7 +25674,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsRequest =
       T.HttpQuery("includeAnswerDetails"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -25698,7 +25706,7 @@ export const DeleteProjectsLocationsCollectionsEnginesSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -25741,7 +25749,7 @@ export const CreateProjectsLocationsCollectionsEnginesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sessions",
+      path: "v1alpha/{+parent}/sessions",
       hasBody: true,
     }),
     svc,
@@ -25788,7 +25796,7 @@ export const ListProjectsLocationsCollectionsEnginesSessionsFilesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/files" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/files" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesSessionsFilesRequest>;
 
@@ -25825,7 +25833,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest>;
 
@@ -25858,7 +25866,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperiment
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsOperationsRequest>;
 
@@ -25893,7 +25901,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsOperationsRequest>;
 
@@ -25926,7 +25934,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -25959,7 +25967,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -26000,7 +26008,7 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -26045,7 +26053,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/assistants",
+      path: "v1alpha/{+parent}/assistants",
       hasBody: true,
     }),
     svc,
@@ -26086,7 +26094,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/assistants" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/assistants" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -26130,7 +26138,7 @@ export const StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{name}:streamAssist",
+      path: "v1alpha/{+name}:streamAssist",
       hasBody: true,
     }),
     svc,
@@ -26170,7 +26178,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{parent}/agents", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+parent}/agents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
@@ -26215,7 +26223,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/agents" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/agents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
@@ -26252,7 +26260,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
@@ -26285,7 +26293,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
@@ -26326,7 +26334,7 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsAgentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsAgentsRequest>;
 
@@ -26366,7 +26374,7 @@ export const ImportProjectsLocationsCollectionsEnginesAssistantsAgentsFilesReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/files:import",
+      path: "v1alpha/{+parent}/files:import",
       hasBody: true,
     }),
     svc,
@@ -26402,7 +26410,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest>;
 
@@ -26445,7 +26453,7 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequ
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
@@ -26488,7 +26496,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReque
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/cannedQueries" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/cannedQueries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
@@ -26538,7 +26546,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/cannedQueries",
+      path: "v1alpha/{+parent}/cannedQueries",
       hasBody: true,
     }),
     svc,
@@ -26575,7 +26583,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
@@ -26610,7 +26618,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsCannedQueriesRequest>;
 
@@ -26650,7 +26658,7 @@ export const TrainCustomModelProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:trainCustomModel",
+      path: "v1alpha/{+dataStore}:trainCustomModel",
       hasBody: true,
     }),
     svc,
@@ -26694,7 +26702,7 @@ export const ListProjectsLocationsCollectionsDataStoresRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/dataStores" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/dataStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -26730,7 +26738,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -26778,7 +26786,7 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresRequest =
       T.HttpQuery("userPseudoId"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{dataStore}:completeQuery" }),
+    T.Http({ method: "GET", path: "v1alpha/{+dataStore}:completeQuery" }),
     svc,
   ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -26819,7 +26827,7 @@ export const UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStore
       GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -26861,7 +26869,7 @@ export const DeletePatientFilterProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:deletePatientFilter",
+      path: "v1alpha/{+dataStore}:deletePatientFilter",
       hasBody: true,
     }),
     svc,
@@ -26904,7 +26912,7 @@ export const PatchProjectsLocationsCollectionsDataStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -26936,7 +26944,7 @@ export const GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -27001,7 +27009,7 @@ export const CreateProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/dataStores",
+      path: "v1alpha/{+parent}/dataStores",
       hasBody: true,
     }),
     svc,
@@ -27042,7 +27050,7 @@ export const ReplacePatientFilterProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:replacePatientFilter",
+      path: "v1alpha/{+dataStore}:replacePatientFilter",
       hasBody: true,
     }),
     svc,
@@ -27084,7 +27092,7 @@ export const RemovePatientFilterProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:removePatientFilter",
+      path: "v1alpha/{+dataStore}:removePatientFilter",
       hasBody: true,
     }),
     svc,
@@ -27119,7 +27127,7 @@ export const GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDocumentProcessingConfigProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -27161,7 +27169,7 @@ export const AddPatientFilterProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:addPatientFilter",
+      path: "v1alpha/{+dataStore}:addPatientFilter",
       hasBody: true,
     }),
     svc,
@@ -27196,7 +27204,7 @@ export const GetProjectsLocationsCollectionsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -27235,7 +27243,7 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfig
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{completionConfig}:completeQuery",
+      path: "v1alpha/{+completionConfig}:completeQuery",
       hasBody: true,
     }),
     svc,
@@ -27272,7 +27280,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -27311,7 +27319,7 @@ export const ListProjectsLocationsCollectionsDataStoresServingConfigsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/servingConfigs" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/servingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -27355,7 +27363,7 @@ export const AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:answer",
+      path: "v1alpha/{+servingConfig}:answer",
       hasBody: true,
     }),
     svc,
@@ -27397,7 +27405,7 @@ export const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:streamAnswer",
+      path: "v1alpha/{+servingConfig}:streamAnswer",
       hasBody: true,
     }),
     svc,
@@ -27442,7 +27450,7 @@ export const PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -27482,7 +27490,7 @@ export const RecommendProjectsLocationsCollectionsDataStoresServingConfigsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:recommend",
+      path: "v1alpha/{+servingConfig}:recommend",
       hasBody: true,
     }),
     svc,
@@ -27524,7 +27532,7 @@ export const SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:search",
+      path: "v1alpha/{+servingConfig}:search",
       hasBody: true,
     }),
     svc,
@@ -27566,7 +27574,7 @@ export const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:searchLite",
+      path: "v1alpha/{+servingConfig}:searchLite",
       hasBody: true,
     }),
     svc,
@@ -27602,7 +27610,7 @@ export const GetProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -27647,7 +27655,7 @@ export const CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/servingConfigs",
+      path: "v1alpha/{+parent}/servingConfigs",
       hasBody: true,
     }),
     svc,
@@ -27690,7 +27698,7 @@ export const PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
 
@@ -27735,7 +27743,7 @@ export const GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest =
       T.HttpQuery("getWidgetConfigRequestOption.turnOffCollectionComponents"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
 
@@ -27780,7 +27788,7 @@ export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/batchGetDocumentsMetadata",
+      path: "v1alpha/{+parent}/batchGetDocumentsMetadata",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest>;
@@ -27823,7 +27831,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/branches" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/branches" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesRequest>;
 
@@ -27863,7 +27871,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesRequest>;
 
@@ -27910,7 +27918,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
@@ -27947,7 +27955,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
@@ -27985,7 +27993,7 @@ export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsReque
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
@@ -28025,7 +28033,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest 
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/documents" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/documents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -28069,7 +28077,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/documents:purge",
+      path: "v1alpha/{+parent}/documents:purge",
       hasBody: true,
     }),
     svc,
@@ -28114,7 +28122,7 @@ export const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/documents",
+      path: "v1alpha/{+parent}/documents",
       hasBody: true,
     }),
     svc,
@@ -28149,7 +28157,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -28189,7 +28197,7 @@ export const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/documents:import",
+      path: "v1alpha/{+parent}/documents:import",
       hasBody: true,
     }),
     svc,
@@ -28237,7 +28245,7 @@ export const PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -28270,7 +28278,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -28325,7 +28333,7 @@ export const GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesD
     ),
     imageId: Schema.optional(Schema.String).pipe(T.HttpQuery("imageId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}:getProcessedDocument" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}:getProcessedDocument" }),
     svc,
   ) as unknown as Schema.Schema<GetProcessedDocumentProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -28360,7 +28368,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRequest>;
 
@@ -28401,7 +28409,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRe
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/chunks" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/chunks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsChunksRequest>;
 
@@ -28447,7 +28455,7 @@ export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/completionSuggestions:import",
+      path: "v1alpha/{+parent}/completionSuggestions:import",
       hasBody: true,
     }),
     svc,
@@ -28491,7 +28499,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/completionSuggestions:purge",
+      path: "v1alpha/{+parent}/completionSuggestions:purge",
       hasBody: true,
     }),
     svc,
@@ -28534,7 +28542,7 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/schemas" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/schemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -28579,7 +28587,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{parent}/schemas", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1alpha/{+parent}/schemas",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -28612,7 +28624,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -28645,7 +28657,7 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -28688,7 +28700,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -28721,7 +28733,7 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
 
@@ -28768,7 +28780,7 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest 
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
 
@@ -28805,7 +28817,7 @@ export const ListProjectsLocationsCollectionsDataStoresCustomModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.String.pipe(T.HttpPath("dataStore")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{dataStore}/customModels" }),
+    T.Http({ method: "GET", path: "v1alpha/{+dataStore}/customModels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresCustomModelsRequest>;
 
@@ -28838,7 +28850,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -28876,7 +28888,7 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsRequest =
       T.HttpQuery("includeAnswerDetails"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -28917,7 +28929,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -28962,7 +28974,7 @@ export const ListProjectsLocationsCollectionsDataStoresSessionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/sessions" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -29009,7 +29021,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sessions",
+      path: "v1alpha/{+parent}/sessions",
       hasBody: true,
     }),
     svc,
@@ -29044,7 +29056,7 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest>;
 
@@ -29087,7 +29099,7 @@ export const WriteProjectsLocationsCollectionsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:write",
+      path: "v1alpha/{+parent}/userEvents:write",
       hasBody: true,
     }),
     svc,
@@ -29131,7 +29143,7 @@ export const CollectProjectsLocationsCollectionsDataStoresUserEventsRequest =
     ets: Schema.optional(Schema.String).pipe(T.HttpQuery("ets")),
     userEvent: Schema.optional(Schema.String).pipe(T.HttpQuery("userEvent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/userEvents:collect" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/userEvents:collect" }),
     svc,
   ) as unknown as Schema.Schema<CollectProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
@@ -29171,7 +29183,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:purge",
+      path: "v1alpha/{+parent}/userEvents:purge",
       hasBody: true,
     }),
     svc,
@@ -29213,7 +29225,7 @@ export const ImportProjectsLocationsCollectionsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:import",
+      path: "v1alpha/{+parent}/userEvents:import",
       hasBody: true,
     }),
     svc,
@@ -29248,7 +29260,7 @@ export const GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
 
@@ -29295,7 +29307,7 @@ export const ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
 
@@ -29337,7 +29349,7 @@ export const ConverseProjectsLocationsCollectionsDataStoresConversationsRequest 
       GoogleCloudDiscoveryengineV1alphaConverseConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:converse", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:converse", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConverseProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -29382,7 +29394,7 @@ export const ListProjectsLocationsCollectionsDataStoresConversationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/conversations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -29419,7 +29431,7 @@ export const GetProjectsLocationsCollectionsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -29459,7 +29471,7 @@ export const CreateProjectsLocationsCollectionsDataStoresConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/conversations",
+      path: "v1alpha/{+parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -29494,7 +29506,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -29535,7 +29547,7 @@ export const PatchProjectsLocationsCollectionsDataStoresConversationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -29568,7 +29580,7 @@ export const GetProjectsLocationsCollectionsDataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresOperationsRequest>;
 
@@ -29615,7 +29627,7 @@ export const ListProjectsLocationsCollectionsDataStoresOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresOperationsRequest>;
 
@@ -29659,7 +29671,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/suggestionDenyListEntries:purge",
+      path: "v1alpha/{+parent}/suggestionDenyListEntries:purge",
       hasBody: true,
     }),
     svc,
@@ -29703,7 +29715,7 @@ export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/suggestionDenyListEntries:import",
+      path: "v1alpha/{+parent}/suggestionDenyListEntries:import",
       hasBody: true,
     }),
     svc,
@@ -29740,7 +29752,7 @@ export const GetProjectsLocationsCollectionsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -29782,7 +29794,7 @@ export const ListProjectsLocationsCollectionsDataStoresControlsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/controls" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/controls" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -29829,7 +29841,7 @@ export const CreateProjectsLocationsCollectionsDataStoresControlsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/controls",
+      path: "v1alpha/{+parent}/controls",
       hasBody: true,
     }),
     svc,
@@ -29864,7 +29876,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -29905,7 +29917,7 @@ export const PatchProjectsLocationsCollectionsDataStoresControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -29940,7 +29952,7 @@ export const GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSite
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{siteSearchEngine}:getUriPatternDocumentData",
+      path: "v1alpha/{+siteSearchEngine}:getUriPatternDocumentData",
     }),
     svc,
   ) as unknown as Schema.Schema<GetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
@@ -29983,7 +29995,7 @@ export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{siteSearchEngine}:disableAdvancedSiteSearch",
+      path: "v1alpha/{+siteSearchEngine}:disableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -30027,7 +30039,7 @@ export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{siteSearchEngine}:enableAdvancedSiteSearch",
+      path: "v1alpha/{+siteSearchEngine}:enableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -30072,7 +30084,7 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{siteSearchEngine}:fetchDomainVerificationStatus",
+      path: "v1alpha/{+siteSearchEngine}:fetchDomainVerificationStatus",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
@@ -30119,7 +30131,7 @@ export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}:batchVerifyTargetSites",
+      path: "v1alpha/{+parent}:batchVerifyTargetSites",
       hasBody: true,
     }),
     svc,
@@ -30163,7 +30175,7 @@ export const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{siteSearchEngine}:recrawlUris",
+      path: "v1alpha/{+siteSearchEngine}:recrawlUris",
       hasBody: true,
     }),
     svc,
@@ -30207,7 +30219,7 @@ export const SetUriPatternDocumentDataProjectsLocationsCollectionsDataStoresSite
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{siteSearchEngine}:setUriPatternDocumentData",
+      path: "v1alpha/{+siteSearchEngine}:setUriPatternDocumentData",
       hasBody: true,
     }),
     svc,
@@ -30251,7 +30263,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sitemaps",
+      path: "v1alpha/{+parent}/sitemaps",
       hasBody: true,
     }),
     svc,
@@ -30293,7 +30305,7 @@ export const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
     ).pipe(T.HttpQuery("matcher.urisMatcher.uris")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/sitemaps:fetch" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/sitemaps:fetch" }),
     svc,
   ) as unknown as Schema.Schema<FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -30328,7 +30340,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -30363,7 +30375,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
 
@@ -30412,7 +30424,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
 
@@ -30458,7 +30470,7 @@ export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/targetSites:batchCreate",
+      path: "v1alpha/{+parent}/targetSites:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -30495,7 +30507,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -30537,7 +30549,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/targetSites",
+      path: "v1alpha/{+parent}/targetSites",
       hasBody: true,
     }),
     svc,
@@ -30580,7 +30592,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/targetSites" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/targetSites" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -30619,7 +30631,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -30659,7 +30671,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -30694,7 +30706,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
 
@@ -30743,7 +30755,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
 
@@ -30796,7 +30808,7 @@ export const ListProjectsLocationsCollectionsOperationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsOperationsRequest>;
 
@@ -30832,7 +30844,7 @@ export const GetProjectsLocationsCollectionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsOperationsRequest>;
 
@@ -30864,7 +30876,7 @@ export const GetConnectorSecretProjectsLocationsCollectionsDataConnectorRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}:getConnectorSecret" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}:getConnectorSecret" }),
     svc,
   ) as unknown as Schema.Schema<GetConnectorSecretProjectsLocationsCollectionsDataConnectorRequest>;
 
@@ -30904,7 +30916,7 @@ export const AcquireAccessTokenProjectsLocationsCollectionsDataConnectorRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{name}:acquireAccessToken",
+      path: "v1alpha/{+name}:acquireAccessToken",
       hasBody: true,
     }),
     svc,
@@ -30946,7 +30958,7 @@ export const StartConnectorRunProjectsLocationsCollectionsDataConnectorRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}:startConnectorRun",
+      path: "v1alpha/{+parent}:startConnectorRun",
       hasBody: true,
     }),
     svc,
@@ -31032,7 +31044,7 @@ export const CheckRefreshTokenProjectsLocationsCollectionsDataConnectorRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}:checkRefreshToken" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}:checkRefreshToken" }),
     svc,
   ) as unknown as Schema.Schema<CheckRefreshTokenProjectsLocationsCollectionsDataConnectorRequest>;
 
@@ -31079,7 +31091,7 @@ export const ListProjectsLocationsCollectionsDataConnectorOperationsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
@@ -31116,7 +31128,7 @@ export const GetProjectsLocationsCollectionsDataConnectorOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
@@ -31155,7 +31167,7 @@ export const ListProjectsLocationsCollectionsDataConnectorConnectorRunsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/connectorRuns" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/connectorRuns" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataConnectorConnectorRunsRequest>;
 
@@ -31192,7 +31204,7 @@ export const ListProjectsLocationsCmekConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/cmekConfigs" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/cmekConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCmekConfigsRequest>;
 
@@ -31224,7 +31236,7 @@ export const GetProjectsLocationsCmekConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCmekConfigsRequest>;
 
@@ -31256,7 +31268,7 @@ export const DeleteProjectsLocationsCmekConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCmekConfigsRequest>;
 
@@ -31296,7 +31308,7 @@ export const PatchProjectsLocationsCmekConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCmekConfigsRequest>;
 
@@ -31328,7 +31340,7 @@ export const GetProjectsLocationsIdentityMappingStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIdentityMappingStoresRequest>;
 
@@ -31369,7 +31381,7 @@ export const ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{identityMappingStore}:importIdentityMappings",
+      path: "v1alpha/{+identityMappingStore}:importIdentityMappings",
       hasBody: true,
     }),
     svc,
@@ -31404,7 +31416,7 @@ export const DeleteProjectsLocationsIdentityMappingStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIdentityMappingStoresRequest>;
 
@@ -31442,7 +31454,7 @@ export const ListProjectsLocationsIdentityMappingStoresRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/identityMappingStores" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/identityMappingStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIdentityMappingStoresRequest>;
 
@@ -31500,7 +31512,7 @@ export const CreateProjectsLocationsIdentityMappingStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/identityMappingStores",
+      path: "v1alpha/{+parent}/identityMappingStores",
       hasBody: true,
     }),
     svc,
@@ -31543,7 +31555,7 @@ export const PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{identityMappingStore}:purgeIdentityMappings",
+      path: "v1alpha/{+identityMappingStore}:purgeIdentityMappings",
       hasBody: true,
     }),
     svc,
@@ -31588,7 +31600,7 @@ export const ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{identityMappingStore}:listIdentityMappings",
+      path: "v1alpha/{+identityMappingStore}:listIdentityMappings",
     }),
     svc,
   ) as unknown as Schema.Schema<ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
@@ -31640,7 +31652,7 @@ export const ListProjectsLocationsIdentityMappingStoresOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIdentityMappingStoresOperationsRequest>;
 
@@ -31677,7 +31689,7 @@ export const GetProjectsLocationsIdentityMappingStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIdentityMappingStoresOperationsRequest>;
 
@@ -31717,7 +31729,7 @@ export const RankProjectsLocationsRankingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{rankingConfig}:rank",
+      path: "v1alpha/{+rankingConfig}:rank",
       hasBody: true,
     }),
     svc,
@@ -31758,7 +31770,7 @@ export const BatchDeleteProjectsLocationsNotebooksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/notebooks:batchDelete",
+      path: "v1alpha/{+parent}/notebooks:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -31791,7 +31803,7 @@ export const GetProjectsLocationsNotebooksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebooksRequest>;
 
@@ -31830,7 +31842,7 @@ export const CreateProjectsLocationsNotebooksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/notebooks",
+      path: "v1alpha/{+parent}/notebooks",
       hasBody: true,
     }),
     svc,
@@ -31872,7 +31884,7 @@ export const ListRecentlyViewedProjectsLocationsNotebooksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/notebooks:listRecentlyViewed",
+      path: "v1alpha/{+parent}/notebooks:listRecentlyViewed",
     }),
     svc,
   ) as unknown as Schema.Schema<ListRecentlyViewedProjectsLocationsNotebooksRequest>;
@@ -31914,7 +31926,7 @@ export const ShareProjectsLocationsNotebooksRequest =
       GoogleCloudNotebooklmV1alphaShareNotebookRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:share", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:share", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ShareProjectsLocationsNotebooksRequest>;
 
@@ -31953,7 +31965,7 @@ export const CreateProjectsLocationsNotebooksAudioOverviewsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/audioOverviews",
+      path: "v1alpha/{+parent}/audioOverviews",
       hasBody: true,
     }),
     svc,
@@ -31987,7 +31999,7 @@ export const DeleteProjectsLocationsNotebooksAudioOverviewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebooksAudioOverviewsRequest>;
 
@@ -32026,7 +32038,7 @@ export const BatchDeleteProjectsLocationsNotebooksSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sources:batchDelete",
+      path: "v1alpha/{+parent}/sources:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -32060,7 +32072,7 @@ export const GetProjectsLocationsNotebooksSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebooksSourcesRequest>;
 
@@ -32099,7 +32111,7 @@ export const BatchCreateProjectsLocationsNotebooksSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sources:batchCreate",
+      path: "v1alpha/{+parent}/sources:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -32133,7 +32145,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -32178,7 +32190,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -32224,7 +32236,7 @@ export const WriteProjectsLocationsUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:write",
+      path: "v1alpha/{+parent}/userEvents:write",
       hasBody: true,
     }),
     svc,
@@ -32265,7 +32277,7 @@ export const ImportProjectsLocationsUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:import",
+      path: "v1alpha/{+parent}/userEvents:import",
       hasBody: true,
     }),
     svc,
@@ -32308,7 +32320,7 @@ export const CollectProjectsLocationsUserEventsRequest =
     userEvent: Schema.optional(Schema.String).pipe(T.HttpQuery("userEvent")),
     uri: Schema.optional(Schema.String).pipe(T.HttpQuery("uri")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/userEvents:collect" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/userEvents:collect" }),
     svc,
   ) as unknown as Schema.Schema<CollectProjectsLocationsUserEventsRequest>;
 
@@ -32339,7 +32351,7 @@ export const GetProjectsLocationsPodcastsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPodcastsOperationsRequest>;
 
@@ -32378,7 +32390,7 @@ export const CheckRequirementProjectsLocationsRequirementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{location}/requirements:checkRequirement",
+      path: "v1alpha/{+location}/requirements:checkRequirement",
       hasBody: true,
     }),
     svc,
@@ -32419,7 +32431,7 @@ export const RemovePatientFilterProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:removePatientFilter",
+      path: "v1alpha/{+dataStore}:removePatientFilter",
       hasBody: true,
     }),
     svc,
@@ -32460,7 +32472,7 @@ export const DeletePatientFilterProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:deletePatientFilter",
+      path: "v1alpha/{+dataStore}:deletePatientFilter",
       hasBody: true,
     }),
     svc,
@@ -32494,7 +32506,7 @@ export const GetDocumentProcessingConfigProjectsLocationsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDocumentProcessingConfigProjectsLocationsDataStoresRequest>;
 
@@ -32535,7 +32547,7 @@ export const UpdateDocumentProcessingConfigProjectsLocationsDataStoresRequest =
       GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDocumentProcessingConfigProjectsLocationsDataStoresRequest>;
 
@@ -32575,7 +32587,7 @@ export const ReplacePatientFilterProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:replacePatientFilter",
+      path: "v1alpha/{+dataStore}:replacePatientFilter",
       hasBody: true,
     }),
     svc,
@@ -32610,7 +32622,7 @@ export const GetProjectsLocationsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresRequest>;
 
@@ -32674,7 +32686,7 @@ export const CreateProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/dataStores",
+      path: "v1alpha/{+parent}/dataStores",
       hasBody: true,
     }),
     svc,
@@ -32708,7 +32720,7 @@ export const GetSiteSearchEngineProjectsLocationsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSiteSearchEngineProjectsLocationsDataStoresRequest>;
 
@@ -32756,7 +32768,7 @@ export const CompleteQueryProjectsLocationsDataStoresRequest =
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     dataStore: Schema.String.pipe(T.HttpPath("dataStore")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{dataStore}:completeQuery" }),
+    T.Http({ method: "GET", path: "v1alpha/{+dataStore}:completeQuery" }),
     svc,
   ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsDataStoresRequest>;
 
@@ -32795,7 +32807,7 @@ export const AddPatientFilterProjectsLocationsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{dataStore}:addPatientFilter",
+      path: "v1alpha/{+dataStore}:addPatientFilter",
       hasBody: true,
     }),
     svc,
@@ -32837,7 +32849,7 @@ export const PatchProjectsLocationsDataStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresRequest>;
 
@@ -32869,7 +32881,7 @@ export const DeleteProjectsLocationsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresRequest>;
 
@@ -32910,7 +32922,7 @@ export const ListProjectsLocationsDataStoresRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/dataStores" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/dataStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresRequest>;
 
@@ -32958,7 +32970,7 @@ export const GetProjectsLocationsDataStoresWidgetConfigsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresWidgetConfigsRequest>;
 
@@ -32998,7 +33010,7 @@ export const PatchProjectsLocationsDataStoresWidgetConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresWidgetConfigsRequest>;
 
@@ -33030,7 +33042,7 @@ export const GetProjectsLocationsDataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresOperationsRequest>;
 
@@ -33076,7 +33088,7 @@ export const ListProjectsLocationsDataStoresOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresOperationsRequest>;
 
@@ -33119,7 +33131,7 @@ export const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/suggestionDenyListEntries:purge",
+      path: "v1alpha/{+parent}/suggestionDenyListEntries:purge",
       hasBody: true,
     }),
     svc,
@@ -33161,7 +33173,7 @@ export const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/suggestionDenyListEntries:import",
+      path: "v1alpha/{+parent}/suggestionDenyListEntries:import",
       hasBody: true,
     }),
     svc,
@@ -33204,7 +33216,11 @@ export const CreateProjectsLocationsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{parent}/schemas", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1alpha/{+parent}/schemas",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSchemasRequest>;
 
@@ -33236,7 +33252,7 @@ export const GetProjectsLocationsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSchemasRequest>;
 
@@ -33268,7 +33284,7 @@ export const DeleteProjectsLocationsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSchemasRequest>;
 
@@ -33306,7 +33322,7 @@ export const ListProjectsLocationsDataStoresSchemasRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/schemas" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/schemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSchemasRequest>;
 
@@ -33352,7 +33368,7 @@ export const PatchProjectsLocationsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSchemasRequest>;
 
@@ -33391,7 +33407,7 @@ export const StreamAnswerProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:streamAnswer",
+      path: "v1alpha/{+servingConfig}:streamAnswer",
       hasBody: true,
     }),
     svc,
@@ -33432,7 +33448,7 @@ export const ListProjectsLocationsDataStoresServingConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/servingConfigs" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/servingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -33475,7 +33491,7 @@ export const SearchProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:search",
+      path: "v1alpha/{+servingConfig}:search",
       hasBody: true,
     }),
     svc,
@@ -33517,7 +33533,7 @@ export const SearchLiteProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:searchLite",
+      path: "v1alpha/{+servingConfig}:searchLite",
       hasBody: true,
     }),
     svc,
@@ -33552,7 +33568,7 @@ export const GetProjectsLocationsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -33592,7 +33608,7 @@ export const PatchProjectsLocationsDataStoresServingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -33624,7 +33640,7 @@ export const DeleteProjectsLocationsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -33664,7 +33680,7 @@ export const AnswerProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:answer",
+      path: "v1alpha/{+servingConfig}:answer",
       hasBody: true,
     }),
     svc,
@@ -33706,7 +33722,7 @@ export const RecommendProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{servingConfig}:recommend",
+      path: "v1alpha/{+servingConfig}:recommend",
       hasBody: true,
     }),
     svc,
@@ -33753,7 +33769,7 @@ export const CreateProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/servingConfigs",
+      path: "v1alpha/{+parent}/servingConfigs",
       hasBody: true,
     }),
     svc,
@@ -33788,7 +33804,7 @@ export const GetProjectsLocationsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresControlsRequest>;
 
@@ -33830,7 +33846,7 @@ export const CreateProjectsLocationsDataStoresControlsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/controls",
+      path: "v1alpha/{+parent}/controls",
       hasBody: true,
     }),
     svc,
@@ -33864,7 +33880,7 @@ export const DeleteProjectsLocationsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresControlsRequest>;
 
@@ -33905,7 +33921,7 @@ export const ListProjectsLocationsDataStoresControlsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/controls" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/controls" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresControlsRequest>;
 
@@ -33949,7 +33965,7 @@ export const PatchProjectsLocationsDataStoresControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresControlsRequest>;
 
@@ -33989,7 +34005,7 @@ export const PatchProjectsLocationsDataStoresSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSessionsRequest>;
 
@@ -34033,7 +34049,7 @@ export const ListProjectsLocationsDataStoresSessionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/sessions" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSessionsRequest>;
 
@@ -34074,7 +34090,7 @@ export const GetProjectsLocationsDataStoresSessionsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSessionsRequest>;
 
@@ -34106,7 +34122,7 @@ export const DeleteProjectsLocationsDataStoresSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSessionsRequest>;
 
@@ -34148,7 +34164,7 @@ export const CreateProjectsLocationsDataStoresSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sessions",
+      path: "v1alpha/{+parent}/sessions",
       hasBody: true,
     }),
     svc,
@@ -34182,7 +34198,7 @@ export const GetProjectsLocationsDataStoresSessionsAnswersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSessionsAnswersRequest>;
 
@@ -34226,7 +34242,7 @@ export const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/{parent}/batchGetDocumentsMetadata",
+      path: "v1alpha/{+parent}/batchGetDocumentsMetadata",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>;
@@ -34267,7 +34283,7 @@ export const ListProjectsLocationsDataStoresBranchesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/branches" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/branches" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesRequest>;
 
@@ -34306,7 +34322,7 @@ export const GetProjectsLocationsDataStoresBranchesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesRequest>;
 
@@ -34352,7 +34368,7 @@ export const ListProjectsLocationsDataStoresBranchesOperationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesOperationsRequest>;
 
@@ -34389,7 +34405,7 @@ export const GetProjectsLocationsDataStoresBranchesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesOperationsRequest>;
 
@@ -34427,7 +34443,7 @@ export const CancelProjectsLocationsDataStoresBranchesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDataStoresBranchesOperationsRequest>;
 
@@ -34473,7 +34489,7 @@ export const PatchProjectsLocationsDataStoresBranchesDocumentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -34506,7 +34522,7 @@ export const DeleteProjectsLocationsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -34545,7 +34561,7 @@ export const ListProjectsLocationsDataStoresBranchesDocumentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/documents" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/documents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -34592,7 +34608,7 @@ export const CreateProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/documents",
+      path: "v1alpha/{+parent}/documents",
       hasBody: true,
     }),
     svc,
@@ -34634,7 +34650,7 @@ export const PurgeProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/documents:purge",
+      path: "v1alpha/{+parent}/documents:purge",
       hasBody: true,
     }),
     svc,
@@ -34669,7 +34685,7 @@ export const GetProjectsLocationsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -34709,7 +34725,7 @@ export const ImportProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/documents:import",
+      path: "v1alpha/{+parent}/documents:import",
       hasBody: true,
     }),
     svc,
@@ -34766,7 +34782,7 @@ export const GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsReq
       T.HttpQuery("processedDocumentType"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}:getProcessedDocument" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}:getProcessedDocument" }),
     svc,
   ) as unknown as Schema.Schema<GetProcessedDocumentProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -34801,7 +34817,7 @@ export const GetProjectsLocationsDataStoresBranchesDocumentsChunksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesDocumentsChunksRequest>;
 
@@ -34840,7 +34856,7 @@ export const ListProjectsLocationsDataStoresBranchesDocumentsChunksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/chunks" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/chunks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesDocumentsChunksRequest>;
 
@@ -34884,7 +34900,7 @@ export const ImportProjectsLocationsDataStoresCompletionSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/completionSuggestions:import",
+      path: "v1alpha/{+parent}/completionSuggestions:import",
       hasBody: true,
     }),
     svc,
@@ -34926,7 +34942,7 @@ export const PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/completionSuggestions:purge",
+      path: "v1alpha/{+parent}/completionSuggestions:purge",
       hasBody: true,
     }),
     svc,
@@ -34968,7 +34984,7 @@ export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{siteSearchEngine}:disableAdvancedSiteSearch",
+      path: "v1alpha/{+siteSearchEngine}:disableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -35012,7 +35028,7 @@ export const RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{siteSearchEngine}:recrawlUris",
+      path: "v1alpha/{+siteSearchEngine}:recrawlUris",
       hasBody: true,
     }),
     svc,
@@ -35054,7 +35070,7 @@ export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{siteSearchEngine}:enableAdvancedSiteSearch",
+      path: "v1alpha/{+siteSearchEngine}:enableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -35098,7 +35114,7 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/targetSites",
+      path: "v1alpha/{+parent}/targetSites",
       hasBody: true,
     }),
     svc,
@@ -35139,7 +35155,7 @@ export const ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/targetSites" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/targetSites" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -35183,7 +35199,7 @@ export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/targetSites:batchCreate",
+      path: "v1alpha/{+parent}/targetSites:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -35220,7 +35236,7 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -35258,7 +35274,7 @@ export const PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest 
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -35291,7 +35307,7 @@ export const GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -35329,7 +35345,7 @@ export const FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
       Schema.Array(Schema.String),
     ).pipe(T.HttpQuery("matcher.urisMatcher.uris")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/sitemaps:fetch" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/sitemaps:fetch" }),
     svc,
   ) as unknown as Schema.Schema<FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -35362,7 +35378,7 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -35402,7 +35418,7 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/sitemaps",
+      path: "v1alpha/{+parent}/sitemaps",
       hasBody: true,
     }),
     svc,
@@ -35444,7 +35460,7 @@ export const CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{completionConfig}:completeQuery",
+      path: "v1alpha/{+completionConfig}:completeQuery",
       hasBody: true,
     }),
     svc,
@@ -35486,7 +35502,7 @@ export const ImportProjectsLocationsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:import",
+      path: "v1alpha/{+parent}/userEvents:import",
       hasBody: true,
     }),
     svc,
@@ -35527,7 +35543,7 @@ export const PurgeProjectsLocationsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:purge",
+      path: "v1alpha/{+parent}/userEvents:purge",
       hasBody: true,
     }),
     svc,
@@ -35571,7 +35587,7 @@ export const WriteProjectsLocationsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/userEvents:write",
+      path: "v1alpha/{+parent}/userEvents:write",
       hasBody: true,
     }),
     svc,
@@ -35614,7 +35630,7 @@ export const CollectProjectsLocationsDataStoresUserEventsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     uri: Schema.optional(Schema.String).pipe(T.HttpQuery("uri")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/userEvents:collect" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/userEvents:collect" }),
     svc,
   ) as unknown as Schema.Schema<CollectProjectsLocationsDataStoresUserEventsRequest>;
 
@@ -35658,7 +35674,7 @@ export const ListProjectsLocationsDataStoresConversationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/conversations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresConversationsRequest>;
 
@@ -35701,7 +35717,7 @@ export const CreateProjectsLocationsDataStoresConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/conversations",
+      path: "v1alpha/{+parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -35735,7 +35751,7 @@ export const DeleteProjectsLocationsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresConversationsRequest>;
 
@@ -35772,7 +35788,7 @@ export const ConverseProjectsLocationsDataStoresConversationsRequest =
       GoogleCloudDiscoveryengineV1alphaConverseConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha/{name}:converse", hasBody: true }),
+    T.Http({ method: "POST", path: "v1alpha/{+name}:converse", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConverseProjectsLocationsDataStoresConversationsRequest>;
 
@@ -35813,7 +35829,7 @@ export const PatchProjectsLocationsDataStoresConversationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresConversationsRequest>;
 
@@ -35845,7 +35861,7 @@ export const GetProjectsLocationsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresConversationsRequest>;
 
@@ -35891,7 +35907,7 @@ export const ListProjectsLocationsDataStoresModelsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresModelsOperationsRequest>;
 
@@ -35928,7 +35944,7 @@ export const GetProjectsLocationsDataStoresModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresModelsOperationsRequest>;
 
@@ -35966,7 +35982,7 @@ export const ListProjectsLocationsEvaluationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{parent}/evaluations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+parent}/evaluations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsRequest>;
 
@@ -36009,7 +36025,7 @@ export const CreateProjectsLocationsEvaluationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/{parent}/evaluations",
+      path: "v1alpha/{+parent}/evaluations",
       hasBody: true,
     }),
     svc,
@@ -36049,7 +36065,7 @@ export const ListResultsProjectsLocationsEvaluationsRequest =
     evaluation: Schema.String.pipe(T.HttpPath("evaluation")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{evaluation}:listResults" }),
+    T.Http({ method: "GET", path: "v1alpha/{+evaluation}:listResults" }),
     svc,
   ) as unknown as Schema.Schema<ListResultsProjectsLocationsEvaluationsRequest>;
 
@@ -36085,7 +36101,7 @@ export const GetProjectsLocationsEvaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsRequest>;
 
@@ -36117,7 +36133,7 @@ export const GetProjectsLocationsEvaluationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsOperationsRequest>;
 
@@ -36163,7 +36179,7 @@ export const ListProjectsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
 
@@ -36199,7 +36215,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/{name}" }),
+    T.Http({ method: "GET", path: "v1alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 

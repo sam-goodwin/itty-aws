@@ -292,7 +292,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -361,7 +361,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(Account).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchAccountsRequest>;
 
@@ -439,7 +439,7 @@ export const AcceptAccountsInvitationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AcceptInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:accept", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:accept", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AcceptAccountsInvitationsRequest>;
 
@@ -473,7 +473,7 @@ export const ListAccountsInvitationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/invitations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/invitations" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsInvitationsRequest>;
 
@@ -507,7 +507,7 @@ export const DeclineAccountsInvitationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeclineInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:decline", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:decline", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeclineAccountsInvitationsRequest>;
 
@@ -538,7 +538,7 @@ export const DeleteAccountsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsAdminsRequest>;
 
@@ -571,7 +571,7 @@ export const CreateAccountsAdminsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/admins", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/admins", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsAdminsRequest>;
 
@@ -607,7 +607,7 @@ export const PatchAccountsAdminsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsAdminsRequest>;
 
@@ -637,7 +637,7 @@ export const ListAccountsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/admins" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdminsRequest>;
 
@@ -671,7 +671,7 @@ export const TransferLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TransferLocationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:transfer", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:transfer", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TransferLocationsRequest>;
 
@@ -701,7 +701,7 @@ export const DeleteLocationsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLocationsAdminsRequest>;
 
@@ -734,7 +734,7 @@ export const CreateLocationsAdminsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/admins", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/admins", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateLocationsAdminsRequest>;
 
@@ -770,7 +770,7 @@ export const PatchLocationsAdminsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchLocationsAdminsRequest>;
 
@@ -800,7 +800,7 @@ export const ListLocationsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/admins" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsAdminsRequest>;
 

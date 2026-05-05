@@ -410,7 +410,7 @@ export const TestProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(TestRulesetRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{name}:test", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{+name}:test", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<TestProjectsRequest>;
 
@@ -444,7 +444,7 @@ export const CreateProjectsRulesetsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Ruleset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}/rulesets", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}/rulesets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsRulesetsRequest>;
 
@@ -475,7 +475,7 @@ export const GetProjectsRulesetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsRulesetsRequest>;
 
@@ -514,7 +514,7 @@ export const ListProjectsRulesetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/rulesets" }),
+    T.Http({ method: "GET", path: "v1/{+name}/rulesets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRulesetsRequest>;
 
@@ -549,7 +549,7 @@ export const DeleteProjectsRulesetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsRulesetsRequest>;
 
@@ -582,7 +582,7 @@ export const CreateProjectsReleasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Release).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}/releases", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}/releases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsReleasesRequest>;
 
@@ -616,7 +616,7 @@ export const PatchProjectsReleasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateReleaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsReleasesRequest>;
 
@@ -647,7 +647,7 @@ export const GetProjectsReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsReleasesRequest>;
 
@@ -686,7 +686,7 @@ export const ListProjectsReleasesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/releases" }),
+    T.Http({ method: "GET", path: "v1/{+name}/releases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsReleasesRequest>;
 
@@ -721,7 +721,7 @@ export const DeleteProjectsReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsReleasesRequest>;
 
@@ -760,7 +760,7 @@ export const GetExecutableProjectsReleasesRequest =
       T.HttpQuery("executableVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:getExecutable" }),
+    T.Http({ method: "GET", path: "v1/{+name}:getExecutable" }),
     svc,
   ) as unknown as Schema.Schema<GetExecutableProjectsReleasesRequest>;
 

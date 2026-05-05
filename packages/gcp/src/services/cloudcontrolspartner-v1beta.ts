@@ -541,7 +541,7 @@ export const GetPartnerOrganizationsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnerOrganizationsLocationsRequest>;
 
@@ -578,7 +578,7 @@ export const PatchOrganizationsLocationsCustomersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsCustomersRequest>;
 
@@ -609,7 +609,7 @@ export const DeleteOrganizationsLocationsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsCustomersRequest>;
 
@@ -640,7 +640,7 @@ export const GetOrganizationsLocationsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersRequest>;
 
@@ -683,7 +683,7 @@ export const ListOrganizationsLocationsCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/customers" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersRequest>;
 
@@ -726,7 +726,7 @@ export const CreateOrganizationsLocationsCustomersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{parent}/customers",
+      path: "v1beta/{+parent}/customers",
       hasBody: true,
     }),
     svc,
@@ -759,7 +759,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -790,7 +790,7 @@ export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -835,7 +835,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/workloads" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/workloads" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -871,7 +871,7 @@ export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -916,7 +916,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsR
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/accessApprovalRequests" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/accessApprovalRequests" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest>;
 
@@ -955,7 +955,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsViolationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{name}" }),
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
@@ -1010,7 +1010,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{parent}/violations" }),
+    T.Http({ method: "GET", path: "v1beta/{+parent}/violations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 

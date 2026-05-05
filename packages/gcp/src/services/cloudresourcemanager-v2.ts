@@ -595,7 +595,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -630,7 +630,7 @@ export const SetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{resource}:setIamPolicy",
+      path: "v2/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -661,7 +661,7 @@ export interface DeleteFoldersRequest {
 export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v2/{name}" }),
+  T.Http({ method: "DELETE", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteFoldersRequest>;
 
@@ -727,7 +727,7 @@ export const TestIamPermissionsFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{resource}:testIamPermissions",
+      path: "v2/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -762,7 +762,7 @@ export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(MoveFolderRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v2/{name}:move", hasBody: true }),
+  T.Http({ method: "POST", path: "v2/{+name}:move", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<MoveFoldersRequest>;
 
@@ -872,7 +872,7 @@ export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Folder).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchFoldersRequest>;
 
@@ -907,7 +907,7 @@ export const GetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{resource}:getIamPolicy",
+      path: "v2/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -938,7 +938,7 @@ export interface GetFoldersRequest {
 export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/{name}" }),
+  T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetFoldersRequest>;
 
@@ -972,7 +972,7 @@ export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(UndeleteFolderRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({ method: "POST", path: "v2/{name}:undelete", hasBody: true }),
+  T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UndeleteFoldersRequest>;
 

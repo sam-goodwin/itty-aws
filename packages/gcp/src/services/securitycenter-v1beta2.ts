@@ -7371,7 +7371,7 @@ export const GetSecurityCenterSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecurityCenterSettingsOrganizationsRequest>;
 
@@ -7403,7 +7403,7 @@ export const GetContainerThreatDetectionSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetContainerThreatDetectionSettingsOrganizationsRequest>;
 
@@ -7436,7 +7436,7 @@ export const GetSecurityHealthAnalyticsSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecurityHealthAnalyticsSettingsOrganizationsRequest>;
 
@@ -7475,7 +7475,7 @@ export const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SecurityHealthAnalyticsSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest>;
 
@@ -7508,7 +7508,7 @@ export const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
 
@@ -7549,7 +7549,7 @@ export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
 
@@ -7588,7 +7588,7 @@ export const UpdateContainerThreatDetectionSettingsOrganizationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateContainerThreatDetectionSettingsOrganizationsRequest>;
 
@@ -7621,7 +7621,7 @@ export const GetEventThreatDetectionSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEventThreatDetectionSettingsOrganizationsRequest>;
 
@@ -7653,7 +7653,7 @@ export const GetWebSecurityScannerSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetWebSecurityScannerSettingsOrganizationsRequest>;
 
@@ -7685,7 +7685,7 @@ export const GetSubscriptionOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSubscriptionOrganizationsRequest>;
 
@@ -7724,7 +7724,7 @@ export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
 
@@ -7763,7 +7763,7 @@ export const UpdateEventThreatDetectionSettingsOrganizationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EventThreatDetectionSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEventThreatDetectionSettingsOrganizationsRequest>;
 
@@ -7802,7 +7802,7 @@ export const UpdateWebSecurityScannerSettingsOrganizationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebSecurityScannerSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateWebSecurityScannerSettingsOrganizationsRequest>;
 
@@ -7834,7 +7834,7 @@ export const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
 
@@ -7872,7 +7872,7 @@ export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest 
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>;
 
@@ -7910,7 +7910,7 @@ export const CalculateOrganizationsEventThreatDetectionSettingsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>;
 
@@ -7943,7 +7943,7 @@ export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>;
 
@@ -7981,7 +7981,7 @@ export const CalculateOrganizationsWebSecurityScannerSettingsRequest =
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateOrganizationsWebSecurityScannerSettingsRequest>;
 
@@ -8019,7 +8019,7 @@ export const CalculateOrganizationsContainerThreatDetectionSettingsRequest =
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>;
 
@@ -8057,7 +8057,7 @@ export const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest =
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest>;
 
@@ -8096,7 +8096,7 @@ export const UpdateEventThreatDetectionSettingsFoldersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EventThreatDetectionSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEventThreatDetectionSettingsFoldersRequest>;
 
@@ -8136,7 +8136,7 @@ export const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateVirtualMachineThreatDetectionSettingsFoldersRequest>;
 
@@ -8169,7 +8169,7 @@ export const GetWebSecurityScannerSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetWebSecurityScannerSettingsFoldersRequest>;
 
@@ -8201,7 +8201,7 @@ export const GetEventThreatDetectionSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEventThreatDetectionSettingsFoldersRequest>;
 
@@ -8239,7 +8239,7 @@ export const UpdateContainerThreatDetectionSettingsFoldersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateContainerThreatDetectionSettingsFoldersRequest>;
 
@@ -8271,7 +8271,7 @@ export const GetVirtualMachineThreatDetectionSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVirtualMachineThreatDetectionSettingsFoldersRequest>;
 
@@ -8310,7 +8310,7 @@ export const UpdateWebSecurityScannerSettingsFoldersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebSecurityScannerSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateWebSecurityScannerSettingsFoldersRequest>;
 
@@ -8342,7 +8342,7 @@ export const GetContainerThreatDetectionSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetContainerThreatDetectionSettingsFoldersRequest>;
 
@@ -8374,7 +8374,7 @@ export const GetSecurityHealthAnalyticsSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecurityHealthAnalyticsSettingsFoldersRequest>;
 
@@ -8406,7 +8406,7 @@ export const GetSecurityCenterSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecurityCenterSettingsFoldersRequest>;
 
@@ -8437,7 +8437,7 @@ export const GetRapidVulnerabilityDetectionSettingsFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRapidVulnerabilityDetectionSettingsFoldersRequest>;
 
@@ -8477,7 +8477,7 @@ export const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateRapidVulnerabilityDetectionSettingsFoldersRequest>;
 
@@ -8516,7 +8516,7 @@ export const UpdateSecurityHealthAnalyticsSettingsFoldersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecurityHealthAnalyticsSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityHealthAnalyticsSettingsFoldersRequest>;
 
@@ -8553,7 +8553,7 @@ export const CalculateFoldersEventThreatDetectionSettingsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateFoldersEventThreatDetectionSettingsRequest>;
 
@@ -8590,7 +8590,7 @@ export const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest =
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateFoldersVirtualMachineThreatDetectionSettingsRequest>;
 
@@ -8628,7 +8628,7 @@ export const CalculateFoldersContainerThreatDetectionSettingsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateFoldersContainerThreatDetectionSettingsRequest>;
 
@@ -8666,7 +8666,7 @@ export const CalculateFoldersSecurityHealthAnalyticsSettingsRequest =
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateFoldersSecurityHealthAnalyticsSettingsRequest>;
 
@@ -8699,7 +8699,7 @@ export const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateFoldersRapidVulnerabilityDetectionSettingsRequest>;
 
@@ -8737,7 +8737,7 @@ export const CalculateFoldersWebSecurityScannerSettingsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateFoldersWebSecurityScannerSettingsRequest>;
 
@@ -8775,7 +8775,7 @@ export const UpdateSecurityHealthAnalyticsSettingsProjectsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SecurityHealthAnalyticsSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityHealthAnalyticsSettingsProjectsRequest>;
 
@@ -8807,7 +8807,7 @@ export const GetRapidVulnerabilityDetectionSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRapidVulnerabilityDetectionSettingsProjectsRequest>;
 
@@ -8847,7 +8847,7 @@ export const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateRapidVulnerabilityDetectionSettingsProjectsRequest>;
 
@@ -8880,7 +8880,7 @@ export const GetSecurityCenterSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecurityCenterSettingsProjectsRequest>;
 
@@ -8911,7 +8911,7 @@ export const GetContainerThreatDetectionSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetContainerThreatDetectionSettingsProjectsRequest>;
 
@@ -8943,7 +8943,7 @@ export const GetSecurityHealthAnalyticsSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecurityHealthAnalyticsSettingsProjectsRequest>;
 
@@ -8981,7 +8981,7 @@ export const UpdateWebSecurityScannerSettingsProjectsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebSecurityScannerSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateWebSecurityScannerSettingsProjectsRequest>;
 
@@ -9013,7 +9013,7 @@ export const GetVirtualMachineThreatDetectionSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetVirtualMachineThreatDetectionSettingsProjectsRequest>;
 
@@ -9052,7 +9052,7 @@ export const UpdateContainerThreatDetectionSettingsProjectsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateContainerThreatDetectionSettingsProjectsRequest>;
 
@@ -9084,7 +9084,7 @@ export const GetEventThreatDetectionSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEventThreatDetectionSettingsProjectsRequest>;
 
@@ -9124,7 +9124,7 @@ export const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateVirtualMachineThreatDetectionSettingsProjectsRequest>;
 
@@ -9157,7 +9157,7 @@ export const GetWebSecurityScannerSettingsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetWebSecurityScannerSettingsProjectsRequest>;
 
@@ -9195,7 +9195,7 @@ export const UpdateEventThreatDetectionSettingsProjectsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventThreatDetectionSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEventThreatDetectionSettingsProjectsRequest>;
 
@@ -9227,7 +9227,7 @@ export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
 
@@ -9266,7 +9266,7 @@ export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequ
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ContainerThreatDetectionSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
 
@@ -9305,7 +9305,7 @@ export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsR
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest>;
 
@@ -9345,7 +9345,7 @@ export const CalculateProjectsContainerThreatDetectionSettingsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateProjectsContainerThreatDetectionSettingsRequest>;
 
@@ -9383,7 +9383,7 @@ export const CalculateProjectsSecurityHealthAnalyticsSettingsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateProjectsSecurityHealthAnalyticsSettingsRequest>;
 
@@ -9416,7 +9416,7 @@ export const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateProjectsRapidVulnerabilityDetectionSettingsRequest>;
 
@@ -9454,7 +9454,7 @@ export const CalculateProjectsWebSecurityScannerSettingsRequest =
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateProjectsWebSecurityScannerSettingsRequest>;
 
@@ -9491,7 +9491,7 @@ export const CalculateProjectsEventThreatDetectionSettingsRequest =
       T.HttpQuery("showEligibleModulesOnly"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateProjectsEventThreatDetectionSettingsRequest>;
 
@@ -9528,7 +9528,7 @@ export const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{name}:calculate" }),
+    T.Http({ method: "GET", path: "v1beta2/{+name}:calculate" }),
     svc,
   ) as unknown as Schema.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>;
 

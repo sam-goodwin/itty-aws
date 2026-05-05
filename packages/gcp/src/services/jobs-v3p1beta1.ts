@@ -1429,7 +1429,7 @@ export const CompleteProjectsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3p1beta1/{name}:complete" }),
+    T.Http({ method: "GET", path: "v3p1beta1/{+name}:complete" }),
     svc,
   ) as unknown as Schema.Schema<CompleteProjectsRequest>;
 
@@ -1460,7 +1460,7 @@ export const DeleteProjectsCompaniesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v3p1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v3p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsCompaniesRequest>;
 
@@ -1496,7 +1496,7 @@ export const CreateProjectsCompaniesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3p1beta1/{parent}/companies",
+      path: "v3p1beta1/{+parent}/companies",
       hasBody: true,
     }),
     svc,
@@ -1529,7 +1529,7 @@ export const GetProjectsCompaniesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3p1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v3p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsCompaniesRequest>;
 
@@ -1570,7 +1570,7 @@ export const ListProjectsCompaniesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3p1beta1/{parent}/companies" }),
+    T.Http({ method: "GET", path: "v3p1beta1/{+parent}/companies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsCompaniesRequest>;
 
@@ -1608,7 +1608,7 @@ export const PatchProjectsCompaniesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateCompanyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v3p1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v3p1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsCompaniesRequest>;
 
@@ -1644,7 +1644,7 @@ export const CreateProjectsClientEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3p1beta1/{parent}/clientEvents",
+      path: "v3p1beta1/{+parent}/clientEvents",
       hasBody: true,
     }),
     svc,
@@ -1682,7 +1682,7 @@ export const BatchDeleteProjectsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3p1beta1/{parent}/jobs:batchDelete",
+      path: "v3p1beta1/{+parent}/jobs:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -1720,7 +1720,7 @@ export const SearchForAlertProjectsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3p1beta1/{parent}/jobs:searchForAlert",
+      path: "v3p1beta1/{+parent}/jobs:searchForAlert",
       hasBody: true,
     }),
     svc,
@@ -1754,7 +1754,7 @@ export const GetProjectsJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v3p1beta1/{name}" }),
+  T.Http({ method: "GET", path: "v3p1beta1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsJobsRequest>;
 
@@ -1787,7 +1787,7 @@ export const PatchProjectsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v3p1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v3p1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsJobsRequest>;
 
@@ -1820,7 +1820,7 @@ export const CreateProjectsJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v3p1beta1/{parent}/jobs", hasBody: true }),
+    T.Http({ method: "POST", path: "v3p1beta1/{+parent}/jobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsJobsRequest>;
 
@@ -1855,7 +1855,7 @@ export const SearchProjectsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3p1beta1/{parent}/jobs:search",
+      path: "v3p1beta1/{+parent}/jobs:search",
       hasBody: true,
     }),
     svc,
@@ -1888,7 +1888,7 @@ export const DeleteProjectsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v3p1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v3p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsJobsRequest>;
 
@@ -1936,7 +1936,7 @@ export const ListProjectsJobsRequest =
     jobView: Schema.optional(Schema.String).pipe(T.HttpQuery("jobView")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3p1beta1/{parent}/jobs" }),
+    T.Http({ method: "GET", path: "v3p1beta1/{+parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsJobsRequest>;
 
@@ -1971,7 +1971,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3p1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v3p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 

@@ -989,7 +989,7 @@ export const ExportAssetsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}:exportAssets",
+      path: "v1beta1/{+parent}:exportAssets",
       hasBody: true,
     }),
     svc,
@@ -1046,7 +1046,7 @@ export const BatchGetAssetsHistoryProjectsRequest =
       T.HttpQuery("readTimeWindow.endTime"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}:batchGetAssetsHistory" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}:batchGetAssetsHistory" }),
     svc,
   ) as unknown as Schema.Schema<BatchGetAssetsHistoryProjectsRequest>;
 
@@ -1078,7 +1078,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
@@ -1114,7 +1114,7 @@ export const ExportAssetsFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}:exportAssets",
+      path: "v1beta1/{+parent}:exportAssets",
       hasBody: true,
     }),
     svc,
@@ -1147,7 +1147,7 @@ export const GetFoldersOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersOperationsRequest>;
 
@@ -1183,7 +1183,7 @@ export const ExportAssetsOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}:exportAssets",
+      path: "v1beta1/{+parent}:exportAssets",
       hasBody: true,
     }),
     svc,
@@ -1240,7 +1240,7 @@ export const BatchGetAssetsHistoryOrganizationsRequest =
       T.HttpQuery("readTimeWindow.endTime"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}:batchGetAssetsHistory" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}:batchGetAssetsHistory" }),
     svc,
   ) as unknown as Schema.Schema<BatchGetAssetsHistoryOrganizationsRequest>;
 
@@ -1272,7 +1272,7 @@ export const GetOrganizationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsOperationsRequest>;
 

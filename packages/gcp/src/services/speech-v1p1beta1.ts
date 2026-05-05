@@ -723,7 +723,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1p1beta1/operations/{name}" }),
+  T.Http({ method: "GET", path: "v1p1beta1/operations/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -759,7 +759,7 @@ export const ListProjectsLocationsPhraseSetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1p1beta1/{parent}/phraseSets" }),
+    T.Http({ method: "GET", path: "v1p1beta1/{+parent}/phraseSets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPhraseSetsRequest>;
 
@@ -794,7 +794,7 @@ export const GetProjectsLocationsPhraseSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1p1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPhraseSetsRequest>;
 
@@ -825,7 +825,7 @@ export const DeleteProjectsLocationsPhraseSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1p1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPhraseSetsRequest>;
 
@@ -861,7 +861,7 @@ export const CreateProjectsLocationsPhraseSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p1beta1/{parent}/phraseSets",
+      path: "v1p1beta1/{+parent}/phraseSets",
       hasBody: true,
     }),
     svc,
@@ -900,7 +900,7 @@ export const PatchProjectsLocationsPhraseSetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PhraseSet).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1p1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1p1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPhraseSetsRequest>;
 
@@ -937,7 +937,7 @@ export const ListProjectsLocationsCustomClassesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1p1beta1/{parent}/customClasses" }),
+    T.Http({ method: "GET", path: "v1p1beta1/{+parent}/customClasses" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCustomClassesRequest>;
 
@@ -973,7 +973,7 @@ export const GetProjectsLocationsCustomClassesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1p1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCustomClassesRequest>;
 
@@ -1004,7 +1004,7 @@ export const DeleteProjectsLocationsCustomClassesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1p1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1p1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCustomClassesRequest>;
 
@@ -1040,7 +1040,7 @@ export const CreateProjectsLocationsCustomClassesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p1beta1/{parent}/customClasses",
+      path: "v1p1beta1/{+parent}/customClasses",
       hasBody: true,
     }),
     svc,
@@ -1079,7 +1079,7 @@ export const PatchProjectsLocationsCustomClassesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CustomClass).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1p1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1p1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCustomClassesRequest>;
 

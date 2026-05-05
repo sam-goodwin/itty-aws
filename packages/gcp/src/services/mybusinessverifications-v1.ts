@@ -393,7 +393,7 @@ export const GetVoiceOfMerchantStateLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/VoiceOfMerchantState" }),
+    T.Http({ method: "GET", path: "v1/{+name}/VoiceOfMerchantState" }),
     svc,
   ) as unknown as Schema.Schema<GetVoiceOfMerchantStateLocationsRequest>;
 
@@ -429,7 +429,7 @@ export const FetchVerificationOptionsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{location}:fetchVerificationOptions",
+      path: "v1/{+location}:fetchVerificationOptions",
       hasBody: true,
     }),
     svc,
@@ -467,7 +467,7 @@ export const VerifyLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(VerifyLocationRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({ method: "POST", path: "v1/{name}:verify", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{+name}:verify", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<VerifyLocationsRequest>;
 
@@ -501,7 +501,7 @@ export const CompleteLocationsVerificationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CompleteVerificationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:complete", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:complete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CompleteLocationsVerificationsRequest>;
 
@@ -539,7 +539,7 @@ export const ListLocationsVerificationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/verifications" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/verifications" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsVerificationsRequest>;
 

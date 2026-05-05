@@ -419,7 +419,7 @@ export const CreatePolicyPoliciesRequest =
     policyId: Schema.optional(Schema.String).pipe(T.HttpQuery("policyId")),
     body: Schema.optional(GoogleIamV2Policy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{parent}", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+parent}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreatePolicyPoliciesRequest>;
 
@@ -452,7 +452,7 @@ export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v2/{name}" }),
+  T.Http({ method: "DELETE", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeletePoliciesRequest>;
 
@@ -489,7 +489,7 @@ export const ListPoliciesPoliciesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{parent}" }),
+    T.Http({ method: "GET", path: "v2/{+parent}" }),
     svc,
   ) as unknown as Schema.Schema<ListPoliciesPoliciesRequest>;
 
@@ -526,7 +526,7 @@ export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(GoogleIamV2Policy).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PUT", path: "v2/{name}", hasBody: true }),
+  T.Http({ method: "PUT", path: "v2/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UpdatePoliciesRequest>;
 
@@ -556,7 +556,7 @@ export interface GetPoliciesRequest {
 export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/{name}" }),
+  T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPoliciesRequest>;
 
@@ -587,7 +587,7 @@ export const GetPoliciesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{name}" }),
+    T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPoliciesOperationsRequest>;
 

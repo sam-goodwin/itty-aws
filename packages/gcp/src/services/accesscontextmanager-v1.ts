@@ -994,7 +994,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -1028,7 +1028,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1058,7 +1058,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -1091,7 +1091,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -1162,7 +1162,7 @@ export const GetAccessPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesRequest>;
 
@@ -1230,7 +1230,7 @@ export const PatchAccessPoliciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesRequest>;
 
@@ -1261,7 +1261,7 @@ export const DeleteAccessPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesRequest>;
 
@@ -1297,7 +1297,7 @@ export const SetIamPolicyAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1335,7 +1335,7 @@ export const GetIamPolicyAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getIamPolicy",
+      path: "v1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1373,7 +1373,7 @@ export const TestIamPermissionsAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1422,7 +1422,7 @@ export const ListAccessPoliciesAccessLevelsRequest =
       T.HttpQuery("accessLevelFormat"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/accessLevels" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/accessLevels" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessPoliciesAccessLevelsRequest>;
 
@@ -1466,7 +1466,7 @@ export const GetAccessPoliciesAccessLevelsRequest =
       T.HttpQuery("accessLevelFormat"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesAccessLevelsRequest>;
 
@@ -1500,7 +1500,11 @@ export const CreateAccessPoliciesAccessLevelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AccessLevel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/accessLevels", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/accessLevels",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateAccessPoliciesAccessLevelsRequest>;
 
@@ -1537,7 +1541,7 @@ export const PatchAccessPoliciesAccessLevelsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessLevel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesAccessLevelsRequest>;
 
@@ -1568,7 +1572,7 @@ export const DeleteAccessPoliciesAccessLevelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesAccessLevelsRequest>;
 
@@ -1604,7 +1608,7 @@ export const ReplaceAllAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/accessLevels:replaceAll",
+      path: "v1/{+parent}/accessLevels:replaceAll",
       hasBody: true,
     }),
     svc,
@@ -1642,7 +1646,7 @@ export const TestIamPermissionsAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1682,7 +1686,7 @@ export const ListAccessPoliciesServicePerimetersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/servicePerimeters" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/servicePerimeters" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessPoliciesServicePerimetersRequest>;
 
@@ -1718,7 +1722,7 @@ export const GetAccessPoliciesServicePerimetersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesServicePerimetersRequest>;
 
@@ -1754,7 +1758,7 @@ export const CreateAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/servicePerimeters",
+      path: "v1/{+parent}/servicePerimeters",
       hasBody: true,
     }),
     svc,
@@ -1793,7 +1797,7 @@ export const PatchAccessPoliciesServicePerimetersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ServicePerimeter).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesServicePerimetersRequest>;
 
@@ -1824,7 +1828,7 @@ export const DeleteAccessPoliciesServicePerimetersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesServicePerimetersRequest>;
 
@@ -1860,7 +1864,7 @@ export const ReplaceAllAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/servicePerimeters:replaceAll",
+      path: "v1/{+parent}/servicePerimeters:replaceAll",
       hasBody: true,
     }),
     svc,
@@ -1898,7 +1902,7 @@ export const CommitAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/servicePerimeters:commit",
+      path: "v1/{+parent}/servicePerimeters:commit",
       hasBody: true,
     }),
     svc,
@@ -1936,7 +1940,7 @@ export const TestIamPermissionsAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1977,7 +1981,7 @@ export const ListAccessPoliciesAuthorizedOrgsDescsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/authorizedOrgsDescs" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/authorizedOrgsDescs" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2013,7 +2017,7 @@ export const GetAccessPoliciesAuthorizedOrgsDescsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2049,7 +2053,7 @@ export const CreateAccessPoliciesAuthorizedOrgsDescsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/authorizedOrgsDescs",
+      path: "v1/{+parent}/authorizedOrgsDescs",
       hasBody: true,
     }),
     svc,
@@ -2088,7 +2092,7 @@ export const PatchAccessPoliciesAuthorizedOrgsDescsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AuthorizedOrgsDesc).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2119,7 +2123,7 @@ export const DeleteAccessPoliciesAuthorizedOrgsDescsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2222,7 +2226,7 @@ export const ListOrganizationsGcpUserAccessBindingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/gcpUserAccessBindings" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/gcpUserAccessBindings" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsGcpUserAccessBindingsRequest>;
 
@@ -2258,7 +2262,7 @@ export const GetOrganizationsGcpUserAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsGcpUserAccessBindingsRequest>;
 
@@ -2295,7 +2299,7 @@ export const CreateOrganizationsGcpUserAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/gcpUserAccessBindings",
+      path: "v1/{+parent}/gcpUserAccessBindings",
       hasBody: true,
     }),
     svc,
@@ -2337,7 +2341,7 @@ export const PatchOrganizationsGcpUserAccessBindingsRequest =
     append: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("append")),
     body: Schema.optional(GcpUserAccessBinding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsGcpUserAccessBindingsRequest>;
 
@@ -2368,7 +2372,7 @@ export const DeleteOrganizationsGcpUserAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsGcpUserAccessBindingsRequest>;
 

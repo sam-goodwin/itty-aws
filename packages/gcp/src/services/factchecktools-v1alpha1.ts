@@ -389,7 +389,7 @@ export interface DeletePagesRequest {
 export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
+  T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeletePagesRequest>;
 
@@ -424,7 +424,7 @@ export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
   ).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PUT", path: "v1alpha1/{name}", hasBody: true }),
+  T.Http({ method: "PUT", path: "v1alpha1/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UpdatePagesRequest>;
 
@@ -455,7 +455,7 @@ export interface GetPagesRequest {
 export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/{name}" }),
+  T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPagesRequest>;
 

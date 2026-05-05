@@ -2414,7 +2414,7 @@ export const RestoreProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/databases:restore",
+      path: "v1/{+parent}/databases:restore",
       hasBody: true,
     }),
     svc,
@@ -2454,7 +2454,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:importDocuments",
+      path: "v1/{+name}:importDocuments",
       hasBody: true,
     }),
     svc,
@@ -2495,7 +2495,7 @@ export const BulkDeleteDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:bulkDeleteDocuments",
+      path: "v1/{+name}:bulkDeleteDocuments",
       hasBody: true,
     }),
     svc,
@@ -2536,7 +2536,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:exportDocuments",
+      path: "v1/{+name}:exportDocuments",
       hasBody: true,
     }),
     svc,
@@ -2570,7 +2570,7 @@ export const GetProjectsDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesRequest>;
 
@@ -2604,7 +2604,7 @@ export const DeleteProjectsDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesRequest>;
 
@@ -2641,7 +2641,7 @@ export const PatchProjectsDatabasesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirestoreAdminV1Database).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesRequest>;
 
@@ -2678,7 +2678,7 @@ export const CreateProjectsDatabasesRequest =
     databaseId: Schema.optional(Schema.String).pipe(T.HttpQuery("databaseId")),
     body: Schema.optional(GoogleFirestoreAdminV1Database).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/databases", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/databases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesRequest>;
 
@@ -2716,7 +2716,7 @@ export const CloneProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/databases:clone",
+      path: "v1/{+parent}/databases:clone",
       hasBody: true,
     }),
     svc,
@@ -2754,7 +2754,7 @@ export const ListProjectsDatabasesRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/databases" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/databases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesRequest>;
 
@@ -2800,7 +2800,7 @@ export const ListProjectsDatabasesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/operations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesOperationsRequest>;
 
@@ -2836,7 +2836,7 @@ export const GetProjectsDatabasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesOperationsRequest>;
 
@@ -2872,7 +2872,7 @@ export const CancelProjectsDatabasesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsDatabasesOperationsRequest>;
 
@@ -2903,7 +2903,7 @@ export const DeleteProjectsDatabasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesOperationsRequest>;
 
@@ -2942,7 +2942,7 @@ export const PatchProjectsDatabasesBackupSchedulesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesBackupSchedulesRequest>;
 
@@ -2981,7 +2981,7 @@ export const CreateProjectsDatabasesBackupSchedulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/backupSchedules",
+      path: "v1/{+parent}/backupSchedules",
       hasBody: true,
     }),
     svc,
@@ -3015,7 +3015,7 @@ export const GetProjectsDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesBackupSchedulesRequest>;
 
@@ -3047,7 +3047,7 @@ export const ListProjectsDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/backupSchedules" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/backupSchedules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesBackupSchedulesRequest>;
 
@@ -3079,7 +3079,7 @@ export const DeleteProjectsDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesBackupSchedulesRequest>;
 
@@ -3115,7 +3115,7 @@ export const EnableProjectsDatabasesUserCredsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:enable", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableProjectsDatabasesUserCredsRequest>;
 
@@ -3152,7 +3152,7 @@ export const ResetPasswordProjectsDatabasesUserCredsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:resetPassword", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:resetPassword", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResetPasswordProjectsDatabasesUserCredsRequest>;
 
@@ -3184,7 +3184,7 @@ export const DeleteProjectsDatabasesUserCredsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesUserCredsRequest>;
 
@@ -3215,7 +3215,7 @@ export const GetProjectsDatabasesUserCredsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesUserCredsRequest>;
 
@@ -3247,7 +3247,7 @@ export const ListProjectsDatabasesUserCredsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/userCreds" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/userCreds" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesUserCredsRequest>;
 
@@ -3284,7 +3284,7 @@ export const DisableProjectsDatabasesUserCredsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:disable", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsDatabasesUserCredsRequest>;
 
@@ -3324,7 +3324,7 @@ export const CreateProjectsDatabasesUserCredsRequest =
     ),
     body: Schema.optional(GoogleFirestoreAdminV1UserCreds).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/userCreds", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/userCreds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesUserCredsRequest>;
 
@@ -3361,7 +3361,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:batchGet",
+      path: "v1/{+database}/documents:batchGet",
       hasBody: true,
     }),
     svc,
@@ -3400,7 +3400,7 @@ export const BeginTransactionProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:beginTransaction",
+      path: "v1/{+database}/documents:beginTransaction",
       hasBody: true,
     }),
     svc,
@@ -3439,7 +3439,7 @@ export const CommitProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:commit",
+      path: "v1/{+database}/documents:commit",
       hasBody: true,
     }),
     svc,
@@ -3502,7 +3502,7 @@ export const ListProjectsDatabasesDocumentsRequest =
     readTime: Schema.optional(Schema.String).pipe(T.HttpQuery("readTime")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/{collectionId}" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/{collectionId}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesDocumentsRequest>;
 
@@ -3542,7 +3542,7 @@ export const ListCollectionIdsProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}:listCollectionIds",
+      path: "v1/{+parent}:listCollectionIds",
       hasBody: true,
     }),
     svc,
@@ -3581,7 +3581,7 @@ export const RollbackProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:rollback",
+      path: "v1/{+database}/documents:rollback",
       hasBody: true,
     }),
     svc,
@@ -3617,7 +3617,7 @@ export const RunQueryProjectsDatabasesDocumentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RunQueryRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}:runQuery", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}:runQuery", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunQueryProjectsDatabasesDocumentsRequest>;
 
@@ -3661,7 +3661,7 @@ export const GetProjectsDatabasesDocumentsRequest =
       T.HttpQuery("transaction"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesDocumentsRequest>;
 
@@ -3722,7 +3722,7 @@ export const ListDocumentsProjectsDatabasesDocumentsRequest =
       T.HttpQuery("showMissing"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/{collectionId}" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/{collectionId}" }),
     svc,
   ) as unknown as Schema.Schema<ListDocumentsProjectsDatabasesDocumentsRequest>;
 
@@ -3774,7 +3774,7 @@ export const CreateDocumentProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/{collectionId}",
+      path: "v1/{+parent}/{collectionId}",
       hasBody: true,
     }),
     svc,
@@ -3812,7 +3812,7 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:executePipeline",
+      path: "v1/{+database}/documents:executePipeline",
       hasBody: true,
     }),
     svc,
@@ -3851,7 +3851,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}:partitionQuery",
+      path: "v1/{+parent}:partitionQuery",
       hasBody: true,
     }),
     svc,
@@ -3890,7 +3890,7 @@ export const WriteProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:write",
+      path: "v1/{+database}/documents:write",
       hasBody: true,
     }),
     svc,
@@ -3933,7 +3933,7 @@ export const DeleteProjectsDatabasesDocumentsRequest =
       T.HttpQuery("currentDocument.exists"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesDocumentsRequest>;
 
@@ -3969,7 +3969,7 @@ export const ListenProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:listen",
+      path: "v1/{+database}/documents:listen",
       hasBody: true,
     }),
     svc,
@@ -4007,7 +4007,7 @@ export const BatchWriteProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{database}/documents:batchWrite",
+      path: "v1/{+database}/documents:batchWrite",
       hasBody: true,
     }),
     svc,
@@ -4063,7 +4063,7 @@ export const PatchProjectsDatabasesDocumentsRequest =
     ),
     body: Schema.optional(Document).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesDocumentsRequest>;
 
@@ -4099,7 +4099,7 @@ export const RunAggregationQueryProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}:runAggregationQuery",
+      path: "v1/{+parent}:runAggregationQuery",
       hasBody: true,
     }),
     svc,
@@ -4136,7 +4136,7 @@ export const CreateProjectsDatabasesCollectionGroupsIndexesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleFirestoreAdminV1Index).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/indexes", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/indexes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4177,7 +4177,7 @@ export const ListProjectsDatabasesCollectionGroupsIndexesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/indexes" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/indexes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4213,7 +4213,7 @@ export const GetProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4245,7 +4245,7 @@ export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4276,7 +4276,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -4317,7 +4317,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/fields" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/fields" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -4359,7 +4359,7 @@ export const PatchProjectsDatabasesCollectionGroupsFieldsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirestoreAdminV1Field).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -4405,7 +4405,7 @@ export const ListProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/locations" }),
+    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -4440,7 +4440,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -4471,7 +4471,7 @@ export const GetProjectsLocationsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupsRequest>;
 
@@ -4505,7 +4505,7 @@ export const ListProjectsLocationsBackupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/backups" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/backups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupsRequest>;
 
@@ -4537,7 +4537,7 @@ export const DeleteProjectsLocationsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupsRequest>;
 

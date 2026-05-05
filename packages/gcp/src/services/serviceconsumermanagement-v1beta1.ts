@@ -2000,7 +2000,7 @@ export const GetServicesConsumerQuotaMetricsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServicesConsumerQuotaMetricsRequest>;
 
@@ -2039,7 +2039,7 @@ export const ImportProducerOverridesServicesConsumerQuotaMetricsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/consumerQuotaMetrics:importProducerOverrides",
+      path: "v1beta1/{+parent}/consumerQuotaMetrics:importProducerOverrides",
       hasBody: true,
     }),
     svc,
@@ -2083,7 +2083,7 @@ export const ListServicesConsumerQuotaMetricsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/consumerQuotaMetrics" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/consumerQuotaMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesConsumerQuotaMetricsRequest>;
 
@@ -2126,7 +2126,7 @@ export const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/consumerQuotaMetrics:importProducerQuotaPolicies",
+      path: "v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies",
       hasBody: true,
     }),
     svc,
@@ -2164,7 +2164,7 @@ export const GetServicesConsumerQuotaMetricsLimitsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{name}" }),
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>;
 
@@ -2218,7 +2218,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/producerOverrides",
+      path: "v1beta1/{+parent}/producerOverrides",
       hasBody: true,
     }),
     svc,
@@ -2270,7 +2270,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
       T.HttpQuery("forceJustification"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>;
 
@@ -2326,7 +2326,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(V1Beta1QuotaOverride).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>;
 
@@ -2365,7 +2365,7 @@ export const ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/producerOverrides" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/producerOverrides" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>;
 
@@ -2420,7 +2420,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{parent}/producerQuotaPolicies",
+      path: "v1beta1/{+parent}/producerQuotaPolicies",
       hasBody: true,
     }),
     svc,
@@ -2468,7 +2468,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReques
       T.HttpQuery("forceJustification"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>;
 
@@ -2520,7 +2520,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     body: Schema.optional(V1Beta1ProducerQuotaPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>;
 
@@ -2559,7 +2559,7 @@ export const ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest 
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{parent}/producerQuotaPolicies" }),
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/producerQuotaPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>;
 
@@ -2595,7 +2595,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/{name}" }),
+  T.Http({ method: "GET", path: "v1beta1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 

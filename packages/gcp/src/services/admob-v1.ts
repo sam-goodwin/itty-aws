@@ -618,7 +618,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -690,7 +690,7 @@ export const GenerateAccountsNetworkReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/networkReport:generate",
+      path: "v1/{+parent}/networkReport:generate",
       hasBody: true,
     }),
     svc,
@@ -730,7 +730,7 @@ export const ListAccountsAdUnitsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/adUnits" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/adUnits" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdUnitsRequest>;
 
@@ -770,7 +770,7 @@ export const GenerateAccountsMediationReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/mediationReport:generate",
+      path: "v1/{+parent}/mediationReport:generate",
       hasBody: true,
     }),
     svc,
@@ -810,7 +810,7 @@ export const ListAccountsAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/apps" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAppsRequest>;
 

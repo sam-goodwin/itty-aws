@@ -428,7 +428,7 @@ export const GetBillingAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsRequest>;
 
@@ -509,7 +509,7 @@ export const PatchBillingAccountsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBillingAccountsRequest>;
 
@@ -579,7 +579,7 @@ export const GetIamPolicyBillingAccountsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
+    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyBillingAccountsRequest>;
 
@@ -615,7 +615,7 @@ export const SetIamPolicyBillingAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -653,7 +653,7 @@ export const TestIamPermissionsBillingAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -690,7 +690,7 @@ export const MoveBillingAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MoveBillingAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveBillingAccountsRequest>;
 
@@ -730,7 +730,7 @@ export const ListBillingAccountsSubAccountsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/subAccounts" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/subAccounts" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSubAccountsRequest>;
 
@@ -769,7 +769,7 @@ export const CreateBillingAccountsSubAccountsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/subAccounts", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/subAccounts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBillingAccountsSubAccountsRequest>;
 
@@ -806,7 +806,7 @@ export const ListBillingAccountsProjectsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/projects" }),
+    T.Http({ method: "GET", path: "v1/{+name}/projects" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsProjectsRequest>;
 
@@ -851,7 +851,7 @@ export const ListOrganizationsBillingAccountsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/billingAccounts" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/billingAccounts" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsBillingAccountsRequest>;
 
@@ -892,7 +892,7 @@ export const CreateOrganizationsBillingAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/billingAccounts",
+      path: "v1/{+parent}/billingAccounts",
       hasBody: true,
     }),
     svc,
@@ -928,7 +928,7 @@ export const MoveOrganizationsBillingAccountsRequest =
     destinationParent: Schema.String.pipe(T.HttpPath("destinationParent")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{destinationParent}/{name}:move" }),
+    T.Http({ method: "GET", path: "v1/{+destinationParent}/{+name}:move" }),
     svc,
   ) as unknown as Schema.Schema<MoveOrganizationsBillingAccountsRequest>;
 
@@ -959,7 +959,7 @@ export const GetBillingInfoProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/billingInfo" }),
+    T.Http({ method: "GET", path: "v1/{+name}/billingInfo" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingInfoProjectsRequest>;
 
@@ -993,7 +993,7 @@ export const UpdateBillingInfoProjectsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ProjectBillingInfo).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/{name}/billingInfo", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/{+name}/billingInfo", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBillingInfoProjectsRequest>;
 
@@ -1078,7 +1078,7 @@ export const ListServicesSkusRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/skus" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesSkusRequest>;
 

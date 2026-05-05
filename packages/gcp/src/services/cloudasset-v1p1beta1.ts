@@ -923,7 +923,7 @@ export const SearchAllResourcesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1p1beta1/{scope}/resources:searchAll" }),
+    T.Http({ method: "GET", path: "v1p1beta1/{+scope}/resources:searchAll" }),
     svc,
   ) as unknown as Schema.Schema<SearchAllResourcesRequest>;
 
@@ -967,7 +967,7 @@ export const SearchAllIamPoliciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1p1beta1/{scope}/iamPolicies:searchAll" }),
+    T.Http({ method: "GET", path: "v1p1beta1/{+scope}/iamPolicies:searchAll" }),
     svc,
   ) as unknown as Schema.Schema<SearchAllIamPoliciesRequest>;
 

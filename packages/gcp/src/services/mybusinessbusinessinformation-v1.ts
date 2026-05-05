@@ -844,7 +844,7 @@ export const GetLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetLocationsRequest>;
 
@@ -877,7 +877,7 @@ export const GetGoogleUpdatedLocationsRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:getGoogleUpdated" }),
+    T.Http({ method: "GET", path: "v1/{+name}:getGoogleUpdated" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleUpdatedLocationsRequest>;
 
@@ -916,7 +916,7 @@ export const UpdateAttributesLocationsRequest =
     ),
     body: Schema.optional(Attributes).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAttributesLocationsRequest>;
 
@@ -947,7 +947,7 @@ export const GetAttributesLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAttributesLocationsRequest>;
 
@@ -979,7 +979,7 @@ export const DeleteLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "DELETE", path: "v1/{name}" }),
+  T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteLocationsRequest>;
 
@@ -1019,7 +1019,7 @@ export const PatchLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Location).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchLocationsRequest>;
 
@@ -1049,7 +1049,7 @@ export const GetGoogleUpdatedLocationsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}:getGoogleUpdated" }),
+    T.Http({ method: "GET", path: "v1/{+name}:getGoogleUpdated" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleUpdatedLocationsAttributesRequest>;
 
@@ -1095,7 +1095,7 @@ export const ListAccountsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/locations" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLocationsRequest>;
 
@@ -1141,7 +1141,7 @@ export const CreateAccountsLocationsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Location).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/locations", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/locations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsLocationsRequest>;
 
@@ -1266,7 +1266,7 @@ export interface GetChainsRequest {
 export const GetChainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetChainsRequest>;
 

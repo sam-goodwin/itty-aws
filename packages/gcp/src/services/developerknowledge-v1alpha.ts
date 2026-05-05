@@ -123,7 +123,7 @@ export interface GetDocumentsRequest {
 export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha/{name}" }),
+  T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDocumentsRequest>;
 

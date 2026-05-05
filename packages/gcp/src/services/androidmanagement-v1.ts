@@ -4418,7 +4418,7 @@ export interface GetEnterprisesRequest {
 export const GetEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetEnterprisesRequest>;
 
@@ -4499,7 +4499,7 @@ export const PatchEnterprisesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Enterprise).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesRequest>;
 
@@ -4577,7 +4577,7 @@ export const DeleteEnterprisesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesRequest>;
 
@@ -4614,7 +4614,7 @@ export const GenerateEnterpriseUpgradeUrlEnterprisesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:generateEnterpriseUpgradeUrl",
+      path: "v1/{+name}:generateEnterpriseUpgradeUrl",
       hasBody: true,
     }),
     svc,
@@ -4653,7 +4653,7 @@ export const CreateEnterprisesMigrationTokensRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/migrationTokens",
+      path: "v1/{+parent}/migrationTokens",
       hasBody: true,
     }),
     svc,
@@ -4686,7 +4686,7 @@ export const GetEnterprisesMigrationTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesMigrationTokensRequest>;
 
@@ -4723,7 +4723,7 @@ export const ListEnterprisesMigrationTokensRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/migrationTokens" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/migrationTokens" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesMigrationTokensRequest>;
 
@@ -4764,7 +4764,7 @@ export const CreateEnterprisesEnrollmentTokensRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/enrollmentTokens",
+      path: "v1/{+parent}/enrollmentTokens",
       hasBody: true,
     }),
     svc,
@@ -4797,7 +4797,7 @@ export const GetEnterprisesEnrollmentTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesEnrollmentTokensRequest>;
 
@@ -4834,7 +4834,7 @@ export const ListEnterprisesEnrollmentTokensRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/enrollmentTokens" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/enrollmentTokens" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesEnrollmentTokensRequest>;
 
@@ -4870,7 +4870,7 @@ export const DeleteEnterprisesEnrollmentTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesEnrollmentTokensRequest>;
 
@@ -4904,7 +4904,7 @@ export const CreateEnterprisesWebTokensRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebToken).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/webTokens", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/webTokens", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateEnterprisesWebTokensRequest>;
 
@@ -4941,7 +4941,7 @@ export const PatchEnterprisesWebAppsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesWebAppsRequest>;
 
@@ -4972,7 +4972,7 @@ export const GetEnterprisesWebAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesWebAppsRequest>;
 
@@ -5008,7 +5008,7 @@ export const ListEnterprisesWebAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/webApps" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/webApps" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesWebAppsRequest>;
 
@@ -5043,7 +5043,7 @@ export const DeleteEnterprisesWebAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesWebAppsRequest>;
 
@@ -5077,7 +5077,7 @@ export const CreateEnterprisesWebAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/webApps", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/webApps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateEnterprisesWebAppsRequest>;
 
@@ -5114,7 +5114,7 @@ export const PatchEnterprisesDevicesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Device).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesDevicesRequest>;
 
@@ -5145,7 +5145,7 @@ export const GetEnterprisesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesDevicesRequest>;
 
@@ -5181,7 +5181,7 @@ export const ListEnterprisesDevicesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/devices" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesDevicesRequest>;
 
@@ -5219,7 +5219,7 @@ export const IssueCommandEnterprisesDevicesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Command).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:issueCommand", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:issueCommand", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<IssueCommandEnterprisesDevicesRequest>;
 
@@ -5265,7 +5265,7 @@ export const DeleteEnterprisesDevicesRequest =
       T.HttpQuery("wipeReasonMessage"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesDevicesRequest>;
 
@@ -5310,7 +5310,7 @@ export const ListEnterprisesDevicesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesDevicesOperationsRequest>;
 
@@ -5345,7 +5345,7 @@ export const GetEnterprisesDevicesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesDevicesOperationsRequest>;
 
@@ -5376,7 +5376,7 @@ export const CancelEnterprisesDevicesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelEnterprisesDevicesOperationsRequest>;
 
@@ -5407,7 +5407,7 @@ export const GetEnterprisesPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesPoliciesRequest>;
 
@@ -5444,7 +5444,7 @@ export const ListEnterprisesPoliciesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/policies" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/policies" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesPoliciesRequest>;
 
@@ -5484,7 +5484,7 @@ export const ModifyPolicyApplicationsEnterprisesPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:modifyPolicyApplications",
+      path: "v1/{+name}:modifyPolicyApplications",
       hasBody: true,
     }),
     svc,
@@ -5523,7 +5523,7 @@ export const RemovePolicyApplicationsEnterprisesPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:removePolicyApplications",
+      path: "v1/{+name}:removePolicyApplications",
       hasBody: true,
     }),
     svc,
@@ -5563,7 +5563,7 @@ export const PatchEnterprisesPoliciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Policy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesPoliciesRequest>;
 
@@ -5594,7 +5594,7 @@ export const DeleteEnterprisesPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesPoliciesRequest>;
 
@@ -5630,7 +5630,7 @@ export const GetEnterprisesApplicationsRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesApplicationsRequest>;
 
@@ -5661,7 +5661,7 @@ export const GetProvisioningInfoRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProvisioningInfoRequest>;
 

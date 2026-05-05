@@ -2085,7 +2085,7 @@ export const GetSettingsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/{name}" }),
+    T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsUsersRequest>;
 
@@ -2115,7 +2115,7 @@ export const GetIdentityUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/{name}" }),
+    T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetIdentityUsersRequest>;
 
@@ -2151,7 +2151,7 @@ export const UpdateSettingsUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Settings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v4/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsUsersRequest>;
 
@@ -2182,7 +2182,7 @@ export const GetProfileUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v4/{name}" }),
+  T.Http({ method: "GET", path: "v4/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProfileUsersRequest>;
 
@@ -2218,7 +2218,7 @@ export const UpdateProfileUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Profile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v4/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProfileUsersRequest>;
 
@@ -2251,7 +2251,7 @@ export const CreateUsersDataTypesDataPointsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DataPoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v4/{parent}/dataPoints", hasBody: true }),
+    T.Http({ method: "POST", path: "v4/{+parent}/dataPoints", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateUsersDataTypesDataPointsRequest>;
 
@@ -2291,7 +2291,7 @@ export const ListUsersDataTypesDataPointsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/{parent}/dataPoints" }),
+    T.Http({ method: "GET", path: "v4/{+parent}/dataPoints" }),
     svc,
   ) as unknown as Schema.Schema<ListUsersDataTypesDataPointsRequest>;
 
@@ -2331,7 +2331,7 @@ export const DailyRollUpUsersDataTypesDataPointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v4/{parent}/dataPoints:dailyRollUp",
+      path: "v4/{+parent}/dataPoints:dailyRollUp",
       hasBody: true,
     }),
     svc,
@@ -2370,7 +2370,7 @@ export const ExportExerciseTcxUsersDataTypesDataPointsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/{name}:exportExerciseTcx" }),
+    T.Http({ method: "GET", path: "v4/{+name}:exportExerciseTcx" }),
     svc,
   ) as unknown as Schema.Schema<ExportExerciseTcxUsersDataTypesDataPointsRequest>;
 
@@ -2407,7 +2407,7 @@ export const RollUpUsersDataTypesDataPointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v4/{parent}/dataPoints:rollUp",
+      path: "v4/{+parent}/dataPoints:rollUp",
       hasBody: true,
     }),
     svc,
@@ -2443,7 +2443,7 @@ export const PatchUsersDataTypesDataPointsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DataPoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v4/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchUsersDataTypesDataPointsRequest>;
 
@@ -2479,7 +2479,7 @@ export const BatchDeleteUsersDataTypesDataPointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v4/{parent}/dataPoints:batchDelete",
+      path: "v4/{+parent}/dataPoints:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -2526,7 +2526,7 @@ export const ReconcileUsersDataTypesDataPointsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/{parent}/dataPoints:reconcile" }),
+    T.Http({ method: "GET", path: "v4/{+parent}/dataPoints:reconcile" }),
     svc,
   ) as unknown as Schema.Schema<ReconcileUsersDataTypesDataPointsRequest>;
 

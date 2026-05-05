@@ -244,7 +244,11 @@ export const CreateProjectsLocationsDataPoliciesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DataPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/dataPolicies", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/dataPolicies",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataPoliciesRequest>;
 
@@ -280,7 +284,7 @@ export const TestIamPermissionsProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:testIamPermissions",
+      path: "v1/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -324,7 +328,7 @@ export const ListProjectsLocationsDataPoliciesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/dataPolicies" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/dataPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataPoliciesRequest>;
 
@@ -360,7 +364,7 @@ export const GetProjectsLocationsDataPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataPoliciesRequest>;
 
@@ -394,7 +398,7 @@ export const DeleteProjectsLocationsDataPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataPoliciesRequest>;
 
@@ -430,7 +434,7 @@ export const GetIamPolicyProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:getIamPolicy",
+      path: "v1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -474,7 +478,7 @@ export const PatchProjectsLocationsDataPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DataPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataPoliciesRequest>;
 
@@ -508,7 +512,7 @@ export const RenameProjectsLocationsDataPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RenameDataPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:rename", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:rename", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RenameProjectsLocationsDataPoliciesRequest>;
 
@@ -544,7 +548,7 @@ export const SetIamPolicyProjectsLocationsDataPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{resource}:setIamPolicy",
+      path: "v1/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,

@@ -1638,7 +1638,7 @@ export const CreateProjectsAssessmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/assessments", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/assessments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsAssessmentsRequest>;
 
@@ -1675,7 +1675,7 @@ export const AnnotateProjectsAssessmentsRequest =
       GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:annotate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:annotate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AnnotateProjectsAssessmentsRequest>;
 
@@ -1714,7 +1714,7 @@ export const SearchProjectsRelatedaccountgroupmembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{project}/relatedaccountgroupmemberships:search",
+      path: "v1/{+project}/relatedaccountgroupmemberships:search",
       hasBody: true,
     }),
     svc,
@@ -1754,7 +1754,7 @@ export const ListProjectsFirewallpoliciesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/firewallpolicies" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/firewallpolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsFirewallpoliciesRequest>;
 
@@ -1790,7 +1790,7 @@ export const GetProjectsFirewallpoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsFirewallpoliciesRequest>;
 
@@ -1822,7 +1822,7 @@ export const DeleteProjectsFirewallpoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsFirewallpoliciesRequest>;
 
@@ -1860,7 +1860,7 @@ export const ReorderProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/firewallpolicies:reorder",
+      path: "v1/{+parent}/firewallpolicies:reorder",
       hasBody: true,
     }),
     svc,
@@ -1901,7 +1901,7 @@ export const CreateProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/firewallpolicies",
+      path: "v1/{+parent}/firewallpolicies",
       hasBody: true,
     }),
     svc,
@@ -1943,7 +1943,7 @@ export const PatchProjectsFirewallpoliciesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsFirewallpoliciesRequest>;
 
@@ -1981,7 +1981,7 @@ export const ListProjectsRelatedaccountgroupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/relatedaccountgroups" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/relatedaccountgroups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRelatedaccountgroupsRequest>;
 
@@ -2023,7 +2023,7 @@ export const ListProjectsRelatedaccountgroupsMembershipsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/memberships" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/memberships" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRelatedaccountgroupsMembershipsRequest>;
 
@@ -2067,7 +2067,7 @@ export const PatchProjectsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsKeysRequest>;
 
@@ -2104,7 +2104,7 @@ export const ListIpOverridesProjectsKeysRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}:listIpOverrides" }),
+    T.Http({ method: "GET", path: "v1/{+parent}:listIpOverrides" }),
     svc,
   ) as unknown as Schema.Schema<ListIpOverridesProjectsKeysRequest>;
 
@@ -2146,7 +2146,7 @@ export const ListProjectsKeysRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/keys" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/keys" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsKeysRequest>;
 
@@ -2177,7 +2177,7 @@ export interface RetrieveLegacySecretKeyProjectsKeysRequest {}
 
 export const RetrieveLegacySecretKeyProjectsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "v1/{key}:retrieveLegacySecretKey" }),
+    T.Http({ method: "GET", path: "v1/{+key}:retrieveLegacySecretKey" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveLegacySecretKeyProjectsKeysRequest>;
 
@@ -2214,7 +2214,7 @@ export const MigrateProjectsKeysRequest =
       GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:migrate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:migrate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MigrateProjectsKeysRequest>;
 
@@ -2252,7 +2252,7 @@ export const RemoveIpOverrideProjectsKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{name}:removeIpOverride",
+      path: "v1/{+name}:removeIpOverride",
       hasBody: true,
     }),
     svc,
@@ -2286,7 +2286,7 @@ export const GetMetricsProjectsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMetricsProjectsKeysRequest>;
 
@@ -2323,7 +2323,7 @@ export const CreateProjectsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/keys", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/keys", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsKeysRequest>;
 
@@ -2354,7 +2354,7 @@ export const DeleteProjectsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsKeysRequest>;
 
@@ -2386,7 +2386,7 @@ export const GetProjectsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsKeysRequest>;
 
@@ -2422,7 +2422,7 @@ export const AddIpOverrideProjectsKeysRequest =
       GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:addIpOverride", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:addIpOverride", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddIpOverrideProjectsKeysRequest>;
 

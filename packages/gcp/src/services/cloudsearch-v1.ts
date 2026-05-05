@@ -4118,7 +4118,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -4162,7 +4162,7 @@ export const ListOperationsLroRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}/lro" }),
+    T.Http({ method: "GET", path: "v1/{+name}/lro" }),
     svc,
   ) as unknown as Schema.Schema<ListOperationsLroRequest>;
 
@@ -4207,7 +4207,7 @@ export const CheckAccessDebugDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/debug/{name}:checkAccess",
+      path: "v1/debug/{+name}:checkAccess",
       hasBody: true,
     }),
     svc,
@@ -4245,7 +4245,7 @@ export const SearchByViewUrlDebugDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/debug/{name}/items:searchByViewUrl",
+      path: "v1/debug/{+name}/items:searchByViewUrl",
       hasBody: true,
     }),
     svc,
@@ -4290,7 +4290,7 @@ export const ListDebugDatasourcesItemsUnmappedidsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/debug/{parent}/unmappedids" }),
+    T.Http({ method: "GET", path: "v1/debug/{+parent}/unmappedids" }),
     svc,
   ) as unknown as Schema.Schema<ListDebugDatasourcesItemsUnmappedidsRequest>;
 
@@ -4349,7 +4349,7 @@ export const ListDebugIdentitysourcesUnmappedidsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/debug/{parent}/unmappedids" }),
+    T.Http({ method: "GET", path: "v1/debug/{+parent}/unmappedids" }),
     svc,
   ) as unknown as Schema.Schema<ListDebugIdentitysourcesUnmappedidsRequest>;
 
@@ -4406,7 +4406,7 @@ export const ListForunmappedidentityDebugIdentitysourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/debug/{parent}/items:forunmappedidentity",
+      path: "v1/debug/{+parent}/items:forunmappedidentity",
     }),
     svc,
   ) as unknown as Schema.Schema<ListForunmappedidentityDebugIdentitysourcesItemsRequest>;
@@ -4553,7 +4553,7 @@ export const GetSettingsSearchapplicationsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/settings/{name}" }),
+    T.Http({ method: "GET", path: "v1/settings/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsSearchapplicationsRequest>;
 
@@ -4625,7 +4625,7 @@ export const UpdateSettingsSearchapplicationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SearchApplication).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/settings/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/settings/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsSearchapplicationsRequest>;
 
@@ -4662,7 +4662,7 @@ export const PatchSettingsSearchapplicationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SearchApplication).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/settings/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/settings/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSettingsSearchapplicationsRequest>;
 
@@ -4698,7 +4698,7 @@ export const DeleteSettingsSearchapplicationsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/settings/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/settings/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSettingsSearchapplicationsRequest>;
 
@@ -4732,7 +4732,11 @@ export const ResetSettingsSearchapplicationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResetSearchApplicationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/settings/{name}:reset", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/settings/{+name}:reset",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<ResetSettingsSearchapplicationsRequest>;
 
@@ -4799,7 +4803,7 @@ export const DeleteSettingsDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/settings/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/settings/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSettingsDatasourcesRequest>;
 
@@ -4835,7 +4839,7 @@ export const GetSettingsDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/settings/{name}" }),
+    T.Http({ method: "GET", path: "v1/settings/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsDatasourcesRequest>;
 
@@ -4869,7 +4873,7 @@ export const UpdateSettingsDatasourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateDataSourceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/settings/{name}", hasBody: true }),
+    T.Http({ method: "PUT", path: "v1/settings/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsDatasourcesRequest>;
 
@@ -4911,7 +4915,7 @@ export const PatchSettingsDatasourcesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DataSource).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/settings/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/settings/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSettingsDatasourcesRequest>;
 
@@ -5019,7 +5023,11 @@ export const UpdateSchemaIndexingDatasourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateSchemaRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PUT", path: "v1/indexing/{name}/schema", hasBody: true }),
+    T.Http({
+      method: "PUT",
+      path: "v1/indexing/{+name}/schema",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<UpdateSchemaIndexingDatasourcesRequest>;
 
@@ -5055,7 +5063,7 @@ export const GetSchemaIndexingDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/indexing/{name}/schema" }),
+    T.Http({ method: "GET", path: "v1/indexing/{+name}/schema" }),
     svc,
   ) as unknown as Schema.Schema<GetSchemaIndexingDatasourcesRequest>;
 
@@ -5091,7 +5099,7 @@ export const DeleteSchemaIndexingDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/indexing/{name}/schema" }),
+    T.Http({ method: "DELETE", path: "v1/indexing/{+name}/schema" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSchemaIndexingDatasourcesRequest>;
 
@@ -5138,7 +5146,7 @@ export const DeleteIndexingDatasourcesItemsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/indexing/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/indexing/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteIndexingDatasourcesItemsRequest>;
 
@@ -5179,7 +5187,7 @@ export const GetIndexingDatasourcesItemsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/indexing/{name}" }),
+    T.Http({ method: "GET", path: "v1/indexing/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetIndexingDatasourcesItemsRequest>;
 
@@ -5229,7 +5237,7 @@ export const ListIndexingDatasourcesItemsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/indexing/{name}/items" }),
+    T.Http({ method: "GET", path: "v1/indexing/{+name}/items" }),
     svc,
   ) as unknown as Schema.Schema<ListIndexingDatasourcesItemsRequest>;
 
@@ -5268,7 +5276,11 @@ export const IndexIndexingDatasourcesItemsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(IndexItemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/indexing/{name}:index", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/indexing/{+name}:index",
+      hasBody: true,
+    }),
     svc,
   ) as unknown as Schema.Schema<IndexIndexingDatasourcesItemsRequest>;
 
@@ -5304,7 +5316,7 @@ export const UploadIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/{name}:upload",
+      path: "v1/indexing/{+name}:upload",
       hasBody: true,
     }),
     svc,
@@ -5342,7 +5354,7 @@ export const PollIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/{name}/items:poll",
+      path: "v1/indexing/{+name}/items:poll",
       hasBody: true,
     }),
     svc,
@@ -5378,7 +5390,7 @@ export const PushIndexingDatasourcesItemsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PushItemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/indexing/{name}:push", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/indexing/{+name}:push", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PushIndexingDatasourcesItemsRequest>;
 
@@ -5414,7 +5426,7 @@ export const UnreserveIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/{name}/items:unreserve",
+      path: "v1/indexing/{+name}/items:unreserve",
       hasBody: true,
     }),
     svc,
@@ -5452,7 +5464,7 @@ export const DeleteQueueItemsIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/{name}/items:deleteQueueItems",
+      path: "v1/indexing/{+name}/items:deleteQueueItems",
       hasBody: true,
     }),
     svc,
@@ -5942,7 +5954,7 @@ export const GetStatsIndexDatasourcesRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/stats/index/{name}" }),
+    T.Http({ method: "GET", path: "v1/stats/index/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsIndexDatasourcesRequest>;
 
@@ -6003,7 +6015,7 @@ export const GetStatsQuerySearchapplicationsRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/stats/query/{name}" }),
+    T.Http({ method: "GET", path: "v1/stats/query/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsQuerySearchapplicationsRequest>;
 
@@ -6065,7 +6077,7 @@ export const GetStatsUserSearchapplicationsRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/stats/user/{name}" }),
+    T.Http({ method: "GET", path: "v1/stats/user/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsUserSearchapplicationsRequest>;
 
@@ -6127,7 +6139,7 @@ export const GetStatsSessionSearchapplicationsRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/stats/session/{name}" }),
+    T.Http({ method: "GET", path: "v1/stats/session/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsSessionSearchapplicationsRequest>;
 
@@ -6161,7 +6173,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   body: Schema.optional(Media).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/media/{resourceName}", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/media/{+resourceName}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UploadMediaRequest>;
 

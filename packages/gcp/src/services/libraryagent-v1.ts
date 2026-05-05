@@ -130,7 +130,7 @@ export interface GetShelvesRequest {
 export const GetShelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetShelvesRequest>;
 
@@ -162,7 +162,7 @@ export const GetShelvesBooksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetShelvesBooksRequest>;
 
@@ -199,7 +199,7 @@ export const ListShelvesBooksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/books" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/books" }),
     svc,
   ) as unknown as Schema.Schema<ListShelvesBooksRequest>;
 
@@ -235,7 +235,7 @@ export const BorrowShelvesBooksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:borrow", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:borrow", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BorrowShelvesBooksRequest>;
 
@@ -266,7 +266,7 @@ export const ReturnShelvesBooksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:return", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:return", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReturnShelvesBooksRequest>;
 

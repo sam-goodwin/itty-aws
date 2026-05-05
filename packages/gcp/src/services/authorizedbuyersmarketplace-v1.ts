@@ -1260,7 +1260,7 @@ export const CreateBuyersClientsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Client).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/clients", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/clients", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersClientsRequest>;
 
@@ -1293,7 +1293,7 @@ export const ActivateBuyersClientsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateClientRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateBuyersClientsRequest>;
 
@@ -1323,7 +1323,7 @@ export const GetBuyersClientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersClientsRequest>;
 
@@ -1359,7 +1359,7 @@ export const PatchBuyersClientsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Client).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersClientsRequest>;
 
@@ -1392,7 +1392,7 @@ export const DeactivateBuyersClientsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateClientRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:deactivate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:deactivate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeactivateBuyersClientsRequest>;
 
@@ -1432,7 +1432,7 @@ export const ListBuyersClientsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/clients" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/clients" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersClientsRequest>;
 
@@ -1470,7 +1470,7 @@ export const CreateBuyersClientsUsersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ClientUser).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{parent}/users", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+parent}/users", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersClientsUsersRequest>;
 
@@ -1504,7 +1504,7 @@ export const ActivateBuyersClientsUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateClientUserRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateBuyersClientsUsersRequest>;
 
@@ -1535,7 +1535,7 @@ export const GetBuyersClientsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersClientsUsersRequest>;
 
@@ -1569,7 +1569,7 @@ export const DeactivateBuyersClientsUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateClientUserRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:deactivate", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:deactivate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeactivateBuyersClientsUsersRequest>;
 
@@ -1606,7 +1606,7 @@ export const ListBuyersClientsUsersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/users" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/users" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersClientsUsersRequest>;
 
@@ -1641,7 +1641,7 @@ export const DeleteBuyersClientsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBuyersClientsUsersRequest>;
 
@@ -1672,7 +1672,7 @@ export const GetBuyersProposalsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersProposalsRequest>;
 
@@ -1707,7 +1707,7 @@ export const CancelNegotiationBuyersProposalsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{proposal}:cancelNegotiation",
+      path: "v1/{+proposal}:cancelNegotiation",
       hasBody: true,
     }),
     svc,
@@ -1746,7 +1746,7 @@ export const PatchBuyersProposalsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Proposal).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersProposalsRequest>;
 
@@ -1780,7 +1780,7 @@ export const AcceptBuyersProposalsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AcceptProposalRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:accept", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:accept", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AcceptBuyersProposalsRequest>;
 
@@ -1820,7 +1820,7 @@ export const ListBuyersProposalsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/proposals" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/proposals" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersProposalsRequest>;
 
@@ -1858,7 +1858,7 @@ export const AddNoteBuyersProposalsRequest =
     proposal: Schema.String.pipe(T.HttpPath("proposal")),
     body: Schema.optional(AddNoteRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{proposal}:addNote", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+proposal}:addNote", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddNoteBuyersProposalsRequest>;
 
@@ -1894,7 +1894,7 @@ export const SendRfpBuyersProposalsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{buyer}/proposals:sendRfp",
+      path: "v1/{+buyer}/proposals:sendRfp",
       hasBody: true,
     }),
     svc,
@@ -1932,7 +1932,7 @@ export const BatchUpdateBuyersProposalsDealsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{parent}/deals:batchUpdate",
+      path: "v1/{+parent}/deals:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -1965,7 +1965,7 @@ export const GetBuyersProposalsDealsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersProposalsDealsRequest>;
 
@@ -2001,7 +2001,7 @@ export const PatchBuyersProposalsDealsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Deal).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersProposalsDealsRequest>;
 
@@ -2038,7 +2038,7 @@ export const ListBuyersProposalsDealsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/deals" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deals" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersProposalsDealsRequest>;
 
@@ -2073,7 +2073,7 @@ export const GetBuyersFinalizedDealsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersFinalizedDealsRequest>;
 
@@ -2116,7 +2116,7 @@ export const ListBuyersFinalizedDealsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/finalizedDeals" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/finalizedDeals" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFinalizedDealsRequest>;
 
@@ -2154,7 +2154,7 @@ export const ResumeBuyersFinalizedDealsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumeFinalizedDealRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeBuyersFinalizedDealsRequest>;
 
@@ -2188,7 +2188,7 @@ export const AddCreativeBuyersFinalizedDealsRequest =
     deal: Schema.String.pipe(T.HttpPath("deal")),
     body: Schema.optional(AddCreativeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{deal}:addCreative", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+deal}:addCreative", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddCreativeBuyersFinalizedDealsRequest>;
 
@@ -2224,7 +2224,7 @@ export const SetReadyToServeBuyersFinalizedDealsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{deal}:setReadyToServe",
+      path: "v1/{+deal}:setReadyToServe",
       hasBody: true,
     }),
     svc,
@@ -2260,7 +2260,7 @@ export const PauseBuyersFinalizedDealsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PauseFinalizedDealRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:pause", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseBuyersFinalizedDealsRequest>;
 
@@ -2291,7 +2291,7 @@ export const GetBuyersPublisherProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersPublisherProfilesRequest>;
 
@@ -2331,7 +2331,7 @@ export const ListBuyersPublisherProfilesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/publisherProfiles" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/publisherProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersPublisherProfilesRequest>;
 
@@ -2366,7 +2366,7 @@ export const GetBuyersAuctionPackagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersAuctionPackagesRequest>;
 
@@ -2402,7 +2402,7 @@ export const SubscribeClientsBuyersAuctionPackagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{auctionPackage}:subscribeClients",
+      path: "v1/{+auctionPackage}:subscribeClients",
       hasBody: true,
     }),
     svc,
@@ -2440,7 +2440,7 @@ export const UnsubscribeClientsBuyersAuctionPackagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{auctionPackage}:unsubscribeClients",
+      path: "v1/{+auctionPackage}:unsubscribeClients",
       hasBody: true,
     }),
     svc,
@@ -2476,7 +2476,7 @@ export const SubscribeBuyersAuctionPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SubscribeAuctionPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:subscribe", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:subscribe", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SubscribeBuyersAuctionPackagesRequest>;
 
@@ -2519,7 +2519,7 @@ export const ListBuyersAuctionPackagesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/auctionPackages" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/auctionPackages" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersAuctionPackagesRequest>;
 
@@ -2557,7 +2557,7 @@ export const UnsubscribeBuyersAuctionPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UnsubscribeAuctionPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{name}:unsubscribe", hasBody: true }),
+    T.Http({ method: "POST", path: "v1/{+name}:unsubscribe", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UnsubscribeBuyersAuctionPackagesRequest>;
 
@@ -2600,7 +2600,7 @@ export const ListBiddersAuctionPackagesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/auctionPackages" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/auctionPackages" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAuctionPackagesRequest>;
 
@@ -2647,7 +2647,7 @@ export const ListBiddersFinalizedDealsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{parent}/finalizedDeals" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/finalizedDeals" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFinalizedDealsRequest>;
 
@@ -2687,7 +2687,7 @@ export const SetReadyToServeBiddersFinalizedDealsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{deal}:setReadyToServe",
+      path: "v1/{+deal}:setReadyToServe",
       hasBody: true,
     }),
     svc,

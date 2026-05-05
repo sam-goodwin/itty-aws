@@ -1052,7 +1052,7 @@ export const ListProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/{name}/locations" }),
+    T.Http({ method: "GET", path: "v2alpha/{+name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1101,7 +1101,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/{name}/operations" }),
+    T.Http({ method: "GET", path: "v2alpha/{+name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1136,7 +1136,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/{name}" }),
+    T.Http({ method: "GET", path: "v2alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1174,7 +1174,7 @@ export const RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:redirectFunctionUpgradeTraffic",
+      path: "v2alpha/{+name}:redirectFunctionUpgradeTraffic",
       hasBody: true,
     }),
     svc,
@@ -1214,7 +1214,7 @@ export const GenerateDownloadUrlProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:generateDownloadUrl",
+      path: "v2alpha/{+name}:generateDownloadUrl",
       hasBody: true,
     }),
     svc,
@@ -1253,7 +1253,7 @@ export const DetachFunctionProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:detachFunction",
+      path: "v2alpha/{+name}:detachFunction",
       hasBody: true,
     }),
     svc,
@@ -1292,7 +1292,7 @@ export const PatchProjectsLocationsFunctionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Cloudfunctions_Function).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v2alpha/{name}", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v2alpha/{+name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFunctionsRequest>;
 
@@ -1328,7 +1328,7 @@ export const GetIamPolicyProjectsLocationsFunctionsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/{resource}:getIamPolicy" }),
+    T.Http({ method: "GET", path: "v2alpha/{+resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFunctionsRequest>;
 
@@ -1364,7 +1364,7 @@ export const SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:setupFunctionUpgradeConfig",
+      path: "v2alpha/{+name}:setupFunctionUpgradeConfig",
       hasBody: true,
     }),
     svc,
@@ -1406,7 +1406,7 @@ export const RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:rollbackFunctionUpgradeTraffic",
+      path: "v2alpha/{+name}:rollbackFunctionUpgradeTraffic",
       hasBody: true,
     }),
     svc,
@@ -1446,7 +1446,7 @@ export const SetIamPolicyProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{resource}:setIamPolicy",
+      path: "v2alpha/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1479,7 +1479,7 @@ export const DeleteProjectsLocationsFunctionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2alpha/{name}" }),
+    T.Http({ method: "DELETE", path: "v2alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFunctionsRequest>;
 
@@ -1515,7 +1515,7 @@ export const GenerateUploadUrlProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{parent}/functions:generateUploadUrl",
+      path: "v2alpha/{+parent}/functions:generateUploadUrl",
       hasBody: true,
     }),
     svc,
@@ -1561,7 +1561,7 @@ export const ListProjectsLocationsFunctionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/{parent}/functions" }),
+    T.Http({ method: "GET", path: "v2alpha/{+parent}/functions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFunctionsRequest>;
 
@@ -1604,7 +1604,7 @@ export const CreateProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{parent}/functions",
+      path: "v2alpha/{+parent}/functions",
       hasBody: true,
     }),
     svc,
@@ -1642,7 +1642,7 @@ export const CommitFunctionUpgradeProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:commitFunctionUpgrade",
+      path: "v2alpha/{+name}:commitFunctionUpgrade",
       hasBody: true,
     }),
     svc,
@@ -1681,7 +1681,7 @@ export const AbortFunctionUpgradeProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:abortFunctionUpgrade",
+      path: "v2alpha/{+name}:abortFunctionUpgrade",
       hasBody: true,
     }),
     svc,
@@ -1717,7 +1717,7 @@ export const GetProjectsLocationsFunctionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     revision: Schema.optional(Schema.String).pipe(T.HttpQuery("revision")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/{name}" }),
+    T.Http({ method: "GET", path: "v2alpha/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFunctionsRequest>;
 
@@ -1755,7 +1755,7 @@ export const CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{name}:commitFunctionUpgradeAsGen2",
+      path: "v2alpha/{+name}:commitFunctionUpgradeAsGen2",
       hasBody: true,
     }),
     svc,
@@ -1795,7 +1795,7 @@ export const TestIamPermissionsProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/{resource}:testIamPermissions",
+      path: "v2alpha/{+resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1832,7 +1832,7 @@ export const ListProjectsLocationsRuntimesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/{parent}/runtimes" }),
+    T.Http({ method: "GET", path: "v2alpha/{+parent}/runtimes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRuntimesRequest>;
 

@@ -1851,7 +1851,7 @@ export const GetPlacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   regionCode: Schema.optional(Schema.String).pipe(T.HttpQuery("regionCode")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{name}" }),
+  T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPlacesRequest>;
 
@@ -1928,7 +1928,7 @@ export const GetMediaPlacesPhotosRequest =
       T.HttpQuery("maxHeightPx"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{name}" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMediaPlacesPhotosRequest>;
 
