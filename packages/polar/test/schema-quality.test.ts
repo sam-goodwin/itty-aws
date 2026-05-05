@@ -4,6 +4,10 @@ import { describe, expect, it } from "vitest";
 import { CustomFieldscreateOutput } from "../src/operations/customFieldscreate.ts";
 import { CustomerscreateOutput } from "../src/operations/customerscreate.ts";
 import { DiscountscreateOutput } from "../src/operations/discountscreate.ts";
+import { EventTypesupdateOutput } from "../src/operations/eventTypesupdate.ts";
+import { EventsgetOutput } from "../src/operations/eventsget.ts";
+import { EventsingestInput } from "../src/operations/eventsingest.ts";
+import { EventslistOutput } from "../src/operations/eventslist.ts";
 import { MeterscreateOutput } from "../src/operations/meterscreate.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
@@ -147,5 +151,67 @@ describe("generated Polar schema quality", () => {
 
     expect(decoded.aggregation.func).toBe("count");
     expect(decoded.archived_at).toBeNull();
+  });
+
+  it("types event ingestion inputs and common event outputs", () => {
+    const eventId = "00000000-0000-4000-8000-000000000000";
+    const organizationId = "00000000-0000-4000-8000-000000000000";
+
+    const ingest = Schema.decodeUnknownSync(EventsingestInput)({
+      events: [
+        {
+          name: "distilled.event.test",
+          external_customer_id: "customer-123",
+          external_id: "event-123",
+          metadata: {
+            distilled: true,
+            quantity: 1,
+          },
+        },
+      ],
+    });
+
+    const event = Schema.decodeUnknownSync(EventsgetOutput)({
+      id: eventId,
+      timestamp: "2026-01-01T00:00:00Z",
+      organization_id: organizationId,
+      customer_id: null,
+      customer: null,
+      external_customer_id: "customer-123",
+      label: "Distilled Event",
+      source: "user",
+      name: "distilled.event.test",
+      metadata: {
+        distilled: true,
+      },
+    });
+
+    const listed = Schema.decodeUnknownSync(EventslistOutput)({
+      items: [event],
+      pagination: {
+        total_count: 1,
+        max_page: 1,
+      },
+    });
+
+    expect(ingest.events[0].name).toBe("distilled.event.test");
+    expect(event.source).toBe("user");
+    expect(event.metadata.distilled).toBe(true);
+    expect(listed.items[0].id).toBe(eventId);
+  });
+
+  it("types event type update outputs", () => {
+    const decoded = Schema.decodeUnknownSync(EventTypesupdateOutput)({
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      name: "distilled.event.test",
+      label: "Distilled Event",
+      label_property_selector: null,
+      organization_id: "00000000-0000-4000-8000-000000000000",
+    });
+
+    expect(decoded.name).toBe("distilled.event.test");
+    expect(decoded.label_property_selector).toBeNull();
   });
 });

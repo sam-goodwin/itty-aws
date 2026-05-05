@@ -1,0 +1,167 @@
+{
+  "description": "Expose Polar events through common typed fields instead of Schema.Unknown. Polar models events as nested oneOf unions for system/user and event-name-specific payloads, and the events list response as offset-or-cursor pagination. The SDK keeps a stable common event shape and uses the documented offset list response used by page/limit queries.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/components/schemas/EventCommon",
+      "value": {
+        "type": "object",
+        "title": "Event",
+        "description": "A Polar event.",
+        "required": [
+          "id",
+          "timestamp",
+          "organization_id",
+          "customer_id",
+          "customer",
+          "external_customer_id",
+          "label",
+          "source",
+          "name",
+          "metadata"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the event."
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp of the event."
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the organization owning the event."
+          },
+          "customer_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }],
+            "description": "ID of the Polar customer associated with the event."
+          },
+          "customer": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true,
+            "description": "The customer associated with the event."
+          },
+          "external_customer_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "ID of the customer in your system associated with the event."
+          },
+          "member_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }],
+            "description": "ID of the member within the customer's organization."
+          },
+          "external_member_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "ID of the member in your system."
+          },
+          "child_count": {
+            "type": "integer",
+            "description": "Number of direct child events linked to this event."
+          },
+          "parent_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }],
+            "description": "The ID of the parent event."
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable label of the event type."
+          },
+          "source": {
+            "$ref": "#/components/schemas/EventSource",
+            "description": "The source of the event."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the event."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Event metadata."
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/Event",
+      "value": {
+        "$ref": "#/components/schemas/EventCommon"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/components/schemas/EventCreate",
+      "value": {
+        "type": "object",
+        "title": "EventCreate",
+        "description": "An event to ingest.",
+        "required": ["name"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp of the event."
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "The name of the event."
+          },
+          "organization_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }],
+            "description": "The ID of the organization owning the event."
+          },
+          "external_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "Your unique identifier for this event."
+          },
+          "parent_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "The ID of the parent event."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Event metadata."
+          },
+          "customer_id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "ID of the Polar customer associated with the event."
+          },
+          "external_customer_id": {
+            "type": "string",
+            "description": "ID of the customer in your system associated with the event."
+          },
+          "member_id": {
+            "anyOf": [{ "type": "string", "format": "uuid4" }, { "type": "null" }],
+            "description": "ID of the member within the customer's organization."
+          },
+          "external_member_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "description": "ID of the member in your system."
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/EventsIngest/properties/events/items",
+      "value": {
+        "$ref": "#/components/schemas/EventCreate"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1events~1/get/responses/200/content/application~1json/schema",
+      "value": {
+        "$ref": "#/components/schemas/ListResource_Event_"
+      }
+    }
+  ]
+}

@@ -10,7 +10,22 @@ export const EventsgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EventsgetInput = typeof EventsgetInput.Type;
 
 // Output Schema
-export const EventsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const EventsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  timestamp: Schema.String,
+  organization_id: Schema.String,
+  customer_id: Schema.NullOr(Schema.String),
+  customer: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+  external_customer_id: Schema.NullOr(Schema.String),
+  member_id: Schema.optional(Schema.NullOr(Schema.String)),
+  external_member_id: Schema.optional(Schema.NullOr(Schema.String)),
+  child_count: Schema.optional(Schema.Number),
+  parent_id: Schema.optional(Schema.NullOr(Schema.String)),
+  label: Schema.String,
+  source: Schema.Literals(["system", "user"]),
+  name: Schema.String,
+  metadata: Schema.Record(Schema.String, Schema.Unknown),
+});
 export type EventsgetOutput = typeof EventsgetOutput.Type;
 
 // The operation
