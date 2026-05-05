@@ -623,6 +623,14 @@ const unwrapRedactedDeep = (value: unknown): unknown => {
   return value;
 };
 
+/**
+ * RFC 6570 §3.2.3 reserved-expansion: encode everything outside the RFC 3986
+ * unreserved (`A-Za-z0-9-._~`) and reserved (`:/?#[]@!$&'()*+,;=`) sets.
+ */
+const RFC3986_NEEDS_ENCODING = /[^A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=]/g;
+const encodeReserved = (v: string): string =>
+  v.replace(RFC3986_NEEDS_ENCODING, encodeURIComponent);
+
 export const buildRequestParts = (
   ast: AST.AST,
   httpTrait: HttpTrait,
@@ -653,14 +661,20 @@ export const buildRequestParts = (
       continue;
     }
 
-    // Path parameter
+    // Path parameter — `{+name}` is RFC 6570 reserved-expansion (preserves
+    // `/` and other RFC 3986 reserved chars); `{name}` is simple expansion.
     const pathWireName = getPathParamWireName(prop);
     if (pathWireName !== undefined) {
       nonBodyKeys.add(tsName);
-      path = path.replace(
-        `{${pathWireName}}`,
-        encodeURIComponent(String(value)),
-      );
+      const reservedPlaceholder = `{+${pathWireName}}`;
+      if (path.includes(reservedPlaceholder)) {
+        path = path.replace(reservedPlaceholder, encodeReserved(String(value)));
+      } else {
+        path = path.replace(
+          `{${pathWireName}}`,
+          encodeURIComponent(String(value)),
+        );
+      }
       continue;
     }
 
