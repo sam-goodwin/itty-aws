@@ -1,0 +1,117 @@
+{
+  "description": "Flatten CustomerState's individual/team oneOf into common state fields. The customer state endpoint is a central billing-status read model, so the SDK should expose typed customer fields plus typed arrays for active subscriptions, granted benefits, and active meters instead of Schema.Unknown.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/components/schemas/CustomerStateCommon",
+      "value": {
+        "type": "object",
+        "title": "CustomerState",
+        "description": "A Polar customer with active subscription, benefit, and meter state.",
+        "required": [
+          "id",
+          "created_at",
+          "modified_at",
+          "metadata",
+          "email_verified",
+          "type",
+          "name",
+          "billing_address",
+          "tax_id",
+          "organization_id",
+          "deleted_at",
+          "active_subscriptions",
+          "granted_benefits",
+          "active_meters",
+          "avatar_url"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "external_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "email": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "email_verified": {
+            "type": "boolean"
+          },
+          "type": {
+            "$ref": "#/components/schemas/CustomerType"
+          },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "billing_address": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
+          },
+          "tax_id": {
+            "nullable": true
+          },
+          "locale": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }]
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4"
+          },
+          "deleted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "active_subscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerStateSubscription"
+            }
+          },
+          "granted_benefits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerStateBenefitGrant"
+            }
+          },
+          "active_meters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerStateMeter"
+            }
+          },
+          "avatar_url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/CustomerState",
+      "value": {
+        "$ref": "#/components/schemas/CustomerStateCommon"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/components/schemas/CustomerStateBenefitGrant/properties/properties",
+      "value": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    }
+  ]
+}

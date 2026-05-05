@@ -3,6 +3,7 @@ import * as Schema from "effect/Schema";
 import { describe, expect, it } from "vitest";
 import { CustomFieldscreateOutput } from "../src/operations/customFieldscreate.ts";
 import { CustomerscreateOutput } from "../src/operations/customerscreate.ts";
+import { CustomersgetStateOutput } from "../src/operations/customersgetState.ts";
 import { DiscountscreateOutput } from "../src/operations/discountscreate.ts";
 import { EventTypesupdateOutput } from "../src/operations/eventTypesupdate.ts";
 import { EventsgetOutput } from "../src/operations/eventsget.ts";
@@ -85,6 +86,34 @@ describe("generated Polar schema quality", () => {
     expect(decoded.modified_at).toBeNull();
     expect(decoded.billing_address).toBeNull();
   });
+
+  it("types customer state outputs", () => {
+    const decoded = Schema.decodeUnknownSync(CustomersgetStateOutput)({
+      id: "00000000-0000-4000-8000-000000000000",
+      created_at: "2026-01-01T00:00:00Z",
+      modified_at: null,
+      metadata: { test: true },
+      external_id: "external-customer",
+      email: "customer@example.com",
+      email_verified: false,
+      type: "individual",
+      name: "Test Customer",
+      billing_address: null,
+      tax_id: null,
+      locale: null,
+      organization_id: "00000000-0000-4000-8000-000000000000",
+      deleted_at: null,
+      active_subscriptions: [],
+      granted_benefits: [],
+      active_meters: [],
+      avatar_url: "https://www.gravatar.com/avatar/test?d=404",
+    });
+
+    expect(decoded.type).toBe("individual");
+    expect(decoded.external_id).toBe("external-customer");
+    expect(decoded.active_subscriptions).toEqual([]);
+  });
+
 
   it("types shared custom field output fields", () => {
     const decoded = Schema.decodeUnknownSync(CustomFieldscreateOutput)({

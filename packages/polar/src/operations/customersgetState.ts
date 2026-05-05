@@ -13,7 +13,92 @@ export type CustomersgetStateInput = typeof CustomersgetStateInput.Type;
 
 // Output Schema
 export const CustomersgetStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    created_at: Schema.String,
+    modified_at: Schema.NullOr(Schema.String),
+    metadata: Schema.Record(Schema.String, Schema.Unknown),
+    external_id: Schema.optional(Schema.NullOr(Schema.String)),
+    email: Schema.optional(Schema.NullOr(Schema.String)),
+    email_verified: Schema.Boolean,
+    type: Schema.Literals(["individual", "team"]),
+    name: Schema.NullOr(Schema.String),
+    billing_address: Schema.NullOr(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    tax_id: Schema.NullOr(Schema.Unknown),
+    locale: Schema.optional(Schema.NullOr(Schema.String)),
+    organization_id: Schema.String,
+    deleted_at: Schema.NullOr(Schema.String),
+    active_subscriptions: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        created_at: Schema.String,
+        modified_at: Schema.NullOr(Schema.String),
+        custom_field_data: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        metadata: Schema.Record(Schema.String, Schema.Unknown),
+        status: Schema.Literals(["active", "trialing"]),
+        amount: Schema.Number,
+        currency: Schema.String,
+        recurring_interval: Schema.Literals(["day", "week", "month", "year"]),
+        current_period_start: Schema.String,
+        current_period_end: Schema.String,
+        trial_start: Schema.NullOr(Schema.String),
+        trial_end: Schema.NullOr(Schema.String),
+        cancel_at_period_end: Schema.Boolean,
+        canceled_at: Schema.NullOr(Schema.String),
+        started_at: Schema.NullOr(Schema.String),
+        ends_at: Schema.NullOr(Schema.String),
+        product_id: Schema.String,
+        discount_id: Schema.NullOr(Schema.String),
+        meters: Schema.Array(
+          Schema.Struct({
+            created_at: Schema.String,
+            modified_at: Schema.NullOr(Schema.String),
+            id: Schema.String,
+            consumed_units: Schema.Number,
+            credited_units: Schema.Number,
+            amount: Schema.Number,
+            meter_id: Schema.String,
+          }),
+        ),
+      }),
+    ),
+    granted_benefits: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        created_at: Schema.String,
+        modified_at: Schema.NullOr(Schema.String),
+        granted_at: Schema.String,
+        benefit_id: Schema.String,
+        benefit_type: Schema.Literals([
+          "custom",
+          "discord",
+          "github_repository",
+          "downloadables",
+          "license_keys",
+          "meter_credit",
+          "feature_flag",
+        ]),
+        benefit_metadata: Schema.Record(Schema.String, Schema.Unknown),
+        properties: Schema.Record(Schema.String, Schema.Unknown),
+      }),
+    ),
+    active_meters: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        created_at: Schema.String,
+        modified_at: Schema.NullOr(Schema.String),
+        meter_id: Schema.String,
+        consumed_units: Schema.Number,
+        credited_units: Schema.Number,
+        balance: Schema.Number,
+      }),
+    ),
+    avatar_url: Schema.String,
+  });
 export type CustomersgetStateOutput = typeof CustomersgetStateOutput.Type;
 
 // The operation
