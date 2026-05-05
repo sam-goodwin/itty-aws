@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -120,7 +120,7 @@ export interface DnsRecordSet {
   /** Output only. An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet. */
   checkError?: Status;
   /** Output only. Records on the domain. */
-  records?: Array<DnsRecord>;
+  records?: ReadonlyArray<DnsRecord>;
 }
 
 export const DnsRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -131,9 +131,9 @@ export const DnsRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DnsUpdates {
   /** The set of DNS records Hosting discovered when inspecting a domain. */
-  discovered?: Array<DnsRecordSet>;
+  discovered?: ReadonlyArray<DnsRecordSet>;
   /** The set of DNS records Hosting needs to serve secure content on the domain. */
-  desired?: Array<DnsRecordSet>;
+  desired?: ReadonlyArray<DnsRecordSet>;
   /** The last time Hosting checked your custom domain's DNS records. */
   checkTime?: string;
 }
@@ -192,7 +192,7 @@ export interface LiveMigrationStep {
   /** Output only. DNS updates to facilitate your domain's zero-downtime migration to Hosting. */
   dnsUpdates?: DnsUpdates;
   /** Output only. Issues that prevent the current step from completing. */
-  issues?: Array<Status>;
+  issues?: ReadonlyArray<Status>;
 }
 
 export const LiveMigrationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -233,11 +233,11 @@ export interface CustomDomainMetadata {
     | "CERT_EXPIRED"
     | (string & {});
   /** A set of DNS record updates and ACME challenges that allow you to transition domain names to Firebase Hosting with zero downtime. These updates allow Hosting to create an SSL certificate and establish ownership for your custom domain before Hosting begins serving traffic on it. If your domain name is already in active use with another provider, add one of the challenges and make the recommended DNS updates. After adding challenges and adjusting DNS records as necessary, wait for the `ownershipState` to be `OWNERSHIP_ACTIVE` and the `certState` to be `CERT_ACTIVE` before sending traffic to Hosting. */
-  liveMigrationSteps?: Array<LiveMigrationStep>;
+  liveMigrationSteps?: ReadonlyArray<LiveMigrationStep>;
   /** A set of DNS record updates that allow Hosting to serve secure content on your domain name. The record type determines the update's purpose: - `A` and `AAAA`: Updates your domain name's IP addresses so that they direct traffic to Hosting servers. - `TXT`: Updates ownership permissions on your domain name, letting Hosting know that your custom domain's project has permission to perform actions for that domain name. - `CAA`: Updates your domain name's list of authorized Certificate Authorities (CAs). Only present if you have existing `CAA` records that prohibit Hosting's CA from minting certs for your domain name. These updates include all DNS changes you'll need to get started with Hosting, but, if made all at once, can result in a brief period of downtime for your domain name--while Hosting creates and uploads an SSL cert, for example. If you'd like to add your domain name to Hosting without downtime, complete the `liveMigrationSteps` first, before making the remaining updates in this field. */
   quickSetupUpdates?: DnsUpdates;
   /** A list of issues that are currently preventing Hosting from completing the operation. These are generally DNS-related issues that Hosting encounters when querying a domain name's records or attempting to mint an SSL certificate. */
-  issues?: Array<Status>;
+  issues?: ReadonlyArray<Status>;
 }
 
 export const CustomDomainMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -275,7 +275,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -310,7 +310,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -343,11 +343,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -377,10 +373,7 @@ export const DeleteProjectsSitesCustomDomainsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/sites/{sitesId}/customDomains/{customDomainsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsSitesCustomDomainsOperationsRequest>;
 
@@ -414,11 +407,7 @@ export const CancelProjectsSitesCustomDomainsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/sites/{sitesId}/customDomains/{customDomainsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsSitesCustomDomainsOperationsRequest>;
 

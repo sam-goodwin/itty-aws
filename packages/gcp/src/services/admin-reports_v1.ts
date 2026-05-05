@@ -76,7 +76,7 @@ export interface ActivityNetworkInfo {
   /** ISO 3166-2 region code (states and provinces) for countries of the user doing the action. */
   subdivisionCode?: string;
   /** IP Address of the user doing the action. */
-  ipAsn?: Array<number>;
+  ipAsn?: ReadonlyArray<number>;
 }
 
 export const ActivityNetworkInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -112,7 +112,7 @@ export const FieldValueSelectionValue =
 
 export interface FieldValueSelectionListValue {
   /** List of selections. */
-  values?: Array<FieldValueSelectionValue>;
+  values?: ReadonlyArray<FieldValueSelectionValue>;
 }
 
 export const FieldValueSelectionListValue =
@@ -122,7 +122,7 @@ export const FieldValueSelectionListValue =
 
 export interface FieldValueTextListValue {
   /** List of text values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const FieldValueTextListValue =
@@ -147,7 +147,7 @@ export const Admin_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FieldValueUserListValue {
   /** List of users. */
-  values?: Array<FieldValueUserValue>;
+  values?: ReadonlyArray<FieldValueUserValue>;
 }
 
 export const FieldValueUserListValue =
@@ -216,7 +216,7 @@ export interface AppliedLabel {
   /** Title of the label */
   title?: string;
   /** List of fields which are part of the label and have been set by the user. If label has a field which was not set by the user, it would not be present in this list. */
-  fieldValues?: Array<FieldValue>;
+  fieldValues?: ReadonlyArray<FieldValue>;
   /** Identifier of the label - Only the label id, not the full OnePlatform resource name. */
   id?: string;
   /** The reason why the label was applied on the resource. */
@@ -236,8 +236,8 @@ export interface UsageReport {
   /** Output only. The date of the report request. */
   date?: string;
   /** Output only. Parameter value pairs for various applications. For the Entity Usage Report parameters and values, see [the Entity Usage parameters reference](https://developers.google.com/workspace/admin/reports/v1/reference/usage-ref-appendix-a/entities). */
-  parameters?: Array<{
-    msgValue?: Array<Record<string, unknown>>;
+  parameters?: ReadonlyArray<{
+    msgValue?: ReadonlyArray<Record<string, unknown>>;
     datetimeValue?: string;
     name?: string;
     intValue?: string;
@@ -289,13 +289,13 @@ export interface UsageReports {
   /** The type of API resource. For a usage report, the value is `admin#reports#usageReports`. */
   kind?: string;
   /** Warnings, if any. */
-  warnings?: Array<{
+  warnings?: ReadonlyArray<{
     code?: string;
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   }>;
   /** Various application parameter records. */
-  usageReports?: Array<UsageReport>;
+  usageReports?: ReadonlyArray<UsageReport>;
   /** Token to specify next page. A report with multiple pages has a `nextPageToken` property in the response. For your follow-on requests getting all of the report's pages, enter the `nextPageToken` value in the `pageToken` query string. */
   nextPageToken?: string;
   /** ETag of the resource. */
@@ -381,9 +381,9 @@ export const ActivityEventsStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NestedParameter {
   /** Multiple string values of the parameter. */
-  multiValue?: Array<string>;
+  multiValue?: ReadonlyArray<string>;
   /** Multiple integer values of the parameter. */
-  multiIntValue?: Array<string>;
+  multiIntValue?: ReadonlyArray<string>;
   /** Boolean value of the parameter. */
   boolValue?: boolean;
   /** String value of the parameter. */
@@ -391,7 +391,7 @@ export interface NestedParameter {
   /** Integer value of the parameter. */
   intValue?: string;
   /** Multiple boolean values of the parameter. */
-  multiBoolValue?: Array<boolean>;
+  multiBoolValue?: ReadonlyArray<boolean>;
   /** The name of the parameter. */
   name?: string;
 }
@@ -410,7 +410,7 @@ export interface OwnerDetails {
   /** Type of the owner of the resource. */
   ownerType?: string;
   /** Identity details of the owner(s) of the resource. */
-  ownerIdentity?: Array<OwnerIdentity>;
+  ownerIdentity?: ReadonlyArray<OwnerIdentity>;
 }
 
 export const OwnerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -420,7 +420,7 @@ export const OwnerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceDetails {
   /** List of labels applied on the resource */
-  appliedLabels?: Array<AppliedLabel>;
+  appliedLabels?: ReadonlyArray<AppliedLabel>;
   /** Owner details of the resource. */
   ownerDetails?: OwnerDetails;
   /** Identifier of the resource, such as a doc_id for a Drive document, a conference_id for a Meet conference, or a "gaia_id/rfc2822_message_id" for an email. */
@@ -452,7 +452,7 @@ export interface Activity {
   /** Network information of the user doing the action. */
   networkInfo?: ActivityNetworkInfo;
   /** Details of the resource on which the action was performed. */
-  resourceDetails?: Array<ResourceDetails>;
+  resourceDetails?: ReadonlyArray<ResourceDetails>;
   /** Unique identifier for each activity record. */
   id?: {
     applicationName?: string;
@@ -463,29 +463,33 @@ export interface Activity {
   /** ETag of the entry. */
   etag?: string;
   /** Activity events in the report. */
-  events?: Array<{
-    parameters?: Array<{
-      multiValue?: Array<string>;
-      multiIntValue?: Array<string>;
+  events?: ReadonlyArray<{
+    parameters?: ReadonlyArray<{
+      multiValue?: ReadonlyArray<string>;
+      multiIntValue?: ReadonlyArray<string>;
       boolValue?: boolean;
       value?: string;
       intValue?: string;
       name?: string;
-      multiMessageValue?: Array<{ parameter?: Array<NestedParameter> }>;
-      messageValue?: { parameter?: Array<NestedParameter> };
+      multiMessageValue?: ReadonlyArray<{
+        parameter?: ReadonlyArray<NestedParameter>;
+      }>;
+      messageValue?: { parameter?: ReadonlyArray<NestedParameter> };
     }>;
-    sensitiveParameters?: Array<{
+    sensitiveParameters?: ReadonlyArray<{
       name?: string;
-      multiMessageValue?: Array<{ parameter?: Array<NestedParameter> }>;
-      messageValue?: { parameter?: Array<NestedParameter> };
-      multiValue?: Array<string>;
-      multiIntValue?: Array<string>;
+      multiMessageValue?: ReadonlyArray<{
+        parameter?: ReadonlyArray<NestedParameter>;
+      }>;
+      messageValue?: { parameter?: ReadonlyArray<NestedParameter> };
+      multiValue?: ReadonlyArray<string>;
+      multiIntValue?: ReadonlyArray<string>;
       boolValue?: boolean;
       value?: string;
       intValue?: string;
     }>;
     name?: string;
-    resourceIds?: Array<string>;
+    resourceIds?: ReadonlyArray<string>;
     status?: ActivityEventsStatus;
     type?: string;
   }>;
@@ -599,7 +603,7 @@ export interface Activities {
   /** ETag of the resource. */
   etag?: string;
   /** Each activity record in the response. */
-  items?: Array<Activity>;
+  items?: ReadonlyArray<Activity>;
   /** Token for retrieving the follow-on next page of the report. The `nextPageToken` value is used in the request's `pageToken` query string. */
   nextPageToken?: string;
 }

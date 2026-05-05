@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -117,9 +117,9 @@ export interface ListSQLIntegrationsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of SQLIntegrations of a domain. */
-  sqlIntegrations?: Array<SQLIntegration>;
+  sqlIntegrations?: ReadonlyArray<SQLIntegration>;
 }
 
 export const ListSQLIntegrationsResponse =
@@ -131,7 +131,7 @@ export const ListSQLIntegrationsResponse =
 
 export interface GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter {
   /** Optional. Array of string values. e.g. instance's replica information. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter =
@@ -168,7 +168,7 @@ export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
-  schedule?: Array<Schedule>;
+  schedule?: ReadonlyArray<Schedule>;
 }
 
 export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -196,7 +196,7 @@ export interface Trust {
   /** Input only, and will not be stored. The trust secret used for handshake with target domain. */
   trustHandshakeSecret?: string;
   /** The target dns server ip addresses which can resolve the remote domain involved in trust. */
-  targetDnsIpAddresses?: Array<string>;
+  targetDnsIpAddresses?: ReadonlyArray<string>;
   /** Output only. The last heartbeat time when the trust was known to be connected. */
   lastKnownTrustConnectedHeartbeatTime?: string;
   /** Output only. The current state of this trust. */
@@ -262,7 +262,7 @@ export interface CheckMigrationPermissionResponse {
     | "NEEDS_MAINTENANCE"
     | (string & {});
   /** The state of SID filtering of all the domains which has trust established. */
-  onpremDomains?: Array<OnPremDomainSIDDetails>;
+  onpremDomains?: ReadonlyArray<OnPremDomainSIDDetails>;
 }
 
 export const CheckMigrationPermissionResponse =
@@ -321,7 +321,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -402,7 +402,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -417,7 +417,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -444,7 +444,7 @@ export const CheckMigrationPermissionRequest =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -542,7 +542,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
   perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
   /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
-  nodes?: Array<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>;
+  nodes?: ReadonlyArray<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>;
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata =
@@ -590,7 +590,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -613,7 +613,7 @@ export interface UpdatePolicy {
     | "WEEK5"
     | (string & {});
   /** Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. The protocol supports zero-to-many such periods, but the current SLM Rollout implementation only supports zero-to-one. */
-  denyMaintenancePeriods?: Array<DenyMaintenancePeriod>;
+  denyMaintenancePeriods?: ReadonlyArray<DenyMaintenancePeriod>;
 }
 
 export const UpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -663,7 +663,7 @@ export interface Certificate {
   /** The certificate subject. */
   subject?: string;
   /** The additional hostnames for the domain. */
-  subjectAlternativeName?: Array<string>;
+  subjectAlternativeName?: ReadonlyArray<string>;
   /** The issuer of this certificate. */
   issuingCertificate?: Certificate;
   /** The certificate thumbprint which uniquely identifies the certificate. */
@@ -728,11 +728,11 @@ export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupsResponse {
   /** A list of Cloud AD backups in the domain. */
-  backups?: Array<Backup>;
+  backups?: ReadonlyArray<Backup>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -828,9 +828,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -887,11 +887,11 @@ export interface Domain {
   /** Output only. Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network. */
   fqdn?: string;
   /** Output only. The current trusts associated with the domain. */
-  trusts?: Array<Trust>;
+  trusts?: ReadonlyArray<Trust>;
   /** Output only. Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. */
   name?: string;
   /** Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used. */
   managedIdentitiesAdminName?: string;
   /** Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks]. */
@@ -901,7 +901,7 @@ export interface Domain {
   /** Optional. Resource labels to represent user provided metadata */
   labels?: Record<string, string>;
   /** Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail. */
-  authorizedNetworks?: Array<string>;
+  authorizedNetworks?: ReadonlyArray<string>;
   /** Output only. The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide */
   createTime?: string;
   /** Output only. Last update time. Synthetic field is populated automatically by CCFE. */
@@ -937,11 +937,11 @@ export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDomainsResponse {
   /** A list of Managed Identities Service domains in the project. */
-  domains?: Array<Domain>;
+  domains?: ReadonlyArray<Domain>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1046,7 +1046,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /** Optional. The MaintenanceSettings associated with instance. */
   maintenanceSettings?: GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings;
   /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
-  provisionedResources?: Array<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>;
+  provisionedResources?: ReadonlyArray<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>;
   /** Optional. The instance_type of this instance of format: projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or not. */
   instanceType?: string;
   /** Software versions that are used to deploy this instance. This can be mutated by rollout services. */
@@ -1172,7 +1172,7 @@ export const DomainJoinMachineRequest =
 
 export interface EnableMigrationRequest {
   /** Required. List of the on-prem domains to be migrated. */
-  migratingDomains?: Array<OnPremDomainDetails>;
+  migratingDomains?: ReadonlyArray<OnPremDomainDetails>;
   /** Optional. Period after which the migration would be auto disabled. If unspecified, a default timeout of 48h is used. */
   enableDuration?: string;
 }
@@ -1186,11 +1186,11 @@ export const EnableMigrationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListPeeringsResponse {
   /** A list of Managed Identities Service Peerings in the project. */
-  peerings?: Array<Peering>;
+  peerings?: ReadonlyArray<Peering>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListPeeringsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1245,7 +1245,7 @@ export const ListProjectsLocationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1280,10 +1280,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1314,10 +1311,7 @@ export const GetProjectsLocationsGlobalOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalOperationsRequest>;
 
@@ -1362,10 +1356,7 @@ export const ListProjectsLocationsGlobalOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/operations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalOperationsRequest>;
 
@@ -1401,10 +1392,7 @@ export const DeleteProjectsLocationsGlobalOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/global/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalOperationsRequest>;
 
@@ -1438,11 +1426,7 @@ export const CancelProjectsLocationsGlobalOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsGlobalOperationsRequest>;
 
@@ -1473,10 +1457,7 @@ export const GetLdapssettingsProjectsLocationsGlobalDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/ldapssettings",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}/ldapssettings" }),
     svc,
   ) as unknown as Schema.Schema<GetLdapssettingsProjectsLocationsGlobalDomainsRequest>;
 
@@ -1513,7 +1494,7 @@ export const TestIamPermissionsProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:testIamPermissions",
+      path: "v1alpha1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1553,7 +1534,7 @@ export const ValidateTrustProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:validateTrust",
+      path: "v1alpha1/{name}:validateTrust",
       hasBody: true,
     }),
     svc,
@@ -1591,7 +1572,7 @@ export const SetIamPolicyProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:setIamPolicy",
+      path: "v1alpha1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1629,7 +1610,7 @@ export const DisableMigrationProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:disableMigration",
+      path: "v1alpha1/{domain}:disableMigration",
       hasBody: true,
     }),
     svc,
@@ -1662,10 +1643,7 @@ export const GetProjectsLocationsGlobalDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalDomainsRequest>;
 
@@ -1708,10 +1686,7 @@ export const ListProjectsLocationsGlobalDomainsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/domains" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalDomainsRequest>;
 
@@ -1749,11 +1724,7 @@ export const RestoreProjectsLocationsGlobalDomainsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestoreDomainRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:restore",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:restore", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RestoreProjectsLocationsGlobalDomainsRequest>;
 
@@ -1789,7 +1760,7 @@ export const AttachTrustProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:attachTrust",
+      path: "v1alpha1/{name}:attachTrust",
       hasBody: true,
     }),
     svc,
@@ -1827,7 +1798,7 @@ export const DetachTrustProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:detachTrust",
+      path: "v1alpha1/{name}:detachTrust",
       hasBody: true,
     }),
     svc,
@@ -1865,7 +1836,7 @@ export const EnableMigrationProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:enableMigration",
+      path: "v1alpha1/{domain}:enableMigration",
       hasBody: true,
     }),
     svc,
@@ -1906,7 +1877,7 @@ export const CreateProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains",
+      path: "v1alpha1/{parent}/domains",
       hasBody: true,
     }),
     svc,
@@ -1947,7 +1918,7 @@ export const UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/ldapssettings",
+      path: "v1alpha1/{name}/ldapssettings",
       hasBody: true,
     }),
     svc,
@@ -1987,7 +1958,7 @@ export const DomainJoinMachineProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:domainJoinMachine",
+      path: "v1alpha1/{domain}:domainJoinMachine",
       hasBody: true,
     }),
     svc,
@@ -2027,7 +1998,7 @@ export const ReconfigureTrustProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:reconfigureTrust",
+      path: "v1alpha1/{name}:reconfigureTrust",
       hasBody: true,
     }),
     svc,
@@ -2065,10 +2036,7 @@ export const GetIamPolicyProjectsLocationsGlobalDomainsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalDomainsRequest>;
 
@@ -2104,7 +2072,7 @@ export const ResetAdminPasswordProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:resetAdminPassword",
+      path: "v1alpha1/{name}:resetAdminPassword",
       hasBody: true,
     }),
     svc,
@@ -2144,7 +2112,7 @@ export const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:checkMigrationPermission",
+      path: "v1alpha1/{domain}:checkMigrationPermission",
       hasBody: true,
     }),
     svc,
@@ -2185,11 +2153,7 @@ export const PatchProjectsLocationsGlobalDomainsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Domain).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalDomainsRequest>;
 
@@ -2225,7 +2189,7 @@ export const ExtendSchemaProjectsLocationsGlobalDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}:extendSchema",
+      path: "v1alpha1/{domain}:extendSchema",
       hasBody: true,
     }),
     svc,
@@ -2258,10 +2222,7 @@ export const DeleteProjectsLocationsGlobalDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalDomainsRequest>;
 
@@ -2292,10 +2253,7 @@ export const GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/sqlIntegrations/{sqlIntegrationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
 
@@ -2340,10 +2298,7 @@ export const ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/sqlIntegrations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/sqlIntegrations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
 
@@ -2392,10 +2347,7 @@ export const ListProjectsLocationsGlobalDomainsBackupsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/backups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>;
 
@@ -2431,10 +2383,7 @@ export const GetProjectsLocationsGlobalDomainsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalDomainsBackupsRequest>;
 
@@ -2470,10 +2419,7 @@ export const GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>;
 
@@ -2510,7 +2456,7 @@ export const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}:testIamPermissions",
+      path: "v1alpha1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2550,7 +2496,7 @@ export const SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}:setIamPolicy",
+      path: "v1alpha1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2590,11 +2536,7 @@ export const PatchProjectsLocationsGlobalDomainsBackupsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalDomainsBackupsRequest>;
 
@@ -2633,7 +2575,7 @@ export const CreateProjectsLocationsGlobalDomainsBackupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups",
+      path: "v1alpha1/{parent}/backups",
       hasBody: true,
     }),
     svc,
@@ -2666,10 +2608,7 @@ export const DeleteProjectsLocationsGlobalDomainsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalDomainsBackupsRequest>;
 
@@ -2712,10 +2651,7 @@ export const ListProjectsLocationsGlobalPeeringsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/peerings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalPeeringsRequest>;
 
@@ -2750,10 +2686,7 @@ export const GetProjectsLocationsGlobalPeeringsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings/{peeringsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalPeeringsRequest>;
 
@@ -2789,10 +2722,7 @@ export const GetIamPolicyProjectsLocationsGlobalPeeringsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings/{peeringsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalPeeringsRequest>;
 
@@ -2828,7 +2758,7 @@ export const TestIamPermissionsProjectsLocationsGlobalPeeringsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings/{peeringsId}:testIamPermissions",
+      path: "v1alpha1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2868,7 +2798,7 @@ export const SetIamPolicyProjectsLocationsGlobalPeeringsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings/{peeringsId}:setIamPolicy",
+      path: "v1alpha1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2907,11 +2837,7 @@ export const PatchProjectsLocationsGlobalPeeringsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Peering).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings/{peeringsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalPeeringsRequest>;
 
@@ -2950,7 +2876,7 @@ export const CreateProjectsLocationsGlobalPeeringsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings",
+      path: "v1alpha1/{parent}/peerings",
       hasBody: true,
     }),
     svc,
@@ -2983,10 +2909,7 @@ export const DeleteProjectsLocationsGlobalPeeringsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/global/peerings/{peeringsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalPeeringsRequest>;
 

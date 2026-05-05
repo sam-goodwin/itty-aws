@@ -48,7 +48,7 @@ export interface AuditRefs {
   /** The conventional acronym for the audit/metric. */
   acronym?: string;
   /** Any audit IDs closely relevant to this one. */
-  relevantAudits?: Array<string>;
+  relevantAudits?: ReadonlyArray<string>;
   /** The audit ref id. */
   id?: string;
 }
@@ -65,7 +65,7 @@ export interface LighthouseCategoryV5 {
   /** A description for the manual audits in the category. */
   manualDescription?: string;
   /** An array of references to all the audit members of this category. */
-  auditRefs?: Array<AuditRefs>;
+  auditRefs?: ReadonlyArray<AuditRefs>;
   /** The string identifier of the category. */
   id?: string;
   /** The human-friendly name of the category. */
@@ -127,7 +127,7 @@ export interface LhrEntity {
   /** Optional. An optional flag indicating if the entity is the first party. */
   isFirstParty?: boolean;
   /** Required. A list of URL origin strings that belong to this entity. */
-  origins?: Array<string>;
+  origins?: ReadonlyArray<string>;
 }
 
 export const LhrEntity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -433,7 +433,7 @@ export interface LighthouseResultV5 {
   /** URL of the main document request of the final navigation. */
   mainDocumentUrl?: string;
   /** The Stack Pack advice strings. */
-  stackPacks?: Array<StackPack>;
+  stackPacks?: ReadonlyArray<StackPack>;
   /** The original requested url. */
   requestedUrl?: string;
   /** The time that this run was fetched. */
@@ -443,7 +443,7 @@ export interface LighthouseResultV5 {
   /** Timing information for this LHR. */
   timing?: Timing;
   /** Entity classification data. */
-  entities?: Array<LhrEntity>;
+  entities?: ReadonlyArray<LhrEntity>;
   /** URL displayed on the page after Lighthouse finishes. */
   finalDisplayedUrl?: string;
   /** Map of audits in the LHR. */
@@ -455,7 +455,7 @@ export interface LighthouseResultV5 {
   /** A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded. */
   runtimeError?: RuntimeError;
   /** List of all run warnings in the LHR. Will always output to at least `[]`. */
-  runWarnings?: Array<unknown>;
+  runWarnings?: ReadonlyArray<unknown>;
   /** Screenshot data of the full page, along with node rects relevant to the audit results. */
   fullPageScreenshot?: unknown;
   /** The internationalization strings that are required to render the LHR. */
@@ -529,7 +529,7 @@ export interface UserPageLoadMetricV5 {
   /** Identifies the type of the metric. */
   metricId?: string;
   /** Metric distributions. Proportions should sum up to 1. */
-  distributions?: Array<Bucket>;
+  distributions?: ReadonlyArray<Bucket>;
   /** Identifies the form factor of the metric being collected. */
   formFactor?: string;
   /** The median number of the metric, in millisecond. */

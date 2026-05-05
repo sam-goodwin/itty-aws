@@ -123,7 +123,7 @@ export const WorkforceDemand = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkforceDemandList {
   /** Optional. Values in the list. */
-  values?: Array<WorkforceDemand>;
+  values?: ReadonlyArray<WorkforceDemand>;
 }
 
 export const WorkforceDemandList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -220,7 +220,7 @@ export interface ContactCenterQuota {
   /** Deprecated: Use the Quota fields instead. Reflects the count limit of contact centers on a billing account. */
   contactCenterCountLimit?: number;
   /** Quota details per contact center instance type. */
-  quotas?: Array<Quota>;
+  quotas?: ReadonlyArray<Quota>;
 }
 
 export const ContactCenterQuota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -243,7 +243,7 @@ export const UnwantedEventInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EmployeeInfo {
   /** Optional. A list of unwanted event intervals for this employee. The start time of the interval must be in the planning horizon. */
-  unwantedEventIntervals?: Array<UnwantedEventInterval>;
+  unwantedEventIntervals?: ReadonlyArray<UnwantedEventInterval>;
   /** Required. Unique ID of this employee. */
   id?: string;
 }
@@ -292,7 +292,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -326,9 +326,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -343,7 +343,7 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -365,7 +365,7 @@ export interface SAMLParams {
   /** SAML certificate */
   certificate?: string;
   /** Additional contexts used for authentication. */
-  authenticationContexts?: Array<
+  authenticationContexts?: ReadonlyArray<
     | "AUTHENTICATION_CONTEXT_UNSPECIFIED"
     | "INTERNET_PROTOCOL"
     | "INTERNET_PROTOCOL_PASSWORD"
@@ -456,7 +456,7 @@ export interface Component {
   /** Name of the component. */
   name?: string;
   /** Associated service attachments. The service attachment names that will be used for sending private traffic to the CCAIP tenant project. Example service attachment name: "projects/${TENANT_PROJECT_ID}/regions/${REGION}/serviceAttachments/ingress-default". */
-  serviceAttachmentNames?: Array<string>;
+  serviceAttachmentNames?: ReadonlyArray<string>;
 }
 
 export const Component = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -466,9 +466,9 @@ export const Component = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PscSetting {
   /** The list of project ids that are allowed to send traffic to the service attachment. This field should be filled only for the ingress components. */
-  allowedConsumerProjectIds?: Array<string>;
+  allowedConsumerProjectIds?: ReadonlyArray<string>;
   /** Output only. The CCAIP tenant project ids. */
-  producerProjectIds?: Array<string>;
+  producerProjectIds?: ReadonlyArray<string>;
 }
 
 export const PscSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -478,9 +478,9 @@ export const PscSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PrivateAccess {
   /** List of egress components that should not be accessed via the Internet. For more information see go/ccaip-private-path-v2. */
-  egressSettings?: Array<Component>;
+  egressSettings?: ReadonlyArray<Component>;
   /** List of ingress components that should not be accessed via the Internet. For more information see go/ccaip-private-path-v2. */
-  ingressSettings?: Array<Component>;
+  ingressSettings?: ReadonlyArray<Component>;
   /** Private service connect settings. */
   pscSetting?: PscSetting;
 }
@@ -515,7 +515,7 @@ export interface WeeklySchedule {
   /** Optional. Duration of the schedule. */
   duration?: string;
   /** Required. Days of the week this schedule applies to. */
-  days?: Array<
+  days?: ReadonlyArray<
     | "DAY_OF_WEEK_UNSPECIFIED"
     | "MONDAY"
     | "TUESDAY"
@@ -539,7 +539,7 @@ export const WeeklySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Critical {
   /** Required. Hours during which the instance should not be updated. */
-  peakHours?: Array<WeeklySchedule>;
+  peakHours?: ReadonlyArray<WeeklySchedule>;
 }
 
 export const Critical = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -607,7 +607,7 @@ export interface ContactCenter {
   /** Optional. VPC-SC related networking configuration. */
   privateAccess?: PrivateAccess;
   /** Output only. TODO(b/283407860) Deprecate this field. */
-  privateComponents?: Array<string>;
+  privateComponents?: ReadonlyArray<string>;
   /** Optional. Critical release channel. */
   critical?: Critical;
 }
@@ -654,9 +654,9 @@ export const PlanningHorizon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListContactCentersResponse {
   /** The list of ContactCenter */
-  contactCenters?: Array<ContactCenter>;
+  contactCenters?: ReadonlyArray<ContactCenter>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -686,7 +686,7 @@ export const Contactcenteraiplatform_Date =
 
 export interface DateList {
   /** Optional. Values in the list. */
-  values?: Array<Contactcenteraiplatform_Date>;
+  values?: ReadonlyArray<Contactcenteraiplatform_Date>;
 }
 
 export const DateList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -707,7 +707,7 @@ export interface ShiftTemplate {
   /** Optional. Fixed dates when shifts from this template should not be generated. */
   daysOffDates?: DateList;
   /** Optional. Rules for generating events for each shift. Exactly one event will be included in each shift for each `EventTemplate` specified. */
-  eventTemplates?: Array<EventTemplate>;
+  eventTemplates?: ReadonlyArray<EventTemplate>;
   /** Required. Unique ID of this template. */
   id?: string;
   /** Required. Latest time in the day that a shift can start. This value is specified with hours and minutes; seconds and nanos are ignored. If this value is less than the `earliest_start_time`, it may imply an overnight shift. */
@@ -717,7 +717,7 @@ export interface ShiftTemplate {
   /** Optional. Fixed number of days off per week. An employee has a given day off if they are not assigned to a shift that starts on that day. A week is 7 days and begins on Sunday. */
   daysOffCountPerWeek?: number;
   /** Optional. A list of specific employee IDs that can be assigned to shifts generated by this template. If this field is present, there will be `EmployeeSchedule`s in the response for which the `EmployeeSchedule.employee_id` field is set to one of the IDs in this list. The number of employee schedules with an assigned employee ID will be between `minimum_employee_count` and `maximum_employee_count`. If this field is empty, between `minimum_employee_count` and `maximum_employee_count` employees can be assigned to shifts generated by this template and the employee schedules won't have an assigned employee ID. Currently, only one assignable employee ID is supported. */
-  assignableEmployeeIds?: Array<string>;
+  assignableEmployeeIds?: ReadonlyArray<string>;
 }
 
 export const ShiftTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -743,9 +743,9 @@ export interface GenerateShiftsRequest {
   /** Required. All the workforce demands that the generated shifts need to cover. The planning horizon is defined between the earliest start time and the latest end time across all the entries. This field cannot be empty. */
   workforceDemands?: WorkforceDemandList;
   /** Optional. Employee information that should be considered when generating shifts. */
-  employeeInfo?: Array<EmployeeInfo>;
+  employeeInfo?: ReadonlyArray<EmployeeInfo>;
   /** Required. Set of shift templates specifying rules for generating shifts. A shift template can be used for generating multiple shifts. */
-  shiftTemplates?: Array<ShiftTemplate>;
+  shiftTemplates?: ReadonlyArray<ShiftTemplate>;
 }
 
 export const GenerateShiftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -807,7 +807,7 @@ export const QueryContactCenterQuotaProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}:queryContactCenterQuota",
+      path: "v1alpha1/{parent}:queryContactCenterQuota",
     }),
     svc,
   ) as unknown as Schema.Schema<QueryContactCenterQuotaProjectsLocationsRequest>;
@@ -845,7 +845,7 @@ export const GenerateShiftsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}:generateShifts",
+      path: "v1alpha1/{parent}:generateShifts",
       hasBody: true,
     }),
     svc,
@@ -878,10 +878,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -926,7 +923,7 @@ export const ListProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -961,10 +958,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -995,10 +989,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1043,10 +1034,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1084,11 +1072,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1119,10 +1103,7 @@ export const GetProjectsLocationsContactCentersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsContactCentersRequest>;
 
@@ -1156,10 +1137,7 @@ export const DeleteProjectsLocationsContactCentersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsContactCentersRequest>;
 
@@ -1202,10 +1180,7 @@ export const ListProjectsLocationsContactCentersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/contactCenters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsContactCentersRequest>;
 
@@ -1254,7 +1229,7 @@ export const CreateProjectsLocationsContactCentersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters",
+      path: "v1alpha1/{parent}/contactCenters",
       hasBody: true,
     }),
     svc,
@@ -1296,11 +1271,7 @@ export const PatchProjectsLocationsContactCentersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(ContactCenter).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsContactCentersRequest>;
 

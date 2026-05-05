@@ -107,7 +107,7 @@ export interface ResellernotifyGetwatchdetailsResponse {
   /** Topic name of the PubSub */
   topicName?: string;
   /** List of registered service accounts. */
-  serviceAccountEmailAddresses?: Array<string>;
+  serviceAccountEmailAddresses?: ReadonlyArray<string>;
 }
 
 export const ResellernotifyGetwatchdetailsResponse =
@@ -181,7 +181,7 @@ export interface Subscription {
   /** Read-only field that returns the current billing method for a subscription. */
   billingMethod?: string;
   /** Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's `STATUS` is `SUSPENDED` until all pending suspensions are removed. Possible options include: - `PENDING_TOS_ACCEPTANCE` - The customer has not logged in and accepted the G Suite Resold Terms of Services. - `RENEWAL_WITH_TYPE_CANCEL` - The customer's commitment ended and their service was cancelled at the end of their term. - `RESELLER_INITIATED` - A manual suspension invoked by a Reseller. - `TRIAL_ENDED` - The customer's trial expired without a plan selected. - `OTHER` - The customer is suspended for an internal Google reason (e.g. abuse or otherwise). */
-  suspensionReasons?: Array<string>;
+  suspensionReasons?: ReadonlyArray<string>;
   /** Primary domain name of the customer */
   customerDomain?: string;
   /** Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in `insert` requests in order to receive discounted rate. This property is optional, regular pricing applies if left empty. */
@@ -272,7 +272,7 @@ export interface Subscriptions {
   /** Identifies the resource as a collection of subscriptions. Value: reseller#subscriptions */
   kind?: string;
   /** The subscriptions in this page of results. */
-  subscriptions?: Array<Subscription>;
+  subscriptions?: ReadonlyArray<Subscription>;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }

@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -73,7 +73,7 @@ export interface AllowedDomainsSettings {
   /** Optional. Configuration for customers to opt in for the feature. */
   enable?: boolean;
   /** Optional. List of trusted domains. */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
 }
 
 export const AllowedDomainsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -85,7 +85,7 @@ export const AllowedDomainsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GcipSettings {
   /** Optional. GCIP tenant IDs that are linked to the IAP resource. `tenant_ids` could be a string beginning with a number character to indicate authenticating with GCIP tenant flow, or in the format of `_` to indicate authenticating with GCIP agent flow. If agent flow is used, `tenant_ids` should only contain one single element, while for tenant flow, `tenant_ids` can contain multiple elements. */
-  tenantIds?: Array<string>;
+  tenantIds?: ReadonlyArray<string>;
   /** Login page URI associated with the GCIP tenants. Typically, all resources within the same project share the same login page, though it could be overridden at the sub resource level. */
   loginPageUri?: string;
 }
@@ -105,7 +105,7 @@ export interface OAuthSettings {
   /** Output only. OAuth secret SHA256 paired with client ID. */
   clientSecretSha256?: string;
   /** Optional. List of client ids allowed to use IAP programmatically. */
-  programmaticClients?: Array<string>;
+  programmaticClients?: ReadonlyArray<string>;
 }
 
 export const OAuthSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -144,7 +144,7 @@ export interface TagsPartialState {
   /** Tags that’ll be updated or added to the current state of tags for evaluation purposes. If a key exists in both "tags_to_upsert" and "tag_keys_to_remove", the one in "tag_keys_to_remove" is ignored. Only one type of tags reference (numeric or namespace) is required to be passed. */
   tagsToUpsert?: Record<string, string>;
   /** Keys of the tags that should be removed for evaluation purposes. IMPORTANT: Currently only numeric references are supported. Once support for namespace references is added, both the tag references (numeric and namespace) will be removed. */
-  tagKeysToRemove?: Array<string>;
+  tagKeysToRemove?: ReadonlyArray<string>;
 }
 
 export const TagsPartialState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -176,7 +176,7 @@ export interface Resource {
   /** The service defined labels of the resource on which the conditions will be evaluated. The semantics - including the key names - are vague to IAM. If the effective condition has a reference to a `resource.labels[foo]` construct, IAM consults with this map to retrieve the values associated with `foo` key for Conditions evaluation. If the provided key is not found in the labels map, the condition would evaluate to false. This field is in limited use. If your intended use case is not expected to express resource.labels attribute in IAM Conditions, leave this field empty. Before planning on using this attribute please: * Read go/iam-conditions-labels-comm and ensure your service can meet the data availability and management requirements. * Talk to iam-conditions-eng@ about your use case. */
   labels?: Record<string, string>;
   /** The locations of the resource. This field is used to determine whether the request is compliant with Trust Boundaries. Usage: - Must not be empty for services in-scope for Trust Boundaries. Once Trust Boundaries is GA, empty values will cause the request to be rejected if customers enforce Trust Boundaries on the parent CRM nodes. - For global resources: use a single value of "global". - For regional/multi-regional resources: use name of the GCP region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For multi-regional resources specify the name of each GCP region in the resource's multi-region. NOTE: Only GCP cloud region names are supported - go/cloud-region-names. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** The **relative** name of the resource, which is the URI path of the resource without the leading "/". See https://cloud.google.com/iam/docs/conditions-resource-attributes#resource-name for examples used by other GCP Services. This field is **required** for services integrated with resource-attribute-based IAM conditions and/or CustomOrgPolicy. This field requires special handling for parents-only permissions such as `create` and `list`. See the document linked below for further details. See go/iam-conditions-sig-g3#populate-resource-attributes for specific details on populating this field. */
   name?: string;
 }
@@ -229,7 +229,7 @@ export const OAuth2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkforceIdentitySettings {
   /** The workforce pool resources. Only one workforce pool is accepted. */
-  workforcePools?: Array<string>;
+  workforcePools?: ReadonlyArray<string>;
   /** OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity federation services. */
   oauth2?: OAuth2;
 }
@@ -275,7 +275,7 @@ export interface AccessSettings {
   /** Optional. Settings to configure IAP's OAuth behavior. */
   oauthSettings?: OAuthSettings;
   /** Optional. Identity sources that IAP can use to authenticate the end user. Only one identity source can be configured. */
-  identitySources?: Array<
+  identitySources?: ReadonlyArray<
     | "IDENTITY_SOURCE_UNSPECIFIED"
     | "WORKFORCE_IDENTITY_FEDERATION"
     | (string & {})
@@ -342,7 +342,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -364,7 +364,7 @@ export const ValidateIapAttributeExpressionResponse =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -376,9 +376,9 @@ export interface TunnelDestGroup {
   /** Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-). */
   name?: string;
   /** Optional. Unordered list. List of CIDRs that this group applies to. */
-  cidrs?: Array<string>;
+  cidrs?: ReadonlyArray<string>;
   /** Optional. Unordered list. List of FQDNs that this group applies to. */
-  fqdns?: Array<string>;
+  fqdns?: ReadonlyArray<string>;
 }
 
 export const TunnelDestGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -389,7 +389,7 @@ export const TunnelDestGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTunnelDestGroupsResponse {
   /** TunnelDestGroup existing in the project. */
-  tunnelDestGroups?: Array<TunnelDestGroup>;
+  tunnelDestGroups?: ReadonlyArray<TunnelDestGroup>;
   /** A token that you can send as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -420,7 +420,7 @@ export const Brand = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBrandsResponse {
   /** Brands existing in the project. */
-  brands?: Array<Brand>;
+  brands?: ReadonlyArray<Brand>;
 }
 
 export const ListBrandsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -455,7 +455,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -466,7 +466,7 @@ export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListIdentityAwareProxyClientsResponse {
   /** Clients existing in the brand. */
-  identityAwareProxyClients?: Array<IdentityAwareProxyClient>;
+  identityAwareProxyClients?: ReadonlyArray<IdentityAwareProxyClient>;
   /** A token, which can be send as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -481,7 +481,7 @@ export const ListIdentityAwareProxyClientsResponse =
 
 export interface AttributePropagationSettings {
   /** Optional. Which output credentials attributes selected by the CEL expression should be propagated in. All attributes will be fully duplicated in each selected output credential. */
-  outputCredentials?: Array<
+  outputCredentials?: ReadonlyArray<
     | "OUTPUT_CREDENTIALS_UNSPECIFIED"
     | "HEADER"
     | "JWT"
@@ -565,7 +565,7 @@ export const GetIapSettingsV1Request =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{v1Id}:iapSettings" }),
+    T.Http({ method: "GET", path: "v1/{name}:iapSettings" }),
     svc,
   ) as unknown as Schema.Schema<GetIapSettingsV1Request>;
 
@@ -601,7 +601,7 @@ export const UpdateIapSettingsV1Request =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(IapSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{v1Id}:iapSettings", hasBody: true }),
+    T.Http({ method: "PATCH", path: "v1/{name}:iapSettings", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateIapSettingsV1Request>;
 
@@ -637,7 +637,7 @@ export const ValidateAttributeExpressionV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{v1Id}:validateAttributeExpression",
+      path: "v1/{name}:validateAttributeExpression",
       hasBody: true,
     }),
     svc,
@@ -673,7 +673,7 @@ export const SetIamPolicyV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resource: Schema.String.pipe(T.HttpPath("resource")),
   body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{v1Id}:setIamPolicy", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{resource}:setIamPolicy", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<SetIamPolicyV1Request>;
 
@@ -705,7 +705,7 @@ export const GetIamPolicyV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resource: Schema.String.pipe(T.HttpPath("resource")),
   body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{v1Id}:getIamPolicy", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{resource}:getIamPolicy", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<GetIamPolicyV1Request>;
 
@@ -740,7 +740,7 @@ export const TestIamPermissionsV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{v1Id}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -779,10 +779,7 @@ export const ListProjectsIap_tunnelLocationsDestGroupsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/iap_tunnel/locations/{locationsId}/destGroups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/destGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsIap_tunnelLocationsDestGroupsRequest>;
 
@@ -818,10 +815,7 @@ export const DeleteProjectsIap_tunnelLocationsDestGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/iap_tunnel/locations/{locationsId}/destGroups/{destGroupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsIap_tunnelLocationsDestGroupsRequest>;
 
@@ -858,11 +852,7 @@ export const PatchProjectsIap_tunnelLocationsDestGroupsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(TunnelDestGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/iap_tunnel/locations/{locationsId}/destGroups/{destGroupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsIap_tunnelLocationsDestGroupsRequest>;
 
@@ -894,10 +884,7 @@ export const GetProjectsIap_tunnelLocationsDestGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/iap_tunnel/locations/{locationsId}/destGroups/{destGroupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsIap_tunnelLocationsDestGroupsRequest>;
 
@@ -936,11 +923,7 @@ export const CreateProjectsIap_tunnelLocationsDestGroupsRequest =
     ),
     body: Schema.optional(TunnelDestGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/iap_tunnel/locations/{locationsId}/destGroups",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/destGroups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsIap_tunnelLocationsDestGroupsRequest>;
 
@@ -972,10 +955,7 @@ export const GetProjectsBrandsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/brands/{brandsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsBrandsRequest>;
 
@@ -1008,11 +988,7 @@ export const CreateProjectsBrandsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Brand).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/brands",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/brands", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsBrandsRequest>;
 
@@ -1042,7 +1018,7 @@ export const ListProjectsBrandsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/brands" }),
+    T.Http({ method: "GET", path: "v1/{parent}/brands" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsBrandsRequest>;
 
@@ -1078,7 +1054,7 @@ export const CreateProjectsBrandsIdentityAwareProxyClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients",
+      path: "v1/{parent}/identityAwareProxyClients",
       hasBody: true,
     }),
     svc,
@@ -1117,11 +1093,7 @@ export const ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}:resetSecret",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resetSecret", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest>;
 
@@ -1154,10 +1126,7 @@ export const GetProjectsBrandsIdentityAwareProxyClientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsBrandsIdentityAwareProxyClientsRequest>;
 
@@ -1195,10 +1164,7 @@ export const ListProjectsBrandsIdentityAwareProxyClientsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/identityAwareProxyClients" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsBrandsIdentityAwareProxyClientsRequest>;
 
@@ -1234,10 +1200,7 @@ export const DeleteProjectsBrandsIdentityAwareProxyClientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsBrandsIdentityAwareProxyClientsRequest>;
 

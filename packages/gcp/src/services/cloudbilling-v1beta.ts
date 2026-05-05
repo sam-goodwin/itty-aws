@@ -52,7 +52,7 @@ export const UserContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GenerateInsightsRequest {
   /** Optional. The billing account or projects to analyze. */
-  parents?: Array<BillingDataResource>;
+  parents?: ReadonlyArray<BillingDataResource>;
   /** Optional. Filters cost data by service id. Follows https://google.aip.dev/160 for the filter syntax. eg. filter: "service = 'C7E2-9256-1C43'" */
   filter?: string;
   /** Required. The natural language prompt from the user. */
@@ -103,7 +103,7 @@ export const ColumnInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Cloudbilling_Array {
   /** The elements of the array. */
-  element?: Array<ValueProto>;
+  element?: ReadonlyArray<ValueProto>;
 }
 
 export const Cloudbilling_Array: Schema.Schema<Cloudbilling_Array> =
@@ -117,7 +117,7 @@ export const Cloudbilling_Array: Schema.Schema<Cloudbilling_Array> =
 
 export interface Struct {
   /** The fields in the struct */
-  field?: Array<ValueProto>;
+  field?: ReadonlyArray<ValueProto>;
 }
 
 export const Struct: Schema.Schema<Struct> =
@@ -171,7 +171,7 @@ export const MapEntry: Schema.Schema<MapEntry> =
 
 export interface Cloudbilling_Map {
   /** Represents the map entries in the map. */
-  entry?: Array<MapEntry>;
+  entry?: ReadonlyArray<MapEntry>;
 }
 
 export const Cloudbilling_Map: Schema.Schema<Cloudbilling_Map> =
@@ -278,7 +278,7 @@ export const ValueProto: Schema.Schema<ValueProto> =
 
 export interface Row {
   /** Values for a row in the column order. */
-  values?: Array<ValueProto>;
+  values?: ReadonlyArray<ValueProto>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -287,9 +287,9 @@ export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BillingData {
   /** Information about columns. */
-  columnInfo?: Array<ColumnInfo>;
+  columnInfo?: ReadonlyArray<ColumnInfo>;
   /** Rows. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
 }
 
 export const BillingData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -332,7 +332,7 @@ export const SuggestedChart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AgenticQueryInfo {
   /** The parents (e.g. projects, billing accounts) queried. */
-  parents?: Array<string>;
+  parents?: ReadonlyArray<string>;
   /** The view queried. */
   view?: string;
   /** The columns queried. */
@@ -407,13 +407,13 @@ export interface FinalResult {
   /** Output only. Contains the full natural language analysis, including thoughts, reasoning, and references. */
   fullAnalysis?: string;
   /** Output only. A list of discrete insights gleaned from the data. */
-  insights?: Array<Insight>;
+  insights?: ReadonlyArray<Insight>;
   /** Output only. Data sets used to support the insights, suitable for UI rendering (tables/charts). */
-  dataSets?: Array<DataSet>;
+  dataSets?: ReadonlyArray<DataSet>;
   /** Output only. Links to interoperable tools (e.g., pre-filtered Cost Reports or BQE queries). */
-  interopLinks?: Array<InteropLink>;
+  interopLinks?: ReadonlyArray<InteropLink>;
   /** Output only. A list of suggested follow-up queries for the user. */
-  suggestedQueries?: Array<SuggestedQuery>;
+  suggestedQueries?: ReadonlyArray<SuggestedQuery>;
 }
 
 export const FinalResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -544,7 +544,7 @@ export const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo =
 
 export interface GoogleCloudBillingBillingaccountpricesV1betaRate {
   /** All tiers associated with the `Rate` price. */
-  tiers?: Array<GoogleCloudBillingBillingaccountpricesV1betaRateTier>;
+  tiers?: ReadonlyArray<GoogleCloudBillingBillingaccountpricesV1betaRateTier>;
   /** Unit info such as name and quantity. */
   unitInfo?: GoogleCloudBillingBillingaccountpricesV1betaUnitInfo;
   /** Aggregation info for tiers such as aggregation level and interval. */
@@ -722,7 +722,7 @@ export const GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice =
 
 export interface GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse {
   /** The returned billing account prices. */
-  billingAccountPrices?: Array<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>;
+  billingAccountPrices?: ReadonlyArray<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -761,7 +761,7 @@ export const GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService
 
 export interface GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse {
   /** The returned billing account services. */
-  billingAccountServices?: Array<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>;
+  billingAccountServices?: ReadonlyArray<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -797,7 +797,7 @@ export const GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGro
 
 export interface GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse {
   /** The returned publicly listed billing account SKU groups. */
-  billingAccountSkuGroups?: Array<GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup>;
+  billingAccountSkuGroups?: ReadonlyArray<GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -830,7 +830,7 @@ export const GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory 
 
 export interface GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy {
   /** All product categories that the billing account SKU group SKU belong to. */
-  taxonomyCategories?: Array<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
+  taxonomyCategories?: ReadonlyArray<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
 }
 
 export const GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy =
@@ -883,7 +883,7 @@ export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion
 
 export interface GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional {
   /** Google Cloud regions associated with the multi-regional geographic taxonomy. */
-  regions?: Array<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
+  regions?: ReadonlyArray<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
 }
 
 export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional =
@@ -964,7 +964,7 @@ export const GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSku
 
 export interface GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse {
   /** The returned billing account SKU group SKUs. */
-  billingAccountSkuGroupSkus?: Array<GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku>;
+  billingAccountSkuGroupSkus?: ReadonlyArray<GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -996,7 +996,7 @@ export const GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory =
 
 export interface GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy {
   /** All product categories that the billing account SKU belong to. */
-  taxonomyCategories?: Array<GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory>;
+  taxonomyCategories?: ReadonlyArray<GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory>;
 }
 
 export const GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy =
@@ -1043,7 +1043,7 @@ export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegional =
 
 export interface GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional {
   /** Google Cloud regions associated with the multi-regional geographic taxonomy. */
-  regions?: Array<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegion>;
+  regions?: ReadonlyArray<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegion>;
 }
 
 export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional =
@@ -1121,7 +1121,7 @@ export const GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku =
 
 export interface GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse {
   /** The returned billing account SKUs. */
-  billingAccountSkus?: Array<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku>;
+  billingAccountSkus?: ReadonlyArray<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1189,7 +1189,7 @@ export const GoogleCloudBillingPricesV1betaAggregationInfo =
 
 export interface GoogleCloudBillingPricesV1betaRate {
   /** All tiers associated with the `Rate` price. */
-  tiers?: Array<GoogleCloudBillingPricesV1betaRateTier>;
+  tiers?: ReadonlyArray<GoogleCloudBillingPricesV1betaRateTier>;
   /** Unit info such as name and quantity. */
   unitInfo?: GoogleCloudBillingPricesV1betaUnitInfo;
   /** Aggregation info for tiers such as aggregation level and interval. */
@@ -1228,7 +1228,7 @@ export const GoogleCloudBillingPricesV1betaPrice =
 
 export interface GoogleCloudBillingPricesV1betaListPricesResponse {
   /** The returned publicly listed prices. */
-  prices?: Array<GoogleCloudBillingPricesV1betaPrice>;
+  prices?: ReadonlyArray<GoogleCloudBillingPricesV1betaPrice>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1256,7 +1256,7 @@ export const GoogleCloudBillingSkugroupsV1betaSkuGroup =
 
 export interface GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse {
   /** The returned publicly listed SKU groups. */
-  skuGroups?: Array<GoogleCloudBillingSkugroupsV1betaSkuGroup>;
+  skuGroups?: ReadonlyArray<GoogleCloudBillingSkugroupsV1betaSkuGroup>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1285,7 +1285,7 @@ export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory =
 
 export interface GoogleCloudBillingSkugroupskusV1betaProductTaxonomy {
   /** All product categories that the SKU group SKU belongs to. */
-  taxonomyCategories?: Array<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory>;
+  taxonomyCategories?: ReadonlyArray<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory>;
 }
 
 export const GoogleCloudBillingSkugroupskusV1betaProductTaxonomy =
@@ -1332,7 +1332,7 @@ export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegional =
 
 export interface GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional {
   /** Google Cloud regions associated with the multi-regional geographic taxonomy. */
-  regions?: Array<GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion>;
+  regions?: ReadonlyArray<GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion>;
 }
 
 export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional =
@@ -1409,7 +1409,7 @@ export const GoogleCloudBillingSkugroupskusV1betaSkuGroupSku =
 
 export interface GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse {
   /** The returned SKU group SKUs. */
-  skuGroupSkus?: Array<GoogleCloudBillingSkugroupskusV1betaSkuGroupSku>;
+  skuGroupSkus?: ReadonlyArray<GoogleCloudBillingSkugroupskusV1betaSkuGroupSku>;
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1474,10 +1474,7 @@ export const ListBillingAccountsServicesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/services",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsServicesRequest>;
 
@@ -1513,10 +1510,7 @@ export const GetBillingAccountsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsServicesRequest>;
 
@@ -1554,10 +1548,7 @@ export const ListBillingAccountsSkuGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skuGroups",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/skuGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkuGroupsRequest>;
 
@@ -1593,10 +1584,7 @@ export const GetBillingAccountsSkuGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skuGroups/{skuGroupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkuGroupsRequest>;
 
@@ -1634,10 +1622,7 @@ export const ListBillingAccountsSkuGroupsSkusRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skuGroups/{skuGroupsId}/skus",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkuGroupsSkusRequest>;
 
@@ -1673,10 +1658,7 @@ export const GetBillingAccountsSkuGroupsSkusRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skuGroups/{skuGroupsId}/skus/{skusId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkuGroupsSkusRequest>;
 
@@ -1717,10 +1699,7 @@ export const ListBillingAccountsSkusRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skus",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkusRequest>;
 
@@ -1756,10 +1735,7 @@ export const GetBillingAccountsSkusRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skus/{skusId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkusRequest>;
 
@@ -1796,10 +1772,7 @@ export const GetBillingAccountsSkusPriceRequest =
       T.HttpQuery("currencyCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skus/{skusId}/price",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsSkusPriceRequest>;
 
@@ -1842,10 +1815,7 @@ export const ListBillingAccountsSkusPricesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/billingAccounts/{billingAccountsId}/skus/{skusId}/prices",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/prices" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsSkusPricesRequest>;
 
@@ -1885,7 +1855,7 @@ export const GetSkusPriceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("currencyCode"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/skus/{skusId}/price" }),
+  T.Http({ method: "GET", path: "v1beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSkusPriceRequest>;
 
@@ -1926,7 +1896,7 @@ export const ListSkusPricesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("currencyCode"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/skus/{skusId}/prices" }),
+  T.Http({ method: "GET", path: "v1beta/{parent}/prices" }),
   svc,
 ) as unknown as Schema.Schema<ListSkusPricesRequest>;
 
@@ -1999,7 +1969,7 @@ export interface GetSkuGroupsRequest {
 export const GetSkuGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/skuGroups/{skuGroupsId}" }),
+  T.Http({ method: "GET", path: "v1beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSkuGroupsRequest>;
 
@@ -2036,7 +2006,7 @@ export const ListSkuGroupsSkusRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/skuGroups/{skuGroupsId}/skus" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListSkuGroupsSkusRequest>;
 
@@ -2072,10 +2042,7 @@ export const GetSkuGroupsSkusRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/skuGroups/{skuGroupsId}/skus/{skusId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSkuGroupsSkusRequest>;
 

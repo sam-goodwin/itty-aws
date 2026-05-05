@@ -42,7 +42,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListOrganizationsResponse {
   /** The Organization resource that the user has access to, which includes the org id and display name. */
-  organizations?: Array<Organization>;
+  organizations?: ReadonlyArray<Organization>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -86,7 +86,7 @@ export const ClientData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FindSalesPartnerManagedClientsResponse {
   /** The clients managed by the sales org. */
-  clientData?: Array<ClientData>;
+  clientData?: ReadonlyArray<ClientData>;
 }
 
 export const FindSalesPartnerManagedClientsResponse =
@@ -143,7 +143,7 @@ export const AnalyticsAccountLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAnalyticsAccountLinksResponse {
   /** Analytics account links in this organization. */
-  analyticsAccountLinks?: Array<AnalyticsAccountLink>;
+  analyticsAccountLinks?: ReadonlyArray<AnalyticsAccountLink>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -244,7 +244,7 @@ export const PropertyUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReportPropertyUsageResponse {
   /** Usage data for all properties in the specified organization and month. */
-  propertyUsages?: Array<PropertyUsage>;
+  propertyUsages?: ReadonlyArray<PropertyUsage>;
   /** Bill amount in the specified organization and month. Will be empty if user only has access to usage data. */
   billInfo?: BillInfo;
 }
@@ -268,7 +268,7 @@ export const GetOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/organizations/{organizationsId}" }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsRequest>;
 
@@ -342,7 +342,7 @@ export const ReportPropertyUsageOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/organizations/{organizationsId}:reportPropertyUsage",
+      path: "v1alpha/{organization}:reportPropertyUsage",
       hasBody: true,
     }),
     svc,
@@ -383,7 +383,7 @@ export const FindSalesPartnerManagedClientsOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/organizations/{organizationsId}:findSalesPartnerManagedClients",
+      path: "v1alpha/{organization}:findSalesPartnerManagedClients",
       hasBody: true,
     }),
     svc,
@@ -417,10 +417,7 @@ export const DeleteOrganizationsAnalyticsAccountLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/organizations/{organizationsId}/analyticsAccountLinks/{analyticsAccountLinksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>;
 
@@ -457,10 +454,7 @@ export const ListOrganizationsAnalyticsAccountLinksRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/organizations/{organizationsId}/analyticsAccountLinks",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/analyticsAccountLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
 
@@ -501,7 +495,7 @@ export const CreateOrganizationsAnalyticsAccountLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/organizations/{organizationsId}/analyticsAccountLinks",
+      path: "v1alpha/{parent}/analyticsAccountLinks",
       hasBody: true,
     }),
     svc,
@@ -542,7 +536,7 @@ export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/organizations/{organizationsId}/analyticsAccountLinks/{analyticsAccountLinksId}:setPropertyServiceLevel",
+      path: "v1alpha/{analyticsAccountLink}:setPropertyServiceLevel",
       hasBody: true,
     }),
     svc,

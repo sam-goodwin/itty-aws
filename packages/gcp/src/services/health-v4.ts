@@ -252,7 +252,7 @@ export interface ActiveMinutes {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
   /** Required. Active minutes by activity level. At most one record per activity level is allowed. */
-  activeMinutesByActivityLevel?: Array<ActiveMinutesByActivityLevel>;
+  activeMinutesByActivityLevel?: ReadonlyArray<ActiveMinutesByActivityLevel>;
 }
 
 export const ActiveMinutes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -728,7 +728,7 @@ export interface SleepSummary {
   /** Output only. Total number of minutes awake. It is a sum of all AWAKE stages. */
   minutesAwake?: string;
   /** Output only. List of summaries (total duration and segment count) per each sleep stage type. */
-  stagesSummary?: Array<StageSummary>;
+  stagesSummary?: ReadonlyArray<StageSummary>;
   /** Output only. Minutes after wake up calculated by restlessness algorithm. */
   minutesAfterWakeUp?: string;
   /** Output only. Minutes to fall asleep calculated by restlessness algorithm. */
@@ -782,9 +782,9 @@ export interface Sleep {
   /** Optional. SleepType: classic or stages. */
   type?: "SLEEP_TYPE_UNSPECIFIED" | "CLASSIC" | "STAGES" | (string & {});
   /** Optional. “Out of bed” segments that can overlap with sleep stages. */
-  outOfBedSegments?: Array<OutOfBedSegment>;
+  outOfBedSegments?: ReadonlyArray<OutOfBedSegment>;
   /** Optional. List of non-overlapping contiguous sleep stage segments that cover the sleep period. */
-  stages?: Array<SleepStage>;
+  stages?: ReadonlyArray<SleepStage>;
   /** Output only. Sleep summary: metrics and stages summary. */
   summary?: SleepSummary;
   /** Output only. Last update time of this sleep observation. */
@@ -1012,9 +1012,9 @@ export interface Exercise {
   /** Required. Observed exercise interval */
   interval?: SessionTimeInterval;
   /** Optional. The default split is 1 km or 1 mile. - if the movement distance is less than the default, then there are no splits - if the movement distance is greater than or equal to the default, then we have splits */
-  splits?: Array<SplitSummary>;
+  splits?: ReadonlyArray<SplitSummary>;
   /** Optional. Laps or splits recorded within an exercise. Laps could be split based on distance or other criteria (duration, etc.) Laps should not be overlapping with each other. */
-  splitSummaries?: Array<SplitSummary>;
+  splitSummaries?: ReadonlyArray<SplitSummary>;
   /** Output only. This is the timestamp of the last update to the exercise. */
   updateTime?: string;
   /** Required. The type of activity performed during an exercise. */
@@ -1038,7 +1038,7 @@ export interface Exercise {
   /** Required. Exercise display name. */
   displayName?: string;
   /** Optional. Exercise events that happen during an exercise, such as pause & restarts. */
-  exerciseEvents?: Array<ExerciseEvent>;
+  exerciseEvents?: ReadonlyArray<ExerciseEvent>;
   /** Required. Summary metrics for this exercise ( ) */
   metricsSummary?: MetricsSummary;
   /** Optional. Standard free-form notes captured at manual logging. */
@@ -1103,7 +1103,7 @@ export interface DailyHeartRateZones {
   /** Required. Date (in user's timezone) of the heart rate zones record. */
   date?: Health_Date;
   /** Required. The heart rate zones. */
-  heartRateZones?: Array<HeartRateZone>;
+  heartRateZones?: ReadonlyArray<HeartRateZone>;
 }
 
 export const DailyHeartRateZones = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1277,7 +1277,7 @@ export const DataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDataPointsResponse {
   /** Data points matching the query */
-  dataPoints?: Array<DataPoint>;
+  dataPoints?: ReadonlyArray<DataPoint>;
   /** Next page token, empty if the response is complete */
   nextPageToken?: string;
 }
@@ -1485,7 +1485,7 @@ export const ActiveMinutesRollupByActivityLevel =
 
 export interface ActiveMinutesRollupValue {
   /** Active minutes by activity level. At most one record per activity level is allowed. */
-  activeMinutesRollupByActivityLevel?: Array<ActiveMinutesRollupByActivityLevel>;
+  activeMinutesRollupByActivityLevel?: ReadonlyArray<ActiveMinutesRollupByActivityLevel>;
 }
 
 export const ActiveMinutesRollupValue =
@@ -1516,7 +1516,7 @@ export const CaloriesInHeartRateZoneValue =
 
 export interface CaloriesInHeartRateZoneRollupValue {
   /** List of calories burned in each heart rate zone. */
-  caloriesInHeartRateZones?: Array<CaloriesInHeartRateZoneValue>;
+  caloriesInHeartRateZones?: ReadonlyArray<CaloriesInHeartRateZoneValue>;
 }
 
 export const CaloriesInHeartRateZoneRollupValue =
@@ -1587,7 +1587,7 @@ export const BodyFatRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -1604,7 +1604,7 @@ export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReconcileDataPointsResponse {
   /** Data points matching the query */
-  dataPoints?: Array<ReconciledDataPoint>;
+  dataPoints?: ReadonlyArray<ReconciledDataPoint>;
   /** Next page token, empty if the response is complete */
   nextPageToken?: string;
 }
@@ -1635,7 +1635,7 @@ export const AltitudeRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ActivityLevelRollupValue {
   /** List of total durations in each activity level type. */
-  activityLevelRollupsByActivityLevelType?: Array<ActivityLevelRollupByActivityLevelType>;
+  activityLevelRollupsByActivityLevelType?: ReadonlyArray<ActivityLevelRollupByActivityLevelType>;
 }
 
 export const ActivityLevelRollupValue =
@@ -1798,7 +1798,7 @@ export const WeightRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TimeInHeartRateZoneRollupValue {
   /** List of time spent in each heart rate zone. */
-  timeInHeartRateZones?: Array<TimeInHeartRateZoneValue>;
+  timeInHeartRateZones?: ReadonlyArray<TimeInHeartRateZoneValue>;
 }
 
 export const TimeInHeartRateZoneRollupValue =
@@ -2007,7 +2007,7 @@ export const DailyRollupDataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DailyRollUpDataPointsResponse {
   /** Values for each aggregation time window. */
-  rollupDataPoints?: Array<DailyRollupDataPoint>;
+  rollupDataPoints?: ReadonlyArray<DailyRollupDataPoint>;
 }
 
 export const DailyRollUpDataPointsResponse =
@@ -2029,7 +2029,7 @@ export const CivilTimeInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RollUpDataPointsResponse {
   /** Values for each aggregation time window. */
-  rollupDataPoints?: Array<RollupDataPoint>;
+  rollupDataPoints?: ReadonlyArray<RollupDataPoint>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2042,7 +2042,7 @@ export const RollUpDataPointsResponse =
 
 export interface BatchDeleteDataPointsRequest {
   /** Required. The names of the DataPoints to delete. A maximum of 10000 data points can be deleted in a single request. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const BatchDeleteDataPointsRequest =
@@ -2085,7 +2085,7 @@ export const GetSettingsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/users/{usersId}/settings" }),
+    T.Http({ method: "GET", path: "v4/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsUsersRequest>;
 
@@ -2115,7 +2115,7 @@ export const GetIdentityUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/users/{usersId}/identity" }),
+    T.Http({ method: "GET", path: "v4/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetIdentityUsersRequest>;
 
@@ -2151,11 +2151,7 @@ export const UpdateSettingsUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Settings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v4/users/{usersId}/settings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v4/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsUsersRequest>;
 
@@ -2186,7 +2182,7 @@ export const GetProfileUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v4/users/{usersId}/profile" }),
+  T.Http({ method: "GET", path: "v4/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProfileUsersRequest>;
 
@@ -2222,11 +2218,7 @@ export const UpdateProfileUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Profile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v4/users/{usersId}/profile",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v4/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProfileUsersRequest>;
 
@@ -2259,11 +2251,7 @@ export const CreateUsersDataTypesDataPointsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DataPoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v4/{parent}/dataPoints", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateUsersDataTypesDataPointsRequest>;
 
@@ -2303,10 +2291,7 @@ export const ListUsersDataTypesDataPointsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints",
-    }),
+    T.Http({ method: "GET", path: "v4/{parent}/dataPoints" }),
     svc,
   ) as unknown as Schema.Schema<ListUsersDataTypesDataPointsRequest>;
 
@@ -2346,7 +2331,7 @@ export const DailyRollUpUsersDataTypesDataPointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints:dailyRollUp",
+      path: "v4/{parent}/dataPoints:dailyRollUp",
       hasBody: true,
     }),
     svc,
@@ -2385,10 +2370,7 @@ export const ExportExerciseTcxUsersDataTypesDataPointsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints/{dataPointsId}:exportExerciseTcx",
-    }),
+    T.Http({ method: "GET", path: "v4/{name}:exportExerciseTcx" }),
     svc,
   ) as unknown as Schema.Schema<ExportExerciseTcxUsersDataTypesDataPointsRequest>;
 
@@ -2425,7 +2407,7 @@ export const RollUpUsersDataTypesDataPointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints:rollUp",
+      path: "v4/{parent}/dataPoints:rollUp",
       hasBody: true,
     }),
     svc,
@@ -2461,11 +2443,7 @@ export const PatchUsersDataTypesDataPointsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DataPoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints/{dataPointsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v4/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchUsersDataTypesDataPointsRequest>;
 
@@ -2501,7 +2479,7 @@ export const BatchDeleteUsersDataTypesDataPointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints:batchDelete",
+      path: "v4/{parent}/dataPoints:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -2548,10 +2526,7 @@ export const ReconcileUsersDataTypesDataPointsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v4/users/{usersId}/dataTypes/{dataTypesId}/dataPoints:reconcile",
-    }),
+    T.Http({ method: "GET", path: "v4/{parent}/dataPoints:reconcile" }),
     svc,
   ) as unknown as Schema.Schema<ReconcileUsersDataTypesDataPointsRequest>;
 

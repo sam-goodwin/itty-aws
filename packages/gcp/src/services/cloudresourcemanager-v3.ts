@@ -1026,7 +1026,7 @@ export interface GetLiensRequest {
 export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/liens/{liensId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetLiensRequest>;
 
@@ -1055,7 +1055,7 @@ export interface DeleteLiensRequest {
 export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/liens/{liensId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteLiensRequest>;
 
@@ -1129,11 +1129,7 @@ export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(UndeleteFolderRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "POST",
-    path: "v3/folders/{foldersId}:undelete",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v3/{name}:undelete", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UndeleteFoldersRequest>;
 
@@ -1165,11 +1161,7 @@ export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(MoveFolderRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v3/folders/{foldersId}:move",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v3/{name}:move", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<MoveFoldersRequest>;
 
@@ -1204,7 +1196,7 @@ export const GetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/folders/{foldersId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1235,7 +1227,7 @@ export interface GetFoldersRequest {
 export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/folders/{foldersId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetFoldersRequest>;
 
@@ -1264,7 +1256,7 @@ export interface DeleteFoldersRequest {
 export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/folders/{foldersId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteFoldersRequest>;
 
@@ -1299,7 +1291,7 @@ export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Folder).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v3/folders/{foldersId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchFoldersRequest>;
 
@@ -1334,7 +1326,7 @@ export const SetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/folders/{foldersId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1371,7 +1363,7 @@ export const TestIamPermissionsFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/folders/{foldersId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1522,11 +1514,7 @@ export const PatchFoldersCapabilitiesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Capability).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/folders/{foldersId}/capabilities/{capabilitiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersCapabilitiesRequest>;
 
@@ -1557,10 +1545,7 @@ export const GetFoldersCapabilitiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/folders/{foldersId}/capabilities/{capabilitiesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersCapabilitiesRequest>;
 
@@ -1632,10 +1617,7 @@ export const GetLocationsTagBindingCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/locations/{locationsId}/tagBindingCollections/{tagBindingCollectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLocationsTagBindingCollectionsRequest>;
 
@@ -1672,11 +1654,7 @@ export const PatchLocationsTagBindingCollectionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(TagBindingCollection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/locations/{locationsId}/tagBindingCollections/{tagBindingCollectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchLocationsTagBindingCollectionsRequest>;
 
@@ -1707,10 +1685,7 @@ export const GetLocationsEffectiveTagBindingCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/locations/{locationsId}/effectiveTagBindingCollections/{effectiveTagBindingCollectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLocationsEffectiveTagBindingCollectionsRequest>;
 
@@ -1741,7 +1716,7 @@ export interface GetProjectsRequest {
 export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/projects/{projectsId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsRequest>;
 
@@ -1770,7 +1745,7 @@ export interface DeleteProjectsRequest {
 export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/projects/{projectsId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteProjectsRequest>;
 
@@ -1809,7 +1784,7 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Project).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v3/projects/{projectsId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchProjectsRequest>;
 
@@ -1848,7 +1823,7 @@ export const SetIamPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1883,11 +1858,7 @@ export const UndeleteProjectsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteProjectRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsRequest>;
 
@@ -1919,11 +1890,7 @@ export const MoveProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(MoveProjectRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v3/projects/{projectsId}:move",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v3/{name}:move", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<MoveProjectsRequest>;
 
@@ -1958,7 +1925,7 @@ export const GetIamPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2078,7 +2045,7 @@ export const TestIamPermissionsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2149,7 +2116,7 @@ export const SetIamPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/organizations/{organizationsId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2182,7 +2149,7 @@ export const GetOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/organizations/{organizationsId}" }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsRequest>;
 
@@ -2259,7 +2226,7 @@ export const GetIamPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/organizations/{organizationsId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2297,7 +2264,7 @@ export const TestIamPermissionsOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/organizations/{organizationsId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2370,7 +2337,7 @@ export const TestIamPermissionsTagKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagKeys/{tagKeysId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2448,7 +2415,7 @@ export const GetIamPolicyTagKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagKeys/{tagKeysId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2520,7 +2487,7 @@ export const PatchTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   body: Schema.optional(TagKey).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v3/tagKeys/{tagKeysId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchTagKeysRequest>;
 
@@ -2555,7 +2522,7 @@ export const SetIamPolicyTagKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagKeys/{tagKeysId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2586,7 +2553,7 @@ export interface GetTagKeysRequest {
 export const GetTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/tagKeys/{tagKeysId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetTagKeysRequest>;
 
@@ -2623,7 +2590,7 @@ export const DeleteTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("validateOnly"),
   ),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/tagKeys/{tagKeysId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteTagKeysRequest>;
 
@@ -2652,7 +2619,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -2763,7 +2730,7 @@ export const TestIamPermissionsTagValuesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagValues/{tagValuesId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2801,7 +2768,7 @@ export const GetIamPolicyTagValuesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagValues/{tagValuesId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2874,11 +2841,7 @@ export const PatchTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(TagValue).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v3/tagValues/{tagValuesId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchTagValuesRequest>;
 
@@ -2913,7 +2876,7 @@ export const SetIamPolicyTagValuesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagValues/{tagValuesId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2944,7 +2907,7 @@ export interface GetTagValuesRequest {
 export const GetTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/tagValues/{tagValuesId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetTagValuesRequest>;
 
@@ -2983,7 +2946,7 @@ export const DeleteTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
   },
 ).pipe(
-  T.Http({ method: "DELETE", path: "v3/tagValues/{tagValuesId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteTagValuesRequest>;
 
@@ -3018,10 +2981,7 @@ export const DeleteTagValuesTagHoldsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/tagValues/{tagValuesId}/tagHolds/{tagHoldsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTagValuesTagHoldsRequest>;
 
@@ -3061,7 +3021,7 @@ export const ListTagValuesTagHoldsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/tagValues/{tagValuesId}/tagHolds" }),
+    T.Http({ method: "GET", path: "v3/{parent}/tagHolds" }),
     svc,
   ) as unknown as Schema.Schema<ListTagValuesTagHoldsRequest>;
 
@@ -3104,11 +3064,7 @@ export const CreateTagValuesTagHoldsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(TagHold).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/tagValues/{tagValuesId}/tagHolds",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/tagHolds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateTagValuesTagHoldsRequest>;
 
@@ -3139,7 +3095,7 @@ export const DeleteTagBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v3/tagBindings/{tagBindingsId}" }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTagBindingsRequest>;
 

@@ -203,7 +203,7 @@ export interface ComputeFlightEmissionsResponse {
   /** The model version under which emission estimates for all flights in this response were computed. */
   modelVersion?: ModelVersion;
   /** List of flight legs with emission estimates. */
-  flightEmissions?: Array<FlightWithEmissions>;
+  flightEmissions?: ReadonlyArray<FlightWithEmissions>;
 }
 
 export const ComputeFlightEmissionsResponse =
@@ -214,7 +214,7 @@ export const ComputeFlightEmissionsResponse =
 
 export interface ComputeTypicalFlightEmissionsRequest {
   /** Required. Request the typical flight emissions estimates for this market pair. A maximum of 1000 markets can be requested. */
-  markets?: Array<Market>;
+  markets?: ReadonlyArray<Market>;
 }
 
 export const ComputeTypicalFlightEmissionsRequest =
@@ -224,7 +224,7 @@ export const ComputeTypicalFlightEmissionsRequest =
 
 export interface ComputeScope3FlightEmissionsRequest {
   /** Required. Flights to return emission estimates for. */
-  flights?: Array<Scope3FlightSegment>;
+  flights?: ReadonlyArray<Scope3FlightSegment>;
   /** Optional. The model version under which emission estimates for all flights in this request were computed. */
   modelVersion?: ModelVersion;
 }
@@ -237,7 +237,7 @@ export const ComputeScope3FlightEmissionsRequest =
 
 export interface ComputeTypicalFlightEmissionsResponse {
   /** Market's Typical Flight Emissions requested. */
-  typicalFlightEmissions?: Array<TypicalFlightEmissions>;
+  typicalFlightEmissions?: ReadonlyArray<TypicalFlightEmissions>;
   /** The model version under which typical flight emission estimates for all flights in this response were computed. */
   modelVersion?: ModelVersion;
 }
@@ -280,7 +280,7 @@ export interface ComputeScope3FlightEmissionsResponse {
   /** The model version under which emission estimates for all flights in this response were computed. */
   modelVersion?: ModelVersion;
   /** List of flight segments with emission estimates. */
-  flightEmissions?: Array<Scope3FlightEmissions>;
+  flightEmissions?: ReadonlyArray<Scope3FlightEmissions>;
 }
 
 export const ComputeScope3FlightEmissionsResponse =
@@ -291,7 +291,7 @@ export const ComputeScope3FlightEmissionsResponse =
 
 export interface ComputeFlightEmissionsRequest {
   /** Required. Direct flights to return emission estimates for. */
-  flights?: Array<Flight>;
+  flights?: ReadonlyArray<Flight>;
 }
 
 export const ComputeFlightEmissionsRequest =

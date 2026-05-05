@@ -56,7 +56,7 @@ export interface ListJobsResponse {
   /** A token to retrieve next page of results. Pass this value in the ListJobsRequest.page_token field in the subsequent call to `ListJobs` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of jobs. */
-  jobs?: Array<Job>;
+  jobs?: ReadonlyArray<Job>;
 }
 
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -126,7 +126,7 @@ export interface ListReportsResponse {
   /** A token to retrieve next page of results. Pass this value in the ListReportsRequest.page_token field in the subsequent call to `ListReports` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of report types. */
-  reports?: Array<Report>;
+  reports?: ReadonlyArray<Report>;
 }
 
 export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -321,7 +321,7 @@ export interface GdataMedia {
   /** gdata */
   diffChecksumsResponse?: GdataDiffChecksumsResponse;
   /** gdata */
-  compositeMedia?: Array<GdataCompositeMedia>;
+  compositeMedia?: ReadonlyArray<GdataCompositeMedia>;
   /** gdata */
   diffDownloadResponse?: GdataDiffDownloadResponse;
   /** gdata */
@@ -429,7 +429,7 @@ export const GdataMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListReportTypesResponse {
   /** The list of report types. */
-  reportTypes?: Array<ReportType>;
+  reportTypes?: ReadonlyArray<ReportType>;
   /** A token to retrieve next page of results. Pass this value in the ListReportTypesRequest.page_token field in the subsequent call to `ListReportTypes` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -501,7 +501,7 @@ export interface DownloadMediaRequest {
 export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/media/{mediaId}" }),
+  T.Http({ method: "GET", path: "v1/media/{resourceName}" }),
   svc,
 ) as unknown as Schema.Schema<DownloadMediaRequest>;
 
