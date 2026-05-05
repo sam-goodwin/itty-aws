@@ -444,7 +444,15 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             : credentials;
           const client = yield* HttpClient.HttpClient;
 
-          const baseUrl = config.getBaseUrl(creds as ResolvedCreds);
+          // Fall back to the Service trait when the consumer leaves
+          // `getBaseUrl` empty (per-service hosts rather than per-credentials).
+          let baseUrl = config.getBaseUrl(creds as ResolvedCreds);
+          if (!baseUrl) {
+            const svcTrait = Traits.getServiceTrait(inputSchema.ast);
+            if (svcTrait?.rootUrl) {
+              baseUrl = svcTrait.rootUrl + (svcTrait.servicePath ?? "");
+            }
+          }
           const authHeaders = config.getAuthHeaders(creds as ResolvedCreds);
 
           // Use schema-aware request builder for proper camelCase → wire_name mapping
