@@ -8,7 +8,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
   [
     Schema.Struct({
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      type: Schema.String,
+      type: Schema.Literal("text"),
       slug: Schema.String,
       name: Schema.String,
       organization_id: Schema.optional(Schema.Unknown),
@@ -23,7 +23,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
     }),
     Schema.Struct({
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      type: Schema.String,
+      type: Schema.Literal("number"),
       slug: Schema.String,
       name: Schema.String,
       organization_id: Schema.optional(Schema.Unknown),
@@ -37,7 +37,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
     }),
     Schema.Struct({
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      type: Schema.String,
+      type: Schema.Literal("date"),
       slug: Schema.String,
       name: Schema.String,
       organization_id: Schema.optional(Schema.Unknown),
@@ -51,7 +51,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
     }),
     Schema.Struct({
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      type: Schema.String,
+      type: Schema.Literal("checkbox"),
       slug: Schema.String,
       name: Schema.String,
       organization_id: Schema.optional(Schema.Unknown),
@@ -63,7 +63,7 @@ export const CustomFieldscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
     }),
     Schema.Struct({
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      type: Schema.String,
+      type: Schema.Literal("select"),
       slug: Schema.String,
       name: Schema.String,
       organization_id: Schema.optional(Schema.Unknown),

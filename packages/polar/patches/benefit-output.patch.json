@@ -1,0 +1,76 @@
+{
+  "description": "Flatten Benefit's top-level oneOf into the common output fields shared by all benefit variants. The shared OpenAPI generator intentionally leaves arbitrary output unions as Schema.Unknown to avoid recursive schemas, but Benefits are central to Polar billing configuration and should return useful typed fields for create/get/list/update.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/components/schemas/Benefit",
+      "value": {
+        "type": "object",
+        "title": "Benefit",
+        "description": "A Polar benefit.",
+        "required": [
+          "id",
+          "created_at",
+          "modified_at",
+          "type",
+          "description",
+          "selectable",
+          "deletable",
+          "is_deleted",
+          "organization_id",
+          "metadata",
+          "properties"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the benefit."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp of the object."
+          },
+          "modified_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "description": "Last modification timestamp of the object."
+          },
+          "type": {
+            "$ref": "#/components/schemas/BenefitType",
+            "description": "The benefit type."
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the benefit."
+          },
+          "selectable": {
+            "type": "boolean",
+            "description": "Whether the benefit is selectable when creating a product."
+          },
+          "deletable": {
+            "type": "boolean",
+            "description": "Whether the benefit is deletable."
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "description": "Whether the benefit is deleted."
+          },
+          "organization_id": {
+            "type": "string",
+            "format": "uuid4",
+            "description": "The ID of the organization owning the benefit."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  ]
+}

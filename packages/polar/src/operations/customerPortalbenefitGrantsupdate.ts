@@ -8,37 +8,37 @@ export const CustomerPortalbenefitGrantsupdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
-      benefit_type: Schema.String,
+      benefit_type: Schema.Literal("discord"),
       properties: Schema.Struct({
         account_id: Schema.Unknown,
       }),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
-      benefit_type: Schema.String,
+      benefit_type: Schema.Literal("github_repository"),
       properties: Schema.Struct({
         account_id: Schema.Unknown,
       }),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
-      benefit_type: Schema.String,
+      benefit_type: Schema.Literal("downloadables"),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
-      benefit_type: Schema.String,
+      benefit_type: Schema.Literal("license_keys"),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
-      benefit_type: Schema.String,
+      benefit_type: Schema.Literal("custom"),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
-      benefit_type: Schema.String,
+      benefit_type: Schema.Literal("meter_credit"),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
-      benefit_type: Schema.String,
+      benefit_type: Schema.Literal("feature_flag"),
     }),
   ]).pipe(
     T.Http({

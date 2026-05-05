@@ -11,7 +11,7 @@ export const CustomFieldsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       name: Schema.optional(Schema.Unknown),
       slug: Schema.optional(Schema.Unknown),
-      type: Schema.String,
+      type: Schema.Literal("text"),
       properties: Schema.optional(Schema.Unknown),
     }),
     Schema.Struct({
@@ -19,7 +19,7 @@ export const CustomFieldsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       name: Schema.optional(Schema.Unknown),
       slug: Schema.optional(Schema.Unknown),
-      type: Schema.String,
+      type: Schema.Literal("number"),
       properties: Schema.optional(Schema.Unknown),
     }),
     Schema.Struct({
@@ -27,7 +27,7 @@ export const CustomFieldsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       name: Schema.optional(Schema.Unknown),
       slug: Schema.optional(Schema.Unknown),
-      type: Schema.String,
+      type: Schema.Literal("date"),
       properties: Schema.optional(Schema.Unknown),
     }),
     Schema.Struct({
@@ -35,7 +35,7 @@ export const CustomFieldsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       name: Schema.optional(Schema.Unknown),
       slug: Schema.optional(Schema.Unknown),
-      type: Schema.String,
+      type: Schema.Literal("checkbox"),
       properties: Schema.optional(Schema.Unknown),
     }),
     Schema.Struct({
@@ -43,7 +43,7 @@ export const CustomFieldsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
       metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       name: Schema.optional(Schema.Unknown),
       slug: Schema.optional(Schema.Unknown),
-      type: Schema.String,
+      type: Schema.Literal("select"),
       properties: Schema.optional(Schema.Unknown),
     }),
   ],

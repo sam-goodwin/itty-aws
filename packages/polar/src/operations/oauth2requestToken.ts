@@ -7,20 +7,20 @@ import { SensitiveString } from "../sensitive.ts";
 export const Oauth2requestTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
   [
     Schema.Struct({
-      grant_type: Schema.String,
+      grant_type: Schema.Literal("authorization_code"),
       client_id: Schema.String,
       client_secret: SensitiveString,
       code: Schema.String,
       redirect_uri: Schema.String,
     }),
     Schema.Struct({
-      grant_type: Schema.String,
+      grant_type: Schema.Literal("refresh_token"),
       client_id: Schema.String,
       client_secret: SensitiveString,
       refresh_token: SensitiveString,
     }),
     Schema.Struct({
-      grant_type: Schema.String,
+      grant_type: Schema.Literal("web"),
       client_id: Schema.String,
       client_secret: SensitiveString,
       session_token: SensitiveString,
@@ -42,7 +42,7 @@ export type Oauth2requestTokenInput = typeof Oauth2requestTokenInput.Type;
 export const Oauth2requestTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     access_token: SensitiveString,
-    token_type: Schema.String,
+    token_type: Schema.Literal("Bearer"),
     expires_in: Schema.Number,
     refresh_token: Schema.optional(Schema.Unknown),
     scope: Schema.String,

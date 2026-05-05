@@ -43,7 +43,7 @@ export const SubscriptionsupdateInput =
       id: Schema.String.pipe(T.PathParam()),
       customer_cancellation_reason: Schema.optional(Schema.Unknown),
       customer_cancellation_comment: Schema.optional(Schema.Unknown),
-      revoke: Schema.Boolean,
+      revoke: Schema.Literal(true),
     }),
     Schema.Struct({
       id: Schema.String.pipe(T.PathParam()),
@@ -124,7 +124,29 @@ export const SubscriptionsupdateOutput =
       organization_id: Schema.String,
       metadata: Schema.Record(Schema.String, Schema.Unknown),
       prices: Schema.Array(Schema.Unknown),
-      benefits: Schema.Array(Schema.Unknown),
+      benefits: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          created_at: Schema.String,
+          modified_at: Schema.Unknown,
+          type: Schema.Literals([
+            "custom",
+            "discord",
+            "github_repository",
+            "downloadables",
+            "license_keys",
+            "meter_credit",
+            "feature_flag",
+          ]),
+          description: Schema.String,
+          selectable: Schema.Boolean,
+          deletable: Schema.Boolean,
+          is_deleted: Schema.Boolean,
+          organization_id: Schema.String,
+          metadata: Schema.Record(Schema.String, Schema.Unknown),
+          properties: Schema.Record(Schema.String, Schema.Unknown),
+        }),
+      ),
       medias: Schema.Array(
         Schema.Struct({
           id: Schema.String,
@@ -139,7 +161,7 @@ export const SubscriptionsupdateOutput =
           checksum_sha256_hex: Schema.Unknown,
           last_modified_at: Schema.Unknown,
           version: Schema.Unknown,
-          service: Schema.String,
+          service: Schema.Literal("product_media"),
           is_uploaded: Schema.Boolean,
           created_at: Schema.String,
           size_readable: Schema.String,

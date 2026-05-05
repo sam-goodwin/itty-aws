@@ -10,7 +10,27 @@ export const BenefitsgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BenefitsgetInput = typeof BenefitsgetInput.Type;
 
 // Output Schema
-export const BenefitsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const BenefitsgetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  created_at: Schema.String,
+  modified_at: Schema.Unknown,
+  type: Schema.Literals([
+    "custom",
+    "discord",
+    "github_repository",
+    "downloadables",
+    "license_keys",
+    "meter_credit",
+    "feature_flag",
+  ]),
+  description: Schema.String,
+  selectable: Schema.Boolean,
+  deletable: Schema.Boolean,
+  is_deleted: Schema.Boolean,
+  organization_id: Schema.String,
+  metadata: Schema.Record(Schema.String, Schema.Unknown),
+  properties: Schema.Record(Schema.String, Schema.Unknown),
+});
 export type BenefitsgetOutput = typeof BenefitsgetOutput.Type;
 
 // The operation

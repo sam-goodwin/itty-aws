@@ -14,7 +14,7 @@ export const CustomerscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     locale: Schema.optional(Schema.Unknown),
     organization_id: Schema.optional(Schema.Unknown),
     owner: Schema.optional(Schema.Unknown),
-    type: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.Literal("individual")),
     email: Schema.String,
   }),
   Schema.Struct({
@@ -26,7 +26,7 @@ export const CustomerscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     locale: Schema.optional(Schema.Unknown),
     organization_id: Schema.optional(Schema.Unknown),
     owner: Schema.optional(Schema.Unknown),
-    type: Schema.String,
+    type: Schema.Literal("team"),
     email: Schema.optional(Schema.Unknown),
   }),
 ]).pipe(T.Http({ method: "POST", path: "/v1/customers/" }));

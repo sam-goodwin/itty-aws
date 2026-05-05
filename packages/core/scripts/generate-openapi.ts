@@ -153,6 +153,7 @@ interface SchemaObject {
   items?: SchemaObject;
   required?: string[];
   enum?: (string | number | boolean)[];
+  const?: string | number | boolean | null;
   additionalProperties?: boolean | SchemaObject;
   description?: string;
   default?: unknown;
@@ -365,6 +366,14 @@ function getUnionMembers(schema: SchemaObject): SchemaObject[] | undefined {
   return schema.oneOf ?? schema.anyOf;
 }
 
+function renderConstLiteral(value: string | number | boolean | null): string {
+  if (value === null) return "Schema.Null";
+  if (typeof value === "string") {
+    return `Schema.Literal("${escapeStringLiteral(value)}")`;
+  }
+  return `Schema.Literal(${JSON.stringify(value)})`;
+}
+
 function openApiTypeToEffectSchema(
   prop: SchemaObject,
   spec: any,
@@ -445,9 +454,15 @@ function openApiTypeToEffectSchema(
     return generateStructSchema(mergedSchema, spec, indent, seenRefs, ctx);
   }
 
-  // Handle oneOf/anyOf - use Unknown for now
+  // Handle oneOf/anyOf - use Unknown for now. Request body unions are handled
+  // separately by generateInputSchema3 where the generated shape is bounded.
   if (prop.oneOf || prop.anyOf) {
     return "Schema.Unknown";
+  }
+
+  // Handle const
+  if ("const" in prop) {
+    return renderConstLiteral(prop.const);
   }
 
   // Handle enum

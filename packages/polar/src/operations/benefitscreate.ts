@@ -7,7 +7,7 @@ import { UnprocessableEntity } from "../errors.ts";
 export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    type: Schema.String,
+    type: Schema.Literal("custom"),
     description: Schema.String,
     organization_id: Schema.optional(Schema.Unknown),
     properties: Schema.Struct({
@@ -16,7 +16,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    type: Schema.String,
+    type: Schema.Literal("discord"),
     description: Schema.String,
     organization_id: Schema.optional(Schema.Unknown),
     properties: Schema.Struct({
@@ -27,7 +27,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    type: Schema.String,
+    type: Schema.Literal("github_repository"),
     description: Schema.String,
     organization_id: Schema.optional(Schema.Unknown),
     properties: Schema.Struct({
@@ -44,7 +44,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    type: Schema.String,
+    type: Schema.Literal("downloadables"),
     description: Schema.String,
     organization_id: Schema.optional(Schema.Unknown),
     properties: Schema.Struct({
@@ -54,7 +54,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    type: Schema.String,
+    type: Schema.Literal("license_keys"),
     description: Schema.String,
     organization_id: Schema.optional(Schema.Unknown),
     properties: Schema.Struct({
@@ -66,7 +66,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    type: Schema.String,
+    type: Schema.Literal("meter_credit"),
     description: Schema.String,
     organization_id: Schema.optional(Schema.Unknown),
     properties: Schema.Struct({
@@ -77,7 +77,7 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   }),
   Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    type: Schema.String,
+    type: Schema.Literal("feature_flag"),
     description: Schema.String,
     organization_id: Schema.optional(Schema.Unknown),
     properties: Schema.Struct({}),
@@ -86,7 +86,27 @@ export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
 export type BenefitscreateInput = typeof BenefitscreateInput.Type;
 
 // Output Schema
-export const BenefitscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+export const BenefitscreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  created_at: Schema.String,
+  modified_at: Schema.Unknown,
+  type: Schema.Literals([
+    "custom",
+    "discord",
+    "github_repository",
+    "downloadables",
+    "license_keys",
+    "meter_credit",
+    "feature_flag",
+  ]),
+  description: Schema.String,
+  selectable: Schema.Boolean,
+  deletable: Schema.Boolean,
+  is_deleted: Schema.Boolean,
+  organization_id: Schema.String,
+  metadata: Schema.Record(Schema.String, Schema.Unknown),
+  properties: Schema.Record(Schema.String, Schema.Unknown),
+});
 export type BenefitscreateOutput = typeof BenefitscreateOutput.Type;
 
 // The operation

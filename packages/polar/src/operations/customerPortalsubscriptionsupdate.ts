@@ -116,7 +116,7 @@ export const CustomerPortalsubscriptionsupdateOutput =
           checksum_sha256_hex: Schema.Unknown,
           last_modified_at: Schema.Unknown,
           version: Schema.Unknown,
-          service: Schema.String,
+          service: Schema.Literal("product_media"),
           is_uploaded: Schema.Boolean,
           created_at: Schema.String,
           size_readable: Schema.String,

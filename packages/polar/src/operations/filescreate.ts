@@ -21,7 +21,7 @@ export const FilescreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         }),
       ),
     }),
-    service: Schema.String,
+    service: Schema.Literal("downloadable"),
     version: Schema.optional(Schema.Unknown),
   }),
   Schema.Struct({
@@ -40,7 +40,7 @@ export const FilescreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         }),
       ),
     }),
-    service: Schema.String,
+    service: Schema.Literal("product_media"),
     version: Schema.optional(Schema.Unknown),
   }),
   Schema.Struct({
@@ -59,7 +59,7 @@ export const FilescreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
         }),
       ),
     }),
-    service: Schema.String,
+    service: Schema.Literal("organization_avatar"),
     version: Schema.optional(Schema.Unknown),
   }),
 ]).pipe(T.Http({ method: "POST", path: "/v1/files/" }));

@@ -19,7 +19,29 @@ export type BenefitslistInput = typeof BenefitslistInput.Type;
 
 // Output Schema
 export const BenefitslistOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.Array(Schema.Unknown),
+  items: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      created_at: Schema.String,
+      modified_at: Schema.Unknown,
+      type: Schema.Literals([
+        "custom",
+        "discord",
+        "github_repository",
+        "downloadables",
+        "license_keys",
+        "meter_credit",
+        "feature_flag",
+      ]),
+      description: Schema.String,
+      selectable: Schema.Boolean,
+      deletable: Schema.Boolean,
+      is_deleted: Schema.Boolean,
+      organization_id: Schema.String,
+      metadata: Schema.Record(Schema.String, Schema.Unknown),
+      properties: Schema.Record(Schema.String, Schema.Unknown),
+    }),
+  ),
   pagination: Schema.Struct({
     total_count: Schema.Number,
     max_page: Schema.Number,

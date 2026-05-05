@@ -13,7 +13,7 @@ export const Oauth2clientsoauth2createClientInput =
     grant_types: Schema.optional(
       Schema.Array(Schema.Literals(["authorization_code", "refresh_token"])),
     ),
-    response_types: Schema.optional(Schema.Array(Schema.String)),
+    response_types: Schema.optional(Schema.Array(Schema.Literal("code"))),
     scope: Schema.optional(Schema.String),
     client_name: Schema.String,
     client_uri: Schema.optional(Schema.Unknown),
