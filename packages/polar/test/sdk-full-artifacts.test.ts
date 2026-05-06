@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -6,6 +6,45 @@ const repoRoot = join(import.meta.dirname ?? process.cwd(), "../../..");
 const packageRoot = join(repoRoot, "packages/polar");
 
 describe("Polar SDK full artifacts", () => {
+  it("keeps package exports aligned with source and build entrypoints", async () => {
+    const packageJson = JSON.parse(
+      await readFile(join(packageRoot, "package.json"), "utf8"),
+    );
+
+    expect(packageJson.files).toEqual(expect.arrayContaining(["lib", "src"]));
+    expect(packageJson.sideEffects).toBe(false);
+    expect(packageJson.module).toBe("src/index.ts");
+
+    for (const [exportPath, entrypoint] of Object.entries(
+      packageJson.exports as Record<
+        string,
+        { types: string; bun: string; default: string }
+      >,
+    )) {
+      expect(entrypoint.types, exportPath).toMatch(/^\.\/lib\/.+\.d\.ts$/);
+      expect(entrypoint.bun, exportPath).toMatch(/^\.\/src\/.+\.ts$/);
+      expect(entrypoint.default, exportPath).toMatch(/^\.\/lib\/.+\.js$/);
+
+      await expect(
+        access(join(packageRoot, entrypoint.bun)),
+        exportPath,
+      ).resolves.toBeUndefined();
+    }
+  });
+
+  it("keeps the root module exporting the public Polar SDK surface", async () => {
+    const index = await readFile(join(packageRoot, "src/index.ts"), "utf8");
+
+    expect(index).toContain('export * from "./credentials.ts";');
+    expect(index).toContain('export * as Category from "./category.ts";');
+    expect(index).toContain('export * as T from "./traits.ts";');
+    expect(index).toContain('export * as Retry from "./retry.ts";');
+    expect(index).toContain('export { API } from "./client.ts";');
+    expect(index).toContain('export * from "./errors.ts";');
+    expect(index).toContain("SensitiveString");
+    expect(index).toContain("SensitiveNullableString");
+  });
+
   it("wires generation and cleanup scripts into package metadata", async () => {
     const packageJson = JSON.parse(
       await readFile(join(packageRoot, "package.json"), "utf8"),
@@ -96,5 +135,17 @@ describe("Polar SDK full artifacts", () => {
     expect(prPackageWorkflow).toContain("polar:");
     expect(releaseWorkflow).toContain("packages/polar/package.json");
     expect(releaseWorkflow).toContain("- polar");
+  });
+
+  it("documents Polar sandbox credentials and operation imports", async () => {
+    const readme = await readFile(join(packageRoot, "README.md"), "utf8");
+
+    expect(readme).toContain("@distilled.cloud/polar");
+    expect(readme).toContain("@distilled.cloud/polar/Credentials");
+    expect(readme).toContain("@distilled.cloud/polar/Operations");
+    expect(readme).toContain("POLAR_ACCESS_TOKEN");
+    expect(readme).toContain("POLAR_SERVER=sandbox");
+    expect(readme).toContain("POLAR_ORGANIZATION_ID");
+    expect(readme).toContain("https://sandbox-api.polar.sh");
   });
 });

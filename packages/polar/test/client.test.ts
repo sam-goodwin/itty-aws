@@ -74,4 +74,33 @@ describe("formatPolarErrorMessage", () => {
 
     expect(message).toBe("Not found");
   });
+
+  it("falls back to error codes when Polar omits detail", () => {
+    const message = formatPolarErrorMessage({
+      code: "resource_locked",
+    });
+
+    expect(message).toBe("resource_locked");
+  });
+
+  it("formats validation entries that omit location metadata", () => {
+    const message = formatPolarErrorMessage({
+      error: "RequestValidationError",
+      detail: [
+        {
+          msg: "Value is not a valid UUID",
+          type: "uuid_parsing",
+        },
+        "unexpected validation branch",
+      ],
+    });
+
+    expect(message).toBe(
+      'RequestValidationError: Value is not a valid UUID; "unexpected validation branch"',
+    );
+  });
+
+  it("returns an empty message when Polar returns an empty error object", () => {
+    expect(formatPolarErrorMessage({})).toBe("");
+  });
 });
