@@ -36,7 +36,7 @@ export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Versions {
   /** Shows the mapping of a given version to the number of machines under this version. */
-  versions?: Array<Version>;
+  versions?: ReadonlyArray<Version>;
 }
 
 export const Versions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -77,7 +77,7 @@ export interface ResourceStatus {
   /** Shows the mapping of a given version to the number of machines under this version. */
   versions?: Versions;
   /** ResourceCondition provide a standard mechanism for higher-level status reporting from controller. */
-  conditions?: Array<ResourceCondition>;
+  conditions?: ReadonlyArray<ResourceCondition>;
 }
 
 export const ResourceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -142,7 +142,7 @@ export interface BareMetalAdminLoadBalancerAddressPool {
   /** Required. The name of the address pool. */
   pool?: string;
   /** Required. The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5). */
-  addresses?: Array<string>;
+  addresses?: ReadonlyArray<string>;
   /** If true, prevent IP addresses from being automatically assigned. */
   manualAssign?: boolean;
   /** If true, avoid using IPs ending in .0 or .255. This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses. */
@@ -185,7 +185,7 @@ export interface VmwareIpBlock {
   /** The network gateway used by the VMware user cluster. */
   gateway?: string;
   /** The node's network configurations used by the VMware user cluster. */
-  ips?: Array<VmwareHostIp>;
+  ips?: ReadonlyArray<VmwareHostIp>;
   /** The netmask used by the VMware user cluster. */
   netmask?: string;
 }
@@ -208,7 +208,7 @@ export const VmwareAdminHAControlPlaneConfig =
 
 export interface VmwareStaticIpConfig {
   /** Represents the configuration values for static IP allocation to nodes. */
-  ipBlocks?: Array<VmwareIpBlock>;
+  ipBlocks?: ReadonlyArray<VmwareIpBlock>;
 }
 
 export const VmwareStaticIpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -226,11 +226,11 @@ export const VmwareDhcpIpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VmwareHostConfig {
   /** DNS search domains. */
-  dnsSearchDomains?: Array<string>;
+  dnsSearchDomains?: ReadonlyArray<string>;
   /** DNS servers. */
-  dnsServers?: Array<string>;
+  dnsServers?: ReadonlyArray<string>;
   /** NTP servers. */
-  ntpServers?: Array<string>;
+  ntpServers?: ReadonlyArray<string>;
 }
 
 export const VmwareHostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -241,7 +241,7 @@ export const VmwareHostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VmwareAdminNetworkConfig {
   /** Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation. */
-  podAddressCidrBlocks?: Array<string>;
+  podAddressCidrBlocks?: ReadonlyArray<string>;
   /** vcenter_network specifies vCenter network name. */
   vcenterNetwork?: string;
   /** Configuration for HA admin cluster control plane. */
@@ -253,7 +253,7 @@ export interface VmwareAdminNetworkConfig {
   /** Represents common network settings irrespective of the host's IP address. */
   hostConfig?: VmwareHostConfig;
   /** Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation. */
-  serviceAddressCidrBlocks?: Array<string>;
+  serviceAddressCidrBlocks?: ReadonlyArray<string>;
 }
 
 export const VmwareAdminNetworkConfig =
@@ -271,7 +271,7 @@ export interface VmwarePlatformConfig {
   /** Input only. The required platform version e.g. 1.13.1. If the current platform version is lower than the target version, the platform version will be updated to the target version. If the target version is not installed in the platform (bundle versions), download the target version bundle. */
   requiredPlatformVersion?: string;
   /** Output only. The list of bundles installed in the admin cluster. */
-  bundles?: Array<VmwareBundleConfig>;
+  bundles?: ReadonlyArray<VmwareBundleConfig>;
   /** Output only. The platform version e.g. 1.13.2. */
   platformVersion?: string;
   /** Output only. Resource status for the platform. */
@@ -309,7 +309,7 @@ export const ClusterUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VmwareAdminAuthorizationConfig {
   /** For VMware admin clusters, users will be granted the cluster-viewer role on the cluster. */
-  viewerUsers?: Array<ClusterUser>;
+  viewerUsers?: ReadonlyArray<ClusterUser>;
 }
 
 export const VmwareAdminAuthorizationConfig =
@@ -392,7 +392,7 @@ export const ValidationCheckResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ValidationCheckStatus {
   /** Individual checks which failed as part of the Preflight check execution. */
-  result?: Array<ValidationCheckResult>;
+  result?: ReadonlyArray<ValidationCheckResult>;
 }
 
 export const ValidationCheckStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -458,9 +458,9 @@ export interface VmwareAdminSeesawConfig {
   /** MasterIP is the IP announced by the master of Seesaw group. */
   masterIp?: string;
   /** The IP Blocks to be used by the Seesaw load balancer */
-  ipBlocks?: Array<VmwareIpBlock>;
+  ipBlocks?: ReadonlyArray<VmwareIpBlock>;
   /** Names of the VMs created for this Seesaw group. */
-  vms?: Array<string>;
+  vms?: ReadonlyArray<string>;
 }
 
 export const VmwareAdminSeesawConfig =
@@ -697,11 +697,11 @@ export const VmwareAdminCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVmwareAdminClustersResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token identifying a page of results the server should return. If the token is not empty this means that more results are available and should be retrieved by repeating the request with the provided page token. */
   nextPageToken?: string;
   /** The list of VMware admin cluster. */
-  vmwareAdminClusters?: Array<VmwareAdminCluster>;
+  vmwareAdminClusters?: ReadonlyArray<VmwareAdminCluster>;
 }
 
 export const ListVmwareAdminClustersResponse =
@@ -713,7 +713,7 @@ export const ListVmwareAdminClustersResponse =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -725,7 +725,7 @@ export interface BareMetalAdminProxyConfig {
   /** Required. Specifies the address of your proxy server. Examples: `http://domain` WARNING: Do not provide credentials in the format `http://(username:password@)domain` these will be rejected by the server. */
   uri?: string;
   /** A list of IPs, hostnames, and domains that should skip the proxy. Examples: ["127.0.0.1", "example.com", ".corp", "localhost"]. */
-  noProxy?: Array<string>;
+  noProxy?: ReadonlyArray<string>;
 }
 
 export const BareMetalAdminProxyConfig =
@@ -736,7 +736,7 @@ export const BareMetalAdminProxyConfig =
 
 export interface BareMetalProxyConfig {
   /** A list of IPs, hostnames, and domains that should skip the proxy. Examples: ["127.0.0.1", "example.com", ".corp", "localhost"]. */
-  noProxy?: Array<string>;
+  noProxy?: ReadonlyArray<string>;
   /** Required. Specifies the address of your proxy server. Examples: `http://domain` Do not provide credentials in the format `http://(username:password@)domain` these will be rejected by the server. */
   uri?: string;
 }
@@ -748,7 +748,7 @@ export const BareMetalProxyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -783,7 +783,7 @@ export interface BareMetalLoadBalancerAddressPool {
   /** Required. The name of the address pool. */
   pool?: string;
   /** Required. The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5). */
-  addresses?: Array<string>;
+  addresses?: ReadonlyArray<string>;
   /** If true, prevent IP addresses from being automatically assigned. */
   manualAssign?: boolean;
 }
@@ -847,9 +847,9 @@ export const BareMetalKubeletConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface BareMetalNodePoolConfig {
   /** Required. The list of machine addresses in the bare metal node pool. */
-  nodeConfigs?: Array<BareMetalNodeConfig>;
+  nodeConfigs?: ReadonlyArray<BareMetalNodeConfig>;
   /** The initial taints assigned to nodes of this node pool. */
-  taints?: Array<NodeTaint>;
+  taints?: ReadonlyArray<NodeTaint>;
   /** The modifiable kubelet configurations for the bare metal machines. */
   kubeletConfig?: BareMetalKubeletConfig;
   /** Specifies the nodes operating system (default: LINUX). */
@@ -881,7 +881,7 @@ export interface BareMetalBgpPeerConfig {
   /** Required. The IP address of the external peer device. */
   ipAddress?: string;
   /** The IP address of the control plane node that connects to the external peer. If you don't specify any control plane nodes, all control plane nodes can connect to the external peer. If you specify one or more IP addresses, only the nodes specified participate in peering sessions. */
-  controlPlaneNodes?: Array<string>;
+  controlPlaneNodes?: ReadonlyArray<string>;
   /** Required. BGP autonomous system number (ASN) for the network that contains the external peer device. */
   asn?: string;
 }
@@ -896,13 +896,13 @@ export const BareMetalBgpPeerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface BareMetalBgpLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
-  addressPools?: Array<BareMetalLoadBalancerAddressPool>;
+  addressPools?: ReadonlyArray<BareMetalLoadBalancerAddressPool>;
   /** Specifies the node pool running data plane load balancing. L2 connectivity is required among nodes in this pool. If missing, the control plane node pool is used for data plane load balancing. */
   loadBalancerNodePoolConfig?: BareMetalLoadBalancerNodePoolConfig;
   /** Required. BGP autonomous system number (ASN) of the cluster. This field can be updated after cluster creation. */
   asn?: string;
   /** Required. The list of BGP peers that the cluster will connect to. At least one peer must be configured for each control plane node. Control plane nodes will connect to these peers to advertise the control plane VIP. The Services load balancer also uses these peers by default. This field can be updated after cluster creation. */
-  bgpPeerConfigs?: Array<BareMetalBgpPeerConfig>;
+  bgpPeerConfigs?: ReadonlyArray<BareMetalBgpPeerConfig>;
 }
 
 export const BareMetalBgpLbConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -916,7 +916,7 @@ export const BareMetalBgpLbConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BareMetalMetalLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
-  addressPools?: Array<BareMetalLoadBalancerAddressPool>;
+  addressPools?: ReadonlyArray<BareMetalLoadBalancerAddressPool>;
   /** Specifies the node pool running the load balancer. L2 connectivity is required among nodes in this pool. If missing, the control plane node pool is used as the load balancer pool. */
   loadBalancerNodePoolConfig?: BareMetalLoadBalancerNodePoolConfig;
 }
@@ -982,7 +982,7 @@ export interface VmwareAddressPool {
   /** Required. The name of the address pool. */
   pool?: string;
   /** Required. The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5). */
-  addresses?: Array<string>;
+  addresses?: ReadonlyArray<string>;
   /** If true, prevent IP addresses from being automatically assigned. */
   manualAssign?: boolean;
 }
@@ -996,7 +996,7 @@ export const VmwareAddressPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VmwareMetalLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
-  addressPools?: Array<VmwareAddressPool>;
+  addressPools?: ReadonlyArray<VmwareAddressPool>;
 }
 
 export const VmwareMetalLbConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1151,7 +1151,7 @@ export interface BareMetalAdminControlPlaneConfig {
   /** Required. Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster. */
   controlPlaneNodePoolConfig?: BareMetalAdminControlPlaneNodePoolConfig;
   /** Customizes the default API server args. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/ */
-  apiServerArgs?: Array<BareMetalAdminApiServerArgument>;
+  apiServerArgs?: ReadonlyArray<BareMetalAdminApiServerArgument>;
 }
 
 export const BareMetalAdminControlPlaneConfig =
@@ -1176,7 +1176,7 @@ export const BareMetalAdminOsEnvironmentConfig =
 
 export interface BareMetalAdminMaintenanceConfig {
   /** Required. All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource. */
-  maintenanceAddressCidrBlocks?: Array<string>;
+  maintenanceAddressCidrBlocks?: ReadonlyArray<string>;
 }
 
 export const BareMetalAdminMaintenanceConfig =
@@ -1209,9 +1209,9 @@ export const BareMetalAdminDrainedMachine =
 
 export interface BareMetalAdminMachineDrainStatus {
   /** The list of draning machines. */
-  drainingMachines?: Array<BareMetalAdminDrainingMachine>;
+  drainingMachines?: ReadonlyArray<BareMetalAdminDrainingMachine>;
   /** The list of drained machines. */
-  drainedMachines?: Array<BareMetalAdminDrainedMachine>;
+  drainedMachines?: ReadonlyArray<BareMetalAdminDrainedMachine>;
 }
 
 export const BareMetalAdminMachineDrainStatus =
@@ -1236,7 +1236,7 @@ export const BareMetalAdminMaintenanceStatus =
 
 export interface Authorization {
   /** For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access. */
-  adminUsers?: Array<ClusterUser>;
+  adminUsers?: ReadonlyArray<ClusterUser>;
 }
 
 export const Authorization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1255,9 +1255,9 @@ export const BareMetalAdminSecurityConfig =
 
 export interface BareMetalAdminIslandModeCidrConfig {
   /** Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation. */
-  podAddressCidrBlocks?: Array<string>;
+  podAddressCidrBlocks?: ReadonlyArray<string>;
   /** Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation. */
-  serviceAddressCidrBlocks?: Array<string>;
+  serviceAddressCidrBlocks?: ReadonlyArray<string>;
 }
 
 export const BareMetalAdminIslandModeCidrConfig =
@@ -1348,7 +1348,7 @@ export interface BareMetalAdminBgpPeerConfig {
   /** Required. The IP address of the external peer device. */
   ipAddress?: string;
   /** The IP address of the control plane node that connects to the external peer. If you don't specify any control plane nodes, all control plane nodes can connect to the external peer. If you specify one or more IP addresses, only the nodes specified participate in peering sessions. */
-  controlPlaneNodes?: Array<string>;
+  controlPlaneNodes?: ReadonlyArray<string>;
 }
 
 export const BareMetalAdminBgpPeerConfig =
@@ -1360,13 +1360,13 @@ export const BareMetalAdminBgpPeerConfig =
 
 export interface BareMetalAdminBgpLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
-  addressPools?: Array<BareMetalAdminLoadBalancerAddressPool>;
+  addressPools?: ReadonlyArray<BareMetalAdminLoadBalancerAddressPool>;
   /** Specifies the node pool running data plane load balancing. L2 connectivity is required among nodes in this pool. If missing, the control plane node pool is used for data plane load balancing. */
   loadBalancerNodePoolConfig?: BareMetalAdminLoadBalancerNodePoolConfig;
   /** Required. BGP autonomous system number (ASN) of the cluster. This field can be updated after cluster creation. */
   asn?: string;
   /** Required. The list of BGP peers that the cluster will connect to. At least one peer must be configured for each control plane node. Control plane nodes will connect to these peers to advertise the control plane VIP. The Services load balancer also uses these peers by default. This field can be updated after cluster creation. */
-  bgpPeerConfigs?: Array<BareMetalAdminBgpPeerConfig>;
+  bgpPeerConfigs?: ReadonlyArray<BareMetalAdminBgpPeerConfig>;
 }
 
 export const BareMetalAdminBgpLbConfig =
@@ -1553,9 +1553,9 @@ export const BareMetalAdminCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBareMetalAdminClustersResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of bare metal admin cluster. */
-  bareMetalAdminClusters?: Array<BareMetalAdminCluster>;
+  bareMetalAdminClusters?: ReadonlyArray<BareMetalAdminCluster>;
   /** A token identifying a page of results the server should return. If the token is not empty this means that more results are available and should be retrieved by repeating the request with the provided page token. */
   nextPageToken?: string;
 }
@@ -1591,7 +1591,7 @@ export interface BareMetalVersionInfo {
   /** If set, the cluster dependencies (e.g. the admin cluster, other user clusters managed by the same admin cluster, version skew policy, etc) must be upgraded before this version can be installed or upgraded to. */
   hasDependencies?: boolean;
   /** The list of upgrade dependencies for this version. */
-  dependencies?: Array<UpgradeDependency>;
+  dependencies?: ReadonlyArray<UpgradeDependency>;
   /** Version number e.g. 1.13.1. */
   version?: string;
 }
@@ -1604,7 +1604,7 @@ export const BareMetalVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryBareMetalAdminVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
-  versions?: Array<BareMetalVersionInfo>;
+  versions?: ReadonlyArray<BareMetalVersionInfo>;
 }
 
 export const QueryBareMetalAdminVersionConfigResponse =
@@ -1633,9 +1633,9 @@ export const BareMetalDrainedMachine =
 
 export interface BareMetalMachineDrainStatus {
   /** The list of draning machines. */
-  drainingMachines?: Array<BareMetalDrainingMachine>;
+  drainingMachines?: ReadonlyArray<BareMetalDrainingMachine>;
   /** The list of drained machines. */
-  drainedMachines?: Array<BareMetalDrainedMachine>;
+  drainedMachines?: ReadonlyArray<BareMetalDrainedMachine>;
 }
 
 export const BareMetalMachineDrainStatus =
@@ -1672,9 +1672,9 @@ export interface VmwareSeesawConfig {
   /** Required. MasterIP is the IP announced by the master of Seesaw group. */
   masterIp?: string;
   /** Required. The IP Blocks to be used by the Seesaw load balancer */
-  ipBlocks?: Array<VmwareIpBlock>;
+  ipBlocks?: ReadonlyArray<VmwareIpBlock>;
   /** Names of the VMs created for this Seesaw group. */
-  vms?: Array<string>;
+  vms?: ReadonlyArray<string>;
 }
 
 export const VmwareSeesawConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1720,9 +1720,9 @@ export const VmwareClusterUpgradePolicy =
 
 export interface BareMetalIslandModeCidrConfig {
   /** Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation. */
-  podAddressCidrBlocks?: Array<string>;
+  podAddressCidrBlocks?: ReadonlyArray<string>;
   /** Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field is mutable after creation starting with version 1.15. */
-  serviceAddressCidrBlocks?: Array<string>;
+  serviceAddressCidrBlocks?: ReadonlyArray<string>;
 }
 
 export const BareMetalIslandModeCidrConfig =
@@ -1735,7 +1735,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
@@ -1796,7 +1796,7 @@ export interface OperationStage {
   /** Time the stage ended. */
   endTime?: string;
   /** Progress metric bundle. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** Output only. State of the stage. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1838,9 +1838,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1878,7 +1878,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1900,7 +1900,7 @@ export interface BareMetalControlPlaneConfig {
   /** Required. Configures the node pool running the control plane. */
   controlPlaneNodePoolConfig?: BareMetalControlPlaneNodePoolConfig;
   /** Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/). */
-  apiServerArgs?: Array<BareMetalApiServerArgument>;
+  apiServerArgs?: ReadonlyArray<BareMetalApiServerArgument>;
 }
 
 export const BareMetalControlPlaneConfig =
@@ -1933,7 +1933,7 @@ export const BareMetalNodeAccessConfig =
 
 export interface BareMetalMaintenanceConfig {
   /** Required. All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource. */
-  maintenanceAddressCidrBlocks?: Array<string>;
+  maintenanceAddressCidrBlocks?: ReadonlyArray<string>;
 }
 
 export const BareMetalMaintenanceConfig =
@@ -2174,7 +2174,7 @@ export const BareMetalCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryBareMetalVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
-  versions?: Array<BareMetalVersionInfo>;
+  versions?: ReadonlyArray<BareMetalVersionInfo>;
 }
 
 export const QueryBareMetalVersionConfigResponse =
@@ -2184,11 +2184,11 @@ export const QueryBareMetalVersionConfigResponse =
 
 export interface VmwareVsphereConfig {
   /** Vsphere host groups to apply to all VMs in the node pool */
-  hostGroups?: Array<string>;
+  hostGroups?: ReadonlyArray<string>;
   /** The name of the vCenter datastore. Inherited from the user cluster. */
   datastore?: string;
   /** Tags to apply to VMs. */
-  tags?: Array<VmwareVsphereTag>;
+  tags?: ReadonlyArray<VmwareVsphereTag>;
 }
 
 export const VmwareVsphereConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2205,7 +2205,7 @@ export interface VmwareNodeConfig {
   /** The OS image name in vCenter, only valid when using Windows. */
   image?: string;
   /** The initial taints assigned to nodes of this node pool. */
-  taints?: Array<NodeTaint>;
+  taints?: ReadonlyArray<NodeTaint>;
   /** The number of CPUs for each node in the node pool. */
   cpus?: string;
   /** Required. The OS image to be used for each node in a node pool. Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported. */
@@ -2306,9 +2306,9 @@ export interface ListVmwareNodePoolsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The node pools from the specified parent resource. */
-  vmwareNodePools?: Array<VmwareNodePool>;
+  vmwareNodePools?: ReadonlyArray<VmwareNodePool>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListVmwareNodePoolsResponse =
@@ -2427,11 +2427,11 @@ export const EnrollBareMetalNodePoolRequest =
 
 export interface ListBareMetalClustersResponse {
   /** The list of bare metal Clusters. */
-  bareMetalClusters?: Array<BareMetalCluster>;
+  bareMetalClusters?: ReadonlyArray<BareMetalCluster>;
   /** A token identifying a page of results the server should return. If the token is not empty this means that more results are available and should be retrieved by repeating the request with the provided page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBareMetalClustersResponse =
@@ -2462,11 +2462,11 @@ export const EnrollVmwareClusterRequest =
 
 export interface ListBareMetalNodePoolsResponse {
   /** The node pools from the specified parent resource. */
-  bareMetalNodePools?: Array<BareMetalNodePool>;
+  bareMetalNodePools?: ReadonlyArray<BareMetalNodePool>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBareMetalNodePoolsResponse =
@@ -2484,7 +2484,7 @@ export interface VmwareVersionInfo {
   /** If set, the cluster dependencies (e.g. the admin cluster, other user clusters managed by the same admin cluster) must be upgraded before this version can be installed or upgraded to. */
   hasDependencies?: boolean;
   /** The list of upgrade dependencies for this version. */
-  dependencies?: Array<UpgradeDependency>;
+  dependencies?: ReadonlyArray<UpgradeDependency>;
 }
 
 export const VmwareVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2496,7 +2496,7 @@ export const VmwareVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryVmwareVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
-  versions?: Array<VmwareVersionInfo>;
+  versions?: ReadonlyArray<VmwareVersionInfo>;
 }
 
 export const QueryVmwareVersionConfigResponse =
@@ -2526,7 +2526,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -2539,7 +2539,7 @@ export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -2584,9 +2584,9 @@ export interface VmwareNetworkConfig {
   /** vcenter_network specifies vCenter network name. Inherited from the admin cluster. */
   vcenterNetwork?: string;
   /** Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation. */
-  podAddressCidrBlocks?: Array<string>;
+  podAddressCidrBlocks?: ReadonlyArray<string>;
   /** Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation. */
-  serviceAddressCidrBlocks?: Array<string>;
+  serviceAddressCidrBlocks?: ReadonlyArray<string>;
   /** Configuration settings for a static IP configuration. */
   staticIpConfig?: VmwareStaticIpConfig;
   /** Configuration settings for a DHCP IP configuration. */
@@ -2622,7 +2622,7 @@ export const EnrollBareMetalAdminClusterRequest =
 
 export interface OperationProgress {
   /** The stages of the operation. */
-  stages?: Array<OperationStage>;
+  stages?: ReadonlyArray<OperationStage>;
 }
 
 export const OperationProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2812,11 +2812,11 @@ export const VmwareCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVmwareClustersResponse {
   /** The list of VMware Cluster. */
-  vmwareClusters?: Array<VmwareCluster>;
+  vmwareClusters?: ReadonlyArray<VmwareCluster>;
   /** A token identifying a page of results the server should return. If the token is not empty this means that more results are available and should be retrieved by repeating the request with the provided page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListVmwareClustersResponse =
@@ -2853,7 +2853,7 @@ export const ListProjectsLocationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2888,10 +2888,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2922,10 +2919,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -2959,11 +2953,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -3008,10 +2998,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -3046,10 +3033,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -3098,10 +3082,7 @@ export const UnenrollProjectsLocationsVmwareAdminClustersRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}:unenroll",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:unenroll" }),
     svc,
   ) as unknown as Schema.Schema<UnenrollProjectsLocationsVmwareAdminClustersRequest>;
 
@@ -3148,11 +3129,7 @@ export const PatchProjectsLocationsVmwareAdminClustersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VmwareAdminCluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsVmwareAdminClustersRequest>;
 
@@ -3191,10 +3168,7 @@ export const GetProjectsLocationsVmwareAdminClustersRequest =
     ),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsVmwareAdminClustersRequest>;
 
@@ -3231,7 +3205,7 @@ export const EnrollProjectsLocationsVmwareAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters:enroll",
+      path: "v1/{parent}/vmwareAdminClusters:enroll",
       hasBody: true,
     }),
     svc,
@@ -3278,10 +3252,7 @@ export const ListProjectsLocationsVmwareAdminClustersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/vmwareAdminClusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsVmwareAdminClustersRequest>;
 
@@ -3322,7 +3293,7 @@ export const SetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3381,7 +3352,7 @@ export const CreateProjectsLocationsVmwareAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters",
+      path: "v1/{parent}/vmwareAdminClusters",
       hasBody: true,
     }),
     svc,
@@ -3419,10 +3390,7 @@ export const GetIamPolicyProjectsLocationsVmwareAdminClustersRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsVmwareAdminClustersRequest>;
 
@@ -3459,7 +3427,7 @@ export const TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3508,10 +3476,7 @@ export const ListProjectsLocationsVmwareAdminClustersOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsVmwareAdminClustersOperationsRequest>;
 
@@ -3548,10 +3513,7 @@ export const GetProjectsLocationsVmwareAdminClustersOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareAdminClusters/{vmwareAdminClustersId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsVmwareAdminClustersOperationsRequest>;
 
@@ -3604,7 +3566,7 @@ export const CreateProjectsLocationsBareMetalClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters",
+      path: "v1/{parent}/bareMetalClusters",
       hasBody: true,
     }),
     svc,
@@ -3658,10 +3620,7 @@ export const DeleteProjectsLocationsBareMetalClustersRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBareMetalClustersRequest>;
 
@@ -3697,10 +3656,7 @@ export const GetIamPolicyProjectsLocationsBareMetalClustersRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsBareMetalClustersRequest>;
 
@@ -3736,7 +3692,7 @@ export const TestIamPermissionsProjectsLocationsBareMetalClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3788,10 +3744,7 @@ export const ListProjectsLocationsBareMetalClustersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/bareMetalClusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBareMetalClustersRequest>;
 
@@ -3844,7 +3797,7 @@ export const QueryVersionConfigProjectsLocationsBareMetalClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters:queryVersionConfig",
+      path: "v1/{parent}/bareMetalClusters:queryVersionConfig",
       hasBody: true,
     }),
     svc,
@@ -3884,7 +3837,7 @@ export const SetIamPolicyProjectsLocationsBareMetalClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3922,7 +3875,7 @@ export const EnrollProjectsLocationsBareMetalClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters:enroll",
+      path: "v1/{parent}/bareMetalClusters:enroll",
       hasBody: true,
     }),
     svc,
@@ -3971,10 +3924,7 @@ export const UnenrollProjectsLocationsBareMetalClustersRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}:unenroll",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:unenroll" }),
     svc,
   ) as unknown as Schema.Schema<UnenrollProjectsLocationsBareMetalClustersRequest>;
 
@@ -4021,11 +3971,7 @@ export const PatchProjectsLocationsBareMetalClustersRequest =
     ),
     body: Schema.optional(BareMetalCluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBareMetalClustersRequest>;
 
@@ -4064,10 +4010,7 @@ export const GetProjectsLocationsBareMetalClustersRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBareMetalClustersRequest>;
 
@@ -4103,7 +4046,7 @@ export const EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools:enroll",
+      path: "v1/{parent}/bareMetalNodePools:enroll",
       hasBody: true,
     }),
     svc,
@@ -4151,10 +4094,7 @@ export const UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}:unenroll",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:unenroll" }),
     svc,
   ) as unknown as Schema.Schema<UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
@@ -4190,10 +4130,7 @@ export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
@@ -4242,11 +4179,7 @@ export const PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
     ),
     body: Schema.optional(BareMetalNodePool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
@@ -4294,7 +4227,7 @@ export const CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools",
+      path: "v1/{parent}/bareMetalNodePools",
       hasBody: true,
     }),
     svc,
@@ -4347,10 +4280,7 @@ export const DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
@@ -4388,10 +4318,7 @@ export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsReq
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
@@ -4431,7 +4358,7 @@ export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePo
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4477,10 +4404,7 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/bareMetalNodePools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
@@ -4522,7 +4446,7 @@ export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4573,10 +4497,7 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsR
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest>;
 
@@ -4615,10 +4536,7 @@ export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/bareMetalNodePools/{bareMetalNodePoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest>;
 
@@ -4667,10 +4585,7 @@ export const ListProjectsLocationsBareMetalClustersOperationsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBareMetalClustersOperationsRequest>;
 
@@ -4707,10 +4622,7 @@ export const GetProjectsLocationsBareMetalClustersOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalClusters/{bareMetalClustersId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBareMetalClustersOperationsRequest>;
 
@@ -4747,10 +4659,7 @@ export const GetIamPolicyProjectsLocationsVmwareClustersRequest =
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsVmwareClustersRequest>;
 
@@ -4786,7 +4695,7 @@ export const TestIamPermissionsProjectsLocationsVmwareClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4846,7 +4755,7 @@ export const CreateProjectsLocationsVmwareClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters",
+      path: "v1/{parent}/vmwareClusters",
       hasBody: true,
     }),
     svc,
@@ -4900,10 +4809,7 @@ export const DeleteProjectsLocationsVmwareClustersRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsVmwareClustersRequest>;
 
@@ -4939,7 +4845,7 @@ export const SetIamPolicyProjectsLocationsVmwareClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4989,10 +4895,7 @@ export const ListProjectsLocationsVmwareClustersRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/vmwareClusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsVmwareClustersRequest>;
 
@@ -5045,7 +4948,7 @@ export const QueryVersionConfigProjectsLocationsVmwareClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters:queryVersionConfig",
+      path: "v1/{parent}/vmwareClusters:queryVersionConfig",
       hasBody: true,
     }),
     svc,
@@ -5085,7 +4988,7 @@ export const EnrollProjectsLocationsVmwareClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters:enroll",
+      path: "v1/{parent}/vmwareClusters:enroll",
       hasBody: true,
     }),
     svc,
@@ -5133,11 +5036,7 @@ export const PatchProjectsLocationsVmwareClustersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VmwareCluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsVmwareClustersRequest>;
 
@@ -5176,10 +5075,7 @@ export const GetProjectsLocationsVmwareClustersRequest =
     ),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsVmwareClustersRequest>;
 
@@ -5226,10 +5122,7 @@ export const UnenrollProjectsLocationsVmwareClustersRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}:unenroll",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:unenroll" }),
     svc,
   ) as unknown as Schema.Schema<UnenrollProjectsLocationsVmwareClustersRequest>;
 
@@ -5274,10 +5167,7 @@ export const ListProjectsLocationsVmwareClustersOperationsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsVmwareClustersOperationsRequest>;
 
@@ -5313,10 +5203,7 @@ export const GetProjectsLocationsVmwareClustersOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsVmwareClustersOperationsRequest>;
 
@@ -5352,7 +5239,7 @@ export const EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools:enroll",
+      path: "v1/{parent}/vmwareNodePools:enroll",
       hasBody: true,
     }),
     svc,
@@ -5390,10 +5277,7 @@ export const GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
@@ -5437,11 +5321,7 @@ export const PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(VmwareNodePool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
@@ -5487,10 +5367,7 @@ export const UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}:unenroll",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:unenroll" }),
     svc,
   ) as unknown as Schema.Schema<UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
@@ -5528,10 +5405,7 @@ export const GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
@@ -5569,7 +5443,7 @@ export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5621,7 +5495,7 @@ export const CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools",
+      path: "v1/{parent}/vmwareNodePools",
       hasBody: true,
     }),
     svc,
@@ -5674,10 +5548,7 @@ export const DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
       T.HttpQuery("ignoreErrors"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
@@ -5715,7 +5586,7 @@ export const SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5759,10 +5630,7 @@ export const ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/vmwareNodePools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
@@ -5813,10 +5681,7 @@ export const ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest>;
 
@@ -5853,10 +5718,7 @@ export const GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/vmwareClusters/{vmwareClustersId}/vmwareNodePools/{vmwareNodePoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest>;
 
@@ -5903,10 +5765,7 @@ export const ListProjectsLocationsBareMetalAdminClustersRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/bareMetalAdminClusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBareMetalAdminClustersRequest>;
 
@@ -5949,7 +5808,7 @@ export const QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters:queryVersionConfig",
+      path: "v1/{parent}/bareMetalAdminClusters:queryVersionConfig",
       hasBody: true,
     }),
     svc,
@@ -5989,7 +5848,7 @@ export const SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6044,7 +5903,7 @@ export const CreateProjectsLocationsBareMetalAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters",
+      path: "v1/{parent}/bareMetalAdminClusters",
       hasBody: true,
     }),
     svc,
@@ -6082,10 +5941,7 @@ export const GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest>;
 
@@ -6123,7 +5979,7 @@ export const TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6176,10 +6032,7 @@ export const UnenrollProjectsLocationsBareMetalAdminClustersRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}:unenroll",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:unenroll" }),
     svc,
   ) as unknown as Schema.Schema<UnenrollProjectsLocationsBareMetalAdminClustersRequest>;
 
@@ -6219,10 +6072,7 @@ export const GetProjectsLocationsBareMetalAdminClustersRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBareMetalAdminClustersRequest>;
 
@@ -6265,11 +6115,7 @@ export const PatchProjectsLocationsBareMetalAdminClustersRequest =
     ),
     body: Schema.optional(BareMetalAdminCluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBareMetalAdminClustersRequest>;
 
@@ -6307,7 +6153,7 @@ export const EnrollProjectsLocationsBareMetalAdminClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters:enroll",
+      path: "v1/{parent}/bareMetalAdminClusters:enroll",
       hasBody: true,
     }),
     svc,
@@ -6354,10 +6200,7 @@ export const ListProjectsLocationsBareMetalAdminClustersOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBareMetalAdminClustersOperationsRequest>;
 
@@ -6394,10 +6237,7 @@ export const GetProjectsLocationsBareMetalAdminClustersOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bareMetalAdminClusters/{bareMetalAdminClustersId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBareMetalAdminClustersOperationsRequest>;
 

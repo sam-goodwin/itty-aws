@@ -72,7 +72,7 @@ export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo =
 
 export interface GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse {
   /** Detailed error info for accounts that cannot be deleted. */
-  errors?: Array<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
+  errors?: ReadonlyArray<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
 }
 
 export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse =
@@ -194,7 +194,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse {
   /** The email the user signed in with. Always present in the response. */
   email?: string;
   /** Info on which multi-factor authentication providers are enabled. Present if the user needs to complete the sign-in using multi-factor authentication. */
-  mfaInfo?: Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
+  mfaInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 }
 
 export const GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse =
@@ -300,10 +300,10 @@ export interface GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
   /** Whether a CAPTCHA is needed because there have been too many failed login attempts by the user. Present only when a registered email identifier is set in the request. */
   captchaRequired?: boolean;
   /** The list of sign-in methods that the user has previously used. Each element is one of `password`, `emailLink`, or the provider ID of an IdP. Present only when a registered email identifier is set in the request. If [email enumeration protection](https://cloud.google.com/identity-platform/docs/admin/email-enumeration-protection) is enabled, this method returns an empty list. */
-  signinMethods?: Array<string>;
+  signinMethods?: ReadonlyArray<string>;
   /** The provider ID from the request, if provided. */
   providerId?: string;
-  allProviders?: Array<string>;
+  allProviders?: ReadonlyArray<string>;
   /** Whether the email identifier represents an existing account. Present only when an email identifier is set in the request. */
   registered?: boolean;
   /** The authorization URI for the requested provider. Present only when a provider ID is set in the request. */
@@ -410,7 +410,7 @@ export interface GoogleCloudIdentitytoolkitV1SignUpRequest {
   /** The ID of the Identity Platform tenant to create a user under. If not set, the user will be created under the default Identity Platform project. */
   tenantId?: string;
   /** The multi-factor authentication providers for the user to create. */
-  mfaInfo?: Array<GoogleCloudIdentitytoolkitV1MfaFactor>;
+  mfaInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaFactor>;
   /** The profile photo url of the user to create. */
   photoUrl?: string;
   /** The phone number of the user to create. Specifying this field requires a Google OAuth 2.0 credential with the proper [permissions](https://cloud.google.com/identity-platform/docs/access-control). */
@@ -444,7 +444,7 @@ export const GoogleCloudIdentitytoolkitV1SignUpRequest =
 
 export interface GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest {
   /** Required. List of user IDs to be deleted. */
-  localIds?: Array<string>;
+  localIds?: ReadonlyArray<string>;
   /** Whether to force deleting accounts that are not in disabled state. If false, only disabled accounts will be deleted, and accounts that are not disabled will be added to the `errors`. */
   force?: boolean;
   /** If the accounts belong to an Identity Platform tenant, the ID of the tenant. If the accounts belong to a default Identity Platform project, the field is not needed. */
@@ -462,7 +462,7 @@ export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest =
 
 export interface GoogleCloudIdentitytoolkitV1MfaInfo {
   /** The second factors the user has enrolled. */
-  enrollments?: Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
+  enrollments?: ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 }
 
 export const GoogleCloudIdentitytoolkitV1MfaInfo =
@@ -537,7 +537,7 @@ export interface GoogleCloudIdentitytoolkitV1IdpConfig {
   /** OAuth2 client ID. */
   clientId?: string;
   /** Whitelisted client IDs for audience check. */
-  whitelistedAudiences?: Array<string>;
+  whitelistedAudiences?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIdentitytoolkitV1IdpConfig =
@@ -564,7 +564,7 @@ export interface GoogleCloudIdentitytoolkitV1GetProjectConfigResponse {
   /** Email template for verify email. This field is only returned for authenticated calls from a developer. */
   verifyEmailTemplate?: GoogleCloudIdentitytoolkitV1EmailTemplate;
   /** OAuth2 provider config. This field is only returned for authenticated calls from a developer. */
-  idpConfig?: Array<GoogleCloudIdentitytoolkitV1IdpConfig>;
+  idpConfig?: ReadonlyArray<GoogleCloudIdentitytoolkitV1IdpConfig>;
   /** Whether to allow password account sign up. This field is only returned for authenticated calls from a developer. */
   allowPasswordUser?: boolean;
   /** Email template for change email. This field is only returned for authenticated calls from a developer. */
@@ -576,7 +576,7 @@ export interface GoogleCloudIdentitytoolkitV1GetProjectConfigResponse {
   /** Whether anonymous user is enabled. This field is only returned for authenticated calls from a developer. */
   enableAnonymousUser?: boolean;
   /** Authorized domains for widget redirect. */
-  authorizedDomains?: Array<string>;
+  authorizedDomains?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIdentitytoolkitV1GetProjectConfigResponse =
@@ -669,11 +669,11 @@ export interface GoogleCloudIdentitytoolkitV1UserInfo {
   /** Timestamp when an ID token was last minted for this account. */
   lastRefreshAt?: string;
   /** Information on which multi-factor authentication providers are enabled for this account. */
-  mfaInfo?: Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
+  mfaInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
   /** Output only. Whether the account can authenticate with email link. */
   emailLinkSignin?: boolean;
   /** Information about the user as provided by various Identity Providers. */
-  providerUserInfo?: Array<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
+  providerUserInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
   /** Output only. This account's screen name at Twitter or login name at GitHub. */
   screenName?: string;
   /** ID of the tenant this account belongs to. Only set if this account belongs to a tenant. */
@@ -774,11 +774,11 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
   oauthExpireIn?: number;
   needEmail?: boolean;
   /** Info on which multi-factor authentication providers are enabled for the account. Present if the user needs to complete the sign-in using multi-factor authentication. */
-  mfaInfo?: Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
+  mfaInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
   /** Whether the user account's email address is verified. */
   emailVerified?: boolean;
   /** A list of provider IDs that the user can sign in to in order to resolve a `need_confirmation` error. Only present if `need_confirmation` is set to `true`. */
-  verifiedProvider?: Array<string>;
+  verifiedProvider?: ReadonlyArray<string>;
   /** The language preference for the user's account at the IdP. */
   language?: string;
   /** An Identity Platform refresh token for the authenticated user. */
@@ -877,7 +877,7 @@ export interface GoogleCloudIdentitytoolkitV1UploadAccountRequest {
   /** One or more bytes to be inserted between the salt and plain text password. For stronger security, this should be a single non-printable character. */
   saltSeparator?: string;
   /** A list of accounts to upload. `local_id` is required for each user; everything else is optional. */
-  users?: Array<GoogleCloudIdentitytoolkitV1UserInfo>;
+  users?: ReadonlyArray<GoogleCloudIdentitytoolkitV1UserInfo>;
   /** Whether to overwrite an existing account in Identity Platform with a matching `local_id` in the request. If true, the existing account will be overwritten. If false, an error will be returned. */
   allowOverwrite?: boolean;
   /** The parameters for Argon2 hashing algorithm. */
@@ -1106,7 +1106,7 @@ export const GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse =
 
 export interface GoogleCloudIdentitytoolkitV1QueryUserInfoResponse {
   /** If `return_user_info` in the request is true, this is the accounts matching the query. */
-  userInfo?: Array<GoogleCloudIdentitytoolkitV1UserInfo>;
+  userInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1UserInfo>;
   /** If `return_user_info` in the request is true, this is the number of returned accounts in this message. Otherwise, this is the total number of accounts matching the query. */
   recordsCount?: string;
 }
@@ -1288,12 +1288,12 @@ export interface GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
   idToken?: string;
   delegatedProjectNumber?: string;
   /** The Identity Providers to unlink from the user's account. */
-  deleteProvider?: Array<string>;
+  deleteProvider?: ReadonlyArray<string>;
   captchaChallenge?: string;
   /** The response from reCaptcha challenge. This is required when the system detects possible abuse activities. */
   captchaResponse?: string;
   /** The Identity Providers that the account should be associated with. */
-  provider?: Array<string>;
+  provider?: ReadonlyArray<string>;
   /** The user's new photo URL for the account's profile photo to be updated in the account's attributes. The length of the URL must be less than or equal to 2048 characters. */
   photoUrl?: string;
   /** The multi-factor authentication related information to be set on the user's account. This will overwrite any previous multi-factor related information on the account. Specifying this field requires a Google OAuth 2.0 credential with proper [permissions] (https://cloud.google.com/identity-platform/docs/access-control). */
@@ -1301,7 +1301,7 @@ export interface GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
   /** The user's new display name to be updated in the account's attributes. The length of the display name must be less than or equal to 256 characters. */
   displayName?: string;
   instanceId?: string;
-  deleteAttribute?: Array<
+  deleteAttribute?: ReadonlyArray<
     | "USER_ATTRIBUTE_NAME_UNSPECIFIED"
     | "EMAIL"
     | "DISPLAY_NAME"
@@ -1437,7 +1437,7 @@ export const GoogleCloudIdentitytoolkitV1ErrorInfo =
 export interface GoogleCloudIdentitytoolkitV1UploadAccountResponse {
   kind?: string;
   /** Detailed error info for accounts that cannot be uploaded. */
-  error?: Array<GoogleCloudIdentitytoolkitV1ErrorInfo>;
+  error?: ReadonlyArray<GoogleCloudIdentitytoolkitV1ErrorInfo>;
 }
 
 export const GoogleCloudIdentitytoolkitV1UploadAccountResponse =
@@ -1461,14 +1461,14 @@ export const GoogleCloudIdentitytoolkitV1DeleteAccountResponse =
 
 export interface GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
   /** The phone number of one or more accounts to fetch. Should only be specified by authenticated requests from a developer and should be in E.164 format, for example, +15555555555. */
-  phoneNumber?: Array<string>;
+  phoneNumber?: ReadonlyArray<string>;
   /** The ID of one or more accounts to fetch. Should only be specified by authenticated requests bearing a Google OAuth 2.0 credential with proper [permissions](https://cloud.google.com/identity-platform/docs/access-control). */
-  localId?: Array<string>;
+  localId?: ReadonlyArray<string>;
   /** The initial email of one or more accounts to fetch. The length of email should be less than 256 characters and in the format of `name@domain.tld`. The email should also match the [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production. Should only be specified by authenticated requests from a developer. */
-  initialEmail?: Array<string>;
-  federatedUserId?: Array<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
+  initialEmail?: ReadonlyArray<string>;
+  federatedUserId?: ReadonlyArray<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
   /** The email address of one or more accounts to fetch. The length of email should be less than 256 characters and in the format of `name@domain.tld`. The email should also match the [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production. Should only be specified by authenticated requests from a developer. */
-  email?: Array<string>;
+  email?: ReadonlyArray<string>;
   /** The Identity Platform ID token of the account to fetch. Require to be specified for requests from end users. */
   idToken?: string;
   /** The ID of the tenant that the account belongs to. Should only be specified by authenticated requests from a developer. */
@@ -1497,7 +1497,7 @@ export const GoogleCloudIdentitytoolkitV1GetAccountInfoRequest =
 
 export interface GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse {
   /** Public keys of the session cookie signer, formatted as [JSON Web Keys (JWK)](https://tools.ietf.org/html/rfc7517). */
-  keys?: Array<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
+  keys?: ReadonlyArray<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
 }
 
 export const GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse =
@@ -1529,7 +1529,7 @@ export interface GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
   /** An Identity Platform ID token for the account. This is used for legacy user sign up. */
   idToken?: string;
   /** The linked Identity Providers on the account. */
-  providerUserInfo?: Array<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
+  providerUserInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
   /** The account's email address. */
   email?: string;
   /** The user's photo URL for the account's profile photo. */
@@ -1560,7 +1560,7 @@ export interface GoogleCloudIdentitytoolkitV1DownloadAccountResponse {
   /** If there are more accounts to be downloaded, a token that can be passed back to DownloadAccount to get more accounts. Otherwise, this is blank. */
   nextPageToken?: string;
   /** All accounts belonging to the project/tenant limited by max_results in the request. */
-  users?: Array<GoogleCloudIdentitytoolkitV1UserInfo>;
+  users?: ReadonlyArray<GoogleCloudIdentitytoolkitV1UserInfo>;
   kind?: string;
 }
 
@@ -1630,7 +1630,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
   /** An Identity Platform refresh token for the authenticated user. */
   refreshToken?: string;
   /** Info on which multi-factor authentication providers are enabled for the account. Present if the user needs to complete the sign-in using multi-factor authentication. */
-  mfaInfo?: Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
+  mfaInfo?: ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
   /** The access token expiration time in seconds. */
   oauthExpireIn?: number;
   /** The user's profile picture stored in the account's attributes. */
@@ -1638,7 +1638,7 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
   /** An opaque string that functions as proof that the user has successfully passed the first factor authentication. */
   mfaPendingCredential?: string;
   /** Warning notifications for the user. */
-  userNotifications?: Array<GoogleCloudIdentitytoolkitV1UserNotification>;
+  userNotifications?: ReadonlyArray<GoogleCloudIdentitytoolkitV1UserNotification>;
   /** The user's display name stored in the account's attributes. */
   displayName?: string;
   /** The ID of the authenticated user. Always present in the response. */
@@ -1834,7 +1834,7 @@ export interface GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
     | "LAST_LOGIN_AT"
     | "USER_EMAIL"
     | (string & {});
-  expression?: Array<GoogleCloudIdentitytoolkitV1SqlExpression>;
+  expression?: ReadonlyArray<GoogleCloudIdentitytoolkitV1SqlExpression>;
   /** If `true`, this request will return the accounts matching the query. If `false`, only the __count__ of accounts matching the query will be returned. Defaults to `true`. */
   returnUserInfo?: boolean;
   /** The ID of the tenant to which the result is scoped. */
@@ -1964,7 +1964,7 @@ export const GoogleCloudIdentitytoolkitV1GetOobCodeRequest =
 export interface GoogleCloudIdentitytoolkitV1GetAccountInfoResponse {
   kind?: string;
   /** The information of specific user account(s) matching the parameters in the request. */
-  users?: Array<GoogleCloudIdentitytoolkitV1UserInfo>;
+  users?: ReadonlyArray<GoogleCloudIdentitytoolkitV1UserInfo>;
 }
 
 export const GoogleCloudIdentitytoolkitV1GetAccountInfoResponse =
@@ -1995,7 +1995,7 @@ export const AccountsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts",
+      path: "v1/projects/{targetProjectId}/accounts",
       hasBody: true,
     }),
     svc,
@@ -2036,7 +2036,7 @@ export const QueryAccountsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}:queryAccounts",
+      path: "v1/projects/{targetProjectId}:queryAccounts",
       hasBody: true,
     }),
     svc,
@@ -2077,7 +2077,7 @@ export const CreateSessionCookieProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}:createSessionCookie",
+      path: "v1/projects/{targetProjectId}:createSessionCookie",
       hasBody: true,
     }),
     svc,
@@ -2128,7 +2128,7 @@ export const BatchGetProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/accounts:batchGet",
+      path: "v1/projects/{targetProjectId}/accounts:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAccountsRequest>;
@@ -2168,7 +2168,7 @@ export const DeleteProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts:delete",
+      path: "v1/projects/{targetProjectId}/accounts:delete",
       hasBody: true,
     }),
     svc,
@@ -2209,7 +2209,7 @@ export const SendOobCodeProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts:sendOobCode",
+      path: "v1/projects/{targetProjectId}/accounts:sendOobCode",
       hasBody: true,
     }),
     svc,
@@ -2250,7 +2250,7 @@ export const UpdateProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts:update",
+      path: "v1/projects/{targetProjectId}/accounts:update",
       hasBody: true,
     }),
     svc,
@@ -2291,7 +2291,7 @@ export const BatchDeleteProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts:batchDelete",
+      path: "v1/projects/{targetProjectId}/accounts:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -2332,7 +2332,7 @@ export const QueryProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts:query",
+      path: "v1/projects/{targetProjectId}/accounts:query",
       hasBody: true,
     }),
     svc,
@@ -2373,7 +2373,7 @@ export const BatchCreateProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts:batchCreate",
+      path: "v1/projects/{targetProjectId}/accounts:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -2414,7 +2414,7 @@ export const LookupProjectsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/accounts:lookup",
+      path: "v1/projects/{targetProjectId}/accounts:lookup",
       hasBody: true,
     }),
     svc,
@@ -2458,7 +2458,7 @@ export const CreateSessionCookieProjectsTenantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}:createSessionCookie",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}:createSessionCookie",
       hasBody: true,
     }),
     svc,
@@ -2502,7 +2502,7 @@ export const AccountsProjectsTenantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts",
       hasBody: true,
     }),
     svc,
@@ -2546,7 +2546,7 @@ export const UpdateProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:update",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:update",
       hasBody: true,
     }),
     svc,
@@ -2590,7 +2590,7 @@ export const BatchDeleteProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:batchDelete",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -2641,7 +2641,7 @@ export const BatchGetProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:batchGet",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsTenantsAccountsRequest>;
@@ -2684,7 +2684,7 @@ export const DeleteProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:delete",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:delete",
       hasBody: true,
     }),
     svc,
@@ -2728,7 +2728,7 @@ export const SendOobCodeProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:sendOobCode",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:sendOobCode",
       hasBody: true,
     }),
     svc,
@@ -2772,7 +2772,7 @@ export const LookupProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:lookup",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:lookup",
       hasBody: true,
     }),
     svc,
@@ -2816,7 +2816,7 @@ export const QueryProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:query",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:query",
       hasBody: true,
     }),
     svc,
@@ -2860,7 +2860,7 @@ export const BatchCreateProjectsTenantsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/tenants/{tenantsId}/accounts:batchCreate",
+      path: "v1/projects/{targetProjectId}/tenants/{tenantId}/accounts:batchCreate",
       hasBody: true,
     }),
     svc,

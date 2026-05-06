@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface DebugInfo {
   /** The stack trace entries indicating where the error occurred. */
-  stackEntries?: Array<string>;
+  stackEntries?: ReadonlyArray<string>;
   /** Additional debugging information provided by the server. */
   detail?: string;
 }
@@ -87,7 +87,7 @@ export const HelpLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Help {
   /** URL(s) pointing to additional information on handling the current error. */
-  links?: Array<HelpLink>;
+  links?: ReadonlyArray<HelpLink>;
 }
 
 export const Help = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -112,7 +112,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -247,7 +247,7 @@ export const FirewallPolicyRuleOperationMetadata =
 
 export interface SetAutoscalerLinkOperationMetadata {
   /** List of zonal IGM IDs part of the RMIG. */
-  zonalIgmIds?: Array<string>;
+  zonalIgmIds?: ReadonlyArray<string>;
   /** Map of zone to an ID of the zonal IGM belonging to the RMIG. */
   zoneToIgmIds?: Record<string, string>;
 }
@@ -293,13 +293,13 @@ export interface Operation {
   endTime?: string;
   /** [Output Only] If errors are generated during processing of the operation, this field will be populated. */
   error?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      arguments?: Array<string>;
+      arguments?: ReadonlyArray<string>;
       debugInfo?: DebugInfo;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -308,7 +308,7 @@ export interface Operation {
     }>;
   };
   /** [Output Only] If warning messages are generated during processing of the operation, this field will be populated. */
-  warnings?: Array<{
+  warnings?: ReadonlyArray<{
     code?:
       | "DEPRECATED_RESOURCE_USED"
       | "NO_RESULTS_ON_PAGE"
@@ -353,7 +353,7 @@ export interface Operation {
       | "RESERVED_ENTRY_143"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   }>;
   /** [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found. */
   httpErrorStatusCode?: number;
@@ -489,7 +489,7 @@ export interface TemplateContents {
   /** The contents of the template schema. */
   schema?: string;
   /** Import files referenced by the main template. */
-  imports?: Array<ImportFile>;
+  imports?: ReadonlyArray<ImportFile>;
   /** Which interpreter (python or jinja) should be used during expansion. */
   interpreter?: "UNKNOWN_INTERPRETER" | "PYTHON" | "JINJA" | (string & {});
   /** The filename of the mainTemplate */
@@ -523,7 +523,7 @@ export interface CompositeType {
     | "SUPPORTED"
     | (string & {});
   /** Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. */
-  labels?: Array<CompositeTypeLabelEntry>;
+  labels?: ReadonlyArray<CompositeTypeLabelEntry>;
   /** Files for the template type. */
   templateContents?: TemplateContents;
 }
@@ -542,7 +542,7 @@ export const CompositeType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CompositeTypesListResponse {
   /** Output only. A list of resource composite types supported by Deployment Manager. */
-  compositeTypes?: Array<CompositeType>;
+  compositeTypes?: ReadonlyArray<CompositeType>;
   /** A token used to continue a truncated list request. */
   nextPageToken?: string;
 }
@@ -604,7 +604,7 @@ export interface DeploymentUpdate {
   /** Output only. URL of the manifest representing the update configuration of this deployment. */
   manifest?: string;
   /** Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. */
-  labels?: Array<DeploymentUpdateLabelEntry>;
+  labels?: ReadonlyArray<DeploymentUpdateLabelEntry>;
   /** Output only. An optional user-provided description of the deployment after the current update has been applied. */
   description?: string;
   /** Output only. The user-provided default credential to use when deploying this preview. */
@@ -631,7 +631,7 @@ export interface TargetConfiguration {
   /** The configuration to use for this deployment. */
   config?: ConfigFile;
   /** Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template. */
-  imports?: Array<ImportFile>;
+  imports?: ReadonlyArray<ImportFile>;
 }
 
 export const TargetConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -684,11 +684,11 @@ export interface Deployment {
   /** [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates. */
   target?: TargetConfiguration;
   /** Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. */
-  labels?: Array<DeploymentLabelEntry>;
+  labels?: ReadonlyArray<DeploymentLabelEntry>;
   /** Output only. Server defined URL for the resource. */
   selfLink?: string;
   /** Output only. List of outputs from the last manifest that deployed successfully. */
-  outputs?: Array<DeploymentOutputEntry>;
+  outputs?: ReadonlyArray<DeploymentOutputEntry>;
   /** User provided default credential for the deployment. */
   credential?: Credential;
 }
@@ -712,7 +712,7 @@ export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeploymentsListResponse {
   /** Output only. The deployments contained in this response. */
-  deployments?: Array<Deployment>;
+  deployments?: ReadonlyArray<Deployment>;
   /** Output only. A token used to continue a truncated list request. */
   nextPageToken?: string;
 }
@@ -766,7 +766,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -786,7 +786,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -798,7 +798,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -810,9 +810,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -830,7 +830,7 @@ export interface GlobalSetPolicyRequest {
   /** Update mask for the policy. */
   updateMask?: string;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
   etag?: string;
 }
@@ -846,7 +846,7 @@ export const GlobalSetPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TestPermissionsRequest {
   /** The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -857,7 +857,7 @@ export const TestPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TestPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestPermissionsResponse =
@@ -874,7 +874,7 @@ export interface Manifest {
   /** Output only. The YAML configuration for this manifest. */
   config?: ConfigFile;
   /** Output only. The imported files for this manifest. */
-  imports?: Array<ImportFile>;
+  imports?: ReadonlyArray<ImportFile>;
   /** Output only. The fully-expanded configuration file, including any templates and references. */
   expandedConfig?: string;
   /** Output only. Creation timestamp in RFC3339 text format. */
@@ -902,7 +902,7 @@ export const Manifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ManifestsListResponse {
   /** Output only. Manifests contained in this list response. */
-  manifests?: Array<Manifest>;
+  manifests?: ReadonlyArray<Manifest>;
   /** Output only. A token used to continue a truncated list request. */
   nextPageToken?: string;
 }
@@ -914,7 +914,7 @@ export const ManifestsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface OperationsListResponse {
   /** Output only. Operations contained in this list response. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Output only. A token used to continue a truncated list request. */
   nextPageToken?: string;
 }
@@ -940,13 +940,13 @@ export interface ResourceUpdate {
   manifest?: string;
   /** Output only. If errors are generated during update of the resource, this field will be populated. */
   error?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      arguments?: Array<string>;
+      arguments?: ReadonlyArray<string>;
       debugInfo?: DebugInfo;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -955,7 +955,7 @@ export interface ResourceUpdate {
     }>;
   };
   /** Output only. If warning messages are generated during processing of this resource, this field will be populated. */
-  warnings?: Array<{
+  warnings?: ReadonlyArray<{
     code?:
       | "DEPRECATED_RESOURCE_USED"
       | "NO_RESULTS_ON_PAGE"
@@ -1000,7 +1000,7 @@ export interface ResourceUpdate {
       | "RESERVED_ENTRY_143"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   }>;
   /** Output only. The state of the resource. */
   state?:
@@ -1028,7 +1028,7 @@ export interface ResourceUpdate {
   /** Output only. The credential that will be used creating/updating this resource. */
   credential?: Credential;
   /** Output only. In case this is an action, it will show the runtimePolicies that this action will have after updating the deployment. */
-  runtimePolicies?: Array<
+  runtimePolicies?: ReadonlyArray<
     "CREATE" | "DELETE" | "UPDATE_ON_CHANGE" | "UPDATE_ALWAYS" | (string & {})
   >;
 }
@@ -1108,7 +1108,7 @@ export interface Resource {
   /** Output only. Update timestamp in RFC3339 text format. */
   updateTime?: string;
   /** Output only. If warning messages are generated during processing of this resource, this field will be populated. */
-  warnings?: Array<{
+  warnings?: ReadonlyArray<{
     code?:
       | "DEPRECATED_RESOURCE_USED"
       | "NO_RESULTS_ON_PAGE"
@@ -1153,12 +1153,12 @@ export interface Resource {
       | "RESERVED_ENTRY_143"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   }>;
   /** Output only. The last used credential that successfully created/updated the resource. */
   lastUsedCredential?: Credential;
   /** Output only. In case this is an action, it will show the runtimePolicies on which this action will run in the deployment */
-  runtimePolicies?: Array<
+  runtimePolicies?: ReadonlyArray<
     "CREATE" | "DELETE" | "UPDATE_ON_CHANGE" | "UPDATE_ALWAYS" | (string & {})
   >;
 }
@@ -1197,7 +1197,7 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourcesListResponse {
   /** Resources contained in this list response. */
-  resources?: Array<Resource>;
+  resources?: ReadonlyArray<Resource>;
   /** A token used to continue a truncated list request. */
   nextPageToken?: string;
 }
@@ -1285,7 +1285,7 @@ export interface PollingOptions {
   /** JsonPath expression that evaluates to string, it indicates where to poll. */
   pollingLink?: string;
   /** An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed to the user. */
-  diagnostics?: Array<Diagnostic>;
+  diagnostics?: ReadonlyArray<Diagnostic>;
 }
 
 export const PollingOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1312,11 +1312,11 @@ export interface Options {
   /** The json path to the field in the resource JSON body into which the resource name should be mapped. Leaving this empty indicates that there should be no mapping performed. */
   nameProperty?: string;
   /** The mappings that apply for requests. */
-  inputMappings?: Array<InputMapping>;
+  inputMappings?: ReadonlyArray<InputMapping>;
   /** Options for how to validate and process properties on a resource. */
   validationOptions?: ValidationOptions;
   /** Options regarding how to thread async requests. */
-  asyncOptions?: Array<AsyncOptions>;
+  asyncOptions?: ReadonlyArray<AsyncOptions>;
 }
 
 export const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1376,7 +1376,7 @@ export interface TypeProvider {
   /** Output only. The Operation that most recently ran, or is currently running, on this type provider. */
   operation?: Operation;
   /** Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?` */
-  labels?: Array<TypeProviderLabelEntry>;
+  labels?: ReadonlyArray<TypeProviderLabelEntry>;
   /** Descriptor Url for the this type provider. */
   descriptorUrl?: string;
   /** Credential used when interacting with this type. */
@@ -1384,9 +1384,9 @@ export interface TypeProvider {
   /** Options to apply when handling any resources in this service. */
   options?: Options;
   /** Allows resource handling overrides for specific collections */
-  collectionOverrides?: Array<CollectionOverride>;
+  collectionOverrides?: ReadonlyArray<CollectionOverride>;
   /** List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB. */
-  customCertificateAuthorityRoots?: Array<string>;
+  customCertificateAuthorityRoots?: ReadonlyArray<string>;
 }
 
 export const TypeProvider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1406,7 +1406,7 @@ export const TypeProvider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TypeProvidersListResponse {
   /** Output only. A list of resource type providers supported by Deployment Manager. */
-  typeProviders?: Array<TypeProvider>;
+  typeProviders?: ReadonlyArray<TypeProvider>;
   /** A token used to continue a truncated list request. */
   nextPageToken?: string;
 }
@@ -1458,7 +1458,7 @@ export const TypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TypeProvidersListTypesResponse {
   /** Output only. A list of resource type info. */
-  types?: Array<TypeInfo>;
+  types?: ReadonlyArray<TypeInfo>;
   /** A token used to continue a truncated list request. */
   nextPageToken?: string;
 }
@@ -1477,7 +1477,7 @@ export interface BaseType {
   /** Options to apply when handling any resources in this service. */
   options?: Options;
   /** Allows resource handling overrides for specific collections */
-  collectionOverrides?: Array<CollectionOverride>;
+  collectionOverrides?: ReadonlyArray<CollectionOverride>;
 }
 
 export const BaseType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1514,7 +1514,7 @@ export interface Type {
   /** Output only. The Operation that most recently ran, or is currently running, on this type. */
   operation?: Operation;
   /** Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. */
-  labels?: Array<TypeLabelEntry>;
+  labels?: ReadonlyArray<TypeLabelEntry>;
 }
 
 export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1530,7 +1530,7 @@ export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TypesListResponse {
   /** Output only. A list of resource types supported by Deployment Manager. */
-  types?: Array<Type>;
+  types?: ReadonlyArray<Type>;
   /** A token used to continue a truncated list request. */
   nextPageToken?: string;
 }

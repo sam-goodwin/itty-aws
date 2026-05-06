@@ -28,7 +28,7 @@ export interface Callback {
   /** Output only. The method accepted by the callback. For example: GET, POST, PUT. */
   method?: string;
   /** Output only. The payloads received by the callback that have not been processed by a waiting execution step. */
-  availablePayloads?: Array<string>;
+  availablePayloads?: ReadonlyArray<string>;
   /** Output only. Number of execution steps waiting on this callback. */
   waiters?: string;
 }
@@ -42,7 +42,7 @@ export const Callback = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCallbacksResponse {
   /** The callbacks which match the request. */
-  callbacks?: Array<Callback>;
+  callbacks?: ReadonlyArray<Callback>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -63,7 +63,7 @@ export const Exception = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NavigationInfo {
   /** Step entries that can be reached by "stepping into" e.g. a subworkflow call. */
-  children?: Array<string>;
+  children?: ReadonlyArray<string>;
   /** The step entry, if any, that can be reached by "stepping out" of the current workflow being executed. */
   parent?: string;
   /** The index of the next step in the current workflow, if any. */
@@ -184,7 +184,7 @@ export const StepEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListStepEntriesResponse {
   /** The list of entries. */
-  stepEntries?: Array<StepEntry>;
+  stepEntries?: ReadonlyArray<StepEntry>;
   /** A token to retrieve next page of results. Pass this value in the ListStepEntriesRequest.page_token field in the subsequent call to `ListStepEntries` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** Indicates the total number of StepEntries that matched the request filter. For running executions, this number shows the number of StepEntries that are executed thus far. */
@@ -230,7 +230,7 @@ export const StackTraceElement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StackTrace {
   /** An array of stack elements. */
-  elements?: Array<StackTraceElement>;
+  elements?: ReadonlyArray<StackTraceElement>;
 }
 
 export const StackTrace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -267,7 +267,7 @@ export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step. */
-  currentSteps?: Array<Step>;
+  currentSteps?: ReadonlyArray<Step>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -359,7 +359,7 @@ export const Execution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListExecutionsResponse {
   /** The executions which match the request. */
-  executions?: Array<Execution>;
+  executions?: ReadonlyArray<Execution>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -457,7 +457,7 @@ export const TriggerPubsubExecutionProjectsLocationsWorkflowsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}:triggerPubsubExecution",
+      path: "v1/{workflow}:triggerPubsubExecution",
       hasBody: true,
     }),
     svc,
@@ -507,10 +507,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -549,11 +546,7 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Execution).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/executions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -587,10 +580,7 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -624,11 +614,7 @@ export const CancelProjectsLocationsWorkflowsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelExecutionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -659,10 +645,7 @@ export const ExportDataProjectsLocationsWorkflowsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:exportData",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:exportData" }),
     svc,
   ) as unknown as Schema.Schema<ExportDataProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -699,7 +682,7 @@ export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:deleteExecutionHistory",
+      path: "v1/{name}:deleteExecutionHistory",
       hasBody: true,
     }),
     svc,
@@ -740,10 +723,7 @@ export const ListProjectsLocationsWorkflowsExecutionsCallbacksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}/callbacks",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/callbacks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsCallbacksRequest>;
 
@@ -802,10 +782,7 @@ export const ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}/stepEntries",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/stepEntries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest>;
 
@@ -849,10 +826,7 @@ export const GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}/stepEntries/{stepEntriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest>;
 

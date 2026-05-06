@@ -105,7 +105,7 @@ export const GoogleCloudVisionV1p2beta1LatLongRect =
 
 export interface GoogleCloudVisionV1p2beta1CropHintsParams {
   /** Aspect ratios in floats, representing the ratio of the width to the height of the image. For example, if the desired aspect ratio is 4/3, the corresponding float value should be 1.33333. If not specified, the best possible crop is returned. The number of provided aspect ratios is limited to a maximum of 16; any aspect ratios provided after the 16th are ignored. */
-  aspectRatios?: Array<number>;
+  aspectRatios?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudVisionV1p2beta1CropHintsParams =
@@ -141,9 +141,9 @@ export const GoogleCloudVisionV1p2beta1NormalizedVertex =
 
 export interface GoogleCloudVisionV1p2beta1BoundingPoly {
   /** The bounding polygon vertices. */
-  vertices?: Array<GoogleCloudVisionV1p2beta1Vertex>;
+  vertices?: ReadonlyArray<GoogleCloudVisionV1p2beta1Vertex>;
   /** The bounding polygon normalized vertices. */
-  normalizedVertices?: Array<GoogleCloudVisionV1p2beta1NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p2beta1NormalizedVertex>;
 }
 
 export const GoogleCloudVisionV1p2beta1BoundingPoly =
@@ -160,7 +160,7 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchParams {
   /** The resource name of a ProductSet to be searched for similar images. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. */
   productSet?: string;
   /** The list of product categories to search in. Currently, we only consider the first category, and either "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1", or "general-v1" should be specified. The legacy categories "homegoods", "apparel", and "toys" are still supported but will be deprecated. For new products, please use "homegoods-v2", "apparel-v2", or "toys-v2" for better product search accuracy. It is recommended to migrate existing products to these categories as well. */
-  productCategories?: Array<string>;
+  productCategories?: ReadonlyArray<string>;
   /** The filtering expression. This can be used to restrict search results based on Product labels. We currently support an AND of OR of key-value expressions, where each expression within an OR must have the same key. An '=' should be used to connect the key and value. For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but "(color = red OR brand = Google)" is not acceptable. "color: red" is not acceptable because it uses a ':' instead of an '='. */
   filter?: string;
 }
@@ -187,7 +187,7 @@ export interface GoogleCloudVisionV1p2beta1TextDetectionParams {
   /** By default, Cloud Vision API only includes confidence score for DOCUMENT_TEXT_DETECTION result. Set the flag to true to include confidence score for TEXT_DETECTION as well. */
   enableTextDetectionConfidenceScore?: boolean;
   /** A list of advanced OCR options to further fine-tune OCR behavior. Current valid values are: - `legacy_layout`: a heuristics layout detection algorithm, which serves as an alternative to the current ML-based layout detection algorithm. Customers can choose the best suitable layout algorithm based on their situation. */
-  advancedOcrOptions?: Array<string>;
+  advancedOcrOptions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudVisionV1p2beta1TextDetectionParams =
@@ -200,7 +200,7 @@ export interface GoogleCloudVisionV1p2beta1ImageContext {
   /** Not used. */
   latLongRect?: GoogleCloudVisionV1p2beta1LatLongRect;
   /** List of languages to use for TEXT_DETECTION. In most cases, an empty value yields the best results since it enables automatic language detection. For languages based on the Latin alphabet, setting `language_hints` is not needed. In rare cases, when the language of the text in the image is known, setting a hint will help get better results (although it will be a significant hindrance if the hint is wrong). Text detection returns an error if one or more of the specified languages is not one of the [supported languages](https://cloud.google.com/vision/docs/languages). */
-  languageHints?: Array<string>;
+  languageHints?: ReadonlyArray<string>;
   /** Parameters for crop hints annotation request. */
   cropHintsParams?: GoogleCloudVisionV1p2beta1CropHintsParams;
   /** Parameters for product search. */
@@ -231,7 +231,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateImageRequest {
   /** The image to be processed. */
   image?: GoogleCloudVisionV1p2beta1Image;
   /** Requested features. */
-  features?: Array<GoogleCloudVisionV1p2beta1Feature>;
+  features?: ReadonlyArray<GoogleCloudVisionV1p2beta1Feature>;
   /** Additional context that may accompany the image. */
   imageContext?: GoogleCloudVisionV1p2beta1ImageContext;
 }
@@ -245,7 +245,7 @@ export const GoogleCloudVisionV1p2beta1AnnotateImageRequest =
 
 export interface GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest {
   /** Required. Individual image annotation requests for this batch. */
-  requests?: Array<GoogleCloudVisionV1p2beta1AnnotateImageRequest>;
+  requests?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateImageRequest>;
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent?: string;
   /** Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. */
@@ -338,7 +338,7 @@ export interface GoogleCloudVisionV1p2beta1FaceAnnotation {
   /** The `fd_bounding_poly` bounding polygon is tighter than the `boundingPoly`, and encloses only the skin part of the face. Typically, it is used to eliminate the face from any image analysis that detects the "amount of skin" visible in an image. It is not based on the landmarker results, only on the initial face detection, hence the fd (face detection) prefix. */
   fdBoundingPoly?: GoogleCloudVisionV1p2beta1BoundingPoly;
   /** Detected face landmarks. */
-  landmarks?: Array<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>;
   /** Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to the image vertical about the axis perpendicular to the face. Range [-180,180]. */
   rollAngle?: number;
   /** Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the vertical plane perpendicular to the image. Range [-180,180]. */
@@ -477,9 +477,9 @@ export interface GoogleCloudVisionV1p2beta1EntityAnnotation {
   /** Image region to which this entity belongs. Not produced for `LABEL_DETECTION` features. */
   boundingPoly?: GoogleCloudVisionV1p2beta1BoundingPoly;
   /** The location information for the detected entity. Multiple `LocationInfo` elements can be present because one location may indicate the location of the scene in the image, and another location may indicate the location of the place where the image was taken. Location information is usually present for landmarks. */
-  locations?: Array<GoogleCloudVisionV1p2beta1LocationInfo>;
+  locations?: ReadonlyArray<GoogleCloudVisionV1p2beta1LocationInfo>;
   /** Some entities may have optional user-supplied `Property` (name/value) fields, such a score or string that qualifies the entity. */
-  properties?: Array<GoogleCloudVisionV1p2beta1Property>;
+  properties?: ReadonlyArray<GoogleCloudVisionV1p2beta1Property>;
 }
 
 export const GoogleCloudVisionV1p2beta1EntityAnnotation =
@@ -562,7 +562,7 @@ export const GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak =
 
 export interface GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>;
   /** Detected start or end of a text segment. */
   detectedBreak?: GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak;
 }
@@ -606,7 +606,7 @@ export interface GoogleCloudVisionV1p2beta1Word {
   /** The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p2beta1BoundingPoly;
   /** List of symbols in the word. The order of the symbols follows the natural reading order. */
-  symbols?: Array<GoogleCloudVisionV1p2beta1Symbol>;
+  symbols?: ReadonlyArray<GoogleCloudVisionV1p2beta1Symbol>;
   /** Confidence of the OCR results for the word. Range [0, 1]. */
   confidence?: number;
 }
@@ -627,7 +627,7 @@ export interface GoogleCloudVisionV1p2beta1Paragraph {
   /** The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p2beta1BoundingPoly;
   /** List of all words in this paragraph. */
-  words?: Array<GoogleCloudVisionV1p2beta1Word>;
+  words?: ReadonlyArray<GoogleCloudVisionV1p2beta1Word>;
   /** Confidence of the OCR results for the paragraph. Range [0, 1]. */
   confidence?: number;
 }
@@ -648,7 +648,7 @@ export interface GoogleCloudVisionV1p2beta1Block {
   /** The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p2beta1BoundingPoly;
   /** List of paragraphs in this block (if this blocks is of type text). */
-  paragraphs?: Array<GoogleCloudVisionV1p2beta1Paragraph>;
+  paragraphs?: ReadonlyArray<GoogleCloudVisionV1p2beta1Paragraph>;
   /** Detected block type (text, image etc) for this block. */
   blockType?:
     | "UNKNOWN"
@@ -683,7 +683,7 @@ export interface GoogleCloudVisionV1p2beta1Page {
   /** Page height. For PDFs the unit is points. For images (including TIFFs) the unit is pixels. */
   height?: number;
   /** List of blocks of text, images etc on this page. */
-  blocks?: Array<GoogleCloudVisionV1p2beta1Block>;
+  blocks?: ReadonlyArray<GoogleCloudVisionV1p2beta1Block>;
   /** Confidence of the OCR results on the page. Range [0, 1]. */
   confidence?: number;
 }
@@ -701,7 +701,7 @@ export const GoogleCloudVisionV1p2beta1Page =
 
 export interface GoogleCloudVisionV1p2beta1TextAnnotation {
   /** List of pages detected by OCR. */
-  pages?: Array<GoogleCloudVisionV1p2beta1Page>;
+  pages?: ReadonlyArray<GoogleCloudVisionV1p2beta1Page>;
   /** UTF-8 text detected on the pages. */
   text?: string;
 }
@@ -805,7 +805,7 @@ export const GoogleCloudVisionV1p2beta1ColorInfo =
 
 export interface GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
   /** RGB color values with their score and pixel fraction. */
-  colors?: Array<GoogleCloudVisionV1p2beta1ColorInfo>;
+  colors?: ReadonlyArray<GoogleCloudVisionV1p2beta1ColorInfo>;
 }
 
 export const GoogleCloudVisionV1p2beta1DominantColorsAnnotation =
@@ -845,7 +845,7 @@ export const GoogleCloudVisionV1p2beta1CropHint =
 
 export interface GoogleCloudVisionV1p2beta1CropHintsAnnotation {
   /** Crop hint results. */
-  cropHints?: Array<GoogleCloudVisionV1p2beta1CropHint>;
+  cropHints?: ReadonlyArray<GoogleCloudVisionV1p2beta1CropHint>;
 }
 
 export const GoogleCloudVisionV1p2beta1CropHintsAnnotation =
@@ -894,9 +894,9 @@ export interface GoogleCloudVisionV1p2beta1WebDetectionWebPage {
   /** Title for the web page, may contain HTML markups. */
   pageTitle?: string;
   /** Fully matching images on the page. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
   /** Partial matching images on the page. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
 }
 
 export const GoogleCloudVisionV1p2beta1WebDetectionWebPage =
@@ -927,17 +927,17 @@ export const GoogleCloudVisionV1p2beta1WebDetectionWebLabel =
 
 export interface GoogleCloudVisionV1p2beta1WebDetection {
   /** Deduced entities from similar images on the Internet. */
-  webEntities?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebEntity>;
+  webEntities?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebEntity>;
   /** Fully matching images from the Internet. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
   /** Partial matching images from the Internet. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
   /** Web pages containing the matching images from the Internet. */
-  pagesWithMatchingImages?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebPage>;
+  pagesWithMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebPage>;
   /** The visually similar image results. */
-  visuallySimilarImages?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
+  visuallySimilarImages?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebImage>;
   /** The service's best guess as to the topic of the request image. Inferred from similar images on the open web. */
-  bestGuessLabels?: Array<GoogleCloudVisionV1p2beta1WebDetectionWebLabel>;
+  bestGuessLabels?: ReadonlyArray<GoogleCloudVisionV1p2beta1WebDetectionWebLabel>;
 }
 
 export const GoogleCloudVisionV1p2beta1WebDetection =
@@ -985,7 +985,7 @@ export interface GoogleCloudVisionV1p2beta1Product {
   /** Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products. */
   productCategory?: string;
   /** Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet. */
-  productLabels?: Array<GoogleCloudVisionV1p2beta1ProductKeyValue>;
+  productLabels?: ReadonlyArray<GoogleCloudVisionV1p2beta1ProductKeyValue>;
 }
 
 export const GoogleCloudVisionV1p2beta1Product =
@@ -1043,9 +1043,9 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
   /** The bounding polygon around the product detected in the query image. */
   boundingPoly?: GoogleCloudVisionV1p2beta1BoundingPoly;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>;
   /** List of generic predictions for the object in the bounding box. */
-  objectAnnotations?: Array<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>;
 }
 
 export const GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult =
@@ -1067,9 +1067,9 @@ export interface GoogleCloudVisionV1p2beta1ProductSearchResults {
   /** Timestamp of the index which provided these results. Products added to the product set and products removed from the product set after this time are not reflected in the current results. */
   indexTime?: string;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>;
   /** List of results grouped by products detected in the query image. Each entry corresponds to one bounding polygon in the query image, and contains the matching products specific to that region. There may be duplicate product matches in the union of all the per-product results. */
-  productGroupedResults?: Array<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>;
+  productGroupedResults?: ReadonlyArray<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>;
 }
 
 export const GoogleCloudVisionV1p2beta1ProductSearchResults =
@@ -1089,7 +1089,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1117,17 +1117,17 @@ export const GoogleCloudVisionV1p2beta1ImageAnnotationContext =
 
 export interface GoogleCloudVisionV1p2beta1AnnotateImageResponse {
   /** If present, face detection has completed successfully. */
-  faceAnnotations?: Array<GoogleCloudVisionV1p2beta1FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVisionV1p2beta1FaceAnnotation>;
   /** If present, landmark detection has completed successfully. */
-  landmarkAnnotations?: Array<GoogleCloudVisionV1p2beta1EntityAnnotation>;
+  landmarkAnnotations?: ReadonlyArray<GoogleCloudVisionV1p2beta1EntityAnnotation>;
   /** If present, logo detection has completed successfully. */
-  logoAnnotations?: Array<GoogleCloudVisionV1p2beta1EntityAnnotation>;
+  logoAnnotations?: ReadonlyArray<GoogleCloudVisionV1p2beta1EntityAnnotation>;
   /** If present, label detection has completed successfully. */
-  labelAnnotations?: Array<GoogleCloudVisionV1p2beta1EntityAnnotation>;
+  labelAnnotations?: ReadonlyArray<GoogleCloudVisionV1p2beta1EntityAnnotation>;
   /** If present, localized object detection has completed successfully. This will be sorted descending by confidence score. */
-  localizedObjectAnnotations?: Array<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>;
+  localizedObjectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>;
   /** If present, text (OCR) detection has completed successfully. */
-  textAnnotations?: Array<GoogleCloudVisionV1p2beta1EntityAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVisionV1p2beta1EntityAnnotation>;
   /** If present, text (OCR) detection or document (OCR) text detection has completed successfully. This annotation provides the structural hierarchy for the OCR detected text. */
   fullTextAnnotation?: GoogleCloudVisionV1p2beta1TextAnnotation;
   /** If present, safe-search annotation has completed successfully. */
@@ -1190,7 +1190,7 @@ export const GoogleCloudVisionV1p2beta1AnnotateImageResponse =
 
 export interface GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse {
   /** Individual responses to image annotation requests within the batch. */
-  responses?: Array<GoogleCloudVisionV1p2beta1AnnotateImageResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateImageResponse>;
 }
 
 export const GoogleCloudVisionV1p2beta1BatchAnnotateImagesResponse =
@@ -1232,11 +1232,11 @@ export interface GoogleCloudVisionV1p2beta1AnnotateFileRequest {
   /** Required. Information about the input file. */
   inputConfig?: GoogleCloudVisionV1p2beta1InputConfig;
   /** Required. Requested features. */
-  features?: Array<GoogleCloudVisionV1p2beta1Feature>;
+  features?: ReadonlyArray<GoogleCloudVisionV1p2beta1Feature>;
   /** Additional context that may accompany the image(s) in the file. */
   imageContext?: GoogleCloudVisionV1p2beta1ImageContext;
   /** Pages of the file to perform image annotation. Pages starts from 1, we assume the first page of the file is page 1. At most 5 pages are supported per request. Pages can be negative. Page 1 means the first page. Page 2 means the second page. Page -1 means the last page. Page -2 means the second to the last page. If the file is GIF instead of PDF or TIFF, page refers to GIF frames. If this field is empty, by default the service performs image annotation for the first 5 pages of the file. */
-  pages?: Array<number>;
+  pages?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudVisionV1p2beta1AnnotateFileRequest =
@@ -1249,7 +1249,7 @@ export const GoogleCloudVisionV1p2beta1AnnotateFileRequest =
 
 export interface GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest {
   /** Required. The list of file annotation requests. Right now we support only one AnnotateFileRequest in BatchAnnotateFilesRequest. */
-  requests?: Array<GoogleCloudVisionV1p2beta1AnnotateFileRequest>;
+  requests?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateFileRequest>;
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent?: string;
   /** Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. */
@@ -1271,7 +1271,7 @@ export interface GoogleCloudVisionV1p2beta1AnnotateFileResponse {
   /** Information about the file for which this response is generated. */
   inputConfig?: GoogleCloudVisionV1p2beta1InputConfig;
   /** Individual responses to images found within the file. This field will be empty if the `error` field is set. */
-  responses?: Array<GoogleCloudVisionV1p2beta1AnnotateImageResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateImageResponse>;
   /** This field gives the total number of pages in the file. */
   totalPages?: number;
   /** If set, represents the error message for the failed request. The `responses` field will not be set in this case. */
@@ -1290,7 +1290,7 @@ export const GoogleCloudVisionV1p2beta1AnnotateFileResponse =
 
 export interface GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse {
   /** The list of file annotation responses, each response corresponding to each AnnotateFileRequest in BatchAnnotateFilesRequest. */
-  responses?: Array<GoogleCloudVisionV1p2beta1AnnotateFileResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateFileResponse>;
 }
 
 export const GoogleCloudVisionV1p2beta1BatchAnnotateFilesResponse =
@@ -1327,7 +1327,7 @@ export const GoogleCloudVisionV1p2beta1OutputConfig =
 
 export interface GoogleCloudVisionV1p2beta1AsyncBatchAnnotateImagesRequest {
   /** Required. Individual image annotation requests for this batch. */
-  requests?: Array<GoogleCloudVisionV1p2beta1AnnotateImageRequest>;
+  requests?: ReadonlyArray<GoogleCloudVisionV1p2beta1AnnotateImageRequest>;
   /** Required. The desired output location and metadata (e.g. format). */
   outputConfig?: GoogleCloudVisionV1p2beta1OutputConfig;
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -1373,7 +1373,7 @@ export interface GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest {
   /** Required. Information about the input file. */
   inputConfig?: GoogleCloudVisionV1p2beta1InputConfig;
   /** Required. Requested features. */
-  features?: Array<GoogleCloudVisionV1p2beta1Feature>;
+  features?: ReadonlyArray<GoogleCloudVisionV1p2beta1Feature>;
   /** Additional context that may accompany the image(s) in the file. */
   imageContext?: GoogleCloudVisionV1p2beta1ImageContext;
   /** Required. The desired output location and metadata (e.g. format). */
@@ -1392,7 +1392,7 @@ export const GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest =
 
 export interface GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest {
   /** Required. Individual async file annotation requests for this batch. */
-  requests?: Array<GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest>;
+  requests?: ReadonlyArray<GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest>;
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent?: string;
   /** Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. */
@@ -1460,9 +1460,9 @@ export const NormalizedVertex = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BoundingPoly {
   /** The bounding polygon vertices. */
-  vertices?: Array<Vertex>;
+  vertices?: ReadonlyArray<Vertex>;
   /** The bounding polygon normalized vertices. */
-  normalizedVertices?: Array<NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<NormalizedVertex>;
 }
 
 export const BoundingPoly = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1541,7 +1541,7 @@ export interface FaceAnnotation {
   /** The `fd_bounding_poly` bounding polygon is tighter than the `boundingPoly`, and encloses only the skin part of the face. Typically, it is used to eliminate the face from any image analysis that detects the "amount of skin" visible in an image. It is not based on the landmarker results, only on the initial face detection, hence the fd (face detection) prefix. */
   fdBoundingPoly?: BoundingPoly;
   /** Detected face landmarks. */
-  landmarks?: Array<Landmark>;
+  landmarks?: ReadonlyArray<Landmark>;
   /** Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to the image vertical about the axis perpendicular to the face. Range [-180,180]. */
   rollAngle?: number;
   /** Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the vertical plane perpendicular to the image. Range [-180,180]. */
@@ -1675,9 +1675,9 @@ export interface EntityAnnotation {
   /** Image region to which this entity belongs. Not produced for `LABEL_DETECTION` features. */
   boundingPoly?: BoundingPoly;
   /** The location information for the detected entity. Multiple `LocationInfo` elements can be present because one location may indicate the location of the scene in the image, and another location may indicate the location of the place where the image was taken. Location information is usually present for landmarks. */
-  locations?: Array<LocationInfo>;
+  locations?: ReadonlyArray<LocationInfo>;
   /** Some entities may have optional user-supplied `Property` (name/value) fields, such a score or string that qualifies the entity. */
-  properties?: Array<Property>;
+  properties?: ReadonlyArray<Property>;
 }
 
 export const EntityAnnotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1747,7 +1747,7 @@ export const DetectedBreak = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TextProperty {
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<DetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<DetectedLanguage>;
   /** Detected start or end of a text segment. */
   detectedBreak?: DetectedBreak;
 }
@@ -1781,7 +1781,7 @@ export interface Word {
   /** The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: BoundingPoly;
   /** List of symbols in the word. The order of the symbols follows the natural reading order. */
-  symbols?: Array<Vision_Symbol>;
+  symbols?: ReadonlyArray<Vision_Symbol>;
   /** Confidence of the OCR results for the word. Range [0, 1]. */
   confidence?: number;
 }
@@ -1799,7 +1799,7 @@ export interface Paragraph {
   /** The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: BoundingPoly;
   /** List of all words in this paragraph. */
-  words?: Array<Word>;
+  words?: ReadonlyArray<Word>;
   /** Confidence of the OCR results for the paragraph. Range [0, 1]. */
   confidence?: number;
 }
@@ -1817,7 +1817,7 @@ export interface Block {
   /** The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: BoundingPoly;
   /** List of paragraphs in this block (if this blocks is of type text). */
-  paragraphs?: Array<Paragraph>;
+  paragraphs?: ReadonlyArray<Paragraph>;
   /** Detected block type (text, image etc) for this block. */
   blockType?:
     | "UNKNOWN"
@@ -1847,7 +1847,7 @@ export interface Page {
   /** Page height. For PDFs the unit is points. For images (including TIFFs) the unit is pixels. */
   height?: number;
   /** List of blocks of text, images etc on this page. */
-  blocks?: Array<Block>;
+  blocks?: ReadonlyArray<Block>;
   /** Confidence of the OCR results on the page. Range [0, 1]. */
   confidence?: number;
 }
@@ -1862,7 +1862,7 @@ export const Page = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TextAnnotation {
   /** List of pages detected by OCR. */
-  pages?: Array<Page>;
+  pages?: ReadonlyArray<Page>;
   /** UTF-8 text detected on the pages. */
   text?: string;
 }
@@ -1945,7 +1945,7 @@ export const ColorInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DominantColorsAnnotation {
   /** RGB color values with their score and pixel fraction. */
-  colors?: Array<ColorInfo>;
+  colors?: ReadonlyArray<ColorInfo>;
 }
 
 export const DominantColorsAnnotation =
@@ -1979,7 +1979,7 @@ export const CropHint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CropHintsAnnotation {
   /** Crop hint results. */
-  cropHints?: Array<CropHint>;
+  cropHints?: ReadonlyArray<CropHint>;
 }
 
 export const CropHintsAnnotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2021,9 +2021,9 @@ export interface WebPage {
   /** Title for the web page, may contain HTML markups. */
   pageTitle?: string;
   /** Fully matching images on the page. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<WebImage>;
+  fullMatchingImages?: ReadonlyArray<WebImage>;
   /** Partial matching images on the page. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<WebImage>;
+  partialMatchingImages?: ReadonlyArray<WebImage>;
 }
 
 export const WebPage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2048,17 +2048,17 @@ export const WebLabel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WebDetection {
   /** Deduced entities from similar images on the Internet. */
-  webEntities?: Array<WebEntity>;
+  webEntities?: ReadonlyArray<WebEntity>;
   /** Fully matching images from the Internet. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<WebImage>;
+  fullMatchingImages?: ReadonlyArray<WebImage>;
   /** Partial matching images from the Internet. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<WebImage>;
+  partialMatchingImages?: ReadonlyArray<WebImage>;
   /** Web pages containing the matching images from the Internet. */
-  pagesWithMatchingImages?: Array<WebPage>;
+  pagesWithMatchingImages?: ReadonlyArray<WebPage>;
   /** The visually similar image results. */
-  visuallySimilarImages?: Array<WebImage>;
+  visuallySimilarImages?: ReadonlyArray<WebImage>;
   /** The service's best guess as to the topic of the request image. Inferred from similar images on the open web. */
-  bestGuessLabels?: Array<WebLabel>;
+  bestGuessLabels?: ReadonlyArray<WebLabel>;
 }
 
 export const WebDetection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2092,7 +2092,7 @@ export interface Product {
   /** Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products. */
   productCategory?: string;
   /** Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet. */
-  productLabels?: Array<KeyValue>;
+  productLabels?: ReadonlyArray<KeyValue>;
 }
 
 export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2140,9 +2140,9 @@ export interface GroupedResult {
   /** The bounding polygon around the product detected in the query image. */
   boundingPoly?: BoundingPoly;
   /** List of results, one for each product match. */
-  results?: Array<Result>;
+  results?: ReadonlyArray<Result>;
   /** List of generic predictions for the object in the bounding box. */
-  objectAnnotations?: Array<ObjectAnnotation>;
+  objectAnnotations?: ReadonlyArray<ObjectAnnotation>;
 }
 
 export const GroupedResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2155,9 +2155,9 @@ export interface ProductSearchResults {
   /** Timestamp of the index which provided these results. Products added to the product set and products removed from the product set after this time are not reflected in the current results. */
   indexTime?: string;
   /** List of results, one for each product match. */
-  results?: Array<Result>;
+  results?: ReadonlyArray<Result>;
   /** List of results grouped by products detected in the query image. Each entry corresponds to one bounding polygon in the query image, and contains the matching products specific to that region. There may be duplicate product matches in the union of all the per-product results. */
-  productGroupedResults?: Array<GroupedResult>;
+  productGroupedResults?: ReadonlyArray<GroupedResult>;
 }
 
 export const ProductSearchResults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2182,17 +2182,17 @@ export const ImageAnnotationContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface AnnotateImageResponse {
   /** If present, face detection has completed successfully. */
-  faceAnnotations?: Array<FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<FaceAnnotation>;
   /** If present, landmark detection has completed successfully. */
-  landmarkAnnotations?: Array<EntityAnnotation>;
+  landmarkAnnotations?: ReadonlyArray<EntityAnnotation>;
   /** If present, logo detection has completed successfully. */
-  logoAnnotations?: Array<EntityAnnotation>;
+  logoAnnotations?: ReadonlyArray<EntityAnnotation>;
   /** If present, label detection has completed successfully. */
-  labelAnnotations?: Array<EntityAnnotation>;
+  labelAnnotations?: ReadonlyArray<EntityAnnotation>;
   /** If present, localized object detection has completed successfully. This will be sorted descending by confidence score. */
-  localizedObjectAnnotations?: Array<LocalizedObjectAnnotation>;
+  localizedObjectAnnotations?: ReadonlyArray<LocalizedObjectAnnotation>;
   /** If present, text (OCR) detection has completed successfully. */
-  textAnnotations?: Array<EntityAnnotation>;
+  textAnnotations?: ReadonlyArray<EntityAnnotation>;
   /** If present, text (OCR) detection or document (OCR) text detection has completed successfully. This annotation provides the structural hierarchy for the OCR detected text. */
   fullTextAnnotation?: TextAnnotation;
   /** If present, safe-search annotation has completed successfully. */
@@ -2234,7 +2234,7 @@ export interface AnnotateFileResponse {
   /** Information about the file for which this response is generated. */
   inputConfig?: InputConfig;
   /** Individual responses to images found within the file. This field will be empty if the `error` field is set. */
-  responses?: Array<AnnotateImageResponse>;
+  responses?: ReadonlyArray<AnnotateImageResponse>;
   /** This field gives the total number of pages in the file. */
   totalPages?: number;
   /** If set, represents the error message for the failed request. The `responses` field will not be set in this case. */
@@ -2281,7 +2281,7 @@ export const AsyncAnnotateFileResponse =
 
 export interface AsyncBatchAnnotateFilesResponse {
   /** The list of file annotation responses, one for each request in AsyncBatchAnnotateFilesRequest. */
-  responses?: Array<AsyncAnnotateFileResponse>;
+  responses?: ReadonlyArray<AsyncAnnotateFileResponse>;
 }
 
 export const AsyncBatchAnnotateFilesResponse =
@@ -2301,7 +2301,7 @@ export const AsyncBatchAnnotateImagesResponse =
 
 export interface BatchAnnotateFilesResponse {
   /** The list of file annotation responses, each response corresponding to each AnnotateFileRequest in BatchAnnotateFilesRequest. */
-  responses?: Array<AnnotateFileResponse>;
+  responses?: ReadonlyArray<AnnotateFileResponse>;
 }
 
 export const BatchAnnotateFilesResponse =
@@ -2338,7 +2338,7 @@ export interface ReferenceImage {
   /** Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`. */
   uri?: string;
   /** Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not). */
-  boundingPolys?: Array<BoundingPoly>;
+  boundingPolys?: ReadonlyArray<BoundingPoly>;
 }
 
 export const ReferenceImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2349,9 +2349,9 @@ export const ReferenceImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ImportProductSetsResponse {
   /** The list of reference_images that are imported successfully. */
-  referenceImages?: Array<ReferenceImage>;
+  referenceImages?: ReadonlyArray<ReferenceImage>;
   /** The rpc status for each ImportProductSet request, including both successes and errors. The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success or failure status of processing the i-th line of the csv, starting from line 0. */
-  statuses?: Array<Status>;
+  statuses?: ReadonlyArray<Status>;
 }
 
 export const ImportProductSetsResponse =
@@ -2435,9 +2435,9 @@ export const GoogleCloudVisionV1p1beta1NormalizedVertex =
 
 export interface GoogleCloudVisionV1p1beta1BoundingPoly {
   /** The bounding polygon vertices. */
-  vertices?: Array<GoogleCloudVisionV1p1beta1Vertex>;
+  vertices?: ReadonlyArray<GoogleCloudVisionV1p1beta1Vertex>;
   /** The bounding polygon normalized vertices. */
-  normalizedVertices?: Array<GoogleCloudVisionV1p1beta1NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p1beta1NormalizedVertex>;
 }
 
 export const GoogleCloudVisionV1p1beta1BoundingPoly =
@@ -2523,7 +2523,7 @@ export interface GoogleCloudVisionV1p1beta1FaceAnnotation {
   /** The `fd_bounding_poly` bounding polygon is tighter than the `boundingPoly`, and encloses only the skin part of the face. Typically, it is used to eliminate the face from any image analysis that detects the "amount of skin" visible in an image. It is not based on the landmarker results, only on the initial face detection, hence the fd (face detection) prefix. */
   fdBoundingPoly?: GoogleCloudVisionV1p1beta1BoundingPoly;
   /** Detected face landmarks. */
-  landmarks?: Array<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>;
   /** Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to the image vertical about the axis perpendicular to the face. Range [-180,180]. */
   rollAngle?: number;
   /** Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the vertical plane perpendicular to the image. Range [-180,180]. */
@@ -2662,9 +2662,9 @@ export interface GoogleCloudVisionV1p1beta1EntityAnnotation {
   /** Image region to which this entity belongs. Not produced for `LABEL_DETECTION` features. */
   boundingPoly?: GoogleCloudVisionV1p1beta1BoundingPoly;
   /** The location information for the detected entity. Multiple `LocationInfo` elements can be present because one location may indicate the location of the scene in the image, and another location may indicate the location of the place where the image was taken. Location information is usually present for landmarks. */
-  locations?: Array<GoogleCloudVisionV1p1beta1LocationInfo>;
+  locations?: ReadonlyArray<GoogleCloudVisionV1p1beta1LocationInfo>;
   /** Some entities may have optional user-supplied `Property` (name/value) fields, such a score or string that qualifies the entity. */
-  properties?: Array<GoogleCloudVisionV1p1beta1Property>;
+  properties?: ReadonlyArray<GoogleCloudVisionV1p1beta1Property>;
 }
 
 export const GoogleCloudVisionV1p1beta1EntityAnnotation =
@@ -2747,7 +2747,7 @@ export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak =
 
 export interface GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>;
   /** Detected start or end of a text segment. */
   detectedBreak?: GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak;
 }
@@ -2791,7 +2791,7 @@ export interface GoogleCloudVisionV1p1beta1Word {
   /** The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p1beta1BoundingPoly;
   /** List of symbols in the word. The order of the symbols follows the natural reading order. */
-  symbols?: Array<GoogleCloudVisionV1p1beta1Symbol>;
+  symbols?: ReadonlyArray<GoogleCloudVisionV1p1beta1Symbol>;
   /** Confidence of the OCR results for the word. Range [0, 1]. */
   confidence?: number;
 }
@@ -2812,7 +2812,7 @@ export interface GoogleCloudVisionV1p1beta1Paragraph {
   /** The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p1beta1BoundingPoly;
   /** List of all words in this paragraph. */
-  words?: Array<GoogleCloudVisionV1p1beta1Word>;
+  words?: ReadonlyArray<GoogleCloudVisionV1p1beta1Word>;
   /** Confidence of the OCR results for the paragraph. Range [0, 1]. */
   confidence?: number;
 }
@@ -2833,7 +2833,7 @@ export interface GoogleCloudVisionV1p1beta1Block {
   /** The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p1beta1BoundingPoly;
   /** List of paragraphs in this block (if this blocks is of type text). */
-  paragraphs?: Array<GoogleCloudVisionV1p1beta1Paragraph>;
+  paragraphs?: ReadonlyArray<GoogleCloudVisionV1p1beta1Paragraph>;
   /** Detected block type (text, image etc) for this block. */
   blockType?:
     | "UNKNOWN"
@@ -2868,7 +2868,7 @@ export interface GoogleCloudVisionV1p1beta1Page {
   /** Page height. For PDFs the unit is points. For images (including TIFFs) the unit is pixels. */
   height?: number;
   /** List of blocks of text, images etc on this page. */
-  blocks?: Array<GoogleCloudVisionV1p1beta1Block>;
+  blocks?: ReadonlyArray<GoogleCloudVisionV1p1beta1Block>;
   /** Confidence of the OCR results on the page. Range [0, 1]. */
   confidence?: number;
 }
@@ -2886,7 +2886,7 @@ export const GoogleCloudVisionV1p1beta1Page =
 
 export interface GoogleCloudVisionV1p1beta1TextAnnotation {
   /** List of pages detected by OCR. */
-  pages?: Array<GoogleCloudVisionV1p1beta1Page>;
+  pages?: ReadonlyArray<GoogleCloudVisionV1p1beta1Page>;
   /** UTF-8 text detected on the pages. */
   text?: string;
 }
@@ -2972,7 +2972,7 @@ export const GoogleCloudVisionV1p1beta1ColorInfo =
 
 export interface GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
   /** RGB color values with their score and pixel fraction. */
-  colors?: Array<GoogleCloudVisionV1p1beta1ColorInfo>;
+  colors?: ReadonlyArray<GoogleCloudVisionV1p1beta1ColorInfo>;
 }
 
 export const GoogleCloudVisionV1p1beta1DominantColorsAnnotation =
@@ -3012,7 +3012,7 @@ export const GoogleCloudVisionV1p1beta1CropHint =
 
 export interface GoogleCloudVisionV1p1beta1CropHintsAnnotation {
   /** Crop hint results. */
-  cropHints?: Array<GoogleCloudVisionV1p1beta1CropHint>;
+  cropHints?: ReadonlyArray<GoogleCloudVisionV1p1beta1CropHint>;
 }
 
 export const GoogleCloudVisionV1p1beta1CropHintsAnnotation =
@@ -3061,9 +3061,9 @@ export interface GoogleCloudVisionV1p1beta1WebDetectionWebPage {
   /** Title for the web page, may contain HTML markups. */
   pageTitle?: string;
   /** Fully matching images on the page. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
   /** Partial matching images on the page. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
 }
 
 export const GoogleCloudVisionV1p1beta1WebDetectionWebPage =
@@ -3094,17 +3094,17 @@ export const GoogleCloudVisionV1p1beta1WebDetectionWebLabel =
 
 export interface GoogleCloudVisionV1p1beta1WebDetection {
   /** Deduced entities from similar images on the Internet. */
-  webEntities?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>;
+  webEntities?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>;
   /** Fully matching images from the Internet. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
   /** Partial matching images from the Internet. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
   /** Web pages containing the matching images from the Internet. */
-  pagesWithMatchingImages?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebPage>;
+  pagesWithMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebPage>;
   /** The visually similar image results. */
-  visuallySimilarImages?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
+  visuallySimilarImages?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
   /** The service's best guess as to the topic of the request image. Inferred from similar images on the open web. */
-  bestGuessLabels?: Array<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>;
+  bestGuessLabels?: ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>;
 }
 
 export const GoogleCloudVisionV1p1beta1WebDetection =
@@ -3152,7 +3152,7 @@ export interface GoogleCloudVisionV1p1beta1Product {
   /** Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products. */
   productCategory?: string;
   /** Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet. */
-  productLabels?: Array<GoogleCloudVisionV1p1beta1ProductKeyValue>;
+  productLabels?: ReadonlyArray<GoogleCloudVisionV1p1beta1ProductKeyValue>;
 }
 
 export const GoogleCloudVisionV1p1beta1Product =
@@ -3210,9 +3210,9 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
   /** The bounding polygon around the product detected in the query image. */
   boundingPoly?: GoogleCloudVisionV1p1beta1BoundingPoly;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>;
   /** List of generic predictions for the object in the bounding box. */
-  objectAnnotations?: Array<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>;
 }
 
 export const GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult =
@@ -3234,9 +3234,9 @@ export interface GoogleCloudVisionV1p1beta1ProductSearchResults {
   /** Timestamp of the index which provided these results. Products added to the product set and products removed from the product set after this time are not reflected in the current results. */
   indexTime?: string;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>;
   /** List of results grouped by products detected in the query image. Each entry corresponds to one bounding polygon in the query image, and contains the matching products specific to that region. There may be duplicate product matches in the union of all the per-product results. */
-  productGroupedResults?: Array<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>;
+  productGroupedResults?: ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>;
 }
 
 export const GoogleCloudVisionV1p1beta1ProductSearchResults =
@@ -3267,17 +3267,17 @@ export const GoogleCloudVisionV1p1beta1ImageAnnotationContext =
 
 export interface GoogleCloudVisionV1p1beta1AnnotateImageResponse {
   /** If present, face detection has completed successfully. */
-  faceAnnotations?: Array<GoogleCloudVisionV1p1beta1FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVisionV1p1beta1FaceAnnotation>;
   /** If present, landmark detection has completed successfully. */
-  landmarkAnnotations?: Array<GoogleCloudVisionV1p1beta1EntityAnnotation>;
+  landmarkAnnotations?: ReadonlyArray<GoogleCloudVisionV1p1beta1EntityAnnotation>;
   /** If present, logo detection has completed successfully. */
-  logoAnnotations?: Array<GoogleCloudVisionV1p1beta1EntityAnnotation>;
+  logoAnnotations?: ReadonlyArray<GoogleCloudVisionV1p1beta1EntityAnnotation>;
   /** If present, label detection has completed successfully. */
-  labelAnnotations?: Array<GoogleCloudVisionV1p1beta1EntityAnnotation>;
+  labelAnnotations?: ReadonlyArray<GoogleCloudVisionV1p1beta1EntityAnnotation>;
   /** If present, localized object detection has completed successfully. This will be sorted descending by confidence score. */
-  localizedObjectAnnotations?: Array<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>;
+  localizedObjectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>;
   /** If present, text (OCR) detection has completed successfully. */
-  textAnnotations?: Array<GoogleCloudVisionV1p1beta1EntityAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVisionV1p1beta1EntityAnnotation>;
   /** If present, text (OCR) detection or document (OCR) text detection has completed successfully. This annotation provides the structural hierarchy for the OCR detected text. */
   fullTextAnnotation?: GoogleCloudVisionV1p1beta1TextAnnotation;
   /** If present, safe-search annotation has completed successfully. */
@@ -3342,7 +3342,7 @@ export interface GoogleCloudVisionV1p1beta1AnnotateFileResponse {
   /** Information about the file for which this response is generated. */
   inputConfig?: GoogleCloudVisionV1p1beta1InputConfig;
   /** Individual responses to images found within the file. This field will be empty if the `error` field is set. */
-  responses?: Array<GoogleCloudVisionV1p1beta1AnnotateImageResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p1beta1AnnotateImageResponse>;
   /** This field gives the total number of pages in the file. */
   totalPages?: number;
   /** If set, represents the error message for the failed request. The `responses` field will not be set in this case. */
@@ -3396,7 +3396,7 @@ export const GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse =
 
 export interface GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
   /** The list of file annotation responses, one for each request in AsyncBatchAnnotateFilesRequest. */
-  responses?: Array<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>;
 }
 
 export const GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse =
@@ -3444,7 +3444,7 @@ export const GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse =
 
 export interface GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
   /** The list of file annotation responses, one for each request in AsyncBatchAnnotateFilesRequest. */
-  responses?: Array<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>;
 }
 
 export const GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse =
@@ -3530,9 +3530,9 @@ export const GoogleCloudVisionV1p3beta1NormalizedVertex =
 
 export interface GoogleCloudVisionV1p3beta1BoundingPoly {
   /** The bounding polygon vertices. */
-  vertices?: Array<GoogleCloudVisionV1p3beta1Vertex>;
+  vertices?: ReadonlyArray<GoogleCloudVisionV1p3beta1Vertex>;
   /** The bounding polygon normalized vertices. */
-  normalizedVertices?: Array<GoogleCloudVisionV1p3beta1NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p3beta1NormalizedVertex>;
 }
 
 export const GoogleCloudVisionV1p3beta1BoundingPoly =
@@ -3549,7 +3549,7 @@ export interface GoogleCloudVisionV1p3beta1ReferenceImage {
   /** Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`. */
   uri?: string;
   /** Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not). */
-  boundingPolys?: Array<GoogleCloudVisionV1p3beta1BoundingPoly>;
+  boundingPolys?: ReadonlyArray<GoogleCloudVisionV1p3beta1BoundingPoly>;
 }
 
 export const GoogleCloudVisionV1p3beta1ReferenceImage =
@@ -3563,9 +3563,9 @@ export const GoogleCloudVisionV1p3beta1ReferenceImage =
 
 export interface GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
   /** The list of reference_images that are imported successfully. */
-  referenceImages?: Array<GoogleCloudVisionV1p3beta1ReferenceImage>;
+  referenceImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1ReferenceImage>;
   /** The rpc status for each ImportProductSet request, including both successes and errors. The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success or failure status of processing the i-th line of the csv, starting from line 0. */
-  statuses?: Array<Status>;
+  statuses?: ReadonlyArray<Status>;
 }
 
 export const GoogleCloudVisionV1p3beta1ImportProductSetsResponse =
@@ -3679,7 +3679,7 @@ export interface GoogleCloudVisionV1p3beta1FaceAnnotation {
   /** The `fd_bounding_poly` bounding polygon is tighter than the `boundingPoly`, and encloses only the skin part of the face. Typically, it is used to eliminate the face from any image analysis that detects the "amount of skin" visible in an image. It is not based on the landmarker results, only on the initial face detection, hence the fd (face detection) prefix. */
   fdBoundingPoly?: GoogleCloudVisionV1p3beta1BoundingPoly;
   /** Detected face landmarks. */
-  landmarks?: Array<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>;
   /** Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to the image vertical about the axis perpendicular to the face. Range [-180,180]. */
   rollAngle?: number;
   /** Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the vertical plane perpendicular to the image. Range [-180,180]. */
@@ -3818,9 +3818,9 @@ export interface GoogleCloudVisionV1p3beta1EntityAnnotation {
   /** Image region to which this entity belongs. Not produced for `LABEL_DETECTION` features. */
   boundingPoly?: GoogleCloudVisionV1p3beta1BoundingPoly;
   /** The location information for the detected entity. Multiple `LocationInfo` elements can be present because one location may indicate the location of the scene in the image, and another location may indicate the location of the place where the image was taken. Location information is usually present for landmarks. */
-  locations?: Array<GoogleCloudVisionV1p3beta1LocationInfo>;
+  locations?: ReadonlyArray<GoogleCloudVisionV1p3beta1LocationInfo>;
   /** Some entities may have optional user-supplied `Property` (name/value) fields, such a score or string that qualifies the entity. */
-  properties?: Array<GoogleCloudVisionV1p3beta1Property>;
+  properties?: ReadonlyArray<GoogleCloudVisionV1p3beta1Property>;
 }
 
 export const GoogleCloudVisionV1p3beta1EntityAnnotation =
@@ -3903,7 +3903,7 @@ export const GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak =
 
 export interface GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>;
   /** Detected start or end of a text segment. */
   detectedBreak?: GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak;
 }
@@ -3947,7 +3947,7 @@ export interface GoogleCloudVisionV1p3beta1Word {
   /** The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p3beta1BoundingPoly;
   /** List of symbols in the word. The order of the symbols follows the natural reading order. */
-  symbols?: Array<GoogleCloudVisionV1p3beta1Symbol>;
+  symbols?: ReadonlyArray<GoogleCloudVisionV1p3beta1Symbol>;
   /** Confidence of the OCR results for the word. Range [0, 1]. */
   confidence?: number;
 }
@@ -3968,7 +3968,7 @@ export interface GoogleCloudVisionV1p3beta1Paragraph {
   /** The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p3beta1BoundingPoly;
   /** List of all words in this paragraph. */
-  words?: Array<GoogleCloudVisionV1p3beta1Word>;
+  words?: ReadonlyArray<GoogleCloudVisionV1p3beta1Word>;
   /** Confidence of the OCR results for the paragraph. Range [0, 1]. */
   confidence?: number;
 }
@@ -3989,7 +3989,7 @@ export interface GoogleCloudVisionV1p3beta1Block {
   /** The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p3beta1BoundingPoly;
   /** List of paragraphs in this block (if this blocks is of type text). */
-  paragraphs?: Array<GoogleCloudVisionV1p3beta1Paragraph>;
+  paragraphs?: ReadonlyArray<GoogleCloudVisionV1p3beta1Paragraph>;
   /** Detected block type (text, image etc) for this block. */
   blockType?:
     | "UNKNOWN"
@@ -4024,7 +4024,7 @@ export interface GoogleCloudVisionV1p3beta1Page {
   /** Page height. For PDFs the unit is points. For images (including TIFFs) the unit is pixels. */
   height?: number;
   /** List of blocks of text, images etc on this page. */
-  blocks?: Array<GoogleCloudVisionV1p3beta1Block>;
+  blocks?: ReadonlyArray<GoogleCloudVisionV1p3beta1Block>;
   /** Confidence of the OCR results on the page. Range [0, 1]. */
   confidence?: number;
 }
@@ -4042,7 +4042,7 @@ export const GoogleCloudVisionV1p3beta1Page =
 
 export interface GoogleCloudVisionV1p3beta1TextAnnotation {
   /** List of pages detected by OCR. */
-  pages?: Array<GoogleCloudVisionV1p3beta1Page>;
+  pages?: ReadonlyArray<GoogleCloudVisionV1p3beta1Page>;
   /** UTF-8 text detected on the pages. */
   text?: string;
 }
@@ -4128,7 +4128,7 @@ export const GoogleCloudVisionV1p3beta1ColorInfo =
 
 export interface GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
   /** RGB color values with their score and pixel fraction. */
-  colors?: Array<GoogleCloudVisionV1p3beta1ColorInfo>;
+  colors?: ReadonlyArray<GoogleCloudVisionV1p3beta1ColorInfo>;
 }
 
 export const GoogleCloudVisionV1p3beta1DominantColorsAnnotation =
@@ -4168,7 +4168,7 @@ export const GoogleCloudVisionV1p3beta1CropHint =
 
 export interface GoogleCloudVisionV1p3beta1CropHintsAnnotation {
   /** Crop hint results. */
-  cropHints?: Array<GoogleCloudVisionV1p3beta1CropHint>;
+  cropHints?: ReadonlyArray<GoogleCloudVisionV1p3beta1CropHint>;
 }
 
 export const GoogleCloudVisionV1p3beta1CropHintsAnnotation =
@@ -4217,9 +4217,9 @@ export interface GoogleCloudVisionV1p3beta1WebDetectionWebPage {
   /** Title for the web page, may contain HTML markups. */
   pageTitle?: string;
   /** Fully matching images on the page. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
   /** Partial matching images on the page. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
 }
 
 export const GoogleCloudVisionV1p3beta1WebDetectionWebPage =
@@ -4250,17 +4250,17 @@ export const GoogleCloudVisionV1p3beta1WebDetectionWebLabel =
 
 export interface GoogleCloudVisionV1p3beta1WebDetection {
   /** Deduced entities from similar images on the Internet. */
-  webEntities?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebEntity>;
+  webEntities?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebEntity>;
   /** Fully matching images from the Internet. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
   /** Partial matching images from the Internet. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
   /** Web pages containing the matching images from the Internet. */
-  pagesWithMatchingImages?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebPage>;
+  pagesWithMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebPage>;
   /** The visually similar image results. */
-  visuallySimilarImages?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
+  visuallySimilarImages?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebImage>;
   /** The service's best guess as to the topic of the request image. Inferred from similar images on the open web. */
-  bestGuessLabels?: Array<GoogleCloudVisionV1p3beta1WebDetectionWebLabel>;
+  bestGuessLabels?: ReadonlyArray<GoogleCloudVisionV1p3beta1WebDetectionWebLabel>;
 }
 
 export const GoogleCloudVisionV1p3beta1WebDetection =
@@ -4308,7 +4308,7 @@ export interface GoogleCloudVisionV1p3beta1Product {
   /** Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products. */
   productCategory?: string;
   /** Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet. */
-  productLabels?: Array<GoogleCloudVisionV1p3beta1ProductKeyValue>;
+  productLabels?: ReadonlyArray<GoogleCloudVisionV1p3beta1ProductKeyValue>;
 }
 
 export const GoogleCloudVisionV1p3beta1Product =
@@ -4366,9 +4366,9 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
   /** The bounding polygon around the product detected in the query image. */
   boundingPoly?: GoogleCloudVisionV1p3beta1BoundingPoly;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>;
   /** List of generic predictions for the object in the bounding box. */
-  objectAnnotations?: Array<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>;
 }
 
 export const GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult =
@@ -4390,9 +4390,9 @@ export interface GoogleCloudVisionV1p3beta1ProductSearchResults {
   /** Timestamp of the index which provided these results. Products added to the product set and products removed from the product set after this time are not reflected in the current results. */
   indexTime?: string;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>;
   /** List of results grouped by products detected in the query image. Each entry corresponds to one bounding polygon in the query image, and contains the matching products specific to that region. There may be duplicate product matches in the union of all the per-product results. */
-  productGroupedResults?: Array<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>;
+  productGroupedResults?: ReadonlyArray<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>;
 }
 
 export const GoogleCloudVisionV1p3beta1ProductSearchResults =
@@ -4423,17 +4423,17 @@ export const GoogleCloudVisionV1p3beta1ImageAnnotationContext =
 
 export interface GoogleCloudVisionV1p3beta1AnnotateImageResponse {
   /** If present, face detection has completed successfully. */
-  faceAnnotations?: Array<GoogleCloudVisionV1p3beta1FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1FaceAnnotation>;
   /** If present, landmark detection has completed successfully. */
-  landmarkAnnotations?: Array<GoogleCloudVisionV1p3beta1EntityAnnotation>;
+  landmarkAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1EntityAnnotation>;
   /** If present, logo detection has completed successfully. */
-  logoAnnotations?: Array<GoogleCloudVisionV1p3beta1EntityAnnotation>;
+  logoAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1EntityAnnotation>;
   /** If present, label detection has completed successfully. */
-  labelAnnotations?: Array<GoogleCloudVisionV1p3beta1EntityAnnotation>;
+  labelAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1EntityAnnotation>;
   /** If present, localized object detection has completed successfully. This will be sorted descending by confidence score. */
-  localizedObjectAnnotations?: Array<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>;
+  localizedObjectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>;
   /** If present, text (OCR) detection has completed successfully. */
-  textAnnotations?: Array<GoogleCloudVisionV1p3beta1EntityAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVisionV1p3beta1EntityAnnotation>;
   /** If present, text (OCR) detection or document (OCR) text detection has completed successfully. This annotation provides the structural hierarchy for the OCR detected text. */
   fullTextAnnotation?: GoogleCloudVisionV1p3beta1TextAnnotation;
   /** If present, safe-search annotation has completed successfully. */
@@ -4498,7 +4498,7 @@ export interface GoogleCloudVisionV1p3beta1AnnotateFileResponse {
   /** Information about the file for which this response is generated. */
   inputConfig?: GoogleCloudVisionV1p3beta1InputConfig;
   /** Individual responses to images found within the file. This field will be empty if the `error` field is set. */
-  responses?: Array<GoogleCloudVisionV1p3beta1AnnotateImageResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p3beta1AnnotateImageResponse>;
   /** This field gives the total number of pages in the file. */
   totalPages?: number;
   /** If set, represents the error message for the failed request. The `responses` field will not be set in this case. */
@@ -4552,7 +4552,7 @@ export const GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse =
 
 export interface GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
   /** The list of file annotation responses, one for each request in AsyncBatchAnnotateFilesRequest. */
-  responses?: Array<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>;
 }
 
 export const GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse =
@@ -4638,9 +4638,9 @@ export const GoogleCloudVisionV1p4beta1NormalizedVertex =
 
 export interface GoogleCloudVisionV1p4beta1BoundingPoly {
   /** The bounding polygon vertices. */
-  vertices?: Array<GoogleCloudVisionV1p4beta1Vertex>;
+  vertices?: ReadonlyArray<GoogleCloudVisionV1p4beta1Vertex>;
   /** The bounding polygon normalized vertices. */
-  normalizedVertices?: Array<GoogleCloudVisionV1p4beta1NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<GoogleCloudVisionV1p4beta1NormalizedVertex>;
 }
 
 export const GoogleCloudVisionV1p4beta1BoundingPoly =
@@ -4657,7 +4657,7 @@ export interface GoogleCloudVisionV1p4beta1ReferenceImage {
   /** Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`. */
   uri?: string;
   /** Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not). */
-  boundingPolys?: Array<GoogleCloudVisionV1p4beta1BoundingPoly>;
+  boundingPolys?: ReadonlyArray<GoogleCloudVisionV1p4beta1BoundingPoly>;
 }
 
 export const GoogleCloudVisionV1p4beta1ReferenceImage =
@@ -4671,9 +4671,9 @@ export const GoogleCloudVisionV1p4beta1ReferenceImage =
 
 export interface GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
   /** The list of reference_images that are imported successfully. */
-  referenceImages?: Array<GoogleCloudVisionV1p4beta1ReferenceImage>;
+  referenceImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1ReferenceImage>;
   /** The rpc status for each ImportProductSet request, including both successes and errors. The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success or failure status of processing the i-th line of the csv, starting from line 0. */
-  statuses?: Array<Status>;
+  statuses?: ReadonlyArray<Status>;
 }
 
 export const GoogleCloudVisionV1p4beta1ImportProductSetsResponse =
@@ -4818,7 +4818,7 @@ export interface GoogleCloudVisionV1p4beta1FaceAnnotation {
   /** The `fd_bounding_poly` bounding polygon is tighter than the `boundingPoly`, and encloses only the skin part of the face. Typically, it is used to eliminate the face from any image analysis that detects the "amount of skin" visible in an image. It is not based on the landmarker results, only on the initial face detection, hence the fd (face detection) prefix. */
   fdBoundingPoly?: GoogleCloudVisionV1p4beta1BoundingPoly;
   /** Detected face landmarks. */
-  landmarks?: Array<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>;
   /** Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to the image vertical about the axis perpendicular to the face. Range [-180,180]. */
   rollAngle?: number;
   /** Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the vertical plane perpendicular to the image. Range [-180,180]. */
@@ -4893,7 +4893,7 @@ export interface GoogleCloudVisionV1p4beta1FaceAnnotation {
     | "VERY_LIKELY"
     | (string & {});
   /** Additional recognition information. Only computed if image_context.face_recognition_params is provided, **and** a match is found to a Celebrity in the input CelebritySet. This field is sorted in order of decreasing confidence values. */
-  recognitionResult?: Array<GoogleCloudVisionV1p4beta1FaceRecognitionResult>;
+  recognitionResult?: ReadonlyArray<GoogleCloudVisionV1p4beta1FaceRecognitionResult>;
 }
 
 export const GoogleCloudVisionV1p4beta1FaceAnnotation =
@@ -4962,9 +4962,9 @@ export interface GoogleCloudVisionV1p4beta1EntityAnnotation {
   /** Image region to which this entity belongs. Not produced for `LABEL_DETECTION` features. */
   boundingPoly?: GoogleCloudVisionV1p4beta1BoundingPoly;
   /** The location information for the detected entity. Multiple `LocationInfo` elements can be present because one location may indicate the location of the scene in the image, and another location may indicate the location of the place where the image was taken. Location information is usually present for landmarks. */
-  locations?: Array<GoogleCloudVisionV1p4beta1LocationInfo>;
+  locations?: ReadonlyArray<GoogleCloudVisionV1p4beta1LocationInfo>;
   /** Some entities may have optional user-supplied `Property` (name/value) fields, such a score or string that qualifies the entity. */
-  properties?: Array<GoogleCloudVisionV1p4beta1Property>;
+  properties?: ReadonlyArray<GoogleCloudVisionV1p4beta1Property>;
 }
 
 export const GoogleCloudVisionV1p4beta1EntityAnnotation =
@@ -5047,7 +5047,7 @@ export const GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak =
 
 export interface GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>;
   /** Detected start or end of a text segment. */
   detectedBreak?: GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak;
 }
@@ -5091,7 +5091,7 @@ export interface GoogleCloudVisionV1p4beta1Word {
   /** The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p4beta1BoundingPoly;
   /** List of symbols in the word. The order of the symbols follows the natural reading order. */
-  symbols?: Array<GoogleCloudVisionV1p4beta1Symbol>;
+  symbols?: ReadonlyArray<GoogleCloudVisionV1p4beta1Symbol>;
   /** Confidence of the OCR results for the word. Range [0, 1]. */
   confidence?: number;
 }
@@ -5112,7 +5112,7 @@ export interface GoogleCloudVisionV1p4beta1Paragraph {
   /** The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p4beta1BoundingPoly;
   /** List of all words in this paragraph. */
-  words?: Array<GoogleCloudVisionV1p4beta1Word>;
+  words?: ReadonlyArray<GoogleCloudVisionV1p4beta1Word>;
   /** Confidence of the OCR results for the paragraph. Range [0, 1]. */
   confidence?: number;
 }
@@ -5133,7 +5133,7 @@ export interface GoogleCloudVisionV1p4beta1Block {
   /** The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
   boundingBox?: GoogleCloudVisionV1p4beta1BoundingPoly;
   /** List of paragraphs in this block (if this blocks is of type text). */
-  paragraphs?: Array<GoogleCloudVisionV1p4beta1Paragraph>;
+  paragraphs?: ReadonlyArray<GoogleCloudVisionV1p4beta1Paragraph>;
   /** Detected block type (text, image etc) for this block. */
   blockType?:
     | "UNKNOWN"
@@ -5168,7 +5168,7 @@ export interface GoogleCloudVisionV1p4beta1Page {
   /** Page height. For PDFs the unit is points. For images (including TIFFs) the unit is pixels. */
   height?: number;
   /** List of blocks of text, images etc on this page. */
-  blocks?: Array<GoogleCloudVisionV1p4beta1Block>;
+  blocks?: ReadonlyArray<GoogleCloudVisionV1p4beta1Block>;
   /** Confidence of the OCR results on the page. Range [0, 1]. */
   confidence?: number;
 }
@@ -5186,7 +5186,7 @@ export const GoogleCloudVisionV1p4beta1Page =
 
 export interface GoogleCloudVisionV1p4beta1TextAnnotation {
   /** List of pages detected by OCR. */
-  pages?: Array<GoogleCloudVisionV1p4beta1Page>;
+  pages?: ReadonlyArray<GoogleCloudVisionV1p4beta1Page>;
   /** UTF-8 text detected on the pages. */
   text?: string;
 }
@@ -5272,7 +5272,7 @@ export const GoogleCloudVisionV1p4beta1ColorInfo =
 
 export interface GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
   /** RGB color values with their score and pixel fraction. */
-  colors?: Array<GoogleCloudVisionV1p4beta1ColorInfo>;
+  colors?: ReadonlyArray<GoogleCloudVisionV1p4beta1ColorInfo>;
 }
 
 export const GoogleCloudVisionV1p4beta1DominantColorsAnnotation =
@@ -5312,7 +5312,7 @@ export const GoogleCloudVisionV1p4beta1CropHint =
 
 export interface GoogleCloudVisionV1p4beta1CropHintsAnnotation {
   /** Crop hint results. */
-  cropHints?: Array<GoogleCloudVisionV1p4beta1CropHint>;
+  cropHints?: ReadonlyArray<GoogleCloudVisionV1p4beta1CropHint>;
 }
 
 export const GoogleCloudVisionV1p4beta1CropHintsAnnotation =
@@ -5361,9 +5361,9 @@ export interface GoogleCloudVisionV1p4beta1WebDetectionWebPage {
   /** Title for the web page, may contain HTML markups. */
   pageTitle?: string;
   /** Fully matching images on the page. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
   /** Partial matching images on the page. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
 }
 
 export const GoogleCloudVisionV1p4beta1WebDetectionWebPage =
@@ -5394,17 +5394,17 @@ export const GoogleCloudVisionV1p4beta1WebDetectionWebLabel =
 
 export interface GoogleCloudVisionV1p4beta1WebDetection {
   /** Deduced entities from similar images on the Internet. */
-  webEntities?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebEntity>;
+  webEntities?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebEntity>;
   /** Fully matching images from the Internet. Can include resized copies of the query image. */
-  fullMatchingImages?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
+  fullMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
   /** Partial matching images from the Internet. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
-  partialMatchingImages?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
+  partialMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
   /** Web pages containing the matching images from the Internet. */
-  pagesWithMatchingImages?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebPage>;
+  pagesWithMatchingImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebPage>;
   /** The visually similar image results. */
-  visuallySimilarImages?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
+  visuallySimilarImages?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebImage>;
   /** The service's best guess as to the topic of the request image. Inferred from similar images on the open web. */
-  bestGuessLabels?: Array<GoogleCloudVisionV1p4beta1WebDetectionWebLabel>;
+  bestGuessLabels?: ReadonlyArray<GoogleCloudVisionV1p4beta1WebDetectionWebLabel>;
 }
 
 export const GoogleCloudVisionV1p4beta1WebDetection =
@@ -5452,7 +5452,7 @@ export interface GoogleCloudVisionV1p4beta1Product {
   /** Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products. */
   productCategory?: string;
   /** Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet. */
-  productLabels?: Array<GoogleCloudVisionV1p4beta1ProductKeyValue>;
+  productLabels?: ReadonlyArray<GoogleCloudVisionV1p4beta1ProductKeyValue>;
 }
 
 export const GoogleCloudVisionV1p4beta1Product =
@@ -5510,9 +5510,9 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
   /** The bounding polygon around the product detected in the query image. */
   boundingPoly?: GoogleCloudVisionV1p4beta1BoundingPoly;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>;
   /** List of generic predictions for the object in the bounding box. */
-  objectAnnotations?: Array<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>;
 }
 
 export const GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult =
@@ -5534,9 +5534,9 @@ export interface GoogleCloudVisionV1p4beta1ProductSearchResults {
   /** Timestamp of the index which provided these results. Products added to the product set and products removed from the product set after this time are not reflected in the current results. */
   indexTime?: string;
   /** List of results, one for each product match. */
-  results?: Array<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>;
+  results?: ReadonlyArray<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>;
   /** List of results grouped by products detected in the query image. Each entry corresponds to one bounding polygon in the query image, and contains the matching products specific to that region. There may be duplicate product matches in the union of all the per-product results. */
-  productGroupedResults?: Array<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>;
+  productGroupedResults?: ReadonlyArray<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>;
 }
 
 export const GoogleCloudVisionV1p4beta1ProductSearchResults =
@@ -5567,17 +5567,17 @@ export const GoogleCloudVisionV1p4beta1ImageAnnotationContext =
 
 export interface GoogleCloudVisionV1p4beta1AnnotateImageResponse {
   /** If present, face detection has completed successfully. */
-  faceAnnotations?: Array<GoogleCloudVisionV1p4beta1FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVisionV1p4beta1FaceAnnotation>;
   /** If present, landmark detection has completed successfully. */
-  landmarkAnnotations?: Array<GoogleCloudVisionV1p4beta1EntityAnnotation>;
+  landmarkAnnotations?: ReadonlyArray<GoogleCloudVisionV1p4beta1EntityAnnotation>;
   /** If present, logo detection has completed successfully. */
-  logoAnnotations?: Array<GoogleCloudVisionV1p4beta1EntityAnnotation>;
+  logoAnnotations?: ReadonlyArray<GoogleCloudVisionV1p4beta1EntityAnnotation>;
   /** If present, label detection has completed successfully. */
-  labelAnnotations?: Array<GoogleCloudVisionV1p4beta1EntityAnnotation>;
+  labelAnnotations?: ReadonlyArray<GoogleCloudVisionV1p4beta1EntityAnnotation>;
   /** If present, localized object detection has completed successfully. This will be sorted descending by confidence score. */
-  localizedObjectAnnotations?: Array<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>;
+  localizedObjectAnnotations?: ReadonlyArray<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>;
   /** If present, text (OCR) detection has completed successfully. */
-  textAnnotations?: Array<GoogleCloudVisionV1p4beta1EntityAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVisionV1p4beta1EntityAnnotation>;
   /** If present, text (OCR) detection or document (OCR) text detection has completed successfully. This annotation provides the structural hierarchy for the OCR detected text. */
   fullTextAnnotation?: GoogleCloudVisionV1p4beta1TextAnnotation;
   /** If present, safe-search annotation has completed successfully. */
@@ -5642,7 +5642,7 @@ export interface GoogleCloudVisionV1p4beta1AnnotateFileResponse {
   /** Information about the file for which this response is generated. */
   inputConfig?: GoogleCloudVisionV1p4beta1InputConfig;
   /** Individual responses to images found within the file. This field will be empty if the `error` field is set. */
-  responses?: Array<GoogleCloudVisionV1p4beta1AnnotateImageResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p4beta1AnnotateImageResponse>;
   /** This field gives the total number of pages in the file. */
   totalPages?: number;
   /** If set, represents the error message for the failed request. The `responses` field will not be set in this case. */
@@ -5696,7 +5696,7 @@ export const GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse =
 
 export interface GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
   /** The list of file annotation responses, one for each request in AsyncBatchAnnotateFilesRequest. */
-  responses?: Array<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>;
 }
 
 export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse =
@@ -5744,7 +5744,7 @@ export const GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse =
 
 export interface GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
   /** The list of file annotation responses, each response corresponding to each AnnotateFileRequest in BatchAnnotateFilesRequest. */
-  responses?: Array<GoogleCloudVisionV1p4beta1AnnotateFileResponse>;
+  responses?: ReadonlyArray<GoogleCloudVisionV1p4beta1AnnotateFileResponse>;
 }
 
 export const GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse =
@@ -5846,7 +5846,7 @@ export const AnnotateProjectsLocationsImagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/locations/{locationsId}/images:annotate",
+      path: "v1p2beta1/{parent}/images:annotate",
       hasBody: true,
     }),
     svc,
@@ -5887,7 +5887,7 @@ export const AsyncBatchAnnotateProjectsLocationsImagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/locations/{locationsId}/images:asyncBatchAnnotate",
+      path: "v1p2beta1/{parent}/images:asyncBatchAnnotate",
       hasBody: true,
     }),
     svc,
@@ -5927,7 +5927,7 @@ export const AnnotateProjectsLocationsFilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/locations/{locationsId}/files:annotate",
+      path: "v1p2beta1/{parent}/files:annotate",
       hasBody: true,
     }),
     svc,
@@ -5968,7 +5968,7 @@ export const AsyncBatchAnnotateProjectsLocationsFilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/locations/{locationsId}/files:asyncBatchAnnotate",
+      path: "v1p2beta1/{parent}/files:asyncBatchAnnotate",
       hasBody: true,
     }),
     svc,
@@ -6008,7 +6008,7 @@ export const AnnotateProjectsImagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/images:annotate",
+      path: "v1p2beta1/{parent}/images:annotate",
       hasBody: true,
     }),
     svc,
@@ -6049,7 +6049,7 @@ export const AsyncBatchAnnotateProjectsImagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/images:asyncBatchAnnotate",
+      path: "v1p2beta1/{parent}/images:asyncBatchAnnotate",
       hasBody: true,
     }),
     svc,
@@ -6089,7 +6089,7 @@ export const AnnotateProjectsFilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/files:annotate",
+      path: "v1p2beta1/{parent}/files:annotate",
       hasBody: true,
     }),
     svc,
@@ -6130,7 +6130,7 @@ export const AsyncBatchAnnotateProjectsFilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p2beta1/projects/{projectsId}/files:asyncBatchAnnotate",
+      path: "v1p2beta1/{parent}/files:asyncBatchAnnotate",
       hasBody: true,
     }),
     svc,

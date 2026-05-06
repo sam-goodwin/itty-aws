@@ -985,6 +985,57 @@ describe("Workers", () => {
         }).pipe(Effect.catch(() => Effect.void));
       }));
 
+    test("happy path - round-trips observability.traces in metadata", () =>
+      Effect.gen(function* () {
+        const name = scriptName("put-script-traces");
+
+        yield* Workers.deleteScript({
+          accountId: accountId(),
+          scriptName: name,
+          force: true,
+        }).pipe(Effect.catch(() => Effect.void));
+
+        const scriptFile = new File([workerModuleSource], "index.mjs", {
+          type: "application/javascript+module",
+        });
+
+        const result = yield* Workers.putScript({
+          accountId: accountId(),
+          scriptName: name,
+          metadata: {
+            mainModule: "index.mjs",
+            compatibilityDate: "2024-01-01",
+            observability: {
+              enabled: true,
+              headSamplingRate: 1,
+              logs: {
+                enabled: true,
+                invocationLogs: true,
+                headSamplingRate: 1,
+                persist: true,
+              },
+              traces: {
+                enabled: true,
+                headSamplingRate: 1,
+                persist: true,
+              },
+            },
+          },
+          files: [scriptFile],
+        });
+
+        expect(result).toBeDefined();
+        expect(result.observability?.traces?.enabled).toBe(true);
+        expect(result.observability?.traces?.headSamplingRate).toBe(1);
+        expect(result.observability?.traces?.persist).toBe(true);
+
+        yield* Workers.deleteScript({
+          accountId: accountId(),
+          scriptName: name,
+          force: true,
+        }).pipe(Effect.catch(() => Effect.void));
+      }));
+
     test("error - InvalidRoute for invalid accountId", () =>
       Workers.putScript({
         accountId: "invalid-account-id-000",
@@ -1877,6 +1928,44 @@ describe("Workers", () => {
           });
 
           expect(result).toBeDefined();
+        }),
+      ));
+
+    test("happy path - patches observability.traces and reads back", () =>
+      withScript(scriptName("patch-setting-traces"), (name) =>
+        Effect.gen(function* () {
+          const patched = yield* Workers.patchScriptSetting({
+            accountId: accountId(),
+            scriptName: name,
+            observability: {
+              enabled: true,
+              headSamplingRate: 1,
+              logs: {
+                enabled: true,
+                invocationLogs: true,
+                headSamplingRate: 1,
+                persist: true,
+              },
+              traces: {
+                enabled: true,
+                headSamplingRate: 1,
+                persist: true,
+              },
+            },
+          });
+
+          expect(patched.observability?.traces?.enabled).toBe(true);
+          expect(patched.observability?.traces?.headSamplingRate).toBe(1);
+          expect(patched.observability?.traces?.persist).toBe(true);
+
+          const settings = yield* Workers.getScriptSetting({
+            accountId: accountId(),
+            scriptName: name,
+          });
+
+          expect(settings.observability?.traces?.enabled).toBe(true);
+          expect(settings.observability?.traces?.headSamplingRate).toBe(1);
+          expect(settings.observability?.traces?.persist).toBe(true);
         }),
       ));
 

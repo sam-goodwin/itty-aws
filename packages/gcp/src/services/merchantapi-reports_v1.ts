@@ -47,9 +47,9 @@ export interface IssueSeverityPerReportingContext {
     | "YOUTUBE_CHECKOUT"
     | (string & {});
   /** List of disapproved countries in the reporting context, represented in ISO 3166 format. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
   /** List of demoted countries in the reporting context, represented in ISO 3166 format. */
-  demotedCountries?: Array<string>;
+  demotedCountries?: ReadonlyArray<string>;
 }
 
 export const IssueSeverityPerReportingContext =
@@ -68,7 +68,7 @@ export interface ItemIssueSeverity {
     | "PENDING"
     | (string & {});
   /** Issue severity per reporting context. Reporting contexts included in this list can be restricted using a filter on the `reporting_context` field. */
-  severityPerReportingContext?: Array<IssueSeverityPerReportingContext>;
+  severityPerReportingContext?: ReadonlyArray<IssueSeverityPerReportingContext>;
 }
 
 export const ItemIssueSeverity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -166,7 +166,7 @@ export interface BestSellersProductClusterView {
   /** Product category (4th level) of the product cluster, represented in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). */
   categoryL4?: string;
   /** GTINs of example variants of the product cluster. */
-  variantGtins?: Array<string>;
+  variantGtins?: ReadonlyArray<string>;
   /** Whether there is at least one product of the brand currently `IN_STOCK` in your product data source in at least one of the countries, all products are `OUT_OF_STOCK` in your product data source in all countries, or `NOT_IN_INVENTORY`. The field doesn't take the Best sellers report country filter into account. */
   brandInventoryStatus?:
     | "INVENTORY_STATUS_UNSPECIFIED"
@@ -601,7 +601,7 @@ export const ProductPerformanceView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface StatusPerReportingContext {
   /** List of approved countries in the reporting context, represented in [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`. */
-  approvedCountries?: Array<string>;
+  approvedCountries?: ReadonlyArray<string>;
   /** Reporting context the status applies to. */
   reportingContext?:
     | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
@@ -626,9 +626,9 @@ export interface StatusPerReportingContext {
     | "YOUTUBE_CHECKOUT"
     | (string & {});
   /** List of disapproved countries in the reporting context, represented in [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
   /** List of pending countries in the reporting context, represented in [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`. */
-  pendingCountries?: Array<string>;
+  pendingCountries?: ReadonlyArray<string>;
 }
 
 export const StatusPerReportingContext =
@@ -649,7 +649,7 @@ export interface ProductView {
     | "ELIGIBLE"
     | (string & {});
   /** Detailed product status per reporting context. Reporting contexts included in this list can be restricted using a filter on the `reporting_context` field. Equivalent to `ProductStatus.destination_statuses` in Products API. **This field cannot be used for sorting or filtering the results.** */
-  statusPerReportingContext?: Array<StatusPerReportingContext>;
+  statusPerReportingContext?: ReadonlyArray<StatusPerReportingContext>;
   /** Item group id provided by the merchant for grouping variants together. */
   itemGroupId?: string;
   /** Title of the product. */
@@ -659,7 +659,7 @@ export interface ProductView {
   /** Product category (1st level) in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). */
   categoryL1?: string;
   /** List of item issues for the product. **This field cannot be used for sorting the results.** **Only selected attributes of this field (for example, `item_issues.severity.aggregated_severity`) can be used for filtering the results.** */
-  itemIssues?: Array<ItemIssue>;
+  itemIssues?: ReadonlyArray<ItemIssue>;
   /** Product type (3rd level) in merchant's own [product taxonomy](https://support.google.com/merchants/answer/6324406). */
   productTypeL3?: string;
   /** Product price. Absent if the information about the price of the product is not available. */
@@ -733,7 +733,7 @@ export interface ProductView {
   /** Product category (5th level) in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). */
   categoryL5?: string;
   /** List of Global Trade Item Numbers (GTINs) of the product. */
-  gtin?: Array<string>;
+  gtin?: ReadonlyArray<string>;
   /** Product type (4th level) in merchant's own [product taxonomy](https://support.google.com/merchants/answer/6324406). */
   productTypeL4?: string;
 }
@@ -879,7 +879,7 @@ export const ReportRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchResponse {
   /** Rows that matched the search query. */
-  results?: Array<ReportRow>;
+  results?: ReadonlyArray<ReportRow>;
   /** Token which can be sent as `page_token` to retrieve the next page. If omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -947,7 +947,7 @@ export interface ProductStatusChangeMessage {
   /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
   expirationTime?: string;
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The resource that changed, in this case it will always be `Product`. */
   resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
   /** The product id. */
@@ -995,7 +995,7 @@ export const SearchAccountsReportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "reports/v1/accounts/{accountsId}/reports:search",
+      path: "reports/v1/{parent}/reports:search",
       hasBody: true,
     }),
     svc,

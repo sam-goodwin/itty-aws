@@ -109,7 +109,7 @@ export interface CohortSpec {
   /** Optional settings for a cohort report. */
   cohortReportSettings?: CohortReportSettings;
   /** Defines the selection criteria to group users into cohorts. Most cohort reports define only a single cohort. If multiple cohorts are specified, each cohort can be recognized in the report by their name. */
-  cohorts?: Array<Cohort>;
+  cohorts?: ReadonlyArray<Cohort>;
   /** Cohort reports follow cohorts over an extended reporting date range. This range specifies an offset duration to follow the cohorts over. */
   cohortsRange?: CohortsRange;
 }
@@ -171,7 +171,7 @@ export interface PivotOrderBy {
   /** In the response to order by, order rows by this column. Must be a metric name from the request. */
   metricName?: string;
   /** Used to select a dimension name and value pivot. If multiple pivot selections are given, the sort occurs on rows where all pivot selection dimension name and value pairs match the row's dimension name and value pair. */
-  pivotSelections?: Array<PivotSelection>;
+  pivotSelections?: ReadonlyArray<PivotSelection>;
 }
 
 export const PivotOrderBy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -203,7 +203,7 @@ export interface Pivot {
   /** The number of unique combinations of dimension values to return in this pivot. The `limit` parameter is required. A `limit` of 10,000 is common for single pivot requests. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not exceed 250,000. For example, a two pivot request with `limit: 1000` in each pivot will fail because the product is `1,000,000`. */
   limit?: string;
   /** Aggregate the metrics by dimensions in this pivot using the specified metric_aggregations. */
-  metricAggregations?: Array<
+  metricAggregations?: ReadonlyArray<
     | "METRIC_AGGREGATION_UNSPECIFIED"
     | "TOTAL"
     | "MINIMUM"
@@ -212,9 +212,9 @@ export interface Pivot {
     | (string & {})
   >;
   /** Specifies how dimensions are ordered in the pivot. In the first Pivot, the OrderBys determine Row and PivotDimensionHeader ordering; in subsequent Pivots, the OrderBys determine only PivotDimensionHeader ordering. Dimensions specified in these OrderBys must be a subset of Pivot.field_names. */
-  orderBys?: Array<OrderBy>;
+  orderBys?: ReadonlyArray<OrderBy>;
   /** Dimension names for visible columns in the report response. Including "dateRange" produces a date range column; for each row in the response, dimension values in the date range column will indicate the corresponding date range from the request. */
-  fieldNames?: Array<string>;
+  fieldNames?: ReadonlyArray<string>;
 }
 
 export const Pivot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -227,7 +227,7 @@ export const Pivot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ConcatenateExpression {
   /** Names of dimensions. The names must refer back to names in the dimensions field of the request. */
-  dimensionNames?: Array<string>;
+  dimensionNames?: ReadonlyArray<string>;
   /** The delimiter placed between dimension names. Delimiters are often single characters such as "|" or "," but can be longer strings. If a dimension value contains the delimiter, both will be present in response with no distinction. For example if dimension 1 value = "US,FR", dimension 2 value = "JP", and delimiter = ",", then the response will contain "US,FR,JP". */
   delimiter?: string;
 }
@@ -266,7 +266,7 @@ export const Dimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FilterExpressionList {
   /** A list of filter expressions. */
-  expressions?: Array<FilterExpression>;
+  expressions?: ReadonlyArray<FilterExpression>;
 }
 
 export const FilterExpressionList: Schema.Schema<FilterExpressionList> =
@@ -280,7 +280,7 @@ export const FilterExpressionList: Schema.Schema<FilterExpressionList> =
 
 export interface InListFilter {
   /** The list of string values. Must be non-empty. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** If true, the string value is case sensitive. */
   caseSensitive?: boolean;
 }
@@ -435,15 +435,15 @@ export const MinuteRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RunRealtimeReportRequest {
   /** The dimensions requested and displayed. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** The filter clause of metrics. Applied at post aggregation phase, similar to SQL having-clause. Dimensions cannot be used in this filter. */
   metricFilter?: FilterExpression;
   /** Toggles whether to return the current state of this Google Analytics property's Realtime quota. Quota is returned in [PropertyQuota](#PropertyQuota). */
   returnPropertyQuota?: boolean;
   /** Specifies how rows are ordered in the response. */
-  orderBys?: Array<OrderBy>;
+  orderBys?: ReadonlyArray<OrderBy>;
   /** Aggregation of metrics. Aggregated metric values will be shown in rows where the dimension_values are set to "RESERVED_(MetricAggregation)". */
-  metricAggregations?: Array<
+  metricAggregations?: ReadonlyArray<
     | "METRIC_AGGREGATION_UNSPECIFIED"
     | "TOTAL"
     | "MINIMUM"
@@ -454,9 +454,9 @@ export interface RunRealtimeReportRequest {
   /** The number of rows to return. If unspecified, 10,000 rows are returned. The API returns a maximum of 250,000 rows per request, no matter how many you ask for. `limit` must be positive. The API can also return fewer rows than the requested `limit`, if there aren't as many dimension values as the `limit`. For instance, there are fewer than 300 possible values for the dimension `country`, so when reporting on only `country`, you can't get more than 300 rows, even if you set `limit` to a higher value. */
   limit?: string;
   /** The metrics requested and displayed. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** The minute ranges of event data to read. If unspecified, one minute range for the last 30 minutes will be used. If multiple minute ranges are requested, each response row will contain a zero based minute range index. If two minute ranges overlap, the event data for the overlapping minutes is included in the response rows for both minute ranges. */
-  minuteRanges?: Array<MinuteRange>;
+  minuteRanges?: ReadonlyArray<MinuteRange>;
   /** The filter clause of dimensions. Metrics cannot be used in this filter. */
   dimensionFilter?: FilterExpression;
 }
@@ -478,7 +478,7 @@ export interface ActiveMetricRestriction {
   /** The name of the restricted metric. */
   metricName?: string;
   /** The reason for this metric's restriction. */
-  restrictedMetricTypes?: Array<
+  restrictedMetricTypes?: ReadonlyArray<
     | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
     | "COST_DATA"
     | "REVENUE_DATA"
@@ -494,7 +494,7 @@ export const ActiveMetricRestriction =
 
 export interface SchemaRestrictionResponse {
   /** All restrictions actively enforced in creating the report. For example, `purchaseRevenue` always has the restriction type `REVENUE_DATA`. However, this active response restriction is only populated if the user's custom role disallows access to `REVENUE_DATA`. */
-  activeMetricRestrictions?: Array<ActiveMetricRestriction>;
+  activeMetricRestrictions?: ReadonlyArray<ActiveMetricRestriction>;
 }
 
 export const SchemaRestrictionResponse =
@@ -521,9 +521,9 @@ export const DimensionValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Row {
   /** List of requested dimension values. In a PivotReport, dimension_values are only listed for dimensions included in a pivot. */
-  dimensionValues?: Array<DimensionValue>;
+  dimensionValues?: ReadonlyArray<DimensionValue>;
   /** List of requested visible metric values. */
-  metricValues?: Array<MetricValue>;
+  metricValues?: ReadonlyArray<MetricValue>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -581,7 +581,7 @@ export interface ResponseMetaData {
   /** Describes the schema restrictions actively enforced in creating this report. To learn more, see [Access and data-restriction management](https://support.google.com/analytics/answer/10851388). */
   schemaRestrictionResponse?: SchemaRestrictionResponse;
   /** If this report results is [sampled](https://support.google.com/analytics/answer/13331292), this describes the percentage of events used in this report. One `samplingMetadatas` is populated for each date range. Each `samplingMetadatas` corresponds to a date range in order that date ranges were specified in the request. However if the results are not sampled, this field will not be defined. */
-  samplingMetadatas?: Array<SamplingMetadata>;
+  samplingMetadatas?: ReadonlyArray<SamplingMetadata>;
   /** The currency code used in this report. Intended to be used in formatting currency metrics like `purchaseRevenue` for visualization. If currency_code was specified in the request, this response parameter will echo the request parameter; otherwise, this response parameter is the property's current currency_code. Currency codes are string encodings of currency types from the ISO 4217 standard (https://en.wikipedia.org/wiki/ISO_4217); for example "USD", "EUR", "JPY". To learn more, see https://support.google.com/analytics/answer/9796179. */
   currencyCode?: string;
 }
@@ -634,7 +634,7 @@ export const PropertyQuota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PivotDimensionHeader {
   /** Values of multiple dimensions in a pivot. */
-  dimensionValues?: Array<DimensionValue>;
+  dimensionValues?: ReadonlyArray<DimensionValue>;
 }
 
 export const PivotDimensionHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -643,7 +643,7 @@ export const PivotDimensionHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PivotHeader {
   /** The size is the same as the cardinality of the corresponding dimension combinations. */
-  pivotDimensionHeaders?: Array<PivotDimensionHeader>;
+  pivotDimensionHeaders?: ReadonlyArray<PivotDimensionHeader>;
   /** The cardinality of the pivot. The total number of rows for this pivot's fields regardless of how the parameters `offset` and `limit` are specified in the request. */
   rowCount?: number;
 }
@@ -655,19 +655,19 @@ export const PivotHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RunPivotReportResponse {
   /** Describes dimension columns. The number of DimensionHeaders and ordering of DimensionHeaders matches the dimensions present in rows. */
-  dimensionHeaders?: Array<DimensionHeader>;
+  dimensionHeaders?: ReadonlyArray<DimensionHeader>;
   /** Rows of dimension value combinations and metric values in the report. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
   /** Describes metric columns. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows. */
-  metricHeaders?: Array<MetricHeader>;
+  metricHeaders?: ReadonlyArray<MetricHeader>;
   /** Aggregation of metric values. Can be totals, minimums, or maximums. The returned aggregations are controlled by the metric_aggregations in the pivot. The type of aggregation returned in each row is shown by the dimension_values which are set to "RESERVED_". */
-  aggregates?: Array<Row>;
+  aggregates?: ReadonlyArray<Row>;
   /** Metadata for the report. */
   metadata?: ResponseMetaData;
   /** This Google Analytics property's quota state including this request. */
   propertyQuota?: PropertyQuota;
   /** Summarizes the columns and rows created by a pivot. Each pivot in the request produces one header in the response. If we have a request like this: "pivots": [{ "fieldNames": ["country", "city"] }, { "fieldNames": "eventName" }] We will have the following `pivotHeaders` in the response: "pivotHeaders" : [{ "dimensionHeaders": [{ "dimensionValues": [ { "value": "United Kingdom" }, { "value": "London" } ] }, { "dimensionValues": [ { "value": "Japan" }, { "value": "Osaka" } ] }] }, { "dimensionHeaders": [{ "dimensionValues": [{ "value": "session_start" }] }, { "dimensionValues": [{ "value": "scroll" }] }] }] */
-  pivotHeaders?: Array<PivotHeader>;
+  pivotHeaders?: ReadonlyArray<PivotHeader>;
   /** Identifies what kind of resource this message is. This `kind` is always the fixed string "analyticsData#runPivotReport". Useful to distinguish between response types in JSON. */
   kind?: string;
 }
@@ -689,7 +689,7 @@ export interface BatchRunPivotReportsResponse {
   /** Identifies what kind of resource this message is. This `kind` is always the fixed string "analyticsData#batchRunPivotReports". Useful to distinguish between response types in JSON. */
   kind?: string;
   /** Individual responses. Each response has a separate pivot report request. */
-  pivotReports?: Array<RunPivotReportResponse>;
+  pivotReports?: ReadonlyArray<RunPivotReportResponse>;
 }
 
 export const BatchRunPivotReportsResponse =
@@ -706,7 +706,7 @@ export interface DimensionMetadata {
   /** Description of how this dimension is used and calculated. */
   description?: string;
   /** Still usable but deprecated names for this dimension. If populated, this dimension is available by either `apiName` or one of `deprecatedApiNames` for a period of time. After the deprecation period, the dimension will be available only by `apiName`. */
-  deprecatedApiNames?: Array<string>;
+  deprecatedApiNames?: ReadonlyArray<string>;
   /** True if the dimension is custom to this property. This includes user, event, & item scoped custom dimensions; to learn more about custom dimensions, see https://support.google.com/analytics/answer/14240153. This also include custom channel groups; to learn more about custom channel groups, see https://support.google.com/analytics/answer/13051316. */
   customDefinition?: boolean;
   /** This dimension's name within the Google Analytics user interface. For example, `Event name`. */
@@ -758,14 +758,14 @@ export interface MetricMetadata {
   /** The mathematical expression for this derived metric. Can be used in [Metric](#Metric)'s `expression` field for equivalent reports. Most metrics are not expressions, and for non-expressions, this field is empty. */
   expression?: string;
   /** If reasons are specified, your access is blocked to this metric for this property. API requests from you to this property for this metric will succeed; however, the report will contain only zeros for this metric. API requests with metric filters on blocked metrics will fail. If reasons are empty, you have access to this metric. To learn more, see [Access and data-restriction management](https://support.google.com/analytics/answer/10851388). */
-  blockedReasons?: Array<
+  blockedReasons?: ReadonlyArray<
     | "BLOCKED_REASON_UNSPECIFIED"
     | "NO_REVENUE_METRICS"
     | "NO_COST_METRICS"
     | (string & {})
   >;
   /** Still usable but deprecated names for this metric. If populated, this metric is available by either `apiName` or one of `deprecatedApiNames` for a period of time. After the deprecation period, the metric will be available only by `apiName`. */
-  deprecatedApiNames?: Array<string>;
+  deprecatedApiNames?: ReadonlyArray<string>;
   /** The type of this metric. */
   type?:
     | "METRIC_TYPE_UNSPECIFIED"
@@ -837,9 +837,9 @@ export interface RunPivotReportRequest {
   /** The filter clause of dimensions. Dimensions must be requested to be used in this filter. Metrics cannot be used in this filter. */
   dimensionFilter?: FilterExpression;
   /** The metrics requested, at least one metric needs to be specified. All defined metrics must be used by one of the following: metric_expression, metric_filter, order_bys. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** The date range to retrieve event data for the report. If multiple date ranges are specified, event data from each date range is used in the report. A special dimension with field name "dateRange" can be included in a Pivot's field names; if included, the report compares between date ranges. In a cohort request, this `dateRanges` must be unspecified. */
-  dateRanges?: Array<DateRange>;
+  dateRanges?: ReadonlyArray<DateRange>;
   /** If false or unspecified, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. Regardless of this `keep_empty_rows` setting, only data recorded by the Google Analytics property can be displayed in a report. For example if a property never logs a `purchase` event, then a query for the `eventName` dimension and `eventCount` metric will not have a row eventName: "purchase" and eventCount: 0. */
   keepEmptyRows?: boolean;
   /** Cohort group associated with this request. If there is a cohort group in the request the 'cohort' dimension must be present. */
@@ -851,11 +851,11 @@ export interface RunPivotReportRequest {
   /** A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field is empty, the report uses the property's default currency. */
   currencyCode?: string;
   /** The dimensions requested. All defined dimensions must be used by one of the following: dimension_expression, dimension_filter, pivots, order_bys. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** Describes the visual format of the report's dimensions in columns or rows. The union of the fieldNames (dimension names) in all pivots must be a subset of dimension names defined in Dimensions. No two pivots can share a dimension. A dimension is only visible if it appears in a pivot. */
-  pivots?: Array<Pivot>;
+  pivots?: ReadonlyArray<Pivot>;
   /** Optional. The configuration of comparisons requested and displayed. The request requires both a comparisons field and a comparisons dimension to receive a comparison column in the response. */
-  comparisons?: Array<Comparison>;
+  comparisons?: ReadonlyArray<Comparison>;
   /** A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234 */
   property?: string;
 }
@@ -877,7 +877,7 @@ export const RunPivotReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchRunPivotReportsRequest {
   /** Individual requests. Each request has a separate pivot report response. Each batch request is allowed up to 5 requests. */
-  requests?: Array<RunPivotReportRequest>;
+  requests?: ReadonlyArray<RunPivotReportRequest>;
 }
 
 export const BatchRunPivotReportsRequest =
@@ -887,25 +887,25 @@ export const BatchRunPivotReportsRequest =
 
 export interface RunReportResponse {
   /** If requested, the minimum values of metrics. */
-  minimums?: Array<Row>;
+  minimums?: ReadonlyArray<Row>;
   /** Describes metric columns. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows. */
-  metricHeaders?: Array<MetricHeader>;
+  metricHeaders?: ReadonlyArray<MetricHeader>;
   /** Metadata for the report. */
   metadata?: ResponseMetaData;
   /** This Google Analytics property's quota state including this request. */
   propertyQuota?: PropertyQuota;
   /** Rows of dimension value combinations and metric values in the report. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
   /** Identifies what kind of resource this message is. This `kind` is always the fixed string "analyticsData#runReport". Useful to distinguish between response types in JSON. */
   kind?: string;
   /** If requested, the maximum values of metrics. */
-  maximums?: Array<Row>;
+  maximums?: ReadonlyArray<Row>;
   /** The total number of rows in the query result. `rowCount` is independent of the number of rows returned in the response, the `limit` request parameter, and the `offset` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination). */
   rowCount?: number;
   /** If requested, the totaled values of metrics. */
-  totals?: Array<Row>;
+  totals?: ReadonlyArray<Row>;
   /** Describes dimension columns. The number of DimensionHeaders and ordering of DimensionHeaders matches the dimensions present in rows. */
-  dimensionHeaders?: Array<DimensionHeader>;
+  dimensionHeaders?: ReadonlyArray<DimensionHeader>;
 }
 
 export const RunReportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -925,7 +925,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -950,9 +950,9 @@ export const V1betaAudienceDimensionValue =
 
 export interface RunReportRequest {
   /** The dimensions requested and displayed. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** Optional. The configuration of comparisons requested and displayed. The request only requires a comparisons field in order to receive a comparison column in the response. */
-  comparisons?: Array<Comparison>;
+  comparisons?: ReadonlyArray<Comparison>;
   /** A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field is empty, the report uses the property's default currency. */
   currencyCode?: string;
   /** The filter clause of metrics. Applied after aggregating the report's rows, similar to SQL having-clause. Dimensions cannot be used in this filter. */
@@ -962,15 +962,15 @@ export interface RunReportRequest {
   /** The row count of the start row. The first row is counted as row 0. When paging, the first request does not specify offset; or equivalently, sets offset to 0; the first request returns the first `limit` of rows. The second request sets offset to the `limit` of the first request; the second request returns the second `limit` of rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination). */
   offset?: string;
   /** The metrics requested and displayed. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** Date ranges of data to read. If multiple date ranges are requested, each response row will contain a zero based date range index. If two date ranges overlap, the event data for the overlapping days is included in the response rows for both date ranges. In a cohort request, this `dateRanges` must be unspecified. */
-  dateRanges?: Array<DateRange>;
+  dateRanges?: ReadonlyArray<DateRange>;
   /** Toggles whether to return the current state of this Google Analytics property's quota. Quota is returned in [PropertyQuota](#PropertyQuota). */
   returnPropertyQuota?: boolean;
   /** Specifies how rows are ordered in the response. Requests including both comparisons and multiple date ranges will have order bys applied on the comparisons. */
-  orderBys?: Array<OrderBy>;
+  orderBys?: ReadonlyArray<OrderBy>;
   /** Aggregation of metrics. Aggregated metric values will be shown in rows where the dimension_values are set to "RESERVED_(MetricAggregation)". Aggregates including both comparisons and multiple date ranges will be aggregated based on the date ranges. */
-  metricAggregations?: Array<
+  metricAggregations?: ReadonlyArray<
     | "METRIC_AGGREGATION_UNSPECIFIED"
     | "TOTAL"
     | "MINIMUM"
@@ -1008,7 +1008,7 @@ export const RunReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchRunReportsRequest {
   /** Individual requests. Each request has a separate report response. Each batch request is allowed up to 5 requests. */
-  requests?: Array<RunReportRequest>;
+  requests?: ReadonlyArray<RunReportRequest>;
 }
 
 export const BatchRunReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1040,7 +1040,7 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchRunReportsResponse {
   /** Individual responses. Each response has a separate report request. */
-  reports?: Array<RunReportResponse>;
+  reports?: ReadonlyArray<RunReportResponse>;
   /** Identifies what kind of resource this message is. This `kind` is always the fixed string "analyticsData#batchRunReports". Useful to distinguish between response types in JSON. */
   kind?: string;
 }
@@ -1053,7 +1053,7 @@ export const BatchRunReportsResponse =
 
 export interface V1betaAudienceRow {
   /** Each dimension value attribute for an audience user. One dimension value will be added for each dimension column requested. */
-  dimensionValues?: Array<V1betaAudienceDimensionValue>;
+  dimensionValues?: ReadonlyArray<V1betaAudienceDimensionValue>;
 }
 
 export const V1betaAudienceRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1090,7 +1090,7 @@ export interface AudienceExport {
   /** Output only. Error message is populated when an audience export fails during creation. A common reason for such a failure is quota exhaustion. */
   errorMessage?: string;
   /** Required. The dimensions requested and displayed in the query response. */
-  dimensions?: Array<V1betaAudienceDimension>;
+  dimensions?: ReadonlyArray<V1betaAudienceDimension>;
   /** Output only. The total number of rows in the AudienceExport result. */
   rowCount?: number;
   /** Output only. The descriptive display name for this audience. For example, "Purchasers". */
@@ -1116,7 +1116,7 @@ export const AudienceExport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryAudienceExportResponse {
   /** Rows for each user in an audience export. The number of rows in this response will be less than or equal to request's page size. */
-  audienceRows?: Array<V1betaAudienceRow>;
+  audienceRows?: ReadonlyArray<V1betaAudienceRow>;
   /** Configuration data about AudienceExport being queried. Returned to help interpret the audience rows in this response. For example, the dimensions in this AudienceExport correspond to the columns in the AudienceRows. */
   audienceExport?: AudienceExport;
   /** The total number of rows in the AudienceExport result. `rowCount` is independent of the number of rows returned in the response, the `limit` request parameter, and the `offset` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination). */
@@ -1132,7 +1132,7 @@ export const QueryAudienceExportResponse =
 
 export interface ListAudienceExportsResponse {
   /** Each audience export for a property. */
-  audienceExports?: Array<AudienceExport>;
+  audienceExports?: ReadonlyArray<AudienceExport>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1145,21 +1145,21 @@ export const ListAudienceExportsResponse =
 
 export interface RunRealtimeReportResponse {
   /** Rows of dimension value combinations and metric values in the report. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
   /** If requested, the minimum values of metrics. */
-  minimums?: Array<Row>;
+  minimums?: ReadonlyArray<Row>;
   /** Describes metric columns. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows. */
-  metricHeaders?: Array<MetricHeader>;
+  metricHeaders?: ReadonlyArray<MetricHeader>;
   /** This Google Analytics property's Realtime quota state including this request. */
   propertyQuota?: PropertyQuota;
   /** Describes dimension columns. The number of DimensionHeaders and ordering of DimensionHeaders matches the dimensions present in rows. */
-  dimensionHeaders?: Array<DimensionHeader>;
+  dimensionHeaders?: ReadonlyArray<DimensionHeader>;
   /** The total number of rows in the query result. `rowCount` is independent of the number of rows returned in the response and the `limit` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows. */
   rowCount?: number;
   /** If requested, the totaled values of metrics. */
-  totals?: Array<Row>;
+  totals?: ReadonlyArray<Row>;
   /** If requested, the maximum values of metrics. */
-  maximums?: Array<Row>;
+  maximums?: ReadonlyArray<Row>;
   /** Identifies what kind of resource this message is. This `kind` is always the fixed string "analyticsData#runRealtimeReport". Useful to distinguish between response types in JSON. */
   kind?: string;
 }
@@ -1196,11 +1196,11 @@ export interface Metadata {
   /** Resource name of this metadata. */
   name?: string;
   /** The dimension descriptions. */
-  dimensions?: Array<DimensionMetadata>;
+  dimensions?: ReadonlyArray<DimensionMetadata>;
   /** The comparison descriptions. */
-  comparisons?: Array<ComparisonMetadata>;
+  comparisons?: ReadonlyArray<ComparisonMetadata>;
   /** The metric descriptions. */
-  metrics?: Array<MetricMetadata>;
+  metrics?: ReadonlyArray<MetricMetadata>;
 }
 
 export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1212,9 +1212,9 @@ export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CheckCompatibilityResponse {
   /** The compatibility of each dimension. */
-  dimensionCompatibilities?: Array<DimensionCompatibility>;
+  dimensionCompatibilities?: ReadonlyArray<DimensionCompatibility>;
   /** The compatibility of each metric. */
-  metricCompatibilities?: Array<MetricCompatibility>;
+  metricCompatibilities?: ReadonlyArray<MetricCompatibility>;
 }
 
 export const CheckCompatibilityResponse =
@@ -1227,9 +1227,9 @@ export const CheckCompatibilityResponse =
 
 export interface CheckCompatibilityRequest {
   /** The dimensions in this report. `dimensions` should be the same value as in your `runReport` request. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** The metrics in this report. `metrics` should be the same value as in your `runReport` request. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** The filter clause of metrics. `metricFilter` should be the same value as in your `runReport` request */
   metricFilter?: FilterExpression;
   /** The filter clause of dimensions. `dimensionFilter` should be the same value as in your `runReport` request. */
@@ -1269,7 +1269,7 @@ export const CheckCompatibilityPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:checkCompatibility",
+      path: "v1beta/{property}:checkCompatibility",
       hasBody: true,
     }),
     svc,
@@ -1307,7 +1307,7 @@ export const RunPivotReportPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:runPivotReport",
+      path: "v1beta/{property}:runPivotReport",
       hasBody: true,
     }),
     svc,
@@ -1345,7 +1345,7 @@ export const BatchRunPivotReportsPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:batchRunPivotReports",
+      path: "v1beta/{property}:batchRunPivotReports",
       hasBody: true,
     }),
     svc,
@@ -1384,7 +1384,7 @@ export const RunReportPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:runReport",
+      path: "v1beta/{property}:runReport",
       hasBody: true,
     }),
     svc,
@@ -1417,10 +1417,7 @@ export const GetMetadataPropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/metadata",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMetadataPropertiesRequest>;
 
@@ -1456,7 +1453,7 @@ export const BatchRunReportsPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:batchRunReports",
+      path: "v1beta/{property}:batchRunReports",
       hasBody: true,
     }),
     svc,
@@ -1494,7 +1491,7 @@ export const RunRealtimeReportPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:runRealtimeReport",
+      path: "v1beta/{property}:runRealtimeReport",
       hasBody: true,
     }),
     svc,
@@ -1527,10 +1524,7 @@ export const GetPropertiesAudienceExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/audienceExports/{audienceExportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesAudienceExportsRequest>;
 
@@ -1566,7 +1560,7 @@ export const CreatePropertiesAudienceExportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/audienceExports",
+      path: "v1beta/{parent}/audienceExports",
       hasBody: true,
     }),
     svc,
@@ -1602,11 +1596,7 @@ export const QueryPropertiesAudienceExportsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(QueryAudienceExportRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/properties/{propertiesId}/audienceExports/{audienceExportsId}:query",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryPropertiesAudienceExportsRequest>;
 
@@ -1644,10 +1634,7 @@ export const ListPropertiesAudienceExportsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/audienceExports",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/audienceExports" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesAudienceExportsRequest>;
 

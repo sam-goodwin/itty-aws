@@ -220,17 +220,17 @@ export const DimensionValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CreativeAssetMetadata {
   /** List of counter events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  counterCustomEvents?: Array<CreativeCustomEvent>;
+  counterCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** List of detected click tags for assets. This is a read-only, auto-generated field. This field is empty for a rich media asset. */
-  clickTags?: Array<ClickTag>;
+  clickTags?: ReadonlyArray<ClickTag>;
   /** True if the uploaded asset is a rich media asset. This is a read-only, auto-generated field. */
   richMedia?: boolean;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeAssetMetadata". */
   kind?: string;
   /** List of timer events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  timerCustomEvents?: Array<CreativeCustomEvent>;
+  timerCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** Rules validated during code generation that generated a warning. This is a read-only, auto-generated field. Possible values are: - "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" - "CLICK_TAG_HARD_CODED" - "CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" - "CLICK_TAG_MISSING" - "CLICK_TAG_MORE_THAN_ONE" - "CLICK_TAG_NON_TOP_LEVEL" - "COMPONENT_UNSUPPORTED_DCM" - "ENABLER_UNSUPPORTED_METHOD_DCM" - "EXTERNAL_FILE_REFERENCED" - "FILE_DETAIL_EMPTY" - "FILE_TYPE_INVALID" - "GWD_PROPERTIES_INVALID" - "HTML5_FEATURE_UNSUPPORTED" - "LINKED_FILE_NOT_FOUND" - "MAX_FLASH_VERSION_11" - "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" - "ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" - "ZIP_INVALID" */
-  warnedValidationRules?: Array<
+  warnedValidationRules?: ReadonlyArray<
     | "CLICK_TAG_NON_TOP_LEVEL"
     | "CLICK_TAG_MISSING"
     | "CLICK_TAG_MORE_THAN_ONE"
@@ -260,7 +260,7 @@ export interface CreativeAssetMetadata {
     | (string & {})
   >;
   /** List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. */
-  detectedFeatures?: Array<
+  detectedFeatures?: ReadonlyArray<
     | "CSS_FONT_FACE"
     | "CSS_BACKGROUND_SIZE"
     | "CSS_BORDER_IMAGE"
@@ -336,7 +336,7 @@ export interface CreativeAssetMetadata {
   /** Dimension value for the numeric ID of the asset. This is a read-only, auto-generated field. */
   idDimensionValue?: DimensionValue;
   /** List of exit events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  exitCustomEvents?: Array<CreativeCustomEvent>;
+  exitCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
 }
 
 export const CreativeAssetMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -373,7 +373,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/creativeAssets/{creativeAssetsId}/creativeAssets",
+    path: "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets",
     hasBody: true,
   }),
   svc,

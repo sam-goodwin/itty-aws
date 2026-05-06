@@ -36,7 +36,7 @@ export const PlaceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Places {
   /** The areas represented by place IDs. Limited to a maximum of 20 places. */
-  placeInfos?: Array<PlaceInfo>;
+  placeInfos?: ReadonlyArray<PlaceInfo>;
 }
 
 export const Places = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -90,9 +90,9 @@ export interface Category {
   /** Output only. The human-readable name of the category. This is set when reading the location. When modifying the location, `category_id` must be set. */
   displayName?: string;
   /** Output only. A list of all the service types that are available for this business category. */
-  serviceTypes?: Array<ServiceType>;
+  serviceTypes?: ReadonlyArray<ServiceType>;
   /** Output only. More hours types that are available for this business category. */
-  moreHoursTypes?: Array<MoreHoursType>;
+  moreHoursTypes?: ReadonlyArray<MoreHoursType>;
   /** Required. A stable ID (provided by Google) for this category. The value must be specified when modifying the category (when creating or updating a location). */
   name?: string;
 }
@@ -106,7 +106,7 @@ export const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchGetCategoriesResponse {
   /** Categories that match the GConcept ids provided in the request. They will not come in the same order as category ids in the request. */
-  categories?: Array<Category>;
+  categories?: ReadonlyArray<Category>;
 }
 
 export const BatchGetCategoriesResponse =
@@ -244,9 +244,9 @@ export const SpecialHourPeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RepeatedEnumAttributeValue {
   /** Enum values that are set. */
-  setValues?: Array<string>;
+  setValues?: ReadonlyArray<string>;
   /** Enum values that are unset. */
-  unsetValues?: Array<string>;
+  unsetValues?: ReadonlyArray<string>;
 }
 
 export const RepeatedEnumAttributeValue =
@@ -268,9 +268,9 @@ export interface Attribute {
   /** When the attribute value type is REPEATED_ENUM, this contains the attribute value, and the other values fields must be empty. */
   repeatedEnumValue?: RepeatedEnumAttributeValue;
   /** The values for this attribute. The type of the values supplied must match that expected for that attribute. This is a repeated field where multiple attribute values may be provided. Attribute types only support one value. */
-  values?: Array<unknown>;
+  values?: ReadonlyArray<unknown>;
   /** When the attribute value type is URL, this field contains the value(s) for this attribute, and the other values fields must be empty. */
-  uriValues?: Array<UriAttributeValue>;
+  uriValues?: ReadonlyArray<UriAttributeValue>;
   /** Output only. The type of value that this attribute contains. This should be used to determine how to interpret the value. */
   valueType?:
     | "ATTRIBUTE_VALUE_TYPE_UNSPECIFIED"
@@ -295,7 +295,7 @@ export interface Attributes {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
   name?: string;
   /** A collection of attributes that need to be updated. */
-  attributes?: Array<Attribute>;
+  attributes?: ReadonlyArray<Attribute>;
 }
 
 export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -315,11 +315,11 @@ export interface PostalAddress {
   /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
   locality?: string;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
   postalCode?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
   administrativeArea?: string;
   /** Optional. The name of the organization at the address. */
@@ -378,7 +378,7 @@ export interface AttributeMetadata {
   /** The localized display name of the group that contains this attribute, if available; otherwise, the English group name. Related attributes are collected into a group and should be displayed together under the heading given here. */
   groupDisplayName?: string;
   /** For some types of attributes (for example, enums), a list of supported values and corresponding display names for those values is provided. */
-  valueMetadata?: Array<AttributeValueMetadata>;
+  valueMetadata?: ReadonlyArray<AttributeValueMetadata>;
 }
 
 export const AttributeMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -393,7 +393,7 @@ export const AttributeMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAttributeMetadataResponse {
   /** A collection of attribute metadata for the available attributes. */
-  attributeMetadata?: Array<AttributeMetadata>;
+  attributeMetadata?: ReadonlyArray<AttributeMetadata>;
   /** If the number of attributes exceeded the requested page size, this field will be populated with a token to fetch the next page of attributes on a subsequent call to `attributes.list`. If there are no more attributes, this field will not be present in the response. */
   nextPageToken?: string;
 }
@@ -420,7 +420,7 @@ export interface PhoneNumbers {
   /** Required. A phone number that connects to your individual business location as directly as possible. Use a local phone number instead of a central, call center helpline number whenever possible. */
   primaryPhone?: string;
   /** Optional. Up to two phone numbers (mobile or landline, no fax) at which your business can be called, in addition to your primary phone number. */
-  additionalPhones?: Array<string>;
+  additionalPhones?: ReadonlyArray<string>;
 }
 
 export const PhoneNumbers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -482,7 +482,7 @@ export interface Categories {
   /** Required. Category that best describes the core business this location engages in. */
   primaryCategory?: Category;
   /** Optional. Additional categories to describe your business. Categories help your customers find accurate, specific results for services they're interested in. To keep your business information accurate and live, make sure that you use as few categories as possible to describe your overall core business. Choose categories that are as specific as possible, but representative of your main business. */
-  additionalCategories?: Array<Category>;
+  additionalCategories?: ReadonlyArray<Category>;
 }
 
 export const Categories = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -492,7 +492,7 @@ export const Categories = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SpecialHours {
   /** Required. A list of exceptions to the business's regular hours. */
-  specialHourPeriods?: Array<SpecialHourPeriod>;
+  specialHourPeriods?: ReadonlyArray<SpecialHourPeriod>;
 }
 
 export const SpecialHours = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -505,7 +505,7 @@ export interface RelationshipData {
   /** The resource name of the Chain that this location is member of. How to find Chain ID */
   parentChain?: string;
   /** The list of children locations that this location has relations with. */
-  childrenLocations?: Array<RelevantLocation>;
+  childrenLocations?: ReadonlyArray<RelevantLocation>;
 }
 
 export const RelationshipData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -552,7 +552,7 @@ export const TimePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BusinessHours {
   /** Required. A collection of times that this location is open for business. Each period represents a range of hours when the location is open during the week. */
-  periods?: Array<TimePeriod>;
+  periods?: ReadonlyArray<TimePeriod>;
 }
 
 export const BusinessHours = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -632,7 +632,7 @@ export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MoreHours {
   /** Required. A collection of times that this location is open. Each period represents a range of hours when the location is open during the week. */
-  periods?: Array<TimePeriod>;
+  periods?: ReadonlyArray<TimePeriod>;
   /** Required. Type of hours. Clients should call {#link businessCategories:BatchGet} to get supported hours types for categories of their locations. */
   hoursTypeId?: string;
 }
@@ -652,7 +652,7 @@ export interface Location {
   /** Optional. Additional information that is surfaced in AdWords. */
   adWordsLocationExtensions?: AdWordsLocationExtensions;
   /** Optional. List of services supported by merchants. A service can be haircut, install water heater, etc. Duplicated service items will be removed automatically. */
-  serviceItems?: Array<ServiceItem>;
+  serviceItems?: ReadonlyArray<ServiceItem>;
   /** Optional. Service area businesses provide their service at the customer's location. If this business is a service area business, this field describes the area(s) serviced by the business. */
   serviceArea?: ServiceAreaBusiness;
   /** Optional. User-provided latitude and longitude. When creating a location, this field is ignored if the provided address geocodes successfully. This field is only returned on get requests if the user-provided `latlng` value was accepted during create, or the `latlng` value was updated through the Google Business Profile website. This field can only be updated by approved clients. */
@@ -680,9 +680,9 @@ export interface Location {
   /** Immutable. The language of the location. Set during creation and not updateable. */
   languageCode?: string;
   /** Optional. A collection of free-form strings to allow you to tag your business. These labels are NOT user facing; only you can see them. Must be between 1-255 characters per label. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** Optional. More hours for a business's different departments or specific customers. */
-  moreHours?: Array<MoreHours>;
+  moreHours?: ReadonlyArray<MoreHours>;
 }
 
 export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -740,7 +740,7 @@ export const GoogleLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchGoogleLocationsResponse {
   /** A collection of GoogleLocations that are potential matches to the specified request, listed in order from most to least accuracy. */
-  googleLocations?: Array<GoogleLocation>;
+  googleLocations?: ReadonlyArray<GoogleLocation>;
 }
 
 export const SearchGoogleLocationsResponse =
@@ -752,7 +752,7 @@ export interface ListCategoriesResponse {
   /** If the number of categories exceeded the requested page size, this field will be populated with a token to fetch the next page of categories on a subsequent call to `ListCategories`. */
   nextPageToken?: string;
   /** The matching categories based on the requested parameters. */
-  categories?: Array<Category>;
+  categories?: ReadonlyArray<Category>;
 }
 
 export const ListCategoriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -773,13 +773,13 @@ export const ChainUri = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Chain {
   /** Websites of the chain. */
-  websites?: Array<ChainUri>;
+  websites?: ReadonlyArray<ChainUri>;
   /** Number of locations that are part of this chain. */
   locationCount?: number;
   /** Required. The chain's resource name, in the format `chains/{chain_id}`. */
   name?: string;
   /** Names of the chain. */
-  chainNames?: Array<ChainName>;
+  chainNames?: ReadonlyArray<ChainName>;
 }
 
 export const Chain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -809,7 +809,7 @@ export interface ListLocationsResponse {
   /** If the number of locations exceeded the requested page size, this field is populated with a token to fetch the next page of locations on a subsequent call to `ListLocations`. If there are no more locations, this field is not present in the response. */
   nextPageToken?: string;
   /** The locations. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The approximate number of Locations in the list irrespective of pagination. This field will only be returned if `filter` is used as a query parameter. */
   totalSize?: number;
 }
@@ -822,7 +822,7 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchChainsResponse {
   /** Chains that match the queried chain_display_name in SearchChainsRequest. If there are no matches, this field will be empty. Results are listed in order of relevance. */
-  chains?: Array<Chain>;
+  chains?: ReadonlyArray<Chain>;
 }
 
 export const SearchChainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -844,7 +844,7 @@ export const GetLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/locations/{locationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetLocationsRequest>;
 
@@ -877,10 +877,7 @@ export const GetGoogleUpdatedLocationsRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/{locationsId}:getGoogleUpdated",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getGoogleUpdated" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleUpdatedLocationsRequest>;
 
@@ -919,11 +916,7 @@ export const UpdateAttributesLocationsRequest =
     ),
     body: Schema.optional(Attributes).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/locations/{locationsId}/attributes",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAttributesLocationsRequest>;
 
@@ -954,7 +947,7 @@ export const GetAttributesLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/locations/{locationsId}/attributes" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAttributesLocationsRequest>;
 
@@ -986,7 +979,7 @@ export const DeleteLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "DELETE", path: "v1/locations/{locationsId}" }),
+  T.Http({ method: "DELETE", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteLocationsRequest>;
 
@@ -1026,11 +1019,7 @@ export const PatchLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Location).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1/locations/{locationsId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchLocationsRequest>;
 
@@ -1060,10 +1049,7 @@ export const GetGoogleUpdatedLocationsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/{locationsId}/attributes:getGoogleUpdated",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getGoogleUpdated" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleUpdatedLocationsAttributesRequest>;
 
@@ -1109,7 +1095,7 @@ export const ListAccountsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{parent}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLocationsRequest>;
 
@@ -1155,11 +1141,7 @@ export const CreateAccountsLocationsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Location).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/locations",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/locations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsLocationsRequest>;
 
@@ -1284,7 +1266,7 @@ export interface GetChainsRequest {
 export const GetChainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/chains/{chainsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetChainsRequest>;
 

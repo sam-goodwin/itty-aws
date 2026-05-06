@@ -9,3 +9,4 @@ pnpm-workspace.yaml
 .gen-tmp
 vendor/
 .claude
+.worktrees

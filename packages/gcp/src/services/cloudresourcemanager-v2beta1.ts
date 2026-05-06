@@ -28,7 +28,7 @@ export interface Folder {
   /** Output only. Management Project associated with this folder (if app-management capability is enabled). Example: `projects/google-mp-123` OUTPUT ONLY. */
   managementProject?: string;
   /** Output only. Optional capabilities configured for this folder (via UpdateCapability API). Example: `folders/123/capabilities/app-management`. */
-  configuredCapabilities?: Array<string>;
+  configuredCapabilities?: ReadonlyArray<string>;
   /** Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234". */
   name?: string;
   /** Output only. Timestamp when the Folder was created. Assigned by the server. */
@@ -58,7 +58,7 @@ export const Folder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchFoldersResponse {
   /** A possibly paginated folder search results. the specified parent resource. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
   /** A pagination token returned from a previous call to `SearchFolders` that indicates from where searching should continue. */
   nextPageToken?: string;
 }
@@ -187,7 +187,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -280,7 +280,7 @@ export const DeleteTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListFoldersResponse {
   /** A possibly paginated list of Folders that are direct descendants of the specified parent resource. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
   /** A pagination token returned from a previous call to `ListFolders` that indicates from where listing should continue. */
   nextPageToken?: string;
 }
@@ -292,7 +292,7 @@ export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -310,7 +310,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
@@ -370,7 +370,7 @@ export const SearchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -393,7 +393,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -412,7 +412,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -424,11 +424,11 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -538,6 +538,52 @@ export const DeleteFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "DeleteFolderMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -549,14 +595,14 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | Forbidden | NotFound;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -567,7 +613,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [Forbidden, NotFound],
 }));
 
 export interface ListFoldersRequest {
@@ -627,7 +673,7 @@ export const TestIamPermissionsFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/folders/{foldersId}:testIamPermissions",
+      path: "v2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -665,7 +711,7 @@ export const SetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/folders/{foldersId}:setIamPolicy",
+      path: "v2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -696,7 +742,7 @@ export interface DeleteFoldersRequest {
 export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v2/folders/{foldersId}" }),
+  T.Http({ method: "DELETE", path: "v2/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteFoldersRequest>;
 
@@ -760,11 +806,7 @@ export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(MoveFolderRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2/folders/{foldersId}:move",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2/{name}:move", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<MoveFoldersRequest>;
 
@@ -793,7 +835,7 @@ export interface GetFoldersRequest {
 export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/folders/{foldersId}" }),
+  T.Http({ method: "GET", path: "v2/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetFoldersRequest>;
 
@@ -828,7 +870,7 @@ export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Folder).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v2/folders/{foldersId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchFoldersRequest>;
 
@@ -862,11 +904,7 @@ export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(UndeleteFolderRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2/folders/{foldersId}:undelete",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2/{name}:undelete", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UndeleteFoldersRequest>;
 
@@ -901,7 +939,7 @@ export const GetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/folders/{foldersId}:getIamPolicy",
+      path: "v2/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,

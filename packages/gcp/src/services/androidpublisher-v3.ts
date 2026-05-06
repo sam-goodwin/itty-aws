@@ -28,7 +28,7 @@ export interface Grant {
   /** Immutable. The package name of the app. This will be empty for draft apps. */
   packageName?: string;
   /** The permissions granted to the user for this app. */
-  appLevelPermissions?: Array<
+  appLevelPermissions?: ReadonlyArray<
     | "APP_LEVEL_PERMISSION_UNSPECIFIED"
     | "CAN_ACCESS_APP"
     | "CAN_VIEW_FINANCIAL_DATA"
@@ -72,7 +72,7 @@ export interface User {
   /** Output only. Whether there are more permissions for the user that are not represented here. This can happen if the caller does not have permission to manage all apps in the account. This is also `true` if this user is the account owner. If this field is `true`, it should be taken as a signal that this user cannot be fully managed via the API. That is, the API caller is not be able to manage all of the permissions this user holds, either because it doesn't know about them or because the user is the account owner. */
   partial?: boolean;
   /** Permissions for the user which apply across the developer account. */
-  developerAccountPermissions?: Array<
+  developerAccountPermissions?: ReadonlyArray<
     | "DEVELOPER_LEVEL_PERMISSION_UNSPECIFIED"
     | "CAN_SEE_ALL_APPS"
     | "CAN_VIEW_FINANCIAL_DATA_GLOBAL"
@@ -95,7 +95,7 @@ export interface User {
     | (string & {})
   >;
   /** Output only. Per-app permissions for the user. */
-  grants?: Array<Grant>;
+  grants?: ReadonlyArray<Grant>;
 }
 
 export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -110,7 +110,7 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUsersResponse {
   /** The resulting users. */
-  users?: Array<User>;
+  users?: ReadonlyArray<User>;
   /** A token to pass to subsequent calls in order to retrieve subsequent results. This will not be set if there are no more results to return. */
   nextPageToken?: string;
 }
@@ -148,7 +148,7 @@ export interface ApksListResponse {
   /** The kind of this response ("androidpublisher#apksListResponse"). */
   kind?: string;
   /** All APKs. */
-  apks?: Array<Apk>;
+  apks?: ReadonlyArray<Apk>;
 }
 
 export const ApksListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -188,17 +188,17 @@ export interface ExternallyHostedApk {
   /** The minimum SDK targeted by this APK. */
   minimumSdk?: number;
   /** A certificate (or array of certificates if a certificate-chain is used) used to sign this APK, represented as a base64 encoded byte array. */
-  certificateBase64s?: Array<string>;
+  certificateBase64s?: ReadonlyArray<string>;
   /** The URL at which the APK is hosted. This must be an https URL. */
   externallyHostedUrl?: string;
   /** The maximum SDK supported by this APK (optional). */
   maximumSdk?: number;
   /** The native code environments supported by this APK (optional). */
-  nativeCodes?: Array<string>;
+  nativeCodes?: ReadonlyArray<string>;
   /** The features required by this APK (optional). */
-  usesFeatures?: Array<string>;
+  usesFeatures?: ReadonlyArray<string>;
   /** The permissions requested by this APK. */
-  usesPermissions?: Array<UsesPermission>;
+  usesPermissions?: ReadonlyArray<UsesPermission>;
 }
 
 export const ExternallyHostedApk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -241,7 +241,7 @@ export const ApksAddExternallyHostedResponse =
 
 export interface Regions {
   /** Regions targeted by the recovery action. Region codes are ISO 3166 Alpha-2 country codes. For example, US stands for United States of America. See https://www.iso.org/iso-3166-country-codes.html for the complete list of country codes. */
-  regionCode?: Array<string>;
+  regionCode?: ReadonlyArray<string>;
 }
 
 export const Regions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -250,7 +250,7 @@ export const Regions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AndroidSdks {
   /** Android api levels of devices targeted by recovery action. See https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels for different api levels in android. */
-  sdkLevels?: Array<string>;
+  sdkLevels?: ReadonlyArray<string>;
 }
 
 export const AndroidSdks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -268,7 +268,7 @@ export const AllUsers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AppVersionList {
   /** List of app version codes. */
-  versionCodes?: Array<string>;
+  versionCodes?: ReadonlyArray<string>;
 }
 
 export const AppVersionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -348,7 +348,7 @@ export const RemoteInAppUpdateDataPerBundle =
 
 export interface RemoteInAppUpdateData {
   /** Data related to the recovery action at bundle level. */
-  remoteAppUpdateDataPerBundle?: Array<RemoteInAppUpdateDataPerBundle>;
+  remoteAppUpdateDataPerBundle?: ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
 }
 
 export const RemoteInAppUpdateData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -410,7 +410,7 @@ export const DeployAppRecoveryResponse =
 
 export interface ListAppRecoveriesResponse {
   /** List of recovery actions associated with the requested package name. */
-  recoveryActions?: Array<AppRecoveryAction>;
+  recoveryActions?: ReadonlyArray<AppRecoveryAction>;
 }
 
 export const ListAppRecoveriesResponse =
@@ -522,7 +522,7 @@ export interface ProductOfferDetails {
     | "CONSUMPTION_STATE_CONSUMED"
     | (string & {});
   /** The latest offer tags associated with the offer. It includes tags inherited from the purchase option. */
-  offerTags?: Array<string>;
+  offerTags?: ReadonlyArray<string>;
 }
 
 export const ProductOfferDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -565,7 +565,7 @@ export interface ProductPurchaseV2 {
   /** ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted. */
   regionCode?: string;
   /** Contains item-level info for a ProductPurchaseV2. */
-  productLineItem?: Array<ProductLineItem>;
+  productLineItem?: ReadonlyArray<ProductLineItem>;
   /** The time when the purchase was successful, i.e., when the PurchaseState has changed to PURCHASED. This field will not be present until the payment is complete. For example, if the user initiated a pending transaction (https://developer.android.com/google/play/billing/integrate#pending), this field will not be populated until the user successfully completes the steps required to complete the transaction. */
   purchaseCompletionTime?: string;
   /** Output only. The acknowledgement state of the purchase. */
@@ -608,7 +608,7 @@ export interface BundlesListResponse {
   /** The kind of this response ("androidpublisher#bundlesListResponse"). */
   kind?: string;
   /** All app bundles. */
-  bundles?: Array<Bundle>;
+  bundles?: ReadonlyArray<Bundle>;
 }
 
 export const BundlesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -629,7 +629,7 @@ export interface TrackCountryAvailability {
   /** Whether this track's availability is synced with the default production track. See https://support.google.com/googleplay/android-developer/answer/7550024 for more information on syncing country availability with production. Note that if this is true, the returned "countries" and "rest_of_world" fields will reflect the values for the default production track. */
   syncWithProduction?: boolean;
   /** A list of one or more countries where artifacts in this track are available. This list includes all countries that are targeted by the track, even if only specific carriers are targeted in that country. */
-  countries?: Array<TrackTargetedCountry>;
+  countries?: ReadonlyArray<TrackTargetedCountry>;
   /** Whether artifacts in this track are available to "rest of the world" countries. */
   restOfWorld?: boolean;
 }
@@ -731,15 +731,15 @@ export interface DeviceSelector {
   /** Conditions on the device's RAM. */
   deviceRam?: DeviceRam;
   /** Device models included by this selector. */
-  includedDeviceIds?: Array<DeviceId>;
+  includedDeviceIds?: ReadonlyArray<DeviceId>;
   /** Device models excluded by this selector, even if they match all other conditions. */
-  excludedDeviceIds?: Array<DeviceId>;
+  excludedDeviceIds?: ReadonlyArray<DeviceId>;
   /** A device needs to have all these system features to be included by the selector. */
-  requiredSystemFeatures?: Array<SystemFeature>;
+  requiredSystemFeatures?: ReadonlyArray<SystemFeature>;
   /** A device that has any of these system features is excluded by this selector, even if it matches all other conditions. */
-  forbiddenSystemFeatures?: Array<SystemFeature>;
+  forbiddenSystemFeatures?: ReadonlyArray<SystemFeature>;
   /** Optional. The SoCs included by this selector. Only works for Android S+ devices. */
-  systemOnChips?: Array<SystemOnChip>;
+  systemOnChips?: ReadonlyArray<SystemOnChip>;
 }
 
 export const DeviceSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -755,7 +755,7 @@ export interface DeviceGroup {
   /** The name of the group. */
   name?: string;
   /** Device selectors for this group. A device matching any of the selectors is included in this group. */
-  deviceSelectors?: Array<DeviceSelector>;
+  deviceSelectors?: ReadonlyArray<DeviceSelector>;
 }
 
 export const DeviceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -765,7 +765,7 @@ export const DeviceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeviceTier {
   /** Groups of devices included in this tier. These groups must be defined explicitly under device_groups in this configuration. */
-  deviceGroupNames?: Array<string>;
+  deviceGroupNames?: ReadonlyArray<string>;
   /** The priority level of the tier. Tiers are evaluated in descending order of level: the highest level tier has the highest priority. The highest tier matching a given device is selected for that device. You should use a contiguous range of levels for your tiers in a tier set; tier levels in a tier set must be unique. For instance, if your tier set has 4 tiers (including the global fallback), you should define tiers 1, 2 and 3 in this configuration. Note: tier 0 is implicitly defined as a global fallback and selected for devices that don't match any of the tiers explicitly defined here. You mustn't define level 0 explicitly in this configuration. */
   level?: number;
 }
@@ -777,7 +777,7 @@ export const DeviceTier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeviceTierSet {
   /** Device tiers belonging to the set. */
-  deviceTiers?: Array<DeviceTier>;
+  deviceTiers?: ReadonlyArray<DeviceTier>;
 }
 
 export const DeviceTierSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -788,7 +788,7 @@ export interface UserCountrySet {
   /** Country set name. */
   name?: string;
   /** List of country codes representing countries. A Country code is represented in ISO 3166 alpha-2 format. For Example:- "IT" for Italy, "GE" for Georgia. */
-  countryCodes?: Array<string>;
+  countryCodes?: ReadonlyArray<string>;
 }
 
 export const UserCountrySet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -800,11 +800,11 @@ export interface DeviceTierConfig {
   /** Output only. The device tier config ID. */
   deviceTierConfigId?: string;
   /** Definition of device groups for the app. */
-  deviceGroups?: Array<DeviceGroup>;
+  deviceGroups?: ReadonlyArray<DeviceGroup>;
   /** Definition of the set of device tiers for the app. */
   deviceTierSet?: DeviceTierSet;
   /** Definition of user country sets for the app. */
-  userCountrySets?: Array<UserCountrySet>;
+  userCountrySets?: ReadonlyArray<UserCountrySet>;
 }
 
 export const DeviceTierConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -816,7 +816,7 @@ export const DeviceTierConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDeviceTierConfigsResponse {
   /** Device tier configs created by the developer. */
-  deviceTierConfigs?: Array<DeviceTierConfig>;
+  deviceTierConfigs?: ReadonlyArray<DeviceTierConfig>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1159,9 +1159,9 @@ export const SdkVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SdkVersionTargeting {
   /** Value of an sdk version. */
-  value?: Array<SdkVersion>;
+  value?: ReadonlyArray<SdkVersion>;
   /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
-  alternatives?: Array<SdkVersion>;
+  alternatives?: ReadonlyArray<SdkVersion>;
 }
 
 export const SdkVersionTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1188,9 +1188,9 @@ export const Abi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AbiTargeting {
   /** Value of an abi. */
-  value?: Array<Abi>;
+  value?: ReadonlyArray<Abi>;
   /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
-  alternatives?: Array<Abi>;
+  alternatives?: ReadonlyArray<Abi>;
 }
 
 export const AbiTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1222,9 +1222,9 @@ export const ScreenDensity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ScreenDensityTargeting {
   /** Value of a screen density. */
-  value?: Array<ScreenDensity>;
+  value?: ReadonlyArray<ScreenDensity>;
   /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
-  alternatives?: Array<ScreenDensity>;
+  alternatives?: ReadonlyArray<ScreenDensity>;
 }
 
 export const ScreenDensityTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1236,7 +1236,7 @@ export const ScreenDensityTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface MultiAbi {
   /** A list of targeted ABIs, as represented by the Android Platform */
-  abi?: Array<Abi>;
+  abi?: ReadonlyArray<Abi>;
 }
 
 export const MultiAbi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1245,9 +1245,9 @@ export const MultiAbi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MultiAbiTargeting {
   /** Value of a multi abi. */
-  value?: Array<MultiAbi>;
+  value?: ReadonlyArray<MultiAbi>;
   /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
-  alternatives?: Array<MultiAbi>;
+  alternatives?: ReadonlyArray<MultiAbi>;
 }
 
 export const MultiAbiTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1279,9 +1279,9 @@ export const TextureCompressionFormat =
 
 export interface TextureCompressionFormatTargeting {
   /** The list of targeted TCFs. Should not be empty. */
-  value?: Array<TextureCompressionFormat>;
+  value?: ReadonlyArray<TextureCompressionFormat>;
   /** List of alternative TCFs (TCFs targeted by the sibling splits). */
-  alternatives?: Array<TextureCompressionFormat>;
+  alternatives?: ReadonlyArray<TextureCompressionFormat>;
 }
 
 export const TextureCompressionFormatTargeting =
@@ -1338,7 +1338,7 @@ export const DeviceFeatureTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface UserCountriesTargeting {
   /** List of country codes in the two-letter CLDR territory format. */
-  countryCodes?: Array<string>;
+  countryCodes?: ReadonlyArray<string>;
   /** Indicates if the list above is exclusive. */
   exclude?: boolean;
 }
@@ -1354,7 +1354,7 @@ export interface ModuleTargeting {
   /** The sdk version that the variant targets */
   sdkVersionTargeting?: SdkVersionTargeting;
   /** Targeting for device features. */
-  deviceFeatureTargeting?: Array<DeviceFeatureTargeting>;
+  deviceFeatureTargeting?: ReadonlyArray<DeviceFeatureTargeting>;
   /** Countries-level targeting */
   userCountriesTargeting?: UserCountriesTargeting;
 }
@@ -1378,7 +1378,7 @@ export interface ModuleMetadata {
     | "FAST_FOLLOW"
     | (string & {});
   /** Names of the modules that this module directly depends on. Each module implicitly depends on the base module. */
-  dependencies?: Array<string>;
+  dependencies?: ReadonlyArray<string>;
   /** The targeting that makes a conditional module installed. Relevant only for Split APKs. */
   targeting?: ModuleTargeting;
 }
@@ -1393,9 +1393,9 @@ export const ModuleMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LanguageTargeting {
   /** ISO-639: 2 or 3 letter language code. */
-  value?: Array<string>;
+  value?: ReadonlyArray<string>;
   /** Alternative languages. */
-  alternatives?: Array<string>;
+  alternatives?: ReadonlyArray<string>;
 }
 
 export const LanguageTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1443,7 +1443,7 @@ export const SplitApkMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StandaloneApkMetadata {
   /** Names of the modules fused in this standalone APK. */
-  fusedModuleName?: Array<string>;
+  fusedModuleName?: ReadonlyArray<string>;
 }
 
 export const StandaloneApkMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1478,7 +1478,7 @@ export interface ApkSet {
   /** Metadata about the module represented by this ApkSet */
   moduleMetadata?: ModuleMetadata;
   /** Description of the generated apks. */
-  apkDescription?: Array<ApkDescription>;
+  apkDescription?: ReadonlyArray<ApkDescription>;
 }
 
 export const ApkSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1490,7 +1490,7 @@ export interface SplitApkVariant {
   /** Variant-level targeting. */
   targeting?: VariantTargeting;
   /** Set of APKs, one set per module. */
-  apkSet?: Array<ApkSet>;
+  apkSet?: ReadonlyArray<ApkSet>;
   /** Number of the variant, starting at 0 (unless overridden). A device will receive APKs from the first variant that matches the device configuration, with higher variant numbers having priority over lower variant numbers. */
   variantNumber?: number;
 }
@@ -1522,7 +1522,7 @@ export interface AssetSliceSet {
   /** Module level metadata. */
   assetModuleMetadata?: AssetModuleMetadata;
   /** Asset slices. */
-  apkDescription?: Array<ApkDescription>;
+  apkDescription?: ReadonlyArray<ApkDescription>;
 }
 
 export const AssetSliceSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1534,9 +1534,9 @@ export interface TargetingInfo {
   /** The package name of this app. */
   packageName?: string;
   /** List of the created variants. */
-  variant?: Array<SplitApkVariant>;
+  variant?: ReadonlyArray<SplitApkVariant>;
   /** List of created asset slices. */
-  assetSliceSet?: Array<AssetSliceSet>;
+  assetSliceSet?: ReadonlyArray<AssetSliceSet>;
 }
 
 export const TargetingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1549,15 +1549,15 @@ export interface GeneratedApksPerSigningKey {
   /** SHA256 hash of the APK signing public key certificate. */
   certificateSha256Hash?: string;
   /** List of generated split APKs, signed with a key corresponding to certificate_sha256_hash. */
-  generatedSplitApks?: Array<GeneratedSplitApk>;
+  generatedSplitApks?: ReadonlyArray<GeneratedSplitApk>;
   /** List of asset pack slices which will be served for this app bundle, signed with a key corresponding to certificate_sha256_hash. */
-  generatedAssetPackSlices?: Array<GeneratedAssetPackSlice>;
+  generatedAssetPackSlices?: ReadonlyArray<GeneratedAssetPackSlice>;
   /** List of generated standalone APKs, signed with a key corresponding to certificate_sha256_hash. */
-  generatedStandaloneApks?: Array<GeneratedStandaloneApk>;
+  generatedStandaloneApks?: ReadonlyArray<GeneratedStandaloneApk>;
   /** Generated universal APK, signed with a key corresponding to certificate_sha256_hash. This field is not set if no universal APK was generated for this signing key. */
   generatedUniversalApk?: GeneratedUniversalApk;
   /** Generated recovery apks for recovery actions signed with a key corresponding to certificate_sha256_hash. This includes all generated recovery APKs, also those in draft or cancelled state. This field is not set if no recovery actions were created for this signing key. */
-  generatedRecoveryModules?: Array<GeneratedRecoveryApk>;
+  generatedRecoveryModules?: ReadonlyArray<GeneratedRecoveryApk>;
   /** Contains targeting information about the generated apks. */
   targetingInfo?: TargetingInfo;
 }
@@ -1581,7 +1581,7 @@ export const GeneratedApksPerSigningKey =
 
 export interface GeneratedApksListResponse {
   /** All generated APKs, grouped by the APK signing key. */
-  generatedApks?: Array<GeneratedApksPerSigningKey>;
+  generatedApks?: ReadonlyArray<GeneratedApksPerSigningKey>;
 }
 
 export const GeneratedApksListResponse =
@@ -1609,7 +1609,7 @@ export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ImagesListResponse {
   /** All listed Images. */
-  images?: Array<Image>;
+  images?: ReadonlyArray<Image>;
 }
 
 export const ImagesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1618,7 +1618,7 @@ export const ImagesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ImagesDeleteAllResponse {
   /** The deleted images. */
-  deleted?: Array<Image>;
+  deleted?: ReadonlyArray<Image>;
 }
 
 export const ImagesDeleteAllResponse =
@@ -1641,7 +1641,7 @@ export interface InAppProductListing {
   /** Description for the store listing. */
   description?: string;
   /** Localized entitlement benefits for a subscription. */
-  benefits?: Array<string>;
+  benefits?: ReadonlyArray<string>;
 }
 
 export const InAppProductListing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1713,7 +1713,7 @@ export interface SubscriptionTaxAndComplianceSettings {
   /** Product tax category code to assign to the subscription. Product tax category determines the transaction tax rates applied to the subscription. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
   productTaxCategoryCode?: string;
   /** Regional age rating information. Currently this field is only supported for region code `US`. */
-  regionalProductAgeRatingInfos?: Array<RegionalProductAgeRatingInfo>;
+  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
 }
 
 export const SubscriptionTaxAndComplianceSettings =
@@ -1743,7 +1743,7 @@ export interface ManagedProductTaxAndComplianceSettings {
   /** Product tax category code to assign to the in-app product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
   productTaxCategoryCode?: string;
   /** Regional age rating information. Currently this field is only supported for region code `US`. */
-  regionalProductAgeRatingInfos?: Array<RegionalProductAgeRatingInfo>;
+  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
 }
 
 export const ManagedProductTaxAndComplianceSettings =
@@ -1814,7 +1814,7 @@ export const InAppProduct = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InappproductsBatchGetResponse {
   /** The list of requested in-app products, in the same order as the request. */
-  inappproduct?: Array<InAppProduct>;
+  inappproduct?: ReadonlyArray<InAppProduct>;
 }
 
 export const InappproductsBatchGetResponse =
@@ -1852,7 +1852,7 @@ export interface InappproductsListResponse {
   /** The kind of this response ("androidpublisher#inappproductsListResponse"). */
   kind?: string;
   /** All in-app products. */
-  inappproduct?: Array<InAppProduct>;
+  inappproduct?: ReadonlyArray<InAppProduct>;
   /** Pagination token, to handle a number of products that is over one page. */
   tokenPagination?: TokenPagination;
   /** Deprecated and unset. */
@@ -1898,7 +1898,7 @@ export const InappproductsUpdateRequest =
 
 export interface InappproductsBatchUpdateRequest {
   /** Required. Individual update requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
-  requests?: Array<InappproductsUpdateRequest>;
+  requests?: ReadonlyArray<InappproductsUpdateRequest>;
 }
 
 export const InappproductsBatchUpdateRequest =
@@ -1908,7 +1908,7 @@ export const InappproductsBatchUpdateRequest =
 
 export interface InappproductsBatchUpdateResponse {
   /** The updated or inserted in-app products. */
-  inappproducts?: Array<InAppProduct>;
+  inappproducts?: ReadonlyArray<InAppProduct>;
 }
 
 export const InappproductsBatchUpdateResponse =
@@ -1938,7 +1938,7 @@ export const InappproductsDeleteRequest =
 
 export interface InappproductsBatchDeleteRequest {
   /** Individual delete requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
-  requests?: Array<InappproductsDeleteRequest>;
+  requests?: ReadonlyArray<InappproductsDeleteRequest>;
 }
 
 export const InappproductsBatchDeleteRequest =
@@ -1987,7 +1987,7 @@ export interface ListingsListResponse {
   /** The kind of this response ("androidpublisher#listingsListResponse"). */
   kind?: string;
   /** All localized listings. */
-  listings?: Array<Listing>;
+  listings?: ReadonlyArray<Listing>;
 }
 
 export const ListingsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2045,13 +2045,13 @@ export const RegionalTaxConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface OneTimeProductTaxAndComplianceSettings {
   /** Regional tax configuration. */
-  regionalTaxConfigs?: Array<RegionalTaxConfig>;
+  regionalTaxConfigs?: ReadonlyArray<RegionalTaxConfig>;
   /** Whether this one-time product is declared as a product representing a tokenized digital asset. */
   isTokenizedDigitalAsset?: boolean;
   /** Product tax category code to assign to the one-time product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
   productTaxCategoryCode?: string;
   /** Regional age rating information. Currently this field is only supported for region code `US`. */
-  regionalProductAgeRatingInfos?: Array<RegionalProductAgeRatingInfo>;
+  regionalProductAgeRatingInfos?: ReadonlyArray<RegionalProductAgeRatingInfo>;
 }
 
 export const OneTimeProductTaxAndComplianceSettings =
@@ -2189,11 +2189,11 @@ export interface OneTimeProductPurchaseOption {
   /** A purchase option that can be rented. */
   rentOption?: OneTimeProductRentPurchaseOption;
   /** Regional pricing and availability information for this purchase option. */
-  regionalPricingAndAvailabilityConfigs?: Array<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
+  regionalPricingAndAvailabilityConfigs?: ReadonlyArray<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
   /** Pricing information for any new locations Play may launch in the future. If omitted, the purchase option will not be automatically available in any new locations Play may launch in the future. */
   newRegionsConfig?: OneTimeProductPurchaseOptionNewRegionsConfig;
   /** Optional. List of up to 20 custom tags specified for this purchase option, and returned to the app through the billing library. Offers for this purchase option will also receive these tags in the billing library. */
-  offerTags?: Array<OfferTag>;
+  offerTags?: ReadonlyArray<OfferTag>;
   /** Optional. Details about taxes and legal compliance. */
   taxAndComplianceSettings?: PurchaseOptionTaxAndComplianceSettings;
 }
@@ -2220,7 +2220,7 @@ export const OneTimeProductPurchaseOption =
 
 export interface RestrictedPaymentCountries {
   /** Required. Region codes to impose payment restrictions on, as defined by ISO 3166-2, e.g. "US". */
-  regionCodes?: Array<string>;
+  regionCodes?: ReadonlyArray<string>;
 }
 
 export const RestrictedPaymentCountries =
@@ -2243,15 +2243,15 @@ export interface OneTimeProduct {
   /** Required. Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must start with a number or lowercase letter, and can contain numbers (0-9), lowercase letters (a-z), underscores (_), and periods (.). */
   productId?: string;
   /** Required. Set of localized title and description data. Must not have duplicate entries with the same language_code. */
-  listings?: Array<OneTimeProductListing>;
+  listings?: ReadonlyArray<OneTimeProductListing>;
   /** Details about taxes and legal compliance. */
   taxAndComplianceSettings?: OneTimeProductTaxAndComplianceSettings;
   /** Required. The set of purchase options for this one-time product. */
-  purchaseOptions?: Array<OneTimeProductPurchaseOption>;
+  purchaseOptions?: ReadonlyArray<OneTimeProductPurchaseOption>;
   /** Optional. Countries where the purchase of this one-time product is restricted to payment methods registered in the same country. If empty, no payment location restrictions are imposed. */
   restrictedPaymentCountries?: RestrictedPaymentCountries;
   /** Optional. List of up to 20 custom tags specified for this one-time product, and returned to the app through the billing library. Purchase options and offers for this product will also receive these tags in the billing library. */
-  offerTags?: Array<OfferTag>;
+  offerTags?: ReadonlyArray<OfferTag>;
   /** Output only. The version of the regions configuration that was used to generate the one-time product. */
   regionsVersion?: RegionsVersion;
 }
@@ -2271,7 +2271,7 @@ export const OneTimeProduct = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchGetOneTimeProductsResponse {
   /** The list of requested one-time products, in the same order as the request. */
-  oneTimeProducts?: Array<OneTimeProduct>;
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
 }
 
 export const BatchGetOneTimeProductsResponse =
@@ -2281,7 +2281,7 @@ export const BatchGetOneTimeProductsResponse =
 
 export interface ListOneTimeProductsResponse {
   /** The one-time products from the specified app. */
-  oneTimeProducts?: Array<OneTimeProduct>;
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2320,7 +2320,7 @@ export const UpdateOneTimeProductRequest =
 
 export interface BatchUpdateOneTimeProductsRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different one-time products. */
-  requests?: Array<UpdateOneTimeProductRequest>;
+  requests?: ReadonlyArray<UpdateOneTimeProductRequest>;
 }
 
 export const BatchUpdateOneTimeProductsRequest =
@@ -2330,7 +2330,7 @@ export const BatchUpdateOneTimeProductsRequest =
 
 export interface BatchUpdateOneTimeProductsResponse {
   /** The list of updated one-time products list, in the same order as the request. */
-  oneTimeProducts?: Array<OneTimeProduct>;
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
 }
 
 export const BatchUpdateOneTimeProductsResponse =
@@ -2360,7 +2360,7 @@ export const DeleteOneTimeProductRequest =
 
 export interface BatchDeleteOneTimeProductsRequest {
   /** Required. A list of delete requests of up to 100 elements. All requests must delete different one-time products. */
-  requests?: Array<DeleteOneTimeProductRequest>;
+  requests?: ReadonlyArray<DeleteOneTimeProductRequest>;
 }
 
 export const BatchDeleteOneTimeProductsRequest =
@@ -2433,7 +2433,7 @@ export const UpdatePurchaseOptionStateRequest =
 
 export interface BatchUpdatePurchaseOptionStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different purchase options. */
-  requests?: Array<UpdatePurchaseOptionStateRequest>;
+  requests?: ReadonlyArray<UpdatePurchaseOptionStateRequest>;
 }
 
 export const BatchUpdatePurchaseOptionStatesRequest =
@@ -2443,7 +2443,7 @@ export const BatchUpdatePurchaseOptionStatesRequest =
 
 export interface BatchUpdatePurchaseOptionStatesResponse {
   /** The list of updated one-time products. This list will match the requests one to one, in the same order. */
-  oneTimeProducts?: Array<OneTimeProduct>;
+  oneTimeProducts?: ReadonlyArray<OneTimeProduct>;
 }
 
 export const BatchUpdatePurchaseOptionStatesResponse =
@@ -2479,7 +2479,7 @@ export const DeletePurchaseOptionRequest =
 
 export interface BatchDeletePurchaseOptionsRequest {
   /** Required. A list of delete requests of up to 100 elements. All requests must delete purchase options from different one-time products. */
-  requests?: Array<DeletePurchaseOptionRequest>;
+  requests?: ReadonlyArray<DeletePurchaseOptionRequest>;
 }
 
 export const BatchDeletePurchaseOptionsRequest =
@@ -2583,9 +2583,9 @@ export interface OneTimeProductOffer {
   /** A discounted offer. */
   discountedOffer?: OneTimeProductDiscountedOffer;
   /** Set of regional pricing and availability information for this offer. Must not have duplicate entries with the same region_code. */
-  regionalPricingAndAvailabilityConfigs?: Array<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
+  regionalPricingAndAvailabilityConfigs?: ReadonlyArray<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
   /** Optional. List of up to 20 custom tags specified for this offer, and returned to the app through the billing library. */
-  offerTags?: Array<OfferTag>;
+  offerTags?: ReadonlyArray<OfferTag>;
   /** Output only. The version of the regions configuration that was used to generate the one-time product offer. */
   regionsVersion?: RegionsVersion;
 }
@@ -2607,7 +2607,7 @@ export const OneTimeProductOffer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOneTimeProductOffersResponse {
   /** The one_time_product offers from the specified request. */
-  oneTimeProductOffers?: Array<OneTimeProductOffer>;
+  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2639,7 +2639,7 @@ export const GetOneTimeProductOfferRequest =
 
 export interface BatchGetOneTimeProductOffersRequest {
   /** Required. A list of get requests of up to 100 elements. All requests must retrieve different offers. */
-  requests?: Array<GetOneTimeProductOfferRequest>;
+  requests?: ReadonlyArray<GetOneTimeProductOfferRequest>;
 }
 
 export const BatchGetOneTimeProductOffersRequest =
@@ -2649,7 +2649,7 @@ export const BatchGetOneTimeProductOffersRequest =
 
 export interface BatchGetOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
-  oneTimeProductOffers?: Array<OneTimeProductOffer>;
+  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
 }
 
 export const BatchGetOneTimeProductOffersResponse =
@@ -2685,7 +2685,7 @@ export const UpdateOneTimeProductOfferRequest =
 
 export interface BatchUpdateOneTimeProductOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different offers. */
-  requests?: Array<UpdateOneTimeProductOfferRequest>;
+  requests?: ReadonlyArray<UpdateOneTimeProductOfferRequest>;
 }
 
 export const BatchUpdateOneTimeProductOffersRequest =
@@ -2695,7 +2695,7 @@ export const BatchUpdateOneTimeProductOffersRequest =
 
 export interface BatchUpdateOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
-  oneTimeProductOffers?: Array<OneTimeProductOffer>;
+  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
 }
 
 export const BatchUpdateOneTimeProductOffersResponse =
@@ -2805,7 +2805,7 @@ export const UpdateOneTimeProductOfferStateRequest =
 
 export interface BatchUpdateOneTimeProductOfferStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different offers. */
-  requests?: Array<UpdateOneTimeProductOfferStateRequest>;
+  requests?: ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
 }
 
 export const BatchUpdateOneTimeProductOfferStatesRequest =
@@ -2817,7 +2817,7 @@ export const BatchUpdateOneTimeProductOfferStatesRequest =
 
 export interface BatchUpdateOneTimeProductOfferStatesResponse {
   /** The updated one-time product offers list, in the same order as the request. */
-  oneTimeProductOffers?: Array<OneTimeProductOffer>;
+  oneTimeProductOffers?: ReadonlyArray<OneTimeProductOffer>;
 }
 
 export const BatchUpdateOneTimeProductOfferStatesResponse =
@@ -2853,7 +2853,7 @@ export const DeleteOneTimeProductOfferRequest =
 
 export interface BatchDeleteOneTimeProductOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must correspond to different offers. */
-  requests?: Array<DeleteOneTimeProductOfferRequest>;
+  requests?: ReadonlyArray<DeleteOneTimeProductOfferRequest>;
 }
 
 export const BatchDeleteOneTimeProductOffersRequest =
@@ -3117,7 +3117,7 @@ export interface OrderHistory {
   /** Details of when the order was fully refunded. */
   refundEvent?: RefundEvent;
   /** Details of the partial refund events for this order. */
-  partialRefundEvents?: Array<PartialRefundEvent>;
+  partialRefundEvents?: ReadonlyArray<PartialRefundEvent>;
 }
 
 export const OrderHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3173,7 +3173,7 @@ export interface Order {
   /** Detailed information about the order at creation time. */
   orderDetails?: OrderDetails;
   /** The individual line items making up this order. */
-  lineItems?: Array<LineItem>;
+  lineItems?: ReadonlyArray<LineItem>;
   /** Details about events which modified the order. */
   orderHistory?: OrderHistory;
   /** Your revenue for this order in the buyer's currency, including deductions of partial refunds, taxes and fees. Google deducts standard transaction and third party fees from each sale, including VAT in some regions. */
@@ -3210,7 +3210,7 @@ export const Order = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchGetOrdersResponse {
   /** Details for the requested order IDs. */
-  orders?: Array<Order>;
+  orders?: ReadonlyArray<Order>;
 }
 
 export const BatchGetOrdersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3371,7 +3371,7 @@ export interface ReleaseSummary {
   /** Identifier for the track. [Learn more about track names.](https://developers.google.com/android-publisher/tracks). */
   track?: string;
   /** List of active artifacts on this release */
-  activeArtifacts?: Array<ArtifactSummary>;
+  activeArtifacts?: ReadonlyArray<ArtifactSummary>;
   /** The lifecycle state of a release. */
   releaseLifecycleState?:
     | "RELEASE_LIFECYCLE_STATE_UNSPECIFIED"
@@ -3393,7 +3393,7 @@ export const ReleaseSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListReleaseSummariesResponse {
   /** List of releases for this track. A maximum of 20 releases can be returned. */
-  releases?: Array<ReleaseSummary>;
+  releases?: ReadonlyArray<ReleaseSummary>;
 }
 
 export const ListReleaseSummariesResponse =
@@ -3524,7 +3524,7 @@ export interface Review {
   /** The name of the user who wrote the review. */
   authorName?: string;
   /** A repeated field containing comments for the review. */
-  comments?: Array<Comment>;
+  comments?: ReadonlyArray<Comment>;
 }
 
 export const Review = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3535,7 +3535,7 @@ export const Review = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReviewsListResponse {
   /** List of reviews. */
-  reviews?: Array<Review>;
+  reviews?: ReadonlyArray<Review>;
   /** Pagination token, to handle a number of products that is over one page. */
   tokenPagination?: TokenPagination;
   /** Information about the current page. */
@@ -4010,7 +4010,7 @@ export interface OfferDetails {
   /** The offer ID. Only present for discounted offers. */
   offerId?: string;
   /** The latest offer tags associated with the offer. It includes tags inherited from the base plan. */
-  offerTags?: Array<string>;
+  offerTags?: ReadonlyArray<string>;
 }
 
 export const OfferDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4235,7 +4235,7 @@ export interface SubscriptionPurchaseV2 {
   /** User profile associated with purchases made with 'Subscribe with Google'. */
   subscribeWithGoogleInfo?: SubscribeWithGoogleInfo;
   /** Item-level info for a subscription purchase. The items in the same purchase should be either all with AutoRenewingPlan or all with PrepaidPlan. */
-  lineItems?: Array<SubscriptionPurchaseLineItem>;
+  lineItems?: ReadonlyArray<SubscriptionPurchaseLineItem>;
   /** Entity tag representing the current state of the subscription. The developer will provide this etag for subscription actions. This etag is always present for auto-renewing and prepaid subscriptions. */
   etag?: string;
   /** Additional context for out of app purchases. This information is only present for re-subscription purchases (subscription purchases made after the previous subscription of the same product has expired) made through the Google Play subscriptions center. This field will be removed after you acknowledge the subscription. */
@@ -4387,7 +4387,7 @@ export const ItemExpiryTimeDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeferSubscriptionPurchaseResponse {
   /** The new expiry time for each subscription items. */
-  itemExpiryTimeDetails?: Array<ItemExpiryTimeDetails>;
+  itemExpiryTimeDetails?: ReadonlyArray<ItemExpiryTimeDetails>;
 }
 
 export const DeferSubscriptionPurchaseResponse =
@@ -4532,9 +4532,9 @@ export interface BasePlan {
   /** Set for installments base plans where a user is committed to a specified number of payments. */
   installmentsBasePlanType?: InstallmentsBasePlanType;
   /** Region-specific information for this base plan. */
-  regionalConfigs?: Array<RegionalBasePlanConfig>;
+  regionalConfigs?: ReadonlyArray<RegionalBasePlanConfig>;
   /** List of up to 20 custom tags specified for this base plan, and returned to the app through the billing library. Subscription offers for this base plan will also receive these offer tags in the billing library. */
-  offerTags?: Array<OfferTag>;
+  offerTags?: ReadonlyArray<OfferTag>;
   /** Pricing information for any new locations Play may launch in the future. If omitted, the BasePlan will not be automatically available any new locations Play may launch in the future. */
   otherRegionsConfig?: OtherRegionsBasePlanConfig;
 }
@@ -4556,7 +4556,7 @@ export interface SubscriptionListing {
   /** Required. The title of this subscription in the language of this listing. Plain text. */
   title?: string;
   /** A list of benefits shown to the user on platforms such as the Play Store and in restoration flows in the language of this listing. Plain text. Ordered list of at most four benefits. */
-  benefits?: Array<string>;
+  benefits?: ReadonlyArray<string>;
   /** The description of this subscription in the language of this listing. Maximum length - 80 characters. Plain text. */
   description?: string;
 }
@@ -4574,9 +4574,9 @@ export interface Subscription {
   /** Immutable. Unique product ID of the product. Unique within the parent app. Product IDs must be composed of lower-case letters (a-z), numbers (0-9), underscores (_) and dots (.). It must start with a lower-case letter or number, and be between 1 and 40 (inclusive) characters in length. */
   productId?: string;
   /** The set of base plans for this subscription. Represents the prices and duration of the subscription if no other offers apply. */
-  basePlans?: Array<BasePlan>;
+  basePlans?: ReadonlyArray<BasePlan>;
   /** Required. List of localized listings for this subscription. Must contain at least an entry for the default language of the parent app. */
-  listings?: Array<SubscriptionListing>;
+  listings?: ReadonlyArray<SubscriptionListing>;
   /** Output only. Deprecated: subscription archiving is not supported. */
   archived?: boolean;
   /** Details about taxes and legal compliance. */
@@ -4599,7 +4599,7 @@ export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchGetSubscriptionsResponse {
   /** The list of requested subscriptions, in the same order as the request. */
-  subscriptions?: Array<Subscription>;
+  subscriptions?: ReadonlyArray<Subscription>;
 }
 
 export const BatchGetSubscriptionsResponse =
@@ -4609,7 +4609,7 @@ export const BatchGetSubscriptionsResponse =
 
 export interface ListSubscriptionsResponse {
   /** The subscriptions from the specified app. */
-  subscriptions?: Array<Subscription>;
+  subscriptions?: ReadonlyArray<Subscription>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -4648,7 +4648,7 @@ export const UpdateSubscriptionRequest =
 
 export interface BatchUpdateSubscriptionsRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
-  requests?: Array<UpdateSubscriptionRequest>;
+  requests?: ReadonlyArray<UpdateSubscriptionRequest>;
 }
 
 export const BatchUpdateSubscriptionsRequest =
@@ -4658,7 +4658,7 @@ export const BatchUpdateSubscriptionsRequest =
 
 export interface BatchUpdateSubscriptionsResponse {
   /** The updated subscriptions list. */
-  subscriptions?: Array<Subscription>;
+  subscriptions?: ReadonlyArray<Subscription>;
 }
 
 export const BatchUpdateSubscriptionsResponse =
@@ -4734,7 +4734,7 @@ export const UpdateBasePlanStateRequest =
 
 export interface BatchUpdateBasePlanStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different base plans. */
-  requests?: Array<UpdateBasePlanStateRequest>;
+  requests?: ReadonlyArray<UpdateBasePlanStateRequest>;
 }
 
 export const BatchUpdateBasePlanStatesRequest =
@@ -4744,7 +4744,7 @@ export const BatchUpdateBasePlanStatesRequest =
 
 export interface BatchUpdateBasePlanStatesResponse {
   /** The list of updated subscriptions. This list will match the requests one to one, in the same order. */
-  subscriptions?: Array<Subscription>;
+  subscriptions?: ReadonlyArray<Subscription>;
 }
 
 export const BatchUpdateBasePlanStatesResponse =
@@ -4780,7 +4780,7 @@ export interface MigrateBasePlanPricesRequest {
   /** Required. The unique base plan ID of the base plan to update prices on. */
   basePlanId?: string;
   /** Required. The regional prices to update. */
-  regionalPriceMigrations?: Array<RegionalPriceMigrationConfig>;
+  regionalPriceMigrations?: ReadonlyArray<RegionalPriceMigrationConfig>;
   /** Required. The version of the available regions being used for the regional_price_migrations. */
   regionsVersion?: RegionsVersion;
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
@@ -4812,7 +4812,7 @@ export const MigrateBasePlanPricesResponse =
 
 export interface BatchMigrateBasePlanPricesRequest {
   /** Required. Up to 100 price migration requests. All requests must update different base plans. */
-  requests?: Array<MigrateBasePlanPricesRequest>;
+  requests?: ReadonlyArray<MigrateBasePlanPricesRequest>;
 }
 
 export const BatchMigrateBasePlanPricesRequest =
@@ -4822,7 +4822,7 @@ export const BatchMigrateBasePlanPricesRequest =
 
 export interface BatchMigrateBasePlanPricesResponse {
   /** Contains one response per requested price migration, in the same order as the request. */
-  responses?: Array<MigrateBasePlanPricesResponse>;
+  responses?: ReadonlyArray<MigrateBasePlanPricesResponse>;
 }
 
 export const BatchMigrateBasePlanPricesResponse =
@@ -4908,7 +4908,7 @@ export interface SubscriptionOfferPhase {
   /** Required. The duration of a single recurrence of this phase. Specified in ISO 8601 format. */
   duration?: string;
   /** Required. The region-specific configuration of this offer phase. This list must contain exactly one entry for each region for which the subscription offer has a regional config. */
-  regionalConfigs?: Array<RegionalSubscriptionOfferPhaseConfig>;
+  regionalConfigs?: ReadonlyArray<RegionalSubscriptionOfferPhaseConfig>;
   /** Pricing information for any new locations Play may launch in. */
   otherRegionsConfig?: OtherRegionsSubscriptionOfferPhaseConfig;
 }
@@ -5028,15 +5028,15 @@ export interface SubscriptionOffer {
   /** Output only. The current state of this offer. Can be changed using Activate and Deactivate actions. NB: the base plan state supersedes this state, so an active offer may not be available if the base plan is not active. */
   state?: "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE" | (string & {});
   /** Required. The phases of this subscription offer. Must contain at least one and at most two entries. Users will always receive all these phases in the specified order. */
-  phases?: Array<SubscriptionOfferPhase>;
+  phases?: ReadonlyArray<SubscriptionOfferPhase>;
   /** The requirements that users need to fulfil to be eligible for this offer. Represents the requirements that Play will evaluate to decide whether an offer should be returned. Developers may further filter these offers themselves. */
   targeting?: SubscriptionOfferTargeting;
   /** Required. The region-specific configuration of this offer. Must contain at least one entry. */
-  regionalConfigs?: Array<RegionalSubscriptionOfferConfig>;
+  regionalConfigs?: ReadonlyArray<RegionalSubscriptionOfferConfig>;
   /** The configuration for any new locations Play may launch in the future. */
   otherRegionsConfig?: OtherRegionsSubscriptionOfferConfig;
   /** List of up to 20 custom tags specified for this offer, and returned to the app through the billing library. */
-  offerTags?: Array<OfferTag>;
+  offerTags?: ReadonlyArray<OfferTag>;
 }
 
 export const SubscriptionOffer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5075,7 +5075,7 @@ export const GetSubscriptionOfferRequest =
 
 export interface BatchGetSubscriptionOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
-  requests?: Array<GetSubscriptionOfferRequest>;
+  requests?: ReadonlyArray<GetSubscriptionOfferRequest>;
 }
 
 export const BatchGetSubscriptionOffersRequest =
@@ -5084,7 +5084,7 @@ export const BatchGetSubscriptionOffersRequest =
   }).annotate({ identifier: "BatchGetSubscriptionOffersRequest" });
 
 export interface BatchGetSubscriptionOffersResponse {
-  subscriptionOffers?: Array<SubscriptionOffer>;
+  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
 export const BatchGetSubscriptionOffersResponse =
@@ -5094,7 +5094,7 @@ export const BatchGetSubscriptionOffersResponse =
 
 export interface ListSubscriptionOffersResponse {
   /** The subscription offers from the specified subscription. */
-  subscriptionOffers?: Array<SubscriptionOffer>;
+  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -5133,7 +5133,7 @@ export const UpdateSubscriptionOfferRequest =
 
 export interface BatchUpdateSubscriptionOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different subscription offers. */
-  requests?: Array<UpdateSubscriptionOfferRequest>;
+  requests?: ReadonlyArray<UpdateSubscriptionOfferRequest>;
 }
 
 export const BatchUpdateSubscriptionOffersRequest =
@@ -5143,7 +5143,7 @@ export const BatchUpdateSubscriptionOffersRequest =
 
 export interface BatchUpdateSubscriptionOffersResponse {
   /** The updated subscription offers list. */
-  subscriptionOffers?: Array<SubscriptionOffer>;
+  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
 export const BatchUpdateSubscriptionOffersResponse =
@@ -5222,7 +5222,7 @@ export const UpdateSubscriptionOfferStateRequest =
 
 export interface BatchUpdateSubscriptionOfferStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different offers. */
-  requests?: Array<UpdateSubscriptionOfferStateRequest>;
+  requests?: ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
 }
 
 export const BatchUpdateSubscriptionOfferStatesRequest =
@@ -5234,7 +5234,7 @@ export const BatchUpdateSubscriptionOfferStatesRequest =
 
 export interface BatchUpdateSubscriptionOfferStatesResponse {
   /** The updated subscription offers list. */
-  subscriptionOffers?: Array<SubscriptionOffer>;
+  subscriptionOffers?: ReadonlyArray<SubscriptionOffer>;
 }
 
 export const BatchUpdateSubscriptionOfferStatesResponse =
@@ -5244,9 +5244,9 @@ export const BatchUpdateSubscriptionOfferStatesResponse =
 
 export interface DeviceSpec {
   /** Supported ABI architectures in the order of preference. The values should be the string as reported by the platform, e.g. "armeabi-v7a", "x86_64". */
-  supportedAbis?: Array<string>;
+  supportedAbis?: ReadonlyArray<string>;
   /** All installed locales represented as BCP-47 strings, e.g. "en-US". */
-  supportedLocales?: Array<string>;
+  supportedLocales?: ReadonlyArray<string>;
   /** Screen dpi. */
   screenDensity?: number;
 }
@@ -5289,7 +5289,7 @@ export const Variant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SystemApksListResponse {
   /** All system APK variants created. */
-  variants?: Array<Variant>;
+  variants?: ReadonlyArray<Variant>;
 }
 
 export const SystemApksListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -5300,7 +5300,7 @@ export const SystemApksListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface Testers {
   /** All testing Google Groups, as email addresses. */
-  googleGroups?: Array<string>;
+  googleGroups?: ReadonlyArray<string>;
 }
 
 export const Testers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5321,7 +5321,7 @@ export const LocalizedText = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CountryTargeting {
   /** Countries to target, specified as two letter [CLDR codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html). */
-  countries?: Array<string>;
+  countries?: ReadonlyArray<string>;
   /** Include "rest of world" as well as explicitly targeted countries. */
   includeRestOfWorld?: boolean;
 }
@@ -5335,9 +5335,9 @@ export interface TrackRelease {
   /** The release name. Not required to be unique. If not set, the name is generated from the APK's version_name. If the release contains multiple APKs, the name is generated from the date. */
   name?: string;
   /** Version codes of all APKs in the release. Must include version codes to retain from previous releases. */
-  versionCodes?: Array<string>;
+  versionCodes?: ReadonlyArray<string>;
   /** A description of what is new in this release. */
-  releaseNotes?: Array<LocalizedText>;
+  releaseNotes?: ReadonlyArray<LocalizedText>;
   /** The status of the release. */
   status?:
     | "statusUnspecified"
@@ -5368,7 +5368,7 @@ export interface Track {
   /** Identifier of the track. Form factor tracks have a special prefix as an identifier, for example `wear:production`, `automotive:production`. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) */
   track?: string;
   /** In a read request, represents all active releases in the track. In an update request, represents desired changes. */
-  releases?: Array<TrackRelease>;
+  releases?: ReadonlyArray<TrackRelease>;
 }
 
 export const Track = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5380,7 +5380,7 @@ export interface TracksListResponse {
   /** The kind of this response ("androidpublisher#tracksListResponse"). */
   kind?: string;
   /** All tracks (including tracks with no releases). */
-  tracks?: Array<Track>;
+  tracks?: ReadonlyArray<Track>;
 }
 
 export const TracksListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5443,7 +5443,7 @@ export interface VoidedPurchasesListResponse {
   pageInfo?: PageInfo;
   /** Pagination information for token pagination. */
   tokenPagination?: TokenPagination;
-  voidedPurchases?: Array<VoidedPurchase>;
+  voidedPurchases?: ReadonlyArray<VoidedPurchase>;
 }
 
 export const VoidedPurchasesListResponse =
@@ -5470,7 +5470,7 @@ export const CreateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "androidpublisher/v3/developers/{developersId}/users",
+    path: "androidpublisher/v3/{parent}/users",
     hasBody: true,
   }),
   svc,
@@ -5507,10 +5507,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "androidpublisher/v3/developers/{developersId}/users",
-  }),
+  T.Http({ method: "GET", path: "androidpublisher/v3/{parent}/users" }),
   svc,
 ) as unknown as Schema.Schema<ListUsersRequest>;
 
@@ -5552,7 +5549,7 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "androidpublisher/v3/developers/{developersId}/users/{usersId}",
+    path: "androidpublisher/v3/{name}",
     hasBody: true,
   }),
   svc,
@@ -5583,10 +5580,7 @@ export interface DeleteUsersRequest {
 export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "androidpublisher/v3/developers/{developersId}/users/{usersId}",
-  }),
+  T.Http({ method: "DELETE", path: "androidpublisher/v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteUsersRequest>;
 
@@ -5623,7 +5617,7 @@ export const CreateGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "androidpublisher/v3/developers/{developersId}/users/{usersId}/grants",
+    path: "androidpublisher/v3/{parent}/grants",
     hasBody: true,
   }),
   svc,
@@ -5662,7 +5656,7 @@ export const PatchGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "androidpublisher/v3/developers/{developersId}/users/{usersId}/grants/{grantsId}",
+    path: "androidpublisher/v3/{name}",
     hasBody: true,
   }),
   svc,
@@ -5693,10 +5687,7 @@ export interface DeleteGrantsRequest {
 export const DeleteGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "androidpublisher/v3/developers/{developersId}/users/{usersId}/grants/{grantsId}",
-  }),
+  T.Http({ method: "DELETE", path: "androidpublisher/v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteGrantsRequest>;
 
@@ -8181,7 +8172,7 @@ export const CreateexternaltransactionExternaltransactionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "androidpublisher/v3/applications/{applicationsId}/externalTransactions",
+      path: "androidpublisher/v3/{parent}/externalTransactions",
       hasBody: true,
     }),
     svc,
@@ -8220,7 +8211,7 @@ export const RefundexternaltransactionExternaltransactionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "androidpublisher/v3/applications/{applicationsId}/externalTransactions/{externalTransactionsId}:refund",
+      path: "androidpublisher/v3/{name}:refund",
       hasBody: true,
     }),
     svc,
@@ -8254,10 +8245,7 @@ export const GetexternaltransactionExternaltransactionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{applicationsId}/externalTransactions/{externalTransactionsId}",
-    }),
+    T.Http({ method: "GET", path: "androidpublisher/v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetexternaltransactionExternaltransactionsRequest>;
 
@@ -9119,10 +9107,7 @@ export const ListApplicationsTracksReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "androidpublisher/v3/applications/{applicationsId}/tracks/{tracksId}/releases",
-    }),
+    T.Http({ method: "GET", path: "androidpublisher/v3/{parent}/releases" }),
     svc,
   ) as unknown as Schema.Schema<ListApplicationsTracksReleasesRequest>;
 

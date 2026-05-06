@@ -138,7 +138,7 @@ export interface PollenTypeInfo {
   /** The pollen type's code name. For example: "GRASS" */
   code?: "POLLEN_TYPE_UNSPECIFIED" | "GRASS" | "TREE" | "WEED" | (string & {});
   /** Textual list of explanations, related to health insights based on the current pollen levels. */
-  healthRecommendations?: Array<string>;
+  healthRecommendations?: ReadonlyArray<string>;
   /** Contains the Universal Pollen Index (UPI) data for the pollen type. */
   indexInfo?: IndexInfo;
   /** A human readable representation of the pollen type name. Example: "Grass" */
@@ -174,9 +174,9 @@ export interface DayInfo {
   /** The date in UTC at which the pollen forecast data is represented. */
   date?: Pollen_Date;
   /** This list will include up to three pollen types (GRASS, WEED, TREE) affecting the location specified in the request. */
-  pollenTypeInfo?: Array<PollenTypeInfo>;
+  pollenTypeInfo?: ReadonlyArray<PollenTypeInfo>;
   /** This list will include up to 15 pollen species affecting the location specified in the request. */
-  plantInfo?: Array<PlantInfo>;
+  plantInfo?: ReadonlyArray<PlantInfo>;
 }
 
 export const DayInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -189,7 +189,7 @@ export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
   /** The HTTP request/response body as raw binary. */
   data?: string;
 }
@@ -206,7 +206,7 @@ export interface LookupForecastResponse {
   /** Optional. The token to retrieve the next page. */
   nextPageToken?: string;
   /** Required. This object contains the daily forecast information for each day requested. */
-  dailyInfo?: Array<DayInfo>;
+  dailyInfo?: ReadonlyArray<DayInfo>;
   /** The ISO_3166-1 alpha-2 code of the country/region corresponding to the location provided in the request. This field might be omitted from the response if the location provided in the request resides in a disputed territory. */
   regionCode?: string;
 }

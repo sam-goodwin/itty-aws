@@ -323,11 +323,11 @@ export const SuggestedTableCellStyle =
 
 export interface TableCell {
   /** The suggested insertion IDs. A TableCell may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The style of the cell. */
   tableCellStyle?: TableCellStyle;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The zero-based end index of this cell, exclusive, in UTF-16 code units. */
   endIndex?: number;
   /** The suggested changes to the table cell style, keyed by suggestion ID. */
@@ -335,7 +335,7 @@ export interface TableCell {
   /** The zero-based start index of this cell, in UTF-16 code units. */
   startIndex?: number;
   /** The content of the cell. */
-  content?: Array<StructuralElement>;
+  content?: ReadonlyArray<StructuralElement>;
 }
 
 export const TableCell: Schema.Schema<TableCell> =
@@ -355,17 +355,17 @@ export const TableCell: Schema.Schema<TableCell> =
 
 export interface TableRow {
   /** The suggested insertion IDs. A TableRow may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The zero-based end index of this row, exclusive, in UTF-16 code units. */
   endIndex?: number;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The suggested style changes to this row, keyed by suggestion ID. */
   suggestedTableRowStyleChanges?: Record<string, SuggestedTableRowStyle>;
   /** The zero-based start index of this row, in UTF-16 code units. */
   startIndex?: number;
   /** The contents and style of each cell in this row. It's possible for a table to be non-rectangular, so some rows may have a different number of cells than other rows in the same table. */
-  tableCells?: Array<TableCell>;
+  tableCells?: ReadonlyArray<TableCell>;
   /** The style of the table row. */
   tableRowStyle?: TableRowStyle;
 }
@@ -403,7 +403,7 @@ export const TableColumnProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableStyle {
   /** The properties of each column. Note that in Docs, tables contain rows and rows contain cells, similar to HTML. So the properties for a row can be found on the row's table_row_style. */
-  tableColumnProperties?: Array<TableColumnProperties>;
+  tableColumnProperties?: ReadonlyArray<TableColumnProperties>;
 }
 
 export const TableStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -412,13 +412,13 @@ export const TableStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Table {
   /** The contents and style of each row. */
-  tableRows?: Array<TableRow>;
+  tableRows?: ReadonlyArray<TableRow>;
   /** The suggested insertion IDs. A Table may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The style of the table. */
   tableStyle?: TableStyle;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** Number of rows in the table. */
   rows?: number;
   /** Number of columns in the table. It's possible for a table to be non-rectangular, so some rows may have a different number of cells. */
@@ -482,7 +482,7 @@ export interface SectionStyle {
   /** The ID of the footer used only for even pages. If the value of DocumentStyle's use_even_page_header_footer is true, this value is used for the footers on even pages in the section. If it is false, the footers on even pages use the default_footer_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's even_page_footer_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
   evenPageFooterId?: string;
   /** The section's columns properties. If empty, the section contains one column with the default properties in the Docs editor. A section can be updated to have no more than 3 columns. When updating this property, setting a concrete value is required. Unsetting this property will result in a 400 bad request error. */
-  columnProperties?: Array<SectionColumnProperties>;
+  columnProperties?: ReadonlyArray<SectionColumnProperties>;
   /** The footer margin of the section. If unset, the value defaults to margin_footer from DocumentStyle. If updated, use_custom_header_footer_margins is set to true on DocumentStyle. The value of use_custom_header_footer_margins on DocumentStyle indicates if a footer margin is being respected for this section If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
   marginFooter?: Dimension;
   /** Output only. The type of section. */
@@ -527,9 +527,9 @@ export const SectionStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SectionBreak {
   /** The suggested insertion IDs. A SectionBreak may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The style of the section after this section break. */
   sectionStyle?: SectionStyle;
 }
@@ -740,13 +740,13 @@ export const SuggestedTextStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ColumnBreak {
   /** The suggested insertion IDs. A ColumnBreak may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The text style of this ColumnBreak. Similar to text content, like text runs and footnote references, the text style of a column break can affect content layout as well as the styling of text inserted next to it. */
   textStyle?: TextStyle;
   /** The suggested text style changes to this ColumnBreak, keyed by suggestion ID. */
   suggestedTextStyleChanges?: Record<string, SuggestedTextStyle>;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
 }
 
 export const ColumnBreak = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -762,11 +762,11 @@ export interface TextRun {
   /** The suggested text style changes to this run, keyed by suggestion ID. */
   suggestedTextStyleChanges?: Record<string, SuggestedTextStyle>;
   /** The suggested insertion IDs. A TextRun may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The text style of this run. */
   textStyle?: TextStyle;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The text of this run. Any non-text elements in the run are replaced with the Unicode character U+E907. */
   content?: string;
 }
@@ -783,9 +783,9 @@ export const TextRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Equation {
   /** The suggested insertion IDs. An Equation may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
 }
 
 export const Equation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -797,7 +797,7 @@ export interface FootnoteReference {
   /** The text style of this FootnoteReference. */
   textStyle?: TextStyle;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The rendered number of this footnote. */
   footnoteNumber?: string;
   /** The suggested text style changes to this FootnoteReference, keyed by suggestion ID. */
@@ -805,7 +805,7 @@ export interface FootnoteReference {
   /** The ID of the footnote that contains the content of this footnote reference. */
   footnoteId?: string;
   /** The suggested insertion IDs. A FootnoteReference may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
 }
 
 export const FootnoteReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -821,13 +821,13 @@ export const FootnoteReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InlineObjectElement {
   /** The suggested insertion IDs. An InlineObjectElement may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The suggested text style changes to this InlineObject, keyed by suggestion ID. */
   suggestedTextStyleChanges?: Record<string, SuggestedTextStyle>;
   /** The ID of the InlineObject this element contains. */
   inlineObjectId?: string;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The text style of this InlineObjectElement. Similar to text content, like text runs and footnote references, the text style of an inline object element can affect content layout as well as the styling of text inserted next to it. */
   textStyle?: TextStyle;
 }
@@ -859,7 +859,7 @@ export const RichLinkProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RichLink {
   /** IDs for suggestions that remove this link from the document. A RichLink might have multiple deletion IDs if, for example, multiple users suggest deleting it. If empty, then this person link isn't suggested for deletion. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The text style of this RichLink. */
   textStyle?: TextStyle;
   /** Output only. The properties of this RichLink. This field is always present. */
@@ -869,7 +869,7 @@ export interface RichLink {
   /** Output only. The ID of this link. */
   richLinkId?: string;
   /** IDs for suggestions that insert this link into the document. A RichLink might have multiple insertion IDs if it's a nested suggested change (a suggestion within a suggestion made by a different user, for example). If empty, then this person link isn't a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
 }
 
 export const RichLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -901,13 +901,13 @@ export interface Person {
   /** Output only. The unique ID of this link. */
   personId?: string;
   /** IDs for suggestions that remove this person link from the document. A Person might have multiple deletion IDs if, for example, multiple users suggest deleting it. If empty, then this person link isn't suggested for deletion. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** Output only. The properties of this Person. This field is always present. */
   personProperties?: PersonProperties;
   /** The suggested text style changes to this Person, keyed by suggestion ID. */
   suggestedTextStyleChanges?: Record<string, SuggestedTextStyle>;
   /** IDs for suggestions that insert this person link into the document. A Person might have multiple insertion IDs if it's a nested suggested change (a suggestion within a suggestion made by a different user, for example). If empty, then this person link isn't a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
 }
 
 export const Person = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -996,7 +996,7 @@ export const SuggestedDateElementProperties =
 
 export interface DateElement {
   /** IDs for suggestions that insert this date into the document. A DateElement might have multiple insertion IDs if it's a nested suggested change (a suggestion within a suggestion made by a different user, for example). If empty, then this date isn't a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The properties of this DateElement. */
   dateElementProperties?: DateElementProperties;
   /** Output only. The unique ID of this date. */
@@ -1011,7 +1011,7 @@ export interface DateElement {
     SuggestedDateElementProperties
   >;
   /** IDs for suggestions that remove this date from the document. A DateElement might have multiple deletion IDs if, for example, multiple users suggest deleting it. If empty, then this date isn't suggested for deletion. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
 }
 
 export const DateElement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1032,13 +1032,13 @@ export interface AutoText {
   /** The text style of this AutoText. */
   textStyle?: TextStyle;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The type of this auto text. */
   type?: "TYPE_UNSPECIFIED" | "PAGE_NUMBER" | "PAGE_COUNT" | (string & {});
   /** The suggested text style changes to this AutoText, keyed by suggestion ID. */
   suggestedTextStyleChanges?: Record<string, SuggestedTextStyle>;
   /** The suggested insertion IDs. An AutoText may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
 }
 
 export const AutoText = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1053,9 +1053,9 @@ export const AutoText = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HorizontalRule {
   /** The suggested insertion IDs. A HorizontalRule may have multiple insertion IDs if it is a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The text style of this HorizontalRule. Similar to text content, like text runs and footnote references, the text style of a horizontal rule can affect content layout as well as the styling of text inserted next to it. */
   textStyle?: TextStyle;
   /** The suggested text style changes to this HorizontalRule, keyed by suggestion ID. */
@@ -1073,13 +1073,13 @@ export const HorizontalRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PageBreak {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The text style of this PageBreak. Similar to text content, like text runs and footnote references, the text style of a page break can affect content layout as well as the styling of text inserted next to it. */
   textStyle?: TextStyle;
   /** The suggested text style changes to this PageBreak, keyed by suggestion ID. */
   suggestedTextStyleChanges?: Record<string, SuggestedTextStyle>;
   /** The suggested insertion IDs. A PageBreak may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
 }
 
 export const PageBreak = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1234,7 +1234,7 @@ export interface ParagraphStyle {
   /** The amount of extra space above the paragraph. If unset, the value is inherited from the parent. */
   spaceAbove?: Dimension;
   /** A list of the tab stops for this paragraph. The list of tab stops is not inherited. This property is read-only. */
-  tabStops?: Array<TabStop>;
+  tabStops?: ReadonlyArray<TabStop>;
   /** The border at the top of this paragraph. If unset, the value is inherited from the parent. The top border is rendered when the paragraph above has different border and indent properties. Paragraph borders cannot be partially updated. When changing a paragraph border, the new border must be specified in its entirety. */
   borderTop?: ParagraphBorder;
   /** The shading of the paragraph. If unset, the value is inherited from the parent. */
@@ -1380,7 +1380,7 @@ export const SuggestedParagraphStyle =
 
 export interface ObjectReferences {
   /** The object IDs. */
-  objectIds?: Array<string>;
+  objectIds?: ReadonlyArray<string>;
 }
 
 export const ObjectReferences = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1393,13 +1393,13 @@ export interface Paragraph {
   /** The suggested changes to this paragraph's bullet. */
   suggestedBulletChanges?: Record<string, SuggestedBullet>;
   /** The content of the paragraph, broken down into its component parts. */
-  elements?: Array<ParagraphElement>;
+  elements?: ReadonlyArray<ParagraphElement>;
   /** The suggested paragraph style changes to this paragraph, keyed by suggestion ID. */
   suggestedParagraphStyleChanges?: Record<string, SuggestedParagraphStyle>;
   /** The style of this paragraph. */
   paragraphStyle?: ParagraphStyle;
   /** The IDs of the positioned objects tethered to this paragraph. */
-  positionedObjectIds?: Array<string>;
+  positionedObjectIds?: ReadonlyArray<string>;
   /** The IDs of the positioned objects suggested to be attached to this paragraph, keyed by suggestion ID. */
   suggestedPositionedObjectIds?: Record<string, ObjectReferences>;
 }
@@ -1422,11 +1422,11 @@ export const Paragraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableOfContents {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The content of the table of contents. */
-  content?: Array<StructuralElement>;
+  content?: ReadonlyArray<StructuralElement>;
   /** The suggested insertion IDs. A TableOfContents may have multiple insertion IDs if it is a nested suggested change. If empty, then this is not a suggested insertion. */
-  suggestedInsertionIds?: Array<string>;
+  suggestedInsertionIds?: ReadonlyArray<string>;
 }
 
 export const TableOfContents: Schema.Schema<TableOfContents> =
@@ -1471,7 +1471,7 @@ export const StructuralElement: Schema.Schema<StructuralElement> =
 
 export interface Body {
   /** The contents of the body. The indexes for the body's content begin at zero. */
-  content?: Array<StructuralElement>;
+  content?: ReadonlyArray<StructuralElement>;
 }
 
 export const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1482,7 +1482,7 @@ export interface Footer {
   /** The ID of the footer. */
   footerId?: string;
   /** The contents of the footer. The indexes for a footer's content begin at zero. */
-  content?: Array<StructuralElement>;
+  content?: ReadonlyArray<StructuralElement>;
 }
 
 export const Footer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1534,7 +1534,7 @@ export const NamedStyleSuggestionState =
 
 export interface NamedStylesSuggestionState {
   /** A mask that indicates which of the fields on the corresponding NamedStyle in styles have been changed in this suggestion. The order of these named style suggestion states matches the order of the corresponding named style within the named styles suggestion. */
-  stylesSuggestionStates?: Array<NamedStyleSuggestionState>;
+  stylesSuggestionStates?: ReadonlyArray<NamedStyleSuggestionState>;
 }
 
 export const NamedStylesSuggestionState =
@@ -1572,7 +1572,7 @@ export const NamedStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NamedStyles {
   /** The named styles. There's an entry for each of the possible named style types. */
-  styles?: Array<NamedStyle>;
+  styles?: ReadonlyArray<NamedStyle>;
 }
 
 export const NamedStyles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1630,7 +1630,7 @@ export const InsertPersonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TabsCriteria {
   /** The list of tab IDs in which the request executes. */
-  tabIds?: Array<string>;
+  tabIds?: ReadonlyArray<string>;
 }
 
 export const TabsCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1948,7 +1948,7 @@ export const InsertTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdateTableRowStyleRequest {
   /** The list of zero-based row indices whose style should be updated. If no indices are specified, all rows will be updated. */
-  rowIndices?: Array<number>;
+  rowIndices?: ReadonlyArray<number>;
   /** The styles to be set on the rows. */
   tableRowStyle?: TableRowStyle;
   /** The location where the table starts in the document. */
@@ -2255,7 +2255,7 @@ export interface UpdateTableColumnPropertiesRequest {
   /** The location where the table starts in the document. */
   tableStartLocation?: Location;
   /** The list of zero-based column indices whose property should be updated. If no indices are specified, all columns will be updated. */
-  columnIndices?: Array<number>;
+  columnIndices?: ReadonlyArray<number>;
   /** The fields that should be updated. At least one field must be specified. The root `tableColumnProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the column width, set `fields` to `"width"`. */
   fields?: string;
 }
@@ -2492,7 +2492,7 @@ export const WriteControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateDocumentRequest {
   /** A list of updates to apply to the document. */
-  requests?: Array<Request>;
+  requests?: ReadonlyArray<Request>;
   /** Provides control over how write requests are executed. */
   writeControl?: WriteControl;
 }
@@ -2966,7 +2966,7 @@ export const CreateNamedRangeResponse =
 
 export interface Footnote {
   /** The contents of the footnote. The indexes for a footnote's content begin at zero. */
-  content?: Array<StructuralElement>;
+  content?: ReadonlyArray<StructuralElement>;
   /** The ID of the footnote. */
   footnoteId?: string;
 }
@@ -2978,7 +2978,7 @@ export const Footnote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPropertiesSuggestionState {
   /** A mask that indicates which of the fields on the corresponding NestingLevel in nesting_levels have been changed in this suggestion. The nesting level suggestion states are returned in ascending order of the nesting level with the least nested returned first. */
-  nestingLevelsSuggestionStates?: Array<NestingLevelSuggestionState>;
+  nestingLevelsSuggestionStates?: ReadonlyArray<NestingLevelSuggestionState>;
 }
 
 export const ListPropertiesSuggestionState =
@@ -3034,7 +3034,7 @@ export const NestingLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProperties {
   /** Describes the properties of the bullets at the associated level. A list has at most 9 levels of nesting with nesting level 0 corresponding to the top-most level and nesting level 8 corresponding to the most nested level. The nesting levels are returned in ascending order with the least nested returned first. */
-  nestingLevels?: Array<NestingLevel>;
+  nestingLevels?: ReadonlyArray<NestingLevel>;
 }
 
 export const ListProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3062,7 +3062,7 @@ export interface List {
   /** The suggested insertion ID. If empty, then this is not a suggested insertion. */
   suggestedInsertionId?: string;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this list. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The properties of the list. */
   listProperties?: ListProperties;
 }
@@ -3095,7 +3095,7 @@ export interface PositionedObject {
   /** The properties of this positioned object. */
   positionedObjectProperties?: PositionedObjectProperties;
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The suggested insertion ID. If empty, then this is not a suggested insertion. */
   suggestedInsertionId?: string;
   /** The ID of this positioned object. */
@@ -3119,7 +3119,7 @@ export const PositionedObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InlineObject {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
-  suggestedDeletionIds?: Array<string>;
+  suggestedDeletionIds?: ReadonlyArray<string>;
   /** The properties of this inline object. */
   inlineObjectProperties?: InlineObjectProperties;
   /** The suggested changes to the inline object properties, keyed by suggestion ID. */
@@ -3163,7 +3163,7 @@ export interface NamedRange {
   /** The ID of the named range. */
   namedRangeId?: string;
   /** The ranges that belong to this named range. */
-  ranges?: Array<Range>;
+  ranges?: ReadonlyArray<Range>;
 }
 
 export const NamedRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3174,7 +3174,7 @@ export const NamedRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NamedRanges {
   /** The NamedRanges that share the same name. */
-  namedRanges?: Array<NamedRange>;
+  namedRanges?: ReadonlyArray<NamedRange>;
   /** The name that all the named ranges share. */
   name?: string;
 }
@@ -3188,7 +3188,7 @@ export interface Header {
   /** The ID of the header. */
   headerId?: string;
   /** The contents of the header. The indexes for a header's content begin at zero. */
-  content?: Array<StructuralElement>;
+  content?: ReadonlyArray<StructuralElement>;
 }
 
 export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3328,7 +3328,7 @@ export interface BatchUpdateDocumentResponse {
   /** The ID of the document to which the updates were applied to. */
   documentId?: string;
   /** The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty. */
-  replies?: Array<Response>;
+  replies?: ReadonlyArray<Response>;
   /** The updated write control after applying the request. */
   writeControl?: WriteControl;
 }
@@ -3342,7 +3342,7 @@ export const BatchUpdateDocumentResponse =
 
 export interface Tab {
   /** The child tabs nested within this tab. */
-  childTabs?: Array<Tab>;
+  childTabs?: ReadonlyArray<Tab>;
   /** A tab with document contents, like text and images. */
   documentTab?: DocumentTab;
   /** The properties of the tab, like ID and title. */
@@ -3391,7 +3391,7 @@ export interface Document {
     | "PREVIEW_WITHOUT_SUGGESTIONS"
     | (string & {});
   /** Tabs that are part of a document. Tabs can contain child tabs, a tab nested within another tab. Child tabs are represented by the Tab.childTabs field. */
-  tabs?: Array<Tab>;
+  tabs?: ReadonlyArray<Tab>;
   /** Output only. The suggested changes to the named styles of the document, keyed by suggestion ID. Legacy field: Instead, use Document.tabs.documentTab.suggestedNamedStylesChanges, which exposes the actual document content from all tabs when the includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about the first tab in the document. */
   suggestedNamedStylesChanges?: Record<string, SuggestedNamedStyles>;
   /** Output only. The suggested changes to the style of the document, keyed by suggestion ID. Legacy field: Instead, use Document.tabs.documentTab.suggestedDocumentStyleChanges, which exposes the actual document content from all tabs when the includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about the first tab in the document. */

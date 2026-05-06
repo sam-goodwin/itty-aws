@@ -103,7 +103,7 @@ export interface GoogleMapsAddressvalidationV1Geocode {
   /** The bounds of the geocoded place. */
   bounds?: GoogleGeoTypeViewport;
   /** The type(s) of place that the input geocoded to. For example, `['locality', 'political']`. The full list of types can be found [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types). */
-  placeTypes?: Array<string>;
+  placeTypes?: ReadonlyArray<string>;
   /** The plus code corresponding to the `location`. */
   plusCode?: GoogleMapsAddressvalidationV1PlusCode;
 }
@@ -268,7 +268,7 @@ export interface GoogleTypePostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
   revision?: number;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
   /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
@@ -276,7 +276,7 @@ export interface GoogleTypePostalAddress {
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
   administrativeArea?: string;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
 }
 
 export const GoogleTypePostalAddress =
@@ -344,15 +344,15 @@ export interface GoogleMapsAddressvalidationV1Address {
   /** The post-processed address represented as a postal address. */
   postalAddress?: GoogleTypePostalAddress;
   /** Any tokens in the input that could not be resolved. This might be an input that was not recognized as a valid part of an address. For example, for an input such as "Parcel 0000123123 & 0000456456 Str # Guthrie Center IA 50115 US", the unresolved tokens might look like `["Parcel", "0000123123", "&", "0000456456"]`. */
-  unresolvedTokens?: Array<string>;
+  unresolvedTokens?: ReadonlyArray<string>;
   /** Unordered list. The individual address components of the formatted and corrected address, along with validation information. This provides information on the validation status of the individual components. Address components are not ordered in a particular way. Do not make any assumptions on the ordering of the address components in the list. */
-  addressComponents?: Array<GoogleMapsAddressvalidationV1AddressComponent>;
+  addressComponents?: ReadonlyArray<GoogleMapsAddressvalidationV1AddressComponent>;
   /** The post-processed address, formatted as a single-line address following the address formatting rules of the region where the address is located. Note: the format of this address may not match the format of the address in the `postal_address` field. For example, the `postal_address` always represents the country as a 2 letter `region_code`, such as "US" or "NZ". By contrast, this field uses a longer form of the country name, such as "USA" or "New Zealand". */
   formattedAddress?: string;
   /** The types of components that were expected to be present in a correctly formatted mailing address but were not found in the input AND could not be inferred. An example might be `['street_number', 'route']` for an input like "Boulder, Colorado, 80301, USA". The list of possible types can be found [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types). **Note: you might see a missing component type when you think you've already supplied the missing component.** For example, this can happen when the input address contains the building name, but not the premise number. In the address "渋谷区渋谷３丁目 Shibuya Stream", the building name "Shibuya Stream" has the component type `premise`, but the premise number is missing, so `missing_component_types` will contain `premise`. */
-  missingComponentTypes?: Array<string>;
+  missingComponentTypes?: ReadonlyArray<string>;
   /** The types of the components that are present in the `address_components` but could not be confirmed to be correct. This field is provided for the sake of convenience: its contents are equivalent to iterating through the `address_components` to find the types of all the components where the confirmation_level is not CONFIRMED or the inferred flag is not set to `true`. The list of possible types can be found [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types). */
-  unconfirmedComponentTypes?: Array<string>;
+  unconfirmedComponentTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleMapsAddressvalidationV1Address =

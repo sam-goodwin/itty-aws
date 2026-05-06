@@ -56,7 +56,7 @@ export const ContainerVersionHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface AccountAccess {
   /** List of Account permissions. Valid account permissions are read and manage. */
-  permission?: Array<
+  permission?: ReadonlyArray<
     | "read"
     | "edit"
     | "publish"
@@ -75,7 +75,7 @@ export interface ContainerAccess {
   /** GTM Container ID. */
   containerId?: string;
   /** List of Container permissions. Valid container permissions are: read, edit, delete, publish. */
-  permission?: Array<
+  permission?: ReadonlyArray<
     | "read"
     | "edit"
     | "publish"
@@ -99,7 +99,7 @@ export interface UserAccess {
   /** GTM Account access permissions. */
   accountAccess?: AccountAccess;
   /** GTM Container access permissions. */
-  containerAccess?: Array<ContainerAccess>;
+  containerAccess?: ReadonlyArray<ContainerAccess>;
   /** User's email address. */
   emailAddress?: string;
 }
@@ -134,9 +134,9 @@ export interface Container {
   /** The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified. */
   fingerprint?: string;
   /** Optional list of domain names associated with the Container. */
-  domainName?: Array<string>;
+  domainName?: ReadonlyArray<string>;
   /** List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId. */
-  enabledBuiltInVariable?: Array<
+  enabledBuiltInVariable?: ReadonlyArray<
     | "pageUrl"
     | "pageHostname"
     | "pagePath"
@@ -258,7 +258,7 @@ export interface Container {
   /** GTM Account ID. */
   accountId?: string;
   /** List of Usage Contexts for the Container. Valid values include: web, android, ios. */
-  usageContext?: Array<
+  usageContext?: ReadonlyArray<
     | "web"
     | "android"
     | "ios"
@@ -305,9 +305,9 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Parameter {
   /** This map parameter's parameters (must have keys; keys must be unique). */
-  map?: Array<Parameter>;
+  map?: ReadonlyArray<Parameter>;
   /** This list parameter's parameters (keys will be ignored). */
-  list?: Array<Parameter>;
+  list?: ReadonlyArray<Parameter>;
   /** The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name */
   type?:
     | "template"
@@ -351,7 +351,7 @@ export interface Condition {
     | "urlMatches"
     | (string & {});
   /** A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
 }
 
 export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -389,7 +389,7 @@ export interface Trigger {
   /** Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. */
   checkValidation?: Parameter;
   /** Used in the case of custom event, which is fired iff all Conditions are true. */
-  customEventFilter?: Array<Condition>;
+  customEventFilter?: ReadonlyArray<Condition>;
   /** Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers. */
   waitForTags?: Parameter;
   /** Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. */
@@ -413,7 +413,7 @@ export interface Trigger {
   /** List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. */
   verticalScrollPercentageList?: Parameter;
   /** Additional parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. */
   intervalSeconds?: Parameter;
   /** The Trigger ID uniquely identifies the GTM Trigger. */
@@ -425,7 +425,7 @@ export interface Trigger {
   /** A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. */
   visiblePercentageMax?: Parameter;
   /** The trigger will only fire iff all Conditions are true. */
-  filter?: Array<Condition>;
+  filter?: ReadonlyArray<Condition>;
   /** A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger. */
   continuousTimeMinMilliseconds?: Parameter;
   /** A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger. */
@@ -433,7 +433,7 @@ export interface Trigger {
   /** GTM Account ID. */
   accountId?: string;
   /** Used in the case of auto event tracking. */
-  autoEventFilter?: Array<Condition>;
+  autoEventFilter?: ReadonlyArray<Condition>;
   /** Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. */
   interval?: Parameter;
 }
@@ -479,7 +479,7 @@ export interface Variable {
   /** The end timestamp in milliseconds to schedule a variable. */
   scheduleEndMs?: string;
   /** For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set. */
-  disablingTriggerId?: Array<string>;
+  disablingTriggerId?: ReadonlyArray<string>;
   /** GTM Account ID. */
   accountId?: string;
   /** User notes on how to apply this variable in the container. */
@@ -487,7 +487,7 @@ export interface Variable {
   /** The start timestamp in milliseconds to schedule a variable. */
   scheduleStartMs?: string;
   /** For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set. */
-  enablingTriggerId?: Array<string>;
+  enablingTriggerId?: ReadonlyArray<string>;
   /** GTM Variable Type. */
   type?: string;
   /** The Variable ID uniquely identifies the GTM Variable. */
@@ -495,7 +495,7 @@ export interface Variable {
   /** GTM Container ID. */
   containerId?: string;
   /** The variable's parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
 }
 
 export const Variable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -575,7 +575,7 @@ export interface Tag {
     | "oncePerLoad"
     | (string & {});
   /** The list of teardown tags. Currently we only allow one. */
-  teardownTag?: Array<TeardownTag>;
+  teardownTag?: ReadonlyArray<TeardownTag>;
   /** GTM Account ID. */
   accountId?: string;
   /** User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0. */
@@ -583,7 +583,7 @@ export interface Tag {
   /** User notes on how to apply this tag in the container. */
   notes?: string;
   /** Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false. */
-  firingTriggerId?: Array<string>;
+  firingTriggerId?: ReadonlyArray<string>;
   /** True if the tag is paused. */
   paused?: boolean;
   /** The start timestamp in milliseconds to schedule a tag. */
@@ -597,11 +597,11 @@ export interface Tag {
   /** GTM Container ID. */
   containerId?: string;
   /** The tag's parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. */
-  blockingTriggerId?: Array<string>;
+  blockingTriggerId?: ReadonlyArray<string>;
   /** The list of setup tags. Currently we only allow one. */
-  setupTag?: Array<SetupTag>;
+  setupTag?: ReadonlyArray<SetupTag>;
 }
 
 export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -640,13 +640,13 @@ export interface ContainerVersion {
   /** The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified. */
   fingerprint?: string;
   /** The triggers in the container that this version was taken from. */
-  trigger?: Array<Trigger>;
+  trigger?: ReadonlyArray<Trigger>;
   /** The variables in the container that this version was taken from. */
-  variable?: Array<Variable>;
+  variable?: ReadonlyArray<Variable>;
   /** The folders in the container that this version was taken from. */
-  folder?: Array<Folder>;
+  folder?: ReadonlyArray<Folder>;
   /** The tags in the container that this version was taken from. */
-  tag?: Array<Tag>;
+  tag?: ReadonlyArray<Tag>;
   /** User notes on how to apply this container version in the container. */
   notes?: string;
   /** GTM Account ID. */
@@ -670,9 +670,9 @@ export const ContainerVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListContainerVersionsResponse {
   /** All container version headers of a GTM Container. */
-  containerVersionHeader?: Array<ContainerVersionHeader>;
+  containerVersionHeader?: ReadonlyArray<ContainerVersionHeader>;
   /** All versions of a GTM Container. */
-  containerVersion?: Array<ContainerVersion>;
+  containerVersion?: ReadonlyArray<ContainerVersion>;
 }
 
 export const ListContainerVersionsResponse =
@@ -698,7 +698,7 @@ export const PublishContainerVersionResponse =
 
 export interface ListAccountUsersResponse {
   /** All GTM AccountUsers of a GTM Account. */
-  userAccess?: Array<UserAccess>;
+  userAccess?: ReadonlyArray<UserAccess>;
 }
 
 export const ListAccountUsersResponse =
@@ -708,7 +708,7 @@ export const ListAccountUsersResponse =
 
 export interface ListFoldersResponse {
   /** All GTM Folders of a GTM Container. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
 }
 
 export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -771,7 +771,7 @@ export const CreateContainerVersionResponse =
 
 export interface ListEnvironmentsResponse {
   /** All Environments of a GTM Container. */
-  environments?: Array<Environment>;
+  environments?: ReadonlyArray<Environment>;
 }
 
 export const ListEnvironmentsResponse =
@@ -781,7 +781,7 @@ export const ListEnvironmentsResponse =
 
 export interface ListAccountsResponse {
   /** List of GTM Accounts that a user has access to. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
 }
 
 export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -790,7 +790,7 @@ export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTriggersResponse {
   /** All GTM Triggers of a GTM Container. */
-  triggers?: Array<Trigger>;
+  triggers?: ReadonlyArray<Trigger>;
 }
 
 export const ListTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -799,7 +799,7 @@ export const ListTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListContainersResponse {
   /** All Containers of a GTM Account. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
 }
 
 export const ListContainersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -810,7 +810,7 @@ export const ListContainersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListTagsResponse {
   /** All GTM Tags of a GTM Container. */
-  tags?: Array<Tag>;
+  tags?: ReadonlyArray<Tag>;
 }
 
 export const ListTagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -819,11 +819,11 @@ export const ListTagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FolderEntities {
   /** The list of tags inside the folder. */
-  tag?: Array<Tag>;
+  tag?: ReadonlyArray<Tag>;
   /** The list of variables inside the folder. */
-  variable?: Array<Variable>;
+  variable?: ReadonlyArray<Variable>;
   /** The list of triggers inside the folder. */
-  trigger?: Array<Trigger>;
+  trigger?: ReadonlyArray<Trigger>;
 }
 
 export const FolderEntities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -834,7 +834,7 @@ export const FolderEntities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVariablesResponse {
   /** All GTM Variables of a GTM Container. */
-  variables?: Array<Variable>;
+  variables?: ReadonlyArray<Variable>;
 }
 
 export const ListVariablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
