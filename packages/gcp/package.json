@@ -62,8 +62,7 @@
     "specs:update": "git -C specs/distilled-spec-gcp fetch && git -C specs/distilled-spec-gcp checkout main && git -C specs/distilled-spec-gcp pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:",

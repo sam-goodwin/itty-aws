@@ -74,8 +74,7 @@
     "specs:update": "git -C specs/distilled-spec-mongodb-atlas fetch && git -C specs/distilled-spec-mongodb-atlas checkout main && git -C specs/distilled-spec-mongodb-atlas pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:",

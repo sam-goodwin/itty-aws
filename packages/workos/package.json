@@ -73,8 +73,7 @@
     "specs:update": "git -C specs/openapi-spec fetch && git -C specs/openapi-spec checkout main && git -C specs/openapi-spec pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:",

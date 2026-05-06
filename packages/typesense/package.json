@@ -73,8 +73,7 @@
     "specs:update": "git -C specs/typesense-api-spec fetch && git -C specs/typesense-api-spec checkout main && git -C specs/typesense-api-spec pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:",

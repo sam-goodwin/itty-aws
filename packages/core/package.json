@@ -76,9 +76,6 @@
     "test": "bunx vitest run test --exclude specs --passWithNoTests",
     "publish:npm": "bun run build && bun publish --access public"
   },
-  "dependencies": {
-    "effect": "catalog:"
-  },
   "devDependencies": {
     "@types/bun": "catalog:",
     "@types/node": "catalog:",

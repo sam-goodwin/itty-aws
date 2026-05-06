@@ -74,8 +74,7 @@
     "specs:update": "git -C specs/distilled-spec-supabase fetch && git -C specs/distilled-spec-supabase checkout main && git -C specs/distilled-spec-supabase pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:",

@@ -87,7 +87,6 @@
     "@smithy/types": "catalog:",
     "@smithy/util-base64": "catalog:",
     "aws4fetch": "catalog:",
-    "effect": "catalog:",
     "fast-xml-parser": "catalog:"
   },
   "devDependencies": {

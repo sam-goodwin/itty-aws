@@ -74,8 +74,7 @@
     "specs:update": "git -C specs/kubernetes fetch && git -C specs/kubernetes checkout master && git -C specs/kubernetes pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:",

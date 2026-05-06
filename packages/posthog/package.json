@@ -73,8 +73,7 @@
     "specs:update": "git -C specs/distilled-spec-posthog fetch && git -C specs/distilled-spec-posthog checkout main && git -C specs/distilled-spec-posthog pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*",
-    "effect": "catalog:"
+    "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
     "@effect/platform-node": "catalog:",

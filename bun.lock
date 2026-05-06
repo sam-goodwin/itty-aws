@@ -33,7 +33,6 @@
         "@smithy/types": "catalog:",
         "@smithy/util-base64": "catalog:",
         "aws4fetch": "catalog:",
-        "effect": "catalog:",
         "fast-xml-parser": "catalog:",
       },
       "devDependencies": {
@@ -57,7 +56,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -74,7 +72,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -91,7 +88,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@effect/platform-node": "catalog:",
@@ -111,7 +107,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -127,9 +122,6 @@
     "packages/core": {
       "name": "@distilled.cloud/core",
       "version": "0.16.9",
-      "dependencies": {
-        "effect": "catalog:",
-      },
       "devDependencies": {
         "@types/bun": "catalog:",
         "@types/node": "catalog:",
@@ -145,7 +137,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -162,7 +153,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -179,7 +169,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -196,7 +185,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -213,7 +201,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -230,7 +217,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -247,7 +233,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -264,7 +249,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@effect/platform-node": "catalog:",
@@ -283,7 +267,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -300,7 +283,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -317,7 +299,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -334,7 +315,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -351,7 +331,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
@@ -369,7 +348,6 @@
       "version": "0.16.9",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
-        "effect": "catalog:",
       },
       "devDependencies": {
         "@types/bun": "catalog:",
