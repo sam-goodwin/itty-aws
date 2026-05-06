@@ -22,6 +22,7 @@ export const QuotaError = "QuotaError" as const;
 export const NetworkError = "NetworkError" as const;
 export const AbortedError = "AbortedError" as const;
 export const NotFoundError = "NotFoundError" as const;
+export const AlreadyExistsError = "AlreadyExistsError" as const;
 
 /**
  * Schema for error category strings.
@@ -38,6 +39,7 @@ export const CategorySchema = S.Literals([
   NetworkError,
   AbortedError,
   NotFoundError,
+  AlreadyExistsError,
 ]);
 export type CategorySchema = typeof CategorySchema.Type;
 
