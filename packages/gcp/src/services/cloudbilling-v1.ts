@@ -53,11 +53,10 @@ export interface ListBillingAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    billingAccounts: Schema.optional(Schema.Array(BillingAccount)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListBillingAccountsResponse" });
+export const ListBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  billingAccounts: Schema.optional(Schema.Array(BillingAccount)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBillingAccountsResponse" });
 
 export interface ProjectBillingInfo {
   /** Output only. The resource name for the `ProjectBillingInfo`; has the form `projects/{project_id}/billingInfo`. For example, the resource name for the billing information for project `tokyo-rain-123` would be `projects/tokyo-rain-123/billingInfo`. */
@@ -84,11 +83,10 @@ export interface ListProjectBillingInfoResponse {
   nextPageToken?: string;
 }
 
-export const ListProjectBillingInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectBillingInfo: Schema.optional(Schema.Array(ProjectBillingInfo)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListProjectBillingInfoResponse" });
+export const ListProjectBillingInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectBillingInfo: Schema.optional(Schema.Array(ProjectBillingInfo)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListProjectBillingInfoResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -125,12 +123,7 @@ export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
-  logType?:
-    | "LOG_TYPE_UNSPECIFIED"
-    | "ADMIN_READ"
-    | "DATA_WRITE"
-    | "DATA_READ"
-    | (string & {});
+  logType?: "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ" | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: ReadonlyArray<string>;
 }
@@ -187,30 +180,27 @@ export interface TestIamPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
+export const TestIamPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permissions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
+export const TestIamPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permissions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface MoveBillingAccountRequest {
   /** Required. The resource name of the Organization to move the billing account under. Must be of the form `organizations/{organization_id}`. */
   destinationParent?: string;
 }
 
-export const MoveBillingAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationParent: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MoveBillingAccountRequest" });
+export const MoveBillingAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationParent: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveBillingAccountRequest" });
 
 export interface Service {
   /** The resource name for the service. Example: "services/6F81-5844-456A" */
@@ -315,16 +305,8 @@ export const PricingExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "PricingExpression" });
 
 export interface AggregationInfo {
-  aggregationLevel?:
-    | "AGGREGATION_LEVEL_UNSPECIFIED"
-    | "ACCOUNT"
-    | "PROJECT"
-    | (string & {});
-  aggregationInterval?:
-    | "AGGREGATION_INTERVAL_UNSPECIFIED"
-    | "DAILY"
-    | "MONTHLY"
-    | (string & {});
+  aggregationLevel?: "AGGREGATION_LEVEL_UNSPECIFIED" | "ACCOUNT" | "PROJECT" | (string & {});
+  aggregationInterval?: "AGGREGATION_INTERVAL_UNSPECIFIED" | "DAILY" | "MONTHLY" | (string & {});
   /** The number of intervals to aggregate over. Example: If aggregation_level is "DAILY" and aggregation_count is 14, aggregation will be over 14 days. */
   aggregationCount?: number;
 }
@@ -358,12 +340,7 @@ export const PricingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GeoTaxonomy {
   /** The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL. */
-  type?:
-    | "TYPE_UNSPECIFIED"
-    | "GLOBAL"
-    | "REGIONAL"
-    | "MULTI_REGIONAL"
-    | (string & {});
+  type?: "TYPE_UNSPECIFIED" | "GLOBAL" | "REGIONAL" | "MULTI_REGIONAL" | (string & {});
   /** The list of regions associated with a sku. Empty for Global skus, which are associated with all Google Cloud regions. */
   regions?: ReadonlyArray<string>;
 }
@@ -416,6 +393,58 @@ export const ListSkusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListSkusResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()(
+  "NotFound",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(NotFound, [{"httpStatus":404}]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{"httpStatus":400}]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{"httpStatus":403}]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()(
+  "Conflict",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Conflict, [{"httpStatus":409}]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -424,27 +453,20 @@ export interface GetBillingAccountsRequest {
   name: string;
 }
 
-export const GetBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetBillingAccountsRequest>;
+export const GetBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Schema<GetBillingAccountsRequest>;
 
 export type GetBillingAccountsResponse = BillingAccount;
-export const GetBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const GetBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
 export type GetBillingAccountsError = DefaultErrors;
 
 /** Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access). */
-export const getBillingAccounts: API.OperationMethod<
-  GetBillingAccountsRequest,
-  GetBillingAccountsResponse,
-  GetBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBillingAccounts: API.OperationMethod<GetBillingAccountsRequest, GetBillingAccountsResponse, GetBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsRequest,
   output: GetBillingAccountsResponse,
   errors: [],
@@ -461,30 +483,23 @@ export interface ListBillingAccountsRequest {
   parent?: string;
 }
 
-export const ListBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/billingAccounts" }),
-    svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsRequest>;
+export const ListBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/billingAccounts" }),
+  svc,
+) as unknown as Schema.Schema<ListBillingAccountsRequest>;
 
 export type ListBillingAccountsResponse_Op = ListBillingAccountsResponse;
-export const ListBillingAccountsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
+export const ListBillingAccountsResponse_Op = /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
 
 export type ListBillingAccountsError = DefaultErrors;
 
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
-export const listBillingAccounts: API.PaginatedOperationMethod<
-  ListBillingAccountsRequest,
-  ListBillingAccountsResponse_Op,
-  ListBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listBillingAccounts: API.PaginatedOperationMethod<ListBillingAccountsRequest, ListBillingAccountsResponse_Op, ListBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsRequest,
   output: ListBillingAccountsResponse_Op,
   errors: [],
@@ -503,29 +518,22 @@ export interface PatchBillingAccountsRequest {
   body?: BillingAccount;
 }
 
-export const PatchBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchBillingAccountsRequest>;
+export const PatchBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+  body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<PatchBillingAccountsRequest>;
 
 export type PatchBillingAccountsResponse = BillingAccount;
-export const PatchBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const PatchBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
 export type PatchBillingAccountsError = DefaultErrors;
 
 /** Updates a billing account's fields. Currently the only field that can be edited is `display_name`. The current authenticated user must have the `billing.accounts.update` IAM permission, which is typically given to the [administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of the billing account. */
-export const patchBillingAccounts: API.OperationMethod<
-  PatchBillingAccountsRequest,
-  PatchBillingAccountsResponse,
-  PatchBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchBillingAccounts: API.OperationMethod<PatchBillingAccountsRequest, PatchBillingAccountsResponse, PatchBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsRequest,
   output: PatchBillingAccountsResponse,
   errors: [],
@@ -538,28 +546,21 @@ export interface CreateBillingAccountsRequest {
   body?: BillingAccount;
 }
 
-export const CreateBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-    body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/billingAccounts", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateBillingAccountsRequest>;
+export const CreateBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
+  body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/billingAccounts", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateBillingAccountsRequest>;
 
 export type CreateBillingAccountsResponse = BillingAccount;
-export const CreateBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const CreateBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
 export type CreateBillingAccountsError = DefaultErrors;
 
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
-export const createBillingAccounts: API.OperationMethod<
-  CreateBillingAccountsRequest,
-  CreateBillingAccountsResponse,
-  CreateBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBillingAccounts: API.OperationMethod<CreateBillingAccountsRequest, CreateBillingAccountsResponse, CreateBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsRequest,
   output: CreateBillingAccountsResponse,
   errors: [],
@@ -572,30 +573,21 @@ export interface GetIamPolicyBillingAccountsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 
-export const GetIamPolicyBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyBillingAccountsRequest>;
+export const GetIamPolicyBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resource: Schema.String.pipe(T.HttpPath("resource")),
+  "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(T.HttpQuery("options.requestedPolicyVersion")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+resource}:getIamPolicy" }),
+  svc,
+) as unknown as Schema.Schema<GetIamPolicyBillingAccountsRequest>;
 
 export type GetIamPolicyBillingAccountsResponse = Policy;
-export const GetIamPolicyBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyBillingAccountsError = DefaultErrors;
 
 /** Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access). */
-export const getIamPolicyBillingAccounts: API.OperationMethod<
-  GetIamPolicyBillingAccountsRequest,
-  GetIamPolicyBillingAccountsResponse,
-  GetIamPolicyBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getIamPolicyBillingAccounts: API.OperationMethod<GetIamPolicyBillingAccountsRequest, GetIamPolicyBillingAccountsResponse, GetIamPolicyBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyBillingAccountsRequest,
   output: GetIamPolicyBillingAccountsResponse,
   errors: [],
@@ -608,32 +600,21 @@ export interface SetIamPolicyBillingAccountsRequest {
   body?: SetIamPolicyRequest;
 }
 
-export const SetIamPolicyBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyBillingAccountsRequest>;
+export const SetIamPolicyBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resource: Schema.String.pipe(T.HttpPath("resource")),
+  body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+resource}:setIamPolicy", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<SetIamPolicyBillingAccountsRequest>;
 
 export type SetIamPolicyBillingAccountsResponse = Policy;
-export const SetIamPolicyBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyBillingAccountsError = DefaultErrors;
 
 /** Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). */
-export const setIamPolicyBillingAccounts: API.OperationMethod<
-  SetIamPolicyBillingAccountsRequest,
-  SetIamPolicyBillingAccountsResponse,
-  SetIamPolicyBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const setIamPolicyBillingAccounts: API.OperationMethod<SetIamPolicyBillingAccountsRequest, SetIamPolicyBillingAccountsResponse, SetIamPolicyBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyBillingAccountsRequest,
   output: SetIamPolicyBillingAccountsResponse,
   errors: [],
@@ -646,33 +627,21 @@ export interface TestIamPermissionsBillingAccountsRequest {
   body?: TestIamPermissionsRequest;
 }
 
-export const TestIamPermissionsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsBillingAccountsRequest>;
+export const TestIamPermissionsBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resource: Schema.String.pipe(T.HttpPath("resource")),
+  body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+resource}:testIamPermissions", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<TestIamPermissionsBillingAccountsRequest>;
 
-export type TestIamPermissionsBillingAccountsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+export type TestIamPermissionsBillingAccountsResponse = TestIamPermissionsResponse;
+export const TestIamPermissionsBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsBillingAccountsError = DefaultErrors;
 
 /** Tests the access control policy for a billing account. This method takes the resource and a set of permissions as input and returns the subset of the input permissions that the caller is allowed for that resource. */
-export const testIamPermissionsBillingAccounts: API.OperationMethod<
-  TestIamPermissionsBillingAccountsRequest,
-  TestIamPermissionsBillingAccountsResponse,
-  TestIamPermissionsBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const testIamPermissionsBillingAccounts: API.OperationMethod<TestIamPermissionsBillingAccountsRequest, TestIamPermissionsBillingAccountsResponse, TestIamPermissionsBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBillingAccountsRequest,
   output: TestIamPermissionsBillingAccountsResponse,
   errors: [],
@@ -685,28 +654,21 @@ export interface MoveBillingAccountsRequest {
   body?: MoveBillingAccountRequest;
 }
 
-export const MoveBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(MoveBillingAccountRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<MoveBillingAccountsRequest>;
+export const MoveBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(MoveBillingAccountRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+name}:move", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<MoveBillingAccountsRequest>;
 
 export type MoveBillingAccountsResponse = BillingAccount;
-export const MoveBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const MoveBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
 export type MoveBillingAccountsError = DefaultErrors;
 
 /** Changes which parent organization a billing account belongs to. */
-export const moveBillingAccounts: API.OperationMethod<
-  MoveBillingAccountsRequest,
-  MoveBillingAccountsResponse,
-  MoveBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const moveBillingAccounts: API.OperationMethod<MoveBillingAccountsRequest, MoveBillingAccountsResponse, MoveBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveBillingAccountsRequest,
   output: MoveBillingAccountsResponse,
   errors: [],
@@ -723,31 +685,23 @@ export interface ListBillingAccountsSubAccountsRequest {
   filter?: string;
 }
 
-export const ListBillingAccountsSubAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/subAccounts" }),
-    svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsSubAccountsRequest>;
+export const ListBillingAccountsSubAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+parent}/subAccounts" }),
+  svc,
+) as unknown as Schema.Schema<ListBillingAccountsSubAccountsRequest>;
 
-export type ListBillingAccountsSubAccountsResponse =
-  ListBillingAccountsResponse;
-export const ListBillingAccountsSubAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
+export type ListBillingAccountsSubAccountsResponse = ListBillingAccountsResponse;
+export const ListBillingAccountsSubAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
 
 export type ListBillingAccountsSubAccountsError = DefaultErrors;
 
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
-export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
-  ListBillingAccountsSubAccountsRequest,
-  ListBillingAccountsSubAccountsResponse,
-  ListBillingAccountsSubAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<ListBillingAccountsSubAccountsRequest, ListBillingAccountsSubAccountsResponse, ListBillingAccountsSubAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSubAccountsRequest,
   output: ListBillingAccountsSubAccountsResponse,
   errors: [],
@@ -764,28 +718,21 @@ export interface CreateBillingAccountsSubAccountsRequest {
   body?: BillingAccount;
 }
 
-export const CreateBillingAccountsSubAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/subAccounts", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateBillingAccountsSubAccountsRequest>;
+export const CreateBillingAccountsSubAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+parent}/subAccounts", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateBillingAccountsSubAccountsRequest>;
 
 export type CreateBillingAccountsSubAccountsResponse = BillingAccount;
-export const CreateBillingAccountsSubAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const CreateBillingAccountsSubAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
 export type CreateBillingAccountsSubAccountsError = DefaultErrors;
 
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
-export const createBillingAccountsSubAccounts: API.OperationMethod<
-  CreateBillingAccountsSubAccountsRequest,
-  CreateBillingAccountsSubAccountsResponse,
-  CreateBillingAccountsSubAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createBillingAccountsSubAccounts: API.OperationMethod<CreateBillingAccountsSubAccountsRequest, CreateBillingAccountsSubAccountsResponse, CreateBillingAccountsSubAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsSubAccountsRequest,
   output: CreateBillingAccountsSubAccountsResponse,
   errors: [],
@@ -800,30 +747,22 @@ export interface ListBillingAccountsProjectsRequest {
   pageToken?: string;
 }
 
-export const ListBillingAccountsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/projects" }),
-    svc,
-  ) as unknown as Schema.Schema<ListBillingAccountsProjectsRequest>;
+export const ListBillingAccountsProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}/projects" }),
+  svc,
+) as unknown as Schema.Schema<ListBillingAccountsProjectsRequest>;
 
-export type ListBillingAccountsProjectsResponse =
-  ListProjectBillingInfoResponse;
-export const ListBillingAccountsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProjectBillingInfoResponse;
+export type ListBillingAccountsProjectsResponse = ListProjectBillingInfoResponse;
+export const ListBillingAccountsProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ ListProjectBillingInfoResponse;
 
 export type ListBillingAccountsProjectsError = DefaultErrors;
 
 /** Lists the projects associated with a billing account. The current authenticated user must have the `billing.resourceAssociations.list` IAM permission, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access). */
-export const listBillingAccountsProjects: API.PaginatedOperationMethod<
-  ListBillingAccountsProjectsRequest,
-  ListBillingAccountsProjectsResponse,
-  ListBillingAccountsProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listBillingAccountsProjects: API.PaginatedOperationMethod<ListBillingAccountsProjectsRequest, ListBillingAccountsProjectsResponse, ListBillingAccountsProjectsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsProjectsRequest,
   output: ListBillingAccountsProjectsResponse,
   errors: [],
@@ -844,31 +783,23 @@ export interface ListOrganizationsBillingAccountsRequest {
   filter?: string;
 }
 
-export const ListOrganizationsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/billingAccounts" }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsBillingAccountsRequest>;
+export const ListOrganizationsBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+parent}/billingAccounts" }),
+  svc,
+) as unknown as Schema.Schema<ListOrganizationsBillingAccountsRequest>;
 
-export type ListOrganizationsBillingAccountsResponse =
-  ListBillingAccountsResponse;
-export const ListOrganizationsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
+export type ListOrganizationsBillingAccountsResponse = ListBillingAccountsResponse;
+export const ListOrganizationsBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
 
 export type ListOrganizationsBillingAccountsError = DefaultErrors;
 
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
-export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
-  ListOrganizationsBillingAccountsRequest,
-  ListOrganizationsBillingAccountsResponse,
-  ListOrganizationsBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<ListOrganizationsBillingAccountsRequest, ListOrganizationsBillingAccountsResponse, ListOrganizationsBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsBillingAccountsRequest,
   output: ListOrganizationsBillingAccountsResponse,
   errors: [],
@@ -885,32 +816,21 @@ export interface CreateOrganizationsBillingAccountsRequest {
   body?: BillingAccount;
 }
 
-export const CreateOrganizationsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/billingAccounts",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsBillingAccountsRequest>;
+export const CreateOrganizationsBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  body: Schema.optional(BillingAccount).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1/{+parent}/billingAccounts", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<CreateOrganizationsBillingAccountsRequest>;
 
 export type CreateOrganizationsBillingAccountsResponse = BillingAccount;
-export const CreateOrganizationsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const CreateOrganizationsBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
 export type CreateOrganizationsBillingAccountsError = DefaultErrors;
 
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
-export const createOrganizationsBillingAccounts: API.OperationMethod<
-  CreateOrganizationsBillingAccountsRequest,
-  CreateOrganizationsBillingAccountsResponse,
-  CreateOrganizationsBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOrganizationsBillingAccounts: API.OperationMethod<CreateOrganizationsBillingAccountsRequest, CreateOrganizationsBillingAccountsResponse, CreateOrganizationsBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsBillingAccountsRequest,
   output: CreateOrganizationsBillingAccountsResponse,
   errors: [],
@@ -923,28 +843,21 @@ export interface MoveOrganizationsBillingAccountsRequest {
   name: string;
 }
 
-export const MoveOrganizationsBillingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationParent: Schema.String.pipe(T.HttpPath("destinationParent")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+destinationParent}/{+name}:move" }),
-    svc,
-  ) as unknown as Schema.Schema<MoveOrganizationsBillingAccountsRequest>;
+export const MoveOrganizationsBillingAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationParent: Schema.String.pipe(T.HttpPath("destinationParent")),
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+destinationParent}/{+name}:move" }),
+  svc,
+) as unknown as Schema.Schema<MoveOrganizationsBillingAccountsRequest>;
 
 export type MoveOrganizationsBillingAccountsResponse = BillingAccount;
-export const MoveOrganizationsBillingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
+export const MoveOrganizationsBillingAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
 export type MoveOrganizationsBillingAccountsError = DefaultErrors;
 
 /** Changes which parent organization a billing account belongs to. */
-export const moveOrganizationsBillingAccounts: API.OperationMethod<
-  MoveOrganizationsBillingAccountsRequest,
-  MoveOrganizationsBillingAccountsResponse,
-  MoveOrganizationsBillingAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const moveOrganizationsBillingAccounts: API.OperationMethod<MoveOrganizationsBillingAccountsRequest, MoveOrganizationsBillingAccountsResponse, MoveOrganizationsBillingAccountsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveOrganizationsBillingAccountsRequest,
   output: MoveOrganizationsBillingAccountsResponse,
   errors: [],
@@ -955,30 +868,23 @@ export interface GetBillingInfoProjectsRequest {
   name: string;
 }
 
-export const GetBillingInfoProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/billingInfo" }),
-    svc,
-  ) as unknown as Schema.Schema<GetBillingInfoProjectsRequest>;
+export const GetBillingInfoProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}/billingInfo" }),
+  svc,
+) as unknown as Schema.Schema<GetBillingInfoProjectsRequest>;
 
 export type GetBillingInfoProjectsResponse = ProjectBillingInfo;
-export const GetBillingInfoProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
+export const GetBillingInfoProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
 
-export type GetBillingInfoProjectsError = DefaultErrors;
+export type GetBillingInfoProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the billing information for a project. The current authenticated user must have the `resourcemanager.projects.get` permission for the project, which can be granted by assigning the [Project Viewer](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles) role. */
-export const getBillingInfoProjects: API.OperationMethod<
-  GetBillingInfoProjectsRequest,
-  GetBillingInfoProjectsResponse,
-  GetBillingInfoProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBillingInfoProjects: API.OperationMethod<GetBillingInfoProjectsRequest, GetBillingInfoProjectsResponse, GetBillingInfoProjectsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingInfoProjectsRequest,
   output: GetBillingInfoProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateBillingInfoProjectsRequest {
@@ -988,31 +894,24 @@ export interface UpdateBillingInfoProjectsRequest {
   body?: ProjectBillingInfo;
 }
 
-export const UpdateBillingInfoProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ProjectBillingInfo).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}/billingInfo", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateBillingInfoProjectsRequest>;
+export const UpdateBillingInfoProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(ProjectBillingInfo).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PUT", path: "v1/{+name}/billingInfo", hasBody: true }),
+  svc,
+) as unknown as Schema.Schema<UpdateBillingInfoProjectsRequest>;
 
 export type UpdateBillingInfoProjectsResponse = ProjectBillingInfo;
-export const UpdateBillingInfoProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
+export const UpdateBillingInfoProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
 
-export type UpdateBillingInfoProjectsError = DefaultErrors;
+export type UpdateBillingInfoProjectsError = DefaultErrors | NotFound | BadRequest | Forbidden | Conflict;
 
 /** Sets or updates the billing account associated with a project. You specify the new billing account by setting the `billing_account_name` in the `ProjectBillingInfo` resource to the resource name of a billing account. Associating a project with an open billing account enables billing on the project and allows charges for resource usage. If the project already had a billing account, this method changes the billing account used for resource usage charges. *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud Console might be billed to the new billing account, even if the charge occurred before the new billing account was assigned to the project. The current authenticated user must have ownership privileges for both the [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing account](https://cloud.google.com/billing/docs/how-to/billing-access). You can disable billing on the project by setting the `billing_account_name` field to empty. This action disassociates the current billing account from the project. Any billable activity of your in-use services will stop, and your application could stop functioning as expected. Any unbilled charges to date will be billed to the previously associated account. The current authenticated user must be either an owner of the project or an owner of the billing account for the project. Note that associating a project with a *closed* billing account will have much the same effect as disabling billing on the project: any paid resources used by the project will be shut down. Thus, unless you wish to disable billing, you should always call this method with the name of an *open* billing account. */
-export const updateBillingInfoProjects: API.OperationMethod<
-  UpdateBillingInfoProjectsRequest,
-  UpdateBillingInfoProjectsResponse,
-  UpdateBillingInfoProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateBillingInfoProjects: API.OperationMethod<UpdateBillingInfoProjectsRequest, UpdateBillingInfoProjectsResponse, UpdateBillingInfoProjectsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBillingInfoProjectsRequest,
   output: UpdateBillingInfoProjectsResponse,
-  errors: [],
+  errors: [NotFound, BadRequest, Forbidden, Conflict],
 }));
 
 export interface ListServicesRequest {
@@ -1031,18 +930,12 @@ export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListServicesRequest>;
 
 export type ListServicesResponse_Op = ListServicesResponse;
-export const ListServicesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
+export const ListServicesResponse_Op = /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
 export type ListServicesError = DefaultErrors;
 
 /** Lists all public cloud services. */
-export const listServices: API.PaginatedOperationMethod<
-  ListServicesRequest,
-  ListServicesResponse_Op,
-  ListServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listServices: API.PaginatedOperationMethod<ListServicesRequest, ListServicesResponse_Op, ListServicesError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
   errors: [],
@@ -1067,34 +960,25 @@ export interface ListServicesSkusRequest {
   pageToken?: string;
 }
 
-export const ListServicesSkusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
-    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
-    currencyCode: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("currencyCode"),
-    ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/skus" }),
-    svc,
-  ) as unknown as Schema.Schema<ListServicesSkusRequest>;
+export const ListServicesSkusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.String.pipe(T.HttpPath("parent")),
+  startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
+  endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
+  currencyCode: Schema.optional(Schema.String).pipe(T.HttpQuery("currencyCode")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+parent}/skus" }),
+  svc,
+) as unknown as Schema.Schema<ListServicesSkusRequest>;
 
 export type ListServicesSkusResponse = ListSkusResponse;
-export const ListServicesSkusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSkusResponse;
+export const ListServicesSkusResponse = /*@__PURE__*/ /*#__PURE__*/ ListSkusResponse;
 
 export type ListServicesSkusError = DefaultErrors;
 
 /** Lists all publicly available SKUs for a given cloud service. */
-export const listServicesSkus: API.PaginatedOperationMethod<
-  ListServicesSkusRequest,
-  ListServicesSkusResponse,
-  ListServicesSkusError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listServicesSkus: API.PaginatedOperationMethod<ListServicesSkusRequest, ListServicesSkusResponse, ListServicesSkusError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesSkusRequest,
   output: ListServicesSkusResponse,
   errors: [],
@@ -1103,3 +987,4 @@ export const listServicesSkus: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
   },
 }));
+
