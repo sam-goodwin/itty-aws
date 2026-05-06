@@ -5184,14 +5184,14 @@ export const UpdateTimeToLiveOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
   "InternalServerError",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withServerError, C.withRetryableError) {}
 export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
   "RequestLimitExceeded",
   {
     message: S.optional(S.String),
     ThrottlingReasons: S.optional(ThrottlingReasonList),
   },
-).pipe(C.withThrottlingError) {}
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   {
@@ -5199,26 +5199,26 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     throttlingReasons: S.optional(ThrottlingReasonList),
   },
   T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
   "InvalidEndpointException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
   "ProvisionedThroughputExceededException",
   {
     message: S.optional(S.String),
     ThrottlingReasons: S.optional(ThrottlingReasonList),
   },
-) {}
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class ItemCollectionSizeLimitExceededException extends S.TaggedErrorClass<ItemCollectionSizeLimitExceededException>()(
   "ItemCollectionSizeLimitExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 export class ReplicatedWriteConflictException extends S.TaggedErrorClass<ReplicatedWriteConflictException>()(
   "ReplicatedWriteConflictException",
   { message: S.optional(S.String) },
@@ -5227,67 +5227,67 @@ export class ReplicatedWriteConflictException extends S.TaggedErrorClass<Replica
 export class BackupInUseException extends S.TaggedErrorClass<BackupInUseException>()(
   "BackupInUseException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class ContinuousBackupsUnavailableException extends S.TaggedErrorClass<ContinuousBackupsUnavailableException>()(
   "ContinuousBackupsUnavailableException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError, C.withRetryableError) {}
 export class TableInUseException extends S.TaggedErrorClass<TableInUseException>()(
   "TableInUseException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class TableNotFoundException extends S.TaggedErrorClass<TableNotFoundException>()(
   "TableNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class GlobalTableAlreadyExistsException extends S.TaggedErrorClass<GlobalTableAlreadyExistsException>()(
   "GlobalTableAlreadyExistsException",
   { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
   "ResourceInUseException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class BackupNotFoundException extends S.TaggedErrorClass<BackupNotFoundException>()(
   "BackupNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class ConditionalCheckFailedException extends S.TaggedErrorClass<ConditionalCheckFailedException>()(
   "ConditionalCheckFailedException",
   { message: S.optional(S.String), Item: S.optional(AttributeMap) },
-) {}
+).pipe(C.withConflictError) {}
 export class TransactionConflictException extends S.TaggedErrorClass<TransactionConflictException>()(
   "TransactionConflictException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class PolicyNotFoundException extends S.TaggedErrorClass<PolicyNotFoundException>()(
   "PolicyNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class ExportNotFoundException extends S.TaggedErrorClass<ExportNotFoundException>()(
   "ExportNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class GlobalTableNotFoundException extends S.TaggedErrorClass<GlobalTableNotFoundException>()(
   "GlobalTableNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class ImportNotFoundException extends S.TaggedErrorClass<ImportNotFoundException>()(
   "ImportNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class DuplicateItemException extends S.TaggedErrorClass<DuplicateItemException>()(
   "DuplicateItemException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
   "IdempotentParameterMismatchException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class TransactionCanceledException extends S.TaggedErrorClass<TransactionCanceledException>()(
   "TransactionCanceledException",
   {
@@ -5298,43 +5298,43 @@ export class TransactionCanceledException extends S.TaggedErrorClass<Transaction
 export class TransactionInProgressException extends S.TaggedErrorClass<TransactionInProgressException>()(
   "TransactionInProgressException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class ExportConflictException extends S.TaggedErrorClass<ExportConflictException>()(
   "ExportConflictException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class InvalidExportTimeException extends S.TaggedErrorClass<InvalidExportTimeException>()(
   "InvalidExportTimeException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class PointInTimeRecoveryUnavailableException extends S.TaggedErrorClass<PointInTimeRecoveryUnavailableException>()(
   "PointInTimeRecoveryUnavailableException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class ImportConflictException extends S.TaggedErrorClass<ImportConflictException>()(
   "ImportConflictException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class TableAlreadyExistsException extends S.TaggedErrorClass<TableAlreadyExistsException>()(
   "TableAlreadyExistsException",
   { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class InvalidRestoreTimeException extends S.TaggedErrorClass<InvalidRestoreTimeException>()(
   "InvalidRestoreTimeException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class ReplicaAlreadyExistsException extends S.TaggedErrorClass<ReplicaAlreadyExistsException>()(
   "ReplicaAlreadyExistsException",
   { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ReplicaNotFoundException extends S.TaggedErrorClass<ReplicaNotFoundException>()(
   "ReplicaNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class IndexNotFoundException extends S.TaggedErrorClass<IndexNotFoundException>()(
   "IndexNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type BatchExecuteStatementError =

@@ -82,13 +82,13 @@ export const GoogleChromeManagementV1DeviceHardwareCountReport =
 
 export interface GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse {
   /** The DeviceHardwareCountReport for device cpu type (for example Intel(R) Core(TM) i7-10610U CPU @ 1.80GHz). */
-  cpuReports?: Array<GoogleChromeManagementV1DeviceHardwareCountReport>;
+  cpuReports?: ReadonlyArray<GoogleChromeManagementV1DeviceHardwareCountReport>;
   /** The DeviceHardwareCountReport for device memory amount in gigabytes (for example 16). */
-  memoryReports?: Array<GoogleChromeManagementV1DeviceHardwareCountReport>;
+  memoryReports?: ReadonlyArray<GoogleChromeManagementV1DeviceHardwareCountReport>;
   /** The DeviceHardwareCountReport for device model type (for example Acer C7 Chromebook). */
-  modelReports?: Array<GoogleChromeManagementV1DeviceHardwareCountReport>;
+  modelReports?: ReadonlyArray<GoogleChromeManagementV1DeviceHardwareCountReport>;
   /** The DeviceHardwareCountReport for device storage amount in gigabytes (for example 128). */
-  storageReports?: Array<GoogleChromeManagementV1DeviceHardwareCountReport>;
+  storageReports?: ReadonlyArray<GoogleChromeManagementV1DeviceHardwareCountReport>;
 }
 
 export const GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse =
@@ -251,7 +251,7 @@ export interface GoogleChromeManagementV1CountChromeAppRequestsResponse {
   /** Total number of matching app requests. */
   totalSize?: number;
   /** Count of requested apps matching request. */
-  requestedApps?: Array<GoogleChromeManagementV1ChromeAppRequest>;
+  requestedApps?: ReadonlyArray<GoogleChromeManagementV1ChromeAppRequest>;
   /** Token to specify the next page in the list. */
   nextPageToken?: string;
 }
@@ -315,7 +315,7 @@ export const GoogleChromeManagementV1ChromeAppSiteAccess =
 
 export interface GoogleChromeManagementV1TelemetryEventNotificationFilter {
   /** Only sends the notifications for events of these types. Must not be empty. */
-  eventTypes?: Array<
+  eventTypes?: ReadonlyArray<
     | "EVENT_TYPE_UNSPECIFIED"
     | "AUDIO_SEVERE_UNDERRUN"
     | "NETWORK_STATE_CHANGE"
@@ -395,7 +395,7 @@ export interface GoogleChromeManagementV1ListTelemetryNotificationConfigsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The telemetry notification configs from the specified customer. */
-  telemetryNotificationConfigs?: Array<GoogleChromeManagementV1TelemetryNotificationConfig>;
+  telemetryNotificationConfigs?: ReadonlyArray<GoogleChromeManagementV1TelemetryNotificationConfig>;
 }
 
 export const GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse =
@@ -435,7 +435,7 @@ export interface GoogleChromeManagementV1FetchUsersRequestingExtensionResponse {
   /** Total number of users in response. */
   totalSize?: number;
   /** Details of users that have requested the queried extension. */
-  userDetails?: Array<GoogleChromeManagementV1UserRequestingExtensionDetails>;
+  userDetails?: ReadonlyArray<GoogleChromeManagementV1UserRequestingExtensionDetails>;
   /** Token to specify the next page in the list. */
   nextPageToken?: string;
 }
@@ -453,7 +453,7 @@ export const GoogleChromeManagementV1FetchUsersRequestingExtensionResponse =
 
 export interface GoogleChromeManagementV1NetworkInfo {
   /** Output only. List of network devices. */
-  networkDevices?: Array<GoogleChromeManagementV1NetworkDevice>;
+  networkDevices?: ReadonlyArray<GoogleChromeManagementV1NetworkDevice>;
 }
 
 export const GoogleChromeManagementV1NetworkInfo =
@@ -501,7 +501,7 @@ export const GoogleChromeManagementV1DeviceAueCountReport =
 
 export interface GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse {
   /** The list of reports sorted by auto update expiration date in ascending order. */
-  deviceAueCountReports?: Array<GoogleChromeManagementV1DeviceAueCountReport>;
+  deviceAueCountReports?: ReadonlyArray<GoogleChromeManagementV1DeviceAueCountReport>;
 }
 
 export const GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse =
@@ -534,7 +534,7 @@ export interface GoogleChromeManagementV1ChromeAppInfo {
   /** Output only. The minimum number of users using this app. */
   minUserCount?: number;
   /** Output only. Every custom permission requested by the app. Version-specific field that will only be set when the requested app version is found. */
-  permissions?: Array<GoogleChromeManagementV1ChromeAppPermission>;
+  permissions?: ReadonlyArray<GoogleChromeManagementV1ChromeAppPermission>;
   /** Output only. Whether the app or extension is a theme. */
   isTheme?: boolean;
   /** Output only. Whether the app or extension is built and maintained by Google. Version-specific field that will only be set when the requested app version is found. */
@@ -544,7 +544,7 @@ export interface GoogleChromeManagementV1ChromeAppInfo {
   /** Output only. Whether an app supports policy for extensions. */
   isExtensionPolicySupported?: boolean;
   /** Output only. Every permission giving access to domains or broad host patterns. ( e.g. www.google.com). This includes the matches from content scripts as well as hosts in the permissions node of the manifest. Version-specific field that will only be set when the requested app version is found. */
-  siteAccess?: Array<GoogleChromeManagementV1ChromeAppSiteAccess>;
+  siteAccess?: ReadonlyArray<GoogleChromeManagementV1ChromeAppSiteAccess>;
   /** Output only. Types of an item in the Chrome Web Store */
   type?: "ITEM_TYPE_UNSPECIFIED" | "EXTENSION" | "OTHERS" | (string & {});
   /** Output only. The app developer has enabled support for their app. Version-specific field that will only be set when the requested app version is found. */
@@ -741,7 +741,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData 
 
 export interface GoogleChromeManagementVersionsV1ReportingDataPolicyData {
   /** Output only. Conflicting policy information. */
-  conflicts?: Array<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
+  conflicts?: ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
   /** Output only. Error message of the policy, if any. */
   error?: string;
   /** Output only. Source of the policy. */
@@ -870,7 +870,7 @@ export const GoogleChromeManagementVersionsV1SetFailureRequest =
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -909,11 +909,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -987,7 +987,7 @@ export const GoogleChromeManagementV1AndroidAppPermission =
 
 export interface GoogleChromeManagementV1AndroidAppInfo {
   /** Output only. Permissions requested by an Android app. */
-  permissions?: Array<GoogleChromeManagementV1AndroidAppPermission>;
+  permissions?: ReadonlyArray<GoogleChromeManagementV1AndroidAppPermission>;
 }
 
 export const GoogleChromeManagementV1AndroidAppInfo =
@@ -1090,7 +1090,7 @@ export interface GoogleChromeManagementV1UsbPeripheralReport {
   /** Output only. Vendor ID */
   vid?: number;
   /** Output only. Categories the device belongs to https://www.usb.org/defined-class-codes */
-  categories?: Array<string>;
+  categories?: ReadonlyArray<string>;
   /** Output only. Product ID */
   pid?: number;
   /** Output only. Device name, model name, or product name */
@@ -1115,7 +1115,7 @@ export const GoogleChromeManagementV1UsbPeripheralReport =
 
 export interface GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
   /** List of usb devices that were either added or removed. */
-  usbPeripheralReport?: Array<GoogleChromeManagementV1UsbPeripheralReport>;
+  usbPeripheralReport?: ReadonlyArray<GoogleChromeManagementV1UsbPeripheralReport>;
 }
 
 export const GoogleChromeManagementV1TelemetryUsbPeripheralsEvent =
@@ -1324,7 +1324,7 @@ export const GoogleChromeManagementV1TelemetryOsCrashEvent =
 
 export interface GoogleChromeManagementV1TelemetryExternalDisplayEvent {
   /** List of external displays that were connected/disconnected. */
-  externalDisplayData?: Array<GoogleChromeManagementV1TelemetryExternalDisplayData>;
+  externalDisplayData?: ReadonlyArray<GoogleChromeManagementV1TelemetryExternalDisplayData>;
 }
 
 export const GoogleChromeManagementV1TelemetryExternalDisplayEvent =
@@ -1561,7 +1561,7 @@ export interface GoogleChromeManagementV1RiskAssessmentData {
     | "RISK_LEVEL_HIGH"
     | (string & {});
   /** Individual risk assessments. */
-  entries?: Array<GoogleChromeManagementV1RiskAssessmentEntry>;
+  entries?: ReadonlyArray<GoogleChromeManagementV1RiskAssessmentEntry>;
 }
 
 export const GoogleChromeManagementV1RiskAssessmentData =
@@ -1586,7 +1586,7 @@ export interface GoogleChromeManagementV1InstalledApp {
   /** Output only. Description of the installed app. */
   description?: string;
   /** Output only. Permissions of the installed app. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
   /** Output only. Name of the installed app. */
   displayName?: string;
   /** Output only. Unique identifier of the app. For Chrome apps and extensions, the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the package name (e.g. com.evernote). */
@@ -1636,7 +1636,7 @@ export const GoogleChromeManagementV1InstalledApp =
 
 export interface GoogleChromeManagementV1CountInstalledAppsResponse {
   /** List of installed apps matching request. */
-  installedApps?: Array<GoogleChromeManagementV1InstalledApp>;
+  installedApps?: ReadonlyArray<GoogleChromeManagementV1InstalledApp>;
   /** Token to specify the next page of the request. */
   nextPageToken?: string;
   /** Total number of installed apps matching request. */
@@ -1658,7 +1658,7 @@ export interface GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDat
   /** Output only. ID of the extension. */
   extensionId?: string;
   /** Output only. Information of the policies applied on the extension. */
-  policyData?: Array<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
+  policyData?: ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
   /** Output only. Name of the extension. */
   extensionName?: string;
 }
@@ -1705,7 +1705,7 @@ export interface GoogleChromeManagementVersionsV1ReportingDataExtensionData {
   /** Output only. Version of the extension. */
   version?: string;
   /** Output only. Permissions requested by the extension. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
   /** Output only. Description of the extension. */
   description?: string;
   /** Output only. Represents whether the extension is from the webstore. */
@@ -1735,15 +1735,15 @@ export interface GoogleChromeManagementVersionsV1ReportingData {
   /** Output only. Executable path of the installed Chrome browser. A valid path is included only in affiliated profiles. */
   browserExecutablePath?: string;
   /** Output only. Information of the policies applied on the extensions. */
-  extensionPolicyData?: Array<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
+  extensionPolicyData?: ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
   /** Output only. Information of the extensions installed on the profile. */
-  extensionData?: Array<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
+  extensionData?: ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
   /** Output only. Path of the profile. A valid path is included only in affiliated profiles. */
   profilePath?: string;
   /** Output only. Updated version of a browser, if it is different from the active browser version. */
   installedBrowserVersion?: string;
   /** Output only. Information of the policies applied on the profile. */
-  policyData?: Array<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
+  policyData?: ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
 }
 
 export const GoogleChromeManagementVersionsV1ReportingData =
@@ -1983,7 +1983,7 @@ export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfilesRespon
   /** Total size represents an estimated number of resources returned. Not guaranteed to be accurate above 10k profiles. */
   totalSize?: string;
   /** The list of profiles returned. */
-  chromeBrowserProfiles?: Array<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
+  chromeBrowserProfiles?: ReadonlyArray<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
 }
 
 export const GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse =
@@ -2035,7 +2035,7 @@ export const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCou
 
 export interface GoogleChromeManagementV1CountChromeCrashEventsResponse {
   /** Crash event counts grouped by date and browser version. */
-  crashEventCounts?: Array<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
+  crashEventCounts?: ReadonlyArray<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
 }
 
 export const GoogleChromeManagementV1CountChromeCrashEventsResponse =
@@ -2051,7 +2051,7 @@ export const GoogleChromeManagementV1CountChromeCrashEventsResponse =
 
 export interface GoogleChromeManagementV1PeripheralsReport {
   /** Reports of all usb connected devices. */
-  usbPeripheralReport?: Array<GoogleChromeManagementV1UsbPeripheralReport>;
+  usbPeripheralReport?: ReadonlyArray<GoogleChromeManagementV1UsbPeripheralReport>;
   /** Output only. Timestamp of when the report was collected. */
   reportTime?: string;
 }
@@ -2086,7 +2086,7 @@ export interface GoogleChromeManagementV1AppReport {
   /** Timestamp when the report was collected. */
   reportTime?: string;
   /** App usage data. */
-  usageData?: Array<GoogleChromeManagementV1AppUsageData>;
+  usageData?: ReadonlyArray<GoogleChromeManagementV1AppUsageData>;
 }
 
 export const GoogleChromeManagementV1AppReport =
@@ -2099,17 +2099,17 @@ export const GoogleChromeManagementV1AppReport =
 
 export interface GoogleChromeManagementV1TelemetryUserDevice {
   /** Output only. Network bandwidth reports collected periodically sorted in a decreasing order of report_time. */
-  networkBandwidthReport?: Array<GoogleChromeManagementV1NetworkBandwidthReport>;
+  networkBandwidthReport?: ReadonlyArray<GoogleChromeManagementV1NetworkBandwidthReport>;
   /** Output only. Audio reports collected periodically sorted in a decreasing order of report_time. */
-  audioStatusReport?: Array<GoogleChromeManagementV1AudioStatusReport>;
+  audioStatusReport?: ReadonlyArray<GoogleChromeManagementV1AudioStatusReport>;
   /** Output only. Peripherals reports collected periodically sorted in a decreasing order of report_time. */
-  peripheralsReport?: Array<GoogleChromeManagementV1PeripheralsReport>;
+  peripheralsReport?: ReadonlyArray<GoogleChromeManagementV1PeripheralsReport>;
   /** Output only. Device activity reports collected periodically sorted in a decreasing order of report_time. */
-  deviceActivityReport?: Array<GoogleChromeManagementV1DeviceActivityReport>;
+  deviceActivityReport?: ReadonlyArray<GoogleChromeManagementV1DeviceActivityReport>;
   /** The unique Directory API ID of the device. This value is the same as the Admin Console's Directory API ID in the ChromeOS Devices tab. */
   deviceId?: string;
   /** Output only. App reports collected periodically sorted in a decreasing order of report_time. */
-  appReport?: Array<GoogleChromeManagementV1AppReport>;
+  appReport?: ReadonlyArray<GoogleChromeManagementV1AppReport>;
 }
 
 export const GoogleChromeManagementV1TelemetryUserDevice =
@@ -2138,7 +2138,7 @@ export interface GoogleChromeManagementV1TelemetryUser {
   /** G Suite Customer whose enterprise enrolled the device. */
   customer?: string;
   /** Telemetry data collected from a managed user and device. */
-  userDevice?: Array<GoogleChromeManagementV1TelemetryUserDevice>;
+  userDevice?: ReadonlyArray<GoogleChromeManagementV1TelemetryUserDevice>;
   /** Organization unit of the user. */
   orgUnitId?: string;
   /** Directory ID of the user. */
@@ -2176,7 +2176,7 @@ export interface GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
   /** Optional. Total number of devices in response. */
   totalSize?: number;
   /** Details of devices that have requested the queried extension. */
-  deviceDetails?: Array<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
+  deviceDetails?: ReadonlyArray<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
   /** Optional. Token to specify the next page in the list. Token expires after 1 day. */
   nextPageToken?: string;
 }
@@ -2208,7 +2208,7 @@ export const GoogleChromeManagementV1Device =
 
 export interface GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   /** A list of devices which have the app installed. Sorted in ascending alphabetical order on the Device.machine field. */
-  devices?: Array<GoogleChromeManagementV1Device>;
+  devices?: ReadonlyArray<GoogleChromeManagementV1Device>;
   /** Token to specify the next page of the request. */
   nextPageToken?: string;
   /** Total number of devices matching request. */
@@ -2289,7 +2289,7 @@ export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommand
   /** Total size represents an estimated number of resources returned. */
   totalSize?: string;
   /** The list of commands returned. */
-  chromeBrowserProfileCommands?: Array<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
+  chromeBrowserProfileCommands?: ReadonlyArray<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
   /** The pagination token that can be used to list the next page. */
   nextPageToken?: string;
 }
@@ -2308,7 +2308,7 @@ export const GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsRes
 
 export interface GoogleChromeManagementV1DiskInfo {
   /** Output only. Disk volumes. */
-  volumeIds?: Array<string>;
+  volumeIds?: ReadonlyArray<string>;
   /** Output only. Number of bytes written since last boot. */
   bytesWrittenThisSession?: string;
   /** Output only. Time spent reading from disk since last boot. */
@@ -2356,7 +2356,7 @@ export interface GoogleChromeManagementV1StorageStatusReport {
   /** Output only. Timestamp of when the sample was collected on device */
   reportTime?: string;
   /** Output only. Reports on disk. */
-  disk?: Array<GoogleChromeManagementV1DiskInfo>;
+  disk?: ReadonlyArray<GoogleChromeManagementV1DiskInfo>;
 }
 
 export const GoogleChromeManagementV1StorageStatusReport =
@@ -2416,7 +2416,7 @@ export const GoogleChromeManagementV1ThunderboltInfo =
 
 export interface GoogleChromeManagementV1TouchScreenInfo {
   /** Output only. List of the internal touch screen devices. */
-  devices?: Array<GoogleChromeManagementV1TouchScreenDevice>;
+  devices?: ReadonlyArray<GoogleChromeManagementV1TouchScreenDevice>;
   /** Output only. Touchpad library name used by the input stack. */
   touchpadLibrary?: string;
 }
@@ -2433,7 +2433,7 @@ export interface GoogleChromeManagementV1CountChromeVersionsResponse {
   /** Total number browser versions matching request. */
   totalSize?: number;
   /** List of all browser versions and their install counts. */
-  browserVersions?: Array<GoogleChromeManagementV1BrowserVersion>;
+  browserVersions?: ReadonlyArray<GoogleChromeManagementV1BrowserVersion>;
   /** Token to specify the next page of the request. */
   nextPageToken?: string;
 }
@@ -2474,13 +2474,13 @@ export interface GoogleChromeManagementVersionsV1ScepProfile {
   /** Output only. The name of the organization the subject belongs to. */
   organization?: string;
   /** Output only. The organizational units of the subject. */
-  organizationalUnits?: Array<string>;
+  organizationalUnits?: ReadonlyArray<string>;
   /** Output only. The locality of the subject. */
   locality?: string;
   /** Output only. The subject alternative names. */
-  subjectAltNames?: Array<GoogleChromeManagementVersionsV1SubjectAltName>;
+  subjectAltNames?: ReadonlyArray<GoogleChromeManagementVersionsV1SubjectAltName>;
   /** Output only. The allowed key usages for certificate's key. */
-  keyUsages?: Array<
+  keyUsages?: ReadonlyArray<
     | "KEY_USAGE_UNSPECIFIED"
     | "KEY_USAGE_SIGNING"
     | "KEY_USAGE_KEY_ENCIPHERMENT"
@@ -2608,7 +2608,7 @@ export const GoogleChromeManagementV1PrinterReport =
 
 export interface GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
   /** List of PrinterReports matching request. */
-  printerReports?: Array<GoogleChromeManagementV1PrinterReport>;
+  printerReports?: ReadonlyArray<GoogleChromeManagementV1PrinterReport>;
   /** Total number of printers matching request. */
   totalSize?: string;
   /** Pagination token for requesting the next page. */
@@ -2806,7 +2806,7 @@ export interface GoogleChromeManagementV1GraphicsInfo {
   /** Output only. Is ePrivacy screen supported or not. */
   eprivacySupported?: boolean;
   /** Output only. Information about the display(s) of the device. */
-  displayDevices?: Array<GoogleChromeManagementV1DisplayDevice>;
+  displayDevices?: ReadonlyArray<GoogleChromeManagementV1DisplayDevice>;
 }
 
 export const GoogleChromeManagementV1GraphicsInfo =
@@ -2857,7 +2857,7 @@ export interface GoogleChromeManagementV1NetworkStatusReport {
     | "WIFI"
     | (string & {});
   /** Output only. IPv6 addresses assigned to this network, if any. Each address is a string in standard IPv6 text representation (e.g., "2001:db8::1"). */
-  ipv6Address?: Array<string>;
+  ipv6Address?: ReadonlyArray<string>;
   /** Output only. Whether the wifi encryption key is turned off. */
   encryptionOn?: boolean;
   /** Output only. Wifi power management enabled */
@@ -2907,7 +2907,7 @@ export interface GoogleChromeManagementV1BatteryStatusReport {
     | "BATTERY_REPLACE_NOW"
     | (string & {});
   /** Output only. Sampling data for the battery sorted in a decreasing order of report_time. */
-  sample?: Array<GoogleChromeManagementV1BatterySampleReport>;
+  sample?: ReadonlyArray<GoogleChromeManagementV1BatterySampleReport>;
   /** Output only. Full charge capacity (mAmpere-hours). */
   fullChargeCapacity?: string;
   /** Output only. Cycle count. */
@@ -2943,7 +2943,7 @@ export interface GoogleChromeManagementV1CpuStatusReport {
   /** Output only. Frequency the report is sampled. */
   sampleFrequency?: string;
   /** Output only. CPU temperature sample info per CPU core in Celsius */
-  cpuTemperatureInfo?: Array<GoogleChromeManagementV1CpuTemperatureInfo>;
+  cpuTemperatureInfo?: ReadonlyArray<GoogleChromeManagementV1CpuTemperatureInfo>;
   /** Output only. Sample of CPU utilization (0-100 percent). */
   cpuUtilizationPct?: number;
   /** Output only. The timestamp in milliseconds representing time at which this report was sampled. */
@@ -2978,7 +2978,7 @@ export const GoogleChromeManagementV1StorageInfoDiskVolume =
 
 export interface GoogleChromeManagementV1StorageInfo {
   /** Information for disk volumes */
-  volume?: Array<GoogleChromeManagementV1StorageInfoDiskVolume>;
+  volume?: ReadonlyArray<GoogleChromeManagementV1StorageInfoDiskVolume>;
   /** The available space for user data storage in the device in bytes. */
   availableDiskBytes?: string;
   /** The total space for user data storage in the device in bytes. */
@@ -2998,7 +2998,7 @@ export interface GoogleChromeManagementV1GraphicsStatusReport {
   /** Output only. Time at which the graphics data was reported. */
   reportTime?: string;
   /** Output only. Information about the displays for the device. */
-  displays?: Array<GoogleChromeManagementV1DisplayInfo>;
+  displays?: ReadonlyArray<GoogleChromeManagementV1DisplayInfo>;
 }
 
 export const GoogleChromeManagementV1GraphicsStatusReport =
@@ -3030,59 +3030,59 @@ export const GoogleChromeManagementV1MemoryStatusReport =
 
 export interface GoogleChromeManagementV1TelemetryDevice {
   /** Output only. Heartbeat status report containing timestamps periodically sorted in decreasing order of report_time */
-  heartbeatStatusReport?: Array<GoogleChromeManagementV1HeartbeatStatusReport>;
+  heartbeatStatusReport?: ReadonlyArray<GoogleChromeManagementV1HeartbeatStatusReport>;
   /** Output only. Boot performance reports of the device. */
-  bootPerformanceReport?: Array<GoogleChromeManagementV1BootPerformanceReport>;
+  bootPerformanceReport?: ReadonlyArray<GoogleChromeManagementV1BootPerformanceReport>;
   /** Output only. Audio reports collected periodically sorted in a decreasing order of report_time. */
-  audioStatusReport?: Array<GoogleChromeManagementV1AudioStatusReport>;
+  audioStatusReport?: ReadonlyArray<GoogleChromeManagementV1AudioStatusReport>;
   /** Output only. The unique Directory API ID of the device. This value is the same as the Admin Console's Directory API ID in the ChromeOS Devices tab */
   deviceId?: string;
   /** Output only. Information regarding memory specs for the device. */
   memoryInfo?: GoogleChromeManagementV1MemoryInfo;
   /** Output only. CPU status reports collected periodically sorted in a decreasing order of report_time. */
-  cpuStatusReport?: Array<GoogleChromeManagementV1CpuStatusReport>;
+  cpuStatusReport?: ReadonlyArray<GoogleChromeManagementV1CpuStatusReport>;
   /** Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the ChromeOS Devices tab. */
   serialNumber?: string;
   /** Output only. App reports collected periodically sorted in a decreasing order of report_time. */
-  appReport?: Array<GoogleChromeManagementV1AppReport>;
+  appReport?: ReadonlyArray<GoogleChromeManagementV1AppReport>;
   /** Output only. Network bandwidth reports collected periodically sorted in a decreasing order of report_time. */
-  networkBandwidthReport?: Array<GoogleChromeManagementV1NetworkBandwidthReport>;
+  networkBandwidthReport?: ReadonlyArray<GoogleChromeManagementV1NetworkBandwidthReport>;
   /** Output only. Battery reports collected periodically. */
-  batteryStatusReport?: Array<GoogleChromeManagementV1BatteryStatusReport>;
+  batteryStatusReport?: ReadonlyArray<GoogleChromeManagementV1BatteryStatusReport>;
   /** Output only. Network diagnostics collected periodically. */
-  networkDiagnosticsReport?: Array<GoogleChromeManagementV1NetworkDiagnosticsReport>;
+  networkDiagnosticsReport?: ReadonlyArray<GoogleChromeManagementV1NetworkDiagnosticsReport>;
   /** Output only. Information of storage specs for the device. */
   storageInfo?: GoogleChromeManagementV1StorageInfo;
   /** Output only. Contains information regarding Graphic peripherals for the device. */
   graphicsInfo?: GoogleChromeManagementV1GraphicsInfo;
   /** Output only. Information on Thunderbolt bus. */
-  thunderboltInfo?: Array<GoogleChromeManagementV1ThunderboltInfo>;
+  thunderboltInfo?: ReadonlyArray<GoogleChromeManagementV1ThunderboltInfo>;
   /** Output only. Information regarding CPU specs for the device. */
-  cpuInfo?: Array<GoogleChromeManagementV1CpuInfo>;
+  cpuInfo?: ReadonlyArray<GoogleChromeManagementV1CpuInfo>;
   /** Output only. Contains relevant information regarding ChromeOS update status. */
-  osUpdateStatus?: Array<GoogleChromeManagementV1OsUpdateStatus>;
+  osUpdateStatus?: ReadonlyArray<GoogleChromeManagementV1OsUpdateStatus>;
   /** Output only. Information on battery specs for the device. */
-  batteryInfo?: Array<GoogleChromeManagementV1BatteryInfo>;
+  batteryInfo?: ReadonlyArray<GoogleChromeManagementV1BatteryInfo>;
   /** Output only. Peripherals reports collected periodically sorted in a decreasing order of report_time. */
-  peripheralsReport?: Array<GoogleChromeManagementV1PeripheralsReport>;
+  peripheralsReport?: ReadonlyArray<GoogleChromeManagementV1PeripheralsReport>;
   /** Output only. Network specs collected periodically. */
-  networkStatusReport?: Array<GoogleChromeManagementV1NetworkStatusReport>;
+  networkStatusReport?: ReadonlyArray<GoogleChromeManagementV1NetworkStatusReport>;
   /** Output only. Storage reports collected periodically. */
-  storageStatusReport?: Array<GoogleChromeManagementV1StorageStatusReport>;
+  storageStatusReport?: ReadonlyArray<GoogleChromeManagementV1StorageStatusReport>;
   /** Output only. Runtime counters reports collected device lifetime runtime, as well as the counts of S0->S3, S0->S4, and S0->S5 transitions, meaning entering into sleep, hibernation, and power-off states */
-  runtimeCountersReport?: Array<GoogleChromeManagementV1RuntimeCountersReport>;
+  runtimeCountersReport?: ReadonlyArray<GoogleChromeManagementV1RuntimeCountersReport>;
   /** Output only. Graphics reports collected periodically. */
-  graphicsStatusReport?: Array<GoogleChromeManagementV1GraphicsStatusReport>;
+  graphicsStatusReport?: ReadonlyArray<GoogleChromeManagementV1GraphicsStatusReport>;
   /** Output only. Organization unit ID of the device. */
   orgUnitId?: string;
   /** Output only. Memory status reports collected periodically sorted decreasing by report_time. */
-  memoryStatusReport?: Array<GoogleChromeManagementV1MemoryStatusReport>;
+  memoryStatusReport?: ReadonlyArray<GoogleChromeManagementV1MemoryStatusReport>;
   /** Output only. Network devices information. */
   networkInfo?: GoogleChromeManagementV1NetworkInfo;
   /** Output only. Google Workspace Customer whose enterprise enrolled the device. */
   customer?: string;
   /** Output only. Kiosk app status report for the kiosk device */
-  kioskAppStatusReport?: Array<GoogleChromeManagementV1KioskAppStatusReport>;
+  kioskAppStatusReport?: ReadonlyArray<GoogleChromeManagementV1KioskAppStatusReport>;
   /** Output only. Resource name of the device. */
   name?: string;
 }
@@ -3155,7 +3155,7 @@ export const GoogleChromeManagementV1TelemetryDevice =
 
 export interface GoogleChromeManagementV1ListTelemetryDevicesResponse {
   /** Telemetry devices returned in the response. */
-  devices?: Array<GoogleChromeManagementV1TelemetryDevice>;
+  devices?: ReadonlyArray<GoogleChromeManagementV1TelemetryDevice>;
   /** Token to specify next page in the list. */
   nextPageToken?: string;
 }
@@ -3172,7 +3172,7 @@ export const GoogleChromeManagementV1ListTelemetryDevicesResponse =
 
 export interface GoogleChromeManagementV1ListTelemetryEventsResponse {
   /** Telemetry events returned in the response. */
-  telemetryEvents?: Array<GoogleChromeManagementV1TelemetryEvent>;
+  telemetryEvents?: ReadonlyArray<GoogleChromeManagementV1TelemetryEvent>;
   /** Token to specify next page in the list. */
   nextPageToken?: string;
 }
@@ -3321,7 +3321,7 @@ export const GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse =
 
 export interface GoogleChromeManagementV1EnumeratePrintJobsResponse {
   /** List of requested print jobs. */
-  printJobs?: Array<GoogleChromeManagementV1PrintJob>;
+  printJobs?: ReadonlyArray<GoogleChromeManagementV1PrintJob>;
   /** Total number of print jobs matching request. */
   totalSize?: string;
   /** A token, which can be used in a subsequent request to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3378,7 +3378,7 @@ export interface GoogleChromeManagementV1CountPrintJobsByUserResponse {
   /** Pagination token for requesting the next page. */
   nextPageToken?: string;
   /** List of UserPrintReports matching request. */
-  userPrintReports?: Array<GoogleChromeManagementV1UserPrintReport>;
+  userPrintReports?: ReadonlyArray<GoogleChromeManagementV1UserPrintReport>;
 }
 
 export const GoogleChromeManagementV1CountPrintJobsByUserResponse =
@@ -3415,7 +3415,7 @@ export const GoogleChromeManagementV1CountActiveDevicesResponse =
 
 export interface GoogleChromeManagementV1ListTelemetryUsersResponse {
   /** Telemetry users returned in the response. */
-  telemetryUsers?: Array<GoogleChromeManagementV1TelemetryUser>;
+  telemetryUsers?: ReadonlyArray<GoogleChromeManagementV1TelemetryUser>;
   /** Token to specify next page in the list. */
   nextPageToken?: string;
 }
@@ -3495,10 +3495,7 @@ export const ListCustomersTelemetryEventsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/telemetry/events",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/telemetry/events" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersTelemetryEventsRequest>;
 
@@ -3546,10 +3543,7 @@ export const ListCustomersTelemetryDevicesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/telemetry/devices",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/telemetry/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersTelemetryDevicesRequest>;
 
@@ -3588,10 +3582,7 @@ export const GetCustomersTelemetryDevicesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/telemetry/devices/{devicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersTelemetryDevicesRequest>;
 
@@ -3635,10 +3626,7 @@ export const ListCustomersTelemetryUsersRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/telemetry/users",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/telemetry/users" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersTelemetryUsersRequest>;
 
@@ -3677,10 +3665,7 @@ export const GetCustomersTelemetryUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/telemetry/users/{usersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersTelemetryUsersRequest>;
 
@@ -3720,7 +3705,7 @@ export const ListCustomersTelemetryNotificationConfigsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/telemetry/notificationConfigs",
+      path: "v1/{parent}/telemetry/notificationConfigs",
     }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersTelemetryNotificationConfigsRequest>;
@@ -3764,7 +3749,7 @@ export const CreateCustomersTelemetryNotificationConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/customers/{customersId}/telemetry/notificationConfigs",
+      path: "v1/{parent}/telemetry/notificationConfigs",
       hasBody: true,
     }),
     svc,
@@ -3798,10 +3783,7 @@ export const DeleteCustomersTelemetryNotificationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/customers/{customersId}/telemetry/notificationConfigs/{notificationConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersTelemetryNotificationConfigsRequest>;
 
@@ -3845,7 +3827,7 @@ export const ListCustomersProfilesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/customers/{customersId}/profiles" }),
+    T.Http({ method: "GET", path: "v1/{parent}/profiles" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersProfilesRequest>;
 
@@ -3881,10 +3863,7 @@ export const GetCustomersProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/profiles/{profilesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersProfilesRequest>;
 
@@ -3916,10 +3895,7 @@ export const DeleteCustomersProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/customers/{customersId}/profiles/{profilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersProfilesRequest>;
 
@@ -3955,11 +3931,7 @@ export const CreateCustomersProfilesCommandsRequest =
       GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/customers/{customersId}/profiles/{profilesId}/commands",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/commands", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateCustomersProfilesCommandsRequest>;
 
@@ -3991,10 +3963,7 @@ export const GetCustomersProfilesCommandsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/profiles/{profilesId}/commands/{commandsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersProfilesCommandsRequest>;
 
@@ -4032,10 +4001,7 @@ export const ListCustomersProfilesCommandsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/profiles/{profilesId}/commands",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/commands" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersProfilesCommandsRequest>;
 
@@ -4076,11 +4042,7 @@ export const MoveCustomersThirdPartyProfileUsersRequest =
       GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/customers/{customersId}/thirdPartyProfileUsers/{thirdPartyProfileUsersId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveCustomersThirdPartyProfileUsersRequest>;
 
@@ -4126,7 +4088,7 @@ export const CountChromeAppRequestsCustomersAppsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/apps:countChromeAppRequests",
+      path: "v1/{customer}/apps:countChromeAppRequests",
     }),
     svc,
   ) as unknown as Schema.Schema<CountChromeAppRequestsCustomersAppsRequest>;
@@ -4179,7 +4141,7 @@ export const FetchDevicesRequestingExtensionCustomersAppsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/apps:fetchDevicesRequestingExtension",
+      path: "v1/{customer}/apps:fetchDevicesRequestingExtension",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchDevicesRequestingExtensionCustomersAppsRequest>;
@@ -4232,7 +4194,7 @@ export const FetchUsersRequestingExtensionCustomersAppsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/apps:fetchUsersRequestingExtension",
+      path: "v1/{customer}/apps:fetchUsersRequestingExtension",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchUsersRequestingExtensionCustomersAppsRequest>;
@@ -4269,10 +4231,7 @@ export const GetCustomersAppsAndroidRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/apps/android/{androidId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersAppsAndroidRequest>;
 
@@ -4304,10 +4263,7 @@ export const GetCustomersAppsChromeRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/apps/chrome/{chromeId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersAppsChromeRequest>;
 
@@ -4338,10 +4294,7 @@ export const GetCustomersAppsWebRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/apps/web/{webId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersAppsWebRequest>;
 
@@ -4383,7 +4336,7 @@ export const CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countChromeDevicesReachingAutoExpirationDate",
+      path: "v1/{customer}/reports:countChromeDevicesReachingAutoExpirationDate",
     }),
     svc,
   ) as unknown as Schema.Schema<CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest>;
@@ -4434,10 +4387,7 @@ export const EnumeratePrintJobsCustomersReportsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/reports:enumeratePrintJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{customer}/reports:enumeratePrintJobs" }),
     svc,
   ) as unknown as Schema.Schema<EnumeratePrintJobsCustomersReportsRequest>;
 
@@ -4492,7 +4442,7 @@ export const CountPrintJobsByPrinterCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countPrintJobsByPrinter",
+      path: "v1/{customer}/reports:countPrintJobsByPrinter",
     }),
     svc,
   ) as unknown as Schema.Schema<CountPrintJobsByPrinterCustomersReportsRequest>;
@@ -4548,7 +4498,7 @@ export const CountPrintJobsByUserCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countPrintJobsByUser",
+      path: "v1/{customer}/reports:countPrintJobsByUser",
     }),
     svc,
   ) as unknown as Schema.Schema<CountPrintJobsByUserCustomersReportsRequest>;
@@ -4596,10 +4546,7 @@ export const CountActiveDevicesCustomersReportsRequest =
       T.HttpQuery("date.month"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/reports:countActiveDevices",
-    }),
+    T.Http({ method: "GET", path: "v1/{customer}/reports:countActiveDevices" }),
     svc,
   ) as unknown as Schema.Schema<CountActiveDevicesCustomersReportsRequest>;
 
@@ -4661,7 +4608,7 @@ export const FindInstalledAppDevicesCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:findInstalledAppDevices",
+      path: "v1/{customer}/reports:findInstalledAppDevices",
     }),
     svc,
   ) as unknown as Schema.Schema<FindInstalledAppDevicesCustomersReportsRequest>;
@@ -4709,7 +4656,7 @@ export const CountChromeCrashEventsCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countChromeCrashEvents",
+      path: "v1/{customer}/reports:countChromeCrashEvents",
     }),
     svc,
   ) as unknown as Schema.Schema<CountChromeCrashEventsCustomersReportsRequest>;
@@ -4750,7 +4697,7 @@ export const CountChromeHardwareFleetDevicesCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countChromeHardwareFleetDevices",
+      path: "v1/{customer}/reports:countChromeHardwareFleetDevices",
     }),
     svc,
   ) as unknown as Schema.Schema<CountChromeHardwareFleetDevicesCustomersReportsRequest>;
@@ -4797,7 +4744,7 @@ export const CountDevicesPerBootTypeCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countDevicesPerBootType",
+      path: "v1/{customer}/reports:countDevicesPerBootType",
     }),
     svc,
   ) as unknown as Schema.Schema<CountDevicesPerBootTypeCustomersReportsRequest>;
@@ -4844,7 +4791,7 @@ export const CountChromeVersionsCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countChromeVersions",
+      path: "v1/{customer}/reports:countChromeVersions",
     }),
     svc,
   ) as unknown as Schema.Schema<CountChromeVersionsCustomersReportsRequest>;
@@ -4894,7 +4841,7 @@ export const CountDevicesPerReleaseChannelCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countDevicesPerReleaseChannel",
+      path: "v1/{customer}/reports:countDevicesPerReleaseChannel",
     }),
     svc,
   ) as unknown as Schema.Schema<CountDevicesPerReleaseChannelCustomersReportsRequest>;
@@ -4932,7 +4879,7 @@ export const CountChromeBrowsersNeedingAttentionCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countChromeBrowsersNeedingAttention",
+      path: "v1/{customer}/reports:countChromeBrowsersNeedingAttention",
     }),
     svc,
   ) as unknown as Schema.Schema<CountChromeBrowsersNeedingAttentionCustomersReportsRequest>;
@@ -4974,7 +4921,7 @@ export const CountChromeDevicesThatNeedAttentionCustomersReportsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/customers/{customersId}/reports:countChromeDevicesThatNeedAttention",
+      path: "v1/{customer}/reports:countChromeDevicesThatNeedAttention",
     }),
     svc,
   ) as unknown as Schema.Schema<CountChromeDevicesThatNeedAttentionCustomersReportsRequest>;
@@ -5023,10 +4970,7 @@ export const CountInstalledAppsCustomersReportsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     customer: Schema.String.pipe(T.HttpPath("customer")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/reports:countInstalledApps",
-    }),
+    T.Http({ method: "GET", path: "v1/{customer}/reports:countInstalledApps" }),
     svc,
   ) as unknown as Schema.Schema<CountInstalledAppsCustomersReportsRequest>;
 
@@ -5062,10 +5006,7 @@ export const GetCustomersCertificateProvisioningProcessesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/certificateProvisioningProcesses/{certificateProvisioningProcessesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersCertificateProvisioningProcessesRequest>;
 
@@ -5104,7 +5045,7 @@ export const UploadCertificateCustomersCertificateProvisioningProcessesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/customers/{customersId}/certificateProvisioningProcesses/{certificateProvisioningProcessesId}:uploadCertificate",
+      path: "v1/{name}:uploadCertificate",
       hasBody: true,
     }),
     svc,
@@ -5144,11 +5085,7 @@ export const SignDataCustomersCertificateProvisioningProcessesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/customers/{customersId}/certificateProvisioningProcesses/{certificateProvisioningProcessesId}:signData",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:signData", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SignDataCustomersCertificateProvisioningProcessesRequest>;
 
@@ -5186,11 +5123,7 @@ export const SetFailureCustomersCertificateProvisioningProcessesRequest =
       GoogleChromeManagementVersionsV1SetFailureRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/customers/{customersId}/certificateProvisioningProcesses/{certificateProvisioningProcessesId}:setFailure",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setFailure", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetFailureCustomersCertificateProvisioningProcessesRequest>;
 
@@ -5228,11 +5161,7 @@ export const ClaimCustomersCertificateProvisioningProcessesRequest =
       GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/customers/{customersId}/certificateProvisioningProcesses/{certificateProvisioningProcessesId}:claim",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:claim", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ClaimCustomersCertificateProvisioningProcessesRequest>;
 
@@ -5264,10 +5193,7 @@ export const GetCustomersCertificateProvisioningProcessesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/certificateProvisioningProcesses/{certificateProvisioningProcessesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersCertificateProvisioningProcessesOperationsRequest>;
 
@@ -5313,7 +5239,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -5353,11 +5279,7 @@ export const CancelOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -5388,7 +5310,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 

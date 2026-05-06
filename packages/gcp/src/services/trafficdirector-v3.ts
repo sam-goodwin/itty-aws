@@ -178,7 +178,7 @@ export const PathSegment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "PathSegment" });
 
 export interface OrMatcher {
-  valueMatchers?: Array<ValueMatcher>;
+  valueMatchers?: ReadonlyArray<ValueMatcher>;
 }
 
 export const OrMatcher: Schema.Schema<OrMatcher> =
@@ -242,7 +242,7 @@ export const ValueMatcher: Schema.Schema<ValueMatcher> =
 
 export interface StructMatcher {
   /** The path to retrieve the Value from the Struct. */
-  path?: Array<PathSegment>;
+  path?: ReadonlyArray<PathSegment>;
   /** The StructMatcher is matched if the value retrieved by path is matched to this value. */
   value?: ValueMatcher;
 }
@@ -400,7 +400,7 @@ export interface NodeMatcher {
   /** Specifies match criteria on the node id. */
   nodeId?: StringMatcher;
   /** Specifies match criteria on the node metadata. */
-  nodeMetadatas?: Array<StructMatcher>;
+  nodeMetadatas?: ReadonlyArray<StructMatcher>;
 }
 
 export const NodeMatcher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -429,7 +429,7 @@ export interface DynamicScopedRouteConfigs {
   /** The name assigned to the scoped route configurations. */
   name?: string;
   /** The scoped route configurations. */
-  scopedRouteConfigs?: Array<Record<string, unknown>>;
+  scopedRouteConfigs?: ReadonlyArray<Record<string, unknown>>;
   /** The timestamp when the scoped route config set was last updated. */
   lastUpdated?: string;
   /** This is the per-resource version information. This version is currently taken from the :ref:`version_info ` field at the time that the scoped routes configuration was loaded. */
@@ -472,11 +472,11 @@ export const StaticListener = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClustersConfigDump {
   /** The dynamically loaded active clusters. These are clusters that are available to service data plane traffic. */
-  dynamicActiveClusters?: Array<DynamicCluster>;
+  dynamicActiveClusters?: ReadonlyArray<DynamicCluster>;
   /** The statically loaded cluster configs. */
-  staticClusters?: Array<StaticCluster>;
+  staticClusters?: ReadonlyArray<StaticCluster>;
   /** The dynamically loaded warming clusters. These are clusters that are currently undergoing warming in preparation to service data plane traffic. Note that if attempting to recreate an Envoy configuration from a configuration dump, the warming clusters should generally be discarded. */
-  dynamicWarmingClusters?: Array<DynamicCluster>;
+  dynamicWarmingClusters?: ReadonlyArray<DynamicCluster>;
   /** This is the :ref:`version_info ` in the last processed CDS discovery response. If there are only static bootstrap clusters, this field will be "". */
   versionInfo?: string;
 }
@@ -570,7 +570,7 @@ export interface Extension {
   /** [#not-implemented-hide:] Type descriptor of extension configuration proto. [#comment: */
   typeDescriptor?: string;
   /** Type URLs of extension configuration protos. */
-  typeUrls?: Array<string>;
+  typeUrls?: ReadonlyArray<string>;
   /** Category of the extension. Extension category names use reverse DNS notation. For instance "envoy.filters.listener" for Envoy's built-in listener filters or "com.acme.filters.http" for HTTP filters from acme.com vendor. [#comment: */
   category?: string;
   /** The version is a property of the extension and maintained independently of other extensions and the Envoy API. This field is not set when extension did not provide version information. */
@@ -598,11 +598,11 @@ export const ContextParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Node {
   /** List of extensions and their versions supported by the node. */
-  extensions?: Array<Extension>;
+  extensions?: ReadonlyArray<Extension>;
   /** Free-form string that identifies the version of the entity requesting config. E.g. "1.12.2" or "abcd1234", or "SpecialEnvoyBuild" */
   userAgentVersion?: string;
   /** Known listening ports on the node as a generic hint to the management server for filtering :ref:`listeners ` to be returned. For example, if there is a listener bound to port 80, the list can optionally contain the SocketAddress ``(0.0.0.0,80)``. The field is optional and just a hint. */
-  listeningAddresses?: Array<Address>;
+  listeningAddresses?: ReadonlyArray<Address>;
   /** Locality specifying where the Envoy instance is running. */
   locality?: Locality;
   /** Defines the local service cluster name where Envoy is running. Though optional, it should be set if any of the following features are used: :ref:`statsd `, :ref:`health check cluster verification `, :ref:`runtime override directory `, :ref:`user agent addition `, :ref:`HTTP global rate limiting `, :ref:`CDS `, and :ref:`HTTP tracing `, either in this message or via :option:`--service-cluster`. */
@@ -612,7 +612,7 @@ export interface Node {
   /** Free-form string that identifies the entity requesting config. E.g. "envoy" or "grpc" */
   userAgentName?: string;
   /** Client feature support list. These are well known features described in the Envoy API repository for a given major version of an API. Client features use reverse DNS naming scheme, for example ``com.acme.feature``. See :ref:`the list of features ` that xDS client may support. */
-  clientFeatures?: Array<string>;
+  clientFeatures?: ReadonlyArray<string>;
   /** Structured version of the entity requesting config. */
   userAgentBuildVersion?: BuildVersion;
   /** Map from xDS resource type URL to dynamic context parameters. These may vary at runtime (unlike other fields in this message). For example, the xDS client may have a shard identifier that changes during the lifetime of the xDS client. In Envoy, this would be achieved by updating the dynamic context on the Server::Instance's LocalInfo context provider. The shard ID dynamic parameter then appears in this field during future discovery requests. */
@@ -643,7 +643,7 @@ export interface ClientStatusRequest {
   /** If true, the server will not include the resource contents in the response (i.e., the generic_xds_configs.xds_config field will not be populated). [#not-implemented-hide:] */
   excludeResourceContents?: boolean;
   /** Management server can use these match criteria to identify clients. The match follows OR semantics. */
-  nodeMatchers?: Array<NodeMatcher>;
+  nodeMatchers?: ReadonlyArray<NodeMatcher>;
 }
 
 export const ClientStatusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -654,9 +654,9 @@ export const ClientStatusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListenersConfigDump {
   /** The statically loaded listener configs. */
-  staticListeners?: Array<StaticListener>;
+  staticListeners?: ReadonlyArray<StaticListener>;
   /** State for any warming, active, or draining listeners. */
-  dynamicListeners?: Array<DynamicListener>;
+  dynamicListeners?: ReadonlyArray<DynamicListener>;
   /** This is the :ref:`version_info ` in the last processed LDS discovery response. If there are only static bootstrap listeners, this field will be "". */
   versionInfo?: string;
 }
@@ -698,9 +698,9 @@ export const DynamicEndpointConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EndpointsConfigDump {
   /** The statically loaded endpoint configs. */
-  staticEndpointConfigs?: Array<StaticEndpointConfig>;
+  staticEndpointConfigs?: ReadonlyArray<StaticEndpointConfig>;
   /** The dynamically loaded endpoint configs. */
-  dynamicEndpointConfigs?: Array<DynamicEndpointConfig>;
+  dynamicEndpointConfigs?: ReadonlyArray<DynamicEndpointConfig>;
 }
 
 export const EndpointsConfigDump = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -722,9 +722,9 @@ export const StaticRouteConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RoutesConfigDump {
   /** The statically loaded route configs. */
-  staticRouteConfigs?: Array<StaticRouteConfig>;
+  staticRouteConfigs?: ReadonlyArray<StaticRouteConfig>;
   /** The dynamically loaded route configs. */
-  dynamicRouteConfigs?: Array<DynamicRouteConfig>;
+  dynamicRouteConfigs?: ReadonlyArray<DynamicRouteConfig>;
 }
 
 export const RoutesConfigDump = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -738,7 +738,7 @@ export interface InlineScopedRouteConfigs {
   /** The name assigned to the scoped route configurations. */
   name?: string;
   /** The scoped route configurations. */
-  scopedRouteConfigs?: Array<Record<string, unknown>>;
+  scopedRouteConfigs?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const InlineScopedRouteConfigs =
@@ -752,9 +752,9 @@ export const InlineScopedRouteConfigs =
 
 export interface ScopedRoutesConfigDump {
   /** The statically loaded scoped route configs. */
-  inlineScopedRouteConfigs?: Array<InlineScopedRouteConfigs>;
+  inlineScopedRouteConfigs?: ReadonlyArray<InlineScopedRouteConfigs>;
   /** The dynamically loaded scoped route configs. */
-  dynamicScopedRouteConfigs?: Array<DynamicScopedRouteConfigs>;
+  dynamicScopedRouteConfigs?: ReadonlyArray<DynamicScopedRouteConfigs>;
 }
 
 export const ScopedRoutesConfigDump = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -804,13 +804,13 @@ export const PerXdsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClientConfig {
   /** This field is deprecated in favor of generic_xds_configs which is much simpler and uniform in structure. */
-  xdsConfig?: Array<PerXdsConfig>;
+  xdsConfig?: ReadonlyArray<PerXdsConfig>;
   /** Node for a particular client. */
   node?: Node;
   /** For xDS clients, the scope in which the data is used. For example, gRPC indicates the data plane target or that the data is associated with gRPC server(s). */
   clientScope?: string;
   /** Represents generic xDS config and the exact config structure depends on the type URL (like Cluster if it is CDS) */
-  genericXdsConfigs?: Array<GenericXdsConfig>;
+  genericXdsConfigs?: ReadonlyArray<GenericXdsConfig>;
 }
 
 export const ClientConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -822,7 +822,7 @@ export const ClientConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClientStatusResponse {
   /** Client configs for the clients specified in the ClientStatusRequest. */
-  config?: Array<ClientConfig>;
+  config?: ReadonlyArray<ClientConfig>;
 }
 
 export const ClientStatusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

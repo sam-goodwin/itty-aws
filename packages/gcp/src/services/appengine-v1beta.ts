@@ -41,7 +41,7 @@ export const FirewallRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateIngressRulesResponse {
   /** The full list of ingress FirewallRules for this application. */
-  ingressRules?: Array<FirewallRule>;
+  ingressRules?: ReadonlyArray<FirewallRule>;
 }
 
 export const BatchUpdateIngressRulesResponse =
@@ -115,7 +115,7 @@ export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInstancesResponse {
   /** The instances belonging to the requested version. */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -129,7 +129,7 @@ export interface GceTag {
   /** The administrative_tag name. */
   tag?: string;
   /** The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains only one parent. But, in some corner cases, it can contain multiple parents. Currently, organizations are not supported. */
-  parent?: Array<string>;
+  parent?: ReadonlyArray<string>;
 }
 
 export const GceTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -215,7 +215,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -251,9 +251,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -316,7 +316,7 @@ export interface Network {
     | "INTERNAL"
     | (string & {});
   /** List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment. */
-  forwardedPorts?: Array<string>;
+  forwardedPorts?: ReadonlyArray<string>;
 }
 
 export const Network = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -472,7 +472,7 @@ export interface AutomaticScaling {
   /** Scheduler settings for standard environment. */
   standardSchedulerSettings?: StandardSchedulerSettings;
   /** Target scaling by user-provided metrics. Only applicable in the App Engine flexible environment. */
-  customMetrics?: Array<CustomMetric>;
+  customMetrics?: ReadonlyArray<CustomMetric>;
   /** Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service. */
   minIdleInstances?: number;
   /** Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value. */
@@ -667,7 +667,7 @@ export const FlexibleRuntimeSettings =
 
 export interface VpcNetworkInterface {
   /** Optional. The network tags that will be applied to this App Engine resource. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Optional. The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path. e.g. {VPC_NETWORK} or projects/{HOST_PROJECT_ID}/global/networks/{VPC_NETWORK} */
   network?: string;
   /** Optional. The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path. e.g. {SUBNET_NAME} or projects/{HOST_PROJECT_ID}/regions/{REGION}/subnetworks/{SUBNET_NAME} */
@@ -682,7 +682,7 @@ export const VpcNetworkInterface = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VpcAccess {
   /** The Direct VPC configuration. Currently only single network interface is supported. */
-  networkInterfaces?: Array<VpcNetworkInterface>;
+  networkInterfaces?: ReadonlyArray<VpcNetworkInterface>;
   /** The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it. */
   vpcEgress?:
     | "VPC_EGRESS_UNSPECIFIED"
@@ -700,7 +700,7 @@ export interface Resources {
   /** Memory (GB) needed. */
   memoryGb?: number;
   /** User specified volumes. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Disk size (GB) needed. */
   diskGb?: number;
   /** The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk */
@@ -878,7 +878,7 @@ export interface Version {
   /** The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag. */
   serviceAccount?: string;
   /** The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** App Engine execution environment for this version.Defaults to standard. */
   env?: string;
   /** Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic. */
@@ -890,7 +890,7 @@ export interface Version {
   /** Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set. */
   apiConfig?: ApiConfigHandler;
   /** Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set. */
-  libraries?: Array<Library>;
+  libraries?: ReadonlyArray<Library>;
   /** The entrypoint for the application. */
   entrypoint?: Entrypoint;
   /** A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity. */
@@ -898,13 +898,13 @@ export interface Version {
   /** A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends". */
   manualScaling?: ManualScaling;
   /** An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set. */
-  handlers?: Array<UrlMap>;
+  handlers?: ReadonlyArray<UrlMap>;
   /** Output only. Email address of the user who created this version.@OutputOnly */
   createdBy?: string;
   /** Enables VPC connectivity for standard apps. */
   vpcAccessConnector?: VpcAccessConnector;
   /** Before an application can receive email or XMPP messages, the application must be configured to enable the service. */
-  inboundServices?: Array<
+  inboundServices?: ReadonlyArray<
     | "INBOUND_SERVICE_UNSPECIFIED"
     | "INBOUND_SERVICE_MAIL"
     | "INBOUND_SERVICE_MAIL_BOUNCE"
@@ -955,7 +955,7 @@ export interface Version {
   /** Whether to deploy this version in a container on a virtual machine. */
   vm?: boolean;
   /** List of specific App Engine Bundled Services that are enabled for this Version. */
-  appEngineBundledServices?: Array<
+  appEngineBundledServices?: ReadonlyArray<
     | "BUNDLED_SERVICE_TYPE_UNSPECIFIED"
     | "BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE"
     | "BUNDLED_SERVICE_TYPE_BLOBSTORE"
@@ -983,7 +983,7 @@ export interface Version {
   /** Output only. Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly */
   name?: string;
   /** Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set. */
-  errorHandlers?: Array<ErrorHandler>;
+  errorHandlers?: ReadonlyArray<ErrorHandler>;
   /** Environment variables available to the application.Only returned in GET requests if view=FULL is set. */
   envVariables?: Record<string, string>;
   /** Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment. */
@@ -1079,7 +1079,7 @@ export interface DomainMapping {
   /** SSL configuration for this domain. If unconfigured, this domain will not serve with SSL. */
   sslSettings?: SslSettings;
   /** Output only. The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly */
-  resourceRecords?: Array<ResourceRecord>;
+  resourceRecords?: ReadonlyArray<ResourceRecord>;
   /** Output only. Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly */
   name?: string;
   /** Relative name of the domain serving the application. Example: example.com. */
@@ -1129,7 +1129,7 @@ export interface AuthorizedCertificate {
   /** The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority. */
   certificateRawData?: CertificateRawData;
   /** Output only. Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly */
-  domainNames?: Array<string>;
+  domainNames?: ReadonlyArray<string>;
   /** Output only. Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly */
   name?: string;
   /** The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly */
@@ -1143,7 +1143,7 @@ export interface AuthorizedCertificate {
   /** The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate. */
   displayName?: string;
   /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
-  visibleDomainMappings?: Array<string>;
+  visibleDomainMappings?: ReadonlyArray<string>;
 }
 
 export const AuthorizedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1160,7 +1160,7 @@ export const AuthorizedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuthorizedCertificatesResponse {
   /** The SSL certificates the user is authorized to administer. */
-  certificates?: Array<AuthorizedCertificate>;
+  certificates?: ReadonlyArray<AuthorizedCertificate>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1291,7 +1291,7 @@ export interface Application {
   /** Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations). */
   locationId?: string;
   /** HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported. */
-  dispatchRules?: Array<UrlDispatchRule>;
+  dispatchRules?: ReadonlyArray<UrlDispatchRule>;
   /** Cookie expiration policy for this application. */
   defaultCookieExpiration?: string;
   iap?: IdentityAwareProxy;
@@ -1392,7 +1392,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1402,7 +1402,7 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServicesResponse {
   /** The services belonging to the requested application. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1421,7 +1421,7 @@ export const RepairApplicationRequest =
 
 export interface ListVersionsResponse {
   /** The versions belonging to the requested service. */
-  versions?: Array<Version>;
+  versions?: ReadonlyArray<Version>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1462,7 +1462,7 @@ export interface OperationMetadataV1 {
   /** API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly */
   method?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
   /** Time that this operation completed.@OutputOnly */
   endTime?: string;
   /** User who requested this operation.@OutputOnly */
@@ -1495,7 +1495,7 @@ export interface OperationMetadataV1Beta {
   /** API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly */
   method?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
 }
 
 export const OperationMetadataV1Beta =
@@ -1527,7 +1527,7 @@ export interface ProjectsMetadata {
     | "DELETED"
     | (string & {});
   /** The GCE tags associated with the consumer project and those inherited due to their ancestry, if any. Not supported by CCFE. */
-  gceTag?: Array<GceTag>;
+  gceTag?: ReadonlyArray<GceTag>;
   /** The consumer project number. */
   consumerProjectNumber?: string;
   /** The producer project id. */
@@ -1629,7 +1629,7 @@ export const Appengine_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListIngressRulesResponse {
   /** The ingress FirewallRules for this application. */
-  ingressRules?: Array<FirewallRule>;
+  ingressRules?: ReadonlyArray<FirewallRule>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1655,13 +1655,13 @@ export interface Runtime {
     | "END_OF_SUPPORT"
     | (string & {});
   /** Supported operating systems for the runtime, e.g., 'ubuntu22', etc. */
-  supportedOperatingSystems?: Array<string>;
+  supportedOperatingSystems?: ReadonlyArray<string>;
   /** User-friendly display name, e.g. 'Node.js 12', etc. */
   displayName?: string;
   /** Date when Runtime is decommissioned. */
   decommissionedDate?: Appengine_Date;
   /** Warning messages, e.g., a deprecation warning. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
   /** The environment of the runtime. */
   environment?:
     | "ENVIRONMENT_UNSPECIFIED"
@@ -1690,7 +1690,7 @@ export interface ListRuntimesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The runtimes available to the requested application. */
-  runtimes?: Array<Runtime>;
+  runtimes?: ReadonlyArray<Runtime>;
 }
 
 export const ListRuntimesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1700,7 +1700,7 @@ export const ListRuntimesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateIngressRulesRequest {
   /** A list of FirewallRules to replace the existing set. */
-  ingressRules?: Array<FirewallRule>;
+  ingressRules?: ReadonlyArray<FirewallRule>;
 }
 
 export const BatchUpdateIngressRulesRequest =
@@ -1736,7 +1736,7 @@ export interface OperationMetadataV1Alpha {
   /** API method that initiated this operation. Example: google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly */
   method?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
   /** User who requested this operation.@OutputOnly */
   user?: string;
   /** Time that this operation was created.@OutputOnly */
@@ -1794,7 +1794,7 @@ export interface ListAuthorizedDomainsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The authorized domains belonging to the user. */
-  domains?: Array<AuthorizedDomain>;
+  domains?: ReadonlyArray<AuthorizedDomain>;
 }
 
 export const ListAuthorizedDomainsResponse =
@@ -1805,7 +1805,7 @@ export const ListAuthorizedDomainsResponse =
 
 export interface ListDomainMappingsResponse {
   /** The domain mappings for the application. */
-  domainMappings?: Array<DomainMapping>;
+  domainMappings?: ReadonlyArray<DomainMapping>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }

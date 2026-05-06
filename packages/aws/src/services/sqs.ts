@@ -1081,7 +1081,7 @@ export class OverLimit extends S.TaggedErrorClass<OverLimit>()(
   "OverLimit",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "OverLimit", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
+).pipe(C.withAuthError, C.withQuotaError) {}
 export class QueueDoesNotExist extends S.TaggedErrorClass<QueueDoesNotExist>()(
   "QueueDoesNotExist",
   { message: S.optional(S.String) },
@@ -1094,7 +1094,7 @@ export class RequestThrottled extends S.TaggedErrorClass<RequestThrottled>()(
   "RequestThrottled",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "RequestThrottled", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
+).pipe(C.withAuthError, C.withThrottlingError, C.withRetryableError) {}
 export class UnsupportedOperation extends S.TaggedErrorClass<UnsupportedOperation>()(
   "UnsupportedOperation",
   { message: S.optional(S.String) },
@@ -1115,7 +1115,7 @@ export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceede
 export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
   "InvalidParameterValueException",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class MessageNotInflight extends S.TaggedErrorClass<MessageNotInflight>()(
   "MessageNotInflight",
   {},
@@ -1164,11 +1164,11 @@ export class TooManyEntriesInBatchRequest extends S.TaggedErrorClass<TooManyEntr
 export class InvalidAttributeName extends S.TaggedErrorClass<InvalidAttributeName>()(
   "InvalidAttributeName",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class InvalidAttributeValue extends S.TaggedErrorClass<InvalidAttributeValue>()(
   "InvalidAttributeValue",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class QueueDeletedRecently extends S.TaggedErrorClass<QueueDeletedRecently>()(
   "QueueDeletedRecently",
   { message: S.optional(S.String) },
@@ -1185,7 +1185,7 @@ export class QueueNameExists extends S.TaggedErrorClass<QueueNameExists>()(
 export class InvalidIdFormat extends S.TaggedErrorClass<InvalidIdFormat>()(
   "InvalidIdFormat",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class PurgeQueueInProgress extends S.TaggedErrorClass<PurgeQueueInProgress>()(
   "PurgeQueueInProgress",
   { message: S.optional(S.String) },
@@ -1193,7 +1193,7 @@ export class PurgeQueueInProgress extends S.TaggedErrorClass<PurgeQueueInProgres
     code: "AWS.SimpleQueueService.PurgeQueueInProgress",
     httpResponseCode: 403,
   }),
-).pipe(C.withAuthError) {}
+).pipe(C.withAuthError, C.withConflictError, C.withRetryableError) {}
 export class KmsAccessDenied extends S.TaggedErrorClass<KmsAccessDenied>()(
   "KmsAccessDenied",
   { message: S.optional(S.String) },
@@ -1231,15 +1231,15 @@ export class KmsThrottled extends S.TaggedErrorClass<KmsThrottled>()(
   "KmsThrottled",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "KMS.ThrottlingException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class InvalidMessageContents extends S.TaggedErrorClass<InvalidMessageContents>()(
   "InvalidMessageContents",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class MissingRequiredParameterException extends S.TaggedErrorClass<MissingRequiredParameterException>()(
   "MissingRequiredParameterException",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class BatchRequestTooLong extends S.TaggedErrorClass<BatchRequestTooLong>()(
   "BatchRequestTooLong",
   { message: S.optional(S.String) },
@@ -1255,7 +1255,7 @@ export class ParseError extends S.TaggedErrorClass<ParseError>()(
 export class CommonServiceException extends S.TaggedErrorClass<CommonServiceException>()(
   "CommonServiceException",
   {},
-) {}
+).pipe(C.withServerError) {}
 
 //# Operations
 export type AddPermissionError =

@@ -71,7 +71,7 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   /** Pod replica count. */
   replicaCount?: string;
   /** Pod tolerations of node taints. */
-  podTolerations?: Array<PolicyControllerToleration>;
+  podTolerations?: ReadonlyArray<PolicyControllerToleration>;
   /** Pod anti-affinity enablement. Deprecated: use `pod_affinity` instead. */
   podAntiAffinity?: boolean;
   /** Pod affinity configuration. */
@@ -97,7 +97,7 @@ export const PolicyControllerPolicyControllerDeploymentConfig =
 
 export interface PolicyControllerMonitoringConfig {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
-  backends?: Array<
+  backends?: ReadonlyArray<
     | "MONITORING_BACKEND_UNSPECIFIED"
     | "PROMETHEUS"
     | "CLOUD_MONITORING"
@@ -112,7 +112,7 @@ export const PolicyControllerMonitoringConfig =
 
 export interface PolicyControllerBundleInstallSpec {
   /** The set of namespaces to be exempted from the bundle. */
-  exemptedNamespaces?: Array<string>;
+  exemptedNamespaces?: ReadonlyArray<string>;
 }
 
 export const PolicyControllerBundleInstallSpec =
@@ -151,7 +151,7 @@ export const PolicyControllerPolicyContentSpec =
 
 export interface PolicyControllerHubConfig {
   /** The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster. */
-  exemptableNamespaces?: Array<string>;
+  exemptableNamespaces?: ReadonlyArray<string>;
   /** Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated. */
   referentialRulesEnabled?: boolean;
   /** Map of deployment configs to deployments ("admission", "audit", "mutation'). */
@@ -287,7 +287,7 @@ export const PolicyBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BinaryAuthorizationConfig {
   /** Optional. Binauthz policies that apply to this cluster. */
-  policyBindings?: Array<PolicyBinding>;
+  policyBindings?: ReadonlyArray<PolicyBinding>;
   /** Optional. Mode of operation for binauthz policy evaluation. */
   evaluationMode?:
     | "EVALUATION_MODE_UNSPECIFIED"
@@ -326,7 +326,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -385,7 +385,7 @@ export interface IdentityServiceSamlConfig {
   /** Required. The entity ID of the SAML IdP. */
   identityProviderId?: string;
   /** Required. The list of IdP certificates to validate the SAML response against. */
-  identityProviderCertificates?: Array<string>;
+  identityProviderCertificates?: ReadonlyArray<string>;
   /** Required. The URI where the SAML IdP exposes the SSO service. */
   identityProviderSsoUri?: string;
   /** Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname". */
@@ -609,7 +609,7 @@ export const IdentityServiceIdentityServiceOptions =
 
 export interface IdentityServiceMembershipSpec {
   /** A member may support multiple auth methods. */
-  authMethods?: Array<IdentityServiceAuthMethod>;
+  authMethods?: ReadonlyArray<IdentityServiceAuthMethod>;
   /** Optional. non-protocol-related configuration options. */
   identityServiceOptions?: IdentityServiceIdentityServiceOptions;
 }
@@ -634,7 +634,7 @@ export const ConfigManagementBinauthzConfig =
 
 export interface ConfigManagementPolicyControllerMonitoring {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
-  backends?: Array<
+  backends?: ReadonlyArray<
     | "MONITORING_BACKEND_UNSPECIFIED"
     | "PROMETHEUS"
     | "CLOUD_MONITORING"
@@ -655,7 +655,7 @@ export interface ConfigManagementPolicyController {
   /** Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster. */
   mutationEnabled?: boolean;
   /** The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster. */
-  exemptableNamespaces?: Array<string>;
+  exemptableNamespaces?: ReadonlyArray<string>;
   /** Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated. */
   referentialRulesEnabled?: boolean;
   /** Installs the default template library along with Policy Controller. */
@@ -727,7 +727,7 @@ export const ConfigManagementContainerOverride =
 
 export interface ConfigManagementDeploymentOverride {
   /** Optional. The containers of the deployment resource to be overridden. */
-  containers?: Array<ConfigManagementContainerOverride>;
+  containers?: ReadonlyArray<ConfigManagementContainerOverride>;
   /** Required. The namespace of the deployment resource to be overridden. */
   deploymentNamespace?: string;
   /** Required. The name of the deployment resource to be overridden. */
@@ -778,7 +778,7 @@ export interface ConfigManagementConfigSync {
   /** Optional. OCI repo configuration for the cluster */
   oci?: ConfigManagementOciConfig;
   /** Optional. Configuration for deployment overrides. Applies only to Config Sync deployments with containers that are not a root or namespace reconciler: `reconciler-manager`, `otel-collector`, `resource-group-controller-manager`, `admission-webhook`. To override a root or namespace reconciler, use the rootsync or reposync fields at https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/reference/rootsync-reposync-fields#override-resources instead. */
-  deploymentOverrides?: Array<ConfigManagementDeploymentOverride>;
+  deploymentOverrides?: ReadonlyArray<ConfigManagementDeploymentOverride>;
   /** Optional. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to false, disables the Config Sync admission webhook and does not prevent drifts. Defaults to false. See https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/how-to/prevent-config-drift for details. */
   preventDrift?: boolean;
   /** Optional. The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring. */
@@ -914,9 +914,9 @@ export const ClusterUpgradeGKEUpgradeOverride =
 
 export interface ClusterUpgradeScopeSpec {
   /** This scope consumes upgrades that have COMPLETE status code in the upstream scopes. See UpgradeStatus.Code for code definitions. The scope name should be in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream scope. */
-  upstreamScopes?: Array<string>;
+  upstreamScopes?: ReadonlyArray<string>;
   /** Allow users to override some properties of each GKE upgrade. */
-  gkeUpgradeOverrides?: Array<ClusterUpgradeGKEUpgradeOverride>;
+  gkeUpgradeOverrides?: ReadonlyArray<ClusterUpgradeGKEUpgradeOverride>;
   /** Required. Post conditions to evaluate to mark an upgrade COMPLETE. Required. */
   postConditions?: ClusterUpgradePostConditions;
 }
@@ -1013,9 +1013,9 @@ export const ClusterUpgradeGKEUpgradeFeatureCondition =
 
 export interface ClusterUpgradeGKEUpgradeFeatureState {
   /** Upgrade state. It will eventually replace `state`. */
-  upgradeState?: Array<ClusterUpgradeGKEUpgradeState>;
+  upgradeState?: ReadonlyArray<ClusterUpgradeGKEUpgradeState>;
   /** Current conditions of the feature. */
-  conditions?: Array<ClusterUpgradeGKEUpgradeFeatureCondition>;
+  conditions?: ReadonlyArray<ClusterUpgradeGKEUpgradeFeatureCondition>;
 }
 
 export const ClusterUpgradeGKEUpgradeFeatureState =
@@ -1032,7 +1032,7 @@ export interface ClusterUpgradeFleetState {
   /** Feature state for GKE clusters. */
   gkeState?: ClusterUpgradeGKEUpgradeFeatureState;
   /** This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project number or id. */
-  downstreamFleets?: Array<string>;
+  downstreamFleets?: ReadonlyArray<string>;
 }
 
 export const ClusterUpgradeFleetState =
@@ -1144,7 +1144,7 @@ export interface FleetObservabilityFleetObservabilityBaseFeatureState {
   /** The high-level, machine-readable status of this Feature. */
   code?: "CODE_UNSPECIFIED" | "OK" | "ERROR" | (string & {});
   /** Errors after reconciling the monitoring and logging feature if the code is not OK. */
-  errors?: Array<FleetObservabilityFeatureError>;
+  errors?: ReadonlyArray<FleetObservabilityFeatureError>;
 }
 
 export const FleetObservabilityFleetObservabilityBaseFeatureState =
@@ -1283,7 +1283,7 @@ export interface ServiceMeshAnalysisMessage {
   /** Details common to all types of Istio and ServiceMesh analysis messages. */
   messageBase?: ServiceMeshAnalysisMessageBase;
   /** A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster */
-  resourcePaths?: Array<string>;
+  resourcePaths?: ReadonlyArray<string>;
 }
 
 export const ServiceMeshAnalysisMessage =
@@ -1375,9 +1375,9 @@ export const ServiceMeshFeatureCondition =
 
 export interface ServiceMeshFeatureState {
   /** Output only. Results of running Service Mesh analyzers. */
-  analysisMessages?: Array<ServiceMeshAnalysisMessage>;
+  analysisMessages?: ReadonlyArray<ServiceMeshAnalysisMessage>;
   /** Output only. List of conditions reported for this feature. */
-  conditions?: Array<ServiceMeshFeatureCondition>;
+  conditions?: ReadonlyArray<ServiceMeshFeatureCondition>;
 }
 
 export const ServiceMeshFeatureState =
@@ -1424,7 +1424,7 @@ export interface ClusterUpgradeScopeState {
   /** Feature state for GKE clusters. */
   gkeState?: ClusterUpgradeGKEUpgradeFeatureState;
   /** This scopes whose upstream_scopes contain the current scope. The scope name should be in the form: `projects/{p}/locations/gloobal/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. */
-  downstreamScopes?: Array<string>;
+  downstreamScopes?: ReadonlyArray<string>;
 }
 
 export const ClusterUpgradeScopeState =
@@ -1521,9 +1521,9 @@ export const WorkloadIdentityFeatureSpec =
 
 export interface ClusterUpgradeFleetSpec {
   /** This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet. */
-  upstreamFleets?: Array<string>;
+  upstreamFleets?: ReadonlyArray<string>;
   /** Allow users to override some properties of each GKE upgrade. */
-  gkeUpgradeOverrides?: Array<ClusterUpgradeGKEUpgradeOverride>;
+  gkeUpgradeOverrides?: ReadonlyArray<ClusterUpgradeGKEUpgradeOverride>;
   /** Required. Post conditions to evaluate to mark an upgrade COMPLETE. Required. */
   postConditions?: ClusterUpgradePostConditions;
   /** Output only. The effective upgrade engine for the fleet. */
@@ -1546,7 +1546,7 @@ export const ClusterUpgradeFleetSpec =
 
 export interface RBACRoleBindingActuationFeatureSpec {
   /** The list of allowed custom roles (ClusterRoles). If a ClusterRole is not part of this list, it cannot be used in a Scope RBACRoleBinding. If a ClusterRole in this list is in use, it cannot be removed from the list. */
-  allowedCustomRoles?: Array<string>;
+  allowedCustomRoles?: ReadonlyArray<string>;
 }
 
 export const RBACRoleBindingActuationFeatureSpec =
@@ -1594,7 +1594,7 @@ export const AppDevExperienceFeatureSpec =
 
 export interface CloudAuditLoggingFeatureSpec {
   /** Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.) */
-  allowlistedServiceAccounts?: Array<string>;
+  allowlistedServiceAccounts?: ReadonlyArray<string>;
 }
 
 export const CloudAuditLoggingFeatureSpec =
@@ -1754,7 +1754,7 @@ export interface ServiceMeshControlPlaneManagement {
     | "UPDATING"
     | (string & {});
   /** Explanation of state. */
-  details?: Array<ServiceMeshStatusDetails>;
+  details?: ReadonlyArray<ServiceMeshStatusDetails>;
   /** LifecycleState of control plane management. */
   state?:
     | "LIFECYCLE_STATE_UNSPECIFIED"
@@ -1868,7 +1868,7 @@ export interface ServiceMeshDataPlaneManagement {
     | "DEPROVISIONING"
     | (string & {});
   /** Explanation of the status. */
-  details?: Array<ServiceMeshStatusDetails>;
+  details?: ReadonlyArray<ServiceMeshStatusDetails>;
 }
 
 export const ServiceMeshDataPlaneManagement =
@@ -1881,13 +1881,13 @@ export interface ServiceMeshMembershipState {
   /** Output only. Status of control plane management */
   controlPlaneManagement?: ServiceMeshControlPlaneManagement;
   /** Output only. List of conditions reported for this membership. */
-  conditions?: Array<ServiceMeshCondition>;
+  conditions?: ReadonlyArray<ServiceMeshCondition>;
   /** The API version (i.e. Istio CRD version) for configuring service mesh in this cluster. This version is influenced by the `default_channel` field. */
   configApiVersion?: string;
   /** Output only. Status of data plane management. */
   dataPlaneManagement?: ServiceMeshDataPlaneManagement;
   /** Output only. Results of running Service Mesh analyzers. */
-  analysisMessages?: Array<ServiceMeshAnalysisMessage>;
+  analysisMessages?: ReadonlyArray<ServiceMeshAnalysisMessage>;
 }
 
 export const ServiceMeshMembershipState =
@@ -2037,7 +2037,7 @@ export interface ConfigManagementSyncError {
   /** A description of the error */
   errorMessage?: string;
   /** A list of config(s) associated with the error, if any */
-  errorResources?: Array<ConfigManagementErrorResource>;
+  errorResources?: ReadonlyArray<ConfigManagementErrorResource>;
 }
 
 export const ConfigManagementSyncError =
@@ -2053,7 +2053,7 @@ export interface ConfigManagementSyncState {
   /** Timestamp type of when ACM last successfully synced the repo */
   lastSyncTime?: string;
   /** A list of errors resulting from problematic configs. This list will be truncated after 100 errors, although it is unlikely for that many errors to simultaneously exist. */
-  errors?: Array<ConfigManagementSyncError>;
+  errors?: ReadonlyArray<ConfigManagementSyncError>;
   /** Token indicating the state of the importer. */
   importToken?: string;
   /** Deprecated: use last_sync_time instead. Timestamp of when ACM last successfully synced the repo The time format is specified in https://golang.org/pkg/time/#Time.String */
@@ -2259,7 +2259,7 @@ export interface ConfigManagementConfigSyncState {
   /** Output only. Information about the deployment of ConfigSync, including the version of the various Pods deployed */
   deploymentState?: ConfigManagementConfigSyncDeploymentState;
   /** Output only. Errors pertaining to the installation of Config Sync. */
-  errors?: Array<ConfigManagementConfigSyncError>;
+  errors?: ReadonlyArray<ConfigManagementConfigSyncError>;
 }
 
 export const ConfigManagementConfigSyncState =
@@ -2327,7 +2327,7 @@ export const ConfigManagementInstallError =
 
 export interface ConfigManagementOperatorState {
   /** Install errors. */
-  errors?: Array<ConfigManagementInstallError>;
+  errors?: ReadonlyArray<ConfigManagementInstallError>;
   /** The semenatic version number of the operator */
   version?: string;
   /** The state of the Operator's deployment */
@@ -2543,9 +2543,9 @@ export interface ClusterUpgradeMembershipState {
   /** Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. */
   ignored?: ClusterUpgradeIgnoredMembership;
   /** Fully qualified scope names that this clusters is bound to which also have rollout sequencing enabled. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Actual upgrade state against desired. */
-  upgrades?: Array<ClusterUpgradeMembershipGKEUpgradeState>;
+  upgrades?: ReadonlyArray<ClusterUpgradeMembershipGKEUpgradeState>;
 }
 
 export const ClusterUpgradeMembershipState =
@@ -2638,7 +2638,7 @@ export interface Feature {
   /** Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number. */
   membershipStates?: Record<string, MembershipFeatureState>;
   /** Output only. List of locations that could not be reached while fetching this feature. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Labels for this Feature. */
   labels?: Record<string, string>;
   /** Output only. State of the Feature resource itself. */
@@ -2668,7 +2668,7 @@ export const Feature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFeaturesResponse {
   /** The list of matching Features */
-  resources?: Array<Feature>;
+  resources?: ReadonlyArray<Feature>;
   /** A token to request the next page of resources from the `ListFeatures` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
@@ -2712,7 +2712,7 @@ export interface RolloutMembershipState {
   /** Output only. The stage assignment of this cluster in this rollout. */
   stageAssignment?: number;
   /** Output only. The targets of the rollout - clusters or node pools that are being upgraded. All targets belongs to the same cluster, identified by the membership name (key of membership_states map). */
-  targets?: Array<RolloutTarget>;
+  targets?: ReadonlyArray<RolloutTarget>;
   /** Optional. Output only. The time this status and any related Rollout-specific details for the membership were updated. */
   lastUpdateTime?: string;
 }
@@ -2789,7 +2789,7 @@ export interface Rollout {
   /** Optional. Human readable display name of the Rollout. */
   displayName?: string;
   /** Output only. The stages of the Rollout. */
-  stages?: Array<RolloutStage>;
+  stages?: ReadonlyArray<RolloutStage>;
   /** Output only. The timestamp at the Rollout was deleted. */
   deleteTime?: string;
   /** Optional. Immutable. The full, unique resource name of the rollout sequence that initiatied this Rollout. In the format of `projects/{project}/locations/global/rolloutSequences/{rollout_sequence}`. */
@@ -2839,7 +2839,7 @@ export const Rollout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRolloutsResponse {
   /** The rollouts from the specified parent resource. */
-  rollouts?: Array<Rollout>;
+  rollouts?: ReadonlyArray<Rollout>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2851,7 +2851,7 @@ export const ListRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -2990,9 +2990,9 @@ export interface KubernetesResource {
   /** Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership. */
   membershipCrManifest?: string;
   /** Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask. */
-  membershipResources?: Array<ResourceManifest>;
+  membershipResources?: ReadonlyArray<ResourceManifest>;
   /** Output only. The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask. */
-  connectResources?: Array<ResourceManifest>;
+  connectResources?: ReadonlyArray<ResourceManifest>;
   /** Optional. Options for Kubernetes resource generation. */
   resourceOptions?: ResourceOptions;
 }
@@ -3161,9 +3161,9 @@ export const ValidateCreateMembershipRequest =
 
 export interface ListAdminClusterMembershipsResponse {
   /** List of locations that could not be reached while fetching this list. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of matching Memberships of admin clusters. */
-  adminClusterMemberships?: Array<Membership>;
+  adminClusterMemberships?: ReadonlyArray<Membership>;
   /** A token to request the next page of resources from the `ListAdminClusterMemberships` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
@@ -3225,7 +3225,7 @@ export interface CompliancePostureConfig {
   /** Defines the enablement mode for Compliance Posture. */
   mode?: "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | (string & {});
   /** List of enabled compliance standards. */
-  complianceStandards?: Array<ComplianceStandard>;
+  complianceStandards?: ReadonlyArray<ComplianceStandard>;
 }
 
 export const CompliancePostureConfig =
@@ -3284,7 +3284,7 @@ export const Fleet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFleetsResponse {
   /** The list of matching fleets. */
-  fleets?: Array<Fleet>;
+  fleets?: ReadonlyArray<Fleet>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. The token is only valid for 1h. */
   nextPageToken?: string;
 }
@@ -3305,7 +3305,7 @@ export interface RolloutSequenceState {
     | "LIFECYCLE_STATE_ERROR"
     | (string & {});
   /** Output only. StateReason represents the reason for the Rollout Sequence state. */
-  stateReasons?: Array<
+  stateReasons?: ReadonlyArray<
     | "STATE_REASON_UNSPECIFIED"
     | "FLEET_FEATURE_DELETED_ERROR"
     | "FLEET_DELETED_ERROR"
@@ -3369,7 +3369,7 @@ export const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListScopesResponse {
   /** The list of Scopes */
-  scopes?: Array<Scope>;
+  scopes?: ReadonlyArray<Scope>;
   /** A token to request the next page of resources from the `ListScopes` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
@@ -3393,7 +3393,7 @@ export const TypeMeta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -3420,9 +3420,9 @@ export const ValidateExclusivityResponse =
 
 export interface ListBoundMembershipsResponse {
   /** The list of Memberships bound to the given Scope. */
-  memberships?: Array<Membership>;
+  memberships?: ReadonlyArray<Membership>;
   /** List of locations that could not be reached while fetching this list. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token to request the next page of resources from the `ListBoundMemberships` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
@@ -3487,7 +3487,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -3605,7 +3605,7 @@ export const RBACRoleBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListScopeRBACRoleBindingsResponse {
   /** The list of Scope RBACRoleBindings. */
-  rbacrolebindings?: Array<RBACRoleBinding>;
+  rbacrolebindings?: ReadonlyArray<RBACRoleBinding>;
   /** A token to request the next page of resources from the `ListScopeRBACRoleBindings` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
@@ -3641,7 +3641,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3653,7 +3653,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3711,9 +3711,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -3757,11 +3757,11 @@ export const ConnectAgentResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMembershipBindingsResponse {
   /** The list of membership_bindings */
-  membershipBindings?: Array<MembershipBinding>;
+  membershipBindings?: ReadonlyArray<MembershipBinding>;
   /** A token to request the next page of resources from the `ListMembershipBindings` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
   /** List of locations that could not be reached while fetching this list. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListMembershipBindingsResponse =
@@ -3773,11 +3773,11 @@ export const ListMembershipBindingsResponse =
 
 export interface ListMembershipRBACRoleBindingsResponse {
   /** The list of Membership RBACRoleBindings. */
-  rbacrolebindings?: Array<RBACRoleBinding>;
+  rbacrolebindings?: ReadonlyArray<RBACRoleBinding>;
   /** A token to request the next page of resources from the `ListMembershipRBACRoleBindings` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
   /** List of locations that could not be reached while fetching this list. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListMembershipRBACRoleBindingsResponse =
@@ -3789,7 +3789,7 @@ export const ListMembershipRBACRoleBindingsResponse =
 
 export interface GenerateConnectManifestResponse {
   /** The ordered list of Kubernetes resources that need to be applied to the cluster for GKE Connect agent installation/upgrade. */
-  manifest?: Array<ConnectAgentResource>;
+  manifest?: ReadonlyArray<ConnectAgentResource>;
 }
 
 export const GenerateConnectManifestResponse =
@@ -3853,7 +3853,7 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ValidateCreateMembershipResponse {
   /** Wraps all the validator results. */
-  validationResults?: Array<ValidationResult>;
+  validationResults?: ReadonlyArray<ValidationResult>;
 }
 
 export const ValidateCreateMembershipResponse =
@@ -3863,7 +3863,7 @@ export const ValidateCreateMembershipResponse =
 
 export interface ListPermittedScopesResponse {
   /** The list of permitted Scopes */
-  scopes?: Array<Scope>;
+  scopes?: ReadonlyArray<Scope>;
   /** A token to request the next page of resources from the `ListPermittedScopes` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
@@ -3876,7 +3876,7 @@ export const ListPermittedScopesResponse =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -3890,7 +3890,7 @@ export interface Stage {
   /** Optional. Soak time after upgrading all the clusters in the stage. */
   soakDuration?: string;
   /** Required. List of Fleet projects to select the clusters from. Expected format: projects/{project} */
-  fleetProjects?: Array<string>;
+  fleetProjects?: ReadonlyArray<string>;
 }
 
 export const Stage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3919,7 +3919,7 @@ export interface RolloutSequence {
   /** Identifier. Name of the rollout sequence in the format of: projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME} */
   name?: string;
   /** Required. Ordered list of stages that constitutes this Rollout. */
-  stages?: Array<Stage>;
+  stages?: ReadonlyArray<Stage>;
   /** Output only. Google-generated UUID for this resource. This is unique across all Rollout Sequence resources. If a Rollout Sequence resource is deleted and another resource with the same name is created, it gets a different uid. */
   uid?: string;
 }
@@ -3940,7 +3940,7 @@ export const RolloutSequence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRolloutSequencesResponse {
   /** The rollout sequences from the specified parent resource. */
-  rolloutSequences?: Array<RolloutSequence>;
+  rolloutSequences?: ReadonlyArray<RolloutSequence>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3968,7 +3968,7 @@ export interface ListScopeNamespacesResponse {
   /** A token to request the next page of resources from the `ListNamespaces` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
   /** The list of fleet namespaces */
-  scopeNamespaces?: Array<Namespace>;
+  scopeNamespaces?: ReadonlyArray<Namespace>;
 }
 
 export const ListScopeNamespacesResponse =
@@ -3979,11 +3979,11 @@ export const ListScopeNamespacesResponse =
 
 export interface ListMembershipsResponse {
   /** The list of matching Memberships. */
-  resources?: Array<Membership>;
+  resources?: ReadonlyArray<Membership>;
   /** A token to request the next page of resources from the `ListMemberships` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
   /** List of locations that could not be reached while fetching this list. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListMembershipsResponse =
@@ -4003,9 +4003,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -4029,10 +4029,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -4077,7 +4074,7 @@ export const ListProjectsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -4129,10 +4126,7 @@ export const ListProjectsLocationsFeaturesRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/features" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeaturesRequest>;
 
@@ -4172,10 +4166,7 @@ export const GetProjectsLocationsFeaturesRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeaturesRequest>;
 
@@ -4217,7 +4208,7 @@ export const CreateProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features",
+      path: "v1alpha/{parent}/features",
       hasBody: true,
     }),
     svc,
@@ -4255,7 +4246,7 @@ export const SetIamPolicyProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}:setIamPolicy",
+      path: "v1alpha/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4297,11 +4288,7 @@ export const PatchProjectsLocationsFeaturesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Feature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeaturesRequest>;
 
@@ -4337,10 +4324,7 @@ export const GetIamPolicyProjectsLocationsFeaturesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFeaturesRequest>;
 
@@ -4376,7 +4360,7 @@ export const TestIamPermissionsProjectsLocationsFeaturesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}:testIamPermissions",
+      path: "v1alpha/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4416,10 +4400,7 @@ export const DeleteProjectsLocationsFeaturesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/features/{featuresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturesRequest>;
 
@@ -4459,10 +4440,7 @@ export const ListProjectsLocationsRolloutsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/rollouts",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/rollouts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRolloutsRequest>;
 
@@ -4497,10 +4475,7 @@ export const GetProjectsLocationsRolloutsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/rollouts/{rolloutsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRolloutsRequest>;
 
@@ -4541,7 +4516,7 @@ export const GenerateExclusivityManifestProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}:generateExclusivityManifest",
+      path: "v1alpha/{name}:generateExclusivityManifest",
     }),
     svc,
   ) as unknown as Schema.Schema<GenerateExclusivityManifestProjectsLocationsMembershipsRequest>;
@@ -4587,10 +4562,7 @@ export const ListProjectsLocationsMembershipsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/memberships" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsRequest>;
 
@@ -4634,11 +4606,7 @@ export const PatchProjectsLocationsMembershipsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Membership).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsRequest>;
 
@@ -4674,10 +4642,7 @@ export const GetIamPolicyProjectsLocationsMembershipsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
 
@@ -4713,7 +4678,7 @@ export const SetIamPolicyProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}:setIamPolicy",
+      path: "v1alpha/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4751,7 +4716,7 @@ export const ValidateCreateProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships:validateCreate",
+      path: "v1alpha/{parent}/memberships:validateCreate",
       hasBody: true,
     }),
     svc,
@@ -4790,7 +4755,7 @@ export const TestIamPermissionsProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}:testIamPermissions",
+      path: "v1alpha/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4824,10 +4789,7 @@ export const GetProjectsLocationsMembershipsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsRequest>;
 
@@ -4864,10 +4826,7 @@ export const DeleteProjectsLocationsMembershipsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsRequest>;
 
@@ -4908,7 +4867,7 @@ export const ValidateExclusivityProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships:validateExclusivity",
+      path: "v1alpha/{parent}/memberships:validateExclusivity",
     }),
     svc,
   ) as unknown as Schema.Schema<ValidateExclusivityProjectsLocationsMembershipsRequest>;
@@ -4962,10 +4921,7 @@ export const GenerateConnectManifestProjectsLocationsMembershipsRequest =
     proxy: Schema.optional(Schema.String).pipe(T.HttpQuery("proxy")),
     namespace: Schema.optional(Schema.String).pipe(T.HttpQuery("namespace")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}:generateConnectManifest",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}:generateConnectManifest" }),
     svc,
   ) as unknown as Schema.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
 
@@ -5010,10 +4966,7 @@ export const ListAdminProjectsLocationsMembershipsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships:listAdmin",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/memberships:listAdmin" }),
     svc,
   ) as unknown as Schema.Schema<ListAdminProjectsLocationsMembershipsRequest>;
 
@@ -5062,7 +5015,7 @@ export const CreateProjectsLocationsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships",
+      path: "v1alpha/{parent}/memberships",
       hasBody: true,
     }),
     svc,
@@ -5101,11 +5054,7 @@ export const PatchProjectsLocationsMembershipsBindingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(MembershipBinding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/bindings/{bindingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsBindingsRequest>;
 
@@ -5136,10 +5085,7 @@ export const GetProjectsLocationsMembershipsBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/bindings/{bindingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsBindingsRequest>;
 
@@ -5180,7 +5126,7 @@ export const CreateProjectsLocationsMembershipsBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/bindings",
+      path: "v1alpha/{parent}/bindings",
       hasBody: true,
     }),
     svc,
@@ -5222,10 +5168,7 @@ export const ListProjectsLocationsMembershipsBindingsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/bindings",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/bindings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsBindingsRequest>;
 
@@ -5261,10 +5204,7 @@ export const DeleteProjectsLocationsMembershipsBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/bindings/{bindingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsBindingsRequest>;
 
@@ -5295,10 +5235,7 @@ export const DeleteProjectsLocationsMembershipsRbacrolebindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings/{rbacrolebindingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
@@ -5331,10 +5268,7 @@ export const GetProjectsLocationsMembershipsRbacrolebindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings/{rbacrolebindingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
@@ -5377,7 +5311,7 @@ export const CreateProjectsLocationsMembershipsRbacrolebindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings",
+      path: "v1alpha/{parent}/rbacrolebindings",
       hasBody: true,
     }),
     svc,
@@ -5418,11 +5352,7 @@ export const PatchProjectsLocationsMembershipsRbacrolebindingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(RBACRoleBinding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings/{rbacrolebindingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
@@ -5465,7 +5395,7 @@ export const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRb
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings:generateMembershipRBACRoleBindingYAML",
+      path: "v1alpha/{parent}/rbacrolebindings:generateMembershipRBACRoleBindingYAML",
       hasBody: true,
     }),
     svc,
@@ -5508,10 +5438,7 @@ export const ListProjectsLocationsMembershipsRbacrolebindingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/rbacrolebindings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
@@ -5548,10 +5475,7 @@ export const DeleteProjectsLocationsFleetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/fleets/{fleetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFleetsRequest>;
 
@@ -5585,11 +5509,7 @@ export const CreateProjectsLocationsFleetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Fleet).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/fleets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{parent}/fleets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsFleetsRequest>;
 
@@ -5620,10 +5540,7 @@ export const GetProjectsLocationsFleetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/fleets/{fleetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFleetsRequest>;
 
@@ -5660,11 +5577,7 @@ export const PatchProjectsLocationsFleetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Fleet).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/fleets/{fleetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFleetsRequest>;
 
@@ -5701,10 +5614,7 @@ export const ListProjectsLocationsFleetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/fleets",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/fleets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFleetsRequest>;
 
@@ -5749,7 +5659,7 @@ export const CreateProjectsLocationsRolloutSequencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/rolloutSequences",
+      path: "v1alpha/{parent}/rolloutSequences",
       hasBody: true,
     }),
     svc,
@@ -5782,10 +5692,7 @@ export const GetProjectsLocationsRolloutSequencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/rolloutSequences/{rolloutSequencesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRolloutSequencesRequest>;
 
@@ -5822,11 +5729,7 @@ export const PatchProjectsLocationsRolloutSequencesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(RolloutSequence).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/rolloutSequences/{rolloutSequencesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsRolloutSequencesRequest>;
 
@@ -5866,10 +5769,7 @@ export const ListProjectsLocationsRolloutSequencesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/rolloutSequences",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/rolloutSequences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRolloutSequencesRequest>;
 
@@ -5905,10 +5805,7 @@ export const DeleteProjectsLocationsRolloutSequencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/rolloutSequences/{rolloutSequencesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRolloutSequencesRequest>;
 
@@ -5953,10 +5850,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -5991,10 +5885,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -6028,11 +5919,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -6063,10 +5950,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -6097,10 +5981,7 @@ export const DeleteProjectsLocationsScopesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsScopesRequest>;
 
@@ -6137,10 +6018,7 @@ export const ListProjectsLocationsScopesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/scopes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsScopesRequest>;
 
@@ -6184,10 +6062,7 @@ export const ListMembershipsProjectsLocationsScopesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}:listMemberships",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{scopeName}:listMemberships" }),
     svc,
   ) as unknown as Schema.Schema<ListMembershipsProjectsLocationsScopesRequest>;
 
@@ -6229,11 +6104,7 @@ export const PatchProjectsLocationsScopesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Scope).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsScopesRequest>;
 
@@ -6269,10 +6140,7 @@ export const GetIamPolicyProjectsLocationsScopesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsScopesRequest>;
 
@@ -6308,7 +6176,7 @@ export const SetIamPolicyProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}:setIamPolicy",
+      path: "v1alpha/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6347,10 +6215,7 @@ export const ListPermittedProjectsLocationsScopesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes:listPermitted",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/scopes:listPermitted" }),
     svc,
   ) as unknown as Schema.Schema<ListPermittedProjectsLocationsScopesRequest>;
 
@@ -6391,7 +6256,7 @@ export const TestIamPermissionsProjectsLocationsScopesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}:testIamPermissions",
+      path: "v1alpha/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6425,10 +6290,7 @@ export const GetProjectsLocationsScopesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsScopesRequest>;
 
@@ -6465,11 +6327,7 @@ export const CreateProjectsLocationsScopesRequest =
     scopeId: Schema.optional(Schema.String).pipe(T.HttpQuery("scopeId")),
     body: Schema.optional(Scope).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{parent}/scopes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsScopesRequest>;
 
@@ -6500,10 +6358,7 @@ export const DeleteProjectsLocationsScopesNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/namespaces/{namespacesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsScopesNamespacesRequest>;
 
@@ -6540,11 +6395,7 @@ export const PatchProjectsLocationsScopesNamespacesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Namespace).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/namespaces/{namespacesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsScopesNamespacesRequest>;
 
@@ -6575,10 +6426,7 @@ export const GetProjectsLocationsScopesNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/namespaces/{namespacesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsScopesNamespacesRequest>;
 
@@ -6619,7 +6467,7 @@ export const CreateProjectsLocationsScopesNamespacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/namespaces",
+      path: "v1alpha/{parent}/namespaces",
       hasBody: true,
     }),
     svc,
@@ -6658,10 +6506,7 @@ export const ListProjectsLocationsScopesNamespacesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/namespaces",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/namespaces" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsScopesNamespacesRequest>;
 
@@ -6703,10 +6548,7 @@ export const ListProjectsLocationsScopesRbacrolebindingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/rbacrolebindings",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/rbacrolebindings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsScopesRbacrolebindingsRequest>;
 
@@ -6748,11 +6590,7 @@ export const PatchProjectsLocationsScopesRbacrolebindingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(RBACRoleBinding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/rbacrolebindings/{rbacrolebindingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsScopesRbacrolebindingsRequest>;
 
@@ -6783,10 +6621,7 @@ export const GetProjectsLocationsScopesRbacrolebindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/rbacrolebindings/{rbacrolebindingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsScopesRbacrolebindingsRequest>;
 
@@ -6828,7 +6663,7 @@ export const CreateProjectsLocationsScopesRbacrolebindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/rbacrolebindings",
+      path: "v1alpha/{parent}/rbacrolebindings",
       hasBody: true,
     }),
     svc,
@@ -6861,10 +6696,7 @@ export const DeleteProjectsLocationsScopesRbacrolebindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}/rbacrolebindings/{rbacrolebindingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsScopesRbacrolebindingsRequest>;
 
@@ -6901,10 +6733,7 @@ export const ListOrganizationsLocationsFleetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/organizations/{organizationsId}/locations/{locationsId}/fleets",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/fleets" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsFleetsRequest>;
 

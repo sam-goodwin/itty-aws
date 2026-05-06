@@ -60,7 +60,7 @@ export const GoogleCloudPolicyanalyzerV1beta1Activity =
 
 export interface GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse {
   /** The set of activities that match the filter included in the request. */
-  activities?: Array<GoogleCloudPolicyanalyzerV1beta1Activity>;
+  activities?: ReadonlyArray<GoogleCloudPolicyanalyzerV1beta1Activity>;
   /** If there might be more results than those appearing in this response, then `nextPageToken` is included. To get the next set of results, call this method again using the value of `nextPageToken` as `pageToken`. */
   nextPageToken?: string;
 }
@@ -97,10 +97,7 @@ export const QueryProjectsLocationsActivityTypesActivitiesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/activityTypes/{activityTypesId}/activities:query",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/activities:query" }),
     svc,
   ) as unknown as Schema.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>;
 
@@ -145,10 +142,7 @@ export const QueryOrganizationsLocationsActivityTypesActivitiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/locations/{locationsId}/activityTypes/{activityTypesId}/activities:query",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/activities:query" }),
     svc,
   ) as unknown as Schema.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
 
@@ -194,10 +188,7 @@ export const QueryFoldersLocationsActivityTypesActivitiesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/folders/{foldersId}/locations/{locationsId}/activityTypes/{activityTypesId}/activities:query",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/activities:query" }),
     svc,
   ) as unknown as Schema.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
 

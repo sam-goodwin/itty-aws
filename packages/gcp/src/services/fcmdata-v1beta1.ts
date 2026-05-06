@@ -186,7 +186,7 @@ export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData =
 
 export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   /** The delivery data for the provided app. There will be one entry per combination of app, date, and analytics label. */
-  androidDeliveryData?: Array<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
+  androidDeliveryData?: ReadonlyArray<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -220,10 +220,7 @@ export const ListProjectsAndroidAppsDeliveryDataRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/deliveryData",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/deliveryData" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAndroidAppsDeliveryDataRequest>;
 

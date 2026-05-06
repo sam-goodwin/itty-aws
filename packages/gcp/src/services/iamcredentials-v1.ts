@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface WorkforcePoolAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Output only. The hex encoded bitmap of the trust boundary locations */
   encodedLocations?: string;
 }
@@ -37,7 +37,7 @@ export const WorkforcePoolAllowedLocations =
 
 export interface ServiceAccountAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Output only. The hex encoded bitmap of the trust boundary locations */
   encodedLocations?: string;
 }
@@ -74,9 +74,9 @@ export interface GenerateAccessTokenRequest {
   /** The desired lifetime duration of the access token in seconds. By default, the maximum allowed value is 1 hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an Organization Policy that enforces the `constraints/iam.allowServiceAccountCredentialLifetimeExtension` constraint. See detailed instructions at https://cloud.google.com/iam/help/credentials/lifetime If a value is not specified, the token's lifetime will be set to a default value of 1 hour. */
   lifetime?: string;
   /** The sequence of service accounts in a delegation chain. This field is required for [delegated requests](https://cloud.google.com/iam/help/credentials/delegated-request). For [direct requests](https://cloud.google.com/iam/help/credentials/direct-request), which are more common, do not specify this field. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
-  delegates?: Array<string>;
+  delegates?: ReadonlyArray<string>;
   /** Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See https://developers.google.com/identity/protocols/googlescopes for more information. At least one value required. */
-  scope?: Array<string>;
+  scope?: ReadonlyArray<string>;
 }
 
 export const GenerateAccessTokenRequest =
@@ -100,7 +100,7 @@ export const SignBlobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkloadIdentityPoolAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Output only. The hex encoded bitmap of the trust boundary locations */
   encodedLocations?: string;
 }
@@ -119,7 +119,7 @@ export interface GenerateIdTokenRequest {
   /** Include the service account email in the token. If set to `true`, the token will contain `email` and `email_verified` claims. */
   includeEmail?: boolean;
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
-  delegates?: Array<string>;
+  delegates?: ReadonlyArray<string>;
 }
 
 export const GenerateIdTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -146,7 +146,7 @@ export const GenerateAccessTokenResponse =
 
 export interface SignBlobRequest {
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
-  delegates?: Array<string>;
+  delegates?: ReadonlyArray<string>;
   /** Required. The bytes to sign. */
   payload?: string;
 }
@@ -160,7 +160,7 @@ export interface SignJwtRequest {
   /** Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the future. */
   payload?: string;
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
-  delegates?: Array<string>;
+  delegates?: ReadonlyArray<string>;
 }
 
 export const SignJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -181,10 +181,7 @@ export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workloadIdentityPools/{workloadIdentityPoolsId}/allowedLocations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/allowedLocations" }),
     svc,
   ) as unknown as Schema.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>;
 
@@ -217,10 +214,7 @@ export const GetAllowedLocationsProjectsServiceAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}/allowedLocations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/allowedLocations" }),
     svc,
   ) as unknown as Schema.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>;
 
@@ -257,7 +251,7 @@ export const GenerateAccessTokenProjectsServiceAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:generateAccessToken",
+      path: "v1/{name}:generateAccessToken",
       hasBody: true,
     }),
     svc,
@@ -294,11 +288,7 @@ export const SignBlobProjectsServiceAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SignBlobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signBlob",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:signBlob", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SignBlobProjectsServiceAccountsRequest>;
 
@@ -334,7 +324,7 @@ export const GenerateIdTokenProjectsServiceAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:generateIdToken",
+      path: "v1/{name}:generateIdToken",
       hasBody: true,
     }),
     svc,
@@ -371,11 +361,7 @@ export const SignJwtProjectsServiceAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SignJwtRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signJwt",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:signJwt", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SignJwtProjectsServiceAccountsRequest>;
 
@@ -406,10 +392,7 @@ export const GetAllowedLocationsLocationsWorkforcePoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/{locationsId}/workforcePools/{workforcePoolsId}/allowedLocations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/allowedLocations" }),
     svc,
   ) as unknown as Schema.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>;
 

@@ -93,7 +93,7 @@ export const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StringList {
   /** The string values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -142,7 +142,7 @@ export const LocalizationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NetworkReportSpec {
   /** List of metrics of the report. A report must specify at least one metric. */
-  metrics?: Array<
+  metrics?: ReadonlyArray<
     | "METRIC_UNSPECIFIED"
     | "AD_REQUESTS"
     | "CLICKS"
@@ -156,17 +156,17 @@ export interface NetworkReportSpec {
     | (string & {})
   >;
   /** Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined. */
-  sortConditions?: Array<NetworkReportSpecSortCondition>;
+  sortConditions?: ReadonlyArray<NetworkReportSpecSortCondition>;
   /** A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The "America/Los_Angeles" is the only supported value at the moment. */
   timeZone?: string;
   /** The date range for which the report is generated. */
   dateRange?: DateRange;
   /** Describes which report rows to match based on their dimension values. */
-  dimensionFilters?: Array<NetworkReportSpecDimensionFilter>;
+  dimensionFilters?: ReadonlyArray<NetworkReportSpecDimensionFilter>;
   /** Localization settings of the report. */
   localizationSettings?: LocalizationSettings;
   /** List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account. */
-  dimensions?: Array<
+  dimensions?: ReadonlyArray<
     | "DIMENSION_UNSPECIFIED"
     | "DATE"
     | "MONTH"
@@ -251,7 +251,7 @@ export const ReportRowMetricValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MediationGroupTargeting {
   /** Ad units targeted by this mediation group. Example: "ca-app-pub-1234/8790". */
-  adUnitIds?: Array<string>;
+  adUnitIds?: ReadonlyArray<string>;
   /** The parameter can be used to target ad requests based on the availability of the IDFA. If set to ALL, the mediation group applies to all ad requests (with or without IDFA). If set to AVAILABLE, the mediation group applies to ad requests with IDFA. If set to NOT_AVAILABLE, the mediation group applies to ad requests without IDFA. Doesn't need to be specified for an ANDROID device. */
   idfaTargeting?:
     | "IDFA_TARGETING_UNSPECIFIED"
@@ -260,9 +260,9 @@ export interface MediationGroupTargeting {
     | "NOT_AVAILABLE"
     | (string & {});
   /** The Unicode country/region code (CLDR) of a location, such as "US". Unset if this mediation group targets all available regions. For more information, see http://www.unicode.org/reports/tr35/#unicode_region_subtag. */
-  targetedRegionCodes?: Array<string>;
+  targetedRegionCodes?: ReadonlyArray<string>;
   /** The Unicode country/region code (CLDR) of a location, such as "US". Unset if this mediation group does not exclude any region. */
-  excludedRegionCodes?: Array<string>;
+  excludedRegionCodes?: ReadonlyArray<string>;
   /** Describes the platform of the app. Examples: "IOS", "ANDROID". */
   platform?: string;
   /** Ad format targeted by this mediation group. Examples: "BANNER", "NATIVE". */
@@ -359,7 +359,7 @@ export interface ListMediationGroupsResponse {
   /** If not empty, indicates that there may be more mediation groups for the request; this value should be passed in a new `ListMediationGroupsRequest`. */
   nextPageToken?: string;
   /** The resulting mediation groups for the requested account. */
-  mediationGroups?: Array<MediationGroup>;
+  mediationGroups?: ReadonlyArray<MediationGroup>;
 }
 
 export const ListMediationGroupsResponse =
@@ -400,7 +400,7 @@ export const MediationReportSpecDimensionFilter =
 
 export interface CampaignReportSpec {
   /** List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account. */
-  dimensions?: Array<
+  dimensions?: ReadonlyArray<
     | "DIMENSION_UNSPECIFIED"
     | "DATE"
     | "CAMPAIGN_ID"
@@ -415,7 +415,7 @@ export interface CampaignReportSpec {
     | (string & {})
   >;
   /** List of metrics of the report. A report must specify at least one metric. */
-  metrics?: Array<
+  metrics?: ReadonlyArray<
     | "METRIC_UNSPECIFIED"
     | "IMPRESSIONS"
     | "CLICKS"
@@ -481,7 +481,7 @@ export const AdapterAdapterConfigMetadata =
 
 export interface Adapter {
   /** Output only. Indicates the formats of the ad units supported by this adapter. */
-  formats?: Array<string>;
+  formats?: ReadonlyArray<string>;
   /** Output only. ID of this adapter. It is used to set [adapter_id](#AdUnitMapping.adapter_id). */
   adapterId?: string;
   /** Output only. The display name of this adapter. */
@@ -489,7 +489,7 @@ export interface Adapter {
   /** Output only. Resource name of the adapter. Format is: accounts/{publisher_id}/adSources/{ad_source_id}/adapters/{adapter_id}. */
   name?: string;
   /** Output only. Configuration metadata associated with this adapter. */
-  adapterConfigMetadata?: Array<AdapterAdapterConfigMetadata>;
+  adapterConfigMetadata?: ReadonlyArray<AdapterAdapterConfigMetadata>;
   /** Output only. Mobile application platform supported by this adapter. Supported values are: IOS, ANDROID, WINDOWS_PHONE */
   platform?: string;
 }
@@ -507,7 +507,7 @@ export const Adapter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAdaptersResponse {
   /** The adapter. */
-  adapters?: Array<Adapter>;
+  adapters?: ReadonlyArray<Adapter>;
   /** Used to set the `page_token` in the `ListAdapterRequest` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -539,7 +539,7 @@ export interface ReportFooter {
   /** Total number of rows that matched the request. Warning: This count does NOT always match the number of rows in the response. Do not make that assumption when processing the response. */
   matchingRowCount?: string;
   /** Warnings associated with generation of the report. */
-  warnings?: Array<ReportWarning>;
+  warnings?: ReadonlyArray<ReportWarning>;
 }
 
 export const ReportFooter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -619,7 +619,7 @@ export interface ListAdUnitMappingsResponse {
   /** Used to set the `page_token` in the `ListAdUnitMappingsRequest` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The ad unit mappings from the specified account and ad unit. */
-  adUnitMappings?: Array<AdUnitMapping>;
+  adUnitMappings?: ReadonlyArray<AdUnitMapping>;
 }
 
 export const ListAdUnitMappingsResponse =
@@ -640,7 +640,7 @@ export const MediationAbExperimentExperimentMediationLine =
 
 export interface MediationAbExperiment {
   /** The experiment mediation lines created for the treatment. They will be used for serving when the experiment status is RUNNING. */
-  treatmentMediationLines?: Array<MediationAbExperimentExperimentMediationLine>;
+  treatmentMediationLines?: ReadonlyArray<MediationAbExperimentExperimentMediationLine>;
   /** The display name for the mediation A/B experiment. */
   displayName?: string;
   /** Output only. Unique identifier for the mediation A/B experiment. It is an output only property. */
@@ -668,7 +668,7 @@ export interface MediationAbExperiment {
   /** Output only. The time at which the experiment was started (in UTC). */
   startTime?: string;
   /** Output only. The experiment mediation lines for control. They are inherited from the parent mediation group. It is an output only field. */
-  controlMediationLines?: Array<MediationAbExperimentExperimentMediationLine>;
+  controlMediationLines?: ReadonlyArray<MediationAbExperimentExperimentMediationLine>;
   /** The percentage of the mediation A/B experiment traffic that will be send to the treatment (variant B). The remainder is sent to the control (variant A). The percentage is expressed as an integer in the inclusive range of [1,99]. See https://support.google.com/admob/answer/9572326 for details. */
   treatmentTrafficPercentage?: string;
   /** Output only. The mediation group id this experiment belongs to. This can be used for filtering the experiments in the list experiments API. */
@@ -695,7 +695,7 @@ export const MediationAbExperiment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AppLinkedAppInfo {
   /** Optional. The app store information for published Android apps. This field is only used for apps on the Android platform and will be ignored if the PLATFORM is set to iOS. The default value is the Google Play App store. This field can be updated after app is created. If the app is not published, this field will not be included in the response. */
-  androidAppStores?: Array<
+  androidAppStores?: ReadonlyArray<
     | "ANDROID_APP_STORE_UNSPECIFIED"
     | "GOOGLE_PLAY_APP_STORE"
     | "AMAZON_APP_STORE"
@@ -780,7 +780,7 @@ export interface AdUnit {
   /** AdFormat of the ad unit. Possible values are as follows: "APP_OPEN" - App Open ad format. "BANNER" - Banner ad format. "BANNER_INTERSTITIAL" - Legacy format that can be used as either banner or interstitial. This format can no longer be created but can be targeted by mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad types are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An ad that, once viewed, gets a callback verifying the view so that a reward can be given to the user. Supported ad types are "RICH_MEDIA" (interactive) and video where video can not be excluded. "REWARDED_INTERSTITIAL" - Rewarded Interstitial ad format. Only supports video ad type. See https://support.google.com/admob/answer/9884467. */
   adFormat?: string;
   /** Ad media type supported by this ad unit. Possible values as follows: "RICH_MEDIA" - Text, image, and other non-video media. "VIDEO" - Video media. */
-  adTypes?: Array<string>;
+  adTypes?: ReadonlyArray<string>;
   /** Optional. Settings for a rewarded ad unit. This can be set or unset only when the ad_format is "REWARDED". */
   rewardSettings?: AdUnitRewardSettings;
   /** The display name of the ad unit as shown in the AdMob UI, which is provided by the user. The maximum length allowed is 80 characters. */
@@ -807,7 +807,7 @@ export interface ListPublisherAccountsResponse {
   /** If not empty, indicates that there might be more accounts for the request; you must pass this value in a new `ListPublisherAccountsRequest`. */
   nextPageToken?: string;
   /** Publisher that the client credentials can access. */
-  account?: Array<PublisherAccount>;
+  account?: ReadonlyArray<PublisherAccount>;
 }
 
 export const ListPublisherAccountsResponse =
@@ -818,7 +818,7 @@ export const ListPublisherAccountsResponse =
 
 export interface BatchCreateAdUnitMappingsResponse {
   /** The Ad units mappings created under the requested account. */
-  adUnitMappings?: Array<AdUnitMapping>;
+  adUnitMappings?: ReadonlyArray<AdUnitMapping>;
 }
 
 export const BatchCreateAdUnitMappingsResponse =
@@ -900,7 +900,7 @@ export const MediationReportSpecSortCondition =
 
 export interface MediationReportSpec {
   /** List of metrics of the report. A report must specify at least one metric. */
-  metrics?: Array<
+  metrics?: ReadonlyArray<
     | "METRIC_UNSPECIFIED"
     | "AD_REQUESTS"
     | "CLICKS"
@@ -913,17 +913,17 @@ export interface MediationReportSpec {
     | (string & {})
   >;
   /** Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined. */
-  sortConditions?: Array<MediationReportSpecSortCondition>;
+  sortConditions?: ReadonlyArray<MediationReportSpecSortCondition>;
   /** The date range for which the report is generated. */
   dateRange?: DateRange;
   /** Describes which report rows to match based on their dimension values. */
-  dimensionFilters?: Array<MediationReportSpecDimensionFilter>;
+  dimensionFilters?: ReadonlyArray<MediationReportSpecDimensionFilter>;
   /** Localization settings of the report. */
   localizationSettings?: LocalizationSettings;
   /** A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The "America/Los_Angeles" is the only supported value at the moment. */
   timeZone?: string;
   /** List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account. */
-  dimensions?: Array<
+  dimensions?: ReadonlyArray<
     | "DIMENSION_UNSPECIFIED"
     | "DATE"
     | "MONTH"
@@ -988,7 +988,7 @@ export const AdSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GenerateCampaignReportResponse {
   /** The campaign report data from the specified publisher. At most 100000 rows will be returned from the API. */
-  rows?: Array<ReportRow>;
+  rows?: ReadonlyArray<ReportRow>;
 }
 
 export const GenerateCampaignReportResponse =
@@ -998,7 +998,7 @@ export const GenerateCampaignReportResponse =
 
 export interface BatchCreateAdUnitMappingsRequest {
   /** Required. The request message specifying the ad unit mappings to create. A maximum of 100 ad unit mappings can be created in a batch. If the number of ad unit mappings in the batch request exceed 100, the entire request will be rejected and no ad unit mappings will be created. */
-  requests?: Array<CreateAdUnitMappingRequest>;
+  requests?: ReadonlyArray<CreateAdUnitMappingRequest>;
 }
 
 export const BatchCreateAdUnitMappingsRequest =
@@ -1008,7 +1008,7 @@ export const BatchCreateAdUnitMappingsRequest =
 
 export interface ListAdUnitsResponse {
   /** The resulting ad units for the requested account. */
-  adUnits?: Array<AdUnit>;
+  adUnits?: ReadonlyArray<AdUnit>;
   /** If not empty, indicates that there may be more ad units for the request; this value should be passed in a new `ListAdUnitsRequest`. */
   nextPageToken?: string;
 }
@@ -1020,7 +1020,7 @@ export const ListAdUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAdSourcesResponse {
   /** The ad sources. */
-  adSources?: Array<AdSource>;
+  adSources?: ReadonlyArray<AdSource>;
   /** Used to set the `page_token` in the `ListAdSourcesRequest` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1032,7 +1032,7 @@ export const ListAdSourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAppsResponse {
   /** The resulting apps for the requested account. */
-  apps?: Array<App>;
+  apps?: ReadonlyArray<App>;
   /** If not empty, indicates that there may be more apps for the request; this value should be passed in a new `ListAppsRequest`. */
   nextPageToken?: string;
 }
@@ -1054,7 +1054,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "v1beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -1126,7 +1126,7 @@ export const GenerateAccountsNetworkReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}/networkReport:generate",
+      path: "v1beta/{parent}/networkReport:generate",
       hasBody: true,
     }),
     svc,
@@ -1166,7 +1166,7 @@ export const ListAccountsAdSourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/accounts/{accountsId}/adSources" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/adSources" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdSourcesRequest>;
 
@@ -1207,10 +1207,7 @@ export const ListAccountsAdSourcesAdaptersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/accounts/{accountsId}/adSources/{adSourcesId}/adapters",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/adapters" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdSourcesAdaptersRequest>;
 
@@ -1254,10 +1251,7 @@ export const ListAccountsMediationGroupsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/accounts/{accountsId}/mediationGroups",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/mediationGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsMediationGroupsRequest>;
 
@@ -1297,7 +1291,7 @@ export const CreateAccountsMediationGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}/mediationGroups",
+      path: "v1beta/{parent}/mediationGroups",
       hasBody: true,
     }),
     svc,
@@ -1336,11 +1330,7 @@ export const PatchAccountsMediationGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MediationGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/accounts/{accountsId}/mediationGroups/{mediationGroupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsMediationGroupsRequest>;
 
@@ -1376,7 +1366,7 @@ export const CreateAccountsMediationGroupsMediationAbExperimentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}/mediationGroups/{mediationGroupsId}/mediationAbExperiments",
+      path: "v1beta/{parent}/mediationAbExperiments",
       hasBody: true,
     }),
     svc,
@@ -1414,11 +1404,7 @@ export const StopAccountsMediationGroupsMediationAbExperimentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopMediationAbExperimentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/accounts/{accountsId}/mediationGroups/{mediationGroupsId}/mediationAbExperiments:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopAccountsMediationGroupsMediationAbExperimentsRequest>;
 
@@ -1456,7 +1442,7 @@ export const BatchCreateAccountsAdUnitMappingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}/adUnitMappings:batchCreate",
+      path: "v1beta/{parent}/adUnitMappings:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -1495,7 +1481,7 @@ export const GenerateAccountsCampaignReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}/campaignReport:generate",
+      path: "v1beta/{parent}/campaignReport:generate",
       hasBody: true,
     }),
     svc,
@@ -1535,7 +1521,7 @@ export const ListAccountsAdUnitsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/accounts/{accountsId}/adUnits" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/adUnits" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdUnitsRequest>;
 
@@ -1573,11 +1559,7 @@ export const CreateAccountsAdUnitsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AdUnit).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/accounts/{accountsId}/adUnits",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{parent}/adUnits", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsAdUnitsRequest>;
 
@@ -1612,7 +1594,7 @@ export const CreateAccountsAdUnitsAdUnitMappingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}/adUnits/{adUnitsId}/adUnitMappings",
+      path: "v1beta/{parent}/adUnitMappings",
       hasBody: true,
     }),
     svc,
@@ -1654,10 +1636,7 @@ export const ListAccountsAdUnitsAdUnitMappingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/accounts/{accountsId}/adUnits/{adUnitsId}/adUnitMappings",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/adUnitMappings" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdUnitsAdUnitMappingsRequest>;
 
@@ -1698,7 +1677,7 @@ export const GenerateAccountsMediationReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}/mediationReport:generate",
+      path: "v1beta/{parent}/mediationReport:generate",
       hasBody: true,
     }),
     svc,
@@ -1738,7 +1717,7 @@ export const ListAccountsAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/accounts/{accountsId}/apps" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAppsRequest>;
 
@@ -1776,11 +1755,7 @@ export const CreateAccountsAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(App).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/accounts/{accountsId}/apps",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{parent}/apps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsAppsRequest>;
 

@@ -26,7 +26,7 @@ export interface PartnerPermissions {
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions` */
   name?: string;
   /** The partner permissions granted for the workload */
-  partnerPermissions?: Array<
+  partnerPermissions?: ReadonlyArray<
     | "PERMISSION_UNSPECIFIED"
     | "ACCESS_TRANSPARENCY_AND_EMERGENCY_ACCESS_LOGS"
     | "ASSURED_WORKLOADS_MONITORING"
@@ -112,7 +112,7 @@ export const CustomerOnboardingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface CustomerOnboardingState {
   /** List of customer onboarding steps */
-  onboardingSteps?: Array<CustomerOnboardingStep>;
+  onboardingSteps?: ReadonlyArray<CustomerOnboardingStep>;
 }
 
 export const CustomerOnboardingState =
@@ -143,11 +143,11 @@ export const Customer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCustomersResponse {
   /** List of customers */
-  customers?: Array<Customer>;
+  customers?: ReadonlyArray<Customer>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -188,17 +188,17 @@ export const Sku = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Partner {
   /** List of Google Cloud supported EKM partners supported by the partner */
-  ekmSolutions?: Array<EkmMetadata>;
+  ekmSolutions?: ReadonlyArray<EkmMetadata>;
   /** Google Cloud project ID in the partner's Google Cloud organization for receiving enhanced Logs for Partners. */
   partnerProjectId?: string;
   /** List of Google Cloud regions that the partner sells services to customers. Valid Google Cloud regions found here: https://cloud.google.com/compute/docs/regions-zones */
-  operatedCloudRegions?: Array<string>;
+  operatedCloudRegions?: ReadonlyArray<string>;
   /** Output only. Time the resource was created */
   createTime?: string;
   /** Identifier. The resource name of the partner. Format: `organizations/{organization}/locations/{location}/partner` Example: "organizations/123456/locations/us-central1/partner" */
   name?: string;
   /** List of SKUs the partner is offering */
-  skus?: Array<Sku>;
+  skus?: ReadonlyArray<Sku>;
   /** Output only. The last time the resource was updated */
   updateTime?: string;
 }
@@ -215,9 +215,9 @@ export const Partner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccessApprovalRequestsResponse {
   /** List of access approval requests */
-  accessApprovalRequests?: Array<AccessApprovalRequest>;
+  accessApprovalRequests?: ReadonlyArray<AccessApprovalRequest>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -263,7 +263,7 @@ export const WorkloadOnboardingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface WorkloadOnboardingState {
   /** List of workload onboarding steps. */
-  onboardingSteps?: Array<WorkloadOnboardingStep>;
+  onboardingSteps?: ReadonlyArray<WorkloadOnboardingStep>;
 }
 
 export const WorkloadOnboardingState =
@@ -342,9 +342,9 @@ export const Workload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListWorkloadsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** List of customer workloads */
-  workloads?: Array<Workload>;
+  workloads?: ReadonlyArray<Workload>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -390,11 +390,11 @@ export const EkmConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Gcloud {
   /** Steps to resolve violation via gcloud cli */
-  steps?: Array<string>;
+  steps?: ReadonlyArray<string>;
   /** Gcloud command to resolve violation */
-  gcloudCommands?: Array<string>;
+  gcloudCommands?: ReadonlyArray<string>;
   /** Additional urls for more information about steps */
-  additionalLinks?: Array<string>;
+  additionalLinks?: ReadonlyArray<string>;
 }
 
 export const Gcloud = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -405,11 +405,11 @@ export const Gcloud = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Console {
   /** Link to console page where violations can be resolved */
-  consoleUris?: Array<string>;
+  consoleUris?: ReadonlyArray<string>;
   /** Additional urls for more information about steps */
-  additionalLinks?: Array<string>;
+  additionalLinks?: ReadonlyArray<string>;
   /** Steps to resolve violation via cloud console */
-  steps?: Array<string>;
+  steps?: ReadonlyArray<string>;
 }
 
 export const Console = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -432,7 +432,7 @@ export const Instructions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EkmConnections {
   /** The EKM connections associated with the workload */
-  ekmConnections?: Array<EkmConnection>;
+  ekmConnections?: ReadonlyArray<EkmConnection>;
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections` */
   name?: string;
 }
@@ -455,7 +455,7 @@ export interface Remediation {
     | "REMEDIATION_RESOURCE_VIOLATION"
     | (string & {});
   /** Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values */
-  compliantValues?: Array<string>;
+  compliantValues?: ReadonlyArray<string>;
 }
 
 export const Remediation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -513,11 +513,11 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListViolationsResponse {
   /** List of violation */
-  violations?: Array<Violation>;
+  violations?: ReadonlyArray<Violation>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Workloads that could not be reached due to permission errors or any other error. Ref: https://google.aip.dev/217 */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListViolationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -541,10 +541,7 @@ export const GetPartnerOrganizationsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/partner",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnerOrganizationsLocationsRequest>;
 
@@ -581,11 +578,7 @@ export const PatchOrganizationsLocationsCustomersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsCustomersRequest>;
 
@@ -616,10 +609,7 @@ export const DeleteOrganizationsLocationsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsCustomersRequest>;
 
@@ -650,10 +640,7 @@ export const GetOrganizationsLocationsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersRequest>;
 
@@ -696,10 +683,7 @@ export const ListOrganizationsLocationsCustomersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersRequest>;
 
@@ -740,11 +724,7 @@ export const CreateOrganizationsLocationsCustomersRequest =
     customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
     body: Schema.optional(Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/customers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsLocationsCustomersRequest>;
 
@@ -787,10 +767,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/workloads" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -826,10 +803,7 @@ export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/partnerPermissions",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -862,10 +836,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -896,10 +867,7 @@ export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/ekmConnections",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
 
@@ -944,10 +912,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsR
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/accessApprovalRequests",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/accessApprovalRequests" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest>;
 
@@ -1008,10 +973,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/violations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/violations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
@@ -1048,10 +1010,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsViolationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/violations/{violationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 

@@ -26,7 +26,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
@@ -82,7 +82,7 @@ export interface CustomerProfileCompany {
   /** Required. The name of the company. */
   company?: string;
   /** Optional. The citation ids for the company. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
 }
 
 export const CustomerProfileCompany = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -98,7 +98,7 @@ export interface CustomerProfileProduct {
   /** Required. The name of the product. */
   product?: string;
   /** Optional. The citation ids for the product. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
 }
 
 export const CustomerProfileProduct = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -115,7 +115,7 @@ export interface CustomerProfileLocation {
   /** Required. The address of the location. */
   address?: string;
   /** Optional. The citation ids for the location. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
   /** Required. The brand of the location. */
   brand?: string;
 }
@@ -132,7 +132,7 @@ export interface CustomerProfileIndustry {
   /** Required. The name of the industry. */
   industry?: string;
   /** Optional. The citation ids for the industry. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
 }
 
 export const CustomerProfileIndustry =
@@ -147,7 +147,7 @@ export interface CustomerProfilePerson {
   /** Optional. The title of the person. */
   title?: string;
   /** Optional. The citation ids for the person. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
 }
 
 export const CustomerProfilePerson = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -160,7 +160,7 @@ export interface CustomerProfileSecurityConsiderations {
   /** Optional. A note about the security considerations. */
   note?: string;
   /** Optional. A series of considerations for the security of the organization, such as "high risk of compromise" or "vulnerable to cyberbullying". */
-  considerations?: Array<string>;
+  considerations?: ReadonlyArray<string>;
 }
 
 export const CustomerProfileSecurityConsiderations =
@@ -179,7 +179,7 @@ export interface CustomerProfileContactInfo {
   /** The email address of the contact. */
   email?: string;
   /** Optional. The citation ids for the contact information. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
   /** The address of the contact. */
   address?: string;
 }
@@ -198,7 +198,7 @@ export interface CustomerProfileCitedString {
   /** Required. The value of the string. */
   value?: string;
   /** Optional. The citation ids for the string. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
 }
 
 export const CustomerProfileCitedString =
@@ -277,7 +277,7 @@ export interface CustomerProfileWebPresence {
   /** Required. The domain name of the web presence. */
   domain?: string;
   /** Optional. The citation ids for the web presence. */
-  citationIds?: Array<string>;
+  citationIds?: ReadonlyArray<string>;
 }
 
 export const CustomerProfileWebPresence =
@@ -288,31 +288,31 @@ export const CustomerProfileWebPresence =
 
 export interface CustomerProfileConfig {
   /** Optional. The parent companies of the organization. */
-  parentCompanies?: Array<CustomerProfileCompany>;
+  parentCompanies?: ReadonlyArray<CustomerProfileCompany>;
   /** Required. The name of the organization. */
   org?: string;
   /** Optional. Product information for the organization. */
-  products?: Array<CustomerProfileProduct>;
+  products?: ReadonlyArray<CustomerProfileProduct>;
   /** Optional. Locations the organization is present or conducts business in. */
-  locations?: Array<CustomerProfileLocation>;
+  locations?: ReadonlyArray<CustomerProfileLocation>;
   /** Optional. The industries the organization is involved in. */
-  industries?: Array<CustomerProfileIndustry>;
+  industries?: ReadonlyArray<CustomerProfileIndustry>;
   /** Optional. Executives of the organization. */
-  executives?: Array<CustomerProfilePerson>;
+  executives?: ReadonlyArray<CustomerProfilePerson>;
   /** Optional. Security considerations for the organization. */
   securityConsiderations?: CustomerProfileSecurityConsiderations;
   /** Optional. Technology presence of the organization. */
   technologyPresence?: string;
   /** Optional. Contact information for the organization. */
-  contactInfo?: Array<CustomerProfileContactInfo>;
+  contactInfo?: ReadonlyArray<CustomerProfileContactInfo>;
   /** Optional. A summarized version of the customer profile. */
   summary?: CustomerProfileSummary;
   /** Optional. A summary of the organization. */
   orgSummary?: string;
   /** Optional. Citations for the organization profile. */
-  citations?: Array<CustomerProfileCitation>;
+  citations?: ReadonlyArray<CustomerProfileCitation>;
   /** Optional. Web presence of the organization. */
-  webPresences?: Array<CustomerProfileWebPresence>;
+  webPresences?: ReadonlyArray<CustomerProfileWebPresence>;
 }
 
 export const CustomerProfileConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -397,7 +397,7 @@ export const ConfigurationRevision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConfigurationRevisionsResponse {
   /** The Configuration Revisions associated with the specified Configuration */
-  revisions?: Array<ConfigurationRevision>;
+  revisions?: ReadonlyArray<ConfigurationRevision>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -445,9 +445,9 @@ export const MarkAlertAsDuplicateRequest =
 
 export interface Evidence {
   /** A list of semantic themes or concepts found to be common, related, or aligned between the sources, supporting the verdict. */
-  commonThemes?: Array<string>;
+  commonThemes?: ReadonlyArray<string>;
   /** A list of semantic themes or descriptions unique to one source or semantically distant. */
-  distinctThemes?: Array<string>;
+  distinctThemes?: ReadonlyArray<string>;
 }
 
 export const Evidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -571,7 +571,7 @@ export const FindingDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Finding {
   /** Output only. When identical finding (same labels and same details) has re-occurred. */
-  reoccurrenceTimes?: Array<string>;
+  reoccurrenceTimes?: ReadonlyArray<string>;
   /** Optional. AI summary of the finding. */
   aiSummary?: string;
   /** Output only. Audit data about the finding. */
@@ -581,7 +581,7 @@ export interface Finding {
   /** Optional. Deprecated: Use the `severity_analysis` field instead. Base severity score from the finding source. */
   severity?: number;
   /** Optional. Configuration names that are bound to this finding. */
-  configurations?: Array<string>;
+  configurations?: ReadonlyArray<string>;
   /** Identifier. Server generated name for the finding (leave clear during creation). Format: projects/{project}/findings/{finding} */
   name?: string;
   /** Required. Logical source of this finding (name of the sub-engine). */
@@ -613,7 +613,7 @@ export const Finding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFindingsResponse {
   /** List of findings. */
-  findings?: Array<Finding>;
+  findings?: ReadonlyArray<Finding>;
   /** Page token. */
   nextPageToken?: string;
 }
@@ -637,7 +637,7 @@ export const FacetCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataLeakAlertDetail {
   /** Required. Array of ids to accommodate multiple discovery documents */
-  discoveryDocumentIds?: Array<string>;
+  discoveryDocumentIds?: ReadonlyArray<string>;
   /** Required. Data Leak specific severity This will be the string representation of the DataLeakFindingDetail.Severityenum. (e.g., "LOW", "MEDIUM", "HIGH", "CRITICAL") */
   severity?: string;
 }
@@ -655,7 +655,7 @@ export interface Facet {
   /** Total number of records that contain this facet with ANY value. */
   totalCount?: string;
   /** List of counts for the facet (if categorical). */
-  facetCounts?: Array<FacetCount>;
+  facetCounts?: ReadonlyArray<FacetCount>;
   /** The type of the facet. Options include "string", "int", "float", "bool", "enum", "timestamp", "user" and are useful to show the right sort of UI controls when building a AIP-160 style filtering string. */
   facetType?: string;
   /** Min value of the facet stringified based on type. This is only populated for facets that have a clear ordering, for types like enum it will be left empty. Timestamps will be formatted using RFC3339. */
@@ -673,7 +673,7 @@ export const Facet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EnumerateAlertFacetsResponse {
   /** List of facets and the counts. */
-  facets?: Array<Facet>;
+  facets?: ReadonlyArray<Facet>;
 }
 
 export const EnumerateAlertFacetsResponse =
@@ -697,7 +697,7 @@ export const MarkAlertAsTrackedExternallyRequest =
 
 export interface InsiderThreatAlertDetail {
   /** Required. Array of ids to accommodate multiple discovery documents */
-  discoveryDocumentIds?: Array<string>;
+  discoveryDocumentIds?: ReadonlyArray<string>;
   /** Required. InsiderThreat specific severity This will be the string representation of the InsiderThreatFindingDetail.Severityenum. (e.g., "LOW", "MEDIUM", "HIGH", "CRITICAL") */
   severity?: string;
 }
@@ -710,7 +710,7 @@ export const InsiderThreatAlertDetail =
 
 export interface InitialAccessBrokerAlertDetail {
   /** Required. Array of ids to accommodate multiple discovery documents */
-  discoveryDocumentIds?: Array<string>;
+  discoveryDocumentIds?: ReadonlyArray<string>;
   /** Required. IAB specific severity */
   severity?: string;
 }
@@ -754,7 +754,7 @@ export const GenerateOrgProfileConfigurationRequest =
 
 export interface SearchFindingsResponse {
   /** List of findings. */
-  findings?: Array<Finding>;
+  findings?: ReadonlyArray<Finding>;
   /** Page token. */
   nextPageToken?: string;
 }
@@ -810,11 +810,11 @@ export interface Alert {
   /** Output only. High-Precision Severity Analysis for the alert. */
   severityAnalysis?: SeverityAnalysis;
   /** Output only. The resource names of the Configurations bound to this alert. Format: projects/{project}/configurations/{configuration} */
-  configurations?: Array<string>;
+  configurations?: ReadonlyArray<string>;
   /** Identifier. Server generated name for the alert. format is projects/{project}/alerts/{alert} */
   name?: string;
   /** Output only. Findings that are covered by this alert. */
-  findings?: Array<string>;
+  findings?: ReadonlyArray<string>;
   /** Optional. If included when updating an alert, this should be set to the current etag of the alert. If the etags do not match, the update will be rejected and an ABORTED error will be returned. */
   etag?: string;
   /** Output only. The number of findings associated with this alert. */
@@ -832,7 +832,7 @@ export interface Alert {
   /** Output only. Audit information for the alert. */
   audit?: Audit;
   /** Output only. alert names of the alerts that are duplicates of this alert. Format: projects/{project}/alerts/{alert} */
-  duplicatedBy?: Array<string>;
+  duplicatedBy?: ReadonlyArray<string>;
   /** Output only. State of the alert. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -881,7 +881,7 @@ export const MarkAlertAsResolvedRequest =
 
 export interface ListConfigurationsResponse {
   /** List of configurations. */
-  configurations?: Array<Configuration>;
+  configurations?: ReadonlyArray<Configuration>;
   /** Page token. */
   nextPageToken?: string;
 }
@@ -976,7 +976,7 @@ export const AlertDocument = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAlertsResponse {
   /** List of alerts. */
-  alerts?: Array<Alert>;
+  alerts?: ReadonlyArray<Alert>;
   /** Page token. */
   nextPageToken?: string;
 }
@@ -1012,7 +1012,7 @@ export const GenerateOrgProfileProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}:generateOrgProfile",
+      path: "v1beta/{name}:generateOrgProfile",
       hasBody: true,
     }),
     svc,
@@ -1057,7 +1057,7 @@ export const ListProjectsAlertsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/alerts" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/alerts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAlertsRequest>;
 
@@ -1095,11 +1095,7 @@ export const ReadProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsReadRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:read",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:read", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReadProjectsAlertsRequest>;
 
@@ -1132,11 +1128,7 @@ export const EscalateProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsEscalatedRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:escalate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:escalate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EscalateProjectsAlertsRequest>;
 
@@ -1171,7 +1163,7 @@ export const NotActionableProjectsAlertsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:notActionable",
+      path: "v1beta/{name}:notActionable",
       hasBody: true,
     }),
     svc,
@@ -1207,11 +1199,7 @@ export const DuplicateProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsDuplicateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:duplicate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:duplicate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DuplicateProjectsAlertsRequest>;
 
@@ -1242,10 +1230,7 @@ export const GetProjectsAlertsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAlertsRequest>;
 
@@ -1278,10 +1263,7 @@ export const EnumerateFacetsProjectsAlertsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/alerts:enumerateFacets",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/alerts:enumerateFacets" }),
     svc,
   ) as unknown as Schema.Schema<EnumerateFacetsProjectsAlertsRequest>;
 
@@ -1316,11 +1298,7 @@ export const TriageProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsTriagedRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:triage",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:triage", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TriageProjectsAlertsRequest>;
 
@@ -1357,7 +1335,7 @@ export const TrackExternallyProjectsAlertsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:trackExternally",
+      path: "v1beta/{name}:trackExternally",
       hasBody: true,
     }),
     svc,
@@ -1395,7 +1373,7 @@ export const FalsePositiveProjectsAlertsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:falsePositive",
+      path: "v1beta/{name}:falsePositive",
       hasBody: true,
     }),
     svc,
@@ -1431,11 +1409,7 @@ export const ResolveProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsResolvedRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:resolve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:resolve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResolveProjectsAlertsRequest>;
 
@@ -1468,11 +1442,7 @@ export const BenignProjectsAlertsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsBenignRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}:benign",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:benign", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BenignProjectsAlertsRequest>;
 
@@ -1502,10 +1472,7 @@ export const GetProjectsAlertsDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/alerts/{alertsId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAlertsDocumentsRequest>;
 
@@ -1548,7 +1515,7 @@ export const ListProjectsFindingsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/findings" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/findings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsFindingsRequest>;
 
@@ -1595,10 +1562,7 @@ export const SearchProjectsFindingsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/findings:search",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/findings:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsFindingsRequest>;
 
@@ -1633,10 +1597,7 @@ export const GetProjectsFindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/findings/{findingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsFindingsRequest>;
 
@@ -1678,10 +1639,7 @@ export const ListProjectsConfigurationsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/configurations",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/configurations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConfigurationsRequest>;
 
@@ -1716,10 +1674,7 @@ export const GetProjectsConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/configurations/{configurationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsConfigurationsRequest>;
 
@@ -1760,7 +1715,7 @@ export const UpsertProjectsConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/configurations:upsert",
+      path: "v1beta/{parent}/configurations:upsert",
       hasBody: true,
     }),
     svc,
@@ -1805,10 +1760,7 @@ export const ListProjectsConfigurationsRevisionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/configurations/{configurationsId}/revisions",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConfigurationsRevisionsRequest>;
 

@@ -42,7 +42,7 @@ export interface GoogleCloudDatacatalogLineageV1ProcessLinks {
   /** The process name in the format of `projects/{project}/locations/{location}/processes/{process}`. */
   process?: string;
   /** An array containing link details objects of the links provided in the original request. A single process can result in creating multiple links. If any of the links you provide in the request are created by the same process, they all are included in this array. */
-  links?: Array<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
+  links?: ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
 }
 
 export const GoogleCloudDatacatalogLineageV1ProcessLinks =
@@ -55,7 +55,7 @@ export const GoogleCloudDatacatalogLineageV1ProcessLinks =
 
 export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
   /** An array of processes associated with the specified links. */
-  processLinks?: Array<GoogleCloudDatacatalogLineageV1ProcessLinks>;
+  processLinks?: ReadonlyArray<GoogleCloudDatacatalogLineageV1ProcessLinks>;
   /** The token to specify as `page_token` in the subsequent call to get the next page. Omitted if there are no more pages in the response. */
   nextPageToken?: string;
 }
@@ -123,7 +123,7 @@ export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionInges
 
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion {
   /** Optional. List of rules for Data Lineage ingestion. */
-  rules?: Array<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
+  rules?: ReadonlyArray<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
 }
 
 export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion =
@@ -140,7 +140,7 @@ export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion =
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -181,9 +181,9 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -289,7 +289,7 @@ export const GoogleCloudDatacatalogLineageV1Process =
 
 export interface GoogleCloudDatacatalogLineageV1ListProcessesResponse {
   /** The processes from the specified project and location. */
-  processes?: Array<GoogleCloudDatacatalogLineageV1Process>;
+  processes?: ReadonlyArray<GoogleCloudDatacatalogLineageV1Process>;
   /** The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -310,7 +310,7 @@ export interface GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventRespon
   /** Created process name. Format: `projects/{project}/locations/{location}/processes/{process}`. */
   process?: string;
   /** Created lineage event names. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. */
-  lineageEvents?: Array<string>;
+  lineageEvents?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse =
@@ -423,7 +423,7 @@ export const GoogleCloudDatacatalogLineageV1Run =
 
 export interface GoogleCloudDatacatalogLineageV1SearchLinksResponse {
   /** The list of links for a given asset. Can be empty if the asset has no relations of requested type (source or target). */
-  links?: Array<GoogleCloudDatacatalogLineageV1Link>;
+  links?: ReadonlyArray<GoogleCloudDatacatalogLineageV1Link>;
   /** The token to specify as `page_token` in the subsequent call to get the next page. Omitted if there are no more pages in the response. */
   nextPageToken?: string;
 }
@@ -455,7 +455,7 @@ export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest 
   /** The maximum number of processes to return in a single page of the response. A page may contain fewer results than this value. */
   pageSize?: number;
   /** Required. An array of links to check for their associated LineageProcesses. The maximum number of items in this array is 100. If the request contains more than 100 links, it returns the `INVALID_ARGUMENT` error. Format: `projects/{project}/locations/{location}/links/{link}`. */
-  links?: Array<string>;
+  links?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest =
@@ -470,7 +470,7 @@ export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest =
 
 export interface GoogleCloudDatacatalogLineageV1LineageEvent {
   /** Optional. List of source-target pairs. Can't contain more than 100 tuples. */
-  links?: Array<GoogleCloudDatacatalogLineageV1EventLink>;
+  links?: ReadonlyArray<GoogleCloudDatacatalogLineageV1EventLink>;
   /** Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.` */
   name?: string;
   /** Required. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported. */
@@ -491,7 +491,7 @@ export const GoogleCloudDatacatalogLineageV1LineageEvent =
 
 export interface GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
   /** Lineage events from the specified project and location. */
-  lineageEvents?: Array<GoogleCloudDatacatalogLineageV1LineageEvent>;
+  lineageEvents?: ReadonlyArray<GoogleCloudDatacatalogLineageV1LineageEvent>;
   /** The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -510,7 +510,7 @@ export interface GoogleCloudDatacatalogLineageV1ListRunsResponse {
   /** The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The runs from the specified project and location. */
-  runs?: Array<GoogleCloudDatacatalogLineageV1Run>;
+  runs?: ReadonlyArray<GoogleCloudDatacatalogLineageV1Run>;
 }
 
 export const GoogleCloudDatacatalogLineageV1ListRunsResponse =
@@ -534,10 +534,7 @@ export const GetFoldersLocationsConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/config",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsConfigRequest>;
 
@@ -574,11 +571,7 @@ export const PatchFoldersLocationsConfigRequest =
       GoogleCloudDatacatalogLineageConfigmanagementV1Config,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/config",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersLocationsConfigRequest>;
 
@@ -615,7 +608,7 @@ export const ProcessOpenLineageRunEventProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:processOpenLineageRunEvent",
+      path: "v1/{parent}:processOpenLineageRunEvent",
       hasBody: true,
     }),
     svc,
@@ -656,7 +649,7 @@ export const BatchSearchLinkProcessesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:batchSearchLinkProcesses",
+      path: "v1/{parent}:batchSearchLinkProcesses",
       hasBody: true,
     }),
     svc,
@@ -695,11 +688,7 @@ export const SearchLinksProjectsLocationsRequest =
       GoogleCloudDatacatalogLineageV1SearchLinksRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:searchLinks",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:searchLinks", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SearchLinksProjectsLocationsRequest>;
 
@@ -731,10 +720,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -765,10 +751,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -813,10 +796,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -857,11 +837,7 @@ export const CancelProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -892,10 +868,7 @@ export const GetProjectsLocationsConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/config",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConfigRequest>;
 
@@ -932,11 +905,7 @@ export const PatchProjectsLocationsConfigRequest =
       GoogleCloudDatacatalogLineageConfigmanagementV1Config,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/config",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConfigRequest>;
 
@@ -974,10 +943,7 @@ export const ListProjectsLocationsProcessesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/processes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProcessesRequest>;
 
@@ -1021,11 +987,7 @@ export const CreateProjectsLocationsProcessesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/processes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsProcessesRequest>;
 
@@ -1057,10 +1019,7 @@ export const GetProjectsLocationsProcessesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProcessesRequest>;
 
@@ -1097,10 +1056,7 @@ export const DeleteProjectsLocationsProcessesRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessesRequest>;
 
@@ -1148,11 +1104,7 @@ export const PatchProjectsLocationsProcessesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsProcessesRequest>;
 
@@ -1192,11 +1144,7 @@ export const CreateProjectsLocationsProcessesRunsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/runs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsProcessesRunsRequest>;
 
@@ -1234,10 +1182,7 @@ export const ListProjectsLocationsProcessesRunsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProcessesRunsRequest>;
 
@@ -1273,10 +1218,7 @@ export const GetProjectsLocationsProcessesRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProcessesRunsRequest>;
 
@@ -1313,10 +1255,7 @@ export const DeleteProjectsLocationsProcessesRunsRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessesRunsRequest>;
 
@@ -1361,11 +1300,7 @@ export const PatchProjectsLocationsProcessesRunsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsProcessesRunsRequest>;
 
@@ -1403,10 +1338,7 @@ export const ListProjectsLocationsProcessesRunsLineageEventsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/lineageEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProcessesRunsLineageEventsRequest>;
 
@@ -1453,7 +1385,7 @@ export const CreateProjectsLocationsProcessesRunsLineageEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents",
+      path: "v1/{parent}/lineageEvents",
       hasBody: true,
     }),
     svc,
@@ -1493,10 +1425,7 @@ export const DeleteProjectsLocationsProcessesRunsLineageEventsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents/{lineageEventsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessesRunsLineageEventsRequest>;
 
@@ -1529,10 +1458,7 @@ export const GetProjectsLocationsProcessesRunsLineageEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents/{lineageEventsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProcessesRunsLineageEventsRequest>;
 
@@ -1564,10 +1490,7 @@ export const GetOrganizationsLocationsConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/config",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsConfigRequest>;
 
@@ -1604,11 +1527,7 @@ export const PatchOrganizationsLocationsConfigRequest =
       GoogleCloudDatacatalogLineageConfigmanagementV1Config,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/config",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsConfigRequest>;
 
