@@ -5,9 +5,10 @@
  * Personal/Organization Access Token issued from
  * https://expo.dev/settings/access-tokens, sent as `Authorization: Bearer <token>`.
  */
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
-import * as Context from "effect/Context";
 import * as Redacted from "effect/Redacted";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
@@ -23,6 +24,13 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "EasCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  accessToken: EffectConfig.string("EXPO_TOKEN"),
+  apiBaseUrl: EffectConfig.string("EXPO_API_URL").pipe(
+    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+  ),
+});
+
 /**
  * Build credentials from environment variables.
  *
@@ -34,17 +42,16 @@ export class Credentials extends Context.Service<Credentials, Config>()(
  */
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const accessToken = process.env.EXPO_TOKEN;
-
-    if (!accessToken) {
-      return yield* new ConfigError({
-        message: "EXPO_TOKEN environment variable is required",
-      });
-    }
-
-    const apiBaseUrl = process.env.EXPO_API_URL ?? DEFAULT_API_BASE_URL;
-
-    return { accessToken: Redacted.make(accessToken), apiBaseUrl };
-  }),
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message: "EXPO_TOKEN environment variable is required",
+        }),
+    ),
+    Effect.map(({ accessToken, apiBaseUrl }) => ({
+      accessToken: Redacted.make(accessToken),
+      apiBaseUrl,
+    })),
+  ),
 );

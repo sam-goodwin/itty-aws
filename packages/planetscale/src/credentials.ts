@@ -1,7 +1,8 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 export const DEFAULT_API_BASE_URL = "https://api.planetscale.com/v1";
@@ -17,36 +18,27 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "PlanetScaleCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  tokenId: EffectConfig.string("PLANETSCALE_API_TOKEN_ID"),
+  token: EffectConfig.string("PLANETSCALE_API_TOKEN"),
+  organization: EffectConfig.string("PLANETSCALE_ORGANIZATION"),
+});
+
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const tokenId = process.env.PLANETSCALE_API_TOKEN_ID;
-    const token = process.env.PLANETSCALE_API_TOKEN;
-    const organization = process.env.PLANETSCALE_ORGANIZATION;
-
-    if (!tokenId) {
-      return yield* new ConfigError({
-        message: "PLANETSCALE_API_TOKEN_ID environment variable is required",
-      });
-    }
-
-    if (!token) {
-      return yield* new ConfigError({
-        message: "PLANETSCALE_API_TOKEN environment variable is required",
-      });
-    }
-
-    if (!organization) {
-      return yield* new ConfigError({
-        message: "PLANETSCALE_ORGANIZATION environment variable is required",
-      });
-    }
-
-    return {
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message:
+            "PLANETSCALE_API_TOKEN_ID, PLANETSCALE_API_TOKEN, and PLANETSCALE_ORGANIZATION environment variables are required",
+        }),
+    ),
+    Effect.map(({ tokenId, token, organization }) => ({
       tokenId,
       token: Redacted.make(token),
       organization,
       apiBaseUrl: DEFAULT_API_BASE_URL,
-    };
-  }),
+    })),
+  ),
 );

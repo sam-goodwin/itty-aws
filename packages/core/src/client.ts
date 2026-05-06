@@ -25,6 +25,7 @@
  * const result = yield* fn({ organization: "my-org" });
  * ```
  */
+import * as Config from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import { pipe } from "effect/Function";
@@ -54,15 +55,12 @@ import { getPath } from "./traits.ts";
 // `DISTILLED_DEBUG=1` forces the MinimumLogLevel to Debug for SDK operations,
 // independent of the caller's logger config. Users who set `MinimumLogLevel`
 // to Debug themselves get the same logs without needing the env var.
-const distilledDebugEnv: boolean = (() => {
-  try {
-    return (
-      typeof process !== "undefined" && process.env?.DISTILLED_DEBUG === "1"
-    );
-  } catch {
-    return false;
-  }
-})();
+const distilledDebugConfig: Effect.Effect<boolean> = Config.string(
+  "DISTILLED_DEBUG",
+)
+  .pipe(Config.map((raw) => raw === "1"))
+  .asEffect()
+  .pipe(Effect.orElseSucceed(() => false));
 
 // ============================================================================
 // Client Types
@@ -760,9 +758,11 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             },
           }),
         );
-        return distilledDebugEnv
-          ? Effect.provideService(withSpan, MinimumLogLevel, "Debug")
-          : withSpan;
+        return Effect.flatMap(distilledDebugConfig, (isDebug) =>
+          isDebug
+            ? Effect.provideService(withSpan, MinimumLogLevel, "Debug")
+            : withSpan,
+        );
       };
 
       const Proto = {

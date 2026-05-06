@@ -1,7 +1,9 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
+import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 export const DEFAULT_API_BASE_URL = "https://api.cdp.coinbase.com/platform";
@@ -36,12 +38,28 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "CoinbaseCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  apiKeyId: EffectConfig.option(EffectConfig.string("CDP_API_KEY_ID")),
+  apiKeyName: EffectConfig.option(EffectConfig.string("CDP_API_KEY_NAME")),
+  apiKeySecret: EffectConfig.string("CDP_API_KEY_SECRET"),
+  walletSecret: EffectConfig.option(EffectConfig.string("CDP_WALLET_SECRET")),
+});
+
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
   Effect.gen(function* () {
-    const apiKeyId = process.env.CDP_API_KEY_ID ?? process.env.CDP_API_KEY_NAME;
-    const apiKeySecret = process.env.CDP_API_KEY_SECRET;
-    const walletSecret = process.env.CDP_WALLET_SECRET;
+    const config = yield* envConfig.asEffect().pipe(
+      Effect.mapError(
+        () =>
+          new ConfigError({
+            message: "CDP_API_KEY_SECRET environment variable is required",
+          }),
+      ),
+    );
+
+    const apiKeyId =
+      Option.getOrUndefined(config.apiKeyId) ??
+      Option.getOrUndefined(config.apiKeyName);
 
     if (!apiKeyId) {
       return yield* new ConfigError({
@@ -50,15 +68,11 @@ export const CredentialsFromEnv = Layer.effect(
       });
     }
 
-    if (!apiKeySecret) {
-      return yield* new ConfigError({
-        message: "CDP_API_KEY_SECRET environment variable is required",
-      });
-    }
+    const walletSecret = Option.getOrUndefined(config.walletSecret);
 
     return {
       apiKeyId,
-      apiKeySecret: Redacted.make(apiKeySecret),
+      apiKeySecret: Redacted.make(config.apiKeySecret),
       walletSecret: walletSecret ? Redacted.make(walletSecret) : undefined,
       apiBaseUrl: DEFAULT_API_BASE_URL,
     };

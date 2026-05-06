@@ -1,7 +1,8 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 export const DEFAULT_API_BASE_URL = "https://api.prisma.io";
@@ -15,20 +16,22 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "PrismaPostgresCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  apiToken: EffectConfig.string("PRISMA_POSTGRES_API_TOKEN"),
+});
+
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const apiToken = process.env.PRISMA_POSTGRES_API_TOKEN;
-
-    if (!apiToken) {
-      return yield* new ConfigError({
-        message: "PRISMA_POSTGRES_API_TOKEN environment variable is required",
-      });
-    }
-
-    return {
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message: "PRISMA_POSTGRES_API_TOKEN environment variable is required",
+        }),
+    ),
+    Effect.map(({ apiToken }) => ({
       apiToken: Redacted.make(apiToken),
       apiBaseUrl: DEFAULT_API_BASE_URL,
-    };
-  }),
+    })),
+  ),
 );

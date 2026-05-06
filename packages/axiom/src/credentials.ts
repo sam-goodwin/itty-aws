@@ -1,7 +1,9 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
+import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 /** Default base URL for Axiom Cloud. Self-hosted users can override via AXIOM_URL. */
@@ -22,6 +24,15 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "AxiomCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  apiToken: EffectConfig.option(EffectConfig.string("AXIOM_TOKEN")),
+  apiKey: EffectConfig.option(EffectConfig.string("AXIOM_API_KEY")),
+  apiBaseUrl: EffectConfig.string("AXIOM_URL").pipe(
+    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+  ),
+  orgId: EffectConfig.option(EffectConfig.string("AXIOM_ORG_ID")),
+});
+
 /**
  * Build {@link Credentials} from environment variables.
  *
@@ -33,7 +44,18 @@ export class Credentials extends Context.Service<Credentials, Config>()(
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
   Effect.gen(function* () {
-    const apiKey = process.env.AXIOM_TOKEN ?? process.env.AXIOM_API_KEY;
+    const config = yield* envConfig.asEffect().pipe(
+      Effect.mapError(
+        () =>
+          new ConfigError({
+            message:
+              "AXIOM_TOKEN (or AXIOM_API_KEY) environment variable is required",
+          }),
+      ),
+    );
+    const apiKey =
+      Option.getOrUndefined(config.apiToken) ??
+      Option.getOrUndefined(config.apiKey);
 
     if (!apiKey) {
       return yield* new ConfigError({
@@ -44,8 +66,8 @@ export const CredentialsFromEnv = Layer.effect(
 
     return {
       apiKey: Redacted.make(apiKey),
-      apiBaseUrl: process.env.AXIOM_URL ?? DEFAULT_API_BASE_URL,
-      orgId: process.env.AXIOM_ORG_ID,
+      apiBaseUrl: config.apiBaseUrl,
+      orgId: Option.getOrUndefined(config.orgId),
     };
   }),
 );
