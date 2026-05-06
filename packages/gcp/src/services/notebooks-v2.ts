@@ -189,7 +189,7 @@ export interface NetworkInterface {
   /** Optional. The name of the subnet that this VM instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   subnet?: string;
   /** Optional. An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the instance will have an external internet access through an ephemeral external IP address. */
-  accessConfigs?: Array<AccessConfig>;
+  accessConfigs?: ReadonlyArray<AccessConfig>;
   /** Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
   nicType?: "NIC_TYPE_UNSPECIFIED" | "VIRTIO_NET" | "GVNIC" | (string & {});
   /** Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}` */
@@ -219,7 +219,7 @@ export interface ServiceAccount {
   /** Optional. Email address of the service account. */
   email?: string;
   /** Output only. The list of scopes to be made available for this service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -253,7 +253,7 @@ export interface ReservationAffinity {
     | "RESERVATION_SPECIFIC"
     | (string & {});
   /** Optional. Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value. */
   key?: string;
 }
@@ -314,7 +314,7 @@ export interface DataDisk {
   /** Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys. */
   kmsKey?: string;
   /** Optional. The resource policies to apply to the data disk. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const DataDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -329,17 +329,17 @@ export interface GceSetup {
   /** Optional. Use a Compute Engine VM image to start the notebook instance. */
   vmImage?: VmImage;
   /** Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration. */
-  acceleratorConfigs?: Array<AcceleratorConfig>;
+  acceleratorConfigs?: ReadonlyArray<AcceleratorConfig>;
   /** Optional. The boot disk for the VM. */
   bootDisk?: BootDisk;
   /** Optional. The network interfaces for the VM. Supports only one interface. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** Optional. The Compute Engine network tags to add to runtime (see [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)). */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Optional. Configuration for GPU drivers. */
   gpuDriverConfig?: GPUDriverConfig;
   /** Optional. The service account that serves as an identity for the VM instance. Currently supports only one service account. */
-  serviceAccounts?: Array<ServiceAccount>;
+  serviceAccounts?: ReadonlyArray<ServiceAccount>;
   /** Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). */
   shieldedInstanceConfig?: ShieldedInstanceConfig;
   /** Optional. Custom metadata to apply to this instance. */
@@ -361,7 +361,7 @@ export interface GceSetup {
   /** Output only. The unique ID of the Compute Engine instance resource. */
   instanceId?: string;
   /** Optional. Data disks attached to the VM instance. Currently supports only one data disk. */
-  dataDisks?: Array<DataDisk>;
+  dataDisks?: ReadonlyArray<DataDisk>;
 }
 
 export const GceSetup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -403,13 +403,13 @@ export interface Instance {
   /** Output only. Email address of entity that sent original CreateInstance request. */
   creator?: string;
   /** Output only. The upgrade history of this instance. */
-  upgradeHistory?: Array<UpgradeHistoryEntry>;
+  upgradeHistory?: ReadonlyArray<UpgradeHistoryEntry>;
   /** Optional. If true, the notebook instance will not register with the proxy. */
   disableProxyAccess?: boolean;
   /** Optional. Flag to enable managed end user credentials for the instance. */
   enableManagedEuc?: boolean;
   /** Optional. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance. */
-  instanceOwners?: Array<string>;
+  instanceOwners?: ReadonlyArray<string>;
   /** Output only. Instance health_state. */
   healthState?:
     | "HEALTH_STATE_UNSPECIFIED"
@@ -473,9 +473,9 @@ export interface ListInstancesResponse {
   /** Page token that can be used to continue listing from the last result in the next list call. */
   nextPageToken?: string;
   /** A list of returned instances. */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** Unordered list. Locations that could not be reached. For example, ['projects/{project_id}/locations/us-west1-a', 'projects/{project_id}/locations/us-central1-b']. A ListInstancesResponse will only contain either instances or unreachables, */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -502,7 +502,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -546,9 +546,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -594,7 +594,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -624,7 +624,7 @@ export const StartInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -648,7 +648,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -659,7 +659,7 @@ export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -692,7 +692,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -829,9 +829,9 @@ export const RestoreInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface SupportedValues {
   /** Output only. The machine types supported by WbI. */
-  machineTypes?: Array<string>;
+  machineTypes?: ReadonlyArray<string>;
   /** Output only. The accelerator types supported by WbI. */
-  acceleratorTypes?: Array<string>;
+  acceleratorTypes?: ReadonlyArray<string>;
 }
 
 export const SupportedValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -915,7 +915,7 @@ export interface Config {
   /** Output only. Flag to disable the creation of legacy Workbench notebooks (User-managed notebooks and Google-managed notebooks). */
   disableWorkbenchLegacyCreation?: boolean;
   /** Output only. The list of available images to create a WbI. */
-  availableImages?: Array<ImageRelease>;
+  availableImages?: ReadonlyArray<ImageRelease>;
   /** Output only. The default values for configuration. */
   defaultValues?: DefaultValues;
   /** Output only. The supported values for configuration. */
@@ -956,7 +956,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v2/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -991,10 +991,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1025,10 +1022,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1073,10 +1067,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1111,10 +1102,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1148,11 +1136,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1183,10 +1167,7 @@ export const GetProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
@@ -1220,11 +1201,7 @@ export const ResetProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResetInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:reset",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:reset", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResetProjectsLocationsInstancesRequest>;
 
@@ -1260,10 +1237,7 @@ export const GetIamPolicyProjectsLocationsInstancesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
 
@@ -1297,11 +1271,7 @@ export const RestoreProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestoreInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restore",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:restore", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RestoreProjectsLocationsInstancesRequest>;
 
@@ -1335,11 +1305,7 @@ export const StartProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:start",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartProjectsLocationsInstancesRequest>;
 
@@ -1375,7 +1341,7 @@ export const ReportInfoSystemProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:reportInfoSystem",
+      path: "v2/{name}:reportInfoSystem",
       hasBody: true,
     }),
     svc,
@@ -1411,11 +1377,7 @@ export const StopProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsInstancesRequest>;
 
@@ -1449,11 +1411,7 @@ export const UpgradeSystemProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpgradeInstanceSystemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:upgradeSystem",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:upgradeSystem", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpgradeSystemProjectsLocationsInstancesRequest>;
 
@@ -1489,7 +1447,7 @@ export const TestIamPermissionsProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:testIamPermissions",
+      path: "v2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1528,7 +1486,7 @@ export const CheckAuthorizationProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:checkAuthorization",
+      path: "v2/{name}:checkAuthorization",
       hasBody: true,
     }),
     svc,
@@ -1567,7 +1525,7 @@ export const GenerateAccessTokenProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:generateAccessToken",
+      path: "v2/{name}:generateAccessToken",
       hasBody: true,
     }),
     svc,
@@ -1604,11 +1562,7 @@ export const RollbackProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RollbackInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:rollback",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:rollback", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RollbackProjectsLocationsInstancesRequest>;
 
@@ -1639,10 +1593,7 @@ export const GetConfigProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances:getConfig",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/instances:getConfig" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsLocationsInstancesRequest>;
 
@@ -1678,7 +1629,7 @@ export const ResizeDiskProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:resizeDisk",
+      path: "v2/{notebookInstance}:resizeDisk",
       hasBody: true,
     }),
     svc,
@@ -1714,11 +1665,7 @@ export const DiagnoseProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DiagnoseInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:diagnose",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:diagnose", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DiagnoseProjectsLocationsInstancesRequest>;
 
@@ -1758,11 +1705,7 @@ export const CreateProjectsLocationsInstancesRequest =
     instanceId: Schema.optional(Schema.String).pipe(T.HttpQuery("instanceId")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
 
@@ -1796,10 +1739,7 @@ export const DeleteProjectsLocationsInstancesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
 
@@ -1839,11 +1779,7 @@ export const PatchProjectsLocationsInstancesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsInstancesRequest>;
 
@@ -1874,10 +1810,7 @@ export const CheckUpgradabilityProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     notebookInstance: Schema.String.pipe(T.HttpPath("notebookInstance")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:checkUpgradability",
-    }),
+    T.Http({ method: "GET", path: "v2/{notebookInstance}:checkUpgradability" }),
     svc,
   ) as unknown as Schema.Schema<CheckUpgradabilityProjectsLocationsInstancesRequest>;
 
@@ -1921,10 +1854,7 @@ export const ListProjectsLocationsInstancesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
 
@@ -1962,11 +1892,7 @@ export const UpgradeProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpgradeInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:upgrade",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:upgrade", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpgradeProjectsLocationsInstancesRequest>;
 
@@ -2002,7 +1928,7 @@ export const SetIamPolicyProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setIamPolicy",
+      path: "v2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,

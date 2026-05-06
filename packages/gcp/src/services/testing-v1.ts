@@ -66,7 +66,7 @@ export const AndroidDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeviceSession {
   /** Output only. The historical state transitions of the session_state message including the current session state. */
-  stateHistories?: Array<SessionStateEvent>;
+  stateHistories?: ReadonlyArray<SessionStateEvent>;
   /** Output only. The interval of time that this device must be interacted with before it transitions from ACTIVE to TIMEOUT_INACTIVITY. */
   inactivityTimeout?: string;
   /** Required. The requested device */
@@ -184,7 +184,7 @@ export interface AndroidModel {
   /** Screen density in DPI. This corresponds to ro.sf.lcd_density */
   screenDensity?: number;
   /** Tags for this dimension. Examples: "default", "preview", "deprecated". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The manufacturer of this device. */
   manufacturer?: string;
   /** Whether this device is a phone, tablet, wearable, etc. */
@@ -210,13 +210,13 @@ export interface AndroidModel {
     | "EMULATOR"
     | (string & {});
   /** The list of supported ABIs for this device. This corresponds to either android.os.Build.SUPPORTED_ABIS (for API level 21 and above) or android.os.Build.CPU_ABI/CPU_ABI2. The most preferred ABI is the first element in the list. Elements are optionally prefixed by "version_id:" (where version_id is the id of an AndroidVersion), denoting an ABI that is supported only on a particular version. */
-  supportedAbis?: Array<string>;
+  supportedAbis?: ReadonlyArray<string>;
   /** Version-specific information of an Android model. */
-  perVersionInfo?: Array<PerAndroidVersionInfo>;
+  perVersionInfo?: ReadonlyArray<PerAndroidVersionInfo>;
   /** The set of Android versions this device supports. */
-  supportedVersionIds?: Array<string>;
+  supportedVersionIds?: ReadonlyArray<string>;
   /** Reasons for access denial. This model is accessible if this list is empty, otherwise the model is viewable only. */
-  accessDeniedReasons?: Array<
+  accessDeniedReasons?: ReadonlyArray<
     "ACCESS_DENIED_REASON_UNSPECIFIED" | "EULA_NOT_ACCEPTED" | (string & {})
   >;
   /** Screen size in the horizontal (X) dimension measured in pixels. */
@@ -250,7 +250,7 @@ export interface Locale {
   /** A human-friendly name for this language/locale. Example: "English". */
   name?: string;
   /** Tags for this dimension. Example: "default". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The id for this locale. Example: "en_US". */
   id?: string;
   /** A human-friendly string representing the region for this locale. Example: "United States". Not present for every locale. */
@@ -268,7 +268,7 @@ export interface Orientation {
   /** A human-friendly name for this orientation. Example: "portrait". */
   name?: string;
   /** Tags for this dimension. Example: "default". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The id for this orientation. Example: "portrait". */
   id?: string;
 }
@@ -281,9 +281,9 @@ export const Orientation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AndroidRuntimeConfiguration {
   /** The set of available locales. */
-  locales?: Array<Locale>;
+  locales?: ReadonlyArray<Locale>;
   /** The set of available orientations. */
-  orientations?: Array<Orientation>;
+  orientations?: ReadonlyArray<Orientation>;
 }
 
 export const AndroidRuntimeConfiguration =
@@ -329,7 +329,7 @@ export interface AndroidVersion {
   /** The code name for this Android version. Examples: "JellyBean", "KitKat". */
   codeName?: string;
   /** Tags for this dimension. Examples: "default", "preview", "deprecated". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** An opaque id for this Android version. Use this id to invoke the TestExecutionService. */
   id?: string;
   /** Market share for this version. */
@@ -348,11 +348,11 @@ export const AndroidVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AndroidDeviceCatalog {
   /** The set of supported Android device models. */
-  models?: Array<AndroidModel>;
+  models?: ReadonlyArray<AndroidModel>;
   /** The set of supported runtime configurations. */
   runtimeConfiguration?: AndroidRuntimeConfiguration;
   /** The set of supported Android OS versions. */
-  versions?: Array<AndroidVersion>;
+  versions?: ReadonlyArray<AndroidVersion>;
 }
 
 export const AndroidDeviceCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -397,11 +397,11 @@ export const CancelTestMatrixResponse =
 
 export interface IosVersion {
   /** The available Xcode versions for this version. */
-  supportedXcodeVersionIds?: Array<string>;
+  supportedXcodeVersionIds?: ReadonlyArray<string>;
   /** An integer representing the minor iOS version. Examples: "1", "2". */
   minorVersion?: number;
   /** Tags for this dimension. Examples: "default", "preview", "deprecated". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** An integer representing the major iOS version. Examples: "8", "9". */
   majorVersion?: number;
   /** An opaque id for this iOS version. Use this id to invoke the TestExecutionService. */
@@ -493,7 +493,7 @@ export const ResultStorage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AndroidDeviceList {
   /** Required. A list of Android devices. */
-  androidDevices?: Array<AndroidDevice>;
+  androidDevices?: ReadonlyArray<AndroidDevice>;
 }
 
 export const AndroidDeviceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -502,13 +502,13 @@ export const AndroidDeviceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AndroidMatrix {
   /** Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options. */
-  androidVersionIds?: Array<string>;
+  androidVersionIds?: ReadonlyArray<string>;
   /** Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options. */
-  orientations?: Array<string>;
+  orientations?: ReadonlyArray<string>;
   /** Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options. */
-  androidModelIds?: Array<string>;
+  androidModelIds?: ReadonlyArray<string>;
   /** Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options. */
-  locales?: Array<string>;
+  locales?: ReadonlyArray<string>;
 }
 
 export const AndroidMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -538,7 +538,7 @@ export const IosDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IosDeviceList {
   /** Required. A list of iOS devices. */
-  iosDevices?: Array<IosDevice>;
+  iosDevices?: ReadonlyArray<IosDevice>;
 }
 
 export const IosDeviceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -576,7 +576,7 @@ export interface ClientInfo {
   /** Required. Client name, such as gcloud. */
   name?: string;
   /** The list of detailed information about client. */
-  clientInfoDetails?: Array<ClientInfoDetail>;
+  clientInfoDetails?: ReadonlyArray<ClientInfoDetail>;
 }
 
 export const ClientInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -616,7 +616,7 @@ export interface StartActivityIntent {
   /** Action name. Required for START_ACTIVITY. */
   action?: string;
   /** Intent categories to set on the intent. */
-  categories?: Array<string>;
+  categories?: ReadonlyArray<string>;
 }
 
 export const StartActivityIntent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -651,7 +651,7 @@ export const RoboStartingIntent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ApkSplits {
   /** A list of .apk files generated by bundletool to install to the device under test as a single android app with adb install-multiple. If specified, requires one or more bundle_splits. The first split specified represents the base APK, while subsequent splits represent feature apks. */
-  bundleSplits?: Array<FileReference>;
+  bundleSplits?: ReadonlyArray<FileReference>;
 }
 
 export const ApkSplits = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -672,7 +672,7 @@ export const AppBundle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AndroidRoboTest {
   /** A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided. */
-  roboDirectives?: Array<RoboDirective>;
+  roboDirectives?: ReadonlyArray<RoboDirective>;
   /** The mode in which Robo should run. Most clients should allow the server to populate this field automatically. */
   roboMode?:
     | "ROBO_MODE_UNSPECIFIED"
@@ -682,7 +682,7 @@ export interface AndroidRoboTest {
   /** The java package for the application under test. The default value is determined by examining the application's manifest. */
   appPackageId?: string;
   /** The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly). */
-  startingIntents?: Array<RoboStartingIntent>;
+  startingIntents?: ReadonlyArray<RoboStartingIntent>;
   /** The initial activity that should be used to start the app. */
   appInitialActivity?: string;
   /** The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50. */
@@ -727,13 +727,13 @@ export const IosDeviceFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IosTestSetup {
   /** List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID. */
-  pullDirectories?: Array<IosDeviceFile>;
+  pullDirectories?: ReadonlyArray<IosDeviceFile>;
   /** iOS apps to install in addition to those being directly tested. */
-  additionalIpas?: Array<FileReference>;
+  additionalIpas?: ReadonlyArray<FileReference>;
   /** The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog. */
   networkProfile?: string;
   /** List of files to push to the device before starting the test. */
-  pushFiles?: Array<IosDeviceFile>;
+  pushFiles?: ReadonlyArray<IosDeviceFile>;
 }
 
 export const IosTestSetup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -805,7 +805,7 @@ export const DeviceFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestSetup {
   /** Optional. Initial setup APKs to install before the app under test is installed. Limited to a combined total of 100 initial setup and additional files. */
-  initialSetupApks?: Array<Apk>;
+  initialSetupApks?: ReadonlyArray<Apk>;
   /** Whether to prevent all runtime permissions to be granted at app install */
   dontAutograntPermissions?: boolean;
   /** The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog. */
@@ -815,13 +815,13 @@ export interface TestSetup {
   /** The device will be logged in on this account for the duration of the test. */
   account?: Account;
   /** List of files to push to the device before starting the test. */
-  filesToPush?: Array<DeviceFile>;
+  filesToPush?: ReadonlyArray<DeviceFile>;
   /** APKs to install in addition to those being directly tested. These will be installed after the app under test. Limited to a combined total of 100 initial setup and additional files. */
-  additionalApks?: Array<Apk>;
+  additionalApks?: ReadonlyArray<Apk>;
   /** Environment variables to set for the test (only applicable for instrumentation tests). */
-  environmentVariables?: Array<EnvironmentVariable>;
+  environmentVariables?: ReadonlyArray<EnvironmentVariable>;
   /** List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device. */
-  directoriesToPull?: Array<string>;
+  directoriesToPull?: ReadonlyArray<string>;
 }
 
 export const TestSetup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -838,7 +838,7 @@ export const TestSetup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IosTestLoop {
   /** The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified. */
-  scenarios?: Array<number>;
+  scenarios?: ReadonlyArray<number>;
   /** Output only. The bundle id for the application under test. */
   appBundleId?: string;
   /** Required. The .ipa of the application to test. */
@@ -892,7 +892,7 @@ export const SmartSharding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestTargetsForShard {
   /** Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0. */
-  testTargets?: Array<string>;
+  testTargets?: ReadonlyArray<string>;
 }
 
 export const TestTargetsForShard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -901,7 +901,7 @@ export const TestTargetsForShard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ManualSharding {
   /** Required. Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. */
-  testTargetsForShard?: Array<TestTargetsForShard>;
+  testTargetsForShard?: ReadonlyArray<TestTargetsForShard>;
 }
 
 export const ManualSharding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -935,7 +935,7 @@ export interface AndroidInstrumentationTest {
   /** The InstrumentationTestRunner class. The default value is determined by examining the application's manifest. */
   testRunnerClass?: string;
   /** Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run. */
-  testTargets?: Array<string>;
+  testTargets?: ReadonlyArray<string>;
   /** The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator. */
   orchestratorOption?:
     | "ORCHESTRATOR_OPTION_UNSPECIFIED"
@@ -965,13 +965,13 @@ export interface AndroidTestLoop {
   /** The java package for the application under test. The default is determined by examining the application's manifest. */
   appPackageId?: string;
   /** The list of scenario labels that should be run during the test. The scenario labels should map to labels defined in the application's manifest. For example, player_experience and com.google.test.loops.player_experience add all of the loops labeled in the manifest with the com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the scenarios field. */
-  scenarioLabels?: Array<string>;
+  scenarioLabels?: ReadonlyArray<string>;
   /** The APK for the application under test. */
   appApk?: FileReference;
   /** A multi-apk app bundle for the application under test. */
   appBundle?: AppBundle;
   /** The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest. */
-  scenarios?: Array<number>;
+  scenarios?: ReadonlyArray<number>;
 }
 
 export const AndroidTestLoop = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1086,7 +1086,7 @@ export const ToolResultsStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestDetails {
   /** Output only. Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages. */
-  progressMessages?: Array<string>;
+  progressMessages?: ReadonlyArray<string>;
   /** Output only. If the TestState is ERROR, then this string will contain human-readable details about the error. */
   errorMessage?: string;
 }
@@ -1214,9 +1214,9 @@ export interface TestMatrix {
   /** Required. How to run the test. */
   testSpecification?: TestSpecification;
   /** Output only. Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list. */
-  extendedInvalidMatrixDetails?: Array<MatrixErrorDetail>;
+  extendedInvalidMatrixDetails?: ReadonlyArray<MatrixErrorDetail>;
   /** Output only. The list of test executions that the service creates for this matrix. */
-  testExecutions?: Array<TestExecution>;
+  testExecutions?: ReadonlyArray<TestExecution>;
   /** Output only. Indicates the current progress of the test matrix. */
   state?:
     | "TEST_STATE_UNSPECIFIED"
@@ -1291,9 +1291,9 @@ export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IntentFilter {
   /** The android:name value of the tag. */
-  categoryNames?: Array<string>;
+  categoryNames?: ReadonlyArray<string>;
   /** The android:name value of the tag. */
-  actionNames?: Array<string>;
+  actionNames?: ReadonlyArray<string>;
   /** The android:mimeType value of the tag. */
   mimeType?: string;
 }
@@ -1306,7 +1306,7 @@ export const IntentFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Service {
   /** Intent filters in the service */
-  intentFilter?: Array<IntentFilter>;
+  intentFilter?: ReadonlyArray<IntentFilter>;
   /** The android:name value */
   name?: string;
 }
@@ -1334,25 +1334,25 @@ export interface ApkManifest {
   /** Version number used internally by the app. */
   versionCode?: string;
   /** Feature usage tags defined in the manifest. */
-  usesFeature?: Array<UsesFeature>;
+  usesFeature?: ReadonlyArray<UsesFeature>;
   /** Meta-data tags defined in the manifest. */
-  metadata?: Array<Metadata>;
+  metadata?: ReadonlyArray<Metadata>;
   /** Maximum API level on which the application is designed to run. */
   maxSdkVersion?: number;
   /** Services contained in the tag. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
   /** Version number shown to users. */
   versionName?: string;
-  intentFilters?: Array<IntentFilter>;
+  intentFilters?: ReadonlyArray<IntentFilter>;
   /** Minimum API level required for the application to run. */
   minSdkVersion?: number;
   /** User-readable name for the application. */
   applicationLabel?: string;
   /** Specifies the API Level on which the application is designed to run. */
   targetSdkVersion?: number;
-  usesPermission?: Array<string>;
+  usesPermission?: ReadonlyArray<string>;
   /** Permissions declared to be used by the application */
-  usesPermissionTags?: Array<UsesPermissionTag>;
+  usesPermissionTags?: ReadonlyArray<UsesPermissionTag>;
 }
 
 export const ApkManifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1381,9 +1381,9 @@ export const ApkDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IosRuntimeConfiguration {
   /** The set of available locales. */
-  locales?: Array<Locale>;
+  locales?: ReadonlyArray<Locale>;
   /** The set of available orientations. */
-  orientations?: Array<Orientation>;
+  orientations?: ReadonlyArray<Orientation>;
 }
 
 export const IosRuntimeConfiguration =
@@ -1396,7 +1396,7 @@ export interface XcodeVersion {
   /** The id for this version. Example: "9.2". */
   version?: string;
   /** Tags for this Xcode version. Example: "default". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const XcodeVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1424,9 +1424,9 @@ export const PerIosVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IosModel {
   /** The set of iOS major software versions this device supports. */
-  supportedVersionIds?: Array<string>;
+  supportedVersionIds?: ReadonlyArray<string>;
   /** Version-specific information of an iOS model. */
-  perVersionInfo?: Array<PerIosVersionInfo>;
+  perVersionInfo?: ReadonlyArray<PerIosVersionInfo>;
   /** The human-readable name for this device model. Examples: "iPhone 4s", "iPad Mini 2". */
   name?: string;
   /** Whether this device is a phone, tablet, wearable, etc. */
@@ -1447,9 +1447,9 @@ export interface IosModel {
   /** The unique opaque id for this model. Use this for invoking the TestExecutionService. */
   id?: string;
   /** Tags for this dimension. Examples: "default", "preview", "deprecated". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html */
-  deviceCapabilities?: Array<string>;
+  deviceCapabilities?: ReadonlyArray<string>;
   /** Screen density in DPI. */
   screenDensity?: number;
 }
@@ -1471,11 +1471,11 @@ export interface IosDeviceCatalog {
   /** The set of supported runtime configurations. */
   runtimeConfiguration?: IosRuntimeConfiguration;
   /** The set of supported iOS software versions. */
-  versions?: Array<IosVersion>;
+  versions?: ReadonlyArray<IosVersion>;
   /** The set of supported Xcode versions. */
-  xcodeVersions?: Array<XcodeVersion>;
+  xcodeVersions?: ReadonlyArray<XcodeVersion>;
   /** The set of supported iOS device models. */
-  models?: Array<IosModel>;
+  models?: ReadonlyArray<IosModel>;
 }
 
 export const IosDeviceCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1507,7 +1507,7 @@ export const DeviceIpBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeviceIpBlockCatalog {
   /** The device IP blocks used by Firebase Test Lab */
-  ipBlocks?: Array<DeviceIpBlock>;
+  ipBlocks?: ReadonlyArray<DeviceIpBlock>;
 }
 
 export const DeviceIpBlockCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1551,7 +1551,7 @@ export const NetworkConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "NetworkConfiguration" });
 
 export interface NetworkConfigurationCatalog {
-  configurations?: Array<NetworkConfiguration>;
+  configurations?: ReadonlyArray<NetworkConfiguration>;
 }
 
 export const NetworkConfigurationCatalog =
@@ -1584,7 +1584,7 @@ export const TestEnvironmentCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListDeviceSessionsResponse {
   /** The sessions matching the specified filter in the given cloud project. */
-  deviceSessions?: Array<DeviceSession>;
+  deviceSessions?: ReadonlyArray<DeviceSession>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1845,7 +1845,7 @@ export const ListProjectsDeviceSessionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/deviceSessions" }),
+    T.Http({ method: "GET", path: "v1/{parent}/deviceSessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDeviceSessionsRequest>;
 
@@ -1880,10 +1880,7 @@ export const GetProjectsDeviceSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/deviceSessions/{deviceSessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDeviceSessionsRequest>;
 
@@ -1917,11 +1914,7 @@ export const CancelProjectsDeviceSessionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelDeviceSessionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/deviceSessions/{deviceSessionsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsDeviceSessionsRequest>;
 
@@ -1958,11 +1951,7 @@ export const PatchProjectsDeviceSessionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DeviceSession).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/deviceSessions/{deviceSessionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDeviceSessionsRequest>;
 
@@ -1998,7 +1987,7 @@ export const CreateProjectsDeviceSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/deviceSessions",
+      path: "v1/{parent}/deviceSessions",
       hasBody: true,
     }),
     svc,

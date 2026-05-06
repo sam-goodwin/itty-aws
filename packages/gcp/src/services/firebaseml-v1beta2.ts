@@ -78,7 +78,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -126,9 +126,9 @@ export interface Model {
   /** Output only. Timestamp when this model was updated in Firebase ML. */
   updateTime?: string;
   /** Output only. Lists operation ids associated with this model whose status is NOT done. */
-  activeOperations?: Array<Operation>;
+  activeOperations?: ReadonlyArray<Operation>;
   /** User defined tags which can be used to group/filter models during listing */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model. */
   name?: string;
   /** Output only. The model_hash will change if a new file is available for download. */
@@ -162,7 +162,7 @@ export interface ListModelsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** The list of models */
-  models?: Array<Model>;
+  models?: ReadonlyArray<Model>;
 }
 
 export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -189,10 +189,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
@@ -223,10 +220,7 @@ export const DownloadProjectsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/models/{modelsId}:download",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{name}:download" }),
     svc,
   ) as unknown as Schema.Schema<DownloadProjectsModelsRequest>;
 
@@ -260,11 +254,7 @@ export const CreateProjectsModelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Model).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/projects/{projectsId}/models",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta2/{parent}/models", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsModelsRequest>;
 
@@ -304,7 +294,7 @@ export const ListProjectsModelsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/projects/{projectsId}/models" }),
+    T.Http({ method: "GET", path: "v1beta2/{parent}/models" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsModelsRequest>;
 
@@ -345,11 +335,7 @@ export const PatchProjectsModelsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Model).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta2/projects/{projectsId}/models/{modelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsModelsRequest>;
 
@@ -380,10 +366,7 @@ export const GetProjectsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsModelsRequest>;
 
@@ -413,10 +396,7 @@ export const DeleteProjectsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta2/projects/{projectsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsModelsRequest>;
 

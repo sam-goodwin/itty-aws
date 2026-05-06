@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface GoogleFirestoreAdminV1beta2ExportDocumentsRequest {
   /** Which collection ids to export. Unspecified means all collections. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
   /** The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time. */
   outputUriPrefix?: string;
 }
@@ -68,7 +68,7 @@ export interface GoogleFirestoreAdminV1beta2Index {
     | "COLLECTION_GROUP"
     | (string & {});
   /** The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field. */
-  fields?: Array<GoogleFirestoreAdminV1beta2IndexField>;
+  fields?: ReadonlyArray<GoogleFirestoreAdminV1beta2IndexField>;
   /** Output only. A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty. */
   name?: string;
   /** Output only. The serving state of the index. */
@@ -126,7 +126,7 @@ export interface GoogleFirestoreAdminV1beta2ImportDocumentsMetadata {
   /** The time this operation started. */
   startTime?: string;
   /** Which collection ids are being imported. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1beta2ImportDocumentsMetadata =
@@ -158,7 +158,7 @@ export interface GoogleFirestoreAdminV1beta2ImportDocumentsRequest {
   /** Location of the exported files. This must match the output_uri_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: google.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix. */
   inputUriPrefix?: string;
   /** Which collection ids to import. Unspecified means all collections included in the import. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1beta2ImportDocumentsRequest =
@@ -226,7 +226,7 @@ export const GoogleFirestoreAdminV1beta2IndexOperationMetadata =
 
 export interface GoogleFirestoreAdminV1beta2IndexConfig {
   /** The indexes supported for this field. */
-  indexes?: Array<GoogleFirestoreAdminV1beta2Index>;
+  indexes?: ReadonlyArray<GoogleFirestoreAdminV1beta2Index>;
   /** Output only. When true, the `Field`'s index configuration is set from the configuration specified by the `ancestor_field`. When false, the `Field`'s index configuration is defined explicitly. */
   usesAncestorConfig?: boolean;
   /** Output only When true, the `Field`'s index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestor_field`, at which point `uses_ancestor_config` will be `true` and `reverting` will be `false`. */
@@ -260,7 +260,7 @@ export interface GoogleFirestoreAdminV1beta2ListFieldsResponse {
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
   /** The requested fields. */
-  fields?: Array<GoogleFirestoreAdminV1beta2Field>;
+  fields?: ReadonlyArray<GoogleFirestoreAdminV1beta2Field>;
 }
 
 export const GoogleFirestoreAdminV1beta2ListFieldsResponse =
@@ -353,7 +353,7 @@ export interface GoogleFirestoreAdminV1beta2FieldOperationMetadata {
   /** The time this operation started. */
   startTime?: string;
   /** A list of IndexConfigDelta, which describe the intent of this operation. */
-  indexConfigDeltas?: Array<GoogleFirestoreAdminV1beta2IndexConfigDelta>;
+  indexConfigDeltas?: ReadonlyArray<GoogleFirestoreAdminV1beta2IndexConfigDelta>;
   /** The time this operation completed. Will be unset if operation still in progress. */
   endTime?: string;
 }
@@ -386,7 +386,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -433,7 +433,7 @@ export const GoogleFirestoreAdminV1RestoreDatabaseMetadata =
 
 export interface GoogleFirestoreAdminV1beta2ListIndexesResponse {
   /** The requested indexes. */
-  indexes?: Array<GoogleFirestoreAdminV1beta2Index>;
+  indexes?: ReadonlyArray<GoogleFirestoreAdminV1beta2Index>;
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
@@ -489,7 +489,7 @@ export interface GoogleFirestoreAdminV1beta2ExportDocumentsMetadata {
   /** The time this operation started. */
   startTime?: string;
   /** Which collection ids are being exported. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1beta2ExportDocumentsMetadata =
@@ -516,7 +516,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   /** The time this operation started. */
   startTime?: string;
   /** The IDs of the collection groups that are being deleted. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
   /** The time this operation completed. Will be unset if operation still in progress. */
   endTime?: string;
   /** The progress, in documents, of this operation. */
@@ -537,7 +537,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   /** The progress, in bytes, of this operation. */
   progressBytes?: GoogleFirestoreAdminV1Progress;
   /** Which namespace IDs are being deleted. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata =
@@ -574,7 +574,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}:importDocuments",
+      path: "v1beta2/{name}:importDocuments",
       hasBody: true,
     }),
     svc,
@@ -615,7 +615,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}:exportDocuments",
+      path: "v1beta2/{name}:exportDocuments",
       hasBody: true,
     }),
     svc,
@@ -658,10 +658,7 @@ export const ListProjectsDatabasesCollectionGroupsIndexesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{parent}/indexes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -700,11 +697,7 @@ export const CreateProjectsDatabasesCollectionGroupsIndexesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleFirestoreAdminV1beta2Index).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta2/{parent}/indexes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -736,10 +729,7 @@ export const GetProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -771,10 +761,7 @@ export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -805,10 +792,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -846,11 +830,7 @@ export const PatchProjectsDatabasesCollectionGroupsFieldsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirestoreAdminV1beta2Field).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -891,10 +871,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{parent}/fields" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 

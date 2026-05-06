@@ -58,7 +58,7 @@ export interface LicenseAssignmentList {
   /** Identifies the resource as a collection of LicenseAssignments. */
   kind?: string;
   /** The LicenseAssignments in this page of results. */
-  items?: Array<LicenseAssignment>;
+  items?: ReadonlyArray<LicenseAssignment>;
   /** ETag of the resource. */
   etag?: string;
 }

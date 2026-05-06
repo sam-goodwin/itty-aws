@@ -73,7 +73,7 @@ export interface AppsOutage {
   /** Timestamp when the outage is expected to be resolved, or has confirmed resolution. Provided only when known. */
   resolutionTime?: string;
   /** List of products impacted by the outage. */
-  products?: Array<string>;
+  products?: ReadonlyArray<string>;
   /** Indicates new alert details under which the outage is communicated. Only populated when Status is MERGED. */
   mergeInfo?: MergeInfo;
   /** Link to the outage event in Google Workspace Status Dashboard */
@@ -161,11 +161,11 @@ export interface RuleViolationInfo {
     | "CHAT"
     | (string & {});
   /** List of matches that were found in the resource content. */
-  matchInfo?: Array<MatchInfo>;
+  matchInfo?: ReadonlyArray<MatchInfo>;
   /** Details of the resource which violated the rule. */
   resourceInfo?: ResourceInfo;
   /** Actions suppressed due to other actions with higher priority. */
-  suppressedActionTypes?: Array<
+  suppressedActionTypes?: ReadonlyArray<
     | "ACTION_TYPE_UNSPECIFIED"
     | "DRIVE_BLOCK_EXTERNAL_SHARING"
     | "DRIVE_WARN_ON_EXTERNAL_SHARING"
@@ -201,11 +201,11 @@ export interface RuleViolationInfo {
     | (string & {})
   >;
   /** Metadata related to the triggered actions. */
-  triggeredActionInfo?: Array<ActionInfo>;
+  triggeredActionInfo?: ReadonlyArray<ActionInfo>;
   /** Resource recipients. For Drive, they are grantees that the Drive file was shared with at the time of rule triggering. Valid values include user emails, group emails, domains, or 'anyone' if the file was publicly accessible. If the file was private the recipients list will be empty. For Gmail, they are emails of the users or groups that the Gmail message was sent to. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Actions applied as a consequence of the rule being triggered. */
-  triggeredActionTypes?: Array<
+  triggeredActionTypes?: ReadonlyArray<
     | "ACTION_TYPE_UNSPECIFIED"
     | "DRIVE_BLOCK_EXTERNAL_SHARING"
     | "DRIVE_WARN_ON_EXTERNAL_SHARING"
@@ -287,7 +287,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -340,7 +340,7 @@ export interface Entity {
   /** Link to a Security Investigation Tool search based on this entity, if available. */
   link?: string;
   /** Extra values beyond name. The order of values should align with headers in EntityList. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const Entity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -351,9 +351,9 @@ export const Entity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EntityList {
   /** Headers of the values in entities. If no value is defined in Entity, this field should be empty. */
-  headers?: Array<string>;
+  headers?: ReadonlyArray<string>;
   /** List of entities affected by the alert. */
-  entities?: Array<Entity>;
+  entities?: ReadonlyArray<Entity>;
   /** Name of the key detail used to display this entity list. */
   name?: string;
 }
@@ -462,7 +462,7 @@ export const ReportingRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAlertFeedbackResponse {
   /** The list of alert feedback. Feedback entries for each alert are ordered by creation time descending. */
-  feedback?: Array<AlertFeedback>;
+  feedback?: ReadonlyArray<AlertFeedback>;
 }
 
 export const ListAlertFeedbackResponse =
@@ -527,7 +527,7 @@ export const AlertMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CsvRow {
   /** The data entries in a CSV file row, as a string array rather than a single comma-separated string. */
-  entries?: Array<string>;
+  entries?: ReadonlyArray<string>;
 }
 
 export const CsvRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -536,9 +536,9 @@ export const CsvRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Csv {
   /** The list of headers for data columns in a CSV file. */
-  headers?: Array<string>;
+  headers?: ReadonlyArray<string>;
   /** The list of data rows in a CSV file, as string arrays rather than as a single comma-separated string. */
-  dataRows?: Array<CsvRow>;
+  dataRows?: ReadonlyArray<CsvRow>;
 }
 
 export const Csv = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -563,7 +563,7 @@ export interface GoogleOperations {
   /** A detailed, freeform incident description. */
   description?: string;
   /** The list of emails which correspond to the users directly affected by the incident. */
-  affectedUserEmails?: Array<string>;
+  affectedUserEmails?: ReadonlyArray<string>;
   /** A header to display above the incident message. Typically used to attach a localized notice on the timeline for followup comms translations. */
   header?: string;
   /** Customer domain for email template personalization. */
@@ -593,7 +593,7 @@ export const SupportTicket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccessApproval {
   /** Justification for data access based on justification enums. */
-  justificationReason?: Array<
+  justificationReason?: ReadonlyArray<
     | "JUSTIFICATION_UNSPECIFIED"
     | "CUSTOMER_INITIATED_SUPPORT"
     | "GOOGLE_INITIATED_REVIEW"
@@ -607,11 +607,11 @@ export interface AccessApproval {
   /** ID of the Access Approvals request. This is a helpful field when requesting support from Google. */
   requestId?: string;
   /** Support tickets related to this Access Approvals request. Populated if there is an associated case number. */
-  tickets?: Array<SupportTicket>;
+  tickets?: ReadonlyArray<SupportTicket>;
   /** Office location of Google staff requesting access such as "US". */
   officeLocation?: string;
   /** Products within scope of the Access Approvals request. */
-  products?: Array<string>;
+  products?: ReadonlyArray<string>;
 }
 
 export const AccessApproval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -627,7 +627,7 @@ export interface GmailMessageInfo {
   /** The message ID. */
   messageId?: string;
   /** The `SHA256` hash of email's attachment and all MIME parts. */
-  attachmentsSha256Hash?: Array<string>;
+  attachmentsSha256Hash?: ReadonlyArray<string>;
   /** The recipient of this email. */
   recipient?: string;
   /** The hash of the message body text. */
@@ -720,7 +720,7 @@ export const SensitiveAdminAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RequestInfo {
   /** List of app developers who triggered notifications for above application. */
-  appDeveloperEmail?: Array<string>;
+  appDeveloperEmail?: ReadonlyArray<string>;
   /** Required. The application that requires the SQL setup. */
   appKey?: string;
   /** Required. Number of requests sent for this application to set up default SQL instance. */
@@ -735,7 +735,7 @@ export const RequestInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AppMakerSqlSetupNotification {
   /** List of applications with requests for default SQL set up. */
-  requestInfo?: Array<RequestInfo>;
+  requestInfo?: ReadonlyArray<RequestInfo>;
 }
 
 export const AppMakerSqlSetupNotification =
@@ -796,7 +796,7 @@ export const VoicemailRecipientError =
 
 export interface VoicemailMisconfiguration {
   /** Issue(s) with voicemail recipients. */
-  errors?: Array<VoicemailRecipientError>;
+  errors?: ReadonlyArray<VoicemailRecipientError>;
 }
 
 export const VoicemailMisconfiguration =
@@ -838,7 +838,7 @@ export const TransferError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TransferMisconfiguration {
   /** Details for each invalid transfer or forward. */
-  errors?: Array<TransferError>;
+  errors?: ReadonlyArray<TransferError>;
 }
 
 export const TransferMisconfiguration =
@@ -942,7 +942,7 @@ export const Notification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Settings {
   /** The list of notifications. */
-  notifications?: Array<Notification>;
+  notifications?: ReadonlyArray<Notification>;
 }
 
 export const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1004,9 +1004,9 @@ export const KeyServiceError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClientSideEncryptionServiceUnavailable {
   /** Identity providers impacted by an outage or misconfiguration. */
-  idpError?: Array<IdentityProviderError>;
+  idpError?: ReadonlyArray<IdentityProviderError>;
   /** External key services impacted by an outage or misconfiguration. */
-  keyServiceError?: Array<KeyServiceError>;
+  keyServiceError?: ReadonlyArray<KeyServiceError>;
 }
 
 export const ClientSideEncryptionServiceUnavailable =
@@ -1017,7 +1017,7 @@ export const ClientSideEncryptionServiceUnavailable =
 
 export interface DeviceCompromised {
   /** Required. The list of security events. */
-  events?: Array<DeviceCompromisedSecurityDetail>;
+  events?: ReadonlyArray<DeviceCompromisedSecurityDetail>;
   /** The email of the user this alert was created for. */
   email?: string;
 }
@@ -1093,7 +1093,7 @@ export interface MailPhishing {
   /** The entity whose actions triggered a Gmail phishing alert. */
   maliciousEntity?: MaliciousEntity;
   /** The list of messages contained by this alert. */
-  messages?: Array<GmailMessageInfo>;
+  messages?: ReadonlyArray<GmailMessageInfo>;
 }
 
 export const MailPhishing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1106,7 +1106,7 @@ export const MailPhishing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccountSuspensionWarning {
   /** Details about why an account is being suspended. */
-  suspensionDetails?: Array<AccountSuspensionDetails>;
+  suspensionDetails?: ReadonlyArray<AccountSuspensionDetails>;
   /** The amount of time remaining to appeal an imminent suspension. After this window has elapsed, the account will be suspended. Only populated if the account suspension is in WARNING state. */
   appealWindow?: string;
   /** Account suspension warning state. */
@@ -1128,7 +1128,7 @@ export const AccountSuspensionWarning =
 
 export interface BatchDeleteAlertsResponse {
   /** The successful list of alert IDs. */
-  successAlertIds?: Array<string>;
+  successAlertIds?: ReadonlyArray<string>;
   /** The status details for each failed `alert_id`. */
   failedAlertStatus?: Record<string, Status>;
 }
@@ -1154,7 +1154,7 @@ export const MandatoryServiceAnnouncement =
 
 export interface BadWhitelist {
   /** The list of messages contained by this alert. */
-  messages?: Array<GmailMessageInfo>;
+  messages?: ReadonlyArray<GmailMessageInfo>;
   /** The domain ID. */
   domainId?: DomainId;
   /** The entity whose actions triggered a Gmail phishing alert. */
@@ -1172,7 +1172,7 @@ export const BadWhitelist = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUndeleteAlertsResponse {
   /** The successful list of alert IDs. */
-  successAlertIds?: Array<string>;
+  successAlertIds?: ReadonlyArray<string>;
   /** The status details for each failed `alert_id`. */
   failedAlertStatus?: Record<string, Status>;
 }
@@ -1187,7 +1187,7 @@ export interface SuspiciousActivity {
   /** The email of the user this alert was created for. */
   email?: string;
   /** Required. The list of security events. */
-  events?: Array<SuspiciousActivitySecurityDetail>;
+  events?: ReadonlyArray<SuspiciousActivitySecurityDetail>;
 }
 
 export const SuspiciousActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1199,7 +1199,7 @@ export interface BatchUndeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
   /** Required. The list of alert IDs to undelete. */
-  alertId?: Array<string>;
+  alertId?: ReadonlyArray<string>;
 }
 
 export const BatchUndeleteAlertsRequest =
@@ -1210,7 +1210,7 @@ export const BatchUndeleteAlertsRequest =
 
 export interface ListAlertsResponse {
   /** The list of alerts. */
-  alerts?: Array<Alert>;
+  alerts?: ReadonlyArray<Alert>;
   /** The token for the next page. If not empty, indicates that there may be more alerts that match the listing request; this value can be used in a subsequent ListAlertsRequest to get alerts continuing from last result of the current list call. */
   nextPageToken?: string;
 }
@@ -1226,13 +1226,13 @@ export interface ActivityRule {
   /** The trigger sources for this rule. * GMAIL_EVENTS * DEVICE_EVENTS * USER_EVENTS */
   triggerSource?: string;
   /** List of action names associated with the rule threshold. */
-  actionNames?: Array<string>;
+  actionNames?: ReadonlyArray<string>;
   /** Alert ID superseding this alert. It is used to indicate that superseding alert is essentially extension of this alert and we found the relationship after creating both alerts. */
   supersedingAlert?: string;
   /** Alert threshold is for example “COUNT > 5”. */
   threshold?: string;
   /** List of alert IDs superseded by this alert. It is used to indicate that this alert is essentially extension of superseded alerts and we found the relationship after creating these alerts. */
-  supersededAlerts?: Array<string>;
+  supersededAlerts?: ReadonlyArray<string>;
   /** The timestamp of the last update to the rule. */
   updateTime?: string;
   /** Rule name. */
@@ -1327,7 +1327,7 @@ export interface PhishingSpike {
   /** If `true`, the email originated from within the organization. */
   isInternal?: boolean;
   /** The list of messages contained by this alert. */
-  messages?: Array<GmailMessageInfo>;
+  messages?: ReadonlyArray<GmailMessageInfo>;
 }
 
 export const PhishingSpike = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1425,7 +1425,7 @@ export interface BatchDeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
   /** Required. The list of alert IDs to delete. */
-  alertId?: Array<string>;
+  alertId?: ReadonlyArray<string>;
 }
 
 export const BatchDeleteAlertsRequest =

@@ -41,13 +41,13 @@ export interface BasicSli {
   /** Good service is defined to be the count of requests made to this service that return successfully. */
   availability?: AvailabilityCriteria;
   /** OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which the Service has activity. For service types that don't support breaking down by location, setting this field will result in an error. */
-  location?: Array<string>;
+  location?: ReadonlyArray<string>;
   /** OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For service types that don't support breaking down by method, setting this field will result in an error. */
-  method?: Array<string>;
+  method?: ReadonlyArray<string>;
   /** Good service is defined to be the count of requests made to this service that are fast enough with respect to latency.threshold. */
   latency?: LatencyCriteria;
   /** OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions. For service types that don't support breaking down by version, setting this field will result in an error. */
-  version?: Array<string>;
+  version?: ReadonlyArray<string>;
 }
 
 export const BasicSli = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -211,7 +211,7 @@ export const ServiceLevelObjective = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServiceLevelObjectivesResponse {
   /** The ServiceLevelObjectives matching the specified filter. */
-  serviceLevelObjectives?: Array<ServiceLevelObjective>;
+  serviceLevelObjectives?: ReadonlyArray<ServiceLevelObjective>;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
@@ -255,7 +255,7 @@ export interface MetricDescriptorMetadata {
     | "DEPRECATED"
     | (string & {});
   /** The scope of the timeseries data of the metric. */
-  timeSeriesResourceHierarchyLevel?: Array<
+  timeSeriesResourceHierarchyLevel?: ReadonlyArray<
     | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
     | "PROJECT"
     | "ORGANIZATION"
@@ -314,9 +314,9 @@ export interface MetricDescriptor {
   /** A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota. */
   displayName?: string;
   /** Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. */
-  monitoredResourceTypes?: Array<string>;
+  monitoredResourceTypes?: ReadonlyArray<string>;
   /** The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed. */
-  labels?: Array<LabelDescriptor>;
+  labels?: ReadonlyArray<LabelDescriptor>;
   /** Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported. */
   valueType?:
     | "VALUE_TYPE_UNSPECIFIED"
@@ -358,7 +358,7 @@ export interface ListMetricDescriptorsResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
   /** The metric descriptors that are available to the project and that match the value of filter, if present. */
-  metricDescriptors?: Array<MetricDescriptor>;
+  metricDescriptors?: ReadonlyArray<MetricDescriptor>;
 }
 
 export const ListMetricDescriptorsResponse =
@@ -394,7 +394,7 @@ export const JsonPathMatcher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Explicit {
   /** The values must be monotonically increasing. */
-  bounds?: Array<number>;
+  bounds?: ReadonlyArray<number>;
 }
 
 export const Explicit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -462,7 +462,7 @@ export interface Exemplar {
   /** The observation (sampling) time of the above value. */
   timestamp?: string;
   /** Contextual information about the example value. Examples are:Trace: type.googleapis.com/google.monitoring.v3.SpanContextLiteral string: type.googleapis.com/google.protobuf.StringValueLabels dropped during aggregation: type.googleapis.com/google.monitoring.v3.DroppedLabelsThere may be only a single attachment of any given message type in a single exemplar, and this is enforced by the system. */
-  attachments?: Array<Record<string, unknown>>;
+  attachments?: ReadonlyArray<Record<string, unknown>>;
   /** Value of the exemplar point. This value determines to which bucket the exemplar belongs. */
   value?: number;
 }
@@ -483,13 +483,13 @@ export interface Distribution {
   /** If specified, contains the range of the population values. The field must not be present if the count is zero. This field is presently ignored by the Cloud Monitoring API v3. */
   range?: Range;
   /** Must be in increasing order of value field. */
-  exemplars?: Array<Exemplar>;
+  exemplars?: ReadonlyArray<Exemplar>;
   /** The sum of squared deviations from the mean of the values in the population. For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's method for accumulating this sum in one pass.If count is zero then this field must be zero. */
   sumOfSquaredDeviation?: number;
   /** The number of values in the population. Must be non-negative. This value must equal the sum of the values in bucket_counts if a histogram is provided. */
   count?: string;
   /** Required in the Cloud Monitoring API v3. The values for each bucket specified in bucket_options. The sum of the values in bucketCounts must equal the value in the count field of the Distribution object. The order of the bucket counts follows the numbering schemes described for the three bucket types. The underflow bucket has number 0; the finite buckets, if any, have numbers 1 through N-2; and the overflow bucket has number N-1. The size of bucket_counts must not be greater than N. If the size is less than N, then the remaining buckets are assigned values of zero. */
-  bucketCounts?: Array<string>;
+  bucketCounts?: ReadonlyArray<string>;
 }
 
 export const Distribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -547,7 +547,7 @@ export interface MonitoredResourceDescriptor {
   /** Required. The monitored resource type. For example, the type "cloudsql_database" represents databases in Google Cloud SQL. For a list of types, see Monitored resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
   type?: string;
   /** Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels "database_id" and "zone". */
-  labels?: Array<LabelDescriptor>;
+  labels?: ReadonlyArray<LabelDescriptor>;
   /** Optional. The resource name of the monitored resource descriptor: "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format "monitoredResourceDescriptors/{type}". */
   name?: string;
   /** Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, "Google Cloud SQL Database". */
@@ -579,7 +579,7 @@ export const MonitoredResourceDescriptor =
 
 export interface ListMonitoredResourceDescriptorsResponse {
   /** The monitored resource descriptors that are available to this project and that match filter, if present. */
-  resourceDescriptors?: Array<MonitoredResourceDescriptor>;
+  resourceDescriptors?: ReadonlyArray<MonitoredResourceDescriptor>;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
@@ -648,7 +648,7 @@ export interface NotificationChannel {
     | "VERIFIED"
     | (string & {});
   /** Records of the modification of this channel. */
-  mutationRecords?: Array<MutationRecord>;
+  mutationRecords?: ReadonlyArray<MutationRecord>;
   /** The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. */
   type?: string;
   /** Record of the creation of this channel. */
@@ -672,7 +672,7 @@ export interface ListNotificationChannelsResponse {
   /** The total number of notification channels in all pages. This number is only an estimate, and may change in subsequent pages. https://aip.dev/158 */
   totalSize?: number;
   /** The notification channels defined for the specified project. */
-  notificationChannels?: Array<NotificationChannel>;
+  notificationChannels?: ReadonlyArray<NotificationChannel>;
   /** If not empty, indicates that there may be more results that match the request. Use the value in the page_token field in a subsequent request to fetch the next set of results. If empty, all results have been returned. */
   nextPageToken?: string;
 }
@@ -739,7 +739,7 @@ export interface Aggregation {
   /** The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies. */
   alignmentPeriod?: string;
   /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
-  groupByFields?: Array<string>;
+  groupByFields?: ReadonlyArray<string>;
 }
 
 export const Aggregation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -772,7 +772,7 @@ export const ForecastOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MetricThreshold {
   /** Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field. */
-  aggregations?: Array<Aggregation>;
+  aggregations?: ReadonlyArray<Aggregation>;
   /** A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length. */
   denominatorFilter?: string;
   /** Required. The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly. */
@@ -791,7 +791,7 @@ export interface MetricThreshold {
     | "EVALUATION_MISSING_DATA_NO_OP"
     | (string & {});
   /** Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels. */
-  denominatorAggregations?: Array<Aggregation>;
+  denominatorAggregations?: ReadonlyArray<Aggregation>;
   /** The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently. */
   comparison?:
     | "COMPARISON_UNSPECIFIED"
@@ -825,7 +825,7 @@ export interface MetricAbsence {
   /** The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations. */
   trigger?: Trigger;
   /** Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field. */
-  aggregations?: Array<Aggregation>;
+  aggregations?: ReadonlyArray<Aggregation>;
   /** Required. The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. */
   duration?: string;
 }
@@ -1093,7 +1093,7 @@ export interface HttpCheck {
   /** If specified, Uptime will generate and attach an OIDC JWT token for the Monitoring service agent service account as an Authorization header in the HTTP request when probing. */
   serviceAgentAuthentication?: ServiceAgentAuthentication;
   /** If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299. */
-  acceptedResponseStatusCodes?: Array<ResponseStatusCode>;
+  acceptedResponseStatusCodes?: ReadonlyArray<ResponseStatusCode>;
   /** Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL. */
   port?: number;
   /** A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set. */
@@ -1243,7 +1243,7 @@ export interface UptimeCheckConfig {
   /** To specify whether to log the results of failed probes to Cloud Logging. */
   logCheckFailures?: boolean;
   /** The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions. */
-  selectedRegions?: Array<
+  selectedRegions?: ReadonlyArray<
     | "REGION_UNSPECIFIED"
     | "USA"
     | "EUROPE"
@@ -1279,13 +1279,13 @@ export interface UptimeCheckConfig {
   /** Whether the check is disabled or not. */
   disabled?: boolean;
   /** The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check. */
-  contentMatchers?: Array<ContentMatcher>;
+  contentMatchers?: ReadonlyArray<ContentMatcher>;
   /** If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false. */
   isInternal?: boolean;
   /** Contains information needed to make a TCP check. */
   tcpCheck?: TcpCheck;
   /** The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig. */
-  internalCheckers?: Array<InternalChecker>;
+  internalCheckers?: ReadonlyArray<InternalChecker>;
 }
 
 export const UptimeCheckConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1310,7 +1310,7 @@ export const UptimeCheckConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUptimeCheckConfigsResponse {
   /** The returned Uptime check configurations. */
-  uptimeCheckConfigs?: Array<UptimeCheckConfig>;
+  uptimeCheckConfigs?: ReadonlyArray<UptimeCheckConfig>;
   /** The total number of Uptime check configurations for the project, irrespective of any pagination. */
   totalSize?: number;
   /** This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field). */
@@ -1420,7 +1420,7 @@ export interface TimeSeries {
     | "MONEY"
     | (string & {});
   /** The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION. */
-  points?: Array<Point>;
+  points?: ReadonlyArray<Point>;
   /** The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values. This field can only be changed through CreateTimeSeries when it is empty. */
   unit?: string;
   /** Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored. */
@@ -1448,7 +1448,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1461,11 +1461,11 @@ export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTimeSeriesResponse {
   /** One or more time series that match the filter included in the request. */
-  timeSeries?: Array<TimeSeries>;
+  timeSeries?: ReadonlyArray<TimeSeries>;
   /** Query execution errors that may have caused the time series data returned to be incomplete. */
-  executionErrors?: Array<Status>;
+  executionErrors?: ReadonlyArray<Status>;
   /** Cloud regions that were unreachable which may have caused incomplete data to be returned. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The unit in which all time_series point values are reported. unit follows the UCUM format for units as seen in https://unitsofmeasure.org/ucum.html. If different time_series have different units (for example, because they come from different metric types, or a unit is absent), then unit will be "{not_a_unit}". */
   unit?: string;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -1519,7 +1519,7 @@ export interface CollectdPayload {
   /** The start time of the interval. */
   startTime?: string;
   /** The measured values during this time interval. Each value must have a different data_source_name. */
-  values?: Array<CollectdValue>;
+  values?: ReadonlyArray<CollectdValue>;
   /** The end time of the interval. */
   endTime?: string;
   /** The name of the plugin. Example: "disk". */
@@ -1545,7 +1545,7 @@ export const CollectdPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PointData {
   /** The values that make up the point. */
-  values?: Array<TypedValue>;
+  values?: ReadonlyArray<TypedValue>;
   /** The time interval associated with the point. */
   timeInterval?: TimeInterval;
 }
@@ -1557,9 +1557,9 @@ export const PointData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TimeSeriesData {
   /** The values of the labels in the time series identifier, given in the same order as the label_descriptors field of the TimeSeriesDescriptor associated with this object. Each value must have a value of the type given in the corresponding entry of label_descriptors. */
-  labelValues?: Array<LabelValue>;
+  labelValues?: ReadonlyArray<LabelValue>;
   /** The points in the time series. */
-  pointData?: Array<PointData>;
+  pointData?: ReadonlyArray<PointData>;
 }
 
 export const TimeSeriesData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1600,9 +1600,9 @@ export const ValueDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TimeSeriesDescriptor {
   /** Descriptors for the labels. */
-  labelDescriptors?: Array<LabelDescriptor>;
+  labelDescriptors?: ReadonlyArray<LabelDescriptor>;
   /** Descriptors for the point data value columns. */
-  pointDescriptors?: Array<ValueDescriptor>;
+  pointDescriptors?: ReadonlyArray<ValueDescriptor>;
 }
 
 export const TimeSeriesDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1612,9 +1612,9 @@ export const TimeSeriesDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryTimeSeriesResponse {
   /** The time series data. */
-  timeSeriesData?: Array<TimeSeriesData>;
+  timeSeriesData?: ReadonlyArray<TimeSeriesData>;
   /** Query execution errors that may have caused the time series data returned to be incomplete. The available data will be available in the response. */
-  partialErrors?: Array<Status>;
+  partialErrors?: ReadonlyArray<Status>;
   /** The descriptor for the time series data. */
   timeSeriesDescriptor?: TimeSeriesDescriptor;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -1645,7 +1645,7 @@ export interface CollectdPayloadError {
   /** Records the error status for the payload. If this field is present, the partial errors for nested values won't be populated. */
   error?: Status;
   /** Records the error status for values that were not written due to an error.Failed payloads for which nothing is written will not include partial value errors. */
-  valueErrors?: Array<CollectdValueError>;
+  valueErrors?: ReadonlyArray<CollectdValueError>;
   /** The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads. */
   index?: number;
 }
@@ -1709,7 +1709,7 @@ export interface Field {
     | "CARDINALITY_REPEATED"
     | (string & {});
   /** The protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The field type URL, without the scheme, for message or enumeration types. Example: "type.googleapis.com/google.protobuf.Timestamp". */
   typeUrl?: string;
   /** The index of the field type in Type.oneofs, for message or enumeration types. The first type has index 1; zero means the type is not in the list. */
@@ -1731,15 +1731,15 @@ export const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Type {
   /** The list of fields. */
-  fields?: Array<Field>;
+  fields?: ReadonlyArray<Field>;
   /** The source context. */
   sourceContext?: SourceContext;
   /** The fully qualified message name. */
   name?: string;
   /** The list of types appearing in oneof definitions in this type. */
-  oneofs?: Array<string>;
+  oneofs?: ReadonlyArray<string>;
   /** The protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The source edition string, only valid when syntax is SYNTAX_EDITIONS. */
   edition?: string;
   /** The source syntax. */
@@ -1762,7 +1762,7 @@ export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NotificationChannelStrategy {
   /** The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] */
-  notificationChannelNames?: Array<string>;
+  notificationChannelNames?: ReadonlyArray<string>;
   /** The frequency at which to send reminder notifications for open incidents. The value must be between 30 minutes and 24 hours. */
   renotifyInterval?: string;
 }
@@ -2033,7 +2033,7 @@ export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServicesResponse {
   /** The Services matching the specified filter. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
@@ -2066,7 +2066,7 @@ export const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGroupsResponse {
   /** The groups that match the specified filters. */
-  group?: Array<Group>;
+  group?: ReadonlyArray<Group>;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
@@ -2078,7 +2078,7 @@ export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Documentation {
   /** Optional. Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries. */
-  links?: Array<Link>;
+  links?: ReadonlyArray<Link>;
   /** Optional. The subject line of the notification. The subject line may not exceed 10,240 bytes. In notifications generated by this policy, the contents of the subject line after variable expansion will be truncated to 255 bytes or shorter at the latest UTF-8 character boundary. The 255-byte limit is recommended by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is both the limit imposed by some third-party ticketing products and it is common to define textual fields in databases as VARCHAR(255).The contents of the subject line can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). If this field is missing or empty, a default subject line will be generated. */
   subject?: string;
   /** The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). */
@@ -2102,7 +2102,7 @@ export interface NotificationChannelDescriptor {
   /** A human-readable description of the notification channel type. The description may include a description of the properties of the channel and pointers to external documentation. */
   description?: string;
   /** The tiers that support this notification channel; the project service tier must be one of the supported_tiers. */
-  supportedTiers?: Array<
+  supportedTiers?: ReadonlyArray<
     | "SERVICE_TIER_UNSPECIFIED"
     | "SERVICE_TIER_BASIC"
     | "SERVICE_TIER_PREMIUM"
@@ -2120,7 +2120,7 @@ export interface NotificationChannelDescriptor {
     | "DEPRECATED"
     | (string & {});
   /** The set of labels that must be defined to identify a particular channel of the corresponding type. Each label includes a description for how that field should be populated. */
-  labels?: Array<LabelDescriptor>;
+  labels?: ReadonlyArray<LabelDescriptor>;
   /** The type of notification channel, such as "email" and "sms". To view the full list of channels, see Channel descriptors (https://cloud.google.com/monitoring/alerts/using-channels-api#ncd). Notification channel types are globally unique. */
   type?: string;
 }
@@ -2138,7 +2138,7 @@ export const NotificationChannelDescriptor =
 
 export interface Criteria {
   /** The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation. Exactly 1 alert policy is required if filter is specified at the same time. */
-  policies?: Array<string>;
+  policies?: ReadonlyArray<string>;
   /** Optional. When you define a snooze, you can also define a filter for that snooze. The filter is a string containing one or more key-value pairs. The string uses the standard https://google.aip.dev/160 filter syntax. If you define a filter for a snooze, then the snooze can only apply to one alert policy. When the snooze is active, incidents won't be created when the incident would have key-value pairs (labels) that match those specified by the filter in the snooze.Snooze filters support resource, metric, and metadata labels. If multiple labels are used, then they must be connected with an AND operator. For example, the following filter applies the snooze to incidents that have a resource label with an instance ID of 1234567890, a metric label with an instance name of test_group, a metadata user label with a key of foo and a value of bar, and a metadata system label with a key of region and a value of us-central1: "filter": "resource.labels.instance_id=\"1234567890\" AND metric.labels.instance_name=\"test_group\" AND metadata.user_labels.foo=\"bar\" AND metadata.system_labels.region=\"us-central1\"" */
   filter?: string;
 }
@@ -2168,7 +2168,7 @@ export const Snooze = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSnoozesResponse {
   /** Snoozes matching this list call. */
-  snoozes?: Array<Snooze>;
+  snoozes?: ReadonlyArray<Snooze>;
   /** Page token for repeated calls to ListSnoozes, to fetch additional pages of results. If this is empty or missing, there are no more pages. */
   nextPageToken?: string;
 }
@@ -2202,11 +2202,11 @@ export interface AlertStrategy {
   /** If an alerting policy that was active has no data for this long, any open incidents will close */
   autoClose?: string;
   /** For log-based alert policies, the notification prompts is always OPENED. For non log-based alert policies, the notification prompts can be OPENED or OPENED, CLOSED. */
-  notificationPrompts?: Array<
+  notificationPrompts?: ReadonlyArray<
     "NOTIFICATION_PROMPT_UNSPECIFIED" | "OPENED" | "CLOSED" | (string & {})
   >;
   /** Control how notifications will be sent out, on a per-channel basis. */
-  notificationChannelStrategy?: Array<NotificationChannelStrategy>;
+  notificationChannelStrategy?: ReadonlyArray<NotificationChannelStrategy>;
 }
 
 export const AlertStrategy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2253,7 +2253,7 @@ export const Alert = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAlertsResponse {
   /** The list of alerts. */
-  alerts?: Array<Alert>;
+  alerts?: ReadonlyArray<Alert>;
   /** The estimated total number of matching results for this query. */
   totalSize?: number;
   /** If not empty, indicates that there may be more results that match the request. Use the value in the page_token field in a subsequent request to fetch the next set of results. The token is encrypted and only guaranteed to return correct results for 72 hours after it is created. If empty, all results have been returned. */
@@ -2268,7 +2268,7 @@ export const ListAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AlertPolicy {
   /** A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition. */
-  conditions?: Array<Condition>;
+  conditions?: ReadonlyArray<Condition>;
   /** Control over how this alerting policy's notification channels are notified. */
   alertStrategy?: AlertStrategy;
   /** Identifier. Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request. */
@@ -2285,7 +2285,7 @@ export interface AlertPolicy {
     | "AND_WITH_MATCHING_RESOURCE"
     | (string & {});
   /** Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] */
-  notificationChannels?: Array<string>;
+  notificationChannels?: ReadonlyArray<string>;
   /** A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored. */
   mutationRecord?: MutationRecord;
   /** Read-only description of how the alerting policy is invalid. This field is only set when the alerting policy is invalid. An invalid alerting policy will not generate incidents. */
@@ -2327,7 +2327,7 @@ export interface ListAlertPoliciesResponse {
   /** The total number of alert policies in all pages. This number is only an estimate, and may change in subsequent pages. https://aip.dev/158 */
   totalSize?: number;
   /** The returned alert policies. */
-  alertPolicies?: Array<AlertPolicy>;
+  alertPolicies?: ReadonlyArray<AlertPolicy>;
 }
 
 export const ListAlertPoliciesResponse =
@@ -2339,7 +2339,7 @@ export const ListAlertPoliciesResponse =
 
 export interface CreateCollectdTimeSeriesRequest {
   /** The collectd payloads representing the time series data. You must not include more than a single point for each time series, so no two payloads can have the same values for all of the fields plugin, plugin_instance, type, and type_instance. */
-  collectdPayloads?: Array<CollectdPayload>;
+  collectdPayloads?: ReadonlyArray<CollectdPayload>;
   /** The monitored resource associated with the time series. */
   resource?: MonitoredResource;
   /** The version of collectd that collected the data. Example: "5.3.0-192.el6". */
@@ -2367,7 +2367,7 @@ export const Monitoring_Error = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CreateTimeSeriesSummary {
   /** The number of points that failed to be written. Order is not guaranteed. */
-  errors?: Array<Monitoring_Error>;
+  errors?: ReadonlyArray<Monitoring_Error>;
   /** The number of points in the request. */
   totalPointCount?: number;
   /** The number of points that were successfully written. */
@@ -2383,7 +2383,7 @@ export const CreateTimeSeriesSummary =
 
 export interface CreateCollectdTimeSeriesResponse {
   /** Records the error status for points that were not written due to an error in the request.Failed requests for which nothing is written will return an error response instead. Requests where data points were rejected by the backend will set summary instead. */
-  payloadErrors?: Array<CollectdPayloadError>;
+  payloadErrors?: ReadonlyArray<CollectdPayloadError>;
   /** Aggregate statistics from writing the payloads. This field is omitted if all points were successfully written, so that the response is empty. This is for backwards compatibility with clients that log errors on any non-empty response. */
   summary?: CreateTimeSeriesSummary;
 }
@@ -2396,7 +2396,7 @@ export const CreateCollectdTimeSeriesResponse =
 
 export interface ListGroupMembersResponse {
   /** A set of monitored resources in the group. */
-  members?: Array<MonitoredResource>;
+  members?: ReadonlyArray<MonitoredResource>;
   /** The total number of elements matching this request. */
   totalSize?: number;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -2442,7 +2442,7 @@ export const GetNotificationChannelVerificationCodeResponse =
 
 export interface ListUptimeCheckIpsResponse {
   /** The returned list of IP addresses (including region and location) that the checkers run from. */
-  uptimeCheckIps?: Array<UptimeCheckIp>;
+  uptimeCheckIps?: ReadonlyArray<UptimeCheckIp>;
   /** This field represents the pagination token to retrieve the next page of results. If the value is empty, it means no further results for the request. To retrieve the next page of results, the value of the next_page_token is passed to the subsequent List method call (in the request message's page_token field). NOTE: this field is not yet implemented */
   nextPageToken?: string;
 }
@@ -2467,7 +2467,7 @@ export interface ListNotificationChannelDescriptorsResponse {
   /** If not empty, indicates that there may be more results that match the request. Use the value in the page_token field in a subsequent request to fetch the next set of results. If empty, all results have been returned. */
   nextPageToken?: string;
   /** The monitored resource descriptors supported for the specified project, optionally filtered. */
-  channelDescriptors?: Array<NotificationChannelDescriptor>;
+  channelDescriptors?: ReadonlyArray<NotificationChannelDescriptor>;
 }
 
 export const ListNotificationChannelDescriptorsResponse =
@@ -2480,7 +2480,7 @@ export const ListNotificationChannelDescriptorsResponse =
 
 export interface CreateTimeSeriesRequest {
   /** Required. The new data to be added to a list of time series. Adds at most one data point to each of several time series. The new data point must be more recent than any other point in its time series. Each TimeSeries value must fully specify a unique time series by supplying all label values for the metric and the monitored resource.The maximum number of TimeSeries objects per Create request is 200. */
-  timeSeries?: Array<TimeSeries>;
+  timeSeries?: ReadonlyArray<TimeSeries>;
 }
 
 export const CreateTimeSeriesRequest =
@@ -2508,10 +2508,7 @@ export const GetProjectsMetricDescriptorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/metricDescriptors/{metricDescriptorsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsMetricDescriptorsRequest>;
 
@@ -2542,10 +2539,7 @@ export const DeleteProjectsMetricDescriptorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/metricDescriptors/{metricDescriptorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsMetricDescriptorsRequest>;
 
@@ -2588,10 +2582,7 @@ export const ListProjectsMetricDescriptorsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     activeOnly: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("activeOnly")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/metricDescriptors",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}/metricDescriptors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsMetricDescriptorsRequest>;
 
@@ -2632,7 +2623,7 @@ export const CreateProjectsMetricDescriptorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/metricDescriptors",
+      path: "v3/{name}/metricDescriptors",
       hasBody: true,
     }),
     svc,
@@ -2670,7 +2661,7 @@ export const CreateServiceProjectsTimeSeriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/timeSeries:createService",
+      path: "v3/{name}/timeSeries:createService",
       hasBody: true,
     }),
     svc,
@@ -2708,7 +2699,7 @@ export const QueryProjectsTimeSeriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/timeSeries:query",
+      path: "v3/{name}/timeSeries:query",
       hasBody: true,
     }),
     svc,
@@ -2876,7 +2867,7 @@ export const ListProjectsTimeSeriesRequest =
       T.HttpQuery("aggregation.crossSeriesReducer"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/timeSeries" }),
+    T.Http({ method: "GET", path: "v3/{name}/timeSeries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTimeSeriesRequest>;
 
@@ -2914,11 +2905,7 @@ export const CreateProjectsTimeSeriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CreateTimeSeriesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/timeSeries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}/timeSeries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsTimeSeriesRequest>;
 
@@ -2958,10 +2945,7 @@ export const ListProjectsMonitoredResourceDescriptorsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/monitoredResourceDescriptors",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}/monitoredResourceDescriptors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsMonitoredResourceDescriptorsRequest>;
 
@@ -2997,10 +2981,7 @@ export const GetProjectsMonitoredResourceDescriptorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/monitoredResourceDescriptors/{monitoredResourceDescriptorsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsMonitoredResourceDescriptorsRequest>;
 
@@ -3035,11 +3016,7 @@ export const CreateProjectsSnoozesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Snooze).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/snoozes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/snoozes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsSnoozesRequest>;
 
@@ -3078,7 +3055,7 @@ export const ListProjectsSnoozesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/snoozes" }),
+    T.Http({ method: "GET", path: "v3/{parent}/snoozes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsSnoozesRequest>;
 
@@ -3119,11 +3096,7 @@ export const PatchProjectsSnoozesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Snooze).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/snoozes/{snoozesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsSnoozesRequest>;
 
@@ -3153,10 +3126,7 @@ export const GetProjectsSnoozesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/snoozes/{snoozesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsSnoozesRequest>;
 
@@ -3191,7 +3161,7 @@ export const CreateProjectsUptimeCheckConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/uptimeCheckConfigs",
+      path: "v3/{parent}/uptimeCheckConfigs",
       hasBody: true,
     }),
     svc,
@@ -3230,11 +3200,7 @@ export const PatchProjectsUptimeCheckConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(UptimeCheckConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/uptimeCheckConfigs/{uptimeCheckConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsUptimeCheckConfigsRequest>;
 
@@ -3274,10 +3240,7 @@ export const ListProjectsUptimeCheckConfigsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/uptimeCheckConfigs",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/uptimeCheckConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsUptimeCheckConfigsRequest>;
 
@@ -3313,10 +3276,7 @@ export const DeleteProjectsUptimeCheckConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/uptimeCheckConfigs/{uptimeCheckConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsUptimeCheckConfigsRequest>;
 
@@ -3347,10 +3307,7 @@ export const GetProjectsUptimeCheckConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/uptimeCheckConfigs/{uptimeCheckConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsUptimeCheckConfigsRequest>;
 
@@ -3402,7 +3359,7 @@ export const ListProjectsGroupsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/groups" }),
+    T.Http({ method: "GET", path: "v3/{name}/groups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGroupsRequest>;
 
@@ -3437,10 +3394,7 @@ export const GetProjectsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsGroupsRequest>;
 
@@ -3473,10 +3427,7 @@ export const DeleteProjectsGroupsRequest =
     recursive: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("recursive")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsGroupsRequest>;
 
@@ -3514,11 +3465,7 @@ export const CreateProjectsGroupsRequest =
     ),
     body: Schema.optional(Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/groups",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}/groups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsGroupsRequest>;
 
@@ -3556,11 +3503,7 @@ export const UpdateProjectsGroupsRequest =
     ),
     body: Schema.optional(Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v3/projects/{projectsId}/groups/{groupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsGroupsRequest>;
 
@@ -3609,10 +3552,7 @@ export const ListProjectsGroupsMembersRequest =
       T.HttpQuery("interval.endTime"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/groups/{groupsId}/members",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}/members" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGroupsMembersRequest>;
 
@@ -3653,10 +3593,7 @@ export const ListProjectsNotificationChannelDescriptorsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/notificationChannelDescriptors",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}/notificationChannelDescriptors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsNotificationChannelDescriptorsRequest>;
 
@@ -3692,10 +3629,7 @@ export const GetProjectsNotificationChannelDescriptorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/notificationChannelDescriptors/{notificationChannelDescriptorsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsNotificationChannelDescriptorsRequest>;
 
@@ -3739,7 +3673,7 @@ export const ListProjectsAlertsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/alerts" }),
+    T.Http({ method: "GET", path: "v3/{parent}/alerts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAlertsRequest>;
 
@@ -3774,10 +3708,7 @@ export const GetProjectsAlertsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/alerts/{alertsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAlertsRequest>;
 
@@ -3810,10 +3741,7 @@ export const DeleteProjectsNotificationChannelsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsNotificationChannelsRequest>;
 
@@ -3844,10 +3772,7 @@ export const GetProjectsNotificationChannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsNotificationChannelsRequest>;
 
@@ -3885,7 +3810,7 @@ export const SendVerificationCodeProjectsNotificationChannelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}:sendVerificationCode",
+      path: "v3/{name}:sendVerificationCode",
       hasBody: true,
     }),
     svc,
@@ -3931,10 +3856,7 @@ export const ListProjectsNotificationChannelsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/notificationChannels",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}/notificationChannels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsNotificationChannelsRequest>;
 
@@ -3973,11 +3895,7 @@ export const VerifyProjectsNotificationChannelsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(VerifyNotificationChannelRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}:verify",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}:verify", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<VerifyProjectsNotificationChannelsRequest>;
 
@@ -4015,7 +3933,7 @@ export const GetVerificationCodeProjectsNotificationChannelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}:getVerificationCode",
+      path: "v3/{name}:getVerificationCode",
       hasBody: true,
     }),
     svc,
@@ -4055,7 +3973,7 @@ export const CreateProjectsNotificationChannelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/notificationChannels",
+      path: "v3/{name}/notificationChannels",
       hasBody: true,
     }),
     svc,
@@ -4094,11 +4012,7 @@ export const PatchProjectsNotificationChannelsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(NotificationChannel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/notificationChannels/{notificationChannelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsNotificationChannelsRequest>;
 
@@ -4134,7 +4048,7 @@ export const CreateProjectsCollectdTimeSeriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/collectdTimeSeries",
+      path: "v3/{name}/collectdTimeSeries",
       hasBody: true,
     }),
     svc,
@@ -4168,10 +4082,7 @@ export const DeleteProjectsAlertPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/alertPolicies/{alertPoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAlertPoliciesRequest>;
 
@@ -4202,10 +4113,7 @@ export const GetProjectsAlertPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/alertPolicies/{alertPoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAlertPoliciesRequest>;
 
@@ -4248,7 +4156,7 @@ export const ListProjectsAlertPoliciesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/alertPolicies" }),
+    T.Http({ method: "GET", path: "v3/{name}/alertPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAlertPoliciesRequest>;
 
@@ -4286,11 +4194,7 @@ export const CreateProjectsAlertPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AlertPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/alertPolicies",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}/alertPolicies", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsAlertPoliciesRequest>;
 
@@ -4327,11 +4231,7 @@ export const PatchProjectsAlertPoliciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AlertPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/alertPolicies/{alertPoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAlertPoliciesRequest>;
 
@@ -4497,10 +4397,7 @@ export const ListOrganizationsTimeSeriesRequest =
       Schema.Array(Schema.String),
     ).pipe(T.HttpQuery("aggregation.groupByFields")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/organizations/{organizationsId}/timeSeries",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}/timeSeries" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsTimeSeriesRequest>;
 
@@ -4670,7 +4567,7 @@ export const ListFoldersTimeSeriesRequest =
       Schema.Array(Schema.String),
     ).pipe(T.HttpQuery("aggregation.groupByFields")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/folders/{foldersId}/timeSeries" }),
+    T.Http({ method: "GET", path: "v3/{name}/timeSeries" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersTimeSeriesRequest>;
 
@@ -4710,7 +4607,7 @@ export const CreateServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(Service).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v3/{v3Id}/{v3Id1}/services", hasBody: true }),
+  T.Http({ method: "POST", path: "v3/{parent}/services", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<CreateServicesRequest>;
 
@@ -4745,11 +4642,7 @@ export const PatchServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Service).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v3/{v3Id}/{v3Id1}/services/{servicesId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchServicesRequest>;
 
@@ -4787,7 +4680,7 @@ export const ListServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/{v3Id}/{v3Id1}/services" }),
+  T.Http({ method: "GET", path: "v3/{parent}/services" }),
   svc,
 ) as unknown as Schema.Schema<ListServicesRequest>;
 
@@ -4821,7 +4714,7 @@ export interface DeleteServicesRequest {
 export const DeleteServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/{v3Id}/{v3Id1}/services/{servicesId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteServicesRequest>;
 
@@ -4850,7 +4743,7 @@ export interface GetServicesRequest {
 export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/{v3Id}/{v3Id1}/services/{servicesId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetServicesRequest>;
 
@@ -4880,10 +4773,7 @@ export const DeleteServicesServiceLevelObjectivesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives/{serviceLevelObjectivesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteServicesServiceLevelObjectivesRequest>;
 
@@ -4917,10 +4807,7 @@ export const GetServicesServiceLevelObjectivesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives/{serviceLevelObjectivesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetServicesServiceLevelObjectivesRequest>;
 
@@ -4963,10 +4850,7 @@ export const ListServicesServiceLevelObjectivesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/serviceLevelObjectives" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesServiceLevelObjectivesRequest>;
 
@@ -5012,7 +4896,7 @@ export const CreateServicesServiceLevelObjectivesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives",
+      path: "v3/{parent}/serviceLevelObjectives",
       hasBody: true,
     }),
     svc,
@@ -5052,11 +4936,7 @@ export const PatchServicesServiceLevelObjectivesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ServiceLevelObjective).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/{v3Id}/{v3Id1}/services/{servicesId}/serviceLevelObjectives/{serviceLevelObjectivesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchServicesServiceLevelObjectivesRequest>;
 

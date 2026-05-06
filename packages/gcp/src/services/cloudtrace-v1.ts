@@ -55,7 +55,7 @@ export interface Trace {
   /** Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as a 32-byte hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be zero. */
   traceId?: string;
   /** Collection of spans in the trace. */
-  spans?: Array<TraceSpan>;
+  spans?: ReadonlyArray<TraceSpan>;
 }
 
 export const Trace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -72,7 +72,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface Traces {
   /** List of traces. */
-  traces?: Array<Trace>;
+  traces?: ReadonlyArray<Trace>;
 }
 
 export const Traces = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -81,7 +81,7 @@ export const Traces = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTracesResponse {
   /** List of trace records as specified by the view parameter. */
-  traces?: Array<Trace>;
+  traces?: ReadonlyArray<Trace>;
   /** If defined, indicates that there are more traces that match the request and that this value should be passed to the next request to continue retrieving additional traces. */
   nextPageToken?: string;
 }

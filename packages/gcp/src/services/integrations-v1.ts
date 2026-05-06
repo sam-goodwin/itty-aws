@@ -135,7 +135,7 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest {
   /** Optional. Indicate which workflows to create */
-  workflows?: Array<
+  workflows?: ReadonlyArray<
     | "SAMPLE_INTEGRATIONS_UNSPECIFIED"
     | "SAMPLE_WORKFLOW_ECOM_PROCESSING"
     | "EXECUTE_CONNECTOR_TOOL_WORKFLOW"
@@ -308,7 +308,7 @@ export interface GoogleCloudIntegrationsV1alphaProjectProperties {
     | "IP_ENABLEMENT_STATE_APIGEE_ENTITLED"
     | (string & {});
   /** A list of provisioned regions on the current project */
-  provisionedRegions?: Array<string>;
+  provisionedRegions?: ReadonlyArray<string>;
   /** Required. Required: The client billing type that was requested */
   billingType?:
     | "BILLING_TYPE_UNSPECIFIED"
@@ -490,7 +490,7 @@ export const GoogleCloudIntegrationsV1alphaCertificate =
 
 export interface GoogleCloudIntegrationsV1alphaListCertificatesResponse {
   /** The list of Certificates retrieved. */
-  certificates?: Array<GoogleCloudIntegrationsV1alphaCertificate>;
+  certificates?: ReadonlyArray<GoogleCloudIntegrationsV1alphaCertificate>;
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -522,7 +522,7 @@ export const GoogleCloudIntegrationsV1alphaUsernameAndPassword =
 
 export interface GoogleCloudIntegrationsV1alphaStringParameterArray {
   /** String array. */
-  stringValues?: Array<string>;
+  stringValues?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaStringParameterArray =
@@ -534,7 +534,7 @@ export const GoogleCloudIntegrationsV1alphaStringParameterArray =
 
 export interface GoogleCloudIntegrationsV1alphaIntParameterArray {
   /** Integer array. */
-  intValues?: Array<string>;
+  intValues?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaIntParameterArray =
@@ -546,7 +546,7 @@ export const GoogleCloudIntegrationsV1alphaIntParameterArray =
 
 export interface GoogleCloudIntegrationsV1alphaDoubleParameterArray {
   /** Double number array. */
-  doubleValues?: Array<number>;
+  doubleValues?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudIntegrationsV1alphaDoubleParameterArray =
@@ -558,7 +558,7 @@ export const GoogleCloudIntegrationsV1alphaDoubleParameterArray =
 
 export interface GoogleCloudIntegrationsV1alphaBooleanParameterArray {
   /** Boolean array. */
-  booleanValues?: Array<boolean>;
+  booleanValues?: ReadonlyArray<boolean>;
 }
 
 export const GoogleCloudIntegrationsV1alphaBooleanParameterArray =
@@ -640,7 +640,7 @@ export const GoogleCloudIntegrationsV1alphaParameterMapEntry =
 
 export interface GoogleCloudIntegrationsV1alphaParameterMap {
   /** A list of parameter map entries. */
-  entries?: Array<GoogleCloudIntegrationsV1alphaParameterMapEntry>;
+  entries?: ReadonlyArray<GoogleCloudIntegrationsV1alphaParameterMapEntry>;
   /** Option to specify key type for all entries of the map. If provided then field types for all entries must conform to this. */
   keyType?:
     | "INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"
@@ -1017,7 +1017,7 @@ export interface GoogleCloudIntegrationsV1alphaAuthConfig {
   /** Output only. The reason / details of the current status. */
   reason?: string;
   /** Optional. User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours. */
-  expiryNotificationDuration?: Array<string>;
+  expiryNotificationDuration?: ReadonlyArray<string>;
   /** Optional. The time until the auth config is valid. Empty or max value is considered the auth config won't expire. */
   validTime?: string;
   /** Optional. User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings. */
@@ -1049,7 +1049,7 @@ export const GoogleCloudIntegrationsV1alphaAuthConfig =
 
 export interface GoogleCloudIntegrationsV1alphaListAuthConfigsResponse {
   /** The list of AuthConfigs retrieved. */
-  authConfigs?: Array<GoogleCloudIntegrationsV1alphaAuthConfig>;
+  authConfigs?: ReadonlyArray<GoogleCloudIntegrationsV1alphaAuthConfig>;
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1066,7 +1066,7 @@ export const GoogleCloudIntegrationsV1alphaListAuthConfigsResponse =
 
 export interface GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse {
   /** All regions where Connector Platform is provisioned. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse =
@@ -1248,7 +1248,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
   /** Optional. Client secret for user-provided OAuth app. */
   clientSecret?: GoogleCloudConnectorsV1Secret;
   /** Optional. Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Optional. Whether to enable PKCE when the user performs the auth code flow. */
   enablePkce?: boolean;
   /** Optional. Auth URL for Authorization Code Flow */
@@ -1275,7 +1275,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManage
   /** Optional. Redirect URI to be provided during the auth code exchange. */
   redirectUri?: string;
   /** Required. Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged =
@@ -1313,7 +1313,7 @@ export interface GoogleCloudConnectorsV1AuthConfig {
   /** Oauth2AuthCodeFlowGoogleManaged. */
   oauth2AuthCodeFlowGoogleManaged?: GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged;
   /** Optional. List containing additional auth configs. */
-  additionalVariables?: Array<GoogleCloudConnectorsV1ConfigVariable>;
+  additionalVariables?: ReadonlyArray<GoogleCloudConnectorsV1ConfigVariable>;
   /** Optional. Identifier key for auth config */
   authKey?: string;
 }
@@ -1378,7 +1378,7 @@ export interface GoogleCloudConnectorsV1DestinationConfig {
   /** Optional. The key is the destination identifier that is supported by the Connector. */
   key?: string;
   /** Optional. The destinations for the key. */
-  destinations?: Array<GoogleCloudConnectorsV1Destination>;
+  destinations?: ReadonlyArray<GoogleCloudConnectorsV1Destination>;
 }
 
 export const GoogleCloudConnectorsV1DestinationConfig =
@@ -1435,7 +1435,7 @@ export interface GoogleCloudConnectorsV1SslConfig {
   /** Optional. Bool for enabling SSL */
   useSsl?: boolean;
   /** Optional. Additional SSL related field values */
-  additionalVariables?: Array<GoogleCloudConnectorsV1ConfigVariable>;
+  additionalVariables?: ReadonlyArray<GoogleCloudConnectorsV1ConfigVariable>;
 }
 
 export const GoogleCloudConnectorsV1SslConfig =
@@ -1487,7 +1487,7 @@ export interface GoogleCloudConnectorsV1EventingConfig {
   /** Optional. Auth details for the event listener. */
   listenerAuthConfig?: GoogleCloudConnectorsV1AuthConfig;
   /** Optional. Additional eventing related field values */
-  additionalVariables?: Array<GoogleCloudConnectorsV1ConfigVariable>;
+  additionalVariables?: ReadonlyArray<GoogleCloudConnectorsV1ConfigVariable>;
   /** Optional. Enrichment Enabled. */
   enrichmentEnabled?: boolean;
   /** Optional. Private Connectivity Enabled. */
@@ -1503,9 +1503,9 @@ export interface GoogleCloudConnectorsV1EventingConfig {
   /** Optional. Ssl config of a connection */
   sslConfig?: GoogleCloudConnectorsV1SslConfig;
   /** Optional. List of projects to be allowlisted for the service attachment created in the tenant project for eventing ingress. */
-  privateConnectivityAllowlistedProjects?: Array<string>;
+  privateConnectivityAllowlistedProjects?: ReadonlyArray<string>;
   /** Optional. List of allowed event types for the connection. */
-  allowedEventTypes?: Array<string>;
+  allowedEventTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudConnectorsV1EventingConfig =
@@ -1559,7 +1559,7 @@ export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
   /** Output only. ID to uniquely identify webhook. */
   id?: string;
   /** Output only. Additional webhook related field values. */
-  additionalVariables?: Array<GoogleCloudConnectorsV1ConfigVariable>;
+  additionalVariables?: ReadonlyArray<GoogleCloudConnectorsV1ConfigVariable>;
   /** Output only. Timestamp when the webhook was created. */
   createTime?: string;
   /** Output only. Timestamp when the webhook was last updated. */
@@ -1584,7 +1584,7 @@ export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData =
 
 export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions {
   /** Output only. Webhook data. */
-  webhookData?: Array<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
+  webhookData?: ReadonlyArray<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
 }
 
 export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions =
@@ -1761,13 +1761,13 @@ export interface GoogleCloudConnectorsV1Connection {
   /** Output only. Current status of the connection. */
   status?: GoogleCloudConnectorsV1ConnectionStatus;
   /** Optional. Configuration for configuring the connection with an external system. */
-  configVariables?: Array<GoogleCloudConnectorsV1ConfigVariable>;
+  configVariables?: ReadonlyArray<GoogleCloudConnectorsV1ConfigVariable>;
   /** Optional. Configuration for establishing the connection's authentication with an external system. */
   authConfig?: GoogleCloudConnectorsV1AuthConfig;
   /** Optional. Configuration that indicates whether or not the Connection can be edited. */
   lockConfig?: GoogleCloudConnectorsV1LockConfig;
   /** Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s). */
-  destinationConfigs?: Array<GoogleCloudConnectorsV1DestinationConfig>;
+  destinationConfigs?: ReadonlyArray<GoogleCloudConnectorsV1DestinationConfig>;
   /** Output only. GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName} */
   imageLocation?: string;
   /** Optional. Service account needed for runtime plane to access Google Cloud resources. */
@@ -1828,7 +1828,7 @@ export interface GoogleCloudConnectorsV1Connection {
   /** Optional. Additional Oauth2.0 Auth config for EUA. If the connection is configured using non-OAuth authentication but OAuth needs to be used for EUA, this field can be populated with the OAuth config. This should be a OAuth2AuthCodeFlow Auth type only. */
   euaOauthAuthConfig?: GoogleCloudConnectorsV1AuthConfig;
   /** Optional. Traffic shaping configuration for the connection. */
-  trafficShapingConfigs?: Array<GoogleCloudConnectorsV1TrafficShapingConfig>;
+  trafficShapingConfigs?: ReadonlyArray<GoogleCloudConnectorsV1TrafficShapingConfig>;
   /** Optional. Fallback on admin credentials for the connection. If this both auth_override_enabled and fallback_on_admin_credentials are set to true, the connection will use the admin credentials if the dynamic auth header is not present during auth override. */
   fallbackOnAdminCredentials?: boolean;
 }
@@ -1884,7 +1884,7 @@ export const GoogleCloudConnectorsV1Connection =
 
 export interface GoogleCloudIntegrationsV1alphaListConnectionsResponse {
   /** Connections. */
-  connections?: Array<GoogleCloudConnectorsV1Connection>;
+  connections?: ReadonlyArray<GoogleCloudConnectorsV1Connection>;
   /** Next page token. */
   nextPageToken?: string;
 }
@@ -1901,9 +1901,9 @@ export const GoogleCloudIntegrationsV1alphaListConnectionsResponse =
 
 export interface GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
   /** List of entity names. */
-  entities?: Array<string>;
+  entities?: ReadonlyArray<string>;
   /** List of actions. */
-  actions?: Array<string>;
+  actions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata =
@@ -1934,7 +1934,7 @@ export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema =
 
 export interface GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse {
   /** Runtime entity schemas. */
-  runtimeEntitySchemas?: Array<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema>;
+  runtimeEntitySchemas?: ReadonlyArray<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema>;
   /** Next page token. */
   nextPageToken?: string;
 }
@@ -1970,7 +1970,7 @@ export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema =
 
 export interface GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse {
   /** Runtime action schemas. */
-  runtimeActionSchemas?: Array<GoogleCloudIntegrationsV1alphaRuntimeActionSchema>;
+  runtimeActionSchemas?: ReadonlyArray<GoogleCloudIntegrationsV1alphaRuntimeActionSchema>;
   /** Next page token. */
   nextPageToken?: string;
 }
@@ -1998,7 +1998,7 @@ export const EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter =
   });
 
 export interface EnterpriseCrmFrontendsEventbusProtoStringParameterArray {
-  stringValues?: Array<string>;
+  stringValues?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoStringParameterArray =
@@ -2009,7 +2009,7 @@ export const EnterpriseCrmFrontendsEventbusProtoStringParameterArray =
   });
 
 export interface EnterpriseCrmFrontendsEventbusProtoIntParameterArray {
-  intValues?: Array<string>;
+  intValues?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoIntParameterArray =
@@ -2020,7 +2020,7 @@ export const EnterpriseCrmFrontendsEventbusProtoIntParameterArray =
   });
 
 export interface EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray {
-  doubleValues?: Array<number>;
+  doubleValues?: ReadonlyArray<number>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray =
@@ -2031,7 +2031,7 @@ export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray =
   });
 
 export interface EnterpriseCrmFrontendsEventbusProtoProtoParameterArray {
-  protoValues?: Array<Record<string, unknown>>;
+  protoValues?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoProtoParameterArray =
@@ -2044,7 +2044,7 @@ export const EnterpriseCrmFrontendsEventbusProtoProtoParameterArray =
   });
 
 export interface EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray {
-  booleanValues?: Array<boolean>;
+  booleanValues?: ReadonlyArray<boolean>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray =
@@ -2171,7 +2171,7 @@ export const EnterpriseCrmEventbusProtoFailurePolicy =
 
 export interface EnterpriseCrmEventbusProtoConditionalFailurePolicies {
   /** The list of failure policies that will be applied to the task in order. */
-  failurePolicies?: Array<EnterpriseCrmEventbusProtoFailurePolicy>;
+  failurePolicies?: ReadonlyArray<EnterpriseCrmEventbusProtoFailurePolicy>;
   /** The default failure policy to be applied if no conditional failure policy matches */
   defaultFailurePolicy?: EnterpriseCrmEventbusProtoFailurePolicy;
 }
@@ -2189,7 +2189,7 @@ export const EnterpriseCrmEventbusProtoConditionalFailurePolicies =
   });
 
 export interface EnterpriseCrmEventbusProtoStringArray {
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmEventbusProtoStringArray =
@@ -2198,7 +2198,7 @@ export const EnterpriseCrmEventbusProtoStringArray =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringArray" });
 
 export interface EnterpriseCrmEventbusProtoIntArray {
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmEventbusProtoIntArray =
@@ -2207,7 +2207,7 @@ export const EnterpriseCrmEventbusProtoIntArray =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntArray" });
 
 export interface EnterpriseCrmEventbusProtoDoubleArray {
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const EnterpriseCrmEventbusProtoDoubleArray =
@@ -2266,7 +2266,7 @@ export const EnterpriseCrmEventbusProtoCondition =
 
 export interface EnterpriseCrmEventbusProtoCombinedCondition {
   /** A set of individual constituent conditions. */
-  conditions?: Array<EnterpriseCrmEventbusProtoCondition>;
+  conditions?: ReadonlyArray<EnterpriseCrmEventbusProtoCondition>;
 }
 
 export const EnterpriseCrmEventbusProtoCombinedCondition =
@@ -2282,7 +2282,7 @@ export interface EnterpriseCrmEventbusProtoNextTask {
   /** Task number of the next task. */
   taskNumber?: string;
   /** Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition` */
-  combinedConditions?: Array<EnterpriseCrmEventbusProtoCombinedCondition>;
+  combinedConditions?: ReadonlyArray<EnterpriseCrmEventbusProtoCombinedCondition>;
   /** Standard filter expression for this task to become an eligible next task. */
   condition?: string;
   /** User-provided label that is attached to this edge in the UI. */
@@ -2317,7 +2317,7 @@ export const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue =
   });
 
 export interface EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
-  enumStrings?: Array<string>;
+  enumStrings?: ReadonlyArray<string>;
   filterType?: "DEFAULT_INCLUSIVE" | "EXCLUSIVE" | (string & {});
 }
 
@@ -2391,7 +2391,7 @@ export const EnterpriseCrmEventbusProtoTaskAlertConfig =
 
 export interface EnterpriseCrmFrontendsEventbusProtoEventParameters {
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution. */
-  parameters?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  parameters?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoEventParameters =
@@ -2409,7 +2409,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
   /** Optional. The customized parameters the user can pass to this task. */
   parameters?: EnterpriseCrmFrontendsEventbusProtoEventParameters;
   /** Required. These are the tasks numbers of the tasks whose `rollback_strategy.rollback_task_implementation_class_name` needs to be executed upon failure of this task. */
-  taskNumbersToRollback?: Array<string>;
+  taskNumbersToRollback?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoRollbackStrategy =
@@ -2456,7 +2456,7 @@ export const EnterpriseCrmEventbusProtoTaskMetadataAdmin =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskMetadataAdmin" });
 
 export interface EnterpriseCrmEventbusProtoTaskMetadata {
-  admins?: Array<EnterpriseCrmEventbusProtoTaskMetadataAdmin>;
+  admins?: ReadonlyArray<EnterpriseCrmEventbusProtoTaskMetadataAdmin>;
   /** The actual class name or the annotated name of the task. Task Author should initialize this field with value from the getName() method of the Task class. */
   name?: string;
   /** The string name to show on the task list on the Workflow editor screen. This should be a very short, one to two words name for the task. (e.g. "Send Mail") */
@@ -2513,7 +2513,7 @@ export interface EnterpriseCrmEventbusProtoTaskMetadata {
     | "PRE_POST_EXECUTION"
     | (string & {});
   /** A set of tags that pertain to a particular task. This can be used to improve the searchability of tasks with several names ("REST Caller" vs. "Call REST Endpoint") or to help users find tasks based on related words. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   externalCategory?:
     | "UNSPECIFIED_EXTERNAL_CATEGORY"
     | "CORE"
@@ -2823,7 +2823,7 @@ export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry =
   });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage {
-  parameters?: Array<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
+  parameters?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage =
@@ -2868,7 +2868,7 @@ export const EnterpriseCrmEventbusProtoTaskUiModuleConfig =
 
 export interface EnterpriseCrmEventbusProtoTaskUiConfig {
   /** Configurations of included config modules. */
-  taskUiModuleConfigs?: Array<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
+  taskUiModuleConfigs?: ReadonlyArray<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
 }
 
 export const EnterpriseCrmEventbusProtoTaskUiConfig =
@@ -2930,7 +2930,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskConfig {
   /** Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post). */
   conditionalFailurePolicies?: EnterpriseCrmEventbusProtoConditionalFailurePolicies;
   /** The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true. */
-  nextTasks?: Array<EnterpriseCrmEventbusProtoNextTask>;
+  nextTasks?: ReadonlyArray<EnterpriseCrmEventbusProtoNextTask>;
   /** The policy dictating the execution of the next set of tasks for the current task. */
   nextTasksExecutionPolicy?:
     | "UNSPECIFIED"
@@ -2938,7 +2938,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskConfig {
     | "RUN_FIRST_MATCH"
     | (string & {});
   /** Alert configurations on error rate, warning rate, number of runs, durations, etc. */
-  alertConfigs?: Array<EnterpriseCrmEventbusProtoTaskAlertConfig>;
+  alertConfigs?: ReadonlyArray<EnterpriseCrmEventbusProtoTaskAlertConfig>;
   /** Optional. Contains information about what needs to be done upon failure (either a permanent error or after it has been retried too many times). */
   rollbackStrategy?: EnterpriseCrmFrontendsEventbusProtoRollbackStrategy;
   /** Optional. Informs the front-end application where to draw this task config on the UI. */
@@ -3080,7 +3080,7 @@ export const GoogleCloudIntegrationsV1alphaFailurePolicy =
 
 export interface GoogleCloudIntegrationsV1alphaConditionalFailurePolicies {
   /** The list of failure policies that will be applied to the task in order. */
-  failurePolicies?: Array<GoogleCloudIntegrationsV1alphaFailurePolicy>;
+  failurePolicies?: ReadonlyArray<GoogleCloudIntegrationsV1alphaFailurePolicy>;
   /** The default failure policy to be applied if no conditional failure policy matches. */
   defaultFailurePolicy?: GoogleCloudIntegrationsV1alphaFailurePolicy;
 }
@@ -3160,7 +3160,7 @@ export interface GoogleCloudIntegrationsV1alphaTaskConfig {
   /** Optional. The list of conditional failure policies that will be applied to the task in order. */
   conditionalFailurePolicies?: GoogleCloudIntegrationsV1alphaConditionalFailurePolicies;
   /** Optional. The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true. */
-  nextTasks?: Array<GoogleCloudIntegrationsV1alphaNextTask>;
+  nextTasks?: ReadonlyArray<GoogleCloudIntegrationsV1alphaNextTask>;
   /** Optional. The policy dictating the execution of the next set of tasks for the current task. */
   nextTasksExecutionPolicy?:
     | "NEXT_TASKS_EXECUTION_POLICY_UNSPECIFIED"
@@ -3311,7 +3311,7 @@ export const EnterpriseCrmEventbusProtoSerializedObjectParameter =
   });
 
 export interface EnterpriseCrmEventbusProtoStringParameterArray {
-  stringValues?: Array<string>;
+  stringValues?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmEventbusProtoStringParameterArray =
@@ -3320,7 +3320,7 @@ export const EnterpriseCrmEventbusProtoStringParameterArray =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoIntParameterArray {
-  intValues?: Array<string>;
+  intValues?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmEventbusProtoIntParameterArray =
@@ -3329,7 +3329,7 @@ export const EnterpriseCrmEventbusProtoIntParameterArray =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoDoubleParameterArray {
-  doubleValues?: Array<number>;
+  doubleValues?: ReadonlyArray<number>;
 }
 
 export const EnterpriseCrmEventbusProtoDoubleParameterArray =
@@ -3338,7 +3338,7 @@ export const EnterpriseCrmEventbusProtoDoubleParameterArray =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoProtoParameterArray {
-  protoValues?: Array<Record<string, unknown>>;
+  protoValues?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const EnterpriseCrmEventbusProtoProtoParameterArray =
@@ -3349,7 +3349,7 @@ export const EnterpriseCrmEventbusProtoProtoParameterArray =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoProtoParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoBooleanParameterArray {
-  booleanValues?: Array<boolean>;
+  booleanValues?: ReadonlyArray<boolean>;
 }
 
 export const EnterpriseCrmEventbusProtoBooleanParameterArray =
@@ -3414,7 +3414,7 @@ export const EnterpriseCrmEventbusProtoParameterEntry =
 
 export interface EnterpriseCrmEventbusProtoEventParameters {
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
-  parameters?: Array<EnterpriseCrmEventbusProtoParameterEntry>;
+  parameters?: ReadonlyArray<EnterpriseCrmEventbusProtoParameterEntry>;
 }
 
 export const EnterpriseCrmEventbusProtoEventParameters =
@@ -3461,7 +3461,7 @@ export const EnterpriseCrmEventbusProtoCloudSchedulerConfig =
 
 export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables {
   /** Optional. List of variable names. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables =
@@ -3475,7 +3475,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /** The user created label for a particular trigger. */
   label?: string;
   /** Set of tasks numbers from where the workflow execution is started by this trigger. If this is empty, then workflow is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same workflow execution graph). */
-  startTasks?: Array<EnterpriseCrmEventbusProtoNextTask>;
+  startTasks?: ReadonlyArray<EnterpriseCrmEventbusProtoNextTask>;
   /** Configurable properties of the trigger, not to be confused with workflow parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Cloud Pubsub triggers. */
   properties?: Record<string, string>;
   triggerType?:
@@ -3501,7 +3501,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /** Required. A number to uniquely identify each trigger config within the workflow on UI. */
   triggerNumber?: string;
   /** An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published. */
-  alertConfig?: Array<EnterpriseCrmEventbusProtoWorkflowAlertConfig>;
+  alertConfig?: ReadonlyArray<EnterpriseCrmEventbusProtoWorkflowAlertConfig>;
   /** Dictates how next tasks will be executed. */
   nextTasksExecutionPolicy?:
     | "UNSPECIFIED"
@@ -3509,7 +3509,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
     | "RUN_FIRST_MATCH"
     | (string & {});
   /** Required. The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client. */
-  enabledClients?: Array<string>;
+  enabledClients?: ReadonlyArray<string>;
   /** Optional. If set to true, any upcoming requests for this trigger config will be paused and the executions will be resumed later when the flag is reset. The workflow to which this trigger config belongs has to be in ACTIVE status for the executions to be paused or resumed. */
   pauseWorkflowExecutions?: boolean;
   /** Optional. When set, Eventbus will run the task specified in the trigger_criteria and validate the result using the trigger_criteria.condition, and only execute the workflow when result is true. */
@@ -3656,7 +3656,7 @@ export const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig =
 
 export interface GoogleCloudIntegrationsV1alphaTriggerConfigVariables {
   /** Optional. List of variable names. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaTriggerConfigVariables =
@@ -3670,7 +3670,7 @@ export interface GoogleCloudIntegrationsV1alphaTriggerConfig {
   /** Optional. The user created label for a particular trigger. */
   label?: string;
   /** Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph). */
-  startTasks?: Array<GoogleCloudIntegrationsV1alphaNextTask>;
+  startTasks?: ReadonlyArray<GoogleCloudIntegrationsV1alphaNextTask>;
   /** Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers. */
   properties?: Record<string, string>;
   /** Optional. Type of trigger */
@@ -3690,7 +3690,7 @@ export interface GoogleCloudIntegrationsV1alphaTriggerConfig {
   /** Required. A number to uniquely identify each trigger config within the integration on UI. */
   triggerNumber?: string;
   /** Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published. */
-  alertConfig?: Array<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>;
+  alertConfig?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>;
   /** Optional. Dictates how next tasks will be executed. */
   nextTasksExecutionPolicy?:
     | "NEXT_TASKS_EXECUTION_POLICY_UNSPECIFIED"
@@ -3783,7 +3783,7 @@ export interface EnterpriseCrmEventbusProtoAttributes {
   /** Used to define defaults. */
   defaultValue?: EnterpriseCrmEventbusProtoValueType;
   /** List of tasks that can view this property, if empty then all. */
-  taskVisibility?: Array<string>;
+  taskVisibility?: ReadonlyArray<string>;
   /** See */
   logSettings?: EnterpriseCrmEventbusProtoLogSettings;
   /** Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable. */
@@ -3856,7 +3856,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
   /** Metadata information about the parameters. */
   attributes?: EnterpriseCrmEventbusProtoAttributes;
   /** Child parameters nested within this parameter. This field only applies to protobuf parameters */
-  children?: Array<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
+  children?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
   /** The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName". */
   name?: string;
   /** Specifies the input/output type for the parameter. */
@@ -3912,7 +3912,7 @@ export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry: Schema.S
 
 export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameters {
   /** Parameters are a part of Event and can be used to communiticate between different tasks that are part of the same workflow execution. */
-  parameters?: Array<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
+  parameters?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameters =
@@ -4008,7 +4008,7 @@ export const EnterpriseCrmEventbusProtoPropertyEntry =
 
 export interface EnterpriseCrmEventbusProtoEventBusProperties {
   /** An unordered list of property entries. */
-  properties?: Array<EnterpriseCrmEventbusProtoPropertyEntry>;
+  properties?: ReadonlyArray<EnterpriseCrmEventbusProtoPropertyEntry>;
 }
 
 export const EnterpriseCrmEventbusProtoEventBusProperties =
@@ -4055,7 +4055,7 @@ export const EnterpriseCrmEventbusProtoTeardownTaskConfig =
 
 export interface EnterpriseCrmEventbusProtoTeardown {
   /** Required. */
-  teardownTaskConfigs?: Array<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
+  teardownTaskConfigs?: ReadonlyArray<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
 }
 
 export const EnterpriseCrmEventbusProtoTeardown =
@@ -4073,7 +4073,7 @@ export interface GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
   /** Required. A number to uniquely identify each error catcher config within the workflow on UI. */
   errorCatcherNumber?: string;
   /** Required. The set of start tasks that are to be executed for the error catch flow */
-  startErrorTasks?: Array<GoogleCloudIntegrationsV1alphaNextTask>;
+  startErrorTasks?: ReadonlyArray<GoogleCloudIntegrationsV1alphaNextTask>;
   /** Optional. User-provided description intended to give more business context about the error catcher config. */
   description?: string;
   /** Optional. Informs the front-end application where to draw this error catcher config on the UI. */
@@ -4137,17 +4137,17 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersion {
   /** Optional. The integration description. */
   description?: string;
   /** Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs. */
-  taskConfigsInternal?: Array<EnterpriseCrmFrontendsEventbusProtoTaskConfig>;
+  taskConfigsInternal?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoTaskConfig>;
   /** Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs. */
-  taskConfigs?: Array<GoogleCloudIntegrationsV1alphaTaskConfig>;
+  taskConfigs?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTaskConfig>;
   /** Optional. Trigger configurations. */
-  triggerConfigsInternal?: Array<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>;
+  triggerConfigsInternal?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>;
   /** Optional. Trigger configurations. */
-  triggerConfigs?: Array<GoogleCloudIntegrationsV1alphaTriggerConfig>;
+  triggerConfigs?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTriggerConfig>;
   /** Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter. */
   integrationParametersInternal?: EnterpriseCrmFrontendsEventbusProtoWorkflowParameters;
   /** Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter. */
-  integrationParameters?: Array<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
+  integrationParameters?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
   /** Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code. */
   teardown?: EnterpriseCrmEventbusProtoTeardown;
   /** Optional. The origin that indicates where this integration is coming from. */
@@ -4196,13 +4196,13 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersion {
     | "DATABASE_PERSISTENCE_ASYNC"
     | (string & {});
   /** Optional. Error Catch Task configuration for the integration. It's optional. */
-  errorCatcherConfigs?: Array<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>;
+  errorCatcherConfigs?: ReadonlyArray<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>;
   /** Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task. */
   runAsServiceAccount?: string;
   /** Optional. Cloud Logging details for the integration version */
   cloudLoggingDetails?: GoogleCloudIntegrationsV1alphaCloudLoggingDetails;
   /** Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter. */
-  integrationConfigParameters?: Array<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>;
+  integrationConfigParameters?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>;
   /** Optional. True if variable masking feature should be turned on for this version */
   enableVariableMasking?: boolean;
   /** Optional. Optional. The resource name of the template from which the integration is created. */
@@ -4264,7 +4264,7 @@ export const GoogleCloudIntegrationsV1alphaIntegrationVersion =
 
 export interface GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse {
   /** The integrations which match the request. */
-  integrationVersions?: Array<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
+  integrationVersions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Whether the user has no permission on the version or not. */
@@ -4356,7 +4356,7 @@ export interface GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionRespons
   /** String representation of the requested file. */
   content?: string;
   /** List containing String represendation for multiple file with type. */
-  files?: Array<GoogleCloudIntegrationsV1alphaSerializedFile>;
+  files?: ReadonlyArray<GoogleCloudIntegrationsV1alphaSerializedFile>;
 }
 
 export const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse =
@@ -4396,7 +4396,7 @@ export const GoogleCloudIntegrationsV1alphaFile =
 
 export interface GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse {
   /** List containing JSON for multiple file with type information. */
-  files?: Array<GoogleCloudIntegrationsV1alphaFile>;
+  files?: ReadonlyArray<GoogleCloudIntegrationsV1alphaFile>;
 }
 
 export const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse =
@@ -4443,7 +4443,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest {
   /** Optional. Flag to determine how to should propagate errors. If this flag is set to be true, it will not throw an exception. Instead, it will return a {@link ExecuteIntegrationsResponse} with an execution id and error messages as PostWithTriggerIdExecutionException in {@link EventParameters}. The flag is set to be false by default. */
   doNotPropagateError?: boolean;
   /** Optional. Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
-  parameterEntries?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  parameterEntries?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
   /** Optional. This is used to de-dup incoming request: if the duplicate request was detected, the response from the previous execution is returned. */
   requestId?: string;
   /** Optional. The id of the ON_HOLD execution to be resumed. */
@@ -4479,7 +4479,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
   /** Is true if any execution in the integration failed. False otherwise. */
   executionFailed?: boolean;
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
-  parameterEntries?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  parameterEntries?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
   /** OUTPUT parameters in format of Map. Where Key is the name of the parameter. Note: Name of the system generated parameters are wrapped by backtick(`) to distinguish them from the user defined parameters. */
   outputParameters?: Record<string, unknown>;
   /** Optional. OUTPUT parameters from integration execution. */
@@ -4516,7 +4516,7 @@ export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest {
   /** This is used to de-dup incoming request: if the duplicate request was detected, the response from the previous execution is returned. */
   requestId?: string;
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
-  parameterEntries?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  parameterEntries?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
   /** Optional. Input parameters used by integration execution. */
   inputParameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
   /** Optional. This is a unique id provided by the method caller. If provided this will be used as the execution_id when a new execution info is created. This is a string representation of a UUID. Must have no more than 36 characters and contain only alphanumeric characters and hyphens. */
@@ -4542,7 +4542,7 @@ export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest =
 
 export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse {
   /** The execution info id for the executed integrations. */
-  executionInfoIds?: Array<string>;
+  executionInfoIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse =
@@ -4576,9 +4576,9 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionS
   /** the task label associated with this snapshot. Could be empty. */
   taskLabel?: string;
   /** Ancestor task number for the task(it will only be non-empty if the task is under 'private workflow') */
-  ancestorTaskNumbers?: Array<string>;
+  ancestorTaskNumbers?: ReadonlyArray<string>;
   /** Ancestor iteration number for the task(it will only be non-empty if the task is under 'private workflow') */
-  ancestorIterationNumbers?: Array<string>;
+  ancestorIterationNumbers?: ReadonlyArray<string>;
   /** The direct integration which the event execution snapshots belongs to */
   integrationName?: string;
 }
@@ -4632,7 +4632,7 @@ export interface EnterpriseCrmEventbusProtoTaskExecutionDetails {
     | "ROLLEDBACK"
     | "SUSPENDED"
     | (string & {});
-  taskAttemptStats?: Array<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
+  taskAttemptStats?: ReadonlyArray<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
   /** Indicates whether the task was skipped on failure. Only relevant if the task is in SKIPPED state. */
   skippedOnFailure?: boolean;
 }
@@ -4682,9 +4682,9 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
   /** The parameters in Event object that differs from last snapshot. */
   diffParams?: EnterpriseCrmFrontendsEventbusProtoEventParameters;
   /** All of the task execution details at the given point of time. */
-  taskExecutionDetails?: Array<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
+  taskExecutionDetails?: ReadonlyArray<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
   /** All of the computed conditions that been calculated. */
-  conditionResults?: Array<EnterpriseCrmEventbusProtoConditionResult>;
+  conditionResults?: ReadonlyArray<EnterpriseCrmEventbusProtoConditionResult>;
 }
 
 export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot =
@@ -4742,12 +4742,12 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
     | "SUSPENDED"
     | (string & {});
   /** After snapshot migration, this field will no longer be populated, but old execution snapshots will still be accessible. */
-  eventExecutionSnapshot?: Array<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>;
+  eventExecutionSnapshot?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>;
   /** The network address (aka. bns address) that indicates where the event executor is running. */
   networkAddress?: string;
   /** The log file path (aka. cns address) for this event. */
   logFilePath?: string;
-  eventAttemptStats?: Array<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
+  eventAttemptStats?: ReadonlyArray<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
   /** Used internally and shouldn't be exposed to users. A counter for the cron job to record how many times this event is in in_process state but don't have a lock consecutively/ */
   ryeLockUnheldCount?: number;
   /** Next scheduled execution time in case the execution status was RETRY_ON_HOLD. */
@@ -4889,7 +4889,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
   /** If this execution is a replay of another execution, then this field contains the original execution id. */
   originalExecutionInfoId?: string;
   /** If this execution has been replayed, then this field contains the execution ids of the replayed executions. */
-  replayedExecutionInfoIds?: Array<string>;
+  replayedExecutionInfoIds?: ReadonlyArray<string>;
   /** reason for replay */
   replayReason?: string;
   /** Replay mode for the execution */
@@ -4960,7 +4960,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
   /** Auto-generated. */
   lastModifiedTime?: string;
   /** Errors, warnings, and informationals associated with the workflow/task. The order in which the errors were added by the workflow/task is maintained. */
-  errors?: Array<EnterpriseCrmEventbusProtoErrorDetail>;
+  errors?: ReadonlyArray<EnterpriseCrmEventbusProtoErrorDetail>;
   /** Final error-code if event failed. */
   errorCode?: CrmlogErrorCode;
   /** Tenant this event is created. Used to reschedule the event to correct tenant. */
@@ -5047,9 +5047,9 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshot {
   /** The parameters in Event object that differs from last snapshot. */
   diffParams?: EnterpriseCrmEventbusProtoEventParameters;
   /** All of the task execution details at the given point of time. */
-  taskExecutionDetails?: Array<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
+  taskExecutionDetails?: ReadonlyArray<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
   /** All of the computed conditions that been calculated. */
-  conditionResults?: Array<EnterpriseCrmEventbusProtoConditionResult>;
+  conditionResults?: ReadonlyArray<EnterpriseCrmEventbusProtoConditionResult>;
   /** indicate whether snapshot exceeded maximum size before clean up */
   exceedMaxSize?: boolean;
   /** Client that the execution snapshot is associated to. */
@@ -5094,12 +5094,12 @@ export interface EnterpriseCrmEventbusProtoEventExecutionDetails {
     | "RETRY_ON_HOLD"
     | "SUSPENDED"
     | (string & {});
-  eventExecutionSnapshot?: Array<EnterpriseCrmEventbusProtoEventExecutionSnapshot>;
+  eventExecutionSnapshot?: ReadonlyArray<EnterpriseCrmEventbusProtoEventExecutionSnapshot>;
   /** The network address (aka. bns address) that indicates where the event executor is running. */
   networkAddress?: string;
   /** The log file path (aka. cns address) for this event. */
   logFilePath?: string;
-  eventAttemptStats?: Array<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
+  eventAttemptStats?: ReadonlyArray<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
   /** Used internally and shouldn't be exposed to users. A counter for the cron job to record how many times this event is in in_process state but don't have a lock consecutively/ */
   ryeLockUnheldCount?: number;
   /** Next scheduled execution time in case the execution status was RETRY_ON_HOLD. */
@@ -5146,9 +5146,9 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapsho
   /** the task label associated with this snapshot. Could be empty. */
   taskLabel?: string;
   /** Ancestor task number for the task(it will only be non-empty if the task is under 'private workflow') */
-  ancestorTaskNumbers?: Array<string>;
+  ancestorTaskNumbers?: ReadonlyArray<string>;
   /** Ancestor iteration number for the task(it will only be non-empty if the task is under 'private workflow') */
-  ancestorIterationNumbers?: Array<string>;
+  ancestorIterationNumbers?: ReadonlyArray<string>;
   /** The direct integration which the event execution snapshots belongs to */
   integrationName?: string;
 }
@@ -5201,7 +5201,7 @@ export interface GoogleCloudIntegrationsV1alphaTaskExecutionDetails {
     | "SUSPENDED"
     | (string & {});
   /** Status for the current task execution attempt. */
-  taskAttemptStats?: Array<GoogleCloudIntegrationsV1alphaAttemptStats>;
+  taskAttemptStats?: ReadonlyArray<GoogleCloudIntegrationsV1alphaAttemptStats>;
 }
 
 export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails =
@@ -5223,7 +5223,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshot {
   /** Parameters used during the execution. */
   params?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
   /** All of the task execution details at the given point of time. */
-  taskExecutionDetails?: Array<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
+  taskExecutionDetails?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
 }
 
 export const GoogleCloudIntegrationsV1alphaExecutionSnapshot =
@@ -5255,9 +5255,9 @@ export interface GoogleCloudIntegrationsV1alphaExecutionDetails {
     | "SUSPENDED"
     | (string & {});
   /** List of snapshots taken during the execution. */
-  executionSnapshots?: Array<GoogleCloudIntegrationsV1alphaExecutionSnapshot>;
+  executionSnapshots?: ReadonlyArray<GoogleCloudIntegrationsV1alphaExecutionSnapshot>;
   /** List of Start and end time of the execution attempts. */
-  attemptStats?: Array<GoogleCloudIntegrationsV1alphaAttemptStats>;
+  attemptStats?: ReadonlyArray<GoogleCloudIntegrationsV1alphaAttemptStats>;
   /** Total size of all event_execution_snapshots for an execution */
   eventExecutionSnapshotsSize?: string;
 }
@@ -5278,7 +5278,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionReplayInfo {
   /** If this execution is a replay of another execution, then this field contains the original execution id. */
   originalExecutionInfoId?: string;
   /** If this execution has been replayed, then this field contains the execution ids of the replayed executions. */
-  replayedExecutionInfoIds?: Array<string>;
+  replayedExecutionInfoIds?: ReadonlyArray<string>;
   /** reason for replay */
   replayReason?: string;
   /** Replay mode for the execution */
@@ -5305,8 +5305,8 @@ export interface GoogleCloudIntegrationsV1alphaExecution {
   /** The trigger id of the integration trigger config. If both trigger_id and client_id is present, the integration is executed from the start tasks provided by the matching trigger config otherwise it is executed from the default start tasks. */
   triggerId?: string;
   /** Event parameters come in as part of the request. */
-  requestParams?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
-  responseParams?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  requestParams?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  responseParams?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
   /** The ways user posts this event. */
   executionMethod?:
     | "EXECUTION_METHOD_UNSPECIFIED"
@@ -5321,7 +5321,7 @@ export interface GoogleCloudIntegrationsV1alphaExecution {
   /** Output only. Last modified time of the execution. */
   updateTime?: string;
   /** Direct sub executions of the following Execution. */
-  directSubExecutions?: Array<GoogleCloudIntegrationsV1alphaExecution>;
+  directSubExecutions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaExecution>;
   /** Detailed info of this execution. */
   executionDetails?: GoogleCloudIntegrationsV1alphaExecutionDetails;
   /** Event parameters come in as part of the request. */
@@ -5391,11 +5391,11 @@ export const GoogleCloudIntegrationsV1alphaExecution: Schema.Schema<GoogleCloudI
 
 export interface GoogleCloudIntegrationsV1alphaListExecutionsResponse {
   /** Required. The detailed information of requested executions. */
-  executionInfos?: Array<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo>;
+  executionInfos?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo>;
   /** The token used to retrieve the next page results. */
   nextPageToken?: string;
   /** The detailed information of requested executions */
-  executions?: Array<GoogleCloudIntegrationsV1alphaExecution>;
+  executions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaExecution>;
 }
 
 export const GoogleCloudIntegrationsV1alphaListExecutionsResponse =
@@ -5484,7 +5484,7 @@ export interface GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {
   /** Is true if any execution in the integration failed. False otherwise. */
   executionFailed?: boolean;
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
-  parameterEntries?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  parameterEntries?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
   /** Optional. Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
   parameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
@@ -5595,7 +5595,7 @@ export const GoogleCloudIntegrationsV1alphaIntegration =
 
 export interface GoogleCloudIntegrationsV1alphaListIntegrationsResponse {
   /** The integrations which match the request. */
-  integrations?: Array<GoogleCloudIntegrationsV1alphaIntegration>;
+  integrations?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegration>;
   /** The next page token for the response. */
   nextPageToken?: string;
 }
@@ -5652,7 +5652,7 @@ export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegration
 
 export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse {
   /** The list of integrations that match the search criteria. */
-  integrations?: Array<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>;
+  integrations?: ReadonlyArray<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -5705,7 +5705,7 @@ export const GoogleCloudIntegrationsV1alphaSfdcChannel =
 
 export interface GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse {
   /** The list of SfdcChannels retrieved. */
-  sfdcChannels?: Array<GoogleCloudIntegrationsV1alphaSfdcChannel>;
+  sfdcChannels?: ReadonlyArray<GoogleCloudIntegrationsV1alphaSfdcChannel>;
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -5730,7 +5730,7 @@ export interface GoogleCloudIntegrationsV1alphaSfdcInstance {
   /** The SFDC Org Id. This is defined in salesforce. */
   sfdcOrgId?: string;
   /** A list of AuthConfigs that can be tried to open the channel to SFDC */
-  authConfigId?: Array<string>;
+  authConfigId?: ReadonlyArray<string>;
   /** Output only. Time when the instance is created */
   createTime?: string;
   /** Output only. Time when the instance was last updated */
@@ -5756,7 +5756,7 @@ export const GoogleCloudIntegrationsV1alphaSfdcInstance =
 
 export interface GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse {
   /** The list of SfdcInstances retrieved. */
-  sfdcInstances?: Array<GoogleCloudIntegrationsV1alphaSfdcInstance>;
+  sfdcInstances?: ReadonlyArray<GoogleCloudIntegrationsV1alphaSfdcInstance>;
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -5835,7 +5835,7 @@ export interface EnterpriseCrmEventbusProtoAddress {
   /** Required. */
   email?: string;
   name?: string;
-  tokens?: Array<EnterpriseCrmEventbusProtoToken>;
+  tokens?: ReadonlyArray<EnterpriseCrmEventbusProtoToken>;
 }
 
 export const EnterpriseCrmEventbusProtoAddress =
@@ -5973,10 +5973,10 @@ export const EnterpriseCrmEventbusProtoSuspensionExpiration =
 
 export interface EnterpriseCrmEventbusProtoSuspensionConfig {
   /** Identities able to resolve this suspension. */
-  whoMayResolve?: Array<EnterpriseCrmEventbusProtoSuspensionAuthPermissions>;
+  whoMayResolve?: ReadonlyArray<EnterpriseCrmEventbusProtoSuspensionAuthPermissions>;
   /** Optional information to provide recipients of the suspension in addition to the resolution URL, typically containing relevant parameter values from the originating workflow. */
   customMessage?: string;
-  notifications?: Array<EnterpriseCrmEventbusProtoNotification>;
+  notifications?: ReadonlyArray<EnterpriseCrmEventbusProtoNotification>;
   /** Indicates the next steps when no external actions happen on the suspension. */
   suspensionExpiration?: EnterpriseCrmEventbusProtoSuspensionExpiration;
 }
@@ -6017,7 +6017,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig {
   /** Information to provide for recipients. */
   customMessage?: string;
   /** Email addresses to send approval request to. */
-  emailAddresses?: Array<string>;
+  emailAddresses?: ReadonlyArray<string>;
   /** Indicates the next steps when no external actions happen on the suspension. */
   expiration?: GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration;
 }
@@ -6100,7 +6100,7 @@ export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse =
 
 export interface GoogleCloudIntegrationsV1alphaListSuspensionsResponse {
   /** The suspensions for the relevant execution which the caller has permissions to view and resolve. */
-  suspensions?: Array<GoogleCloudIntegrationsV1alphaSuspension>;
+  suspensions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaSuspension>;
   /** Token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -6149,7 +6149,7 @@ export interface GoogleCloudIntegrationsV1alphaMockConfig {
     | "SKIP_MOCK_STRATEGY"
     | (string & {});
   /** Optional. List of key-value pairs for specific mock strategy */
-  parameters?: Array<GoogleCloudIntegrationsV1alphaEventParameter>;
+  parameters?: ReadonlyArray<GoogleCloudIntegrationsV1alphaEventParameter>;
   /** Optional. Number of times the given task should fail for failure mock strategy */
   failedExecutions?: string;
 }
@@ -6197,7 +6197,7 @@ export interface GoogleCloudIntegrationsV1alphaTestTaskConfig {
   /** Optional. Defines how to mock the given task during test execution */
   mockConfig?: GoogleCloudIntegrationsV1alphaMockConfig;
   /** Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case */
-  assertions?: Array<GoogleCloudIntegrationsV1alphaAssertion>;
+  assertions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaAssertion>;
   /** Required. This defines in the test case, the task name in integration which will be mocked by this test task config */
   task?: string;
   /** Optional. Auto-generated. */
@@ -6225,9 +6225,9 @@ export interface GoogleCloudIntegrationsV1alphaTestCase {
   /** Required. This defines the trigger ID in workflow which is considered to be executed as starting point of the test case */
   triggerId?: string;
   /** Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables. */
-  testInputParameters?: Array<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
+  testInputParameters?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
   /** Optional. However, the test case doesn't mock or assert anything without test_task_configs. */
-  testTaskConfigs?: Array<GoogleCloudIntegrationsV1alphaTestTaskConfig>;
+  testTaskConfigs?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTestTaskConfig>;
   /** Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index.. */
   databasePersistencePolicy?:
     | "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"
@@ -6271,7 +6271,7 @@ export const GoogleCloudIntegrationsV1alphaTestCase =
 
 export interface GoogleCloudIntegrationsV1alphaListTestCasesResponse {
   /** The test cases corresponding to the specified filter */
-  testCases?: Array<GoogleCloudIntegrationsV1alphaTestCase>;
+  testCases?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTestCase>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -6332,7 +6332,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse {
   /** OUTPUT parameters in format of Map. Where Key is the name of the parameter. Note: Name of the system generated parameters are wrapped by backtick(`) to distinguish them from the user defined parameters. */
   outputParameters?: Record<string, unknown>;
   /** Results of each assertions ran during execution of test case. */
-  assertionResults?: Array<GoogleCloudIntegrationsV1alphaAssertionResult>;
+  assertionResults?: ReadonlyArray<GoogleCloudIntegrationsV1alphaAssertionResult>;
   /** State of the test case execution */
   testExecutionState?:
     | "STATE_UNSPECIFIED"
@@ -6410,7 +6410,7 @@ export const GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest =
 
 export interface GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse {
   /** Results of each execution of test cases in an integration version. */
-  executeTestCaseResponses?: Array<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
+  executeTestCaseResponses?: ReadonlyArray<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
 }
 
 export const GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse =
@@ -6443,7 +6443,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplateBundle {
   /** Required. Main integration templates of the template bundle. */
   integrationVersionTemplate?: GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate;
   /** Optional. Sub integration templates which would be added along with main integration. */
-  subIntegrationVersionTemplates?: Array<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
+  subIntegrationVersionTemplates?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
 }
 
 export const GoogleCloudIntegrationsV1alphaTemplateBundle =
@@ -6485,11 +6485,11 @@ export interface GoogleCloudIntegrationsV1alphaTemplate {
   /** Required. Bundle which is part of the templates. The template entities in the bundle would be converted to an actual entity. */
   templateBundle?: GoogleCloudIntegrationsV1alphaTemplateBundle;
   /** Optional. Components being used in the template. This could be used to categorize and filter. */
-  components?: Array<GoogleCloudIntegrationsV1alphaTemplateComponent>;
+  components?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTemplateComponent>;
   /** Required. Tags which are used to identify templates. These tags could be for business use case, connectors etc. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Required. Categories associated with the Template. The categories listed below will be utilized for the Template listing. */
-  categories?: Array<
+  categories?: ReadonlyArray<
     | "CATEGORY_UNSPECIFIED"
     | "AI_MACHINE_LEARNING"
     | "BUSINESS_INTELLIGENCE"
@@ -6527,7 +6527,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplate {
     | "PUBLIC"
     | (string & {});
   /** Required. Resource names with which the template is shared for example ProjectNumber/Ord id */
-  sharedWith?: Array<string>;
+  sharedWith?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaTemplate =
@@ -6556,7 +6556,7 @@ export const GoogleCloudIntegrationsV1alphaTemplate =
 
 export interface GoogleCloudIntegrationsV1alphaListTemplatesResponse {
   /** List of templates retrieved. */
-  templates?: Array<GoogleCloudIntegrationsV1alphaTemplate>;
+  templates?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTemplate>;
   /** The token used to retrieve the next page results. */
   nextPageToken?: string;
 }
@@ -6573,7 +6573,7 @@ export const GoogleCloudIntegrationsV1alphaListTemplatesResponse =
 
 export interface GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
   /** List of templates retrieved. */
-  templates?: Array<GoogleCloudIntegrationsV1alphaTemplate>;
+  templates?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTemplate>;
   /** The token used to retrieve the next page results. */
   nextPageToken?: string;
 }
@@ -6636,7 +6636,7 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateResponse {
   /** IntegrationVersion which is created. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
   /** Sub integration versions which are created. */
-  subIntegrationVersions?: Array<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
+  subIntegrationVersions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
 }
 
 export const GoogleCloudIntegrationsV1alphaUseTemplateResponse =
@@ -6678,7 +6678,7 @@ export interface GoogleCloudIntegrationsV1alphaImportTemplateResponse {
   /** IntegrationVersion after the import. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
   /** Sub integration versions which are imported. */
-  subIntegrationVersions?: Array<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
+  subIntegrationVersions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
 }
 
 export const GoogleCloudIntegrationsV1alphaImportTemplateResponse =
@@ -6695,7 +6695,7 @@ export const GoogleCloudIntegrationsV1alphaImportTemplateResponse =
 
 export interface GoogleCloudIntegrationsV1alphaShareTemplateRequest {
   /** Optional. Project name resources to share the template. The project names is expected in resource format Ex: projects/{project-number} or organization/{org-id} */
-  resourceNames?: Array<string>;
+  resourceNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaShareTemplateRequest =
@@ -6707,7 +6707,7 @@ export const GoogleCloudIntegrationsV1alphaShareTemplateRequest =
 
 export interface GoogleCloudIntegrationsV1alphaUnshareTemplateRequest {
   /** Optional. Project name resources to unshare the template. The project names is expected in resource format Ex: projects/{project-number} */
-  resourceNames?: Array<string>;
+  resourceNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest =
@@ -6760,7 +6760,7 @@ export interface GoogleCloudIntegrationsV1alphaApiTriggerResource {
   /** Required. Integration where the API is published */
   integrationResource?: string;
   /** Required. Trigger Id of the API trigger(s) in the integration */
-  triggerId?: Array<string>;
+  triggerId?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudIntegrationsV1alphaApiTriggerResource =
@@ -6773,7 +6773,7 @@ export const GoogleCloudIntegrationsV1alphaApiTriggerResource =
 
 export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest {
   /** Required. List of api triggers */
-  apiTriggerResources?: Array<GoogleCloudIntegrationsV1alphaApiTriggerResource>;
+  apiTriggerResources?: ReadonlyArray<GoogleCloudIntegrationsV1alphaApiTriggerResource>;
   /** Required. File format for generated spec. */
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
@@ -6816,7 +6816,7 @@ export interface EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam {
   /** UUID of the AuthConfig. */
   authConfigId?: string;
   /** Defines the credential types to be supported as Task may restrict specific types to use, e.g. Cloud SQL Task will use username/password type only. */
-  allowedCredentialTypes?: Array<
+  allowedCredentialTypes?: ReadonlyArray<
     | "CREDENTIAL_TYPE_UNSPECIFIED"
     | "USERNAME_AND_PASSWORD"
     | "API_KEY"
@@ -7197,7 +7197,7 @@ export interface EnterpriseCrmEventbusProtoFunction {
   /** The name of the function to perform. */
   functionType?: EnterpriseCrmEventbusProtoFunctionType;
   /** List of parameters required for the transformation. */
-  parameters?: Array<EnterpriseCrmEventbusProtoTransformExpression>;
+  parameters?: ReadonlyArray<EnterpriseCrmEventbusProtoTransformExpression>;
 }
 
 export const EnterpriseCrmEventbusProtoFunction: Schema.Schema<EnterpriseCrmEventbusProtoFunction> =
@@ -7238,7 +7238,7 @@ export interface EnterpriseCrmEventbusProtoTransformExpression {
   /** Initial value upon which to perform transformations. */
   initialValue?: EnterpriseCrmEventbusProtoBaseValue;
   /** Transformations to be applied sequentially. */
-  transformationFunctions?: Array<EnterpriseCrmEventbusProtoFunction>;
+  transformationFunctions?: ReadonlyArray<EnterpriseCrmEventbusProtoFunction>;
 }
 
 export const EnterpriseCrmEventbusProtoTransformExpression: Schema.Schema<EnterpriseCrmEventbusProtoTransformExpression> =
@@ -7313,7 +7313,7 @@ export const EnterpriseCrmEventbusProtoMappedField =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoMappedField" });
 
 export interface EnterpriseCrmEventbusProtoFieldMappingConfig {
-  mappedFields?: Array<EnterpriseCrmEventbusProtoMappedField>;
+  mappedFields?: ReadonlyArray<EnterpriseCrmEventbusProtoMappedField>;
 }
 
 export const EnterpriseCrmEventbusProtoFieldMappingConfig =
@@ -7376,7 +7376,7 @@ export const EnterpriseCrmEventbusProtoParameterMapEntry =
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoParameterMapEntry" });
 
 export interface EnterpriseCrmEventbusProtoParameterMap {
-  entries?: Array<EnterpriseCrmEventbusProtoParameterMapEntry>;
+  entries?: ReadonlyArray<EnterpriseCrmEventbusProtoParameterMapEntry>;
   /** Option to specify key value type for all entries of the map. If provided then field types for all entries must conform to this. */
   keyType?:
     | "DATA_TYPE_UNSPECIFIED"
@@ -7433,11 +7433,11 @@ export interface EnterpriseCrmEventbusProtoScatterResponse {
   /** The element that was scattered for this execution. */
   scatterElement?: EnterpriseCrmEventbusProtoParameterValueType;
   /** The execution ids of each Subworkflow fired by this scatter. */
-  executionIds?: Array<string>;
+  executionIds?: ReadonlyArray<string>;
   /** If execution is sync, this is true if the execution passed and false if it failed. If the execution is async, this is true if the WF was fired off successfully, and false if it failed to execute. The success or failure of the subworkflows executed are not captured. */
   isSuccessful?: boolean;
   /** A list of all the response parameters in the aggregtorMap stored with the remapped key. */
-  responseParams?: Array<EnterpriseCrmEventbusProtoParameterEntry>;
+  responseParams?: ReadonlyArray<EnterpriseCrmEventbusProtoParameterEntry>;
   /** The error message of the failure if applicable. */
   errorMsg?: string;
 }
@@ -7617,7 +7617,7 @@ export const EnterpriseCrmFrontendsEventbusProtoParameterMapEntry =
   });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParameterMap {
-  entries?: Array<EnterpriseCrmFrontendsEventbusProtoParameterMapEntry>;
+  entries?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterMapEntry>;
   /** Option to specify key value type for all entries of the map. If provided then field types for all entries must conform to this. */
   keyType?:
     | "DATA_TYPE_UNSPECIFIED"
@@ -7729,7 +7729,7 @@ export const GetClientmetadataProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/clientmetadata" }),
+    T.Http({ method: "GET", path: "v1/{parent}/clientmetadata" }),
     svc,
   ) as unknown as Schema.Schema<GetClientmetadataProjectsRequest>;
 
@@ -7761,10 +7761,7 @@ export const GetClientsProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/clients" }),
     svc,
   ) as unknown as Schema.Schema<GetClientsProjectsLocationsRequest>;
 
@@ -7803,7 +7800,7 @@ export const GenerateOpenApiSpecProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:generateOpenApiSpec",
+      path: "v1/{name}:generateOpenApiSpec",
       hasBody: true,
     }),
     svc,
@@ -7844,7 +7841,7 @@ export const LinkProjectsLocationsAppsScriptProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appsScriptProjects:link",
+      path: "v1/{parent}/appsScriptProjects:link",
       hasBody: true,
     }),
     svc,
@@ -7885,7 +7882,7 @@ export const CreateProjectsLocationsAppsScriptProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appsScriptProjects",
+      path: "v1/{parent}/appsScriptProjects",
       hasBody: true,
     }),
     svc,
@@ -7926,7 +7923,7 @@ export const ProvisionProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:provision",
+      path: "v1/{parent}/clients:provision",
       hasBody: true,
     }),
     svc,
@@ -7966,7 +7963,7 @@ export const ProvisionClientPostProcessorProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:provisionClientPostProcessor",
+      path: "v1/{parent}/clients:provisionClientPostProcessor",
       hasBody: true,
     }),
     svc,
@@ -8008,7 +8005,7 @@ export const DeprovisionProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:deprovision",
+      path: "v1/{parent}/clients:deprovision",
       hasBody: true,
     }),
     svc,
@@ -8048,7 +8045,7 @@ export const ChangeConfigProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:changeConfig",
+      path: "v1/{parent}/clients:changeConfig",
       hasBody: true,
     }),
     svc,
@@ -8089,7 +8086,7 @@ export const SwitchProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:switch",
+      path: "v1/{parent}/clients:switch",
       hasBody: true,
     }),
     svc,
@@ -8129,7 +8126,7 @@ export const ReplaceProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:replace",
+      path: "v1/{parent}/clients:replace",
       hasBody: true,
     }),
     svc,
@@ -8169,7 +8166,7 @@ export const SwitchVariableMaskingProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:switchVariableMasking",
+      path: "v1/{parent}/clients:switchVariableMasking",
       hasBody: true,
     }),
     svc,
@@ -8210,7 +8207,7 @@ export const ToggleHttpProjectsLocationsClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clients:toggleHttp",
+      path: "v1/{parent}/clients:toggleHttp",
       hasBody: true,
     }),
     svc,
@@ -8250,7 +8247,7 @@ export const CreateProjectsLocationsProductsCloudFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/cloudFunctions",
+      path: "v1/{parent}/cloudFunctions",
       hasBody: true,
     }),
     svc,
@@ -8296,10 +8293,7 @@ export const ListProjectsLocationsProductsCertificatesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/certificates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsCertificatesRequest>;
 
@@ -8335,10 +8329,7 @@ export const GetProjectsLocationsProductsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/certificates/{certificatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProductsCertificatesRequest>;
 
@@ -8375,11 +8366,7 @@ export const CreateProjectsLocationsProductsCertificatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/certificates",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/certificates", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsProductsCertificatesRequest>;
 
@@ -8419,11 +8406,7 @@ export const PatchProjectsLocationsProductsCertificatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/certificates/{certificatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsProductsCertificatesRequest>;
 
@@ -8455,10 +8438,7 @@ export const DeleteProjectsLocationsProductsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/certificates/{certificatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsCertificatesRequest>;
 
@@ -8510,11 +8490,7 @@ export const CreateProjectsLocationsProductsAuthConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/authConfigs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/authConfigs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsProductsAuthConfigsRequest>;
 
@@ -8569,11 +8545,7 @@ export const PatchProjectsLocationsProductsAuthConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/authConfigs/{authConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsProductsAuthConfigsRequest>;
 
@@ -8605,10 +8577,7 @@ export const DeleteProjectsLocationsProductsAuthConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/authConfigs/{authConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsAuthConfigsRequest>;
 
@@ -8640,10 +8609,7 @@ export const GetProjectsLocationsProductsAuthConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/authConfigs/{authConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProductsAuthConfigsRequest>;
 
@@ -8687,10 +8653,7 @@ export const ListProjectsLocationsProductsAuthConfigsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/authConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsAuthConfigsRequest>;
 
@@ -8731,11 +8694,7 @@ export const ExecuteProjectsLocationsProductsIntegrationsRequest =
       GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}:execute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:execute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteProjectsLocationsProductsIntegrationsRequest>;
 
@@ -8772,11 +8731,7 @@ export const ScheduleProjectsLocationsProductsIntegrationsRequest =
       GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}:schedule",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:schedule", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ScheduleProjectsLocationsProductsIntegrationsRequest>;
 
@@ -8813,11 +8768,7 @@ export const TestProjectsLocationsProductsIntegrationsRequest =
       GoogleCloudIntegrationsV1alphaTestIntegrationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}:test",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:test", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TestProjectsLocationsProductsIntegrationsRequest>;
 
@@ -8861,10 +8812,7 @@ export const ListProjectsLocationsProductsIntegrationsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/integrations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsRequest>;
 
@@ -8915,10 +8863,7 @@ export const ListProjectsLocationsProductsIntegrationsVersionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     fieldMask: Schema.optional(Schema.String).pipe(T.HttpQuery("fieldMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -8970,11 +8915,7 @@ export const CreateProjectsLocationsProductsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/versions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -9015,11 +8956,7 @@ export const PatchProjectsLocationsProductsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions/{versionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -9052,10 +8989,7 @@ export const GetProjectsLocationsProductsIntegrationsVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -9093,11 +9027,7 @@ export const PublishProjectsLocationsProductsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions/{versionsId}:publish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:publish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PublishProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -9130,10 +9060,7 @@ export const DeleteProjectsLocationsProductsIntegrationsVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -9173,7 +9100,7 @@ export const UploadProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions:upload",
+      path: "v1/{parent}/versions:upload",
       hasBody: true,
     }),
     svc,
@@ -9220,10 +9147,7 @@ export const DownloadProjectsLocationsProductsIntegrationsVersionsRequest =
       T.HttpQuery("files"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions/{versionsId}:download",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:download" }),
     svc,
   ) as unknown as Schema.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -9263,7 +9187,7 @@ export const TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions/{versionsId}:takeoverEditLock",
+      path: "v1/{integrationVersion}:takeoverEditLock",
       hasBody: true,
     }),
     svc,
@@ -9303,11 +9227,7 @@ export const UnpublishProjectsLocationsProductsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions/{versionsId}:unpublish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:unpublish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UnpublishProjectsLocationsProductsIntegrationsVersionsRequest>;
 
@@ -9428,10 +9348,7 @@ export const ListProjectsLocationsProductsIntegrationsExecutionsRequest =
       T.HttpQuery("snapshotMetadataWithoutParams"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
@@ -9468,10 +9385,7 @@ export const GetProjectsLocationsProductsIntegrationsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
@@ -9504,10 +9418,7 @@ export const DownloadProjectsLocationsProductsIntegrationsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions/{executionsId}:download",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:download" }),
     svc,
   ) as unknown as Schema.Schema<DownloadProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
@@ -9545,11 +9456,7 @@ export const ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRe
       GoogleCloudIntegrationsV1alphaResolveSuspensionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions/{executionsId}/suspensions/{suspensionsId}:resolve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resolve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
 
@@ -9596,10 +9503,7 @@ export const ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsReque
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions/{executionsId}/suspensions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/suspensions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
 
@@ -9642,11 +9546,7 @@ export const LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsReque
       GoogleCloudIntegrationsV1alphaLiftSuspensionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/executions/{executionsId}/suspensions/{suspensionsId}:lift",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:lift", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
 
@@ -9687,7 +9587,7 @@ export const CreateProjectsLocationsProductsSfdcInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances",
+      path: "v1/{parent}/sfdcInstances",
       hasBody: true,
     }),
     svc,
@@ -9729,11 +9629,7 @@ export const PatchProjectsLocationsProductsSfdcInstancesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsProductsSfdcInstancesRequest>;
 
@@ -9765,10 +9661,7 @@ export const DeleteProjectsLocationsProductsSfdcInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsSfdcInstancesRequest>;
 
@@ -9800,10 +9693,7 @@ export const GetProjectsLocationsProductsSfdcInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProductsSfdcInstancesRequest>;
 
@@ -9847,10 +9737,7 @@ export const ListProjectsLocationsProductsSfdcInstancesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sfdcInstances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsSfdcInstancesRequest>;
 
@@ -9891,11 +9778,7 @@ export const CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sfdcChannels", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
@@ -9936,11 +9819,7 @@ export const PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels/{sfdcChannelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
@@ -9973,10 +9852,7 @@ export const DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels/{sfdcChannelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
@@ -10009,10 +9885,7 @@ export const GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels/{sfdcChannelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
@@ -10057,10 +9930,7 @@ export const ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/products/{productsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sfdcChannels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
@@ -10104,7 +9974,7 @@ export const CreateProjectsLocationsCloudFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudFunctions",
+      path: "v1/{parent}/cloudFunctions",
       hasBody: true,
     }),
     svc,
@@ -10150,10 +10020,7 @@ export const ListProjectsLocationsCertificatesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCertificatesRequest>;
 
@@ -10189,10 +10056,7 @@ export const GetProjectsLocationsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCertificatesRequest>;
 
@@ -10229,11 +10093,7 @@ export const CreateProjectsLocationsCertificatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/certificates", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCertificatesRequest>;
 
@@ -10273,11 +10133,7 @@ export const PatchProjectsLocationsCertificatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCertificatesRequest>;
 
@@ -10309,10 +10165,7 @@ export const DeleteProjectsLocationsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCertificatesRequest>;
 
@@ -10363,11 +10216,7 @@ export const CreateProjectsLocationsAuthConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authConfigs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/authConfigs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAuthConfigsRequest>;
 
@@ -10422,11 +10271,7 @@ export const PatchProjectsLocationsAuthConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authConfigs/{authConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAuthConfigsRequest>;
 
@@ -10458,10 +10303,7 @@ export const DeleteProjectsLocationsAuthConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authConfigs/{authConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthConfigsRequest>;
 
@@ -10492,10 +10334,7 @@ export const GetProjectsLocationsAuthConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authConfigs/{authConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthConfigsRequest>;
 
@@ -10539,10 +10378,7 @@ export const ListProjectsLocationsAuthConfigsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthConfigsRequest>;
 
@@ -10590,10 +10426,7 @@ export const ListProjectsLocationsConnectionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
 
@@ -10629,10 +10462,7 @@ export const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/connectionSchemaMetadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
 
@@ -10674,10 +10504,7 @@ export const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/runtimeEntitySchemas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runtimeEntitySchemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
 
@@ -10723,10 +10550,7 @@ export const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/runtimeActionSchemas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runtimeActionSchemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
 
@@ -10768,11 +10592,7 @@ export const ExecuteProjectsLocationsIntegrationsRequest =
       GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}:execute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:execute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteProjectsLocationsIntegrationsRequest>;
 
@@ -10809,11 +10629,7 @@ export const ScheduleProjectsLocationsIntegrationsRequest =
       GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}:schedule",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:schedule", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ScheduleProjectsLocationsIntegrationsRequest>;
 
@@ -10848,11 +10664,7 @@ export const ExecuteEventProjectsLocationsIntegrationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     triggerId: Schema.optional(Schema.String).pipe(T.HttpQuery("triggerId")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}:executeEvent",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:executeEvent", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteEventProjectsLocationsIntegrationsRequest>;
 
@@ -10889,11 +10701,7 @@ export const TestProjectsLocationsIntegrationsRequest =
       GoogleCloudIntegrationsV1alphaTestIntegrationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}:test",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:test", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TestProjectsLocationsIntegrationsRequest>;
 
@@ -10937,10 +10745,7 @@ export const ListProjectsLocationsIntegrationsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/integrations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsRequest>;
 
@@ -10993,10 +10798,7 @@ export const SearchProjectsLocationsIntegrationsRequest =
       Schema.Boolean,
     ).pipe(T.HttpQuery("enableNaturalLanguageQueryUnderstanding")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/integrations:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsIntegrationsRequest>;
 
@@ -11032,10 +10834,7 @@ export const DeleteProjectsLocationsIntegrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIntegrationsRequest>;
 
@@ -11081,10 +10880,7 @@ export const ListProjectsLocationsIntegrationsVersionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     fieldMask: Schema.optional(Schema.String).pipe(T.HttpQuery("fieldMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11135,11 +10931,7 @@ export const CreateProjectsLocationsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/versions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11179,11 +10971,7 @@ export const PatchProjectsLocationsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11215,10 +11003,7 @@ export const GetProjectsLocationsIntegrationsVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11255,11 +11040,7 @@ export const PublishProjectsLocationsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}:publish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:publish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PublishProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11291,10 +11072,7 @@ export const DeleteProjectsLocationsIntegrationsVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11333,7 +11111,7 @@ export const UploadProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions:upload",
+      path: "v1/{parent}/versions:upload",
       hasBody: true,
     }),
     svc,
@@ -11379,10 +11157,7 @@ export const DownloadProjectsLocationsIntegrationsVersionsRequest =
       T.HttpQuery("files"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}:download",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:download" }),
     svc,
   ) as unknown as Schema.Schema<DownloadProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11423,10 +11198,7 @@ export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest =
       T.HttpQuery("files"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}:downloadJsonPackage",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:downloadJsonPackage" }),
     svc,
   ) as unknown as Schema.Schema<DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11464,11 +11236,7 @@ export const UnpublishProjectsLocationsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}:unpublish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:unpublish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UnpublishProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11505,11 +11273,7 @@ export const TestProjectsLocationsIntegrationsVersionsRequest =
       GoogleCloudIntegrationsV1alphaTestIntegrationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}:test",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:test", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TestProjectsLocationsIntegrationsVersionsRequest>;
 
@@ -11549,11 +11313,7 @@ export const CreateProjectsLocationsIntegrationsVersionsTestCasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/testCases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
@@ -11586,10 +11346,7 @@ export const GetProjectsLocationsIntegrationsVersionsTestCasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
@@ -11630,11 +11387,7 @@ export const PatchProjectsLocationsIntegrationsVersionsTestCasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
@@ -11667,10 +11420,7 @@ export const DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
@@ -11718,10 +11468,7 @@ export const ListProjectsLocationsIntegrationsVersionsTestCasesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/testCases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
@@ -11765,7 +11512,7 @@ export const ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}:executeTest",
+      path: "v1/{testCaseName}:executeTest",
       hasBody: true,
     }),
     svc,
@@ -11807,7 +11554,7 @@ export const UploadProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases:upload",
+      path: "v1/{parent}/testCases:upload",
       hasBody: true,
     }),
     svc,
@@ -11845,10 +11592,7 @@ export const DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     fileFormat: Schema.optional(Schema.String).pipe(T.HttpQuery("fileFormat")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}:download",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:download" }),
     svc,
   ) as unknown as Schema.Schema<DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
@@ -11888,7 +11632,7 @@ export const TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases/{testCasesId}:takeoverEditLock",
+      path: "v1/{name}:takeoverEditLock",
       hasBody: true,
     }),
     svc,
@@ -11931,7 +11675,7 @@ export const ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/versions/{versionsId}/testCases:execute",
+      path: "v1/{parent}/testCases:execute",
       hasBody: true,
     }),
     svc,
@@ -12054,10 +11798,7 @@ export const ListProjectsLocationsIntegrationsExecutionsRequest =
       T.HttpQuery("snapshotMetadataWithoutParams"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsExecutionsRequest>;
 
@@ -12093,10 +11834,7 @@ export const GetProjectsLocationsIntegrationsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIntegrationsExecutionsRequest>;
 
@@ -12133,11 +11871,7 @@ export const CancelProjectsLocationsIntegrationsExecutionsRequest =
       GoogleCloudIntegrationsV1alphaCancelExecutionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsIntegrationsExecutionsRequest>;
 
@@ -12169,10 +11903,7 @@ export const DownloadProjectsLocationsIntegrationsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}:download",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:download" }),
     svc,
   ) as unknown as Schema.Schema<DownloadProjectsLocationsIntegrationsExecutionsRequest>;
 
@@ -12210,11 +11941,7 @@ export const ReplayProjectsLocationsIntegrationsExecutionsRequest =
       GoogleCloudIntegrationsV1alphaReplayExecutionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}:replay",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:replay", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReplayProjectsLocationsIntegrationsExecutionsRequest>;
 
@@ -12251,11 +11978,7 @@ export const ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
       GoogleCloudIntegrationsV1alphaResolveSuspensionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}/suspensions/{suspensionsId}:resolve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resolve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
@@ -12300,10 +12023,7 @@ export const ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}/suspensions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/suspensions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
@@ -12345,11 +12065,7 @@ export const LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
       GoogleCloudIntegrationsV1alphaLiftSuspensionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/integrations/{integrationsId}/executions/{executionsId}/suspensions/{suspensionsId}:lift",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:lift", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
@@ -12389,7 +12105,7 @@ export const CreateProjectsLocationsSfdcInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances",
+      path: "v1/{parent}/sfdcInstances",
       hasBody: true,
     }),
     svc,
@@ -12431,11 +12147,7 @@ export const PatchProjectsLocationsSfdcInstancesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSfdcInstancesRequest>;
 
@@ -12467,10 +12179,7 @@ export const DeleteProjectsLocationsSfdcInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSfdcInstancesRequest>;
 
@@ -12501,10 +12210,7 @@ export const GetProjectsLocationsSfdcInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSfdcInstancesRequest>;
 
@@ -12548,10 +12254,7 @@ export const ListProjectsLocationsSfdcInstancesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sfdcInstances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSfdcInstancesRequest>;
 
@@ -12592,11 +12295,7 @@ export const CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sfdcChannels", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
@@ -12637,11 +12336,7 @@ export const PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels/{sfdcChannelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
@@ -12674,10 +12369,7 @@ export const DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels/{sfdcChannelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
@@ -12710,10 +12402,7 @@ export const GetProjectsLocationsSfdcInstancesSfdcChannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels/{sfdcChannelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
@@ -12757,10 +12446,7 @@ export const ListProjectsLocationsSfdcInstancesSfdcChannelsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sfdcInstances/{sfdcInstancesId}/sfdcChannels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sfdcChannels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
@@ -12811,10 +12497,7 @@ export const ListProjectsLocationsTemplatesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/templates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTemplatesRequest>;
 
@@ -12850,10 +12533,7 @@ export const GetProjectsLocationsTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTemplatesRequest>;
 
@@ -12890,11 +12570,7 @@ export const CreateProjectsLocationsTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/templates", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTemplatesRequest>;
 
@@ -12934,11 +12610,7 @@ export const PatchProjectsLocationsTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTemplatesRequest>;
 
@@ -12970,10 +12642,7 @@ export const DeleteProjectsLocationsTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTemplatesRequest>;
 
@@ -13027,10 +12696,7 @@ export const SearchProjectsLocationsTemplatesRequest =
       Schema.Boolean,
     ).pipe(T.HttpQuery("enableNaturalLanguageQueryUnderstanding")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/templates:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsTemplatesRequest>;
 
@@ -13071,11 +12737,7 @@ export const UseProjectsLocationsTemplatesRequest =
       GoogleCloudIntegrationsV1alphaUseTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:use",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:use", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UseProjectsLocationsTemplatesRequest>;
 
@@ -13112,11 +12774,7 @@ export const ImportProjectsLocationsTemplatesRequest =
       GoogleCloudIntegrationsV1alphaImportTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:import",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:import", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ImportProjectsLocationsTemplatesRequest>;
 
@@ -13153,11 +12811,7 @@ export const ShareProjectsLocationsTemplatesRequest =
       GoogleCloudIntegrationsV1alphaShareTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:share",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:share", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ShareProjectsLocationsTemplatesRequest>;
 
@@ -13193,11 +12847,7 @@ export const UnshareProjectsLocationsTemplatesRequest =
       GoogleCloudIntegrationsV1alphaUnshareTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:unshare",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:unshare", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UnshareProjectsLocationsTemplatesRequest>;
 
@@ -13235,7 +12885,7 @@ export const UploadProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates:upload",
+      path: "v1/{parent}/templates:upload",
       hasBody: true,
     }),
     svc,
@@ -13272,10 +12922,7 @@ export const DownloadProjectsLocationsTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     fileFormat: Schema.optional(Schema.String).pipe(T.HttpQuery("fileFormat")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}:download",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:download" }),
     svc,
   ) as unknown as Schema.Schema<DownloadProjectsLocationsTemplatesRequest>;
 

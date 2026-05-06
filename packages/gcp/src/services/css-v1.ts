@@ -28,7 +28,7 @@ export interface Account {
   /** Output only. Immutable. The CSS/MC account's full name. */
   fullName?: string;
   /** Manually created label IDs assigned to the CSS/MC account by a CSS parent account. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
   /** Output only. The type of this account. */
   accountType?:
     | "ACCOUNT_TYPE_UNSPECIFIED"
@@ -48,7 +48,7 @@ export interface Account {
   /** Output only. Immutable. The CSS/MC account's homepage. */
   homepageUri?: string;
   /** Automatically created label IDs assigned to the MC account by CSS Center. */
-  automaticLabelIds?: Array<string>;
+  automaticLabelIds?: ReadonlyArray<string>;
 }
 
 export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -66,7 +66,7 @@ export interface ListChildAccountsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The CSS/MC accounts returned for the specified CSS parent account. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
 }
 
 export const ListChildAccountsResponse =
@@ -217,7 +217,7 @@ export interface Attributes {
   /** Google's category of the item (see [Google product taxonomy](https://support.google.com/merchants/answer/1705911)). When querying products, this field will contain the user provided value. There is currently no way to get back the auto assigned google product categories through the API. */
   googleProductCategory?: string;
   /** A list of certificates claimed by the CSS for the given product. */
-  certifications?: Array<Certification>;
+  certifications?: ReadonlyArray<Certification>;
   /** URL directly linking to your the Product Detail Page of the CSS. */
   cppLink?: string;
   /** Condition of the headline offer. */
@@ -235,13 +235,13 @@ export interface Attributes {
   /** High Price of the CSS Product. */
   highPrice?: Price;
   /** Technical specification or additional product details. */
-  productDetails?: Array<ProductDetail>;
+  productDetails?: ReadonlyArray<ProductDetail>;
   /** Allows advertisers to override the item URL when the product is shown within the context of Product Ads. */
   cppAdsRedirect?: string;
   /** The length of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
   productLength?: ProductDimension;
   /** Bullet points describing the most relevant highlights of a product. */
-  productHighlights?: Array<string>;
+  productHighlights?: ReadonlyArray<string>;
   /** The number of identical products in a merchant-defined multipack. */
   multipack?: string;
   /** Minimum rating score of the product. Required if `rating` is provided. This field is for an upcoming feature and is not yet used. */
@@ -251,7 +251,7 @@ export interface Attributes {
   /** URL for the mobile-optimized version of the Product Detail Page of the CSS. */
   cppMobileLink?: string;
   /** The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant Center). */
-  excludedDestinations?: Array<string>;
+  excludedDestinations?: ReadonlyArray<string>;
   /** Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the item. */
   mpn?: string;
   /** Custom label 1 for custom grouping of items in a Shopping campaign. */
@@ -263,7 +263,7 @@ export interface Attributes {
   /** Mobile Link to the headline offer. */
   headlineOfferMobileLink?: string;
   /** Categories of the item (formatted as in [products data specification](https://support.google.com/merchants/answer/6324406)). */
-  productTypes?: Array<string>;
+  productTypes?: ReadonlyArray<string>;
   /** URL of an image of the item. */
   imageLink?: string;
   /** Custom label 3 for custom grouping of items in a Shopping campaign. */
@@ -275,7 +275,7 @@ export interface Attributes {
   /** Description of the item. */
   description?: string;
   /** The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size types can be provided (see [size type](https://support.google.com/merchants/answer/6324497). */
-  sizeTypes?: Array<string>;
+  sizeTypes?: ReadonlyArray<string>;
   /** Date on which the item should expire, as specified upon insertion, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. The actual expiration date is exposed in `productstatuses` as [googleExpirationDate](https://support.google.com/merchants/answer/6324499) and might be earlier if `expirationDate` is too far in the future. Note: It may take 2+ days from the expiration date for the item to actually get deleted. */
   expirationDate?: string;
   /** Set to true if the item is targeted towards adults. */
@@ -293,13 +293,13 @@ export interface Attributes {
   /** Global Trade Item Number ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. */
   gtin?: string;
   /** The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. */
-  includedDestinations?: Array<string>;
+  includedDestinations?: ReadonlyArray<string>;
   /** Size of the item. Only one value is allowed. For variants with different sizes, insert a separate product for each size with the same `itemGroupId` value (see [https://support.google.com/merchants/answer/6324492](size definition)). */
   size?: string;
   /** Custom label 0 for custom grouping of items in a Shopping campaign. */
   customLabel0?: string;
   /** Additional URL of images of the item. */
-  additionalImageLinks?: Array<string>;
+  additionalImageLinks?: ReadonlyArray<string>;
 }
 
 export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -367,7 +367,7 @@ export interface QuotaGroup {
   /** Output only. The maximum number of calls allowed per minute for the group. */
   quotaMinuteLimit?: string;
   /** Output only. List of all methods group quota applies to. */
-  methodDetails?: Array<MethodDetails>;
+  methodDetails?: ReadonlyArray<MethodDetails>;
   /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC. */
   quotaUsage?: string;
 }
@@ -390,7 +390,7 @@ export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
-  groupValues?: Array<CustomAttribute>;
+  groupValues?: ReadonlyArray<CustomAttribute>;
   /** The name of the attribute. */
   name?: string;
 }
@@ -412,7 +412,7 @@ export interface CssProductInput {
   /** Required. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the CSS Product. */
   contentLanguage?: string;
   /** A list of custom (CSS-provided) attributes. It can also be used for submitting any attribute of the feed specification in its generic form (for example: `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Output only. The name of the processed CSS Product. Format: `accounts/{account}/cssProducts/{css_product}` " */
   finalName?: string;
   /** Required. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the CSS Product. Feed Label is synonymous to "target country" and hence should always be a valid region code. For example: 'DE' for Germany, 'FR' for France. */
@@ -450,7 +450,7 @@ export interface ItemLevelIssue {
   /** The error code of the issue. */
   code?: string;
   /** List of country codes (ISO 3166-1 alpha-2) where issue applies to the CSS Product. */
-  applicableCountries?: Array<string>;
+  applicableCountries?: ReadonlyArray<string>;
   /** How this issue affects serving of the CSS Product. */
   servability?: string;
   /** A short issue description in English. */
@@ -471,13 +471,13 @@ export const ItemLevelIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is approved. */
-  approvedCountries?: Array<string>;
+  approvedCountries?: ReadonlyArray<string>;
   /** The name of the destination */
   destination?: string;
   /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is pending approval. */
-  pendingCountries?: Array<string>;
+  pendingCountries?: ReadonlyArray<string>;
   /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is disapproved. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
 }
 
 export const DestinationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -517,9 +517,9 @@ export interface CssProductStatus {
   /** Date on which the item has been created, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   creationDate?: string;
   /** A list of all issues associated with the product. */
-  itemLevelIssues?: Array<ItemLevelIssue>;
+  itemLevelIssues?: ReadonlyArray<ItemLevelIssue>;
   /** The intended destinations for the product. */
-  destinationStatuses?: Array<DestinationStatus>;
+  destinationStatuses?: ReadonlyArray<DestinationStatus>;
   /** Date on which the item expires, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   googleExpirationDate?: string;
 }
@@ -536,7 +536,7 @@ export interface CssProduct {
   /** Output only. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the product. */
   contentLanguage?: string;
   /** Output only. A list of custom (CSS-provided) attributes. It can also be used to submit any attribute of the feed specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** The name of the CSS Product. Format: `"accounts/{account}/cssProducts/{css_product}"` */
   name?: string;
   /** Output only. The feed label for the product. */
@@ -563,7 +563,7 @@ export interface ListQuotaGroupsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
-  quotaGroups?: Array<QuotaGroup>;
+  quotaGroups?: ReadonlyArray<QuotaGroup>;
 }
 
 export const ListQuotaGroupsResponse =
@@ -574,7 +574,7 @@ export const ListQuotaGroupsResponse =
 
 export interface UpdateAccountLabelsRequest {
   /** The list of label IDs to overwrite the existing account label IDs. If the list is empty, all currently assigned label IDs will be deleted. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
   /** Optional. Only required when updating MC account labels. The CSS domain that is the parent resource of the MC account. Format: accounts/{account} */
   parent?: string;
 }
@@ -587,7 +587,7 @@ export const UpdateAccountLabelsRequest =
 
 export interface ListAccountLabelsResponse {
   /** The labels from the specified account. */
-  accountLabels?: Array<AccountLabel>;
+  accountLabels?: ReadonlyArray<AccountLabel>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -600,7 +600,7 @@ export const ListAccountLabelsResponse =
 
 export interface ListCssProductsResponse {
   /** The processed CSS products from the specified account. These are your processed CSS products after applying rules and supplemental feeds. */
-  cssProducts?: Array<CssProduct>;
+  cssProducts?: ReadonlyArray<CssProduct>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -636,10 +636,7 @@ export const ListChildAccountsAccountsRequest =
     fullName: Schema.optional(Schema.String).pipe(T.HttpQuery("fullName")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}:listChildAccounts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}:listChildAccounts" }),
     svc,
   ) as unknown as Schema.Schema<ListChildAccountsAccountsRequest>;
 
@@ -676,7 +673,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -709,11 +706,7 @@ export const UpdateLabelsAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateAccountLabelsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}:updateLabels",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:updateLabels", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateLabelsAccountsRequest>;
 
@@ -749,7 +742,7 @@ export const ListAccountsLabelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/labels" }),
+    T.Http({ method: "GET", path: "v1/{parent}/labels" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLabelsRequest>;
 
@@ -787,11 +780,7 @@ export const PatchAccountsLabelsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AccountLabel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/labels/{labelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsLabelsRequest>;
 
@@ -822,10 +811,7 @@ export const DeleteAccountsLabelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/labels/{labelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsLabelsRequest>;
 
@@ -858,11 +844,7 @@ export const CreateAccountsLabelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AccountLabel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/labels",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/labels", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsLabelsRequest>;
 
@@ -901,7 +883,7 @@ export const InsertAccountsCssProductInputsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/cssProductInputs:insert",
+      path: "v1/{parent}/cssProductInputs:insert",
       hasBody: true,
     }),
     svc,
@@ -940,11 +922,7 @@ export const PatchAccountsCssProductInputsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CssProductInput).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/cssProductInputs/{cssProductInputsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsCssProductInputsRequest>;
 
@@ -980,10 +958,7 @@ export const DeleteAccountsCssProductInputsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/cssProductInputs/{cssProductInputsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsCssProductInputsRequest>;
 
@@ -1020,7 +995,7 @@ export const ListAccountsQuotasRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/quotas" }),
+    T.Http({ method: "GET", path: "v1/{parent}/quotas" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsQuotasRequest>;
 
@@ -1055,10 +1030,7 @@ export const GetAccountsCssProductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/cssProducts/{cssProductsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsCssProductsRequest>;
 
@@ -1095,7 +1067,7 @@ export const ListAccountsCssProductsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/cssProducts" }),
+    T.Http({ method: "GET", path: "v1/{parent}/cssProducts" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsCssProductsRequest>;
 

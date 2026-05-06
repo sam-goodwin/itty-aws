@@ -55,7 +55,7 @@ export interface Issue {
   /** The server-generated type of the issue, for example, “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc. */
   type?: string;
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the manufacturer product. */
-  applicableCountries?: Array<string>;
+  applicableCountries?: ReadonlyArray<string>;
   /** What needs to happen to resolve the issue. */
   resolution?:
     | "RESOLUTION_UNSPECIFIED"
@@ -171,7 +171,7 @@ export interface Nutrition {
   /** Energy from fat. */
   energyFromFat?: FloatUnit;
   /** Voluntary nutrition fact. */
-  voluntaryNutritionFact?: Array<VoluntaryNutritionFact>;
+  voluntaryNutritionFact?: ReadonlyArray<VoluntaryNutritionFact>;
   /** Folate mcg DFE. */
   folateMcgDfe?: number;
   /** Sodium. */
@@ -340,11 +340,11 @@ export const Capacity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Grocery {
   /** Nutrition claim. */
-  nutritionClaim?: Array<string>;
+  nutritionClaim?: ReadonlyArray<string>;
   /** Directions. */
   directions?: string;
   /** Derived nutrition claim. */
-  derivedNutritionClaim?: Array<string>;
+  derivedNutritionClaim?: ReadonlyArray<string>;
   /** Indications. */
   indications?: string;
   /** Active ingredients. */
@@ -404,29 +404,29 @@ export interface Attributes {
   /** The description of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#description. */
   description?: string;
   /** A list of included destinations such as "ClientExport", "ClientShoppingCatalog" or "PartnerShoppingCatalog". For more information, see https://support.google.com/manufacturers/answer/7443550 */
-  includedDestination?: Array<string>;
+  includedDestination?: ReadonlyArray<string>;
   /** The details of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productdetail. */
-  productDetail?: Array<ProductDetail>;
+  productDetail?: ReadonlyArray<ProductDetail>;
   /** Rich product content. For more information, see https://support.google.com/manufacturers/answer/9389865 */
-  richProductContent?: Array<string>;
+  richProductContent?: ReadonlyArray<string>;
   /** The suggested retail price (MSRP) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#price. */
   suggestedRetailPrice?: Price;
   /** The Global Trade Item Number (GTIN) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#gtin. */
-  gtin?: Array<string>;
+  gtin?: ReadonlyArray<string>;
   /** The Manufacturer Part Number (MPN) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#mpn. */
   mpn?: string;
   /** A list of excluded destinations such as "ClientExport", "ClientShoppingCatalog" or "PartnerShoppingCatalog". For more information, see https://support.google.com/manufacturers/answer/7443550 */
-  excludedDestination?: Array<string>;
+  excludedDestination?: ReadonlyArray<string>;
   /** The disclosure date of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#disclosure. */
   disclosureDate?: string;
   /** The type or category of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#producttype. */
-  productType?: Array<string>;
+  productType?: ReadonlyArray<string>;
   /** The target age group of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#agegroup. */
   ageGroup?: string;
   /** The target client id. Should only be used in the accounts of the data partners. For more information, see https://support.google.com/manufacturers/answer/10857344 */
   targetClientId?: string;
   /** Optional. List of countries to show this product in. Countries provided in this attribute will override any of the countries configured at feed level. The values should be: the [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the countries in which this item will be shown. */
-  intendedCountry?: Array<string>;
+  intendedCountry?: ReadonlyArray<string>;
   /** The scent of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#scent. */
   scent?: string;
   /** The size of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#size. */
@@ -440,11 +440,11 @@ export interface Attributes {
   /** The URL of the detail page of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productpage. */
   productPageUrl?: string;
   /** The product highlights. For more information, see https://support.google.com/manufacturers/answer/10066942 */
-  productHighlight?: Array<string>;
+  productHighlight?: ReadonlyArray<string>;
   /** The canonical name of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productname. */
   productName?: string;
   /** Optional. List of certifications claimed by this product. */
-  certification?: Array<GoogleShoppingManufacturersV1ProductCertification>;
+  certification?: ReadonlyArray<GoogleShoppingManufacturersV1ProductCertification>;
   /** The capacity of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#capacity. */
   capacity?: Capacity;
   /** The brand name of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#brand. */
@@ -454,9 +454,9 @@ export interface Attributes {
   /** Grocery Attributes. See more at https://support.google.com/manufacturers/answer/12098458#grocery. */
   grocery?: Grocery;
   /** The additional images of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#addlimage. */
-  additionalImageLink?: Array<Image>;
+  additionalImageLink?: ReadonlyArray<Image>;
   /** The rich format description of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#featuredesc. */
-  featureDescription?: Array<FeatureDescription>;
+  featureDescription?: ReadonlyArray<FeatureDescription>;
   /** The release date of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#release. */
   releaseDate?: string;
   /** The title of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#title. */
@@ -464,13 +464,13 @@ export interface Attributes {
   /** The count of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#count. */
   count?: Count;
   /** The videos of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#video. */
-  videoLink?: Array<string>;
+  videoLink?: ReadonlyArray<string>;
   /** The name of the group of products related to the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productline. */
   productLine?: string;
   /** The target gender of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#gender. */
   gender?: string;
   /** The size type of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#sizetype. */
-  sizeType?: Array<string>;
+  sizeType?: ReadonlyArray<string>;
 }
 
 export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -524,11 +524,11 @@ export interface DestinationStatus {
   /** The name of the destination. */
   destination?: string;
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
-  pendingCountries?: Array<string>;
+  pendingCountries?: ReadonlyArray<string>;
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is approved. */
-  approvedCountries?: Array<string>;
+  approvedCountries?: ReadonlyArray<string>;
   /** The status of the destination. */
   status?: "UNKNOWN" | "ACTIVE" | "PENDING" | "DISAPPROVED" | (string & {});
 }
@@ -549,13 +549,13 @@ export interface Product {
   /** Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. */
   parent?: string;
   /** A server-generated list of issues associated with the product. */
-  issues?: Array<Issue>;
+  issues?: ReadonlyArray<Issue>;
   /** Attributes of the product uploaded to the Manufacturer Center. Manually edited attributes are taken into account. */
   attributes?: Attributes;
   /** Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. */
   name?: string;
   /** The status of the destinations. */
-  destinationStatuses?: Array<DestinationStatus>;
+  destinationStatuses?: ReadonlyArray<DestinationStatus>;
   /** The target country of the product as a CLDR territory code (for example, US). */
   targetCountry?: string;
   /** The content language of the product as a two-letter ISO 639-1 language code (for example, en). */
@@ -576,7 +576,7 @@ export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProductsResponse {
   /** List of the products. */
-  products?: Array<Product>;
+  products?: ReadonlyArray<Product>;
   /** The token for the retrieval of the next page of product statuses. */
   nextPageToken?: string;
 }
@@ -621,25 +621,25 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ProductCertification {
   /** Optional. These are your own product categorization system in your product data. */
-  productType?: Array<string>;
+  productType?: ReadonlyArray<string>;
   /** Output only. The statuses of the destinations. */
-  destinationStatuses?: Array<DestinationStatus>;
+  destinationStatuses?: ReadonlyArray<DestinationStatus>;
   /** Required. The unique name identifier of a product certification Format: accounts/{account}/languages/{language_code}/productCertifications/{id} Where `id` is a some unique identifier and `language_code` is a 2-letter ISO 639-1 code of a Shopping supported language according to https://support.google.com/merchants/answer/160637. */
   name?: string;
   /** Optional. Another name for GTIN. */
-  productCode?: Array<string>;
+  productCode?: ReadonlyArray<string>;
   /** Required. This is to clearly identify the product you are certifying. */
   title?: string;
   /** Required. This is the product's brand name. The brand is used to help identify your product. */
   brand?: string;
   /** Optional. These are the Manufacturer Part Numbers (MPN). MPNs are used to uniquely identify a specific product among all products from the same manufacturer */
-  mpn?: Array<string>;
+  mpn?: ReadonlyArray<string>;
   /** Optional. A 2-letter country code (ISO 3166-1 Alpha 2). */
-  countryCode?: Array<string>;
+  countryCode?: ReadonlyArray<string>;
   /** Output only. A server-generated list of issues associated with the product. */
-  issues?: Array<Issue>;
+  issues?: ReadonlyArray<Issue>;
   /** Required. A list of certifications to link to the described product. */
-  certification?: Array<Certification>;
+  certification?: ReadonlyArray<Certification>;
 }
 
 export const ProductCertification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -657,7 +657,7 @@ export const ProductCertification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProductCertificationsResponse {
   /** The product certifications from the specified certification body. */
-  productCertifications?: Array<ProductCertification>;
+  productCertifications?: ReadonlyArray<ProductCertification>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -694,10 +694,7 @@ export const GetAccountsProductsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/products/{productsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/products/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsProductsRequest>;
 
@@ -730,10 +727,7 @@ export const DeleteAccountsProductsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/products/{productsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{parent}/products/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductsRequest>;
 
@@ -779,7 +773,7 @@ export const ListAccountsProductsRequest =
       T.HttpQuery("include"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/products" }),
+    T.Http({ method: "GET", path: "v1/{parent}/products" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsRequest>;
 
@@ -822,7 +816,7 @@ export const UpdateAccountsProductsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "v1/accounts/{accountsId}/products/{productsId}",
+      path: "v1/{parent}/products/{name}",
       hasBody: true,
     }),
     svc,
@@ -860,10 +854,7 @@ export const ListAccountsLanguagesProductCertificationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/languages/{languagesId}/productCertifications",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/productCertifications" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLanguagesProductCertificationsRequest>;
 
@@ -905,11 +896,7 @@ export const PatchAccountsLanguagesProductCertificationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ProductCertification).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/languages/{languagesId}/productCertifications/{productCertificationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsLanguagesProductCertificationsRequest>;
 
@@ -941,10 +928,7 @@ export const GetAccountsLanguagesProductCertificationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/languages/{languagesId}/productCertifications/{productCertificationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsLanguagesProductCertificationsRequest>;
 
@@ -976,10 +960,7 @@ export const DeleteAccountsLanguagesProductCertificationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/languages/{languagesId}/productCertifications/{productCertificationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsLanguagesProductCertificationsRequest>;
 

@@ -74,7 +74,7 @@ export const AlloyDbPitrWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AlloyDBClusterDataSourceProperties {
   /** Output only. Point in time recovery windows. The order is guaranteed to be ascending by start time. */
-  pitrWindows?: Array<AlloyDbPitrWindow>;
+  pitrWindows?: ReadonlyArray<AlloyDbPitrWindow>;
   /** Output only. Name of the AlloyDB cluster backed up by the datasource. */
   name?: string;
   /** Output only. The cluster UID of the AlloyDB cluster backed up by the datasource. */
@@ -196,7 +196,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -213,7 +213,7 @@ export interface GcpBackupConfig {
   /** The description of the backup plan. */
   backupPlanDescription?: string;
   /** The names of the backup plan rules which point to this backupvault */
-  backupPlanRules?: Array<string>;
+  backupPlanRules?: ReadonlyArray<string>;
   /** The name of the backup plan revision. */
   backupPlanRevisionName?: string;
   /** The name of the backup plan association. */
@@ -349,7 +349,7 @@ export interface InitializeParams {
   /** Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. */
   diskName?: string;
   /** Optional. URL of the zone where the disk should be created. Required for each regional disk associated with the instance. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
 }
 
 export const InitializeParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -402,7 +402,7 @@ export const CustomerEncryptionKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AttachedDisk {
   /** Optional. Any valid publicly visible licenses. */
-  license?: Array<string>;
+  license?: ReadonlyArray<string>;
   /** Optional. The mode in which to attach this disk. */
   mode?:
     | "DISK_MODE_UNSPECIFIED"
@@ -429,7 +429,7 @@ export interface AttachedDisk {
     | "PERSISTENT"
     | (string & {});
   /** Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. */
-  guestOsFeature?: Array<GuestOsFeature>;
+  guestOsFeature?: ReadonlyArray<GuestOsFeature>;
   /** Optional. A zero-based index to this disk, where 0 is reserved for the boot disk. */
   index?: string;
   /** Optional. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem. */
@@ -491,7 +491,7 @@ export interface RegionDiskTargetEnvironment {
   /** Required. Target region for the disk. */
   region?: string;
   /** Required. Target URLs of the replica zones for the disk. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
 }
 
 export const RegionDiskTargetEnvironment =
@@ -649,17 +649,17 @@ export interface NetworkInterface {
   /** Optional. The URL of the Subnetwork resource for this instance. */
   subnetwork?: string;
   /** Optional. An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks. */
-  aliasIpRanges?: Array<AliasIpRange>;
+  aliasIpRanges?: ReadonlyArray<AliasIpRange>;
   /** Optional. The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users. */
   queueCount?: number;
   /** Optional. The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}. */
   networkAttachment?: string;
   /** Optional. An array of configurations for this interface. Currently, only one access config,ONE_TO_ONE_NAT is supported. If there are no accessConfigs specified, then this instance will have no external internet access. */
-  accessConfigs?: Array<AccessConfig>;
+  accessConfigs?: ReadonlyArray<AccessConfig>;
   /** Optional. An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork. */
   ipv6Address?: string;
   /** Optional. An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access. */
-  ipv6AccessConfigs?: Array<AccessConfig>;
+  ipv6AccessConfigs?: ReadonlyArray<AccessConfig>;
   /** Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
   nicType?: "NIC_TYPE_UNSPECIFIED" | "VIRTIO_NET" | "GVNIC" | (string & {});
   /** Output only. [Output Only] The name of the network interface, which is generated by the server. */
@@ -707,7 +707,7 @@ export const BackupDrPlanRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BackupDrPlanConfig {
   /** Backup rules of the backup plan resource. */
-  backupDrPlanRules?: Array<BackupDrPlanRule>;
+  backupDrPlanRules?: ReadonlyArray<BackupDrPlanRule>;
 }
 
 export const BackupDrPlanConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -738,7 +738,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -756,7 +756,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -768,7 +768,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -780,9 +780,9 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
@@ -881,7 +881,7 @@ export const DataSourceGcpResourceInfo =
 
 export interface ServiceAccount {
   /** Optional. The list of scopes to be made available for this service account. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Optional. Email address of the service account. */
   email?: string;
 }
@@ -960,7 +960,7 @@ export interface ManagementServer {
   /** Output only. The hostname or ip address of the exposed AGM endpoints, used by clients to connect to AGM/RD graphical user interface and APIs. */
   managementUri?: ManagementURI;
   /** Optional. VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported. This field is optional if MS is created without PSA */
-  networks?: Array<NetworkConfig>;
+  networks?: ReadonlyArray<NetworkConfig>;
   /** Output only. Identifier. The resource name. */
   name?: string;
   /** Output only. The OAuth client IDs for both types of user i.e. 1p and 3p. */
@@ -968,7 +968,7 @@ export interface ManagementServer {
   /** Output only. The time when the instance was updated. */
   updateTime?: string;
   /** Output only. The hostname or ip address of the exposed AGM endpoints, used by BAs to connect to BA proxy. */
-  baProxyUri?: Array<string>;
+  baProxyUri?: ReadonlyArray<string>;
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Output only. The OAuth 2.0 client id is required to make API calls to the Backup and DR instance API of this ManagementServer. This is the value that should be provided in the 'aud' field of the OIDC ID Token (see openid specification https://openid.net/specs/openid-connect-core-1_0.html#IDToken). */
@@ -1047,7 +1047,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1110,7 +1110,7 @@ export interface NodeAffinity {
   /** Optional. Corresponds to the label key of Node resource. */
   key?: string;
   /** Optional. Corresponds to the label values of Node resource. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const NodeAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1131,7 +1131,7 @@ export interface Scheduling {
   /** Optional. Defines whether the instance is preemptible. */
   preemptible?: boolean;
   /** Optional. A set of node affinity and anti-affinity configurations. Overrides reservationAffinity. */
-  nodeAffinities?: Array<NodeAffinity>;
+  nodeAffinities?: ReadonlyArray<NodeAffinity>;
   /** Optional. Defines the maintenance behavior for this instance. */
   onHostMaintenance?:
     | "ON_HOST_MAINTENANCE_UNSPECIFIED"
@@ -1163,7 +1163,7 @@ export const Scheduling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -1242,7 +1242,7 @@ export interface StandardSchedule {
   /** Optional. Specifies frequency for hourly backups. A hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined. This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise. A validation error will occur if a value is supplied and `recurrence_type` is not `HOURLY`. Value of hourly frequency should be between 4 and 23. Reason for limit : We found that there is bandwidth limitation of 3GB/S for GMI while taking a backup and 5GB/S while doing a restore. Given the amount of parallel backups and restore we are targeting, this will potentially take the backup time to mins and hours (in worst case scenario). */
   hourlyFrequency?: number;
   /** Optional. Specifies days of months like 1, 5, or 14 on which jobs will run. Values for `days_of_month` are only applicable for `recurrence_type`, `MONTHLY` and `YEARLY`. A validation error will occur if other values are supplied. */
-  daysOfMonth?: Array<number>;
+  daysOfMonth?: ReadonlyArray<number>;
   /** Required. Specifies the `RecurrenceType` for the schedule. */
   recurrenceType?:
     | "RECURRENCE_TYPE_UNSPECIFIED"
@@ -1253,7 +1253,7 @@ export interface StandardSchedule {
     | "YEARLY"
     | (string & {});
   /** Optional. Specifies days of week like, MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise. A validation error will occur if a value is supplied and `recurrence_type` is not `WEEKLY`. */
-  daysOfWeek?: Array<
+  daysOfWeek?: ReadonlyArray<
     | "DAY_OF_WEEK_UNSPECIFIED"
     | "MONDAY"
     | "TUESDAY"
@@ -1271,7 +1271,7 @@ export interface StandardSchedule {
   /** Required. A BackupWindow defines the window of day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as `NOT_RUN` if they do not start by the end of the window. Note: running jobs will not be cancelled at the end of the window. */
   backupWindow?: BackupWindow;
   /** Optional. Specifies the months of year, like `FEBRUARY` and/or `MAY`, on which jobs will run. This field is only applicable when `recurrence_type` is `YEARLY`. A validation error will occur if other values are supplied. */
-  months?: Array<
+  months?: ReadonlyArray<
     | "MONTH_UNSPECIFIED"
     | "JANUARY"
     | "FEBRUARY"
@@ -1345,9 +1345,9 @@ export interface BackupPlan {
   /** Output only. The resource id of the `BackupPlanRevision`. Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision_id}` */
   revisionName?: string;
   /** Output only. All resource types to which backupPlan can be applied. */
-  supportedResourceTypes?: Array<string>;
+  supportedResourceTypes?: ReadonlyArray<string>;
   /** Optional. The backup rules for this `BackupPlan`. */
-  backupRules?: Array<BackupRule>;
+  backupRules?: ReadonlyArray<BackupRule>;
   /** Required. Resource name of backup vault which will be used as storage location for backups. Format: projects/{project}/locations/{location}/backupVaults/{backupvault} */
   backupVault?: string;
   /** Output only. The user friendly revision ID of the `BackupPlanRevision`. Example: v0, v1, v2, etc. */
@@ -1461,9 +1461,9 @@ export interface ListDataSourceReferencesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The DataSourceReferences from the specified parent. */
-  dataSourceReferences?: Array<DataSourceReference>;
+  dataSourceReferences?: ReadonlyArray<DataSourceReference>;
 }
 
 export const ListDataSourceReferencesResponse =
@@ -1514,7 +1514,7 @@ export interface DiskBackupProperties {
   /** The URL of the type of the disk. */
   type?: string;
   /** The URL of the Zones where the source disk should be replicated. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
   /** The URL of the Zone where the source disk. */
   zone?: string;
   /** The number of throughput provisioned for the source disk. */
@@ -1530,9 +1530,9 @@ export interface DiskBackupProperties {
   /** A description of the source disk. */
   description?: string;
   /** A list of guest OS features that are applicable to this backup. */
-  guestOsFeature?: Array<GuestOsFeature>;
+  guestOsFeature?: ReadonlyArray<GuestOsFeature>;
   /** A list of publicly available licenses that are applicable to this backup. This is applicable if the original image had licenses attached, e.g. Windows image. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** Optional. Defines if the guest flush is enabled for the source disk. Default value is false. */
   guestFlush?: boolean;
   /** The source disk used to create this backup. */
@@ -1656,7 +1656,7 @@ export const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Metadata {
   /** Optional. Array of key/value pairs. The total size of all keys and values must be less than 512 KB. */
-  items?: Array<Entry>;
+  items?: ReadonlyArray<Entry>;
 }
 
 export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1677,7 +1677,7 @@ export const AcceleratorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Tags {
   /** Optional. An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035. */
-  items?: Array<string>;
+  items?: ReadonlyArray<string>;
 }
 
 export const Tags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1686,7 +1686,7 @@ export const Tags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ComputeInstanceBackupProperties {
   /** A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances. */
-  serviceAccount?: Array<ServiceAccount>;
+  serviceAccount?: ReadonlyArray<ServiceAccount>;
   /** Labels to apply to instances that are created from these properties. */
   labels?: Record<string, string>;
   /** The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See https://cloud.google.com/compute/docs/metadata/overview for more information. */
@@ -1694,7 +1694,7 @@ export interface ComputeInstanceBackupProperties {
   /** An optional text description for the instances that are created from these properties. */
   description?: string;
   /** A list of guest accelerator cards' type and count to use for instances created from these properties. */
-  guestAccelerator?: Array<AcceleratorConfig>;
+  guestAccelerator?: ReadonlyArray<AcceleratorConfig>;
   /** The source instance used to create this backup. This can be a partial or full URL to the resource. For example, the following are valid values: -https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance -projects/project/zones/zone/instances/instance */
   sourceInstance?: string;
   /** KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified. */
@@ -1714,9 +1714,9 @@ export interface ComputeInstanceBackupProperties {
   /** The machine type to use for instances that are created from these properties. */
   machineType?: string;
   /** An array of disks that are associated with the instances that are created from these properties. */
-  disk?: Array<AttachedDisk>;
+  disk?: ReadonlyArray<AttachedDisk>;
   /** An array of network access configurations for this interface. */
-  networkInterface?: Array<NetworkInterface>;
+  networkInterface?: ReadonlyArray<NetworkInterface>;
   /** Specifies the scheduling options for the instances that are created from these properties. */
   scheduling?: Scheduling;
 }
@@ -1821,7 +1821,7 @@ export interface Backup {
   /** Output only. Unique identifier of the GCP resource that is being backed up. */
   gcpResource?: BackupGcpResource;
   /** Output only. The list of BackupLocks taken by the service to prevent the deletion of the backup. */
-  serviceLocks?: Array<BackupLock>;
+  serviceLocks?: ReadonlyArray<BackupLock>;
   /** Output only. Filestore specific backup properties. */
   filestoreInstanceBackupProperties?: FilestoreInstanceBackupProperties;
   /** Output only. Compute Engine specific backup properties. */
@@ -1855,11 +1855,11 @@ export interface Backup {
   /** Output only. The point in time when this backup was captured from the source. */
   consistencyTime?: string;
   /** Optional. Output only. The list of KMS key versions used to encrypt the backup. */
-  kmsKeyVersions?: Array<string>;
+  kmsKeyVersions?: ReadonlyArray<string>;
   /** Optional. When this backup is automatically expired. */
   expireTime?: string;
   /** Optional. The list of BackupLocks taken by the accessor Backup Appliance. */
-  backupApplianceLocks?: Array<BackupLock>;
+  backupApplianceLocks?: ReadonlyArray<BackupLock>;
   /** Output only. Setting for how the enforced retention end time is inherited. This value is copied from this backup's BackupVault. */
   backupRetentionInheritance?:
     | "BACKUP_RETENTION_INHERITANCE_UNSPECIFIED"
@@ -1913,7 +1913,7 @@ export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FetchBackupsForResourceTypeResponse {
   /** The Backups from the specified parent. */
-  backups?: Array<Backup>;
+  backups?: ReadonlyArray<Backup>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1962,9 +1962,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2032,7 +2032,7 @@ export interface BackupConfigDetails {
   /** Google Cloud Backup and DR's Backup Plan specific data. */
   backupDrPlanConfig?: BackupDrPlanConfig;
   /** The locations where the backups are to be stored. */
-  backupLocations?: Array<BackupLocation>;
+  backupLocations?: ReadonlyArray<BackupLocation>;
   /** Output only. The full resource name of the backup config source resource. For example, "//backupdr.googleapis.com/v1/projects/{project}/locations/{region}/backupPlans/{backupplanId}" or "//compute.googleapis.com/projects/{project}/locations/{region}/resourcePolicies/{resourcePolicyId}". */
   backupConfigSource?: string;
 }
@@ -2085,11 +2085,11 @@ export interface DiskRestoreProperties {
   /** Required. The size of the disk in GB. */
   sizeGb?: string;
   /** Optional. A list of features to enable in the guest operating system. This is applicable only for bootable images. */
-  guestOsFeature?: Array<GuestOsFeature>;
+  guestOsFeature?: ReadonlyArray<GuestOsFeature>;
   /** Optional. An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Optional. A list of publicly available licenses that are applicable to this backup. This is applicable if the original image had licenses attached, e.g. Windows image */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** Required. Name of the disk. */
   name?: string;
   /** Optional. Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. */
@@ -2101,7 +2101,7 @@ export interface DiskRestoreProperties {
     | "READ_ONLY_MANY"
     | (string & {});
   /** Optional. Resource policies applied to this disk. */
-  resourcePolicy?: Array<string>;
+  resourcePolicy?: ReadonlyArray<string>;
   /** Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. */
   provisionedIops?: string;
   /** Optional. The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. */
@@ -2155,7 +2155,7 @@ export interface ResourceBackupConfig {
   /** Output only. The human friendly name of the target resource. */
   targetResourceDisplayName?: string;
   /** Backup configurations applying to the target resource, including those targeting its related/child resources. For example, backup configuration applicable to Compute Engine disks will be populated in this field for a Compute Engine VM which has the disk associated. */
-  backupConfigsDetails?: Array<BackupConfigDetails>;
+  backupConfigsDetails?: ReadonlyArray<BackupConfigDetails>;
   /** Output only. Whether the target resource is protected by a backup vault. This is true if the backup_configs_details is not empty and any of the ResourceBackupConfig.backup_configs_details has a backup configuration with BackupConfigDetails.backup_vault set. */
   vaulted?: boolean;
   /** Output only. Whether the target resource is configured for backup. This is true if the backup_configs_details is not empty. */
@@ -2216,11 +2216,11 @@ export const BackupPlanRevision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupPlanRevisionsResponse {
   /** The list of `BackupPlanRevisions` in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of resources from all locations. In case any location is unreachable, the response will only return backup plans in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
-  backupPlanRevisions?: Array<BackupPlanRevision>;
+  backupPlanRevisions?: ReadonlyArray<BackupPlanRevision>;
   /** A token which may be sent as page_token in a subsequent `ListBackupPlanRevisions` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBackupPlanRevisionsResponse =
@@ -2244,7 +2244,7 @@ export interface AllocationAffinity {
   /** Optional. Corresponds to the label key of a reservation resource. */
   key?: string;
   /** Optional. Corresponds to the label values of a reservation resource. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Optional. Specifies the type of reservation from which this instance can consume */
   consumeReservationType?:
     | "TYPE_UNSPECIFIED"
@@ -2377,7 +2377,7 @@ export interface BackupPlanAssociation {
   /** Output only. The user friendly revision ID of the `BackupPlanRevision`. Example: v0, v1, v2, etc. */
   backupPlanRevisionId?: string;
   /** Output only. The config info related to backup rules. */
-  rulesConfigInfo?: Array<RuleConfigInfo>;
+  rulesConfigInfo?: ReadonlyArray<RuleConfigInfo>;
   /** Required. Immutable. Resource type of workload on which backupplan is applied */
   resourceType?: string;
   /** Output only. The BackupPlanAssociation resource state. */
@@ -2428,11 +2428,11 @@ export const BackupPlanAssociation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupPlanAssociationsResponse {
   /** The list of Backup Plan Associations in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return backup plan associations in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
-  backupPlanAssociations?: Array<BackupPlanAssociation>;
+  backupPlanAssociations?: ReadonlyArray<BackupPlanAssociation>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBackupPlanAssociationsResponse =
@@ -2490,11 +2490,11 @@ export const AdvancedMachineFeatures =
 
 export interface ComputeInstanceRestoreProperties {
   /** Optional. A list of the type and count of accelerator cards attached to the instance. */
-  guestAccelerators?: Array<AcceleratorConfig>;
+  guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Optional. Minimum CPU platform to use for this instance. */
   minCpuPlatform?: string;
   /** Optional. Resource policies applied to this instance. By default, no resource policies will be applied. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
   /** Optional. Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. */
   tags?: Tags;
   /** Optional. Allows this instance to send and receive packets with non-matching destination or source IPs. */
@@ -2506,7 +2506,7 @@ export interface ComputeInstanceRestoreProperties {
     | "STOP"
     | (string & {});
   /** Optional. A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. */
-  serviceAccounts?: Array<ServiceAccount>;
+  serviceAccounts?: ReadonlyArray<ServiceAccount>;
   /** Optional. Configure network performance such as egress bandwidth tier. */
   networkPerformanceConfig?: NetworkPerformanceConfig;
   /** Optional. Enables display device for the instance. */
@@ -2526,9 +2526,9 @@ export interface ComputeInstanceRestoreProperties {
   /** Optional. Whether the resource should be protected against deletion. */
   deletionProtection?: boolean;
   /** Optional. An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance. Required to restore in different project or region. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** Optional. Array of disks associated with this instance. Persistent disks must be created before you can assign them. Source regional persistent disks will be restored with default replica zones if not specified. */
-  disks?: Array<AttachedDisk>;
+  disks?: ReadonlyArray<AttachedDisk>;
   /** Required. Name of the compute instance. */
   name?: string;
   /** Optional. The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default. */
@@ -2660,9 +2660,9 @@ export interface ListBackupVaultsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of BackupVault instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return backup vaults in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
-  backupVaults?: Array<BackupVault>;
+  backupVaults?: ReadonlyArray<BackupVault>;
 }
 
 export const ListBackupVaultsResponse =
@@ -2674,7 +2674,7 @@ export const ListBackupVaultsResponse =
 
 export interface LocationMetadata {
   /** List of features that are not supported in the location. */
-  unsupportedFeatures?: Array<
+  unsupportedFeatures?: ReadonlyArray<
     | "FEATURE_UNSPECIFIED"
     | "MANAGEMENT_SERVER"
     | "COMPUTE_INSTANCE"
@@ -2699,9 +2699,9 @@ export interface ListBackupsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of Backup instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return data sources in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
-  backups?: Array<Backup>;
+  backups?: ReadonlyArray<Backup>;
 }
 
 export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2712,7 +2712,7 @@ export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListResourceBackupConfigsResponse {
   /** The list of ResourceBackupConfigs for the specified scope. */
-  resourceBackupConfigs?: Array<ResourceBackupConfig>;
+  resourceBackupConfigs?: ReadonlyArray<ResourceBackupConfig>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2725,7 +2725,7 @@ export const ListResourceBackupConfigsResponse =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -2752,11 +2752,11 @@ export const FetchMsComplianceMetadataResponse =
 
 export interface ListManagementServersResponse {
   /** The list of ManagementServer instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return management servers in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
-  managementServers?: Array<ManagementServer>;
+  managementServers?: ReadonlyArray<ManagementServer>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListManagementServersResponse =
@@ -2782,9 +2782,9 @@ export interface ListBackupPlansResponse {
   /** A token which may be sent as page_token in a subsequent `ListBackupPlans` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of `BackupPlans` in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of resources from all locations. In case any location is unreachable, the response will only return backup plans in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. BackupPlan */
-  backupPlans?: Array<BackupPlan>;
+  backupPlans?: ReadonlyArray<BackupPlan>;
 }
 
 export const ListBackupPlansResponse =
@@ -2815,7 +2815,7 @@ export const FetchAccessTokenResponse =
 
 export interface FetchBackupPlanAssociationsForResourceTypeResponse {
   /** Output only. The BackupPlanAssociations from the specified parent. */
-  backupPlanAssociations?: Array<BackupPlanAssociation>;
+  backupPlanAssociations?: ReadonlyArray<BackupPlanAssociation>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2875,7 +2875,7 @@ export const RestoreBackupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FetchDataSourceReferencesForResourceTypeResponse {
   /** The DataSourceReferences from the specified parent. */
-  dataSourceReferences?: Array<DataSourceReference>;
+  dataSourceReferences?: ReadonlyArray<DataSourceReference>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2890,11 +2890,11 @@ export const FetchDataSourceReferencesForResourceTypeResponse =
 
 export interface FetchUsableBackupVaultsResponse {
   /** The list of BackupVault instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return backup vaults in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
-  backupVaults?: Array<BackupVault>;
+  backupVaults?: ReadonlyArray<BackupVault>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const FetchUsableBackupVaultsResponse =
@@ -2906,11 +2906,11 @@ export const FetchUsableBackupVaultsResponse =
 
 export interface ListDataSourcesResponse {
   /** The list of DataSource instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return data sources in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
-  dataSources?: Array<DataSource>;
+  dataSources?: ReadonlyArray<DataSource>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListDataSourcesResponse =
@@ -2998,7 +2998,7 @@ export const ListProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -3033,10 +3033,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -3067,10 +3064,7 @@ export const GetTrialProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trial",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTrialProjectsLocationsRequest>;
 
@@ -3125,10 +3119,7 @@ export const DeleteProjectsLocationsBackupVaultsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupVaultsRequest>;
 
@@ -3175,11 +3166,7 @@ export const CreateProjectsLocationsBackupVaultsRequest =
     ),
     body: Schema.optional(BackupVault).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/backupVaults", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBackupVaultsRequest>;
 
@@ -3215,7 +3202,7 @@ export const TestIamPermissionsProjectsLocationsBackupVaultsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3262,10 +3249,7 @@ export const FetchUsableProjectsLocationsBackupVaultsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults:fetchUsable",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupVaults:fetchUsable" }),
     svc,
   ) as unknown as Schema.Schema<FetchUsableProjectsLocationsBackupVaultsRequest>;
 
@@ -3308,10 +3292,7 @@ export const GetProjectsLocationsBackupVaultsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupVaultsRequest>;
 
@@ -3364,11 +3345,7 @@ export const PatchProjectsLocationsBackupVaultsRequest =
     ),
     body: Schema.optional(BackupVault).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackupVaultsRequest>;
 
@@ -3418,10 +3395,7 @@ export const ListProjectsLocationsBackupVaultsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupVaults" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupVaultsRequest>;
 
@@ -3462,7 +3436,7 @@ export const FetchAccessTokenProjectsLocationsBackupVaultsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}:fetchAccessToken",
+      path: "v1/{name}:fetchAccessToken",
       hasBody: true,
     }),
     svc,
@@ -3502,7 +3476,7 @@ export const AbandonBackupProjectsLocationsBackupVaultsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}:abandonBackup",
+      path: "v1/{dataSource}:abandonBackup",
       hasBody: true,
     }),
     svc,
@@ -3537,10 +3511,7 @@ export const GetProjectsLocationsBackupVaultsDataSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupVaultsDataSourcesRequest>;
 
@@ -3583,10 +3554,7 @@ export const ListProjectsLocationsBackupVaultsDataSourcesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataSources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupVaultsDataSourcesRequest>;
 
@@ -3627,7 +3595,7 @@ export const InitiateBackupProjectsLocationsBackupVaultsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}:initiateBackup",
+      path: "v1/{dataSource}:initiateBackup",
       hasBody: true,
     }),
     svc,
@@ -3676,11 +3644,7 @@ export const PatchProjectsLocationsBackupVaultsDataSourcesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(DataSource).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackupVaultsDataSourcesRequest>;
 
@@ -3714,11 +3678,7 @@ export const RemoveProjectsLocationsBackupVaultsDataSourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveDataSourceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}:remove",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:remove", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RemoveProjectsLocationsBackupVaultsDataSourcesRequest>;
 
@@ -3754,7 +3714,7 @@ export const FinalizeBackupProjectsLocationsBackupVaultsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}:finalizeBackup",
+      path: "v1/{dataSource}:finalizeBackup",
       hasBody: true,
     }),
     svc,
@@ -3794,7 +3754,7 @@ export const SetInternalStatusProjectsLocationsBackupVaultsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}:setInternalStatus",
+      path: "v1/{dataSource}:setInternalStatus",
       hasBody: true,
     }),
     svc,
@@ -3848,10 +3808,7 @@ export const ListProjectsLocationsBackupVaultsDataSourcesBackupsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}/backups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupVaultsDataSourcesBackupsRequest>;
 
@@ -3897,11 +3854,7 @@ export const PatchProjectsLocationsBackupVaultsDataSourcesBackupsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}/backups/{backupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackupVaultsDataSourcesBackupsRequest>;
 
@@ -3958,10 +3911,7 @@ export const FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackups
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}/backups:fetchForResourceType",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backups:fetchForResourceType" }),
     svc,
   ) as unknown as Schema.Schema<FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackupsRequest>;
 
@@ -4003,10 +3953,7 @@ export const DeleteProjectsLocationsBackupVaultsDataSourcesBackupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupVaultsDataSourcesBackupsRequest>;
 
@@ -4046,10 +3993,7 @@ export const GetProjectsLocationsBackupVaultsDataSourcesBackupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupVaultsDataSourcesBackupsRequest>;
 
@@ -4084,11 +4028,7 @@ export const RestoreProjectsLocationsBackupVaultsDataSourcesBackupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestoreBackupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupVaults/{backupVaultsId}/dataSources/{dataSourcesId}/backups/{backupsId}:restore",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:restore", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RestoreProjectsLocationsBackupVaultsDataSourcesBackupsRequest>;
 
@@ -4121,10 +4061,7 @@ export const GetProjectsLocationsDataSourceReferencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataSourceReferences/{dataSourceReferencesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataSourceReferencesRequest>;
 
@@ -4168,10 +4105,7 @@ export const ListProjectsLocationsDataSourceReferencesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataSourceReferences",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataSourceReferences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataSourceReferencesRequest>;
 
@@ -4226,7 +4160,7 @@ export const FetchForResourceTypeProjectsLocationsDataSourceReferencesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataSourceReferences:fetchForResourceType",
+      path: "v1/{parent}/dataSourceReferences:fetchForResourceType",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchForResourceTypeProjectsLocationsDataSourceReferencesRequest>;
@@ -4267,11 +4201,7 @@ export const InitializeProjectsLocationsServiceConfigRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(InitializeServiceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConfig:initialize",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:initialize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<InitializeProjectsLocationsServiceConfigRequest>;
 
@@ -4314,10 +4244,7 @@ export const ListProjectsLocationsResourceBackupConfigsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/resourceBackupConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/resourceBackupConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsResourceBackupConfigsRequest>;
 
@@ -4366,7 +4293,7 @@ export const CreateProjectsLocationsBackupPlanAssociationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlanAssociations",
+      path: "v1/{parent}/backupPlanAssociations",
       hasBody: true,
     }),
     svc,
@@ -4418,7 +4345,7 @@ export const FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest 
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlanAssociations:fetchForResourceType",
+      path: "v1/{parent}/backupPlanAssociations:fetchForResourceType",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest>;
@@ -4459,10 +4386,7 @@ export const DeleteProjectsLocationsBackupPlanAssociationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlanAssociations/{backupPlanAssociationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupPlanAssociationsRequest>;
 
@@ -4493,10 +4417,7 @@ export const GetProjectsLocationsBackupPlanAssociationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlanAssociations/{backupPlanAssociationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupPlanAssociationsRequest>;
 
@@ -4537,10 +4458,7 @@ export const ListProjectsLocationsBackupPlanAssociationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlanAssociations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupPlanAssociations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupPlanAssociationsRequest>;
 
@@ -4579,11 +4497,7 @@ export const TriggerBackupProjectsLocationsBackupPlanAssociationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TriggerBackupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlanAssociations/{backupPlanAssociationsId}:triggerBackup",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:triggerBackup", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TriggerBackupProjectsLocationsBackupPlanAssociationsRequest>;
 
@@ -4625,11 +4539,7 @@ export const PatchProjectsLocationsBackupPlanAssociationsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(BackupPlanAssociation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlanAssociations/{backupPlanAssociationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackupPlanAssociationsRequest>;
 
@@ -4672,10 +4582,7 @@ export const ListProjectsLocationsManagementServersRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/managementServers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsManagementServersRequest>;
 
@@ -4716,7 +4623,7 @@ export const SetIamPolicyProjectsLocationsManagementServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4749,10 +4656,7 @@ export const GetProjectsLocationsManagementServersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsManagementServersRequest>;
 
@@ -4788,10 +4692,7 @@ export const GetIamPolicyProjectsLocationsManagementServersRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsManagementServersRequest>;
 
@@ -4827,7 +4728,7 @@ export const MsComplianceMetadataProjectsLocationsManagementServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers:msComplianceMetadata",
+      path: "v1/{parent}:msComplianceMetadata",
       hasBody: true,
     }),
     svc,
@@ -4867,7 +4768,7 @@ export const TestIamPermissionsProjectsLocationsManagementServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4915,7 +4816,7 @@ export const CreateProjectsLocationsManagementServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers",
+      path: "v1/{parent}/managementServers",
       hasBody: true,
     }),
     svc,
@@ -4951,10 +4852,7 @@ export const DeleteProjectsLocationsManagementServersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsManagementServersRequest>;
 
@@ -4988,10 +4886,7 @@ export const DeleteProjectsLocationsBackupPlansRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlans/{backupPlansId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupPlansRequest>;
 
@@ -5033,11 +4928,7 @@ export const CreateProjectsLocationsBackupPlansRequest =
     ),
     body: Schema.optional(BackupPlan).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlans",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/backupPlans", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBackupPlansRequest>;
 
@@ -5068,10 +4959,7 @@ export const GetProjectsLocationsBackupPlansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlans/{backupPlansId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupPlansRequest>;
 
@@ -5111,11 +4999,7 @@ export const PatchProjectsLocationsBackupPlansRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(BackupPlan).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlans/{backupPlansId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackupPlansRequest>;
 
@@ -5158,10 +5042,7 @@ export const ListProjectsLocationsBackupPlansRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlans",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupPlans" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupPlansRequest>;
 
@@ -5196,10 +5077,7 @@ export const GetProjectsLocationsBackupPlansRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlans/{backupPlansId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupPlansRevisionsRequest>;
 
@@ -5237,10 +5115,7 @@ export const ListProjectsLocationsBackupPlansRevisionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupPlans/{backupPlansId}/revisions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupPlansRevisionsRequest>;
 
@@ -5281,7 +5156,7 @@ export const SubscribeProjectsLocationsTrialRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trial:subscribe",
+      path: "v1/{parent}/trial:subscribe",
       hasBody: true,
     }),
     svc,
@@ -5317,11 +5192,7 @@ export const EndProjectsLocationsTrialRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(EndTrialRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trial:end",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/trial:end", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EndProjectsLocationsTrialRequest>;
 
@@ -5366,10 +5237,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -5404,10 +5272,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -5438,10 +5303,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -5475,11 +5337,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 

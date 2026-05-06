@@ -47,7 +47,7 @@ export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListChannelsResponse {
   /** The list of channels. */
-  channels?: Array<Channel>;
+  channels?: ReadonlyArray<Channel>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -61,7 +61,7 @@ export interface RolloutData {
   /** The name of the rollout. */
   rolloutName?: string;
   /** Tags associated with a release's role in a rollout. Most rollouts will have at least one release with a "rollout" tag and another release with a "control" tag. Some rollouts may have additional named arms. */
-  tag?: Array<string>;
+  tag?: ReadonlyArray<string>;
 }
 
 export const RolloutData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -85,7 +85,7 @@ export interface Release {
   /** Rollout fraction. This fraction indicates the fraction of people that should receive this version in this release. If the fraction is not specified in ReleaseManager, the API will assume fraction is 1. */
   fraction?: number;
   /** Rollout-related metadata. Some releases are part of one or more A/B rollouts. This field contains the names and data describing this release's role in any rollouts. */
-  rolloutData?: Array<RolloutData>;
+  rolloutData?: ReadonlyArray<RolloutData>;
   /** Timestamp interval of when the release was live. If end_time is unspecified, the release is currently live. */
   serving?: Interval;
   /** Whether or not the release was available for version pinning. */
@@ -112,7 +112,7 @@ export interface ListReleasesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of releases. */
-  releases?: Array<Release>;
+  releases?: ReadonlyArray<Release>;
 }
 
 export const ListReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -163,7 +163,7 @@ export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPlatformsResponse {
   /** The list of platforms. */
-  platforms?: Array<Platform>;
+  platforms?: ReadonlyArray<Platform>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -177,7 +177,7 @@ export interface ListVersionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of versions. */
-  versions?: Array<Version>;
+  versions?: ReadonlyArray<Version>;
 }
 
 export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -203,7 +203,7 @@ export const ListPlatformsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{v1Id}/platforms" }),
+  T.Http({ method: "GET", path: "v1/{parent}/platforms" }),
   svc,
 ) as unknown as Schema.Schema<ListPlatformsRequest>;
 
@@ -244,10 +244,7 @@ export const ListPlatformsChannelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{v1Id}/platforms/{platformsId}/channels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/channels" }),
     svc,
   ) as unknown as Schema.Schema<ListPlatformsChannelsRequest>;
 
@@ -294,10 +291,7 @@ export const ListPlatformsChannelsVersionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{v1Id}/platforms/{platformsId}/channels/{channelsId}/versions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListPlatformsChannelsVersionsRequest>;
 
@@ -344,10 +338,7 @@ export const ListPlatformsChannelsVersionsReleasesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{v1Id}/platforms/{platformsId}/channels/{channelsId}/versions/{versionsId}/releases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/releases" }),
     svc,
   ) as unknown as Schema.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
 
