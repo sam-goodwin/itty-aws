@@ -17,7 +17,7 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 describeLive("Custom Fields", () => {
   it(
     "creates, gets, lists, updates, and deletes a text custom field",
-    { timeout: 60_000 },
+    { timeout: 120_000 },
     async () => {
       const slug = `distilled-${testRunId.replace(/[^a-z0-9]/gi, "-")}`;
       const name = `Distilled Field ${testRunId}`;

@@ -3,11 +3,7 @@ import { customersexport } from "../src/operations/customersexport.ts";
 import { metricsexport } from "../src/operations/metricsexport.ts";
 import { ordersexport } from "../src/operations/ordersexport.ts";
 import { subscriptionsexport } from "../src/operations/subscriptionsexport.ts";
-import {
-  hasLivePolarCredentials,
-  organizationId,
-  runEffect,
-} from "./setup.ts";
+import { hasLivePolarCredentials, organizationId, runEffect } from "./setup.ts";
 
 const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 
@@ -18,56 +14,42 @@ const expectCsv = (csv: string) => {
 };
 
 describeLive("Exports", () => {
-  it(
-    "exports customers as CSV",
-    { timeout: 30_000 },
-    async () => {
-      const csv = await runEffect(
-        customersexport({ organization_id: organizationId }),
-      );
+  it("exports customers as CSV", { timeout: 120_000 }, async () => {
+    const csv = await runEffect(
+      customersexport({ organization_id: organizationId }),
+    );
 
-      expectCsv(csv);
-      expect(csv.toLowerCase()).toContain("email");
-    },
-  );
+    expectCsv(csv);
+    expect(csv.toLowerCase()).toContain("email");
+  });
 
-  it(
-    "exports orders as CSV",
-    { timeout: 30_000 },
-    async () => {
-      const csv = await runEffect(ordersexport({ organization_id: organizationId }));
+  it("exports orders as CSV", { timeout: 120_000 }, async () => {
+    const csv = await runEffect(
+      ordersexport({ organization_id: organizationId }),
+    );
 
-      expectCsv(csv);
-    },
-  );
+    expectCsv(csv);
+  });
 
-  it(
-    "exports subscriptions as CSV",
-    { timeout: 30_000 },
-    async () => {
-      const csv = await runEffect(
-        subscriptionsexport({ organization_id: organizationId }),
-      );
+  it("exports subscriptions as CSV", { timeout: 120_000 }, async () => {
+    const csv = await runEffect(
+      subscriptionsexport({ organization_id: organizationId }),
+    );
 
-      expectCsv(csv);
-    },
-  );
+    expectCsv(csv);
+  });
 
-  it(
-    "exports metrics as CSV",
-    { timeout: 30_000 },
-    async () => {
-      const csv = await runEffect(
-        metricsexport({
-          start_date: "2026-01-01",
-          end_date: "2026-01-02",
-          interval: "day",
-          organization_id: organizationId,
-        }),
-      );
+  it("exports metrics as CSV", { timeout: 120_000 }, async () => {
+    const csv = await runEffect(
+      metricsexport({
+        start_date: "2026-01-01",
+        end_date: "2026-01-02",
+        interval: "day",
+        organization_id: organizationId,
+      }),
+    );
 
-      expectCsv(csv);
-      expect(csv.toLowerCase()).toContain("timestamp");
-    },
-  );
+    expectCsv(csv);
+    expect(csv.toLowerCase()).toContain("timestamp");
+  });
 });

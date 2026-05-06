@@ -17,11 +17,12 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 describeLive("Discounts", () => {
   it(
     "creates, gets, lists, updates, and deletes a percentage discount",
-    { timeout: 60_000 },
+    { timeout: 120_000 },
     async () => {
       const name = `Distilled Discount ${testRunId}`;
       const updatedName = `${name} Updated`;
-      const code = `DISTILLED${testRunId.replace(/[^a-z0-9]/gi, "").slice(-16)}`.toUpperCase();
+      const code =
+        `DISTILLED${testRunId.replace(/[^a-z0-9]/gi, "").slice(-16)}`.toUpperCase();
 
       const result = await runEffect(
         Effect.gen(function* () {

@@ -9,7 +9,8 @@ export const testRunId =
 export const organizationId = process.env.POLAR_ORGANIZATION_ID;
 
 export const hasLivePolarCredentials =
-  Boolean(process.env.POLAR_ACCESS_TOKEN) && process.env.POLAR_SERVER === "sandbox";
+  Boolean(process.env.POLAR_ACCESS_TOKEN) &&
+  process.env.POLAR_SERVER === "sandbox";
 
 export const runEffect = <A, E, R>(
   effect: Effect.Effect<A, E, R>,
@@ -20,4 +21,3 @@ export const runEffect = <A, E, R>(
       Effect.provide(FetchHttpClient.layer),
     ) as Effect.Effect<A, E, never>,
   );
-

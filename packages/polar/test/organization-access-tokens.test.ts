@@ -17,7 +17,7 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 describeLive("Organization Access Tokens", () => {
   it(
     "creates, lists, updates, and deletes an organization access token",
-    { timeout: 60_000 },
+    { timeout: 120_000 },
     async () => {
       const comment = `distilled-polar-oat-${testRunId}`;
       const updatedComment = `${comment}-updated`;

@@ -17,7 +17,7 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 const eventually = async <A>(
   action: () => Promise<A | undefined>,
 ): Promise<A> => {
-  for (let attempt = 0; attempt < 10; attempt++) {
+  for (let attempt = 0; attempt < 30; attempt++) {
     const result = await action();
     if (result !== undefined) {
       return result;

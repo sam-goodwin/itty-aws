@@ -16,7 +16,7 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 describeLive("Files", () => {
   it(
     "creates, lists, updates, and deletes a file record",
-    { timeout: 60_000 },
+    { timeout: 120_000 },
     async () => {
       const name = `distilled-file-${testRunId}.txt`;
       const updatedName = `distilled-file-${testRunId}-updated.txt`;
@@ -55,7 +55,9 @@ describeLive("Files", () => {
 
             return { created, listed, updated, deleted };
           }).pipe(
-            Effect.ensuring(filesdelete({ id: created.id }).pipe(Effect.ignore)),
+            Effect.ensuring(
+              filesdelete({ id: created.id }).pipe(Effect.ignore),
+            ),
           );
         }),
       );

@@ -1,12 +1,16 @@
 import * as Effect from "effect/Effect";
 import { describe, expect, it } from "vitest";
+import { customerSessionscreate } from "../src/operations/customerSessionscreate.ts";
 import { customerscreate } from "../src/operations/customerscreate.ts";
 import { customersdelete } from "../src/operations/customersdelete.ts";
+import { customersdeleteExternal } from "../src/operations/customersdeleteExternal.ts";
 import { customersget } from "../src/operations/customersget.ts";
+import { customersgetExternal } from "../src/operations/customersgetExternal.ts";
 import { customersgetState } from "../src/operations/customersgetState.ts";
 import { customersgetStateExternal } from "../src/operations/customersgetStateExternal.ts";
 import { customerslist } from "../src/operations/customerslist.ts";
 import { customersupdate } from "../src/operations/customersupdate.ts";
+import { customersupdateExternal } from "../src/operations/customersupdateExternal.ts";
 import {
   hasLivePolarCredentials,
   organizationId,
@@ -18,8 +22,8 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 
 describeLive("Customers", () => {
   it(
-    "creates, gets, lists, updates, and deletes a customer",
-    { timeout: 60_000 },
+    "creates, gets, lists, updates, creates a session, and deletes a customer",
+    { timeout: 120_000 },
     async () => {
       const email = `distilled.polar.${testRunId.replace(/[^a-z0-9]/gi, ".")}@gmail.com`;
       const externalId = `distilled-customer-${testRunId}`;
@@ -41,6 +45,9 @@ describeLive("Customers", () => {
 
           return yield* Effect.gen(function* () {
             const fetched = yield* customersget({ id: created.id });
+            const fetchedExternal = yield* customersgetExternal({
+              external_id: externalId,
+            });
             const listed = yield* customerslist({
               email,
               organization_id: organizationId,
@@ -54,20 +61,39 @@ describeLive("Customers", () => {
               id: created.id,
               name: updatedName,
             });
+            const updatedExternal = yield* customersupdateExternal({
+              external_id: externalId,
+              name: `${updatedName} External`,
+            });
+            const session = yield* customerSessionscreate({
+              external_customer_id: externalId,
+              return_url: "https://example.com/distilled/polar",
+            });
             const deleted = yield* customersdelete({ id: created.id });
 
             return {
               created,
               fetched,
+              fetchedExternal,
               listed,
               state,
               stateByExternalId,
               updated,
+              updatedExternal,
+              session,
               deleted,
             };
           }).pipe(
             Effect.ensuring(
-              customersdelete({ id: created.id }).pipe(Effect.ignore),
+              Effect.all(
+                [
+                  customersdelete({ id: created.id }).pipe(Effect.ignore),
+                  customersdeleteExternal({ external_id: externalId }).pipe(
+                    Effect.ignore,
+                  ),
+                ],
+                { concurrency: "unbounded" },
+              ),
             ),
           );
         }),
@@ -78,6 +104,7 @@ describeLive("Customers", () => {
       expect(result.created.type).toBe("individual");
       expect(result.created.name).toBe(name);
       expect(result.fetched.id).toBe(result.created.id);
+      expect(result.fetchedExternal.id).toBe(result.created.id);
       expect(result.fetched.external_id).toBe(externalId);
       expect(
         result.listed.items.some(
@@ -92,6 +119,8 @@ describeLive("Customers", () => {
       expect(result.state.active_meters).toEqual([]);
       expect(result.stateByExternalId.id).toBe(result.created.id);
       expect(result.updated.name).toBe(updatedName);
+      expect(result.updatedExternal.name).toBe(`${updatedName} External`);
+      expect(result.session.customer_id).toBe(result.created.id);
       expect(result.deleted).toBeUndefined();
     },
   );

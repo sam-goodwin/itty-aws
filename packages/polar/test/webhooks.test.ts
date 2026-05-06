@@ -2,7 +2,10 @@ import * as Effect from "effect/Effect";
 import { describe, expect, it } from "vitest";
 import { webhookscreateWebhookEndpoint } from "../src/operations/webhookscreateWebhookEndpoint.ts";
 import { webhooksdeleteWebhookEndpoint } from "../src/operations/webhooksdeleteWebhookEndpoint.ts";
+import { webhooksgetWebhookEndpoint } from "../src/operations/webhooksgetWebhookEndpoint.ts";
 import { webhookslistWebhookEndpoints } from "../src/operations/webhookslistWebhookEndpoints.ts";
+import { webhooksresetWebhookEndpointSecret } from "../src/operations/webhooksresetWebhookEndpointSecret.ts";
+import { webhooksupdateWebhookEndpoint } from "../src/operations/webhooksupdateWebhookEndpoint.ts";
 import {
   hasLivePolarCredentials,
   organizationId,
@@ -14,8 +17,8 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 
 describeLive("Webhook Endpoints", () => {
   it(
-    "creates, lists, and deletes a webhook endpoint",
-    { timeout: 60_000 },
+    "creates, gets, lists, updates, resets secret, and deletes a webhook endpoint",
+    { timeout: 120_000 },
     async () => {
       const name = `distilled-polar-webhook-${testRunId}`;
       const url = `https://example.com/distilled/polar/${testRunId}`;
@@ -35,11 +38,22 @@ describeLive("Webhook Endpoints", () => {
               limit: 100,
               organization_id: organizationId,
             });
+            const fetched = yield* webhooksgetWebhookEndpoint({
+              id: created.id,
+            });
+            const updated = yield* webhooksupdateWebhookEndpoint({
+              id: created.id,
+              name: `${name}-updated`,
+              enabled: false,
+            });
+            const reset = yield* webhooksresetWebhookEndpointSecret({
+              id: created.id,
+            });
             const deleted = yield* webhooksdeleteWebhookEndpoint({
               id: created.id,
             });
 
-            return { created, listed, deleted };
+            return { created, listed, fetched, updated, reset, deleted };
           }).pipe(
             Effect.ensuring(
               webhooksdeleteWebhookEndpoint({ id: created.id }).pipe(
@@ -53,7 +67,15 @@ describeLive("Webhook Endpoints", () => {
       expect(result.created.id).toBeTruthy();
       expect(result.created.name).toBe(name);
       expect(result.created.url).toBe(url);
-      expect(result.listed.items.some((endpoint) => endpoint.id === result.created.id)).toBe(true);
+      expect(
+        result.listed.items.some(
+          (endpoint) => endpoint.id === result.created.id,
+        ),
+      ).toBe(true);
+      expect(result.fetched.id).toBe(result.created.id);
+      expect(result.updated.name).toBe(`${name}-updated`);
+      expect(result.updated.enabled).toBe(false);
+      expect(result.reset.id).toBe(result.created.id);
       expect(result.deleted).toBeUndefined();
     },
   );

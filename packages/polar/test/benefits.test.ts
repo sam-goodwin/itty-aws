@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest";
 import { benefitscreate } from "../src/operations/benefitscreate.ts";
 import { benefitsdelete } from "../src/operations/benefitsdelete.ts";
 import { benefitsget } from "../src/operations/benefitsget.ts";
+import { benefitsgrants } from "../src/operations/benefitsgrants.ts";
+import { benefitGrantslist } from "../src/operations/benefitGrantslist.ts";
 import { benefitslist } from "../src/operations/benefitslist.ts";
 import { benefitsupdate } from "../src/operations/benefitsupdate.ts";
 import {
@@ -17,7 +19,7 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 describeLive("Benefits", () => {
   it(
     "creates, gets, lists, updates, and deletes a custom benefit",
-    { timeout: 60_000 },
+    { timeout: 120_000 },
     async () => {
       const description = `distilled-${testRunId.slice(-10)}`;
       const updatedDescription = `${description}-updated`;
@@ -44,6 +46,14 @@ describeLive("Benefits", () => {
               limit: 100,
               organization_id: organizationId,
             });
+            const grants = yield* benefitsgrants({
+              id: created.id,
+              limit: 100,
+            });
+            const allGrants = yield* benefitGrantslist({
+              organization_id: organizationId,
+              limit: 100,
+            });
             const updated = yield* benefitsupdate({
               id: created.id,
               type: "custom",
@@ -54,7 +64,15 @@ describeLive("Benefits", () => {
             });
             const deleted = yield* benefitsdelete({ id: created.id });
 
-            return { created, fetched, listed, updated, deleted };
+            return {
+              created,
+              fetched,
+              listed,
+              grants,
+              allGrants,
+              updated,
+              deleted,
+            };
           }).pipe(
             Effect.ensuring(
               benefitsdelete({ id: created.id }).pipe(Effect.ignore),
@@ -70,6 +88,8 @@ describeLive("Benefits", () => {
       expect(
         result.listed.items.some((benefit) => benefit.id === result.created.id),
       ).toBe(true);
+      expect(result.grants.items).toEqual([]);
+      expect(Array.isArray(result.allGrants.items)).toBe(true);
       expect(result.updated.description).toBe(updatedDescription);
       expect(result.deleted).toBeUndefined();
     },

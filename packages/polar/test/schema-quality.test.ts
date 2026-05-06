@@ -21,6 +21,8 @@ import { MetricsexportOutput } from "../src/operations/metricsexport.ts";
 import { MeterscreateOutput } from "../src/operations/meterscreate.ts";
 import { Oauth2authorizeOutput } from "../src/operations/oauth2authorize.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
+import { Oauth2clientsoauth2getClientOutput } from "../src/operations/oauth2clientsoauth2getClient.ts";
+import { Oauth2clientsoauth2updateClientOutput } from "../src/operations/oauth2clientsoauth2updateClient.ts";
 import { Oauth2userinfoOutput } from "../src/operations/oauth2userinfo.ts";
 import { OrdersexportOutput } from "../src/operations/ordersexport.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
@@ -53,9 +55,7 @@ describe("generated Polar schema quality", () => {
   });
 
   it("types and redacts OAuth client registration responses", () => {
-    const decoded = Schema.decodeUnknownSync(
-      Oauth2clientsoauth2createClientOutput,
-    )({
+    const response = {
       redirect_uris: ["https://example.com/callback"],
       token_endpoint_auth_method: "client_secret_post",
       grant_types: ["authorization_code", "refresh_token"],
@@ -69,9 +69,20 @@ describe("generated Polar schema quality", () => {
       registration_client_uri:
         "https://sandbox-api.polar.sh/v1/oauth2/register/polar_ci_test",
       registration_access_token: "registration-secret",
-    });
+    };
+    const decoded = Schema.decodeUnknownSync(
+      Oauth2clientsoauth2createClientOutput,
+    )(response);
+    const fetched = Schema.decodeUnknownSync(
+      Oauth2clientsoauth2getClientOutput,
+    )(response);
+    const updated = Schema.decodeUnknownSync(
+      Oauth2clientsoauth2updateClientOutput,
+    )({ ...response, client_name: "updated client" });
 
     expect(decoded.response_types).toEqual(["code"]);
+    expect(fetched.client_id).toBe("polar_ci_test");
+    expect(updated.client_name).toBe("updated client");
     expect(Redacted.isRedacted(decoded.client_secret)).toBe(true);
     expect(Redacted.isRedacted(decoded.registration_access_token)).toBe(true);
   });
@@ -126,7 +137,6 @@ describe("generated Polar schema quality", () => {
     expect(decoded.external_id).toBe("external-customer");
     expect(decoded.active_subscriptions).toEqual([]);
   });
-
 
   it("types shared custom field output fields", () => {
     const decoded = Schema.decodeUnknownSync(CustomFieldscreateOutput)({
@@ -456,7 +466,8 @@ describe("generated Polar schema quality", () => {
   });
 
   it("types CSV export outputs as raw strings", () => {
-    const csv = "id,email\n00000000-0000-4000-8000-000000000000,test@example.com\n";
+    const csv =
+      "id,email\n00000000-0000-4000-8000-000000000000,test@example.com\n";
 
     expect(Schema.decodeUnknownSync(CustomersexportOutput)(csv)).toBe(csv);
     expect(Schema.decodeUnknownSync(OrdersexportOutput)(csv)).toBe(csv);

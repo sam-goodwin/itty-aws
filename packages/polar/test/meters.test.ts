@@ -1,4 +1,5 @@
 import * as Effect from "effect/Effect";
+import * as Schedule from "effect/Schedule";
 import { describe, expect, it } from "vitest";
 import { meterscreate } from "../src/operations/meterscreate.ts";
 import { metersget } from "../src/operations/metersget.ts";
@@ -17,7 +18,7 @@ const describeLive = hasLivePolarCredentials ? describe : describe.skip;
 describeLive("Meters", () => {
   it(
     "creates, gets, lists, reads quantities, and archives a meter",
-    { timeout: 60_000 },
+    { timeout: 90_000 },
     async () => {
       const name = `Distilled Meter ${testRunId}`;
       const updatedName = `${name} Updated`;
@@ -54,7 +55,14 @@ describeLive("Meters", () => {
               start_timestamp: "2026-01-01T00:00:00Z",
               end_timestamp: "2026-01-02T00:00:00Z",
               interval: "day",
-            });
+            }).pipe(
+              Effect.retry({
+                while: (err) => err._tag === "NotFound",
+                schedule: Schedule.spaced("1 second").pipe(
+                  Schedule.both(Schedule.recurs(10)),
+                ),
+              }),
+            );
             const updated = yield* metersupdate({
               id: created.id,
               name: updatedName,
