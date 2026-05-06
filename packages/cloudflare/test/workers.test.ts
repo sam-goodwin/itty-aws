@@ -1096,56 +1096,53 @@ describe("Workers", () => {
         }),
       ));
 
-    test(
-      "error - DurableObjectMustBeSqlite when enabling containers on a non-SQLite durable object",
-      () =>
-        Effect.gen(function* () {
-          const name = scriptName("put-script-container-non-sqlite");
+    test("error - DurableObjectMustBeSqlite when enabling containers on a non-SQLite durable object", () =>
+      Effect.gen(function* () {
+        const name = scriptName("put-script-container-non-sqlite");
 
-          yield* Workers.deleteScript({
-            accountId: accountId(),
-            scriptName: name,
-            force: true,
-          }).pipe(Effect.catch(() => Effect.void));
+        yield* Workers.deleteScript({
+          accountId: accountId(),
+          scriptName: name,
+          force: true,
+        }).pipe(Effect.catch(() => Effect.void));
 
-          const scriptFile = new File(
-            [containerDurableObjectWorkerSource],
-            "index.mjs",
-            {
-              type: "application/javascript+module",
-            },
-          );
+        const scriptFile = new File(
+          [containerDurableObjectWorkerSource],
+          "index.mjs",
+          {
+            type: "application/javascript+module",
+          },
+        );
 
-          yield* Workers.putScript({
-            accountId: accountId(),
-            scriptName: name,
-            metadata: {
-              mainModule: "index.mjs",
-              compatibilityDate: "2024-01-01",
-              bindings: [
-                {
-                  name: "AGENTS",
-                  type: "durable_object_namespace",
-                  className: "Agents",
-                },
-              ],
-              migrations: {
-                newTag: "v1",
-                newClasses: ["Agents"],
+        yield* Workers.putScript({
+          accountId: accountId(),
+          scriptName: name,
+          metadata: {
+            mainModule: "index.mjs",
+            compatibilityDate: "2024-01-01",
+            bindings: [
+              {
+                name: "AGENTS",
+                type: "durable_object_namespace",
+                className: "Agents",
               },
-              containers: [{ className: "Agents" }],
+            ],
+            migrations: {
+              newTag: "v1",
+              newClasses: ["Agents"],
             },
-            files: [scriptFile],
-          }).pipe(
-            Effect.flip,
-            Effect.map((e) =>
-              expect((e as { _tag?: string })._tag).toBe(
-                "DurableObjectMustBeSqlite",
-              ),
+            containers: [{ className: "Agents" }],
+          },
+          files: [scriptFile],
+        }).pipe(
+          Effect.flip,
+          Effect.map((e) =>
+            expect((e as { _tag?: string })._tag).toBe(
+              "DurableObjectMustBeSqlite",
             ),
-          );
-        }),
-    );
+          ),
+        );
+      }));
   });
 
   describe("getScript", () => {
@@ -2392,10 +2389,9 @@ describe("Workers", () => {
     test("happy path - uploads worker and gets preview token", () =>
       withScript(scriptName("edge-preview"), (name) =>
         Effect.gen(function* () {
-          const session =
-            yield* Workers.createSubdomainEdgePreviewSession({
-              accountId: accountId(),
-            });
+          const session = yield* Workers.createSubdomainEdgePreviewSession({
+            accountId: accountId(),
+          });
 
           const scriptFile = new File([workerModuleSource], "index.mjs", {
             type: "application/javascript+module",
@@ -2423,10 +2419,9 @@ describe("Workers", () => {
     test("happy path - uploads worker with bindings and minimal mode", () =>
       withScript(scriptName("edge-preview-raw"), (name) =>
         Effect.gen(function* () {
-          const session =
-            yield* Workers.createSubdomainEdgePreviewSession({
-              accountId: accountId(),
-            });
+          const session = yield* Workers.createSubdomainEdgePreviewSession({
+            accountId: accountId(),
+          });
 
           const scriptFile = new File([workerModuleSource], "index.mjs", {
             type: "application/javascript+module",
@@ -2549,7 +2544,7 @@ describe("Workers", () => {
   // ==========================================================================
   describe("putDomain", () => {
     if (hasZoneId()) {
-      test("error - WorkerNotFound or UnknownCloudflareError for non-existent service", () =>
+      test("error - WorkerNotFound for non-existent service", () =>
         Workers.putDomain({
           accountId: accountId(),
           // Hostname must match zone name (alchemy-test-2.us) to avoid zone mismatch error
@@ -2558,11 +2553,7 @@ describe("Workers", () => {
           zoneId: zoneId(),
         }).pipe(
           Effect.flip,
-          Effect.map((e) =>
-            expect(["WorkerNotFound", "UnknownCloudflareError"]).toContain(
-              e._tag,
-            ),
-          ),
+          Effect.map((e) => expect(e._tag).toBe("WorkerNotFound")),
         ));
     }
 

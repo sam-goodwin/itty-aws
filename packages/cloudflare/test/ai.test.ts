@@ -240,7 +240,7 @@ describe("AI", () => {
         fileName: "test.jsonl",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("ModelNotSupported")),
       ));
   });
 
@@ -301,7 +301,7 @@ describe("AI", () => {
         model: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - ModelSchemaNotFound for model name with special characters", () =>

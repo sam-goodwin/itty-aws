@@ -318,7 +318,7 @@ describe("Accounts", () => {
         memberId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -414,7 +414,7 @@ describe("Accounts", () => {
         subscriptionIdentifier: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -447,7 +447,7 @@ describe("Accounts", () => {
         subscriptionIdentifier: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -455,12 +455,12 @@ describe("Accounts", () => {
   // verifyToken
   // --------------------------------------------------------------------------
   describe("verifyToken", () => {
-    test("error - UnknownCloudflareError for verification failure", () =>
+    test("error - for verification failure", () =>
       Accounts.verifyToken({
         accountId: accountId(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("Unauthorized")),
       ));
 
     test("error - invalid accountId", () =>

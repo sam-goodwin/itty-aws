@@ -22,7 +22,9 @@ const zeroTrustSpecPath = path.join(
 
 describe("ZeroTrust > Tunnel > configuration ingress hostname is optional", () => {
   it("encodes a put request with a catch-all ingress rule (no hostname)", () => {
-    const httpTrait = getHttpTrait(PutTunnelCloudflaredConfigurationRequest.ast);
+    const httpTrait = getHttpTrait(
+      PutTunnelCloudflaredConfigurationRequest.ast,
+    );
     expect(httpTrait).toBeDefined();
 
     const parts = buildRequestParts(

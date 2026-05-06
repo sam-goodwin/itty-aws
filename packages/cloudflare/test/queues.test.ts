@@ -116,11 +116,7 @@ describe("Queues", () => {
           queueName: queueName("create-dup"),
         }).pipe(
           Effect.flip,
-          Effect.map((e) =>
-            expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-              e._tag,
-            ),
-          ),
+          Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
         ),
       ));
 
@@ -130,11 +126,7 @@ describe("Queues", () => {
         queueName: queueName("create-bad-acct"),
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - empty queue name", () =>
@@ -143,11 +135,7 @@ describe("Queues", () => {
         queueName: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - queue name with special characters", () =>
@@ -156,11 +144,7 @@ describe("Queues", () => {
         queueName: "invalid queue name!@#$%",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -206,11 +190,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -219,11 +199,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - empty queueId", () =>
@@ -232,11 +208,7 @@ describe("Queues", () => {
         queueId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -312,11 +284,7 @@ describe("Queues", () => {
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -384,11 +352,7 @@ describe("Queues", () => {
         queueName: queueName("update-nonexistent"),
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -398,11 +362,7 @@ describe("Queues", () => {
         queueName: "test",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -452,11 +412,7 @@ describe("Queues", () => {
         settings: { deliveryDelay: 5 },
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -466,11 +422,7 @@ describe("Queues", () => {
         settings: { deliveryDelay: 5 },
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -506,11 +458,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -519,11 +467,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - empty queueId", () =>
@@ -532,11 +476,7 @@ describe("Queues", () => {
         queueId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -584,11 +524,7 @@ describe("Queues", () => {
           consumerId: "00000000-0000-0000-0000-000000000000",
         }).pipe(
           Effect.flip,
-          Effect.map((e) =>
-            expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-              e._tag,
-            ),
-          ),
+          Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
         ),
       ));
 
@@ -599,11 +535,7 @@ describe("Queues", () => {
         consumerId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - not found for non-existent queueId", () =>
@@ -613,11 +545,7 @@ describe("Queues", () => {
         consumerId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -644,11 +572,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -657,11 +581,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -678,11 +598,7 @@ describe("Queues", () => {
           settings: { batchSize: 5 },
         }).pipe(
           Effect.flip,
-          Effect.map((e) =>
-            expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-              e._tag,
-            ),
-          ),
+          Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
         ),
       ));
 
@@ -694,11 +610,7 @@ describe("Queues", () => {
         settings: { batchSize: 5 },
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -714,11 +626,7 @@ describe("Queues", () => {
           consumerId: "00000000-0000-0000-0000-000000000000",
         }).pipe(
           Effect.flip,
-          Effect.map((e) =>
-            expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-              e._tag,
-            ),
-          ),
+          Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
         ),
       ));
 
@@ -729,11 +637,7 @@ describe("Queues", () => {
         consumerId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - not found for non-existent queueId", () =>
@@ -743,11 +647,7 @@ describe("Queues", () => {
         consumerId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -847,11 +747,7 @@ describe("Queues", () => {
         contentType: "text",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -862,11 +758,7 @@ describe("Queues", () => {
         contentType: "text",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -937,11 +829,7 @@ describe("Queues", () => {
         messages: [{ body: "test", contentType: "text" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -951,11 +839,7 @@ describe("Queues", () => {
         messages: [{ body: "test", contentType: "text" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - InvalidMessageBody for empty messages array", () =>
@@ -986,11 +870,7 @@ describe("Queues", () => {
         batchSize: 10,
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1000,11 +880,7 @@ describe("Queues", () => {
         batchSize: 10,
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1019,11 +895,7 @@ describe("Queues", () => {
         acks: [{ leaseId: "fake-lease-id" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1033,11 +905,7 @@ describe("Queues", () => {
         acks: [{ leaseId: "fake-lease-id" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1069,11 +937,7 @@ describe("Queues", () => {
         deleteMessagesPermanently: true,
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1083,11 +947,7 @@ describe("Queues", () => {
         deleteMessagesPermanently: true,
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1140,11 +1000,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1153,11 +1009,7 @@ describe("Queues", () => {
         queueId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1222,11 +1074,7 @@ describe("Queues", () => {
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1262,11 +1110,7 @@ describe("Queues", () => {
         events: ["r2:object:create"],
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - invalid destination queueId", () =>
@@ -1282,13 +1126,7 @@ describe("Queues", () => {
         events: ["r2:object:create"],
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect([
-            "UnknownCloudflareError",
-            "CloudflareHttpError",
-            "UnrecognizedEventType",
-          ]).toContain(e._tag),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1317,11 +1155,7 @@ describe("Queues", () => {
         subscriptionId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1330,11 +1164,7 @@ describe("Queues", () => {
         subscriptionId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - empty subscriptionId", () =>
@@ -1343,11 +1173,7 @@ describe("Queues", () => {
         subscriptionId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1377,11 +1203,7 @@ describe("Queues", () => {
         name: "should-fail",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1391,11 +1213,7 @@ describe("Queues", () => {
         name: "should-fail",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -1424,11 +1242,7 @@ describe("Queues", () => {
         subscriptionId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1437,11 +1251,7 @@ describe("Queues", () => {
         subscriptionId: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - empty subscriptionId", () =>
@@ -1450,11 +1260,7 @@ describe("Queues", () => {
         subscriptionId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 });

@@ -1000,10 +1000,7 @@ describe("Workflows", () => {
             expect(typeof result.value.timestamp).toBe("string");
           } else {
             // Workflow already completed — cannot modify its status
-            expect([
-              "InstanceCannotTerminate",
-              "UnknownCloudflareError",
-            ]).toContain(result.tag);
+            expect(result.tag).toBe("InstanceCannotTerminate");
           }
         }),
       ));

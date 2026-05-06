@@ -75,13 +75,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImagesAccessNotEnabled")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.createV1({
         accountId: "invalid-account-id-000",
         url: "https://via.placeholder.com/1x1.png",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -107,13 +107,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImageNotFound")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.getV1({
         accountId: "invalid-account-id-000",
         imageId: "some-image-id",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - for empty imageId", () =>
@@ -142,12 +142,12 @@ describe("Images", () => {
         ),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.listV1s({
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -185,14 +185,14 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImageNotFound")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.patchV1({
         accountId: "invalid-account-id-000",
         imageId: "some-image-id",
         metadata: { test: true },
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -218,13 +218,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImageNotFound")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.deleteV1({
         accountId: "invalid-account-id-000",
         imageId: "some-image-id",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - for empty imageId", () =>
@@ -259,13 +259,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImageNotFound")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.getV1Blob({
         accountId: "invalid-account-id-000",
         imageId: "some-image-id",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -281,12 +281,12 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImagesAccessNotEnabled")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.listV1Keys({
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -303,13 +303,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImagesAccessNotEnabled")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.putV1Key({
         accountId: "invalid-account-id-000",
         signingKeyName: keyName("put-bad-acct"),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - for empty signing key name", () =>
@@ -344,13 +344,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("KeyNotFound")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.deleteV1Key({
         accountId: "invalid-account-id-000",
         signingKeyName: keyName("del-bad-acct"),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -366,12 +366,12 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("ImagesAccessNotEnabled")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.getV1Stat({
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -425,7 +425,7 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("VariantNameNotAllowed")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.createV1Variant({
         accountId: "invalid-account-id-000",
         id: variantName("create-bad-acct"),
@@ -437,7 +437,7 @@ describe("Images", () => {
         },
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - VariantNameNotAllowed for duplicate variant creation", () =>
@@ -478,13 +478,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.getV1Variant({
         accountId: "invalid-account-id-000",
         variantId: "some-variant-id",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -504,12 +504,12 @@ describe("Images", () => {
         ),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.listV1Variants({
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -563,7 +563,7 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("VariantNotFound")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.patchV1Variant({
         accountId: "invalid-account-id-000",
         variantId: "some-variant-id",
@@ -575,7 +575,7 @@ describe("Images", () => {
         },
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -601,13 +601,13 @@ describe("Images", () => {
         Effect.map((e) => expect(e._tag).toBe("VariantNotFound")),
       ));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.deleteV1Variant({
         accountId: "invalid-account-id-000",
         variantId: "some-variant-id",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
 
     test("error - for empty variantId", () =>
@@ -675,12 +675,12 @@ describe("Images", () => {
         }
       }));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.listV2s({
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 
@@ -764,12 +764,12 @@ describe("Images", () => {
         }).pipe(Effect.catch(() => Effect.void));
       }));
 
-    test("error - UnknownCloudflareError for invalid accountId", () =>
+    test("error - for invalid accountId", () =>
       Images.createV2DirectUpload({
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 });

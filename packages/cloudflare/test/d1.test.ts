@@ -310,13 +310,13 @@ describe("D1", () => {
         Effect.map((e) => expect(e._tag).toBe("InvalidObjectIdentifier")),
       ));
 
-    test("error - UnknownCloudflareError for empty databaseId", () =>
+    test("error - for empty databaseId", () =>
       D1.deleteDatabase({
         accountId: accountId(),
         databaseId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("UnknownCloudflareError")),
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
       ));
   });
 

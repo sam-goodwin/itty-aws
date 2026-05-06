@@ -11,7 +11,8 @@ const tunnelName = (suffix: string) =>
 // Base64 secret with at least 32 bytes
 const tunnelSecret = (seed: string): string => {
   const bytes = Buffer.alloc(32);
-  for (let i = 0; i < 32; i++) bytes[i] = (seed.charCodeAt(i % seed.length) + i) & 0xff;
+  for (let i = 0; i < 32; i++)
+    bytes[i] = (seed.charCodeAt(i % seed.length) + i) & 0xff;
   return bytes.toString("base64");
 };
 

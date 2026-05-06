@@ -76,10 +76,7 @@ test.skip = function (
 test.skipIf = function (condition: boolean): typeof test {
   const skipIfIt = it.skipIf(condition);
   return Object.assign(
-    (
-      name: string,
-      ...args: [{ timeout?: number }, TestCase] | [TestCase]
-    ) => {
+    (name: string, ...args: [{ timeout?: number }, TestCase] | [TestCase]) => {
       const [options = {}, testCase] =
         args.length === 1 ? [undefined, args[0]] : args;
 
