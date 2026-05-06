@@ -18,6 +18,11 @@
       "bun": "./src/services/*.ts",
       "default": "./lib/services/*.js"
     },
+    "./unstable/*": {
+      "types": "./lib/unstable-services/*.d.ts",
+      "bun": "./src/unstable-services/*.ts",
+      "default": "./lib/unstable-services/*.js"
+    },
     "./Category": {
       "types": "./lib/category.d.ts",
       "bun": "./src/category.ts",

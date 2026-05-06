@@ -223,6 +223,14 @@ async function main() {
     }
   }
 
+  // Manifest entries with `preferred: true` are stable; everything else is
+  // routed to `src/unstable-services/` and exposed under the `./unstable/*`
+  // subpath so consumers explicitly opt into non-preferred API versions.
+  const STABLE_DIR = path.resolve("src/services");
+  const UNSTABLE_DIR = path.resolve("src/unstable-services");
+  fs.mkdirSync(STABLE_DIR, { recursive: true });
+  fs.mkdirSync(UNSTABLE_DIR, { recursive: true });
+
   let generated = 0;
   for (const entry of entries) {
     try {
@@ -232,7 +240,8 @@ async function main() {
       );
 
       const outputName = `${entry.name}-${entry.version}`;
-      const outputPath = path.resolve(`src/services/${outputName}.ts`);
+      const outputDir = entry.preferred ? STABLE_DIR : UNSTABLE_DIR;
+      const outputPath = path.join(outputDir, `${outputName}.ts`);
 
       // Load patches
       const patches = loadPatches(entry.name, outputName);
