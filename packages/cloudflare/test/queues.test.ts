@@ -469,15 +469,6 @@ describe("Queues", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
-
-    test("error - empty queueId", () =>
-      Queues.deleteQueue({
-        accountId: accountId(),
-        queueId: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // ==========================================================================

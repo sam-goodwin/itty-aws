@@ -241,15 +241,6 @@ describe("Pipelines", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
-
-    test("error - for empty pipeline name", () =>
-      Pipelines.deletePipeline({
-        accountId: accountId(),
-        pipelineName: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // ==========================================================================

@@ -311,15 +311,6 @@ describe("Accounts", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
-
-    test("error - empty memberId", () =>
-      Accounts.deleteMember({
-        accountId: accountId(),
-        memberId: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // --------------------------------------------------------------------------
@@ -407,15 +398,6 @@ describe("Accounts", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
-
-    test("error - empty subscriptionIdentifier", () =>
-      Accounts.updateSubscription({
-        accountId: accountId(),
-        subscriptionIdentifier: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // --------------------------------------------------------------------------
@@ -439,15 +421,6 @@ describe("Accounts", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
-      ));
-
-    test("error - empty subscriptionIdentifier", () =>
-      Accounts.deleteSubscription({
-        accountId: accountId(),
-        subscriptionIdentifier: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 

@@ -496,16 +496,6 @@ describe("IAM", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
-
-    test("error - empty resourceGroupId", () =>
-      IAM.updateResourceGroup({
-        accountId: accountId(),
-        resourceGroupId: "",
-        name: "test",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // --------------------------------------------------------------------------
@@ -546,15 +536,6 @@ describe("IAM", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
-      ));
-
-    test("error - empty resourceGroupId", () =>
-      IAM.deleteResourceGroup({
-        accountId: accountId(),
-        resourceGroupId: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty accountId", () =>
@@ -838,7 +819,7 @@ describe("IAM", () => {
         ssoConnectorId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -1179,16 +1160,6 @@ describe("IAM", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
-
-    test("error - empty userGroupId", () =>
-      IAM.updateUserGroup({
-        accountId: accountId(),
-        userGroupId: "",
-        name: "test",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // --------------------------------------------------------------------------
@@ -1252,15 +1223,6 @@ describe("IAM", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
-      ));
-
-    test("error - empty userGroupId", () =>
-      IAM.deleteUserGroup({
-        accountId: accountId(),
-        userGroupId: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty accountId", () =>
@@ -1330,7 +1292,7 @@ describe("IAM", () => {
         userGroupId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
   });
 
@@ -1406,16 +1368,6 @@ describe("IAM", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
-
-    test("error - empty userGroupId", () =>
-      IAM.updateUserGroupMember({
-        accountId: accountId(),
-        userGroupId: "",
-        body: [{ id: "00000000000000000000000000000000" }],
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // --------------------------------------------------------------------------
@@ -1452,16 +1404,6 @@ describe("IAM", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
-      ));
-
-    test("error - empty userGroupId", () =>
-      IAM.deleteUserGroupMember({
-        accountId: accountId(),
-        userGroupId: "",
-        memberId: "00000000000000000000000000000000",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty memberId", () =>

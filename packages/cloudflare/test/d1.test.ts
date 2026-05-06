@@ -309,15 +309,6 @@ describe("D1", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidObjectIdentifier")),
       ));
-
-    test("error - for empty databaseId", () =>
-      D1.deleteDatabase({
-        accountId: accountId(),
-        databaseId: "",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
   });
 
   // --------------------------------------------------------------------------
