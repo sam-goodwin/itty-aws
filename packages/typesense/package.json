@@ -70,7 +70,7 @@
     "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/typesense-api-spec && git -C specs/typesense-api-spec checkout -- .",
-    "specs:update": "git -C specs/typesense-api-spec fetch && git -C specs/typesense-api-spec checkout main && git -C specs/typesense-api-spec pull"
+    "specs:update": "git -C specs/typesense-api-spec fetch && git -C specs/typesense-api-spec checkout master && git -C specs/typesense-api-spec pull"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*"

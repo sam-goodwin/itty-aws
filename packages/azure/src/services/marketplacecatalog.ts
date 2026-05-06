@@ -1434,7 +1434,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * List the operations for the provider
+ * Lists all of the available Microsoft.Marketplace REST API operations.
  *
  * @param api-version - The API version to use for this operation.
  */

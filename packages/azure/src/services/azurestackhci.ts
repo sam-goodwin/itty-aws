@@ -3884,7 +3884,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * List all available Microsoft.AzureStackHCI provider operations
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */

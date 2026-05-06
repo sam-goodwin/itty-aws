@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare GOOGLE-TAG-GATEWAY API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: google-tag-gateway
+paths:
+  /zones/{zone_id}/settings/google-tag-gateway/config:
+    get:
+      operationId: getConfig
+      description: "Gets the Google Tag Gateway configuration for a zone.  @example
+        ```ts const config = await client.googleTagGateway.config.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Enables or disables Google Tag Gateway for this zone.
+                  endpoint:
+                    type: string
+                    description: Specifies the endpoint path for proxying Google Tag Manager
+                      requests. Use an absolute path starting with '/', with no
+                      nested paths and alphanumeric characters only (e.g.
+                      /metrics).
+                  hideOriginalIp:
+                    type: boolean
+                    description: Hides the original client IP address from Google when enabled.
+                  measurementId:
+                    type: string
+                    description: Specify the Google Tag Manager container or measurement ID (e.g.
+                      GTM-XXXXXXX or G-XXXXXXXXXX).
+                  setUpTag:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Set up the associated Google Tag on the zone automatically when
+                      enabled.
+                required:
+                  - enabled
+                  - endpoint
+                  - hideOriginalIp
+                  - measurementId
+      x-distilled-response-path: result
+    put:
+      operationId: putConfig
+      description: "Updates the Google Tag Gateway configuration for a zone.  @example
+        ```ts const config = await client.googleTagGateway.config.update({
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', enabled: true, endpoint:
+        '/metrics', hideOriginalIp: true, measurementId: 'GTM-P2F3N47Q', });
+        ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: "Body param: Enables or disables Google Tag Gateway for this zone."
+                endpoint:
+                  type: string
+                  description: "Body param: Specifies the endpoint path for proxying Google Tag
+                    Manager requests. Use an absolute path starting with '/',
+                    with no nested paths and alphanumeric characters only (e.g.
+                    /metrics)."
+                hideOriginalIp:
+                  type: boolean
+                  description: "Body param: Hides the original client IP address from Google when
+                    enabled."
+                measurementId:
+                  type: string
+                  description: "Body param: Specify the Google Tag Manager container or
+                    measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX)."
+                setUpTag:
+                  oneOf:
+                    - type: boolean
+                  nullable: true
+                  description: "Body param: Set up the associated Google Tag on the zone
+                    automatically when enabled."
+              required:
+                - enabled
+                - endpoint
+                - hideOriginalIp
+                - measurementId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Enables or disables Google Tag Gateway for this zone.
+                  endpoint:
+                    type: string
+                    description: Specifies the endpoint path for proxying Google Tag Manager
+                      requests. Use an absolute path starting with '/', with no
+                      nested paths and alphanumeric characters only (e.g.
+                      /metrics).
+                  hideOriginalIp:
+                    type: boolean
+                    description: Hides the original client IP address from Google when enabled.
+                  measurementId:
+                    type: string
+                    description: Specify the Google Tag Manager container or measurement ID (e.g.
+                      GTM-XXXXXXX or G-XXXXXXXXXX).
+                  setUpTag:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Set up the associated Google Tag on the zone automatically when
+                      enabled.
+                required:
+                  - enabled
+                  - endpoint
+                  - hideOriginalIp
+                  - measurementId
+      x-distilled-response-path: result

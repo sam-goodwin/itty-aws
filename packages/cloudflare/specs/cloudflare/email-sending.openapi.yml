@@ -1,0 +1,564 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare EMAIL-SENDING API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: email-sending
+paths:
+  /accounts/{account_id}/email/sending/send:
+    post:
+      operationId: sendEmailSending
+      description: "Send an email  @example ```ts const response = await
+        client.emailSending.send({ account_id: 'account_id', from:
+        'sender@example.com', subject: 'Monthly Report', to:
+        ['recipient@example.com'], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  oneOf:
+                    - type: string
+                    - type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Email address (e.g., 'user@example.com').
+                        name:
+                          type: string
+                          description: Display name for the email address (e.g., 'John Doe').
+                      required:
+                        - address
+                        - name
+                  description: "Body param: Sender email address. Either a plain string or an
+                    object with address and name."
+                subject:
+                  type: string
+                  description: "Body param: Email subject line."
+                to:
+                  oneOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
+                  description: "Body param: Recipient(s). A single email string or an array of
+                    email strings."
+                attachments:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        properties:
+                          content:
+                            type: string
+                            description: Base64-encoded content of the attachment.
+                          content_id:
+                            type: string
+                            description: 'Content ID used to reference this attachment in HTML via cid: URI
+                              (e.g., <img src="cid:logo">).'
+                          disposition:
+                            type: string
+                            enum:
+                              - inline
+                            description: Must be 'inline'. Indicates the attachment is embedded in the email
+                              body.
+                          filename:
+                            type: string
+                            description: Filename for the attachment.
+                          type:
+                            type: string
+                            description: MIME type of the attachment (e.g., 'image/png', 'text/plain').
+                        required:
+                          - content
+                          - content_id
+                          - disposition
+                          - filename
+                          - type
+                      - type: object
+                        properties:
+                          content:
+                            type: string
+                            description: Base64-encoded content of the attachment.
+                          disposition:
+                            type: string
+                            enum:
+                              - attachment
+                            description: Must be 'attachment'. Indicates a standard file attachment.
+                          filename:
+                            type: string
+                            description: Filename for the attachment.
+                          type:
+                            type: string
+                            description: MIME type of the attachment (e.g., 'application/pdf',
+                              'text/plain').
+                        required:
+                          - content
+                          - disposition
+                          - filename
+                          - type
+                  description: "Body param: File attachments and inline images."
+                bcc:
+                  oneOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
+                  description: "Body param: BCC recipient(s). A single email string or an array of
+                    email strings."
+                cc:
+                  oneOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
+                  description: "Body param: CC recipient(s). A single email string or an array of
+                    email strings."
+                headers:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Custom email headers as key-value pairs."
+                html:
+                  type: string
+                  description: "Body param: HTML body of the email. At least one of text or html
+                    must be provided."
+                reply_to:
+                  oneOf:
+                    - type: string
+                    - type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Email address (e.g., 'user@example.com').
+                        name:
+                          type: string
+                          description: Display name for the email address (e.g., 'John Doe').
+                      required:
+                        - address
+                        - name
+                  description: "Body param: Reply-to address. Either a plain string or an object
+                    with address and name."
+                text:
+                  type: string
+                  description: "Body param: Plain text body of the email. At least one of text or
+                    html must be provided."
+              required:
+                - from
+                - subject
+                - to
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  delivered:
+                    type: array
+                    items:
+                      type: string
+                    description: Email addresses to which the message was delivered immediately.
+                  permanent_bounces:
+                    type: array
+                    items:
+                      type: string
+                    description: Email addresses that permanently bounced.
+                  queued:
+                    type: array
+                    items:
+                      type: string
+                    description: Email addresses for which delivery was queued for later.
+                required:
+                  - delivered
+                  - permanent_bounces
+                  - queued
+      x-distilled-response-path: result
+  /accounts/{account_id}/email/sending/send_raw:
+    post:
+      operationId: sendRawEmailSending
+      description: "Send a raw MIME email  @example ```ts const response = await
+        client.emailSending.sendRaw({ account_id: 'account_id', from:
+        'sender@example.com', mime_message: 'From: sender@example.com\\r\\nTo:
+        recipient@example.com\\r\\nSubject: Hello\\r\\nContent-Type:
+        text/plain\\r\\n\\r\\nHello, World!', recipients:
+        ['recipient@example.com'], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: "Body param: Sender email address."
+                mime_message:
+                  type: string
+                  description: "Body param: The full MIME-encoded email message. Should include
+                    standard RFC 5322 headers such as From, To, Subject, and
+                    Content-Type. The from and recipients fields in the request
+                    body control SMTP envelope routing; the From and To headers
+                    in the MIME message control what the recipient's email
+                    client displays."
+                recipients:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of recipient email addresses."
+              required:
+                - from
+                - mime_message
+                - recipients
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  delivered:
+                    type: array
+                    items:
+                      type: string
+                    description: Email addresses to which the message was delivered immediately.
+                  permanent_bounces:
+                    type: array
+                    items:
+                      type: string
+                    description: Email addresses that permanently bounced.
+                  queued:
+                    type: array
+                    items:
+                      type: string
+                    description: Email addresses for which delivery was queued for later.
+                required:
+                  - delivered
+                  - permanent_bounces
+                  - queued
+      x-distilled-response-path: result
+  /zones/{zone_id}/email/sending/subdomains/{subdomainId}:
+    get:
+      operationId: getSubdomain
+      description: "Gets information for a specific sending subdomain.  @example ```ts
+        const subdomain = await client.emailSending.subdomains.get(
+        'aabbccdd11223344aabbccdd11223344', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: subdomainId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Whether Email Sending is enabled on this subdomain.
+                  name:
+                    type: string
+                    description: The subdomain domain name.
+                  tag:
+                    type: string
+                    description: Sending subdomain identifier.
+                  created:
+                    type: string
+                    description: The date and time the destination address has been created.
+                  dkim_selector:
+                    type: string
+                    description: The DKIM selector used for email signing.
+                  modified:
+                    type: string
+                    description: The date and time the destination address was last modified.
+                  return_path_domain:
+                    type: string
+                    description: The return-path domain used for bounce handling.
+                required:
+                  - enabled
+                  - name
+                  - tag
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSubdomain
+      description: "Disables sending on a subdomain and removes its DNS records. If
+        routing is still active on the subdomain, only sending is
+        disabled.  @example ```ts const subdomain = await
+        client.emailSending.subdomains.delete(
+        'aabbccdd11223344aabbccdd11223344', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: subdomainId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /zones/{zone_id}/email/sending/subdomains:
+    get:
+      operationId: listSubdomains
+      description: "Lists all sending-enabled subdomains for the zone.  @example ```ts
+        // Automatically fetches more pages as needed. for await (const
+        subdomainListResponse of client.emailSending.subdomains.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Whether Email Sending is enabled on this subdomain.
+                  name:
+                    type: string
+                    description: The subdomain domain name.
+                  tag:
+                    type: string
+                    description: Sending subdomain identifier.
+                  created:
+                    type: string
+                    description: The date and time the destination address has been created.
+                  dkim_selector:
+                    type: string
+                    description: The DKIM selector used for email signing.
+                  modified:
+                    type: string
+                    description: The date and time the destination address was last modified.
+                  return_path_domain:
+                    type: string
+                    description: The return-path domain used for bounce handling.
+                required:
+                  - enabled
+                  - name
+                  - tag
+      x-distilled-pagination-class: SubdomainListResponsesSinglePage
+    post:
+      operationId: createSubdomain
+      description: "Creates a new sending subdomain or re-enables sending on an
+        existing subdomain that had it disabled. If zone-level Email Sending has
+        not been enabled yet, the zone flag is automatically set when the
+        entitlement is present.  @example ```ts const subdomain = await
+        client.emailSending.subdomains.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'sub.example.com', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: The subdomain name. Must be within the zone."
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Whether Email Sending is enabled on this subdomain.
+                  name:
+                    type: string
+                    description: The subdomain domain name.
+                  tag:
+                    type: string
+                    description: Sending subdomain identifier.
+                  created:
+                    type: string
+                    description: The date and time the destination address has been created.
+                  dkim_selector:
+                    type: string
+                    description: The DKIM selector used for email signing.
+                  modified:
+                    type: string
+                    description: The date and time the destination address was last modified.
+                  return_path_domain:
+                    type: string
+                    description: The return-path domain used for bounce handling.
+                required:
+                  - enabled
+                  - name
+                  - tag
+      x-distilled-response-path: result
+  /zones/{zone_id}/email/sending/subdomains/{subdomainId}/dns:
+    get:
+      operationId: getSubdomainDns
+      description: "Returns the expected DNS records for a sending
+        subdomain.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const dnsRecord of
+        client.emailSending.subdomains.dns.get(
+        'aabbccdd11223344aabbccdd11223344', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: subdomainId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: string
+                    description: DNS record content.
+                  name:
+                    type: string
+                    description: DNS record name (or @ for the zone apex).
+                  priority:
+                    type: number
+                    description: Required for MX, SRV and URI records. Unused by other record types.
+                      Records with lower priorities are preferred.
+                  ttl:
+                    oneOf:
+                      - type: number
+                      - type: number
+                        enum:
+                          - 1
+                    description: Time to live, in seconds, of the DNS record. Must be between 60 and
+                      86400, or 1 for 'automatic'.
+                  type:
+                    type: string
+                    enum:
+                      - A
+                      - AAAA
+                      - CNAME
+                      - HTTPS
+                      - TXT
+                      - SRV
+                      - LOC
+                      - MX
+                      - NS
+                      - CERT
+                      - DNSKEY
+                      - DS
+                      - NAPTR
+                      - SMIMEA
+                      - SSHFP
+                      - SVCB
+                      - TLSA
+                      - URI
+                    description: DNS record type.
+      x-distilled-pagination-class: DNSRecordsSinglePage

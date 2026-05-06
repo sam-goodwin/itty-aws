@@ -1,0 +1,268 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare FRAUD API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: fraud
+paths:
+  /zones/{zone_id}/fraud_detection/settings:
+    get:
+      operationId: getFraud
+      description: "Retrieve Fraud Detection settings for a zone.  @example ```ts
+        const fraudSettings = await client.fraud.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authentication_settings:
+                    type: object
+                    properties:
+                      failure_criteria:
+                        type: object
+                        properties:
+                          kind:
+                            type: string
+                            enum:
+                              - status_code
+                            description: The type of criterion. Currently only `status_code` is supported.
+                          status_codes:
+                            type: array
+                            items:
+                              type: number
+                            description: HTTP status codes to match against the origin response.  - Maximum
+                              of 10 codes per criterion. - Each code must be a
+                              valid HTTP status code (100-599). - Codes are
+                              deduplicated and sorted on save. - Omit to leave
+                              unchanged on update. - Provide an empty array `[]`
+                              to clear codes on update.
+                        required:
+                          - kind
+                        description: Criterion for identifying failed login responses.
+                      success_criteria:
+                        type: object
+                        properties:
+                          kind:
+                            type: string
+                            enum:
+                              - status_code
+                            description: The type of criterion. Currently only `status_code` is supported.
+                          status_codes:
+                            type: array
+                            items:
+                              type: number
+                            description: HTTP status codes to match against the origin response.  - Maximum
+                              of 10 codes per criterion. - Each code must be a
+                              valid HTTP status code (100-599). - Codes are
+                              deduplicated and sorted on save. - Omit to leave
+                              unchanged on update. - Provide an empty array `[]`
+                              to clear codes on update.
+                        required:
+                          - kind
+                        description: Criterion for identifying successful login responses.
+                    description: Configuration for classifying login authentication outcomes based
+                      on the origin response. Requires `user_profiles` to be
+                      enabled.  - Success and failure criteria are independently
+                      updatable — sending only `success_criteria` leaves failure
+                      codes untouched, and vice versa. - Omit
+                      `authentication_settings` entirely to leave both
+                      unchanged. - Status codes must not overlap between success
+                      and failure criteria.
+                  user_profiles:
+                    type: string
+                    enum:
+                      - enabled
+                      - disabled
+                    description: Whether Fraud User Profiles is enabled for the zone.
+                  username_expressions:
+                    type: array
+                    items:
+                      type: string
+                    description: List of expressions to detect usernames in write HTTP requests.  -
+                      Maximum of 10 expressions. - Omit or set to null to leave
+                      unchanged on update. - Provide an empty array `[]` to
+                      clear all expressions on update. - Invalid expressions
+                      will result in a 10400 Bad Request with details in the
+                      `messages` array.
+      x-distilled-response-path: result
+    put:
+      operationId: putFraud
+      description: "Update Fraud Detection settings for a zone.  Notes on
+        `username_expressions` behavior:  - If omitted or set to null,
+        expressions are not modified. - If provided as an empty array `[]`, all
+        expressions will be cleared.  @example ```ts const fraudSettings = await
+        client.fraud.update({ zone_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        username_expressions: [], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                authentication_settings:
+                  type: object
+                  properties:
+                    failure_criteria:
+                      type: object
+                      properties:
+                        kind:
+                          type: string
+                          enum:
+                            - status_code
+                          description: The type of criterion. Currently only `status_code` is supported.
+                        status_codes:
+                          type: array
+                          items:
+                            type: number
+                          description: HTTP status codes to match against the origin response.  - Maximum
+                            of 10 codes per criterion. - Each code must be a
+                            valid HTTP status code (100-599). - Codes are
+                            deduplicated and sorted on save. - Omit to leave
+                            unchanged on update. - Provide an empty array `[]`
+                            to clear codes on update.
+                      required:
+                        - kind
+                      description: Criterion for identifying failed login responses.
+                    success_criteria:
+                      type: object
+                      properties:
+                        kind:
+                          type: string
+                          enum:
+                            - status_code
+                          description: The type of criterion. Currently only `status_code` is supported.
+                        status_codes:
+                          type: array
+                          items:
+                            type: number
+                          description: HTTP status codes to match against the origin response.  - Maximum
+                            of 10 codes per criterion. - Each code must be a
+                            valid HTTP status code (100-599). - Codes are
+                            deduplicated and sorted on save. - Omit to leave
+                            unchanged on update. - Provide an empty array `[]`
+                            to clear codes on update.
+                      required:
+                        - kind
+                      description: Criterion for identifying successful login responses.
+                  description: "Body param: Configuration for classifying login authentication
+                    outcomes based on the origin response. Requires
+                    `user_profiles` to be enabled.  - Success and failure
+                    criteria are independently updatable — sending only
+                    `success_criteria` leaves failure codes untouched, and vice
+                    versa. - Omit `authentication_settings` entirely to leave
+                    both unchanged. - Status codes must not overlap between
+                    success and failure criteria."
+                user_profiles:
+                  type: string
+                  enum:
+                    - enabled
+                    - disabled
+                  description: "Body param: Whether Fraud User Profiles is enabled for the zone."
+                username_expressions:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of expressions to detect usernames in write HTTP
+                    requests.  - Maximum of 10 expressions. - Omit or set to
+                    null to leave unchanged on update. - Provide an empty array
+                    `[]` to clear all expressions on update. - Invalid
+                    expressions will result in a 10400 Bad Request with details
+                    in the `messages` array."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authentication_settings:
+                    type: object
+                    properties:
+                      failure_criteria:
+                        type: object
+                        properties:
+                          kind:
+                            type: string
+                            enum:
+                              - status_code
+                            description: The type of criterion. Currently only `status_code` is supported.
+                          status_codes:
+                            type: array
+                            items:
+                              type: number
+                            description: HTTP status codes to match against the origin response.  - Maximum
+                              of 10 codes per criterion. - Each code must be a
+                              valid HTTP status code (100-599). - Codes are
+                              deduplicated and sorted on save. - Omit to leave
+                              unchanged on update. - Provide an empty array `[]`
+                              to clear codes on update.
+                        required:
+                          - kind
+                        description: Criterion for identifying failed login responses.
+                      success_criteria:
+                        type: object
+                        properties:
+                          kind:
+                            type: string
+                            enum:
+                              - status_code
+                            description: The type of criterion. Currently only `status_code` is supported.
+                          status_codes:
+                            type: array
+                            items:
+                              type: number
+                            description: HTTP status codes to match against the origin response.  - Maximum
+                              of 10 codes per criterion. - Each code must be a
+                              valid HTTP status code (100-599). - Codes are
+                              deduplicated and sorted on save. - Omit to leave
+                              unchanged on update. - Provide an empty array `[]`
+                              to clear codes on update.
+                        required:
+                          - kind
+                        description: Criterion for identifying successful login responses.
+                    description: Configuration for classifying login authentication outcomes based
+                      on the origin response. Requires `user_profiles` to be
+                      enabled.  - Success and failure criteria are independently
+                      updatable — sending only `success_criteria` leaves failure
+                      codes untouched, and vice versa. - Omit
+                      `authentication_settings` entirely to leave both
+                      unchanged. - Status codes must not overlap between success
+                      and failure criteria.
+                  user_profiles:
+                    type: string
+                    enum:
+                      - enabled
+                      - disabled
+                    description: Whether Fraud User Profiles is enabled for the zone.
+                  username_expressions:
+                    type: array
+                    items:
+                      type: string
+                    description: List of expressions to detect usernames in write HTTP requests.  -
+                      Maximum of 10 expressions. - Omit or set to null to leave
+                      unchanged on update. - Provide an empty array `[]` to
+                      clear all expressions on update. - Invalid expressions
+                      will result in a 10400 Bad Request with details in the
+                      `messages` array.
+      x-distilled-response-path: result
