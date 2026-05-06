@@ -3,7 +3,9 @@ import { describe, expect, it } from "vitest";
 import { webhookscreateWebhookEndpoint } from "../src/operations/webhookscreateWebhookEndpoint.ts";
 import { webhooksdeleteWebhookEndpoint } from "../src/operations/webhooksdeleteWebhookEndpoint.ts";
 import { webhooksgetWebhookEndpoint } from "../src/operations/webhooksgetWebhookEndpoint.ts";
+import { webhookslistWebhookDeliveries } from "../src/operations/webhookslistWebhookDeliveries.ts";
 import { webhookslistWebhookEndpoints } from "../src/operations/webhookslistWebhookEndpoints.ts";
+import { webhooksredeliverWebhookEvent } from "../src/operations/webhooksredeliverWebhookEvent.ts";
 import { webhooksresetWebhookEndpointSecret } from "../src/operations/webhooksresetWebhookEndpointSecret.ts";
 import { webhooksupdateWebhookEndpoint } from "../src/operations/webhooksupdateWebhookEndpoint.ts";
 import {
@@ -84,13 +86,24 @@ describeLive("Webhook Endpoints", () => {
     "fails with NotFound for a missing webhook endpoint",
     { timeout: 30_000 },
     async () => {
-      const error = await runEffect(
-        webhooksdeleteWebhookEndpoint({
-          id: "00000000-0000-4000-8000-000000000000",
-        }).pipe(Effect.flip),
+      const [deliveries, deleteError, redeliverError] = await runEffect(
+        Effect.all([
+          webhookslistWebhookDeliveries({
+            endpoint_id: "00000000-0000-4000-8000-000000000000",
+            limit: 10,
+          }),
+          webhooksdeleteWebhookEndpoint({
+            id: "00000000-0000-4000-8000-000000000000",
+          }).pipe(Effect.flip),
+          webhooksredeliverWebhookEvent({
+            id: "00000000-0000-4000-8000-000000000000",
+          }).pipe(Effect.flip),
+        ]),
       );
 
-      expect(error._tag).toBe("NotFound");
+      expect(deliveries.items).toEqual([]);
+      expect(deleteError._tag).toBe("NotFound");
+      expect(redeliverError._tag).toBe("NotFound");
     },
   );
 });

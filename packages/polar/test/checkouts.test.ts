@@ -1,6 +1,7 @@
 import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import { describe, expect, it } from "vitest";
+import { checkoutsclientConfirm } from "../src/operations/checkoutsclientConfirm.ts";
 import { checkoutsclientGet } from "../src/operations/checkoutsclientGet.ts";
 import { checkoutsclientUpdate } from "../src/operations/checkoutsclientUpdate.ts";
 import { checkoutscreate } from "../src/operations/checkoutscreate.ts";
@@ -78,6 +79,9 @@ describeLive("Checkouts", () => {
               client_secret: clientSecret,
               customer_name: `Distilled Checkout Client ${testRunId}`,
             });
+            const confirmError = yield* checkoutsclientConfirm({
+              client_secret: clientSecret,
+            }).pipe(Effect.flip);
 
             return {
               product,
@@ -87,6 +91,7 @@ describeLive("Checkouts", () => {
               updated,
               clientFetched,
               clientUpdated,
+              confirmError,
             };
           }).pipe(
             Effect.ensuring(
@@ -117,6 +122,7 @@ describeLive("Checkouts", () => {
       expect(result.clientUpdated.customer_name).toBe(
         `Distilled Checkout Client ${testRunId}`,
       );
+      expect(result.confirmError._tag).toBe("UnprocessableEntity");
     },
   );
 

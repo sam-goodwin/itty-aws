@@ -1,6 +1,7 @@
 import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import { describe, expect, it } from "vitest";
+import { customerPortalbenefitGrantsupdate } from "../src/operations/customerPortalbenefitGrantsupdate.ts";
 import { customerPortalcustomerMetersget } from "../src/operations/customerPortalcustomerMetersget.ts";
 import { customerPortalcustomerMeterslist } from "../src/operations/customerPortalcustomerMeterslist.ts";
 import { customerPortalcustomerSessiongetAuthenticatedUser } from "../src/operations/customerPortalcustomerSessiongetAuthenticatedUser.ts";
@@ -210,6 +211,7 @@ describeLive("Customer portal", () => {
           orderPaymentStatusError,
           orderUpdateError,
           orderRetryPaymentError,
+          benefitGrantError,
           subscriptionError,
           subscriptionCancelError,
           subscriptionUpdateError,
@@ -263,6 +265,13 @@ describeLive("Customer portal", () => {
             customerPortalordersconfirmRetryPayment({ id: missingId }).pipe(
               Effect.flip,
             ),
+          ),
+          runEffectWithAccessToken(
+            token,
+            customerPortalbenefitGrantsupdate({
+              id: missingId,
+              benefit_type: "custom",
+            }).pipe(Effect.flip),
           ),
           runEffectWithAccessToken(
             token,
@@ -405,6 +414,7 @@ describeLive("Customer portal", () => {
         expect(orderPaymentStatusError._tag).toBe("NotFound");
         expect(orderUpdateError._tag).toBe("NotFound");
         expect(orderRetryPaymentError._tag).toBe("UnprocessableEntity");
+        expect(benefitGrantError._tag).toBe("NotFound");
         expect(subscriptionError._tag).toBe("NotFound");
         expect(subscriptionCancelError._tag).toBe("NotFound");
         expect(subscriptionUpdateError._tag).toBe("NotFound");

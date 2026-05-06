@@ -21,6 +21,7 @@ import { refundscreate } from "../src/operations/refundscreate.ts";
 import { refundslist } from "../src/operations/refundslist.ts";
 import { subscriptionsget } from "../src/operations/subscriptionsget.ts";
 import { subscriptionslist } from "../src/operations/subscriptionslist.ts";
+import { subscriptionscreate } from "../src/operations/subscriptionscreate.ts";
 import { subscriptionsrevoke } from "../src/operations/subscriptionsrevoke.ts";
 import { subscriptionsupdate } from "../src/operations/subscriptionsupdate.ts";
 import {
@@ -104,10 +105,11 @@ describeLive("Orders, refunds, and disputes", () => {
 
   it(
     "maps subscription, customer-meter, file, and seat operations to typed errors",
-    { timeout: 60_000 },
+    { timeout: 120_000 },
     async () => {
       const [
         subscriptionGetError,
+        subscriptionCreateError,
         subscriptionUpdateError,
         subscriptionRevokeError,
         customerMeterError,
@@ -120,6 +122,12 @@ describeLive("Orders, refunds, and disputes", () => {
         seatRevokeError,
       ] = await Promise.all([
         runEffect(subscriptionsget({ id: missingId }).pipe(Effect.flip)),
+        runEffect(
+          subscriptionscreate({
+            product_id: missingId,
+            customer_id: missingId,
+          }).pipe(Effect.flip),
+        ),
         runEffect(
           subscriptionsupdate({
             id: missingId,
@@ -171,6 +179,7 @@ describeLive("Orders, refunds, and disputes", () => {
       ]);
 
       expect(subscriptionGetError._tag).toBe("NotFound");
+      expect(subscriptionCreateError._tag).toBe("UnprocessableEntity");
       expect(subscriptionUpdateError._tag).toBe("NotFound");
       expect(subscriptionRevokeError._tag).toBe("NotFound");
       expect(customerMeterError._tag).toBe("NotFound");

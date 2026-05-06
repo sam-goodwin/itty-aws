@@ -21,16 +21,31 @@ import { MetricsexportOutput } from "../src/operations/metricsexport.ts";
 import { MeterscreateOutput } from "../src/operations/meterscreate.ts";
 import { Oauth2authorizeOutput } from "../src/operations/oauth2authorize.ts";
 import { Oauth2clientsoauth2createClientOutput } from "../src/operations/oauth2clientsoauth2createClient.ts";
+import { oauth2clientsoauth2deleteClient } from "../src/operations/oauth2clientsoauth2deleteClient.ts";
 import { Oauth2clientsoauth2getClientOutput } from "../src/operations/oauth2clientsoauth2getClient.ts";
 import { Oauth2clientsoauth2updateClientOutput } from "../src/operations/oauth2clientsoauth2updateClient.ts";
+import { oauth2introspectToken } from "../src/operations/oauth2introspectToken.ts";
+import { oauth2requestToken } from "../src/operations/oauth2requestToken.ts";
+import { oauth2revokeToken } from "../src/operations/oauth2revokeToken.ts";
 import { Oauth2userinfoOutput } from "../src/operations/oauth2userinfo.ts";
 import { OrdersexportOutput } from "../src/operations/ordersexport.ts";
+import { organizationscreate } from "../src/operations/organizationscreate.ts";
+import { organizationsupdate } from "../src/operations/organizationsupdate.ts";
 import { OrganizationAccessTokenscreateOutput } from "../src/operations/organizationAccessTokenscreate.ts";
 import { PaymentsgetOutput } from "../src/operations/paymentsget.ts";
 import { PaymentslistOutput } from "../src/operations/paymentslist.ts";
 import { SubscriptionsexportOutput } from "../src/operations/subscriptionsexport.ts";
 
 describe("generated Polar schema quality", () => {
+  it("exposes generated operations that require external credentials or mutations", () => {
+    expect(typeof oauth2clientsoauth2deleteClient).toBe("function");
+    expect(typeof oauth2introspectToken).toBe("function");
+    expect(typeof oauth2requestToken).toBe("function");
+    expect(typeof oauth2revokeToken).toBe("function");
+    expect(typeof organizationscreate).toBe("function");
+    expect(typeof organizationsupdate).toBe("function");
+  });
+
   it("redacts organization access token create responses", () => {
     const decoded = Schema.decodeUnknownSync(
       OrganizationAccessTokenscreateOutput,
