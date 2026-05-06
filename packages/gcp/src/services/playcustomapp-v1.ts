@@ -40,7 +40,7 @@ export interface CustomApp {
   /** Output only. Package name of the created Android app. Only present in the API response. */
   packageName?: string;
   /** Organizations to which the custom app should be made available. If the request contains any organizations, then the app will be restricted to only these organizations. To support the organization linked to the developer account, the organization ID should be provided explicitly together with other organizations. If no organizations are provided, then the app is only available to the organization linked to the developer account. */
-  organizations?: Array<Organization>;
+  organizations?: ReadonlyArray<Organization>;
   /** Default listing language in BCP 47 format. */
   languageCode?: string;
 }

@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -112,7 +112,7 @@ export interface Protocol {
   /** Output only. The version of the protocol, for example, the A2A Agent Card version. */
   protocolVersion?: string;
   /** Output only. The connection details for the Agent. */
-  interfaces?: Array<Interface>;
+  interfaces?: ReadonlyArray<Interface>;
 }
 
 export const Protocol = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -129,9 +129,9 @@ export interface Skill {
   /** Output only. A more detailed description of the skill. */
   description?: string;
   /** Output only. Keywords describing the skill. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Output only. Example prompts or scenarios this skill can handle. */
-  examples?: Array<string>;
+  examples?: ReadonlyArray<string>;
 }
 
 export const Skill = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -168,9 +168,9 @@ export interface Agent {
   /** Output only. The version of the Agent, often obtained from the A2A Agent Card. Empty if Agent Card has no version or agent is not an A2A Agent. */
   version?: string;
   /** Output only. The connection details for the Agent. */
-  protocols?: Array<Protocol>;
+  protocols?: ReadonlyArray<Protocol>;
   /** Output only. Skills the agent possesses, often obtained from the A2A Agent Card. */
-  skills?: Array<Skill>;
+  skills?: ReadonlyArray<Skill>;
   /** Output only. A universally unique identifier for the Agent. */
   uid?: string;
   /** Output only. Create time. */
@@ -203,7 +203,7 @@ export const Agent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAgentsResponse {
   /** The list of Agents. */
-  agents?: Array<Agent>;
+  agents?: ReadonlyArray<Agent>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -230,7 +230,7 @@ export const SearchAgentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchAgentsResponse {
   /** A list of Agents that match the `search_string`. */
-  agents?: Array<Agent>;
+  agents?: ReadonlyArray<Agent>;
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
@@ -250,7 +250,7 @@ export interface Endpoint {
   /** Output only. Description of an Endpoint. */
   description?: string;
   /** Required. The connection details for the Endpoint. */
-  interfaces?: Array<Interface>;
+  interfaces?: ReadonlyArray<Interface>;
   /** Output only. Create time. */
   createTime?: string;
   /** Output only. Update time. */
@@ -274,7 +274,7 @@ export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEndpointsResponse {
   /** The list of Endpoint resources matching the parent and filter criteria in the request. Each Endpoint resource follows the format: `projects/{project}/locations/{location}/endpoints/{endpoint}`. */
-  endpoints?: Array<Endpoint>;
+  endpoints?: ReadonlyArray<Endpoint>;
   /** A token identifying a page of results the server should return. Used in page_token. */
   nextPageToken?: string;
 }
@@ -330,9 +330,9 @@ export interface McpServer {
   /** Output only. The description of the MCP Server. */
   description?: string;
   /** Output only. The connection details for the MCP Server. */
-  interfaces?: Array<Interface>;
+  interfaces?: ReadonlyArray<Interface>;
   /** Output only. Tools provided by the MCP Server. */
-  tools?: Array<Tool>;
+  tools?: ReadonlyArray<Tool>;
   /** Output only. Create time. */
   createTime?: string;
   /** Output only. Update time. */
@@ -357,7 +357,7 @@ export const McpServer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMcpServersResponse {
   /** The list of McpServers. */
-  mcpServers?: Array<McpServer>;
+  mcpServers?: ReadonlyArray<McpServer>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -387,7 +387,7 @@ export const SearchMcpServersRequest =
 
 export interface SearchMcpServersResponse {
   /** A list of McpServers that match the `search_string`. */
-  mcpServers?: Array<McpServer>;
+  mcpServers?: ReadonlyArray<McpServer>;
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
@@ -448,7 +448,7 @@ export interface Service {
   /** Optional. User-defined description of an Service. Can have a maximum length of `2048` characters. */
   description?: string;
   /** Optional. The connection details for the Service. */
-  interfaces?: Array<Interface>;
+  interfaces?: ReadonlyArray<Interface>;
   /** Output only. The resource name of the resulting Agent, MCP Server, or Endpoint. Format: * `projects/{project}/locations/{location}/mcpServers/{mcp_server}` * `projects/{project}/locations/{location}/agents/{agent}` * `projects/{project}/locations/{location}/endpoints/{endpoint}` */
   registryResource?: string;
   /** Output only. Create time. */
@@ -472,7 +472,7 @@ export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServicesResponse {
   /** The list of Service resources matching the parent and filter criteria in the request. Each Service resource follows the format: `projects/{project}/locations/{location}/services/{service}`. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
   /** A token identifying a page of results the server should return. Used in page_token. */
   nextPageToken?: string;
 }
@@ -486,7 +486,7 @@ export interface AuthProviderBinding {
   /** Required. The resource name of the target AuthProvider. Format: * `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
   authProvider?: string;
   /** Optional. The list of OAuth2 scopes of the AuthProvider. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Optional. The continue URI of the AuthProvider. The URI is used to reauthenticate the user and finalize the managed OAuth flow. */
   continueUri?: string;
 }
@@ -547,7 +547,7 @@ export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBindingsResponse {
   /** The list of Binding resources matching the parent and filter criteria in the request. Each Binding resource follows the format: `projects/{project}/locations/{location}/bindings/{binding}`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** A token identifying a page of results the server should return. Used in page_token. */
   nextPageToken?: string;
 }
@@ -559,7 +559,7 @@ export const ListBindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FetchAvailableBindingsResponse {
   /** The list of Bindings. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -593,7 +593,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -657,7 +657,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -692,10 +692,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -740,10 +737,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -778,10 +772,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -812,10 +803,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -849,11 +837,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -896,10 +880,7 @@ export const ListProjectsLocationsAgentsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/agents",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/agents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentsRequest>;
 
@@ -939,7 +920,7 @@ export const SearchProjectsLocationsAgentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/agents:search",
+      path: "v1alpha/{parent}/agents:search",
       hasBody: true,
     }),
     svc,
@@ -972,10 +953,7 @@ export const GetProjectsLocationsAgentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentsRequest>;
 
@@ -1015,10 +993,7 @@ export const ListProjectsLocationsEndpointsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/endpoints",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/endpoints" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEndpointsRequest>;
 
@@ -1053,10 +1028,7 @@ export const GetProjectsLocationsEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEndpointsRequest>;
 
@@ -1099,10 +1071,7 @@ export const ListProjectsLocationsMcpServersRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/mcpServers",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/mcpServers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMcpServersRequest>;
 
@@ -1142,7 +1111,7 @@ export const SearchProjectsLocationsMcpServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/mcpServers:search",
+      path: "v1alpha/{parent}/mcpServers:search",
       hasBody: true,
     }),
     svc,
@@ -1176,10 +1145,7 @@ export const GetProjectsLocationsMcpServersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/mcpServers/{mcpServersId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMcpServersRequest>;
 
@@ -1219,10 +1185,7 @@ export const ListProjectsLocationsServicesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/services",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServicesRequest>;
 
@@ -1257,10 +1220,7 @@ export const GetProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServicesRequest>;
 
@@ -1302,7 +1262,7 @@ export const CreateProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/services",
+      path: "v1alpha/{parent}/services",
       hasBody: true,
     }),
     svc,
@@ -1344,11 +1304,7 @@ export const PatchProjectsLocationsServicesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServicesRequest>;
 
@@ -1382,10 +1338,7 @@ export const DeleteProjectsLocationsServicesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesRequest>;
 
@@ -1428,10 +1381,7 @@ export const ListProjectsLocationsBindingsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/bindings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBindingsRequest>;
 
@@ -1466,10 +1416,7 @@ export const GetProjectsLocationsBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings/{bindingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBindingsRequest>;
 
@@ -1511,7 +1458,7 @@ export const CreateProjectsLocationsBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings",
+      path: "v1alpha/{parent}/bindings",
       hasBody: true,
     }),
     svc,
@@ -1553,11 +1500,7 @@ export const PatchProjectsLocationsBindingsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Binding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings/{bindingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBindingsRequest>;
 
@@ -1591,10 +1534,7 @@ export const DeleteProjectsLocationsBindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings/{bindingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBindingsRequest>;
 
@@ -1641,10 +1581,7 @@ export const FetchAvailableProjectsLocationsBindingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings:fetchAvailable",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/bindings:fetchAvailable" }),
     svc,
   ) as unknown as Schema.Schema<FetchAvailableProjectsLocationsBindingsRequest>;
 

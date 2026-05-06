@@ -48,9 +48,9 @@ export const ManagedZonePrivateVisibilityConfigNetwork =
 
 export interface ManagedZonePrivateVisibilityConfig {
   /** The list of Google Kubernetes Engine clusters that can see this zone. */
-  gkeClusters?: Array<ManagedZonePrivateVisibilityConfigGKECluster>;
+  gkeClusters?: ReadonlyArray<ManagedZonePrivateVisibilityConfigGKECluster>;
   /** The list of VPC networks that can see this zone. */
-  networks?: Array<ManagedZonePrivateVisibilityConfigNetwork>;
+  networks?: ReadonlyArray<ManagedZonePrivateVisibilityConfigNetwork>;
   kind?: string;
 }
 
@@ -117,9 +117,9 @@ export const RRSetRoutingPolicyLoadBalancerTarget =
 
 export interface RRSetRoutingPolicyHealthCheckTargets {
   /** Configuration for internal load balancers to be health checked. */
-  internalLoadBalancers?: Array<RRSetRoutingPolicyLoadBalancerTarget>;
+  internalLoadBalancers?: ReadonlyArray<RRSetRoutingPolicyLoadBalancerTarget>;
   /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
-  externalEndpoints?: Array<string>;
+  externalEndpoints?: ReadonlyArray<string>;
 }
 
 export const RRSetRoutingPolicyHealthCheckTargets =
@@ -135,9 +135,9 @@ export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   healthCheckedTargets?: RRSetRoutingPolicyHealthCheckTargets;
   /** The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative. */
   weight?: number;
-  rrdatas?: Array<string>;
+  rrdatas?: ReadonlyArray<string>;
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
-  signatureRrdatas?: Array<string>;
+  signatureRrdatas?: ReadonlyArray<string>;
   kind?: string;
 }
 
@@ -151,7 +151,7 @@ export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem =
   }).annotate({ identifier: "RRSetRoutingPolicyWrrPolicyWrrPolicyItem" });
 
 export interface RRSetRoutingPolicyWrrPolicy {
-  items?: Array<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
+  items?: ReadonlyArray<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
   kind?: string;
 }
 
@@ -166,11 +166,11 @@ export const RRSetRoutingPolicyWrrPolicy =
 export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
   healthCheckedTargets?: RRSetRoutingPolicyHealthCheckTargets;
-  rrdatas?: Array<string>;
+  rrdatas?: ReadonlyArray<string>;
   /** The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc. */
   location?: string;
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
-  signatureRrdatas?: Array<string>;
+  signatureRrdatas?: ReadonlyArray<string>;
   kind?: string;
 }
 
@@ -185,7 +185,7 @@ export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem =
 
 export interface RRSetRoutingPolicyGeoPolicy {
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
-  items?: Array<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
+  items?: ReadonlyArray<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
   /** Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy. */
   enableFencing?: boolean;
   kind?: string;
@@ -243,12 +243,12 @@ export interface ResourceRecordSet {
   /** For example, www.example.com. */
   name?: string;
   /** As defined in RFC 4034 (section 3.2). */
-  signatureRrdatas?: Array<string>;
+  signatureRrdatas?: ReadonlyArray<string>;
   kind?: string;
   /** The identifier of a supported record type. See the list of Supported DNS record types. */
   type?: string;
   /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. */
-  rrdatas?: Array<string>;
+  rrdatas?: ReadonlyArray<string>;
   /** Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a `routing_policy` (for dynamic resolution). */
   routingPolicy?: RRSetRoutingPolicy;
   /** Number of seconds that this `ResourceRecordSet` can be cached by resolvers. */
@@ -267,7 +267,7 @@ export const ResourceRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResponsePolicyRuleLocalData {
   /** All resource record sets for this selector, one per resource record type. The name must match the dns_name. */
-  localDatas?: Array<ResourceRecordSet>;
+  localDatas?: ReadonlyArray<ResourceRecordSet>;
 }
 
 export const ResponsePolicyRuleLocalData =
@@ -297,7 +297,7 @@ export const ResponsePolicyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResponsePolicyRulesListResponse {
   /** The Response Policy Rule resources. */
-  responsePolicyRules?: Array<ResponsePolicyRule>;
+  responsePolicyRules?: ReadonlyArray<ResponsePolicyRule>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
 }
@@ -358,7 +358,7 @@ export const ManagedZoneForwardingConfigNameServerTarget =
 
 export interface ManagedZoneForwardingConfig {
   /** List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given. */
-  targetNameServers?: Array<ManagedZoneForwardingConfigNameServerTarget>;
+  targetNameServers?: ReadonlyArray<ManagedZoneForwardingConfigNameServerTarget>;
   kind?: string;
 }
 
@@ -431,7 +431,7 @@ export interface ManagedZoneDnsSecConfig {
   /** Specifies whether DNSSEC is enabled, and what mode it is in. */
   state?: "off" | "on" | "transfer" | (string & {});
   /** Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF. */
-  defaultKeySpecs?: Array<DnsKeySpec>;
+  defaultKeySpecs?: ReadonlyArray<DnsKeySpec>;
   /** Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF. */
   nonExistence?: "nsec" | "nsec3" | (string & {});
 }
@@ -460,7 +460,7 @@ export interface ManagedZone {
   /** The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config. */
   reverseLookupConfig?: ManagedZoneReverseLookupConfig;
   /** Delegate your managed_zone to these virtual name servers; defined by the server (output only) */
-  nameServers?: Array<string>;
+  nameServers?: ReadonlyArray<string>;
   /** The time that this resource was created on the server. This is in RFC3339 text format. Output only. */
   creationTime?: string;
   /** User labels. */
@@ -545,7 +545,7 @@ export const PolicyAlternativeNameServerConfigTargetNameServer =
 
 export interface PolicyAlternativeNameServerConfig {
   /** Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified. */
-  targetNameServers?: Array<PolicyAlternativeNameServerConfigTargetNameServer>;
+  targetNameServers?: ReadonlyArray<PolicyAlternativeNameServerConfigTargetNameServer>;
   kind?: string;
 }
 
@@ -588,7 +588,7 @@ export interface Policy {
   /** A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function. */
   description?: string;
   /** List of network names specifying networks to which this policy is applied. */
-  networks?: Array<PolicyNetwork>;
+  networks?: ReadonlyArray<PolicyNetwork>;
   /** Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified. */
   alternativeNameServerConfig?: PolicyAlternativeNameServerConfig;
   /** User-assigned name for this policy. */
@@ -656,7 +656,7 @@ export interface Quota {
   /** Maximum allowed number of response policies per project. */
   responsePolicies?: number;
   /** DNSSEC algorithm and key length types that can be used for DnsKeys. */
-  whitelistedKeySpecs?: Array<DnsKeySpec>;
+  whitelistedKeySpecs?: ReadonlyArray<DnsKeySpec>;
   /** Maximum allowed number of GKE clusters per response policy. */
   gkeClustersPerResponsePolicy?: number;
   /** Maximum allowed number of networks to which a privately scoped zone can be attached. */
@@ -723,7 +723,7 @@ export interface GoogleIamV1AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1AuditLogConfig =
@@ -750,7 +750,7 @@ export interface ResourceRecordSetsListResponse {
   /** Type of resource. */
   kind?: string;
   /** The resource record set resources. */
-  rrsets?: Array<ResourceRecordSet>;
+  rrsets?: ReadonlyArray<ResourceRecordSet>;
 }
 
 export const ResourceRecordSetsListResponse =
@@ -762,7 +762,7 @@ export const ResourceRecordSetsListResponse =
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsResponse =
@@ -772,9 +772,9 @@ export const GoogleIamV1TestIamPermissionsResponse =
 
 export interface Change {
   /** Which ResourceRecordSets to add? */
-  additions?: Array<ResourceRecordSet>;
+  additions?: ReadonlyArray<ResourceRecordSet>;
   /** Which ResourceRecordSets to remove? Must match existing data exactly. */
-  deletions?: Array<ResourceRecordSet>;
+  deletions?: ReadonlyArray<ResourceRecordSet>;
   kind?: string;
   /** If the DNS queries for the zone will be served. */
   isServing?: boolean;
@@ -816,7 +816,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -833,7 +833,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
 export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -849,9 +849,9 @@ export interface GoogleIamV1Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
 }
 
 export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -863,7 +863,7 @@ export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PoliciesListResponse {
   /** The policy resources. */
-  policies?: Array<Policy>;
+  policies?: ReadonlyArray<Policy>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
   /** Type of resource. */
@@ -902,7 +902,7 @@ export interface DnsKey {
   /** One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, are used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag is cleared, and this key is used to sign only resource record sets of other types. Immutable after creation time. */
   type?: "keySigning" | "zoneSigning" | (string & {});
   /** Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only. */
-  digests?: Array<DnsKeyDigest>;
+  digests?: ReadonlyArray<DnsKeyDigest>;
   /** The time that this resource was created in the control plane. This is in RFC3339 text format. Output only. */
   creationTime?: string;
   kind?: string;
@@ -979,7 +979,7 @@ export interface ManagedZoneOperationsListResponse {
   /** Type of resource. */
   kind?: string;
   /** The operation resources. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
 }
@@ -993,7 +993,7 @@ export const ManagedZoneOperationsListResponse =
 
 export interface DnsKeysListResponse {
   /** The requested resources. */
-  dnsKeys?: Array<DnsKey>;
+  dnsKeys?: ReadonlyArray<DnsKey>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
   /** Type of resource. */
@@ -1024,13 +1024,13 @@ export interface ResponsePolicy {
   /** User assigned name for this Response Policy. */
   responsePolicyName?: string;
   /** The list of Google Kubernetes Engine clusters to which this response policy is applied. */
-  gkeClusters?: Array<ResponsePolicyGKECluster>;
+  gkeClusters?: ReadonlyArray<ResponsePolicyGKECluster>;
   /** User-provided description for this Response Policy. */
   description?: string;
   /** Unique identifier for the resource; defined by the server (output only). */
   id?: string;
   /** List of network names specifying networks to which this policy is applied. */
-  networks?: Array<ResponsePolicyNetwork>;
+  networks?: ReadonlyArray<ResponsePolicyNetwork>;
 }
 
 export const ResponsePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1047,7 +1047,7 @@ export interface ManagedZonesListResponse {
   /** Type of resource. */
   kind?: string;
   /** The managed zone resources. */
-  managedZones?: Array<ManagedZone>;
+  managedZones?: ReadonlyArray<ManagedZone>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
 }
@@ -1084,7 +1084,7 @@ export const GoogleIamV1SetIamPolicyRequest =
 
 export interface ChangesListResponse {
   /** The requested changes. */
-  changes?: Array<Change>;
+  changes?: ReadonlyArray<Change>;
   /** Type of resource. */
   kind?: string;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
@@ -1118,7 +1118,7 @@ export const GoogleIamV1GetIamPolicyRequest =
 
 export interface ResponsePoliciesListResponse {
   /** The Response Policy resources. */
-  responsePolicies?: Array<ResponsePolicy>;
+  responsePolicies?: ReadonlyArray<ResponsePolicy>;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
 }
@@ -1140,7 +1140,7 @@ export const ResponsePolicyRulesPatchResponse =
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsRequest =
@@ -2578,7 +2578,7 @@ export const GetIamPolicyManagedZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "dns/v1beta2/projects/{projectsId}/managedZones/{managedZonesId}:getIamPolicy",
+      path: "dns/v1beta2/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2618,7 +2618,7 @@ export const TestIamPermissionsManagedZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "dns/v1beta2/projects/{projectsId}/managedZones/{managedZonesId}:testIamPermissions",
+      path: "dns/v1beta2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2701,7 +2701,7 @@ export const SetIamPolicyManagedZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "dns/v1beta2/projects/{projectsId}/managedZones/{managedZonesId}:setIamPolicy",
+      path: "dns/v1beta2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,

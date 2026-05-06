@@ -684,7 +684,7 @@ export const ThemeColorPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ColorScheme {
   /** The ThemeColorType and corresponding concrete color pairs. */
-  colors?: Array<ThemeColorPair>;
+  colors?: ReadonlyArray<ThemeColorPair>;
 }
 
 export const ColorScheme = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -770,7 +770,7 @@ export const LayoutPlaceholderIdMapping =
 
 export interface Group {
   /** The collection of elements in the group. The minimum size of a group is 2. */
-  children?: Array<PageElement>;
+  children?: ReadonlyArray<PageElement>;
 }
 
 export const Group: Schema.Schema<Group> =
@@ -846,7 +846,7 @@ export interface Recolor {
     | "CUSTOM"
     | (string & {});
   /** The recolor effect is represented by a gradient, which is a list of color stops. The colors in the gradient will replace the corresponding colors at the same position in the color palette and apply to the image. This property is read-only. */
-  recolorStops?: Array<ColorStop>;
+  recolorStops?: ReadonlyArray<ColorStop>;
 }
 
 export const Recolor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1038,7 +1038,7 @@ export const List = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TextContent {
   /** The text contents broken down into its component parts, including styling information. This property is read-only. */
-  textElements?: Array<TextElement>;
+  textElements?: ReadonlyArray<TextElement>;
   /** The bulleted lists contained in this text, keyed by list ID. */
   lists?: Record<string, List>;
 }
@@ -1316,7 +1316,7 @@ export interface TableRow {
   /** Properties of the row. */
   tableRowProperties?: TableRowProperties;
   /** Properties and contents of each cell. Cells that span multiple columns are represented only once with a column_span greater than 1. As a result, the length of this collection does not always match the number of columns of the entire table. */
-  tableCells?: Array<TableCell>;
+  tableCells?: ReadonlyArray<TableCell>;
 }
 
 export const TableRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1380,7 +1380,7 @@ export const TableBorderCell = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableBorderRow {
   /** Properties of each border cell. When a border's adjacent table cells are merged, it is not included in the response. */
-  tableBorderCells?: Array<TableBorderCell>;
+  tableBorderCells?: ReadonlyArray<TableBorderCell>;
 }
 
 export const TableBorderRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1389,13 +1389,13 @@ export const TableBorderRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Table {
   /** Properties and contents of each row. Cells that span multiple rows are contained in only one of these rows and have a row_span greater than 1. */
-  tableRows?: Array<TableRow>;
+  tableRows?: ReadonlyArray<TableRow>;
   /** Properties of each column. */
-  tableColumns?: Array<TableColumnProperties>;
+  tableColumns?: ReadonlyArray<TableColumnProperties>;
   /** Properties of horizontal cell borders. A table's horizontal cell borders are represented as a grid. The grid has one more row than the number of rows in the table and the same number of columns as the table. For example, if the table is 3 x 3, its horizontal borders will be represented as a grid with 4 rows and 3 columns. */
-  horizontalBorderRows?: Array<TableBorderRow>;
+  horizontalBorderRows?: ReadonlyArray<TableBorderRow>;
   /** Properties of vertical cell borders. A table's vertical cell borders are represented as a grid. The grid has the same number of rows as the table and one more column than the number of columns in the table. For example, if the table is 3 x 3, its vertical borders will be represented as a grid with 3 rows and 4 columns. */
-  verticalBorderRows?: Array<TableBorderRow>;
+  verticalBorderRows?: ReadonlyArray<TableBorderRow>;
   /** Number of columns in the table. */
   columns?: number;
   /** Number of rows in the table. */
@@ -1771,7 +1771,7 @@ export interface ReplaceAllShapesWithImageRequest {
     | "CENTER_CROP"
     | (string & {});
   /** If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page with that object ID doesn't exist in the presentation. */
-  pageObjectIds?: Array<string>;
+  pageObjectIds?: ReadonlyArray<string>;
 }
 
 export const ReplaceAllShapesWithImageRequest =
@@ -1789,7 +1789,7 @@ export interface BatchUpdatePresentationResponse {
   /** The presentation the updates were applied to. */
   presentationId?: string;
   /** The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty. */
-  replies?: Array<Response>;
+  replies?: ReadonlyArray<Response>;
 }
 
 export const BatchUpdatePresentationResponse =
@@ -2023,7 +2023,7 @@ export const CreateVideoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdateSlidesPositionRequest {
   /** The IDs of the slides in the presentation that should be moved. The slides in this list must be in existing presentation order, without duplicates. */
-  slideObjectIds?: Array<string>;
+  slideObjectIds?: ReadonlyArray<string>;
   /** The index where the slides should be inserted, based on the slide arrangement before the move takes place. Must be between zero and the number of slides in the presentation, inclusive. */
   insertionIndex?: number;
 }
@@ -2079,7 +2079,7 @@ export const DeleteTableColumnRequest =
 
 export interface UngroupObjectsRequest {
   /** The object IDs of the objects to ungroup. Only groups that are not inside other groups can be ungrouped. All the groups should be on the same page. The group itself is deleted. The visual sizes and positions of all the children are preserved. */
-  objectIds?: Array<string>;
+  objectIds?: ReadonlyArray<string>;
 }
 
 export const UngroupObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2190,7 +2190,7 @@ export interface Page {
   /** The object ID for this page. Object IDs used by Page and PageElement share the same namespace. */
   objectId?: string;
   /** The page elements rendered on the page. */
-  pageElements?: Array<PageElement>;
+  pageElements?: ReadonlyArray<PageElement>;
   /** Notes specific properties. Only set if page_type = NOTES. */
   notesProperties?: NotesProperties;
   /** Slide specific properties. Only set if page_type = SLIDE. */
@@ -2314,7 +2314,7 @@ export interface ReplaceAllShapesWithSheetsChartRequest {
   /** The ID of the specific chart in the Google Sheets spreadsheet. */
   chartId?: number;
   /** If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page with that object ID doesn't exist in the presentation. */
-  pageObjectIds?: Array<string>;
+  pageObjectIds?: ReadonlyArray<string>;
   /** The ID of the Google Sheets spreadsheet that contains the chart. */
   spreadsheetId?: string;
   /** The criteria that the shapes must match in order to be replaced. The request will replace all of the shapes that contain the given text. */
@@ -2338,7 +2338,7 @@ export interface ReplaceAllTextRequest {
   /** The text that will replace the matched text. */
   replaceText?: string;
   /** If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes master, or if a page with that object ID doesn't exist in the presentation. */
-  pageObjectIds?: Array<string>;
+  pageObjectIds?: ReadonlyArray<string>;
 }
 
 export const ReplaceAllTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2422,7 +2422,7 @@ export const UpdateTableBorderPropertiesRequest =
 
 export interface UpdateTableRowPropertiesRequest {
   /** The list of zero-based indices specifying which rows to update. If no indices are provided, all rows in the table will be updated. */
-  rowIndices?: Array<number>;
+  rowIndices?: ReadonlyArray<number>;
   /** The object ID of the table. */
   objectId?: string;
   /** The table row properties to update. */
@@ -2473,7 +2473,7 @@ export interface GroupObjectsRequest {
   /** A user-supplied object ID for the group to be created. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
   groupObjectId?: string;
   /** The object IDs of the objects to group. Only page elements can be grouped. There should be at least two page elements on the same page that are not already in another group. Some page elements, such as videos, tables and placeholders cannot be grouped. */
-  childrenObjectIds?: Array<string>;
+  childrenObjectIds?: ReadonlyArray<string>;
 }
 
 export const GroupObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2562,7 +2562,7 @@ export interface CreateSlideRequest {
   /** Layout reference of the slide to be inserted, based on the *current master*, which is one of the following: - The master of the previous slide index. - The master of the first slide, if the insertion_index is zero. - The first master in the presentation, if there are no slides. If the LayoutReference is not found in the current master, a 400 bad request error is returned. If you don't specify a layout reference, the slide uses the predefined `BLANK` layout. */
   slideLayoutReference?: LayoutReference;
   /** An optional list of object ID mappings from the placeholder(s) on the layout to the placeholders that are created on the slide from the specified layout. Can only be used when `slide_layout_reference` is specified. */
-  placeholderIdMappings?: Array<LayoutPlaceholderIdMapping>;
+  placeholderIdMappings?: ReadonlyArray<LayoutPlaceholderIdMapping>;
 }
 
 export const CreateSlideRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2576,7 +2576,7 @@ export const CreateSlideRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdateTableColumnPropertiesRequest {
   /** The list of zero-based indices specifying which columns to update. If no indices are provided, all columns in the table will be updated. */
-  columnIndices?: Array<number>;
+  columnIndices?: ReadonlyArray<number>;
   /** The fields that should be updated. At least one field must be specified. The root `tableColumnProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the column width, set `fields` to `"column_width"`. If '"column_width"' is included in the field mask but the property is left unset, the column width will default to 406,400 EMU (32 points). */
   fields?: string;
   /** The object ID of the table. */
@@ -2647,7 +2647,7 @@ export const DeleteParagraphBulletsRequest =
 
 export interface UpdatePageElementsZOrderRequest {
   /** The object IDs of the page elements to update. All the page elements must be on the same page and must not be grouped. */
-  pageElementObjectIds?: Array<string>;
+  pageElementObjectIds?: ReadonlyArray<string>;
   /** The Z-order operation to apply on the page elements. When applying the operation on multiple page elements, the relative Z-orders within these page elements before the operation is maintained. */
   operation?:
     | "Z_ORDER_OPERATION_UNSPECIFIED"
@@ -2814,7 +2814,7 @@ export interface BatchUpdatePresentationRequest {
   /** Provides control over how write requests are executed. */
   writeControl?: WriteControl;
   /** A list of updates to apply to the presentation. */
-  requests?: Array<Request>;
+  requests?: ReadonlyArray<Request>;
 }
 
 export const BatchUpdatePresentationRequest =
@@ -2848,11 +2848,11 @@ export interface Presentation {
   /** The locale of the presentation, as an IETF BCP 47 language tag. */
   locale?: string;
   /** The layouts in the presentation. A layout is a template that determines how content is arranged and styled on the slides that inherit from that layout. */
-  layouts?: Array<Page>;
+  layouts?: ReadonlyArray<Page>;
   /** The slides in the presentation. A slide inherits properties from a slide layout. */
-  slides?: Array<Page>;
+  slides?: ReadonlyArray<Page>;
   /** The slide masters in the presentation. A slide master contains all common page elements and the common properties for a set of layouts. They serve three purposes: - Placeholder shapes on a master contain the default text styles and shape properties of all placeholder shapes on pages that use that master. - The master page properties define the common page properties inherited by its layouts. - Any other shapes on the master slide appear on all slides using that master, regardless of their layout. */
-  masters?: Array<Page>;
+  masters?: ReadonlyArray<Page>;
   /** The ID of the presentation. */
   presentationId?: string;
   /** The notes master in the presentation. It serves three purposes: - Placeholder shapes on a notes master contain the default text styles and shape properties of all placeholder shapes on notes pages. Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY` placeholder shape contains the speaker notes. - The notes master page properties define the common page properties inherited by all notes pages. - Any other shapes on the notes master appear on all notes pages. The notes master is read-only. */
@@ -2884,7 +2884,7 @@ export const GetPresentationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     presentationId: Schema.String.pipe(T.HttpPath("presentationId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/presentations/{presentationsId}" }),
+    T.Http({ method: "GET", path: "v1/presentations/{presentationId}" }),
     svc,
   ) as unknown as Schema.Schema<GetPresentationsRequest>;
 

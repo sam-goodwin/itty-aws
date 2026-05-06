@@ -61,7 +61,7 @@ export const GoogleCloudVideointelligenceV1p1beta1_NormalizedVertex =
 
 export interface GoogleCloudVideointelligenceV1p1beta1_NormalizedBoundingPoly {
   /** Normalized vertices of the bounding polygon. */
-  vertices?: Array<GoogleCloudVideointelligenceV1p1beta1_NormalizedVertex>;
+  vertices?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_NormalizedVertex>;
 }
 
 export const GoogleCloudVideointelligenceV1p1beta1_NormalizedBoundingPoly =
@@ -109,7 +109,7 @@ export interface GoogleCloudVideointelligenceV1p1beta1_TextSegment {
   /** Confidence for the track of detected text. It is calculated as the highest over all frames where OCR detected text appears. */
   confidence?: number;
   /** Information related to the frames where OCR detected text appears. */
-  frames?: Array<GoogleCloudVideointelligenceV1p1beta1_TextFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_TextFrame>;
   /** Video segment where a text snippet was detected. */
   segment?: GoogleCloudVideointelligenceV1p1beta1_VideoSegment;
 }
@@ -147,7 +147,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_Celebrity =
 
 export interface GoogleRpc_Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -235,7 +235,7 @@ export const GoogleCloudVideointelligenceV1_VideoAnnotationProgress =
 
 export interface GoogleCloudVideointelligenceV1_AnnotateVideoProgress {
   /** Progress metadata for all videos specified in `AnnotateVideoRequest`. */
-  annotationProgress?: Array<GoogleCloudVideointelligenceV1_VideoAnnotationProgress>;
+  annotationProgress?: ReadonlyArray<GoogleCloudVideointelligenceV1_VideoAnnotationProgress>;
 }
 
 export const GoogleCloudVideointelligenceV1_AnnotateVideoProgress =
@@ -285,7 +285,7 @@ export const GoogleCloudVideointelligenceV1_NormalizedBoundingBox =
 
 export interface GoogleCloudVideointelligenceV1_FaceFrame {
   /** Normalized Bounding boxes in a frame. There can be more than one boxes if the same face is detected in multiple locations within the current frame. */
-  normalizedBoundingBoxes?: Array<GoogleCloudVideointelligenceV1_NormalizedBoundingBox>;
+  normalizedBoundingBoxes?: ReadonlyArray<GoogleCloudVideointelligenceV1_NormalizedBoundingBox>;
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this location. */
   timeOffset?: string;
 }
@@ -361,7 +361,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_VideoAnnotationProgress =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoProgress {
   /** Progress metadata for all videos specified in `AnnotateVideoRequest`. */
-  annotationProgress?: Array<GoogleCloudVideointelligenceV1p3beta1_VideoAnnotationProgress>;
+  annotationProgress?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_VideoAnnotationProgress>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoProgress =
@@ -510,7 +510,7 @@ export const GoogleCloudVideointelligenceV1beta2_Entity =
 
 export interface GoogleCloudVideointelligenceV1beta2_ObjectTrackingAnnotation {
   /** Information corresponding to all frames where this object track appears. Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame messages in frames. Streaming mode: it can only be one ObjectTrackingFrame message in frames. */
-  frames?: Array<GoogleCloudVideointelligenceV1beta2_ObjectTrackingFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_ObjectTrackingFrame>;
   /** Non-streaming batch mode ONLY. Each object track corresponds to one video segment where it appears. */
   segment?: GoogleCloudVideointelligenceV1beta2_VideoSegment;
   /** Entity to specify the object category that this track is labeled as. */
@@ -554,7 +554,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_NormalizedVertex =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_NormalizedBoundingPoly {
   /** Normalized vertices of the bounding polygon. */
-  vertices?: Array<GoogleCloudVideointelligenceV1p3beta1_NormalizedVertex>;
+  vertices?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_NormalizedVertex>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_NormalizedBoundingPoly =
@@ -589,7 +589,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_TextSegment {
   /** Confidence for the track of detected text. It is calculated as the highest over all frames where OCR detected text appears. */
   confidence?: number;
   /** Information related to the frames where OCR detected text appears. */
-  frames?: Array<GoogleCloudVideointelligenceV1p3beta1_TextFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_TextFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_TextSegment =
@@ -611,7 +611,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_TextAnnotation {
   /** The detected text. */
   text?: string;
   /** All video segments where OCR detected text appears. */
-  segments?: Array<GoogleCloudVideointelligenceV1p3beta1_TextSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_TextSegment>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_TextAnnotation =
@@ -655,7 +655,7 @@ export const GoogleCloudVideointelligenceV1p2beta1_NormalizedVertex =
 
 export interface GoogleCloudVideointelligenceV1p2beta1_NormalizedBoundingPoly {
   /** Normalized vertices of the bounding polygon. */
-  vertices?: Array<GoogleCloudVideointelligenceV1p2beta1_NormalizedVertex>;
+  vertices?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_NormalizedVertex>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_NormalizedBoundingPoly =
@@ -706,7 +706,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_SpeechRecognitionAlternat
   /** Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set. */
   confidence?: number;
   /** Output only. A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is set to true, you will see all the words from the beginning of the audio. */
-  words?: Array<GoogleCloudVideointelligenceV1p3beta1_WordInfo>;
+  words?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_WordInfo>;
   /** Transcript text representing the words that the user spoke. */
   transcript?: string;
 }
@@ -727,7 +727,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_SpeechTranscription {
   /** Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. */
   languageCode?: string;
   /** May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. */
-  alternatives?: Array<GoogleCloudVideointelligenceV1p3beta1_SpeechRecognitionAlternative>;
+  alternatives?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_SpeechRecognitionAlternative>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_SpeechTranscription =
@@ -803,13 +803,13 @@ export const GoogleCloudVideointelligenceV1p3beta1_DetectedLandmark =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_TimestampedObject {
   /** Optional. The attributes of the object in the bounding box. */
-  attributes?: Array<GoogleCloudVideointelligenceV1p3beta1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_DetectedAttribute>;
   /** Normalized Bounding box in a frame, where the object is located. */
   normalizedBoundingBox?: GoogleCloudVideointelligenceV1p3beta1_NormalizedBoundingBox;
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this object. */
   timeOffset?: string;
   /** Optional. The detected landmarks. */
-  landmarks?: Array<GoogleCloudVideointelligenceV1p3beta1_DetectedLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_DetectedLandmark>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_TimestampedObject =
@@ -830,11 +830,11 @@ export const GoogleCloudVideointelligenceV1p3beta1_TimestampedObject =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_Track {
   /** The object with timestamp and attributes per frame in the track. */
-  timestampedObjects?: Array<GoogleCloudVideointelligenceV1p3beta1_TimestampedObject>;
+  timestampedObjects?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_TimestampedObject>;
   /** Video segment of a track. */
   segment?: GoogleCloudVideointelligenceV1p3beta1_VideoSegment;
   /** Optional. Attributes in the track level. */
-  attributes?: Array<GoogleCloudVideointelligenceV1p3beta1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_DetectedAttribute>;
   /** Optional. The confidence score of the tracked object. */
   confidence?: number;
 }
@@ -889,7 +889,7 @@ export const GoogleCloudVideointelligenceV1beta2_ObjectTrackingConfig =
 
 export interface GoogleCloudVideointelligenceV1beta2_SpeechContext {
   /** Optional. A list of strings containing words and phrases "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech/limits#content). */
-  phrases?: Array<string>;
+  phrases?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_SpeechContext =
@@ -917,9 +917,9 @@ export interface GoogleCloudVideointelligenceV1beta2_SpeechTranscriptionConfig {
   /** Optional. If set to `true`, the server will attempt to filter out profanities, replacing all but the initial character in each filtered word with asterisks, e.g. "f***". If set to `false` or omitted, profanities won't be filtered out. */
   filterProfanity?: boolean;
   /** Optional. For file formats, such as MXF or MKV, supporting multiple audio tracks, specify up to two tracks. Default: track 0. */
-  audioTracks?: Array<number>;
+  audioTracks?: ReadonlyArray<number>;
   /** Optional. A means to provide context to assist the speech recognition. */
-  speechContexts?: Array<GoogleCloudVideointelligenceV1beta2_SpeechContext>;
+  speechContexts?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_SpeechContext>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_SpeechTranscriptionConfig =
@@ -972,7 +972,7 @@ export const GoogleCloudVideointelligenceV1beta2_ShotChangeDetectionConfig =
 
 export interface GoogleCloudVideointelligenceV1beta2_TextDetectionConfig {
   /** Language hint can be specified if the language to be detected is known a priori. It can increase the accuracy of the detection. Language hint must be language code in BCP-47 format. Automatic language detection is performed if no hint is provided. */
-  languageHints?: Array<string>;
+  languageHints?: ReadonlyArray<string>;
   /** Model to use for text detection. Supported values: "builtin/stable" (the default if unset) and "builtin/latest". */
   model?: string;
 }
@@ -1034,7 +1034,7 @@ export interface GoogleCloudVideointelligenceV1beta2_VideoContext {
   /** Config for EXPLICIT_CONTENT_DETECTION. */
   explicitContentDetectionConfig?: GoogleCloudVideointelligenceV1beta2_ExplicitContentDetectionConfig;
   /** Video segments to annotate. The segments may overlap and are not required to be contiguous or span the whole video. If unspecified, each video is treated as a single segment. */
-  segments?: Array<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_VideoContext =
@@ -1129,9 +1129,9 @@ export interface GoogleCloudVideointelligenceV1beta2_TimestampedObject {
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this object. */
   timeOffset?: string;
   /** Optional. The detected landmarks. */
-  landmarks?: Array<GoogleCloudVideointelligenceV1beta2_DetectedLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_DetectedLandmark>;
   /** Optional. The attributes of the object in the bounding box. */
-  attributes?: Array<GoogleCloudVideointelligenceV1beta2_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_DetectedAttribute>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_TimestampedObject =
@@ -1152,13 +1152,13 @@ export const GoogleCloudVideointelligenceV1beta2_TimestampedObject =
 
 export interface GoogleCloudVideointelligenceV1beta2_Track {
   /** The object with timestamp and attributes per frame in the track. */
-  timestampedObjects?: Array<GoogleCloudVideointelligenceV1beta2_TimestampedObject>;
+  timestampedObjects?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_TimestampedObject>;
   /** Optional. The confidence score of the tracked object. */
   confidence?: number;
   /** Video segment of a track. */
   segment?: GoogleCloudVideointelligenceV1beta2_VideoSegment;
   /** Optional. Attributes in the track level. */
-  attributes?: Array<GoogleCloudVideointelligenceV1beta2_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_DetectedAttribute>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_Track =
@@ -1175,11 +1175,11 @@ export const GoogleCloudVideointelligenceV1beta2_Track =
 
 export interface GoogleCloudVideointelligenceV1beta2_LogoRecognitionAnnotation {
   /** All logo tracks where the recognized logo appears. Each track corresponds to one logo instance appearing in consecutive frames. */
-  tracks?: Array<GoogleCloudVideointelligenceV1beta2_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_Track>;
   /** Entity category information to specify the logo class that all the logo tracks within this LogoRecognitionAnnotation are recognized as. */
   entity?: GoogleCloudVideointelligenceV1beta2_Entity;
   /** All video segments where the recognized logo appears. There might be multiple instances of the same logo class appearing in one VideoSegment. */
-  segments?: Array<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_LogoRecognitionAnnotation =
@@ -1234,7 +1234,7 @@ export const GoogleCloudVideointelligenceV1p2beta1_NormalizedBoundingBox =
 
 export interface GoogleCloudVideointelligenceV1p2beta1_FaceFrame {
   /** Normalized Bounding boxes in a frame. There can be more than one boxes if the same face is detected in multiple locations within the current frame. */
-  normalizedBoundingBoxes?: Array<GoogleCloudVideointelligenceV1p2beta1_NormalizedBoundingBox>;
+  normalizedBoundingBoxes?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_NormalizedBoundingBox>;
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this location. */
   timeOffset?: string;
 }
@@ -1273,7 +1273,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_ExplicitContentFrame =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_ExplicitContentAnnotation {
   /** All video frames where explicit content was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p3beta1_ExplicitContentFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_ExplicitContentFrame>;
   /** Feature version. */
   version?: string;
 }
@@ -1374,9 +1374,9 @@ export interface GoogleCloudVideointelligenceV1p1beta1_TimestampedObject {
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this object. */
   timeOffset?: string;
   /** Optional. The detected landmarks. */
-  landmarks?: Array<GoogleCloudVideointelligenceV1p1beta1_DetectedLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_DetectedLandmark>;
   /** Optional. The attributes of the object in the bounding box. */
-  attributes?: Array<GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute>;
 }
 
 export const GoogleCloudVideointelligenceV1p1beta1_TimestampedObject =
@@ -1401,9 +1401,9 @@ export interface GoogleCloudVideointelligenceV1p1beta1_Track {
   /** Video segment of a track. */
   segment?: GoogleCloudVideointelligenceV1p1beta1_VideoSegment;
   /** Optional. Attributes in the track level. */
-  attributes?: Array<GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute>;
   /** The object with timestamp and attributes per frame in the track. */
-  timestampedObjects?: Array<GoogleCloudVideointelligenceV1p1beta1_TimestampedObject>;
+  timestampedObjects?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_TimestampedObject>;
 }
 
 export const GoogleCloudVideointelligenceV1p1beta1_Track =
@@ -1422,7 +1422,7 @@ export const GoogleCloudVideointelligenceV1p1beta1_Track =
 
 export interface GoogleCloudVideointelligenceV1p1beta1_PersonDetectionAnnotation {
   /** The detected tracks of a person. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p1beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_Track>;
   /** Feature version. */
   version?: string;
 }
@@ -1471,13 +1471,13 @@ export interface GoogleCloudVideointelligenceV1_LabelAnnotation {
   /** Feature version. */
   version?: string;
   /** All video segments where a label was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1_LabelSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1_LabelSegment>;
   /** All video frames where a label was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1_LabelFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1_LabelFrame>;
   /** Detected entity. */
   entity?: GoogleCloudVideointelligenceV1_Entity;
   /** Common categories for the detected entity. For example, when the label is `Terrier`, the category is likely `dog`. And in some cases there might be more than one categories e.g., `Terrier` could also be a `pet`. */
-  categoryEntities?: Array<GoogleCloudVideointelligenceV1_Entity>;
+  categoryEntities?: ReadonlyArray<GoogleCloudVideointelligenceV1_Entity>;
 }
 
 export const GoogleCloudVideointelligenceV1_LabelAnnotation =
@@ -1544,7 +1544,7 @@ export const GoogleCloudVideointelligenceV1p1beta1_ExportToOutputUriStatus =
 
 export interface GoogleCloudVideointelligenceV1beta2_FaceFrame {
   /** Normalized Bounding boxes in a frame. There can be more than one boxes if the same face is detected in multiple locations within the current frame. */
-  normalizedBoundingBoxes?: Array<GoogleCloudVideointelligenceV1beta2_NormalizedBoundingBox>;
+  normalizedBoundingBoxes?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_NormalizedBoundingBox>;
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this location. */
   timeOffset?: string;
 }
@@ -1588,7 +1588,7 @@ export interface GoogleCloudVideointelligenceV1_SpeechRecognitionAlternative {
   /** Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set. */
   confidence?: number;
   /** Output only. A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is set to true, you will see all the words from the beginning of the audio. */
-  words?: Array<GoogleCloudVideointelligenceV1_WordInfo>;
+  words?: ReadonlyArray<GoogleCloudVideointelligenceV1_WordInfo>;
 }
 
 export const GoogleCloudVideointelligenceV1_SpeechRecognitionAlternative =
@@ -1637,13 +1637,13 @@ export interface GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation {
   /** Feature version. */
   version?: string;
   /** All video segments where a label was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1p2beta1_LabelSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LabelSegment>;
   /** All video frames where a label was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p2beta1_LabelFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LabelFrame>;
   /** Detected entity. */
   entity?: GoogleCloudVideointelligenceV1p2beta1_Entity;
   /** Common categories for the detected entity. For example, when the label is `Terrier`, the category is likely `dog`. And in some cases there might be more than one categories e.g., `Terrier` could also be a `pet`. */
-  categoryEntities?: Array<GoogleCloudVideointelligenceV1p2beta1_Entity>;
+  categoryEntities?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_Entity>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation =
@@ -1665,7 +1665,7 @@ export const GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation =
 
 export interface GoogleCloudVideointelligenceV1p2beta1_ExplicitContentAnnotation {
   /** All video frames where explicit content was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p2beta1_ExplicitContentFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_ExplicitContentFrame>;
   /** Feature version. */
   version?: string;
 }
@@ -1705,9 +1705,9 @@ export interface GoogleCloudVideointelligenceV1p2beta1_TimestampedObject {
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this object. */
   timeOffset?: string;
   /** Optional. The detected landmarks. */
-  landmarks?: Array<GoogleCloudVideointelligenceV1p2beta1_DetectedLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_DetectedLandmark>;
   /** Optional. The attributes of the object in the bounding box. */
-  attributes?: Array<GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_TimestampedObject =
@@ -1732,9 +1732,9 @@ export interface GoogleCloudVideointelligenceV1p2beta1_Track {
   /** Video segment of a track. */
   segment?: GoogleCloudVideointelligenceV1p2beta1_VideoSegment;
   /** Optional. Attributes in the track level. */
-  attributes?: Array<GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute>;
   /** The object with timestamp and attributes per frame in the track. */
-  timestampedObjects?: Array<GoogleCloudVideointelligenceV1p2beta1_TimestampedObject>;
+  timestampedObjects?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_TimestampedObject>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_Track =
@@ -1757,7 +1757,7 @@ export interface GoogleCloudVideointelligenceV1p2beta1_FaceDetectionAnnotation {
   /** Feature version. */
   version?: string;
   /** The face tracks with attributes. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p2beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_Track>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_FaceDetectionAnnotation =
@@ -1773,7 +1773,7 @@ export const GoogleCloudVideointelligenceV1p2beta1_FaceDetectionAnnotation =
 
 export interface GoogleCloudVideointelligenceV1p2beta1_PersonDetectionAnnotation {
   /** The detected tracks of a person. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p2beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_Track>;
   /** Feature version. */
   version?: string;
 }
@@ -1812,7 +1812,7 @@ export interface GoogleCloudVideointelligenceV1p2beta1_TextSegment {
   /** Confidence for the track of detected text. It is calculated as the highest over all frames where OCR detected text appears. */
   confidence?: number;
   /** Information related to the frames where OCR detected text appears. */
-  frames?: Array<GoogleCloudVideointelligenceV1p2beta1_TextFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_TextFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_TextSegment =
@@ -1832,7 +1832,7 @@ export interface GoogleCloudVideointelligenceV1p2beta1_TextAnnotation {
   /** The detected text. */
   text?: string;
   /** All video segments where OCR detected text appears. */
-  segments?: Array<GoogleCloudVideointelligenceV1p2beta1_TextSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_TextSegment>;
   /** Feature version. */
   version?: string;
 }
@@ -1852,9 +1852,9 @@ export interface GoogleCloudVideointelligenceV1p2beta1_LogoRecognitionAnnotation
   /** Entity category information to specify the logo class that all the logo tracks within this LogoRecognitionAnnotation are recognized as. */
   entity?: GoogleCloudVideointelligenceV1p2beta1_Entity;
   /** All video segments where the recognized logo appears. There might be multiple instances of the same logo class appearing in one VideoSegment. */
-  segments?: Array<GoogleCloudVideointelligenceV1p2beta1_VideoSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_VideoSegment>;
   /** All logo tracks where the recognized logo appears. Each track corresponds to one logo instance appearing in consecutive frames. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p2beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_Track>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_LogoRecognitionAnnotation =
@@ -1900,7 +1900,7 @@ export interface GoogleCloudVideointelligenceV1p2beta1_SpeechRecognitionAlternat
   /** Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set. */
   confidence?: number;
   /** Output only. A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is set to true, you will see all the words from the beginning of the audio. */
-  words?: Array<GoogleCloudVideointelligenceV1p2beta1_WordInfo>;
+  words?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_WordInfo>;
   /** Transcript text representing the words that the user spoke. */
   transcript?: string;
 }
@@ -1921,7 +1921,7 @@ export interface GoogleCloudVideointelligenceV1p2beta1_SpeechTranscription {
   /** Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. */
   languageCode?: string;
   /** May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. */
-  alternatives?: Array<GoogleCloudVideointelligenceV1p2beta1_SpeechRecognitionAlternative>;
+  alternatives?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_SpeechRecognitionAlternative>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_SpeechTranscription =
@@ -1954,9 +1954,9 @@ export interface GoogleCloudVideointelligenceV1p2beta1_FaceAnnotation {
   /** Thumbnail of a representative face view (in JPEG format). */
   thumbnail?: string;
   /** All video segments where a face was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1p2beta1_FaceSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_FaceSegment>;
   /** All video frames where a face was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p2beta1_FaceFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_FaceFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_FaceAnnotation =
@@ -1997,7 +1997,7 @@ export interface GoogleCloudVideointelligenceV1p2beta1_ObjectTrackingAnnotation 
   /** Entity to specify the object category that this track is labeled as. */
   entity?: GoogleCloudVideointelligenceV1p2beta1_Entity;
   /** Information corresponding to all frames where this object track appears. Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame messages in frames. Streaming mode: it can only be one ObjectTrackingFrame message in frames. */
-  frames?: Array<GoogleCloudVideointelligenceV1p2beta1_ObjectTrackingFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_ObjectTrackingFrame>;
   /** Feature version. */
   version?: string;
   /** Object category's labeling confidence of this track. */
@@ -2027,35 +2027,35 @@ export interface GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationResults {
   /** Video segment on which the annotation is run. */
   segment?: GoogleCloudVideointelligenceV1p2beta1_VideoSegment;
   /** Topical label annotations on shot level. There is exactly one element for each unique label. */
-  shotLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
+  shotLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
   /** Topical label annotations on video level or user-specified segment level. There is exactly one element for each unique label. */
-  segmentLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
+  segmentLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
   /** Shot annotations. Each shot is represented as a video segment. */
-  shotAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_VideoSegment>;
+  shotAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_VideoSegment>;
   /** Explicit content annotation. */
   explicitAnnotation?: GoogleCloudVideointelligenceV1p2beta1_ExplicitContentAnnotation;
   /** Face detection annotations. */
-  faceDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_FaceDetectionAnnotation>;
+  faceDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_FaceDetectionAnnotation>;
   /** Label annotations on frame level. There is exactly one element for each unique label. */
-  frameLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
+  frameLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
   /** Person detection annotations. */
-  personDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_PersonDetectionAnnotation>;
+  personDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_PersonDetectionAnnotation>;
   /** Presence label annotations on video level or user-specified segment level. There is exactly one element for each unique label. Compared to the existing topical `segment_label_annotations`, this field presents more fine-grained, segment-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  segmentPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
+  segmentPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
   /** OCR text detection and tracking. Annotations for list of detected text snippets. Each will have list of frame information associated with it. */
-  textAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_TextAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_TextAnnotation>;
   /** Annotations for list of logos detected, tracked and recognized in video. */
-  logoRecognitionAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_LogoRecognitionAnnotation>;
+  logoRecognitionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LogoRecognitionAnnotation>;
   /** Speech transcription. */
-  speechTranscriptions?: Array<GoogleCloudVideointelligenceV1p2beta1_SpeechTranscription>;
+  speechTranscriptions?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_SpeechTranscription>;
   /** Video file location in [Cloud Storage](https://cloud.google.com/storage/). */
   inputUri?: string;
   /** Deprecated. Please use `face_detection_annotations` instead. */
-  faceAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_FaceAnnotation>;
   /** Annotations for list of objects detected and tracked in video. */
-  objectAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_ObjectTrackingAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_ObjectTrackingAnnotation>;
   /** Presence label annotations on shot level. There is exactly one element for each unique label. Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  shotPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
+  shotPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_LabelAnnotation>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationResults =
@@ -2121,7 +2121,7 @@ export const GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationResults =
 
 export interface GoogleCloudVideointelligenceV1p2beta1_AnnotateVideoResponse {
   /** Annotation results for all videos specified in `AnnotateVideoRequest`. */
-  annotationResults?: Array<GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationResults>;
+  annotationResults?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationResults>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_AnnotateVideoResponse =
@@ -2197,7 +2197,7 @@ export const GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationProgress =
 
 export interface GoogleCloudVideointelligenceV1p2beta1_AnnotateVideoProgress {
   /** Progress metadata for all videos specified in `AnnotateVideoRequest`. */
-  annotationProgress?: Array<GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationProgress>;
+  annotationProgress?: ReadonlyArray<GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationProgress>;
 }
 
 export const GoogleCloudVideointelligenceV1p2beta1_AnnotateVideoProgress =
@@ -2213,7 +2213,7 @@ export const GoogleCloudVideointelligenceV1p2beta1_AnnotateVideoProgress =
 
 export interface GoogleCloudVideointelligenceV1p1beta1_FaceFrame {
   /** Normalized Bounding boxes in a frame. There can be more than one boxes if the same face is detected in multiple locations within the current frame. */
-  normalizedBoundingBoxes?: Array<GoogleCloudVideointelligenceV1p1beta1_NormalizedBoundingBox>;
+  normalizedBoundingBoxes?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_NormalizedBoundingBox>;
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this location. */
   timeOffset?: string;
 }
@@ -2251,7 +2251,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation {
   /** Feature version. */
   version?: string;
   /** The face tracks with attributes. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p3beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_Track>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation =
@@ -2267,7 +2267,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation =
 
 export interface GoogleCloudVideointelligenceV1beta2_NormalizedBoundingPoly {
   /** Normalized vertices of the bounding polygon. */
-  vertices?: Array<GoogleCloudVideointelligenceV1beta2_NormalizedVertex>;
+  vertices?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_NormalizedVertex>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_NormalizedBoundingPoly =
@@ -2298,7 +2298,7 @@ export interface GoogleCloudVideointelligenceV1beta2_TextSegment {
   /** Confidence for the track of detected text. It is calculated as the highest over all frames where OCR detected text appears. */
   confidence?: number;
   /** Information related to the frames where OCR detected text appears. */
-  frames?: Array<GoogleCloudVideointelligenceV1beta2_TextFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_TextFrame>;
   /** Video segment where a text snippet was detected. */
   segment?: GoogleCloudVideointelligenceV1beta2_VideoSegment;
 }
@@ -2320,7 +2320,7 @@ export interface GoogleCloudVideointelligenceV1beta2_TextAnnotation {
   /** The detected text. */
   text?: string;
   /** All video segments where OCR detected text appears. */
-  segments?: Array<GoogleCloudVideointelligenceV1beta2_TextSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_TextSegment>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_TextAnnotation =
@@ -2393,9 +2393,9 @@ export interface GoogleCloudVideointelligenceV1p1beta1_LogoRecognitionAnnotation
   /** Entity category information to specify the logo class that all the logo tracks within this LogoRecognitionAnnotation are recognized as. */
   entity?: GoogleCloudVideointelligenceV1p1beta1_Entity;
   /** All video segments where the recognized logo appears. There might be multiple instances of the same logo class appearing in one VideoSegment. */
-  segments?: Array<GoogleCloudVideointelligenceV1p1beta1_VideoSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_VideoSegment>;
   /** All logo tracks where the recognized logo appears. Each track corresponds to one logo instance appearing in consecutive frames. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p1beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_Track>;
 }
 
 export const GoogleCloudVideointelligenceV1p1beta1_LogoRecognitionAnnotation =
@@ -2431,7 +2431,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_CelebrityTrack {
   /** A track of a person's face. */
   faceTrack?: GoogleCloudVideointelligenceV1p3beta1_Track;
   /** Top N match of the celebrities for the face in this track. */
-  celebrities?: Array<GoogleCloudVideointelligenceV1p3beta1_RecognizedCelebrity>;
+  celebrities?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_RecognizedCelebrity>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_CelebrityTrack =
@@ -2446,7 +2446,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_CelebrityTrack =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_CelebrityRecognitionAnnotation {
   /** The tracks detected from the input video, including recognized celebrities and other detected faces in the video. */
-  celebrityTracks?: Array<GoogleCloudVideointelligenceV1p3beta1_CelebrityTrack>;
+  celebrityTracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_CelebrityTrack>;
   /** Feature version. */
   version?: string;
 }
@@ -2504,7 +2504,7 @@ export const GoogleCloudVideointelligenceV1beta2_WordInfo =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_FaceFrame {
   /** Normalized Bounding boxes in a frame. There can be more than one boxes if the same face is detected in multiple locations within the current frame. */
-  normalizedBoundingBoxes?: Array<GoogleCloudVideointelligenceV1p3beta1_NormalizedBoundingBox>;
+  normalizedBoundingBoxes?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_NormalizedBoundingBox>;
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this location. */
   timeOffset?: string;
 }
@@ -2561,13 +2561,13 @@ export const GoogleCloudVideointelligenceV1_DetectedAttribute =
 
 export interface GoogleCloudVideointelligenceV1_TimestampedObject {
   /** Optional. The attributes of the object in the bounding box. */
-  attributes?: Array<GoogleCloudVideointelligenceV1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1_DetectedAttribute>;
   /** Normalized Bounding box in a frame, where the object is located. */
   normalizedBoundingBox?: GoogleCloudVideointelligenceV1_NormalizedBoundingBox;
   /** Time-offset, relative to the beginning of the video, corresponding to the video frame for this object. */
   timeOffset?: string;
   /** Optional. The detected landmarks. */
-  landmarks?: Array<GoogleCloudVideointelligenceV1_DetectedLandmark>;
+  landmarks?: ReadonlyArray<GoogleCloudVideointelligenceV1_DetectedLandmark>;
 }
 
 export const GoogleCloudVideointelligenceV1_TimestampedObject =
@@ -2588,13 +2588,13 @@ export const GoogleCloudVideointelligenceV1_TimestampedObject =
 
 export interface GoogleCloudVideointelligenceV1_Track {
   /** The object with timestamp and attributes per frame in the track. */
-  timestampedObjects?: Array<GoogleCloudVideointelligenceV1_TimestampedObject>;
+  timestampedObjects?: ReadonlyArray<GoogleCloudVideointelligenceV1_TimestampedObject>;
   /** Optional. The confidence score of the tracked object. */
   confidence?: number;
   /** Video segment of a track. */
   segment?: GoogleCloudVideointelligenceV1_VideoSegment;
   /** Optional. Attributes in the track level. */
-  attributes?: Array<GoogleCloudVideointelligenceV1_DetectedAttribute>;
+  attributes?: ReadonlyArray<GoogleCloudVideointelligenceV1_DetectedAttribute>;
 }
 
 export const GoogleCloudVideointelligenceV1_Track =
@@ -2646,13 +2646,13 @@ export interface GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation {
   /** Feature version. */
   version?: string;
   /** Common categories for the detected entity. For example, when the label is `Terrier`, the category is likely `dog`. And in some cases there might be more than one categories e.g., `Terrier` could also be a `pet`. */
-  categoryEntities?: Array<GoogleCloudVideointelligenceV1p3beta1_Entity>;
+  categoryEntities?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_Entity>;
   /** Detected entity. */
   entity?: GoogleCloudVideointelligenceV1p3beta1_Entity;
   /** All video segments where a label was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelSegment>;
   /** All video frames where a label was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation =
@@ -2695,7 +2695,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingAnnotation 
   /** Feature version. */
   version?: string;
   /** Information corresponding to all frames where this object track appears. Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame messages in frames. Streaming mode: it can only be one ObjectTrackingFrame message in frames. */
-  frames?: Array<GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingFrame>;
   /** Non-streaming batch mode ONLY. Each object track corresponds to one video segment where it appears. */
   segment?: GoogleCloudVideointelligenceV1p3beta1_VideoSegment;
   /** Entity to specify the object category that this track is labeled as. */
@@ -2723,15 +2723,15 @@ export const GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingAnnotation =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_StreamingVideoAnnotationResults {
   /** Label annotation results. */
-  labelAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
+  labelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
   /** Explicit content annotation results. */
   explicitAnnotation?: GoogleCloudVideointelligenceV1p3beta1_ExplicitContentAnnotation;
   /** Timestamp of the processed frame in microseconds. */
   frameTimestamp?: string;
   /** Object tracking results. */
-  objectAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingAnnotation>;
   /** Shot annotation results. Each shot is represented as a video segment. */
-  shotAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
+  shotAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_StreamingVideoAnnotationResults =
@@ -2774,9 +2774,9 @@ export interface GoogleCloudVideointelligenceV1p3beta1_FaceAnnotation {
   /** Thumbnail of a representative face view (in JPEG format). */
   thumbnail?: string;
   /** All video segments where a face was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1p3beta1_FaceSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_FaceSegment>;
   /** All video frames where a face was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p3beta1_FaceFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_FaceFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_FaceAnnotation =
@@ -2794,11 +2794,11 @@ export const GoogleCloudVideointelligenceV1p3beta1_FaceAnnotation =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_LogoRecognitionAnnotation {
   /** All video segments where the recognized logo appears. There might be multiple instances of the same logo class appearing in one VideoSegment. */
-  segments?: Array<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
   /** Entity category information to specify the logo class that all the logo tracks within this LogoRecognitionAnnotation are recognized as. */
   entity?: GoogleCloudVideointelligenceV1p3beta1_Entity;
   /** All logo tracks where the recognized logo appears. Each track corresponds to one logo instance appearing in consecutive frames. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p3beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_Track>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_LogoRecognitionAnnotation =
@@ -2819,7 +2819,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation
   /** Feature version. */
   version?: string;
   /** The detected tracks of a person. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p3beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_Track>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation =
@@ -2835,37 +2835,37 @@ export const GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_VideoAnnotationResults {
   /** Presence label annotations on shot level. There is exactly one element for each unique label. Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  shotPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
+  shotPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
   /** Deprecated. Please use `face_detection_annotations` instead. */
-  faceAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_FaceAnnotation>;
   /** Annotations for list of objects detected and tracked in video. */
-  objectAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingAnnotation>;
   /** Video file location in [Cloud Storage](https://cloud.google.com/storage/). */
   inputUri?: string;
   /** Speech transcription. */
-  speechTranscriptions?: Array<GoogleCloudVideointelligenceV1p3beta1_SpeechTranscription>;
+  speechTranscriptions?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_SpeechTranscription>;
   /** Presence label annotations on video level or user-specified segment level. There is exactly one element for each unique label. Compared to the existing topical `segment_label_annotations`, this field presents more fine-grained, segment-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  segmentPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
+  segmentPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
   /** OCR text detection and tracking. Annotations for list of detected text snippets. Each will have list of frame information associated with it. */
-  textAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_TextAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_TextAnnotation>;
   /** Annotations for list of logos detected, tracked and recognized in video. */
-  logoRecognitionAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_LogoRecognitionAnnotation>;
+  logoRecognitionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LogoRecognitionAnnotation>;
   /** Person detection annotations. */
-  personDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation>;
+  personDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation>;
   /** Celebrity recognition annotations. */
   celebrityRecognitionAnnotations?: GoogleCloudVideointelligenceV1p3beta1_CelebrityRecognitionAnnotation;
   /** Explicit content annotation. */
   explicitAnnotation?: GoogleCloudVideointelligenceV1p3beta1_ExplicitContentAnnotation;
   /** Label annotations on frame level. There is exactly one element for each unique label. */
-  frameLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
+  frameLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
   /** Face detection annotations. */
-  faceDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation>;
+  faceDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation>;
   /** Topical label annotations on shot level. There is exactly one element for each unique label. */
-  shotLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
+  shotLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
   /** Topical label annotations on video level or user-specified segment level. There is exactly one element for each unique label. */
-  segmentLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
+  segmentLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_LabelAnnotation>;
   /** Shot annotations. Each shot is represented as a video segment. */
-  shotAnnotations?: Array<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
+  shotAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_VideoSegment>;
   /** Video segment on which the annotation is run. */
   segment?: GoogleCloudVideointelligenceV1p3beta1_VideoSegment;
   /** If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed and some may fail. */
@@ -2938,7 +2938,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_VideoAnnotationResults =
 
 export interface GoogleCloudVideointelligenceV1beta2_PersonDetectionAnnotation {
   /** The detected tracks of a person. */
-  tracks?: Array<GoogleCloudVideointelligenceV1beta2_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_Track>;
   /** Feature version. */
   version?: string;
 }
@@ -2955,7 +2955,7 @@ export const GoogleCloudVideointelligenceV1beta2_PersonDetectionAnnotation =
 
 export interface GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotation {
   /** All video frames where explicit content was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame>;
   /** Feature version. */
   version?: string;
 }
@@ -2989,13 +2989,13 @@ export interface GoogleCloudVideointelligenceV1beta2_LabelAnnotation {
   /** Feature version. */
   version?: string;
   /** Common categories for the detected entity. For example, when the label is `Terrier`, the category is likely `dog`. And in some cases there might be more than one categories e.g., `Terrier` could also be a `pet`. */
-  categoryEntities?: Array<GoogleCloudVideointelligenceV1beta2_Entity>;
+  categoryEntities?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_Entity>;
   /** Detected entity. */
   entity?: GoogleCloudVideointelligenceV1beta2_Entity;
   /** All video segments where a label was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1beta2_LabelSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LabelSegment>;
   /** All video frames where a label was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1beta2_LabelFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LabelFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_LabelAnnotation =
@@ -3019,7 +3019,7 @@ export interface GoogleCloudVideointelligenceV1beta2_FaceDetectionAnnotation {
   /** Feature version. */
   version?: string;
   /** The face tracks with attributes. */
-  tracks?: Array<GoogleCloudVideointelligenceV1beta2_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_Track>;
   /** The thumbnail of a person's face. */
   thumbnail?: string;
 }
@@ -3051,9 +3051,9 @@ export interface GoogleCloudVideointelligenceV1beta2_FaceAnnotation {
   /** Thumbnail of a representative face view (in JPEG format). */
   thumbnail?: string;
   /** All video segments where a face was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1beta2_FaceSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_FaceSegment>;
   /** All video frames where a face was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1beta2_FaceFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_FaceFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_FaceAnnotation =
@@ -3075,7 +3075,7 @@ export interface GoogleCloudVideointelligenceV1beta2_SpeechRecognitionAlternativ
   /** Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set. */
   confidence?: number;
   /** Output only. A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is set to true, you will see all the words from the beginning of the audio. */
-  words?: Array<GoogleCloudVideointelligenceV1beta2_WordInfo>;
+  words?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_WordInfo>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_SpeechRecognitionAlternative =
@@ -3092,7 +3092,7 @@ export const GoogleCloudVideointelligenceV1beta2_SpeechRecognitionAlternative =
 
 export interface GoogleCloudVideointelligenceV1beta2_SpeechTranscription {
   /** May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. */
-  alternatives?: Array<GoogleCloudVideointelligenceV1beta2_SpeechRecognitionAlternative>;
+  alternatives?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_SpeechRecognitionAlternative>;
   /** Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. */
   languageCode?: string;
 }
@@ -3111,39 +3111,39 @@ export const GoogleCloudVideointelligenceV1beta2_SpeechTranscription =
 
 export interface GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults {
   /** Person detection annotations. */
-  personDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_PersonDetectionAnnotation>;
+  personDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_PersonDetectionAnnotation>;
   /** Explicit content annotation. */
   explicitAnnotation?: GoogleCloudVideointelligenceV1beta2_ExplicitContentAnnotation;
   /** Label annotations on frame level. There is exactly one element for each unique label. */
-  frameLabelAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
+  frameLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
   /** Face detection annotations. */
-  faceDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_FaceDetectionAnnotation>;
+  faceDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_FaceDetectionAnnotation>;
   /** Topical label annotations on shot level. There is exactly one element for each unique label. */
-  shotLabelAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
+  shotLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
   /** Topical label annotations on video level or user-specified segment level. There is exactly one element for each unique label. */
-  segmentLabelAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
+  segmentLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
   /** Shot annotations. Each shot is represented as a video segment. */
-  shotAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
+  shotAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
   /** Video segment on which the annotation is run. */
   segment?: GoogleCloudVideointelligenceV1beta2_VideoSegment;
   /** If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed and some may fail. */
   error?: GoogleRpc_Status;
   /** Presence label annotations on shot level. There is exactly one element for each unique label. Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  shotPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
+  shotPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
   /** Deprecated. Please use `face_detection_annotations` instead. */
-  faceAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_FaceAnnotation>;
   /** Annotations for list of objects detected and tracked in video. */
-  objectAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_ObjectTrackingAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_ObjectTrackingAnnotation>;
   /** Video file location in [Cloud Storage](https://cloud.google.com/storage/). */
   inputUri?: string;
   /** Speech transcription. */
-  speechTranscriptions?: Array<GoogleCloudVideointelligenceV1beta2_SpeechTranscription>;
+  speechTranscriptions?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_SpeechTranscription>;
   /** Presence label annotations on video level or user-specified segment level. There is exactly one element for each unique label. Compared to the existing topical `segment_label_annotations`, this field presents more fine-grained, segment-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  segmentPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
+  segmentPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LabelAnnotation>;
   /** OCR text detection and tracking. Annotations for list of detected text snippets. Each will have list of frame information associated with it. */
-  textAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_TextAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_TextAnnotation>;
   /** Annotations for list of logos detected, tracked and recognized in video. */
-  logoRecognitionAnnotations?: Array<GoogleCloudVideointelligenceV1beta2_LogoRecognitionAnnotation>;
+  logoRecognitionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_LogoRecognitionAnnotation>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults =
@@ -3205,7 +3205,7 @@ export const GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults =
 
 export interface GoogleCloudVideointelligenceV1beta2_AnnotateVideoResponse {
   /** Annotation results for all videos specified in `AnnotateVideoRequest`. */
-  annotationResults?: Array<GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults>;
+  annotationResults?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_VideoAnnotationResults>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_AnnotateVideoResponse =
@@ -3221,7 +3221,7 @@ export interface GoogleCloudVideointelligenceV1p1beta1_TextAnnotation {
   /** The detected text. */
   text?: string;
   /** All video segments where OCR detected text appears. */
-  segments?: Array<GoogleCloudVideointelligenceV1p1beta1_TextSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_TextSegment>;
   /** Feature version. */
   version?: string;
 }
@@ -3296,7 +3296,7 @@ export interface GoogleCloudVideointelligenceV1p1beta1_SpeechRecognitionAlternat
   /** Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set. */
   confidence?: number;
   /** Output only. A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is set to true, you will see all the words from the beginning of the audio. */
-  words?: Array<GoogleCloudVideointelligenceV1p1beta1_WordInfo>;
+  words?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_WordInfo>;
   /** Transcript text representing the words that the user spoke. */
   transcript?: string;
 }
@@ -3315,7 +3315,7 @@ export const GoogleCloudVideointelligenceV1p1beta1_SpeechRecognitionAlternative 
 
 export interface GoogleCloudVideointelligenceV1p1beta1_SpeechTranscription {
   /** May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. */
-  alternatives?: Array<GoogleCloudVideointelligenceV1p1beta1_SpeechRecognitionAlternative>;
+  alternatives?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_SpeechRecognitionAlternative>;
   /** Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. */
   languageCode?: string;
 }
@@ -3350,9 +3350,9 @@ export interface GoogleCloudVideointelligenceV1p1beta1_FaceAnnotation {
   /** Thumbnail of a representative face view (in JPEG format). */
   thumbnail?: string;
   /** All video segments where a face was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1p1beta1_FaceSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_FaceSegment>;
   /** All video frames where a face was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p1beta1_FaceFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_FaceFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1p1beta1_FaceAnnotation =
@@ -3370,7 +3370,7 @@ export const GoogleCloudVideointelligenceV1p1beta1_FaceAnnotation =
 
 export interface GoogleCloudVideointelligenceV1_NormalizedBoundingPoly {
   /** Normalized vertices of the bounding polygon. */
-  vertices?: Array<GoogleCloudVideointelligenceV1_NormalizedVertex>;
+  vertices?: ReadonlyArray<GoogleCloudVideointelligenceV1_NormalizedVertex>;
 }
 
 export const GoogleCloudVideointelligenceV1_NormalizedBoundingPoly =
@@ -3384,7 +3384,7 @@ export const GoogleCloudVideointelligenceV1_NormalizedBoundingPoly =
 
 export interface GoogleCloudVideointelligenceV1_PersonDetectionAnnotation {
   /** The detected tracks of a person. */
-  tracks?: Array<GoogleCloudVideointelligenceV1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1_Track>;
   /** Feature version. */
   version?: string;
 }
@@ -3416,7 +3416,7 @@ export interface GoogleCloudVideointelligenceV1_TextSegment {
   /** Confidence for the track of detected text. It is calculated as the highest over all frames where OCR detected text appears. */
   confidence?: number;
   /** Information related to the frames where OCR detected text appears. */
-  frames?: Array<GoogleCloudVideointelligenceV1_TextFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1_TextFrame>;
   /** Video segment where a text snippet was detected. */
   segment?: GoogleCloudVideointelligenceV1_VideoSegment;
 }
@@ -3436,7 +3436,7 @@ export interface GoogleCloudVideointelligenceV1_TextAnnotation {
   /** The detected text. */
   text?: string;
   /** All video segments where OCR detected text appears. */
-  segments?: Array<GoogleCloudVideointelligenceV1_TextSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1_TextSegment>;
 }
 
 export const GoogleCloudVideointelligenceV1_TextAnnotation =
@@ -3452,9 +3452,9 @@ export interface GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation {
   /** Entity category information to specify the logo class that all the logo tracks within this LogoRecognitionAnnotation are recognized as. */
   entity?: GoogleCloudVideointelligenceV1_Entity;
   /** All video segments where the recognized logo appears. There might be multiple instances of the same logo class appearing in one VideoSegment. */
-  segments?: Array<GoogleCloudVideointelligenceV1_VideoSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1_VideoSegment>;
   /** All logo tracks where the recognized logo appears. Each track corresponds to one logo instance appearing in consecutive frames. */
-  tracks?: Array<GoogleCloudVideointelligenceV1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1_Track>;
 }
 
 export const GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation =
@@ -3470,7 +3470,7 @@ export const GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation =
 
 export interface GoogleCloudVideointelligenceV1_SpeechTranscription {
   /** May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. */
-  alternatives?: Array<GoogleCloudVideointelligenceV1_SpeechRecognitionAlternative>;
+  alternatives?: ReadonlyArray<GoogleCloudVideointelligenceV1_SpeechRecognitionAlternative>;
   /** Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. */
   languageCode?: string;
 }
@@ -3489,9 +3489,9 @@ export interface GoogleCloudVideointelligenceV1_FaceAnnotation {
   /** Thumbnail of a representative face view (in JPEG format). */
   thumbnail?: string;
   /** All video segments where a face was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1_FaceSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1_FaceSegment>;
   /** All video frames where a face was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1_FaceFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1_FaceFrame>;
 }
 
 export const GoogleCloudVideointelligenceV1_FaceAnnotation =
@@ -3526,7 +3526,7 @@ export interface GoogleCloudVideointelligenceV1_ObjectTrackingAnnotation {
   /** Streaming mode ONLY. In streaming mode, we do not know the end time of a tracked object before it is completed. Hence, there is no VideoSegment info returned. Instead, we provide a unique identifiable integer track_id so that the customers can correlate the results of the ongoing ObjectTrackAnnotation of the same track_id over time. */
   trackId?: string;
   /** Information corresponding to all frames where this object track appears. Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame messages in frames. Streaming mode: it can only be one ObjectTrackingFrame message in frames. */
-  frames?: Array<GoogleCloudVideointelligenceV1_ObjectTrackingFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1_ObjectTrackingFrame>;
   /** Non-streaming batch mode ONLY. Each object track corresponds to one video segment where it appears. */
   segment?: GoogleCloudVideointelligenceV1_VideoSegment;
   /** Entity to specify the object category that this track is labeled as. */
@@ -3553,7 +3553,7 @@ export const GoogleCloudVideointelligenceV1_ObjectTrackingAnnotation =
 
 export interface GoogleCloudVideointelligenceV1_ExplicitContentAnnotation {
   /** All video frames where explicit content was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1_ExplicitContentFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1_ExplicitContentFrame>;
   /** Feature version. */
   version?: string;
 }
@@ -3572,7 +3572,7 @@ export interface GoogleCloudVideointelligenceV1_FaceDetectionAnnotation {
   /** Feature version. */
   version?: string;
   /** The face tracks with attributes. */
-  tracks?: Array<GoogleCloudVideointelligenceV1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1_Track>;
   /** The thumbnail of a person's face. */
   thumbnail?: string;
 }
@@ -3588,39 +3588,39 @@ export const GoogleCloudVideointelligenceV1_FaceDetectionAnnotation =
 
 export interface GoogleCloudVideointelligenceV1_VideoAnnotationResults {
   /** Presence label annotations on video level or user-specified segment level. There is exactly one element for each unique label. Compared to the existing topical `segment_label_annotations`, this field presents more fine-grained, segment-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  segmentPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1_LabelAnnotation>;
+  segmentPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_LabelAnnotation>;
   /** OCR text detection and tracking. Annotations for list of detected text snippets. Each will have list of frame information associated with it. */
-  textAnnotations?: Array<GoogleCloudVideointelligenceV1_TextAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_TextAnnotation>;
   /** Annotations for list of logos detected, tracked and recognized in video. */
-  logoRecognitionAnnotations?: Array<GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation>;
+  logoRecognitionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation>;
   /** Video file location in [Cloud Storage](https://cloud.google.com/storage/). */
   inputUri?: string;
   /** Speech transcription. */
-  speechTranscriptions?: Array<GoogleCloudVideointelligenceV1_SpeechTranscription>;
+  speechTranscriptions?: ReadonlyArray<GoogleCloudVideointelligenceV1_SpeechTranscription>;
   /** Deprecated. Please use `face_detection_annotations` instead. */
-  faceAnnotations?: Array<GoogleCloudVideointelligenceV1_FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_FaceAnnotation>;
   /** Annotations for list of objects detected and tracked in video. */
-  objectAnnotations?: Array<GoogleCloudVideointelligenceV1_ObjectTrackingAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_ObjectTrackingAnnotation>;
   /** Presence label annotations on shot level. There is exactly one element for each unique label. Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  shotPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1_LabelAnnotation>;
+  shotPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_LabelAnnotation>;
   /** Video segment on which the annotation is run. */
   segment?: GoogleCloudVideointelligenceV1_VideoSegment;
   /** If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed and some may fail. */
   error?: GoogleRpc_Status;
   /** Topical label annotations on shot level. There is exactly one element for each unique label. */
-  shotLabelAnnotations?: Array<GoogleCloudVideointelligenceV1_LabelAnnotation>;
+  shotLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_LabelAnnotation>;
   /** Topical label annotations on video level or user-specified segment level. There is exactly one element for each unique label. */
-  segmentLabelAnnotations?: Array<GoogleCloudVideointelligenceV1_LabelAnnotation>;
+  segmentLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_LabelAnnotation>;
   /** Shot annotations. Each shot is represented as a video segment. */
-  shotAnnotations?: Array<GoogleCloudVideointelligenceV1_VideoSegment>;
+  shotAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_VideoSegment>;
   /** Explicit content annotation. */
   explicitAnnotation?: GoogleCloudVideointelligenceV1_ExplicitContentAnnotation;
   /** Label annotations on frame level. There is exactly one element for each unique label. */
-  frameLabelAnnotations?: Array<GoogleCloudVideointelligenceV1_LabelAnnotation>;
+  frameLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_LabelAnnotation>;
   /** Face detection annotations. */
-  faceDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1_FaceDetectionAnnotation>;
+  faceDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_FaceDetectionAnnotation>;
   /** Person detection annotations. */
-  personDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1_PersonDetectionAnnotation>;
+  personDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1_PersonDetectionAnnotation>;
 }
 
 export const GoogleCloudVideointelligenceV1_VideoAnnotationResults =
@@ -3676,7 +3676,7 @@ export const GoogleCloudVideointelligenceV1_VideoAnnotationResults =
 
 export interface GoogleCloudVideointelligenceV1_AnnotateVideoResponse {
   /** Annotation results for all videos specified in `AnnotateVideoRequest`. */
-  annotationResults?: Array<GoogleCloudVideointelligenceV1_VideoAnnotationResults>;
+  annotationResults?: ReadonlyArray<GoogleCloudVideointelligenceV1_VideoAnnotationResults>;
 }
 
 export const GoogleCloudVideointelligenceV1_AnnotateVideoResponse =
@@ -3733,7 +3733,7 @@ export const GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress =
 
 export interface GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoResponse {
   /** Annotation results for all videos specified in `AnnotateVideoRequest`. */
-  annotationResults?: Array<GoogleCloudVideointelligenceV1p3beta1_VideoAnnotationResults>;
+  annotationResults?: ReadonlyArray<GoogleCloudVideointelligenceV1p3beta1_VideoAnnotationResults>;
 }
 
 export const GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoResponse =
@@ -3749,7 +3749,7 @@ export const GoogleCloudVideointelligenceV1p3beta1_AnnotateVideoResponse =
 
 export interface GoogleCloudVideointelligenceV1p1beta1_ExplicitContentAnnotation {
   /** All video frames where explicit content was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p1beta1_ExplicitContentFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_ExplicitContentFrame>;
   /** Feature version. */
   version?: string;
 }
@@ -3784,11 +3784,11 @@ export const GoogleCloudVideointelligenceV1p1beta1_LabelSegment =
 
 export interface GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation {
   /** Common categories for the detected entity. For example, when the label is `Terrier`, the category is likely `dog`. And in some cases there might be more than one categories e.g., `Terrier` could also be a `pet`. */
-  categoryEntities?: Array<GoogleCloudVideointelligenceV1p1beta1_Entity>;
+  categoryEntities?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_Entity>;
   /** All video segments where a label was detected. */
-  segments?: Array<GoogleCloudVideointelligenceV1p1beta1_LabelSegment>;
+  segments?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LabelSegment>;
   /** All video frames where a label was detected. */
-  frames?: Array<GoogleCloudVideointelligenceV1p1beta1_LabelFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LabelFrame>;
   /** Detected entity. */
   entity?: GoogleCloudVideointelligenceV1p1beta1_Entity;
   /** Feature version. */
@@ -3820,7 +3820,7 @@ export interface GoogleCloudVideointelligenceV1p1beta1_ObjectTrackingAnnotation 
   /** Streaming mode ONLY. In streaming mode, we do not know the end time of a tracked object before it is completed. Hence, there is no VideoSegment info returned. Instead, we provide a unique identifiable integer track_id so that the customers can correlate the results of the ongoing ObjectTrackAnnotation of the same track_id over time. */
   trackId?: string;
   /** Information corresponding to all frames where this object track appears. Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame messages in frames. Streaming mode: it can only be one ObjectTrackingFrame message in frames. */
-  frames?: Array<GoogleCloudVideointelligenceV1p1beta1_ObjectTrackingFrame>;
+  frames?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_ObjectTrackingFrame>;
   /** Non-streaming batch mode ONLY. Each object track corresponds to one video segment where it appears. */
   segment?: GoogleCloudVideointelligenceV1p1beta1_VideoSegment;
   /** Entity to specify the object category that this track is labeled as. */
@@ -3848,7 +3848,7 @@ export interface GoogleCloudVideointelligenceV1p1beta1_FaceDetectionAnnotation {
   /** The thumbnail of a person's face. */
   thumbnail?: string;
   /** The face tracks with attributes. */
-  tracks?: Array<GoogleCloudVideointelligenceV1p1beta1_Track>;
+  tracks?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_Track>;
   /** Feature version. */
   version?: string;
 }
@@ -3868,35 +3868,35 @@ export interface GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationResults {
   /** Video file location in [Cloud Storage](https://cloud.google.com/storage/). */
   inputUri?: string;
   /** Speech transcription. */
-  speechTranscriptions?: Array<GoogleCloudVideointelligenceV1p1beta1_SpeechTranscription>;
+  speechTranscriptions?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_SpeechTranscription>;
   /** Presence label annotations on video level or user-specified segment level. There is exactly one element for each unique label. Compared to the existing topical `segment_label_annotations`, this field presents more fine-grained, segment-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  segmentPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
+  segmentPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
   /** OCR text detection and tracking. Annotations for list of detected text snippets. Each will have list of frame information associated with it. */
-  textAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_TextAnnotation>;
+  textAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_TextAnnotation>;
   /** Annotations for list of logos detected, tracked and recognized in video. */
-  logoRecognitionAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_LogoRecognitionAnnotation>;
+  logoRecognitionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LogoRecognitionAnnotation>;
   /** Presence label annotations on shot level. There is exactly one element for each unique label. Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level labels detected in video content and is made available only when the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request. */
-  shotPresenceLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
+  shotPresenceLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
   /** Annotations for list of objects detected and tracked in video. */
-  objectAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_ObjectTrackingAnnotation>;
+  objectAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_ObjectTrackingAnnotation>;
   /** Deprecated. Please use `face_detection_annotations` instead. */
-  faceAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_FaceAnnotation>;
+  faceAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_FaceAnnotation>;
   /** Topical label annotations on video level or user-specified segment level. There is exactly one element for each unique label. */
-  segmentLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
+  segmentLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
   /** Shot annotations. Each shot is represented as a video segment. */
-  shotAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_VideoSegment>;
+  shotAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_VideoSegment>;
   /** Topical label annotations on shot level. There is exactly one element for each unique label. */
-  shotLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
+  shotLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
   /** Video segment on which the annotation is run. */
   segment?: GoogleCloudVideointelligenceV1p1beta1_VideoSegment;
   /** If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed and some may fail. */
   error?: GoogleRpc_Status;
   /** Person detection annotations. */
-  personDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_PersonDetectionAnnotation>;
+  personDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_PersonDetectionAnnotation>;
   /** Label annotations on frame level. There is exactly one element for each unique label. */
-  frameLabelAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
+  frameLabelAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_LabelAnnotation>;
   /** Face detection annotations. */
-  faceDetectionAnnotations?: Array<GoogleCloudVideointelligenceV1p1beta1_FaceDetectionAnnotation>;
+  faceDetectionAnnotations?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_FaceDetectionAnnotation>;
   /** Explicit content annotation. */
   explicitAnnotation?: GoogleCloudVideointelligenceV1p1beta1_ExplicitContentAnnotation;
 }
@@ -3964,7 +3964,7 @@ export const GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationResults =
 
 export interface GoogleCloudVideointelligenceV1p1beta1_AnnotateVideoResponse {
   /** Annotation results for all videos specified in `AnnotateVideoRequest`. */
-  annotationResults?: Array<GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationResults>;
+  annotationResults?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationResults>;
 }
 
 export const GoogleCloudVideointelligenceV1p1beta1_AnnotateVideoResponse =
@@ -4025,7 +4025,7 @@ export const GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationProgress =
 
 export interface GoogleCloudVideointelligenceV1p1beta1_AnnotateVideoProgress {
   /** Progress metadata for all videos specified in `AnnotateVideoRequest`. */
-  annotationProgress?: Array<GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationProgress>;
+  annotationProgress?: ReadonlyArray<GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationProgress>;
 }
 
 export const GoogleCloudVideointelligenceV1p1beta1_AnnotateVideoProgress =
@@ -4049,7 +4049,7 @@ export interface GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequest {
   /** Optional. Cloud region where annotation should take place. Supported cloud regions are: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region is specified, the region will be determined based on video file location. */
   locationId?: string;
   /** Required. Requested video annotation features. */
-  features?: Array<
+  features?: ReadonlyArray<
     | "FEATURE_UNSPECIFIED"
     | "LABEL_DETECTION"
     | "SHOT_CHANGE_DETECTION"
@@ -4082,7 +4082,7 @@ export const GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequest =
 
 export interface GoogleCloudVideointelligenceV1beta2_AnnotateVideoProgress {
   /** Progress metadata for all videos specified in `AnnotateVideoRequest`. */
-  annotationProgress?: Array<GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress>;
+  annotationProgress?: ReadonlyArray<GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress>;
 }
 
 export const GoogleCloudVideointelligenceV1beta2_AnnotateVideoProgress =

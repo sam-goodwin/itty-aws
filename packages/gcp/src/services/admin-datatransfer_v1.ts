@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface ApplicationTransferParam {
   /** The value of the transfer parameter, such as `PRIVATE` or `SHARED`. */
-  value?: Array<string>;
+  value?: ReadonlyArray<string>;
   /** The type of the transfer parameter, such as `PRIVACY_LEVEL`. */
   key?: string;
 }
@@ -43,7 +43,7 @@ export interface Application {
   /** Identifies the resource as a DataTransfer Application Resource. */
   kind?: string;
   /** The list of all possible transfer parameters for this application. These parameters select which categories of the user's data to transfer. */
-  transferParams?: Array<ApplicationTransferParam>;
+  transferParams?: ReadonlyArray<ApplicationTransferParam>;
   /** Etag of the resource. */
   etag?: string;
 }
@@ -62,7 +62,7 @@ export interface ApplicationDataTransfer {
   /** Read-only. Current status of transfer for this application. */
   applicationTransferStatus?: string;
   /** The transfer parameters for the application. These parameters are used to select the data which will get transferred in context of this application. For more information about the specific values available for each application, see the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference. */
-  applicationTransferParams?: Array<ApplicationTransferParam>;
+  applicationTransferParams?: ReadonlyArray<ApplicationTransferParam>;
 }
 
 export const ApplicationDataTransfer =
@@ -86,7 +86,7 @@ export interface DataTransfer {
   /** ID of the user to whom the data is being transferred. */
   newOwnerUserId?: string;
   /** The list of per-application data transfer resources. It contains details of the applications associated with this transfer resource, and also specifies the applications for which data transfer has to be done at the time of the transfer resource creation. */
-  applicationDataTransfers?: Array<ApplicationDataTransfer>;
+  applicationDataTransfers?: ReadonlyArray<ApplicationDataTransfer>;
   /** Read-only. The transfer's ID. */
   id?: string;
   /** ID of the user whose data is being transferred. */
@@ -110,7 +110,7 @@ export interface DataTransfersListResponse {
   /** Identifies the resource as a collection of data transfer requests. */
   kind?: string;
   /** List of data transfer requests. */
-  dataTransfers?: Array<DataTransfer>;
+  dataTransfers?: ReadonlyArray<DataTransfer>;
   /** ETag of the resource. */
   etag?: string;
   /** Token to specify the next page in the list. */
@@ -133,7 +133,7 @@ export interface ApplicationsListResponse {
   /** ETag of the resource. */
   etag?: string;
   /** The list of applications that support data transfer and are also installed for the customer. */
-  applications?: Array<Application>;
+  applications?: ReadonlyArray<Application>;
 }
 
 export const ApplicationsListResponse =

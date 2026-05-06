@@ -48,7 +48,7 @@ export interface QuotaGroup {
   /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC. */
   quotaUsage?: string;
   /** Output only. List of all methods group quota applies to. */
-  methodDetails?: Array<MethodDetails>;
+  methodDetails?: ReadonlyArray<MethodDetails>;
   /** Output only. The maximum number of calls allowed per day for the group. */
   quotaLimit?: string;
 }
@@ -63,7 +63,7 @@ export const QuotaGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
-  quotaGroups?: Array<QuotaGroup>;
+  quotaGroups?: ReadonlyArray<QuotaGroup>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -127,7 +127,7 @@ export interface ProductStatusChangeMessage {
   /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
   managingAccount?: string;
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The product name. Format: `accounts/{account}/products/{product}` */
   resource?: string;
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
@@ -166,10 +166,7 @@ export const ListAccountsQuotasRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "quota/v1beta/accounts/{accountsId}/quotas",
-    }),
+    T.Http({ method: "GET", path: "quota/v1beta/{parent}/quotas" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsQuotasRequest>;
 

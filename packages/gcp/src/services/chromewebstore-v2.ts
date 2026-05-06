@@ -86,7 +86,7 @@ export interface PublishItemRequest {
     | "STAGED_PUBLISH"
     | (string & {});
   /** Optional. Additional deploy information including the desired initial percentage rollout. Defaults to the current value saved in the developer dashboard if unset. */
-  deployInfos?: Array<DeployInfo>;
+  deployInfos?: ReadonlyArray<DeployInfo>;
   /** Optional. Whether to attempt to skip item review. The API will validate if the item qualifies and return a validation error if the item requires review. Defaults to `false` if unset. */
   skipReview?: boolean;
 }
@@ -153,7 +153,7 @@ export interface ItemRevisionStatus {
     | "CANCELLED"
     | (string & {});
   /** Details on the package of the item */
-  distributionChannels?: Array<DistributionChannel>;
+  distributionChannels?: ReadonlyArray<DistributionChannel>;
 }
 
 export const ItemRevisionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -221,11 +221,7 @@ export const PublishPublishersItemsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PublishItemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/publishers/{publishersId}/items/{itemsId}:publish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:publish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PublishPublishersItemsRequest>;
 
@@ -256,10 +252,7 @@ export const FetchStatusPublishersItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/publishers/{publishersId}/items/{itemsId}:fetchStatus",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}:fetchStatus" }),
     svc,
   ) as unknown as Schema.Schema<FetchStatusPublishersItemsRequest>;
 
@@ -295,7 +288,7 @@ export const CancelSubmissionPublishersItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/publishers/{publishersId}/items/{itemsId}:cancelSubmission",
+      path: "v2/{name}:cancelSubmission",
       hasBody: true,
     }),
     svc,
@@ -335,7 +328,7 @@ export const SetPublishedDeployPercentagePublishersItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/publishers/{publishersId}/items/{itemsId}:setPublishedDeployPercentage",
+      path: "v2/{name}:setPublishedDeployPercentage",
       hasBody: true,
     }),
     svc,
@@ -371,11 +364,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(UploadItemPackageRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2/publishers/{publishersId}/items/{itemsId}:upload",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2/{name}:upload", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UploadMediaRequest>;
 

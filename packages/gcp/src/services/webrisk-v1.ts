@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,11 +63,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -111,7 +111,7 @@ export const GoogleCloudWebriskV1RiceDeltaEncoding =
 
 export interface GoogleCloudWebriskV1ThreatEntryAdditions {
   /** The raw SHA256-formatted entries. Repeated to allow returning sets of hashes with different prefix sizes. */
-  rawHashes?: Array<GoogleCloudWebriskV1RawHashes>;
+  rawHashes?: ReadonlyArray<GoogleCloudWebriskV1RawHashes>;
   /** The encoded 4-byte prefixes of SHA256-formatted entries, using a Golomb-Rice encoding. The hashes are converted to uint32, sorted in ascending order, then delta encoded and stored as encoded_data. */
   riceHashes?: GoogleCloudWebriskV1RiceDeltaEncoding;
 }
@@ -130,7 +130,7 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudWebriskV1RawIndices {
   /** The indices to remove from a lexicographically-sorted local list. */
-  indices?: Array<number>;
+  indices?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudWebriskV1RawIndices =
@@ -172,7 +172,7 @@ export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   /** The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid false positives. */
   expireTime?: string;
   /** The ThreatList this threat belongs to. */
-  threatTypes?: Array<
+  threatTypes?: ReadonlyArray<
     | "THREAT_TYPE_UNSPECIFIED"
     | "MALWARE"
     | "SOCIAL_ENGINEERING"
@@ -204,7 +204,7 @@ export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   /** The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid false positives. */
   expireTime?: string;
   /** The ThreatList this threat belongs to. This must contain at least one entry. */
-  threatTypes?: Array<
+  threatTypes?: ReadonlyArray<
     | "THREAT_TYPE_UNSPECIFIED"
     | "MALWARE"
     | "SOCIAL_ENGINEERING"
@@ -229,7 +229,7 @@ export interface GoogleCloudWebriskV1SearchHashesResponse {
   /** For requested entities that did not match the threat list, how long to cache the response until. */
   negativeExpireTime?: string;
   /** The full hashes that matched the requested prefixes. The hash will be populated in the key. */
-  threats?: Array<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
+  threats?: ReadonlyArray<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
 }
 
 export const GoogleCloudWebriskV1SearchHashesResponse =
@@ -349,7 +349,7 @@ export const ListProjectsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
 
@@ -385,10 +385,7 @@ export const DeleteProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsOperationsRequest>;
 
@@ -424,11 +421,7 @@ export const CancelProjectsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsOperationsRequest>;
 
@@ -459,10 +452,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
@@ -496,11 +486,7 @@ export const CreateProjectsSubmissionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudWebriskV1Submission).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/submissions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/submissions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsSubmissionsRequest>;
 

@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -137,7 +137,7 @@ export interface Backend {
   /** Output only. The primary URI to communicate with the backend. */
   uri?: string;
   /** Output only. A list of the resources managed by this backend. */
-  managedResources?: Array<ManagedResource>;
+  managedResources?: ReadonlyArray<ManagedResource>;
   /** Required. The name of the service account used for Cloud Build and Cloud Run. Should have the role roles/firebaseapphosting.computeRunner or equivalent permissions. */
   serviceAccount?: string;
   /** Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the backend. */
@@ -188,11 +188,11 @@ export const Backend = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackendsResponse {
   /** The list of backends */
-  backends?: Array<Backend>;
+  backends?: ReadonlyArray<Backend>;
   /** A token identifying the next page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBackendsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -215,7 +215,7 @@ export const TrafficSplit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TrafficSet {
   /** Required. The list of traffic splits. */
-  splits?: Array<TrafficSplit>;
+  splits?: ReadonlyArray<TrafficSplit>;
 }
 
 export const TrafficSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -242,9 +242,9 @@ export interface RolloutPolicy {
   /** Output only. If `disabled` is set, the time at which the automatic rollouts were disabled. */
   disabledTime?: string;
   /** Optional. A list of file paths patterns that trigger a build and rollout if at least one of the changed files in the commit are present in this list. This field is optional; the rollout policy will default to triggering on all paths if not populated. Limited to 100 paths. Example: “required_paths: { pattern: "foo/bar/*” type: GLOB } */
-  requiredPaths?: Array<Path>;
+  requiredPaths?: ReadonlyArray<Path>;
   /** Optional. A list of file paths patterns to exclude from triggering a rollout. Patterns in this list take precedence over required_paths. **Note**: All paths must be in the ignored_paths in order for the rollout to be skipped. Limited to 100 paths. Example: ignored_paths: { pattern: "foo/bar/excluded/*” type: GLOB } */
-  ignoredPaths?: Array<Path>;
+  ignoredPaths?: ReadonlyArray<Path>;
 }
 
 export const RolloutPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -323,7 +323,7 @@ export interface EnvironmentVariable {
   /** Required. The name of the environment variable. The environment variables reserved by [Cloud Run](https://docs.cloud.google.com/run/docs/configuring/services/environment-variables#reserved) should not be set. Additionally, variable names cannot start with "X_FIREBASE_". */
   variable?: string;
   /** Optional. Where this variable should be made available. If left unspecified, will be available in both BUILD and BACKEND. */
-  availability?: Array<
+  availability?: ReadonlyArray<
     "AVAILABILITY_UNSPECIFIED" | "BUILD" | "RUNTIME" | (string & {})
   >;
   /** Output only. The high-level origin category of the environment variable. */
@@ -351,9 +351,9 @@ export interface Config {
   /** Optional. Additional configuration of the Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service). */
   runConfig?: RunConfig;
   /** Optional. Supplied environment variables for a specific build. Provided at Build creation time and immutable afterwards. This field is only applicable for Builds using a build image - (e.g., ContainerSource or ArchiveSource with locally_built_source) Attempts to set this for other build types will result in an error */
-  env?: Array<EnvironmentVariable>;
+  env?: ReadonlyArray<EnvironmentVariable>;
   /** Output only. [OUTPUT_ONLY] This field represents all environment variables employed during both the build and runtime. This list reflects the result of merging variables from all sources (Backend.override_env, Build.Config.env, YAML, defaults, system). Each variable includes its `origin` */
-  effectiveEnv?: Array<EnvironmentVariable>;
+  effectiveEnv?: ReadonlyArray<EnvironmentVariable>;
 }
 
 export const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -516,7 +516,7 @@ export interface Build {
   /** Output only. The environment name of the backend when this build was created. */
   environment?: string;
   /** Output only. A list of all errors that occurred during an App Hosting build. */
-  errors?: Array<Firebaseapphosting_Error>;
+  errors?: ReadonlyArray<Firebaseapphosting_Error>;
   /** Output only. A field that, if true, indicates that the build has an ongoing LRO. */
   reconciling?: boolean;
   /** Output only. Time at which the build was created. */
@@ -557,11 +557,11 @@ export const Build = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBuildsResponse {
   /** The list of builds. */
-  builds?: Array<Build>;
+  builds?: ReadonlyArray<Build>;
   /** A token identifying the next page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -627,11 +627,11 @@ export const Rollout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRolloutsResponse {
   /** The list of rollouts. */
-  rollouts?: Array<Rollout>;
+  rollouts?: ReadonlyArray<Rollout>;
   /** A token identifying the next page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -678,7 +678,7 @@ export interface DnsRecord {
   /** Output only. An enum that indicates the a required action for this record. Populated when the record is part of a required change in a `DnsUpdates` `discovered` or `desired` record set. */
   requiredAction?: "NONE" | "ADD" | "REMOVE" | (string & {});
   /** Output only. An enum that indicates which state(s) this DNS record applies to. Populated for all records with an `ADD` or `REMOVE` required action. */
-  relevantState?: Array<
+  relevantState?: ReadonlyArray<
     | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
     | "HOST_STATE"
     | "OWNERSHIP_STATE"
@@ -701,7 +701,7 @@ export interface DnsRecordSet {
   /** Output only. An error App Hosting services encountered when querying your domain's DNS records. Note: App Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet. */
   checkError?: Status;
   /** Output only. Records on the domain. */
-  records?: Array<DnsRecord>;
+  records?: ReadonlyArray<DnsRecord>;
 }
 
 export const DnsRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -714,9 +714,9 @@ export interface DnsUpdates {
   /** Output only. The domain name the DNS updates pertain to. */
   domainName?: string;
   /** Output only. The set of DNS records App Hosting discovered when inspecting a domain. */
-  discovered?: Array<DnsRecordSet>;
+  discovered?: ReadonlyArray<DnsRecordSet>;
   /** Output only. The set of DNS records App Hosting needs in order to be able to serve secure content on the domain. */
-  desired?: Array<DnsRecordSet>;
+  desired?: ReadonlyArray<DnsRecordSet>;
   /** Output only. The last time App Hosting checked your custom domain's DNS records. */
   checkTime?: string;
 }
@@ -760,9 +760,9 @@ export interface CustomDomainStatus {
     | "CERT_EXPIRED"
     | (string & {});
   /** Output only. Lists the records that must added or removed to a custom domain's DNS in order to finish setup and start serving content. Field is present during onboarding. Also present after onboarding if one or more of the above states is not *_ACTIVE, indicating the domain's DNS records are in a bad state. */
-  requiredDnsUpdates?: Array<DnsUpdates>;
+  requiredDnsUpdates?: ReadonlyArray<DnsUpdates>;
   /** Output only. A list of issues with domain configuration. Allows users to self-correct problems with DNS records. */
-  issues?: Array<Status>;
+  issues?: ReadonlyArray<Status>;
 }
 
 export const CustomDomainStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -823,11 +823,11 @@ export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDomainsResponse {
   /** Output only. The list of domains. */
-  domains?: Array<Domain>;
+  domains?: ReadonlyArray<Domain>;
   /** Output only. A token identifying the next page of results the server should return. */
   nextPageToken?: string;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -859,7 +859,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -907,7 +907,7 @@ export interface LiveMigrationStep {
     | "COMPLETE"
     | (string & {});
   /** Output only. One or more states from the `CustomDomainStatus` of the migrating domain that this step is attempting to make ACTIVE. For example, if the step is attempting to mint an SSL certificate, this field will include `CERT_STATE`. */
-  relevantDomainStates?: Array<
+  relevantDomainStates?: ReadonlyArray<
     | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
     | "HOST_STATE"
     | "OWNERSHIP_STATE"
@@ -915,9 +915,9 @@ export interface LiveMigrationStep {
     | (string & {})
   >;
   /** Output only. DNS updates to facilitate your domain's zero-downtime migration to App Hosting. */
-  dnsUpdates?: Array<DnsUpdates>;
+  dnsUpdates?: ReadonlyArray<DnsUpdates>;
   /** Output only. Issues that prevent the current step from completing. */
-  issues?: Array<Status>;
+  issues?: ReadonlyArray<Status>;
 }
 
 export const LiveMigrationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -959,11 +959,11 @@ export interface CustomDomainOperationMetadata {
     | "CERT_EXPIRED"
     | (string & {});
   /** Output only. A list of issues that are currently preventing the operation from completing. These are generally DNS-related issues encountered when querying a domain's records or attempting to mint an SSL certificate. */
-  issues?: Array<Status>;
+  issues?: ReadonlyArray<Status>;
   /** Output only. A set of DNS record updates to perform, to allow App Hosting to serve secure content on the domain. */
-  quickSetupUpdates?: Array<DnsUpdates>;
+  quickSetupUpdates?: ReadonlyArray<DnsUpdates>;
   /** Output only. A list of steps that the user must complete to migrate their domain to App Hosting without downtime. */
-  liveMigrationSteps?: Array<LiveMigrationStep>;
+  liveMigrationSteps?: ReadonlyArray<LiveMigrationStep>;
 }
 
 export const CustomDomainOperationMetadata =
@@ -1036,7 +1036,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1071,10 +1071,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1119,10 +1116,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1157,10 +1151,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1191,10 +1182,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1228,11 +1216,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1280,10 +1264,7 @@ export const ListProjectsLocationsBackendsRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backends" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackendsRequest>;
 
@@ -1318,10 +1299,7 @@ export const GetProjectsLocationsBackendsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackendsRequest>;
 
@@ -1366,11 +1344,7 @@ export const CreateProjectsLocationsBackendsRequest =
     ),
     body: Schema.optional(Backend).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/backends", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBackendsRequest>;
 
@@ -1420,11 +1394,7 @@ export const PatchProjectsLocationsBackendsRequest =
     ),
     body: Schema.optional(Backend).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackendsRequest>;
 
@@ -1469,10 +1439,7 @@ export const DeleteProjectsLocationsBackendsRequest =
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackendsRequest>;
 
@@ -1503,10 +1470,7 @@ export const GetProjectsLocationsBackendsTrafficRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/traffic",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackendsTrafficRequest>;
 
@@ -1551,11 +1515,7 @@ export const PatchProjectsLocationsBackendsTrafficRequest =
     ),
     body: Schema.optional(Traffic).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/traffic",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackendsTrafficRequest>;
 
@@ -1603,10 +1563,7 @@ export const ListProjectsLocationsBackendsBuildsRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/builds",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/builds" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackendsBuildsRequest>;
 
@@ -1641,10 +1598,7 @@ export const GetProjectsLocationsBackendsBuildsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/builds/{buildsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackendsBuildsRequest>;
 
@@ -1689,11 +1643,7 @@ export const CreateProjectsLocationsBackendsBuildsRequest =
     ),
     body: Schema.optional(Build).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/builds",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/builds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBackendsBuildsRequest>;
 
@@ -1735,10 +1685,7 @@ export const DeleteProjectsLocationsBackendsBuildsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/builds/{buildsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackendsBuildsRequest>;
 
@@ -1786,10 +1733,7 @@ export const ListProjectsLocationsBackendsRolloutsRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/rollouts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/rollouts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackendsRolloutsRequest>;
 
@@ -1825,10 +1769,7 @@ export const GetProjectsLocationsBackendsRolloutsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/rollouts/{rolloutsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackendsRolloutsRequest>;
 
@@ -1873,11 +1814,7 @@ export const CreateProjectsLocationsBackendsRolloutsRequest =
     ),
     body: Schema.optional(Rollout).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/rollouts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/rollouts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBackendsRolloutsRequest>;
 
@@ -1925,10 +1862,7 @@ export const ListProjectsLocationsBackendsDomainsRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/domains",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/domains" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackendsDomainsRequest>;
 
@@ -1963,10 +1897,7 @@ export const GetProjectsLocationsBackendsDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/domains/{domainsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackendsDomainsRequest>;
 
@@ -2011,11 +1942,7 @@ export const CreateProjectsLocationsBackendsDomainsRequest =
     ),
     body: Schema.optional(Domain).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/domains",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/domains", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBackendsDomainsRequest>;
 
@@ -2065,11 +1992,7 @@ export const PatchProjectsLocationsBackendsDomainsRequest =
     ),
     body: Schema.optional(Domain).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/domains/{domainsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBackendsDomainsRequest>;
 
@@ -2111,10 +2034,7 @@ export const DeleteProjectsLocationsBackendsDomainsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backends/{backendsId}/domains/{domainsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackendsDomainsRequest>;
 

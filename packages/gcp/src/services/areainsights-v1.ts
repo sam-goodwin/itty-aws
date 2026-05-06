@@ -51,7 +51,7 @@ export const Circle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Polygon {
   /** Optional. The coordinates that define the polygon. */
-  coordinates?: Array<LatLng>;
+  coordinates?: ReadonlyArray<LatLng>;
 }
 
 export const Polygon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -114,13 +114,13 @@ export const LocationFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TypeFilter {
   /** Optional. Included Place types. */
-  includedTypes?: Array<string>;
+  includedTypes?: ReadonlyArray<string>;
   /** Optional. Included primary Place types. */
-  includedPrimaryTypes?: Array<string>;
+  includedPrimaryTypes?: ReadonlyArray<string>;
   /** Optional. Excluded primary Place types. */
-  excludedPrimaryTypes?: Array<string>;
+  excludedPrimaryTypes?: ReadonlyArray<string>;
   /** Optional. Excluded Place types. */
-  excludedTypes?: Array<string>;
+  excludedTypes?: ReadonlyArray<string>;
 }
 
 export const TypeFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -134,7 +134,7 @@ export interface Filter {
   /** Optional. Restricts results to places whose average user ratings are in the range specified by rating_filter. If rating_filter is not set, all ratings are included in the result. */
   ratingFilter?: RatingFilter;
   /** Optional. Restricts results to places whose price level is included on this list. If `price_levels` is not set, all price levels are included in the results. */
-  priceLevels?: Array<
+  priceLevels?: ReadonlyArray<
     | "PRICE_LEVEL_UNSPECIFIED"
     | "PRICE_LEVEL_FREE"
     | "PRICE_LEVEL_INEXPENSIVE"
@@ -148,7 +148,7 @@ export interface Filter {
   /** Required. Place type filters. */
   typeFilter?: TypeFilter;
   /** Optional. Restricts results to places whose operating status is included on this list. If operating_status is not set, OPERATING_STATUS_OPERATIONAL is used as default. */
-  operatingStatus?: Array<
+  operatingStatus?: ReadonlyArray<
     | "OPERATING_STATUS_UNSPECIFIED"
     | "OPERATING_STATUS_OPERATIONAL"
     | "OPERATING_STATUS_PERMANENTLY_CLOSED"
@@ -167,7 +167,7 @@ export const Filter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ComputeInsightsRequest {
   /** Required. Insights to compute. Currently only INSIGHT_COUNT and INSIGHT_PLACES are supported. */
-  insights?: Array<
+  insights?: ReadonlyArray<
     "INSIGHT_UNSPECIFIED" | "INSIGHT_COUNT" | "INSIGHT_PLACES" | (string & {})
   >;
   /** Required. Insight filter. */
@@ -185,7 +185,7 @@ export interface ComputeInsightsResponse {
   /** Result for Insights.INSIGHT_COUNT. */
   count?: string;
   /** Result for Insights.INSIGHT_PLACES. */
-  placeInsights?: Array<PlaceInsight>;
+  placeInsights?: ReadonlyArray<PlaceInsight>;
 }
 
 export const ComputeInsightsResponse =

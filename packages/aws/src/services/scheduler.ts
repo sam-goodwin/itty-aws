@@ -888,7 +888,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.String },
-).pipe(C.withConflictError) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.String },

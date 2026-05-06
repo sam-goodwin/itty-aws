@@ -135,7 +135,7 @@ export interface BitbucketServerConfig {
   /** Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config. */
   webhookKey?: string;
   /** Output only. Connected Bitbucket Server repositories for this config. */
-  connectedRepositories?: Array<BitbucketServerRepositoryId>;
+  connectedRepositories?: ReadonlyArray<BitbucketServerRepositoryId>;
   /** Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt. */
   sslCa?: string;
   /** Username of the account Cloud Build will use on Bitbucket Server. */
@@ -162,7 +162,7 @@ export const BitbucketServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBitbucketServerConfigsResponse {
   /** A list of BitbucketServerConfigs */
-  bitbucketServerConfigs?: Array<BitbucketServerConfig>;
+  bitbucketServerConfigs?: ReadonlyArray<BitbucketServerConfig>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -236,7 +236,7 @@ export const Hash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FileHashes {
   /** Collection of file hashes. */
-  fileHash?: Array<Hash>;
+  fileHash?: ReadonlyArray<Hash>;
 }
 
 export const FileHashes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -368,9 +368,9 @@ export const InlineSecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
-  secretManager?: Array<SecretManagerSecret>;
+  secretManager?: ReadonlyArray<SecretManagerSecret>;
   /** Secrets encrypted with KMS key and the associated secret environment variable. */
-  inline?: Array<InlineSecret>;
+  inline?: ReadonlyArray<InlineSecret>;
 }
 
 export const Secrets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -589,7 +589,7 @@ export interface BuildOptions {
   /** Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 4000GB; builds that request more than the maximum are rejected with an error. */
   diskSizeGb?: string;
   /** A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file. */
   substitutionOption?: "MUST_MATCH" | "ALLOW_LOOSE" | (string & {});
   /** Compute Engine machine type on which to run the build. */
@@ -619,7 +619,7 @@ export interface BuildOptions {
     | "NONE"
     | (string & {});
   /** A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** Option to define build log streaming behavior to Cloud Storage. */
   logStreamingOption?:
     | "STREAM_DEFAULT"
@@ -627,7 +627,7 @@ export interface BuildOptions {
     | "STREAM_OFF"
     | (string & {});
   /** Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Requested verifiability options. */
   requestedVerifyOption?: "NOT_VERIFIED" | "VERIFIED" | (string & {});
   /** This field deprecated; please use `pool.name` instead. */
@@ -635,7 +635,7 @@ export interface BuildOptions {
   /** Option to include built-in and custom substitutions as env variables for all build steps. */
   automapSubstitutions?: boolean;
   /** Requested hash for SourceProvenance. */
-  sourceProvenanceHash?: Array<
+  sourceProvenanceHash?: ReadonlyArray<
     | "NONE"
     | "SHA256"
     | "MD5"
@@ -783,19 +783,19 @@ export const BuiltImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Results {
   /** Optional. Go module artifacts uploaded to Artifact Registry at the end of the build. */
-  goModules?: Array<UploadedGoModule>;
+  goModules?: ReadonlyArray<UploadedGoModule>;
   /** Python artifacts uploaded to Artifact Registry at the end of the build. */
-  pythonPackages?: Array<UploadedPythonPackage>;
+  pythonPackages?: ReadonlyArray<UploadedPythonPackage>;
   /** Maven artifacts uploaded to Artifact Registry at the end of the build. */
-  mavenArtifacts?: Array<UploadedMavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<UploadedMavenArtifact>;
   /** Npm packages uploaded to Artifact Registry at the end of the build. */
-  npmPackages?: Array<UploadedNpmPackage>;
+  npmPackages?: ReadonlyArray<UploadedNpmPackage>;
   /** List of build step digests, in the order corresponding to build step indices. */
-  buildStepImages?: Array<string>;
+  buildStepImages?: ReadonlyArray<string>;
   /** Container images that were built as a part of the build. */
-  images?: Array<BuiltImage>;
+  images?: ReadonlyArray<BuiltImage>;
   /** List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can't be substituted. */
-  buildStepOutputs?: Array<string>;
+  buildStepOutputs?: ReadonlyArray<string>;
   /** Time to push all non-container artifacts to Cloud Storage. */
   artifactTiming?: TimeSpan;
   /** Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
@@ -821,7 +821,7 @@ export interface ArtifactObjects {
   /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
   location?: string;
   /** Path globs used to match files in the build's workspace. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Output only. Stores timing information for pushing all artifact objects. */
   timing?: TimeSpan;
 }
@@ -836,7 +836,7 @@ export interface PythonPackage {
   /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
   repository?: string;
   /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
 }
 
 export const PythonPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -872,7 +872,7 @@ export interface Oci {
   /** Required. Path on the local file system where to find the container to upload. e.g. /workspace/my-image.tar */
   file?: string;
   /** Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0 */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image */
   registryPath?: string;
 }
@@ -923,17 +923,17 @@ export interface Artifacts {
   /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
   objects?: ArtifactObjects;
   /** A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE. */
-  pythonPackages?: Array<PythonPackage>;
+  pythonPackages?: ReadonlyArray<PythonPackage>;
   /** Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build steps. If any objects fail to be pushed, the build is marked FAILURE. */
-  goModules?: Array<GoModule>;
+  goModules?: ReadonlyArray<GoModule>;
   /** Optional. A list of OCI images to be uploaded to Artifact Registry upon successful completion of all build steps. OCI images in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any images fail to be pushed, the build is marked FAILURE. */
-  oci?: Array<Oci>;
+  oci?: ReadonlyArray<Oci>;
   /** A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE. */
-  mavenArtifacts?: Array<MavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<MavenArtifact>;
   /** A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE. */
-  npmPackages?: Array<NpmPackage>;
+  npmPackages?: ReadonlyArray<NpmPackage>;
 }
 
 export const Artifacts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -950,11 +950,11 @@ export interface BuildStep {
   /** Output only. Stores timing information for pulling this build step's builder image only. */
   pullTiming?: TimeSpan;
   /** Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence. */
-  allowExitCodes?: Array<number>;
+  allowExitCodes?: ReadonlyArray<number>;
   /** A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution. */
   dir?: string;
   /** Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses. */
@@ -983,11 +983,11 @@ export interface BuildStep {
   /** Output only. Stores timing information for executing this build step. */
   timing?: TimeSpan;
   /** The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully. */
-  waitFor?: Array<string>;
+  waitFor?: ReadonlyArray<string>;
   /** A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
   name?: string;
   /** Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out. */
@@ -1023,7 +1023,7 @@ export interface Build {
   /** Output only. Time at which the request to create the build was received. */
   createTime?: string;
   /** A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** Output only. A permanent fixed identifier for source. */
   sourceProvenance?: SourceProvenance;
   /** Secrets and secret environment variables. */
@@ -1031,11 +1031,11 @@ export interface Build {
   /** Output only. Contains information about the build when status=FAILURE. */
   failureInfo?: FailureInfo;
   /** Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets */
-  secrets?: Array<Secret>;
+  secrets?: ReadonlyArray<Secret>;
   /** TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time. */
   queueTtl?: string;
   /** Optional. Dependencies that the Cloud Build worker will fetch before executing user steps. */
-  dependencies?: Array<Dependency>;
+  dependencies?: ReadonlyArray<Dependency>;
   /** Optional. The location of the source files to build. */
   source?: Source;
   /** Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes. */
@@ -1043,7 +1043,7 @@ export interface Build {
   /** Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution. */
   finishTime?: string;
   /** Tags for annotation of a `Build`. These are not docker tags. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. */
   serviceAccount?: string;
   /** Output only. URL to logs for this build in Google Cloud Console. */
@@ -1055,7 +1055,7 @@ export interface Build {
   /** Output only. Describes this build's approval configuration, status, and result. */
   approval?: BuildApproval;
   /** Output only. Non-fatal problems encountered during the execution of the build. */
-  warnings?: Array<Warning>;
+  warnings?: ReadonlyArray<Warning>;
   /** Special options for this build. */
   options?: BuildOptions;
   /** Substitutions data for `Build` resource. */
@@ -1086,7 +1086,7 @@ export interface Build {
   /** Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service. */
   name?: string;
   /** Required. The operations to be performed on the workspace. */
-  steps?: Array<BuildStep>;
+  steps?: ReadonlyArray<BuildStep>;
   /** Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included. */
   timing?: Record<string, TimeSpan>;
   /** Output only. ID of the project. */
@@ -1129,7 +1129,7 @@ export const Build = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBuildsResponse {
   /** Builds will be sorted by `create_time`, descending. */
-  builds?: Array<Build>;
+  builds?: ReadonlyArray<Build>;
   /** Token to receive the next page of results. This will be absent if the end of the response list has been reached. */
   nextPageToken?: string;
 }
@@ -1200,7 +1200,7 @@ export const GitLabRepositoryId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -1324,7 +1324,7 @@ export const CreateGitLabConnectedRepositoryRequest =
 
 export interface BatchCreateGitLabConnectedRepositoriesRequest {
   /** Required. Requests to connect GitLab repositories. */
-  requests?: Array<CreateGitLabConnectedRepositoryRequest>;
+  requests?: ReadonlyArray<CreateGitLabConnectedRepositoryRequest>;
 }
 
 export const BatchCreateGitLabConnectedRepositoriesRequest =
@@ -1462,7 +1462,7 @@ export interface GitLabConfig {
   /** Output only. Time when the config was created. */
   createTime?: string;
   /** Connected GitLab.com or GitLabEnterprise repositories for this config. */
-  connectedRepositories?: Array<GitLabRepositoryId>;
+  connectedRepositories?: ReadonlyArray<GitLabRepositoryId>;
   /** Required. Secret Manager secrets needed by the config. */
   secrets?: GitLabSecrets;
   /** Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config. */
@@ -1578,7 +1578,7 @@ export const CreateGitHubEnterpriseConfigOperationMetadata =
 
 export interface BatchCreateBitbucketServerConnectedRepositoriesResponse {
   /** The connected Bitbucket Server repositories. */
-  bitbucketServerConnectedRepositories?: Array<BitbucketServerConnectedRepository>;
+  bitbucketServerConnectedRepositories?: ReadonlyArray<BitbucketServerConnectedRepository>;
 }
 
 export const BatchCreateBitbucketServerConnectedRepositoriesResponse =
@@ -1616,7 +1616,7 @@ export interface ListBitbucketServerRepositoriesResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of Bitbucket Server repositories. */
-  bitbucketServerRepositories?: Array<BitbucketServerRepository>;
+  bitbucketServerRepositories?: ReadonlyArray<BitbucketServerRepository>;
 }
 
 export const ListBitbucketServerRepositoriesResponse =
@@ -1813,7 +1813,7 @@ export interface BuildTrigger {
   /** GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received. */
   gitlabEnterpriseEventsConfig?: GitLabEventsConfig;
   /** If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build. */
-  includedFiles?: Array<string>;
+  includedFiles?: ReadonlyArray<string>;
   /** Contents of the build template. */
   build?: Build;
   /** Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml). */
@@ -1841,7 +1841,7 @@ export interface BuildTrigger {
   /** Output only. Time when the trigger was created. */
   createTime?: string;
   /** ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build. */
-  ignoredFiles?: Array<string>;
+  ignoredFiles?: ReadonlyArray<string>;
   /** If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error. */
   includeBuildLogs?:
     | "INCLUDE_BUILD_LOGS_UNSPECIFIED"
@@ -1858,7 +1858,7 @@ export interface BuildTrigger {
   /** A Common Expression Language string. */
   filter?: string;
   /** Tags for annotation of a `BuildTrigger` */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set and the legacy Cloud Build service account ([PROJECT_NUM]@cloudbuild.gserviceaccount.com) is the default for the project then it will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}` */
   serviceAccount?: string;
 }
@@ -1896,7 +1896,7 @@ export const BuildTrigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBuildTriggersResponse {
   /** `BuildTriggers` for the project, sorted by `create_time` descending. */
-  triggers?: Array<BuildTrigger>;
+  triggers?: ReadonlyArray<BuildTrigger>;
   /** Token to receive the next page of results. */
   nextPageToken?: string;
 }
@@ -1945,7 +1945,7 @@ export const GitLabRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGitLabRepositoriesResponse {
   /** List of GitLab repositories */
-  gitlabRepositories?: Array<GitLabRepository>;
+  gitlabRepositories?: ReadonlyArray<GitLabRepository>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2128,7 +2128,7 @@ export const GitHubEnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListGithubEnterpriseConfigsResponse {
   /** A list of GitHubEnterpriseConfigs */
-  configs?: Array<GitHubEnterpriseConfig>;
+  configs?: ReadonlyArray<GitHubEnterpriseConfig>;
 }
 
 export const ListGithubEnterpriseConfigsResponse =
@@ -2193,7 +2193,7 @@ export const BatchCreateGitLabConnectedRepositoriesResponseMetadata =
 
 export interface ArtifactResult {
   /** The file hash of the artifact. */
-  fileHash?: Array<FileHashes>;
+  fileHash?: ReadonlyArray<FileHashes>;
   /** The path of an artifact in a Cloud Storage bucket, with the generation number. For example, `gs://mybucket/path/to/output.jar#generation`. */
   location?: string;
 }
@@ -2221,7 +2221,7 @@ export const UpdateGitHubEnterpriseConfigOperationMetadata =
 
 export interface ListWorkerPoolsResponse {
   /** `WorkerPools` for the specified project. */
-  workerPools?: Array<WorkerPool>;
+  workerPools?: ReadonlyArray<WorkerPool>;
   /** Continuation token used to page through large result sets. Provide this value in a subsequent ListWorkerPoolsRequest to return the next page of results. */
   nextPageToken?: string;
 }
@@ -2250,7 +2250,7 @@ export const UpdateWorkerPoolOperationMetadata =
 
 export interface ListGitLabConfigsResponse {
   /** A list of GitLabConfigs */
-  gitlabConfigs?: Array<GitLabConfig>;
+  gitlabConfigs?: ReadonlyArray<GitLabConfig>;
   /** A token that can be sent as `page_token` to retrieve the next page If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2263,7 +2263,7 @@ export const ListGitLabConfigsResponse =
 
 export interface BatchCreateBitbucketServerConnectedRepositoriesRequest {
   /** Required. Requests to connect Bitbucket Server repositories. */
-  requests?: Array<CreateBitbucketServerConnectedRepositoryRequest>;
+  requests?: ReadonlyArray<CreateBitbucketServerConnectedRepositoryRequest>;
 }
 
 export const BatchCreateBitbucketServerConnectedRepositoriesRequest =
@@ -2341,7 +2341,7 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
@@ -2372,7 +2372,7 @@ export const UpdateGitLabConfigOperationMetadata =
 
 export interface BatchCreateGitLabConnectedRepositoriesResponse {
   /** The GitLab connected repository requests' responses. */
-  gitlabConnectedRepositories?: Array<GitLabConnectedRepository>;
+  gitlabConnectedRepositories?: ReadonlyArray<GitLabConnectedRepository>;
 }
 
 export const BatchCreateGitLabConnectedRepositoriesResponse =
@@ -2398,10 +2398,7 @@ export const ListProjectsGithubEnterpriseConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/githubEnterpriseConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGithubEnterpriseConfigsRequest>;
 
@@ -2439,11 +2436,7 @@ export const PatchProjectsGithubEnterpriseConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsGithubEnterpriseConfigsRequest>;
 
@@ -2480,10 +2473,7 @@ export const DeleteProjectsGithubEnterpriseConfigsRequest =
     configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>;
 
@@ -2527,7 +2517,7 @@ export const CreateProjectsGithubEnterpriseConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs",
+      path: "v1/{parent}/githubEnterpriseConfigs",
       hasBody: true,
     }),
     svc,
@@ -2566,10 +2556,7 @@ export const GetProjectsGithubEnterpriseConfigsRequest =
     configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsGithubEnterpriseConfigsRequest>;
 
@@ -2899,10 +2886,7 @@ export const GetDefaultServiceAccountProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/defaultServiceAccount",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDefaultServiceAccountProjectsLocationsRequest>;
 
@@ -2940,10 +2924,7 @@ export const DeleteProjectsLocationsGithubEnterpriseConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>;
 
@@ -2987,7 +2968,7 @@ export const CreateProjectsLocationsGithubEnterpriseConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
+      path: "v1/{parent}/githubEnterpriseConfigs",
       hasBody: true,
     }),
     svc,
@@ -3026,10 +3007,7 @@ export const GetProjectsLocationsGithubEnterpriseConfigsRequest =
     configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>;
 
@@ -3064,10 +3042,7 @@ export const ListProjectsLocationsGithubEnterpriseConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/githubEnterpriseConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>;
 
@@ -3105,11 +3080,7 @@ export const PatchProjectsLocationsGithubEnterpriseConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>;
 
@@ -3152,11 +3123,7 @@ export const PatchProjectsLocationsTriggersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{resourceName}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTriggersRequest>;
 
@@ -3196,10 +3163,7 @@ export const ListProjectsLocationsTriggersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/triggers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTriggersRequest>;
 
@@ -3237,11 +3201,7 @@ export const RunProjectsLocationsTriggersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RunBuildTriggerRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsTriggersRequest>;
 
@@ -3278,11 +3238,7 @@ export const CreateProjectsLocationsTriggersRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/triggers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTriggersRequest>;
 
@@ -3319,10 +3275,7 @@ export const GetProjectsLocationsTriggersRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     triggerId: Schema.optional(Schema.String).pipe(T.HttpQuery("triggerId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTriggersRequest>;
 
@@ -3365,11 +3318,7 @@ export const WebhookProjectsLocationsTriggersRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:webhook",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:webhook", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WebhookProjectsLocationsTriggersRequest>;
 
@@ -3407,10 +3356,7 @@ export const DeleteProjectsLocationsTriggersRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTriggersRequest>;
 
@@ -3451,7 +3397,7 @@ export const CreateProjectsLocationsGitLabConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs",
+      path: "v1/{parent}/gitLabConfigs",
       hasBody: true,
     }),
     svc,
@@ -3484,10 +3430,7 @@ export const GetProjectsLocationsGitLabConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGitLabConfigsRequest>;
 
@@ -3518,10 +3461,7 @@ export const DeleteProjectsLocationsGitLabConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGitLabConfigsRequest>;
 
@@ -3559,7 +3499,7 @@ export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}:removeGitLabConnectedRepository",
+      path: "v1/{config}:removeGitLabConnectedRepository",
       hasBody: true,
     }),
     svc,
@@ -3600,11 +3540,7 @@ export const PatchProjectsLocationsGitLabConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GitLabConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGitLabConfigsRequest>;
 
@@ -3641,10 +3577,7 @@ export const ListProjectsLocationsGitLabConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/gitLabConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGitLabConfigsRequest>;
 
@@ -3687,7 +3620,7 @@ export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}/connectedRepositories:batchCreate",
+      path: "v1/{parent}/connectedRepositories:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -3729,10 +3662,7 @@ export const ListProjectsLocationsGitLabConfigsReposRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}/repos",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/repos" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGitLabConfigsReposRequest>;
 
@@ -3780,10 +3710,7 @@ export const ListProjectsLocationsBuildsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/builds" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBuildsRequest>;
 
@@ -3821,11 +3748,7 @@ export const CancelProjectsLocationsBuildsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelBuildRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsBuildsRequest>;
 
@@ -3859,11 +3782,7 @@ export const ApproveProjectsLocationsBuildsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveBuildRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:approve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProjectsLocationsBuildsRequest>;
 
@@ -3897,11 +3816,7 @@ export const RetryProjectsLocationsBuildsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RetryBuildRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:retry",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:retry", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RetryProjectsLocationsBuildsRequest>;
 
@@ -3938,11 +3853,7 @@ export const CreateProjectsLocationsBuildsRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     body: Schema.optional(Build).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/builds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBuildsRequest>;
 
@@ -3979,10 +3890,7 @@ export const GetProjectsLocationsBuildsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBuildsRequest>;
 
@@ -4013,10 +3921,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -4050,11 +3955,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -4095,7 +3996,7 @@ export const CreateProjectsLocationsBitbucketServerConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs",
+      path: "v1/{parent}/bitbucketServerConfigs",
       hasBody: true,
     }),
     svc,
@@ -4128,10 +4029,7 @@ export const GetProjectsLocationsBitbucketServerConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBitbucketServerConfigsRequest>;
 
@@ -4163,10 +4061,7 @@ export const DeleteProjectsLocationsBitbucketServerConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBitbucketServerConfigsRequest>;
 
@@ -4204,7 +4099,7 @@ export const RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}:removeBitbucketServerConnectedRepository",
+      path: "v1/{config}:removeBitbucketServerConnectedRepository",
       hasBody: true,
     }),
     svc,
@@ -4247,11 +4142,7 @@ export const PatchProjectsLocationsBitbucketServerConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BitbucketServerConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>;
 
@@ -4288,10 +4179,7 @@ export const ListProjectsLocationsBitbucketServerConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/bitbucketServerConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>;
 
@@ -4334,7 +4222,7 @@ export const BatchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}/connectedRepositories:batchCreate",
+      path: "v1/{parent}/connectedRepositories:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -4377,10 +4265,7 @@ export const ListProjectsLocationsBitbucketServerConfigsReposRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}/repos",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/repos" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>;
 
@@ -4428,11 +4313,7 @@ export const PatchProjectsLocationsWorkerPoolsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WorkerPool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
 
@@ -4469,10 +4350,7 @@ export const ListProjectsLocationsWorkerPoolsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/workerPools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkerPoolsRequest>;
 
@@ -4520,11 +4398,7 @@ export const CreateProjectsLocationsWorkerPoolsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WorkerPool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/workerPools", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsWorkerPoolsRequest>;
 
@@ -4555,10 +4429,7 @@ export const GetProjectsLocationsWorkerPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkerPoolsRequest>;
 
@@ -4602,10 +4473,7 @@ export const DeleteProjectsLocationsWorkerPoolsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsWorkerPoolsRequest>;
 
@@ -4844,11 +4712,7 @@ export const ApproveProjectsBuildsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveBuildRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/builds/{buildsId}:approve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProjectsBuildsRequest>;
 
@@ -4887,7 +4751,7 @@ export const RegionalWebhookLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/locations/{locationsId}/regionalWebhook",
+      path: "v1/{location}/regionalWebhook",
       hasBody: true,
     }),
     svc,
@@ -4919,7 +4783,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -4952,11 +4816,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 

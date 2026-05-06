@@ -1,0 +1,5 @@
+{
+  "errorCategories": {
+    "ConflictException": ["ConflictError", "RetryableError"]
+  }
+}

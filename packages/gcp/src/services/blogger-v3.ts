@@ -102,7 +102,11 @@ export interface Post {
   /** The identifier of this Post. */
   id?: string;
   /** The container of comments on this Post. */
-  replies?: { selfLink?: string; totalItems?: string; items?: Array<Comment> };
+  replies?: {
+    selfLink?: string;
+    totalItems?: string;
+    items?: ReadonlyArray<Comment>;
+  };
   /** The title link URL, similar to atom's related link. */
   titleLink?: string;
   /** Status of the post. Only set for admin-level requests. */
@@ -126,7 +130,7 @@ export interface Post {
   /** RFC 3339 date-time when this Post was published. */
   published?: string;
   /** Display image for the Post. */
-  images?: Array<{ url?: string }>;
+  images?: ReadonlyArray<{ url?: string }>;
   /** The author of this Post. */
   author?: {
     id?: string;
@@ -137,7 +141,7 @@ export interface Post {
   /** The URL where this Post is displayed. */
   url?: string;
   /** The list of labels this Post was tagged with. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** RFC 3339 date-time when this Post was last trashed. */
   trashed?: string;
   /** The title of the Post. */
@@ -314,7 +318,7 @@ export const Page = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PageList {
   /** The list of Pages for a Blog. */
-  items?: Array<Page>;
+  items?: ReadonlyArray<Page>;
   /** Pagination token to fetch the next page, if one exists. */
   nextPageToken?: string;
   /** Etag of the response. */
@@ -344,7 +348,11 @@ export interface Blog {
   /** The locale this Blog is set to. */
   locale?: { language?: string; country?: string; variant?: string };
   /** The container of posts in this blog. */
-  posts?: { selfLink?: string; totalItems?: number; items?: Array<Post> };
+  posts?: {
+    selfLink?: string;
+    totalItems?: number;
+    items?: ReadonlyArray<Post>;
+  };
   /** RFC 3339 date-time when this blog was last updated. */
   updated?: string;
   /** RFC 3339 date-time when this blog was published. */
@@ -396,7 +404,7 @@ export interface PostUserInfosList {
   /** Pagination token to fetch the next page, if one exists. */
   nextPageToken?: string;
   /** The list of Posts with User information for the post, for this Blog. */
-  items?: Array<PostUserInfo>;
+  items?: ReadonlyArray<PostUserInfo>;
   /** The kind of this entity. Always blogger#postList. */
   kind?: string;
 }
@@ -413,7 +421,7 @@ export interface Pageviews {
   /** Blog Id. */
   blogId?: string;
   /** The container of posts in this blog. */
-  counts?: Array<{
+  counts?: ReadonlyArray<{
     timeRange?: "ALL_TIME" | "THIRTY_DAYS" | "SEVEN_DAYS" | (string & {});
     count?: string;
   }>;
@@ -478,9 +486,9 @@ export const BlogUserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BlogList {
   /** The list of Blogs this user has Authorship or Admin rights over. */
-  items?: Array<Blog>;
+  items?: ReadonlyArray<Blog>;
   /** Admin level list of blog per-user information. */
-  blogUserInfos?: Array<BlogUserInfo>;
+  blogUserInfos?: ReadonlyArray<BlogUserInfo>;
   /** The kind of this entity. Always blogger#blogList. */
   kind?: string;
 }
@@ -493,7 +501,7 @@ export const BlogList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CommentList {
   /** The List of Comments for a Post. */
-  items?: Array<Comment>;
+  items?: ReadonlyArray<Comment>;
   /** The kind of this entry. Always blogger#commentList. */
   kind?: string;
   /** Etag of the response. */
@@ -522,7 +530,7 @@ export interface PostList {
   /** The kind of this entity. Always blogger#postList. */
   kind?: string;
   /** The list of Posts for this Blog. */
-  items?: Array<Post>;
+  items?: ReadonlyArray<Post>;
 }
 
 export const PostList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
