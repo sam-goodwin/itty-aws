@@ -16,7 +16,7 @@ const withPolarEnv = <A, E, R>(
     Effect.sync(() => {
       const previous = {
         POLAR_ACCESS_TOKEN: process.env.POLAR_ACCESS_TOKEN,
-        POLAR_SERVER: process.env.POLAR_SERVER,
+        POLAR_API_BASE_URL: process.env.POLAR_API_BASE_URL,
       };
 
       for (const [key, value] of Object.entries(env)) {
@@ -52,7 +52,7 @@ describe("CredentialsFromEnv", () => {
       withPolarEnv(
         {
           POLAR_ACCESS_TOKEN: "token-123",
-          POLAR_SERVER: undefined,
+          POLAR_API_BASE_URL: undefined,
         },
         resolveCredentials,
       ),
@@ -60,22 +60,20 @@ describe("CredentialsFromEnv", () => {
 
     expect(Redacted.value(credentials.accessToken)).toBe("token-123");
     expect(credentials.apiBaseUrl).toBe(DEFAULT_API_BASE_URL);
-    expect(credentials.server).toBe("production");
   });
 
-  it("supports sandbox", async () => {
+  it("supports overriding the API base URL", async () => {
     const credentials = await Effect.runPromise(
       withPolarEnv(
         {
           POLAR_ACCESS_TOKEN: "token-123",
-          POLAR_SERVER: "sandbox",
+          POLAR_API_BASE_URL: SANDBOX_API_BASE_URL,
         },
         resolveCredentials,
       ),
     );
 
     expect(credentials.apiBaseUrl).toBe(SANDBOX_API_BASE_URL);
-    expect(credentials.server).toBe("sandbox");
   });
 
   it("fails when POLAR_ACCESS_TOKEN is missing", async () => {
@@ -83,7 +81,7 @@ describe("CredentialsFromEnv", () => {
       withPolarEnv(
         {
           POLAR_ACCESS_TOKEN: undefined,
-          POLAR_SERVER: undefined,
+          POLAR_API_BASE_URL: undefined,
         },
         Effect.flip(resolveCredentials),
       ),
@@ -91,20 +89,5 @@ describe("CredentialsFromEnv", () => {
 
     expect(error._tag).toBe("ConfigError");
     expect(error.message).toContain("POLAR_ACCESS_TOKEN");
-  });
-
-  it("fails when POLAR_SERVER is invalid", async () => {
-    const error = await Effect.runPromise(
-      withPolarEnv(
-        {
-          POLAR_ACCESS_TOKEN: "token-123",
-          POLAR_SERVER: "staging",
-        },
-        Effect.flip(resolveCredentials),
-      ),
-    );
-
-    expect(error._tag).toBe("ConfigError");
-    expect(error.message).toContain("POLAR_SERVER");
   });
 });

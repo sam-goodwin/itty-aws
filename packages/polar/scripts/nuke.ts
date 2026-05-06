@@ -34,6 +34,8 @@ import { discountsdelete } from "../src/operations/discountsdelete.ts";
 import { discountslist } from "../src/operations/discountslist.ts";
 import { filesdelete } from "../src/operations/filesdelete.ts";
 import { fileslist } from "../src/operations/fileslist.ts";
+import { membersdeleteMember } from "../src/operations/membersdeleteMember.ts";
+import { memberslistMembers } from "../src/operations/memberslistMembers.ts";
 import { meterslist } from "../src/operations/meterslist.ts";
 import { metersupdate } from "../src/operations/metersupdate.ts";
 import { metricsdeleteDashboard } from "../src/operations/metricsdeleteDashboard.ts";
@@ -42,11 +44,12 @@ import { organizationAccessTokensdelete } from "../src/operations/organizationAc
 import { organizationAccessTokenslist } from "../src/operations/organizationAccessTokenslist.ts";
 import { productslist } from "../src/operations/productslist.ts";
 import { productsupdate } from "../src/operations/productsupdate.ts";
+import { subscriptionslist } from "../src/operations/subscriptionslist.ts";
+import { subscriptionsrevoke } from "../src/operations/subscriptionsrevoke.ts";
 import { webhooksdeleteWebhookEndpoint } from "../src/operations/webhooksdeleteWebhookEndpoint.ts";
 import { webhookslistWebhookEndpoints } from "../src/operations/webhookslistWebhookEndpoints.ts";
 
 const RED = "\x1b[31m";
-const GREEN = "\x1b[32m";
 const YELLOW = "\x1b[33m";
 const CYAN = "\x1b[36m";
 const BOLD = "\x1b[1m";
@@ -164,6 +167,8 @@ const nukeResource = (options: {
   getDeleteInput: (item: Record<string, any>) => Record<string, unknown>;
   getName: (item: Record<string, any>) => string | null | undefined;
   baseInput?: Record<string, unknown>;
+  filterItem?: (item: Record<string, any>) => boolean;
+  actionLabel?: string;
 }) =>
   Effect.gen(function* () {
     yield* Console.log(`${CYAN}${BOLD}${options.label}${RESET}`);
@@ -173,7 +178,13 @@ const nukeResource = (options: {
       options.baseInput ?? {},
     );
 
-    for (const item of items) {
+    const filtered = options.filterItem
+      ? items.filter(options.filterItem)
+      : items;
+
+    const action = options.actionLabel ?? "DELETE";
+
+    for (const item of filtered) {
       totalFound++;
       const id = String(item.id);
       const name = options.getName(item);
@@ -190,14 +201,14 @@ const nukeResource = (options: {
       if (currentDryRun) {
         totalDeleted++;
         yield* Console.log(
-          `  ${RED}[DELETE]${RESET} ${options.type}: ${name ?? id} ${DIM}(${id})${RESET}`,
+          `  ${RED}[${action}]${RESET} ${options.type}: ${name ?? id} ${DIM}(${id})${RESET}`,
         );
       } else {
         yield* options.del(options.getDeleteInput(item)).pipe(
           Effect.andThen(() => {
             totalDeleted++;
             return Console.log(
-              `  ${RED}[DELETE]${RESET} ${options.type}: ${name ?? id} ${DIM}(${id})${RESET}`,
+              `  ${RED}[${action}]${RESET} ${options.type}: ${name ?? id} ${DIM}(${id})${RESET}`,
             );
           }),
           Effect.catch(() => {
@@ -333,6 +344,23 @@ const nuke = Command.make(
         `\n${BOLD}Polar Nuke${RESET} ${args.dryRun ? `${YELLOW}(dry run)${RESET}` : `${RED}(live)${RESET}`}\n`,
       );
 
+      // Revoke active subscriptions first — they reference customers/products
+      yield* nukeResource({
+        label: "Subscriptions",
+        type: "Subscription",
+        list: subscriptionslist as any,
+        del: subscriptionsrevoke as any,
+        getDeleteInput: (item) => ({ id: item.id }),
+        getName: (item) =>
+          item.customer?.email ?? item.product?.name ?? item.id,
+        // Skip already-terminated subscriptions
+        filterItem: (item) =>
+          item.status !== "canceled" &&
+          item.status !== "incomplete_expired" &&
+          item.ended_at == null,
+        actionLabel: "REVOKE",
+      });
+
       yield* nukeResource({
         label: "Webhook Endpoints",
         type: "WebhookEndpoint",
@@ -385,6 +413,16 @@ const nuke = Command.make(
         del: filesdelete as any,
         getDeleteInput: (item) => ({ id: item.id }),
         getName: (item) => item.name ?? item.path,
+      });
+
+      // Members live inside customers — delete before customers
+      yield* nukeResource({
+        label: "Members",
+        type: "Member",
+        list: memberslistMembers as any,
+        del: membersdeleteMember as any,
+        getDeleteInput: (item) => ({ id: item.id }),
+        getName: (item) => item.email ?? item.name ?? item.external_id,
       });
 
       yield* archiveResource({
