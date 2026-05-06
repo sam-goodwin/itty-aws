@@ -46,6 +46,10 @@ on:
         description: "PlanetScale"
         type: boolean
         default: false
+      polar:
+        description: "Polar"
+        type: boolean
+        default: false
       prisma-postgres:
         description: "Prisma Postgres"
         type: boolean
@@ -94,6 +98,7 @@ jobs:
              && "${{ inputs.mongodb-atlas }}" != "true" \
              && "${{ inputs.neon }}" != "true" \
              && "${{ inputs.planetscale }}" != "true" \
+             && "${{ inputs.polar }}" != "true" \
              && "${{ inputs.prisma-postgres }}" != "true" \
              && "${{ inputs.stripe }}" != "true" \
              && "${{ inputs.supabase }}" != "true" \
@@ -229,6 +234,26 @@ jobs:
         working-directory: packages/prisma-postgres
         env:
           PRISMA_POSTGRES_API_TOKEN: ${{ secrets.PRISMA_POSTGRES_API_TOKEN }}
+
+  # ── Polar ──
+  nuke-polar:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.polar)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/polar
+        env:
+          POLAR_ACCESS_TOKEN: ${{ secrets.POLAR_ACCESS_TOKEN }}
+          POLAR_SERVER: sandbox
 
   # ── Stripe ──
   nuke-stripe:
