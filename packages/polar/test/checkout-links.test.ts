@@ -113,7 +113,7 @@ describeLive("Checkout Links", () => {
 
   it(
     "fails with NotFound for a missing checkout link",
-    { timeout: 30_000 },
+    { timeout: 120_000 },
     async () => {
       const error = await runEffect(
         checkoutLinksdelete({
