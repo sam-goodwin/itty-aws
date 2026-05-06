@@ -28,7 +28,7 @@ export interface LineItemDetails {
   /** Required. The Content API REST ID of the product, in the form channel:contentLanguage:targetCountry:offerId. */
   productId?: string;
   /** Optional. The Global Trade Item Numbers. */
-  gtins?: Array<string>;
+  gtins?: ReadonlyArray<string>;
   /** Required. The ID for this line item. */
   lineItemId?: string;
   /** Optional. Plain text title of this product. */
@@ -179,13 +179,13 @@ export interface OrderTrackingSignal {
   /** Optional. The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the shipping destination. */
   deliveryRegionCode?: string;
   /** Required. The shipping information for the order. */
-  shippingInfo?: Array<ShippingInfo>;
+  shippingInfo?: ReadonlyArray<ShippingInfo>;
   /** Optional. The mapping of the line items to the shipment information. */
-  shipmentLineItemMapping?: Array<ShipmentLineItemMapping>;
+  shipmentLineItemMapping?: ReadonlyArray<ShipmentLineItemMapping>;
   /** Optional. The delivery postal code, as a continuous string without spaces or dashes, for example "95016". This field will be anonymized in returned OrderTrackingSignal creation response. */
   deliveryPostalCode?: string;
   /** Required. Information about line items in the order. */
-  lineItems?: Array<LineItemDetails>;
+  lineItems?: ReadonlyArray<LineItemDetails>;
 }
 
 export const OrderTrackingSignal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -250,7 +250,7 @@ export interface ProductStatusChangeMessage {
   /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
   expirationTime?: string;
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
   /** The resource that changed, in this case it will always be `Product`. */
@@ -299,7 +299,7 @@ export const CreateAccountsOrderTrackingSignalsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "ordertracking/v1/accounts/{accountsId}/orderTrackingSignals",
+      path: "ordertracking/v1/{parent}/orderTrackingSignals",
       hasBody: true,
     }),
     svc,

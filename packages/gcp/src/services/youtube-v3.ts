@@ -197,7 +197,7 @@ export interface SuperChatEventListResponse {
   /** The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set. */
   nextPageToken?: string;
   /** A list of Super Chat purchases that match the request criteria. */
-  items?: Array<SuperChatEvent>;
+  items?: ReadonlyArray<SuperChatEvent>;
   /** Etag of this resource. */
   etag?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#superChatEventListResponse". */
@@ -314,7 +314,7 @@ export interface ActivityContentDetailsPromotedItem {
   /** The text description to accompany the promoted item. */
   descriptionText?: string;
   /** The list of forecasting URLs. The client should ping all of these URLs when a promoted item is not available, to indicate that a promoted item could have been shown. */
-  forecastingUrl?: Array<string>;
+  forecastingUrl?: ReadonlyArray<string>;
   /** The URL the client should fetch to request a promoted item. */
   adTag?: string;
   /** The URL the client should direct the user to, if the user chooses to visit the advertiser's website. */
@@ -328,7 +328,7 @@ export interface ActivityContentDetailsPromotedItem {
   /** The type of call-to-action, a message to the user indicating action that can be taken. */
   ctaType?: "ctaTypeUnspecified" | "visitAdvertiserSite" | (string & {});
   /** The list of impression URLs. The client should ping all of these URLs to indicate that the user was shown this promoted item. */
-  impressionUrl?: Array<string>;
+  impressionUrl?: ReadonlyArray<string>;
 }
 
 export const ActivityContentDetailsPromotedItem =
@@ -579,7 +579,7 @@ export interface LiveChatModeratorListResponse {
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
   /** A list of moderators that match the request criteria. */
-  items?: Array<LiveChatModerator>;
+  items?: ReadonlyArray<LiveChatModerator>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatModeratorListResponse". */
   kind?: string;
 }
@@ -653,7 +653,7 @@ export const LiveStreamConfigurationIssue =
 
 export interface LiveStreamHealthStatus {
   /** The configurations issues on this stream */
-  configurationIssues?: Array<LiveStreamConfigurationIssue>;
+  configurationIssues?: ReadonlyArray<LiveStreamConfigurationIssue>;
   /** The status code of this stream */
   status?: "good" | "ok" | "bad" | "noData" | "revoked" | (string & {});
   /** The last time this status was updated (in seconds) */
@@ -923,7 +923,7 @@ export const PlaylistImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface PlaylistImageListResponse {
   /** The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set. */
   nextPageToken?: string;
-  items?: Array<PlaylistImage>;
+  items?: ReadonlyArray<PlaylistImage>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#playlistImageListResponse". */
   kind?: string;
   /** The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set. */
@@ -1098,7 +1098,7 @@ export const LanguageTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LocalizedProperty {
   default?: string;
-  localized?: Array<LocalizedString>;
+  localized?: ReadonlyArray<LocalizedString>;
   /** The language of the default property. */
   defaultLanguage?: LanguageTag;
 }
@@ -1421,7 +1421,7 @@ export const VideoRating = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VideoGetRatingResponse {
   /** A list of ratings that match the request criteria. */
-  items?: Array<VideoRating>;
+  items?: ReadonlyArray<VideoRating>;
   /** Etag of this resource. */
   etag?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#videoGetRatingResponse". */
@@ -1722,7 +1722,7 @@ export interface ContentRating {
     | "nbcUnrated"
     | (string & {});
   /** Reasons that explain why the video received its DJCQT (Brazil) rating. */
-  djctqRatingReasons?: Array<
+  djctqRatingReasons?: ReadonlyArray<
     | "djctqRatingReasonUnspecified"
     | "djctqViolence"
     | "djctqExtremeViolence"
@@ -2058,7 +2058,7 @@ export interface ContentRating {
     | "czfilmUnrated"
     | (string & {});
   /** Reasons that explain why the video received its FPB (South Africa) rating. */
-  fpbRatingReasons?: Array<
+  fpbRatingReasons?: ReadonlyArray<
     | "fpbRatingReasonUnspecified"
     | "fpbBlasphemy"
     | "fpbLanguage"
@@ -2417,7 +2417,7 @@ export const LiveChatPollDetailsPollMetadataPollOption =
 export interface LiveChatPollDetailsPollMetadata {
   questionText?: string;
   /** The options will be returned in the order that is displayed in 1P */
-  options?: Array<LiveChatPollDetailsPollMetadataPollOption>;
+  options?: ReadonlyArray<LiveChatPollDetailsPollMetadataPollOption>;
 }
 
 export const LiveChatPollDetailsPollMetadata =
@@ -2706,7 +2706,7 @@ export interface CommentListResponse {
   /** Etag of this resource. */
   etag?: string;
   /** A list of comments that match the request criteria. */
-  items?: Array<Comment>;
+  items?: ReadonlyArray<Comment>;
   /** The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#commentListResponse". */
@@ -2726,7 +2726,7 @@ export const CommentListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CommentThreadReplies {
   /** A limited number of replies. Unless the number of replies returned equals total_reply_count in the snippet the returned replies are only a subset of the total number of replies. */
-  comments?: Array<Comment>;
+  comments?: ReadonlyArray<Comment>;
 }
 
 export const CommentThreadReplies = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2881,8 +2881,8 @@ export const CuepointSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CuepointSchedule" });
 
 export interface AbuseReport {
-  relatedEntities?: Array<RelatedEntity>;
-  abuseTypes?: Array<AbuseType>;
+  relatedEntities?: ReadonlyArray<RelatedEntity>;
+  abuseTypes?: ReadonlyArray<AbuseType>;
   subject?: Entity;
   description?: string;
 }
@@ -2909,7 +2909,7 @@ export interface ChannelSettings {
   /** Whether the tab to browse the videos should be displayed. */
   showBrowseView?: boolean;
   /** The list of featured channels. */
-  featuredChannelsUrls?: Array<string>;
+  featuredChannelsUrls?: ReadonlyArray<string>;
   /** Lists keywords associated with the channel, comma-separated. */
   keywords?: string;
   /** Which content tab users should see when viewing the channel. */
@@ -2974,7 +2974,7 @@ export interface ChannelBrandingSettings {
   /** Branding properties for branding images. */
   image?: ImageSettings;
   /** Additional experimental branding properties. */
-  hints?: Array<PropertyValue>;
+  hints?: ReadonlyArray<PropertyValue>;
   /** Branding properties for the watch page. */
   watch?: WatchSettings;
 }
@@ -3041,7 +3041,7 @@ export interface LiveStreamListResponse {
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
   /** A list of live streams that match the request criteria. */
-  items?: Array<LiveStream>;
+  items?: ReadonlyArray<LiveStream>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#liveStreamListResponse". */
   kind?: string;
   /** The visitorId identifies the visitor. */
@@ -3112,7 +3112,7 @@ export interface MembershipsLevelListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#membershipsLevelListResponse". */
   kind?: string;
   /** A list of pricing levels offered by a creator to the fans. */
-  items?: Array<MembershipsLevel>;
+  items?: ReadonlyArray<MembershipsLevel>;
   /** Etag of this resource. */
   etag?: string;
 }
@@ -3144,9 +3144,9 @@ export const MembershipsDurationAtLevel =
 
 export interface ChannelSectionContentDetails {
   /** The playlist ids for type single_playlist and multiple_playlists. For singlePlaylist, only one playlistId is allowed. */
-  playlists?: Array<string>;
+  playlists?: ReadonlyArray<string>;
   /** The channel ids for type multiple_channels. */
-  channels?: Array<string>;
+  channels?: ReadonlyArray<string>;
 }
 
 export const ChannelSectionContentDetails =
@@ -3177,11 +3177,11 @@ export const VideoAgeGating = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ChannelSectionTargeting {
   /** The language the channel section is targeting. */
-  languages?: Array<string>;
+  languages?: ReadonlyArray<string>;
   /** The country the channel section is targeting. */
-  countries?: Array<string>;
+  countries?: ReadonlyArray<string>;
   /** The region the channel section is targeting. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
 }
 
 export const ChannelSectionTargeting =
@@ -3228,7 +3228,7 @@ export interface ChannelSectionListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#channelSectionListResponse". */
   kind?: string;
   /** A list of ChannelSections that match the request criteria. */
-  items?: Array<ChannelSection>;
+  items?: ReadonlyArray<ChannelSection>;
   /** Etag of this resource. */
   etag?: string;
 }
@@ -3305,11 +3305,11 @@ export const VideoStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VideoTopicDetails {
   /** Similar to topic_id, except that these topics are merely relevant to the video. These are topics that may be mentioned in, or appear in the video. You can retrieve information about each topic using Freebase Topic API. */
-  relevantTopicIds?: Array<string>;
+  relevantTopicIds?: ReadonlyArray<string>;
   /** A list of Wikipedia URLs that provide a high-level description of the video's content. */
-  topicCategories?: Array<string>;
+  topicCategories?: ReadonlyArray<string>;
   /** A list of Freebase topic IDs that are centrally associated with the video. These are topics that are centrally featured in the video, and it can be said that the video is mainly about each of these. You can retrieve information about each topic using the < a href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API. */
-  topicIds?: Array<string>;
+  topicIds?: ReadonlyArray<string>;
 }
 
 export const VideoTopicDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3366,7 +3366,7 @@ export interface VideoSuggestionsTagSuggestion {
   /** The keyword tag suggested for the video. */
   tag?: string;
   /** A set of video categories for which the tag is relevant. You can use this information to display appropriate tag suggestions based on the video category that the video uploader associates with the video. By default, tag suggestions are relevant for all categories if there are no restricts defined for the keyword. */
-  categoryRestricts?: Array<string>;
+  categoryRestricts?: ReadonlyArray<string>;
 }
 
 export const VideoSuggestionsTagSuggestion =
@@ -3377,7 +3377,7 @@ export const VideoSuggestionsTagSuggestion =
 
 export interface VideoSuggestions {
   /** A list of video editing operations that might improve the video quality or playback experience of the uploaded video. */
-  editorSuggestions?: Array<
+  editorSuggestions?: ReadonlyArray<
     | "videoAutoLevels"
     | "videoStabilize"
     | "videoCrop"
@@ -3385,7 +3385,7 @@ export interface VideoSuggestions {
     | (string & {})
   >;
   /** A list of errors that will prevent YouTube from successfully processing the uploaded video video. These errors indicate that, regardless of the video's current processing status, eventually, that status will almost certainly be failed. */
-  processingErrors?: Array<
+  processingErrors?: ReadonlyArray<
     | "audioFile"
     | "imageFile"
     | "projectFile"
@@ -3396,7 +3396,7 @@ export interface VideoSuggestions {
     | (string & {})
   >;
   /** A list of suggestions that may improve YouTube's ability to process the video. */
-  processingHints?: Array<
+  processingHints?: ReadonlyArray<
     | "nonStreamableMov"
     | "sendBestQualityVideo"
     | "sphericalVideo"
@@ -3406,7 +3406,7 @@ export interface VideoSuggestions {
     | (string & {})
   >;
   /** A list of reasons why YouTube may have difficulty transcoding the uploaded video or that might result in an erroneous transcoding. These warnings are generated before YouTube actually processes the uploaded video file. In addition, they identify issues that are unlikely to cause the video processing to fail but that might cause problems such as sync issues, video artifacts, or a missing audio track. */
-  processingWarnings?: Array<
+  processingWarnings?: ReadonlyArray<
     | "unknownContainer"
     | "unknownVideoCodec"
     | "unknownAudioCodec"
@@ -3422,7 +3422,7 @@ export interface VideoSuggestions {
     | (string & {})
   >;
   /** A list of keyword tags that could be added to the video's metadata to increase the likelihood that users will locate your video when searching or browsing on YouTube. */
-  tagSuggestions?: Array<VideoSuggestionsTagSuggestion>;
+  tagSuggestions?: ReadonlyArray<VideoSuggestionsTagSuggestion>;
 }
 
 export const VideoSuggestions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3435,9 +3435,9 @@ export const VideoSuggestions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VideoContentDetailsRegionRestriction {
   /** A list of region codes that identify countries where the video is blocked. If this property is present and a country is not listed in its value, then the video is viewable in that country. If this property is present and contains an empty list, the video is viewable in all countries. */
-  blocked?: Array<string>;
+  blocked?: ReadonlyArray<string>;
   /** A list of region codes that identify countries where the video is viewable. If this property is present and a country is not listed in its value, then the video is blocked from appearing in that country. If this property is present and contains an empty list, the video is blocked in all countries. */
-  allowed?: Array<string>;
+  allowed?: ReadonlyArray<string>;
 }
 
 export const VideoContentDetailsRegionRestriction =
@@ -3450,7 +3450,7 @@ export interface AccessPolicy {
   /** The value of allowed indicates whether the access to the policy is allowed or denied by default. */
   allowed?: boolean;
   /** A list of region codes that identify countries where the default policy do not apply. */
-  exception?: Array<string>;
+  exception?: ReadonlyArray<string>;
 }
 
 export const AccessPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3543,7 +3543,7 @@ export const VideoFileDetailsVideoStream =
 
 export interface VideoFileDetails {
   /** A list of video streams contained in the uploaded video file. Each item in the list contains detailed metadata about a video stream. */
-  videoStreams?: Array<VideoFileDetailsVideoStream>;
+  videoStreams?: ReadonlyArray<VideoFileDetailsVideoStream>;
   /** The uploaded video file's container format. */
   container?: string;
   /** The uploaded file's type as detected by YouTube's video processing engine. Currently, YouTube only processes video files, but this field is present whether a video file or another type of file was uploaded. */
@@ -3563,7 +3563,7 @@ export interface VideoFileDetails {
   /** The length of the uploaded video in milliseconds. */
   durationMs?: string;
   /** A list of audio streams contained in the uploaded video file. Each item in the list contains detailed metadata about an audio stream. */
-  audioStreams?: Array<VideoFileDetailsAudioStream>;
+  audioStreams?: ReadonlyArray<VideoFileDetailsAudioStream>;
   /** The date and time when the uploaded video file was created. The value is specified in ISO 8601 format. Currently, the following ISO 8601 formats are supported: - Date only: YYYY-MM-DD - Naive time: YYYY-MM-DDTHH:MM:SS - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM */
   creationTime?: string;
   /** The uploaded file's size in bytes. This field is present whether a video file or another type of file was uploaded. */
@@ -3628,7 +3628,7 @@ export interface VideoSnippet {
   /** The YouTube video category associated with the video. */
   categoryId?: string;
   /** A list of keyword tags associated with the video. Tags may contain spaces. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail. */
   thumbnails?: ThumbnailDetails;
   /** The video's description. @mutable youtube.videos.insert youtube.videos.update */
@@ -3744,7 +3744,7 @@ export interface ThumbnailSetResponse {
   /** The visitorId identifies the visitor. */
   visitorId?: string;
   /** A list of thumbnails. */
-  items?: Array<ThumbnailDetails>;
+  items?: ReadonlyArray<ThumbnailDetails>;
   /** Etag of this resource. */
   etag?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#thumbnailSetResponse". */
@@ -3861,7 +3861,7 @@ export interface VideoCategoryListResponse {
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
   /** A list of video categories that can be associated with YouTube videos. In this map, the video category ID is the map key, and its value is the corresponding videoCategory resource. */
-  items?: Array<VideoCategory>;
+  items?: ReadonlyArray<VideoCategory>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#videoCategoryListResponse". */
   kind?: string;
 }
@@ -3929,7 +3929,7 @@ export interface SubscriptionListResponse {
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
   /** A list of subscriptions that match the request criteria. */
-  items?: Array<Subscription>;
+  items?: ReadonlyArray<Subscription>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#subscriptionListResponse". */
   kind?: string;
   pageInfo?: PageInfo;
@@ -3964,7 +3964,7 @@ export interface I18nLanguageListResponse {
   /** Etag of this resource. */
   etag?: string;
   /** A list of supported i18n languages. In this map, the i18n language ID is the map key, and its value is the corresponding i18nLanguage resource. */
-  items?: Array<I18nLanguage>;
+  items?: ReadonlyArray<I18nLanguage>;
 }
 
 export const I18nLanguageListResponse =
@@ -4002,7 +4002,7 @@ export interface VideoAbuseReportReasonSnippet {
   /** The localized label belonging to this abuse report reason. */
   label?: string;
   /** The secondary reasons associated with this reason, if any are available. (There might be 0 or more.) */
-  secondaryReasons?: Array<VideoAbuseReportSecondaryReason>;
+  secondaryReasons?: ReadonlyArray<VideoAbuseReportSecondaryReason>;
 }
 
 export const VideoAbuseReportReasonSnippet =
@@ -4037,7 +4037,7 @@ export interface VideoAbuseReportReasonListResponse {
   /** Etag of this resource. */
   etag?: string;
   /** A list of valid abuse reasons that are used with `video.ReportAbuse`. */
-  items?: Array<VideoAbuseReportReason>;
+  items?: ReadonlyArray<VideoAbuseReportReason>;
   /** Identifies what kind of resource this is. Value: the fixed string `"youtube#videoAbuseReportReasonListResponse"`. */
   kind?: string;
   /** The `visitorId` identifies the visitor. */
@@ -4135,7 +4135,7 @@ export interface CaptionListResponse {
   /** Etag of this resource. */
   etag?: string;
   /** A list of captions that match the request criteria. */
-  items?: Array<Caption>;
+  items?: ReadonlyArray<Caption>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#captionListResponse". */
   kind?: string;
 }
@@ -4377,7 +4377,7 @@ export interface ActivityListResponse {
   prevPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#activityListResponse". */
   kind?: string;
-  items?: Array<Activity>;
+  items?: ReadonlyArray<Activity>;
 }
 
 export const ActivityListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4459,7 +4459,7 @@ export interface CommentThreadListResponse {
   /** The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set. */
   nextPageToken?: string;
   /** A list of comment threads that match the request criteria. */
-  items?: Array<CommentThread>;
+  items?: ReadonlyArray<CommentThread>;
   /** Etag of this resource. */
   etag?: string;
 }
@@ -4493,7 +4493,7 @@ export interface LiveChatMessageListResponse {
   tokenPagination?: TokenPagination;
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
-  items?: Array<LiveChatMessage>;
+  items?: ReadonlyArray<LiveChatMessage>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatMessageListResponse". */
   kind?: string;
 }
@@ -4524,7 +4524,7 @@ export interface VideoListResponse {
   pageInfo?: PageInfo;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#videoListResponse". */
   kind?: string;
-  items?: Array<Video>;
+  items?: ReadonlyArray<Video>;
   tokenPagination?: TokenPagination;
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
@@ -4548,7 +4548,7 @@ export interface VideoTrainability {
   /** The ID of the video. */
   videoId?: string;
   /** Specifies who is allowed to train on the video. Valid values are: - a single string "all" - a single string "none" - a list of allowed parties */
-  permitted?: Array<string>;
+  permitted?: ReadonlyArray<string>;
   /** Etag of this resource. */
   etag?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#videoTrainability". */
@@ -4623,7 +4623,7 @@ export interface I18nRegionListResponse {
   /** Etag of this resource. */
   etag?: string;
   /** A list of regions where YouTube is available. In this map, the i18n region ID is the map key, and its value is the corresponding i18nRegion resource. */
-  items?: Array<I18nRegion>;
+  items?: ReadonlyArray<I18nRegion>;
 }
 
 export const I18nRegionListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -4665,7 +4665,7 @@ export const ChannelConversionPing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ChannelConversionPings {
   /** Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping. */
-  pings?: Array<ChannelConversionPing>;
+  pings?: ReadonlyArray<ChannelConversionPing>;
 }
 
 export const ChannelConversionPings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -4676,9 +4676,9 @@ export const ChannelConversionPings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ChannelTopicDetails {
   /** A list of Freebase topic IDs associated with the channel. You can retrieve information about each topic using the Freebase Topic API. */
-  topicIds?: Array<string>;
+  topicIds?: ReadonlyArray<string>;
   /** A list of Wikipedia URLs that describe the channel's content. */
-  topicCategories?: Array<string>;
+  topicCategories?: ReadonlyArray<string>;
 }
 
 export const ChannelTopicDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4782,7 +4782,7 @@ export interface ChannelListResponse {
   pageInfo?: PageInfo;
   /** The visitorId identifies the visitor. */
   visitorId?: string;
-  items?: Array<Channel>;
+  items?: ReadonlyArray<Channel>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#channelListResponse". */
   kind?: string;
   /** The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set. */
@@ -4820,9 +4820,9 @@ export interface MembershipsDetails {
   /** Data about memberships duration without taking into consideration pricing levels. */
   membershipsDuration?: MembershipsDuration;
   /** Ids of all levels that the user has access to. This includes the currently active level and all other levels that are included because of a higher purchase. */
-  accessibleLevels?: Array<string>;
+  accessibleLevels?: ReadonlyArray<string>;
   /** Data about memberships duration on particular pricing levels. */
-  membershipsDurationAtLevels?: Array<MembershipsDurationAtLevel>;
+  membershipsDurationAtLevels?: ReadonlyArray<MembershipsDurationAtLevel>;
   /** Id of the highest level that the user has access to at the moment. */
   highestAccessibleLevel?: string;
   /** Display name for the highest level that the user has access to at the moment. */
@@ -4870,7 +4870,7 @@ export interface PlaylistSnippet {
   /** A map of thumbnail images associated with the playlist. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail. */
   thumbnails?: ThumbnailDetails;
   /** Keyword tags associated with the playlist. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Note: if the playlist has a custom thumbnail, this field will not be populated. The video id selected by the user that will be used as the thumbnail of this playlist. This field defaults to the first publicly viewable video in the playlist, if: 1. The user has never selected a video to be the thumbnail of the playlist. 2. The user selects a video to be the thumbnail, and then removes that video from the playlist. 3. The user selects a non-owned video to be the thumbnail, but that video becomes private, or gets deleted. */
   thumbnailVideoId?: string;
   /** The language of the playlist's default title and description. */
@@ -4926,7 +4926,7 @@ export interface PlaylistItemListResponse {
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
   /** A list of playlist items that match the request criteria. */
-  items?: Array<PlaylistItem>;
+  items?: ReadonlyArray<PlaylistItem>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#playlistItemListResponse". */
   kind?: string;
 }
@@ -4994,7 +4994,7 @@ export interface PlaylistListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#playlistListResponse". */
   kind?: string;
   /** A list of playlists that match the request criteria */
-  items?: Array<Playlist>;
+  items?: ReadonlyArray<Playlist>;
   /** The visitorId identifies the visitor. */
   visitorId?: string;
   /** General pagination information. */
@@ -5034,7 +5034,7 @@ export interface LiveBroadcastListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#liveBroadcastListResponse". */
   kind?: string;
   /** A list of broadcasts that match the request criteria. */
-  items?: Array<LiveBroadcast>;
+  items?: ReadonlyArray<LiveBroadcast>;
 }
 
 export const LiveBroadcastListResponse =
@@ -5102,7 +5102,7 @@ export const SearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchListResponse {
   /** Pagination information for token pagination. */
-  items?: Array<SearchResult>;
+  items?: ReadonlyArray<SearchResult>;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#searchListResponse". */
   kind?: string;
   /** The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set. */
@@ -5174,7 +5174,7 @@ export interface MemberListResponse {
   /** The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set. */
   nextPageToken?: string;
   /** A list of members that match the request criteria. */
-  items?: Array<Member>;
+  items?: ReadonlyArray<Member>;
   /** Etag of this resource. */
   etag?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#memberListResponse". */
@@ -5193,7 +5193,7 @@ export const MemberListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "MemberListResponse" });
 
 export interface ThirdPartyLinkListResponse {
-  items?: Array<ThirdPartyLink>;
+  items?: ReadonlyArray<ThirdPartyLink>;
   /** Etag of this resource. */
   etag?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#thirdPartyLinkListResponse". */

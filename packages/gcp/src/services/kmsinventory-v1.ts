@@ -37,7 +37,7 @@ export const GoogleCloudKmsV1ExternalProtectionLevelOptions =
 
 export interface GoogleCloudKmsV1KeyAccessJustificationsPolicy {
   /** The list of allowed reasons for access to a CryptoKey. Note that empty allowed_access_reasons has a different meaning depending on where this message appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-all. If this is under CryptoKey, it means deny-all. */
-  allowedAccessReasons?: Array<
+  allowedAccessReasons?: ReadonlyArray<
     | "REASON_UNSPECIFIED"
     | "CUSTOMER_INITIATED_SUPPORT"
     | "GOOGLE_INITIATED_SERVICE"
@@ -61,11 +61,11 @@ export const GoogleCloudKmsV1KeyAccessJustificationsPolicy =
 
 export interface GoogleCloudKmsV1KeyOperationAttestationCertificateChains {
   /** Cavium certificate chain corresponding to the attestation. */
-  caviumCerts?: Array<string>;
+  caviumCerts?: ReadonlyArray<string>;
   /** Google partition certificate chain corresponding to the attestation. */
-  googlePartitionCerts?: Array<string>;
+  googlePartitionCerts?: ReadonlyArray<string>;
   /** Google card certificate chain corresponding to the attestation. */
-  googleCardCerts?: Array<string>;
+  googleCardCerts?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudKmsV1KeyOperationAttestationCertificateChains =
@@ -348,7 +348,7 @@ export interface GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
   /** The page token returned from the previous response if the next page is desired. */
   nextPageToken?: string;
   /** The list of CryptoKeys. */
-  cryptoKeys?: Array<GoogleCloudKmsV1CryptoKey>;
+  cryptoKeys?: ReadonlyArray<GoogleCloudKmsV1CryptoKey>;
 }
 
 export const GoogleCloudKmsInventoryV1ListCryptoKeysResponse =
@@ -379,7 +379,7 @@ export interface GoogleCloudKmsInventoryV1ProtectedResource {
   /** Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`. */
   location?: string;
   /** The names of the Cloud KMS [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en) used to protect this resource via CMEK. This field is empty if the Google Cloud product owning the resource does not provide key versions data to Asset Inventory. The first element of this field is stored in crypto_key_version. */
-  cryptoKeyVersions?: Array<string>;
+  cryptoKeyVersions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudKmsInventoryV1ProtectedResource =
@@ -418,7 +418,7 @@ export interface GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
   /** The number of resources protected by the key grouped by Cloud product. */
   cloudProducts?: Record<string, string>;
   /** Warning messages for the state of response ProtectedResourcesSummary For example, if the organization service account is not configured, INSUFFICIENT_PERMISSIONS_PARTIAL_DATA warning will be returned. */
-  warnings?: Array<GoogleCloudKmsInventoryV1Warning>;
+  warnings?: ReadonlyArray<GoogleCloudKmsInventoryV1Warning>;
   /** The full name of the ProtectedResourcesSummary resource. Example: projects/test-project/locations/us/keyRings/test-keyring/cryptoKeys/test-key/protectedResourcesSummary */
   name?: string;
   /** The total number of protected resources in the same Cloud organization as the key. */
@@ -446,7 +446,7 @@ export const GoogleCloudKmsInventoryV1ProtectedResourcesSummary =
 
 export interface GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   /** Protected resources for this page. */
-  protectedResources?: Array<GoogleCloudKmsInventoryV1ProtectedResource>;
+  protectedResources?: ReadonlyArray<GoogleCloudKmsInventoryV1ProtectedResource>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -488,10 +488,7 @@ export const SearchProjectsProtectedResourcesRequest =
       T.HttpQuery("resourceTypes"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/protectedResources:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{scope}/protectedResources:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsProtectedResourcesRequest>;
 
@@ -533,7 +530,7 @@ export const ListProjectsCryptoKeysRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/cryptoKeys" }),
+    T.Http({ method: "GET", path: "v1/{parent}/cryptoKeys" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsCryptoKeysRequest>;
 
@@ -577,10 +574,7 @@ export const GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysRequ
       T.HttpQuery("fallbackScope"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/protectedResourcesSummary",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/protectedResourcesSummary" }),
     svc,
   ) as unknown as Schema.Schema<GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -628,10 +622,7 @@ export const SearchOrganizationsProtectedResourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/protectedResources:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{scope}/protectedResources:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchOrganizationsProtectedResourcesRequest>;
 

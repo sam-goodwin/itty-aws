@@ -36,7 +36,7 @@ export const TargetLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PostalAddress {
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
   postalCode?: string;
   /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
@@ -46,7 +46,7 @@ export interface PostalAddress {
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
   administrativeArea?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
   revision?: number;
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
@@ -183,7 +183,7 @@ export const Invitation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInvitationsResponse {
   /** A collection of invitations that are pending for the account. The number of invitations listed here cannot exceed 1000. */
-  invitations?: Array<Invitation>;
+  invitations?: ReadonlyArray<Invitation>;
 }
 
 export const ListInvitationsResponse =
@@ -202,7 +202,7 @@ export interface ListAccountsResponse {
   /** If the number of accounts exceeds the requested page size, this field is populated with a token to fetch the next page of accounts on a subsequent call to `accounts.list`. If there are no more accounts, this field is not present in the response. */
   nextPageToken?: string;
   /** A collection of accounts to which the user has access. The personal account of the user doing the query will always be the first item of the result, unless it is filtered out. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
 }
 
 export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -262,7 +262,7 @@ export const DeclineInvitationRequest =
 
 export interface ListLocationAdminsResponse {
   /** A collection of Admins. */
-  admins?: Array<Admin>;
+  admins?: ReadonlyArray<Admin>;
 }
 
 export const ListLocationAdminsResponse =
@@ -272,7 +272,7 @@ export const ListLocationAdminsResponse =
 
 export interface ListAccountAdminsResponse {
   /** A collection of Admin instances. */
-  accountAdmins?: Array<Admin>;
+  accountAdmins?: ReadonlyArray<Admin>;
 }
 
 export const ListAccountAdminsResponse =
@@ -292,7 +292,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -361,7 +361,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(Account).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1/accounts/{accountsId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchAccountsRequest>;
 
@@ -439,11 +439,7 @@ export const AcceptAccountsInvitationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AcceptInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/invitations/{invitationsId}:accept",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:accept", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AcceptAccountsInvitationsRequest>;
 
@@ -477,7 +473,7 @@ export const ListAccountsInvitationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/invitations" }),
+    T.Http({ method: "GET", path: "v1/{parent}/invitations" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsInvitationsRequest>;
 
@@ -511,11 +507,7 @@ export const DeclineAccountsInvitationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeclineInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/invitations/{invitationsId}:decline",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:decline", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeclineAccountsInvitationsRequest>;
 
@@ -546,10 +538,7 @@ export const DeleteAccountsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/admins/{adminsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsAdminsRequest>;
 
@@ -582,11 +571,7 @@ export const CreateAccountsAdminsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/admins",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/admins", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsAdminsRequest>;
 
@@ -622,11 +607,7 @@ export const PatchAccountsAdminsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/admins/{adminsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsAdminsRequest>;
 
@@ -656,7 +637,7 @@ export const ListAccountsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/admins" }),
+    T.Http({ method: "GET", path: "v1/{parent}/admins" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdminsRequest>;
 
@@ -690,11 +671,7 @@ export const TransferLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TransferLocationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/locations/{locationsId}:transfer",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:transfer", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TransferLocationsRequest>;
 
@@ -724,10 +701,7 @@ export const DeleteLocationsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/locations/{locationsId}/admins/{adminsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLocationsAdminsRequest>;
 
@@ -760,11 +734,7 @@ export const CreateLocationsAdminsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/locations/{locationsId}/admins",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/admins", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateLocationsAdminsRequest>;
 
@@ -800,11 +770,7 @@ export const PatchLocationsAdminsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/locations/{locationsId}/admins/{adminsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchLocationsAdminsRequest>;
 
@@ -834,7 +800,7 @@ export const ListLocationsAdminsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/locations/{locationsId}/admins" }),
+    T.Http({ method: "GET", path: "v1/{parent}/admins" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsAdminsRequest>;
 

@@ -48,7 +48,7 @@ export interface TimeseriesBin {
   /** Start is the beginning of the data bin. */
   start?: unknown;
   /** The proportion of users that experienced this bin's value for the given metric in a given collection period; the index for each of these entries corresponds to an entry in the CollectionPeriods field in the HistoryRecord message, which describes when the density was observed in the field. Thus, the length of this list of densities is equal to the length of the CollectionPeriods field in the HistoryRecord message. */
-  densities?: Array<number>;
+  densities?: ReadonlyArray<number>;
 }
 
 export const TimeseriesBin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -61,7 +61,7 @@ export interface QueryRequest {
   /** The effective connection type is a query dimension that specifies the effective network class that the record's data should belong to. This field uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as specified in: https://wicg.github.io/netinfo/#effective-connection-types Note: If no effective connection type is specified, then a special record with aggregated data over all effective connection types will be returned. */
   effectiveConnectionType?: string;
   /** The metrics that should be included in the response. If none are specified then any metrics found will be returned. Allowed values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint", "cumulative_layout_shift", "experimental_time_to_first_byte", "experimental_interaction_to_next_paint"] */
-  metrics?: Array<string>;
+  metrics?: ReadonlyArray<string>;
   /** The url pattern "url" refers to a url pattern that is any arbitrary url. Examples: "https://example.com/", "https://cloud.google.com/why-google-cloud/" */
   url?: string;
   /** The url pattern "origin" refers to a url pattern that is the origin of a website. Examples: "https://example.com", "https://cloud.google.com" */
@@ -138,7 +138,7 @@ export interface Metric {
   /** For enum metrics, provides fractions which add up to approximately 1.0. */
   fractions?: Record<string, number>;
   /** The histogram of user experiences for a metric. The histogram will have at least one bin and the densities of all bins will add up to ~1. */
-  histogram?: Array<Bin>;
+  histogram?: ReadonlyArray<Bin>;
   /** Commonly useful percentiles of the Metric. The value type for the percentiles will be the same as the value types given for the Histogram bins. */
   percentiles?: Percentiles;
 }
@@ -213,7 +213,7 @@ export const QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryHistoryRequest {
   /** The metrics that should be included in the response. If none are specified then any metrics found will be returned. Allowed values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint", "cumulative_layout_shift", "experimental_time_to_first_byte", "experimental_interaction_to_next_paint"] */
-  metrics?: Array<string>;
+  metrics?: ReadonlyArray<string>;
   /** The url pattern "url" refers to a url pattern that is any arbitrary url. Examples: "https://example.com/", "https://cloud.google.com/why-google-cloud/" */
   url?: string;
   /** The url pattern "origin" refers to a url pattern that is the origin of a website. Examples: "https://example.com", "https://cloud.google.com" */
@@ -239,7 +239,7 @@ export const QueryHistoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TimeseriesPercentiles {
   /** 75% of users experienced the given metric at or below this value. The length of this list of densities is equal to the length of the CollectionPeriods field in the HistoryRecord message, which describes when the density was observed in the field. */
-  p75s?: Array<unknown>;
+  p75s?: ReadonlyArray<unknown>;
 }
 
 export const TimeseriesPercentiles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -248,7 +248,7 @@ export const TimeseriesPercentiles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FractionTimeseries {
   /** Values between 0.0 and 1.0 (inclusive) and NaN. */
-  fractions?: Array<number>;
+  fractions?: ReadonlyArray<number>;
 }
 
 export const FractionTimeseries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -257,7 +257,7 @@ export const FractionTimeseries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MetricTimeseries {
   /** The histogram of user experiences for a metric. The histogram will have at least one bin and the densities of all bins will add up to ~1, for each timeseries entry. */
-  histogramTimeseries?: Array<TimeseriesBin>;
+  histogramTimeseries?: ReadonlyArray<TimeseriesBin>;
   /** Commonly useful percentiles of the Metric. The value type for the percentiles will be the same as the value types given for the Histogram bins. */
   percentilesTimeseries?: TimeseriesPercentiles;
   /** Mapping from labels to timeseries of fractions attributed to this label. */
@@ -274,7 +274,7 @@ export const MetricTimeseries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HistoryRecord {
   /** The collection periods indicate when each of the data points reflected in the time series data in metrics was collected. Note that all the time series share the same collection periods, and it is enforced in the CrUX pipeline that every time series has the same number of data points. */
-  collectionPeriods?: Array<CollectionPeriod>;
+  collectionPeriods?: ReadonlyArray<CollectionPeriod>;
   /** Key defines all of the unique querying parameters needed to look up a user experience history record. */
   key?: HistoryKey;
   /** Metrics is the map of user experience time series data available for the record defined in the key field. Metrics are keyed on the metric name. Allowed key values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint", "cumulative_layout_shift", "experimental_time_to_first_byte", "experimental_interaction_to_next_paint"] */

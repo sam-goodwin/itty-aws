@@ -54,7 +54,7 @@ export const StackTraceElement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StackTrace {
   /** An array of stack elements. */
-  elements?: Array<StackTraceElement>;
+  elements?: ReadonlyArray<StackTraceElement>;
 }
 
 export const StackTrace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -91,7 +91,7 @@ export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step. */
-  currentSteps?: Array<Step>;
+  currentSteps?: ReadonlyArray<Step>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -148,7 +148,7 @@ export const Execution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListExecutionsResponse {
   /** The executions which match the request. */
-  executions?: Array<Execution>;
+  executions?: ReadonlyArray<Execution>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -188,10 +188,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -232,7 +229,7 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
+      path: "v1beta/{parent}/executions",
       hasBody: true,
     }),
     svc,
@@ -268,10 +265,7 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsExecutionsRequest>;
 
@@ -305,11 +299,7 @@ export const CancelProjectsLocationsWorkflowsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelExecutionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsWorkflowsExecutionsRequest>;
 

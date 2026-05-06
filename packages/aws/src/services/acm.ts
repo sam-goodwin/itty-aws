@@ -1487,7 +1487,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     throttlingReasons: S.optional(ThrottlingReasonList),
   },
   T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String) },
@@ -1508,11 +1508,11 @@ export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseExce
 export class RequestInProgressException extends S.TaggedErrorClass<RequestInProgressException>()(
   "RequestInProgressException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 export class InvalidArgsException extends S.TaggedErrorClass<InvalidArgsException>()(
   "InvalidArgsException",
   { message: S.optional(S.String) },

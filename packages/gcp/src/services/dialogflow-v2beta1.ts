@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface GoogleRpcStatus {
   code?: number;
   message?: string;
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -54,9 +54,9 @@ export const GoogleLongrunningOperation =
   }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   nextPageToken?: string;
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -107,7 +107,7 @@ export interface GoogleCloudDialogflowV2beta1Fulfillment {
   displayName?: string;
   genericWebService?: GoogleCloudDialogflowV2beta1FulfillmentGenericWebService;
   enabled?: boolean;
-  features?: Array<GoogleCloudDialogflowV2beta1FulfillmentFeature>;
+  features?: ReadonlyArray<GoogleCloudDialogflowV2beta1FulfillmentFeature>;
 }
 
 export const GoogleCloudDialogflowV2beta1Fulfillment =
@@ -164,9 +164,9 @@ export interface GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
   speakingRate?: number;
   pitch?: number;
   volumeGainDb?: number;
-  effectsProfileId?: Array<string>;
+  effectsProfileId?: ReadonlyArray<string>;
   voice?: GoogleCloudDialogflowV2beta1VoiceSelectionParams;
-  pronunciations?: Array<GoogleCloudDialogflowV2beta1CustomPronunciationParams>;
+  pronunciations?: ReadonlyArray<GoogleCloudDialogflowV2beta1CustomPronunciationParams>;
 }
 
 export const GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig =
@@ -245,7 +245,7 @@ export const GoogleCloudDialogflowV2beta1Environment =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Environment" });
 
 export interface GoogleCloudDialogflowV2beta1ListEnvironmentsResponse {
-  environments?: Array<GoogleCloudDialogflowV2beta1Environment>;
+  environments?: ReadonlyArray<GoogleCloudDialogflowV2beta1Environment>;
   nextPageToken?: string;
 }
 
@@ -276,7 +276,7 @@ export const GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry =
 
 export interface GoogleCloudDialogflowV2beta1EnvironmentHistory {
   parent?: string;
-  entries?: Array<GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry>;
+  entries?: ReadonlyArray<GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry>;
   nextPageToken?: string;
 }
 
@@ -293,7 +293,7 @@ export interface GoogleCloudDialogflowV2beta1Agent {
   parent?: string;
   displayName?: string;
   defaultLanguageCode?: string;
-  supportedLanguageCodes?: Array<string>;
+  supportedLanguageCodes?: ReadonlyArray<string>;
   timeZone?: string;
   description?: string;
   avatarUri?: string;
@@ -335,7 +335,7 @@ export const GoogleCloudDialogflowV2beta1Agent =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Agent" });
 
 export interface GoogleCloudDialogflowV2beta1SearchAgentsResponse {
-  agents?: Array<GoogleCloudDialogflowV2beta1Agent>;
+  agents?: ReadonlyArray<GoogleCloudDialogflowV2beta1Agent>;
   nextPageToken?: string;
 }
 
@@ -395,7 +395,7 @@ export interface GoogleCloudDialogflowV2beta1ValidationError {
     | "ERROR"
     | "CRITICAL"
     | (string & {});
-  entries?: Array<string>;
+  entries?: ReadonlyArray<string>;
   errorMessage?: string;
 }
 
@@ -407,7 +407,7 @@ export const GoogleCloudDialogflowV2beta1ValidationError =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ValidationError" });
 
 export interface GoogleCloudDialogflowV2beta1ValidationResult {
-  validationErrors?: Array<GoogleCloudDialogflowV2beta1ValidationError>;
+  validationErrors?: ReadonlyArray<GoogleCloudDialogflowV2beta1ValidationError>;
 }
 
 export const GoogleCloudDialogflowV2beta1ValidationResult =
@@ -470,8 +470,8 @@ export const GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation 
 export interface GoogleCloudDialogflowV2beta1ToolConnectorToolAction {
   connectionActionId?: string;
   entityOperation?: GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation;
-  inputFields?: Array<string>;
-  outputFields?: Array<string>;
+  inputFields?: ReadonlyArray<string>;
+  outputFields?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1ToolConnectorToolAction =
@@ -488,7 +488,7 @@ export const GoogleCloudDialogflowV2beta1ToolConnectorToolAction =
 
 export interface GoogleCloudDialogflowV2beta1ToolConnectorTool {
   name?: string;
-  actions?: Array<GoogleCloudDialogflowV2beta1ToolConnectorToolAction>;
+  actions?: ReadonlyArray<GoogleCloudDialogflowV2beta1ToolConnectorToolAction>;
 }
 
 export const GoogleCloudDialogflowV2beta1ToolConnectorTool =
@@ -529,7 +529,7 @@ export interface GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig {
   clientSecret?: string;
   secretVersionForClientSecret?: string;
   tokenEndpoint?: string;
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig =
@@ -611,7 +611,7 @@ export const GoogleCloudDialogflowV2beta1ToolTLSConfigCACert =
   });
 
 export interface GoogleCloudDialogflowV2beta1ToolTLSConfig {
-  caCerts?: Array<GoogleCloudDialogflowV2beta1ToolTLSConfigCACert>;
+  caCerts?: ReadonlyArray<GoogleCloudDialogflowV2beta1ToolTLSConfigCACert>;
 }
 
 export const GoogleCloudDialogflowV2beta1ToolTLSConfig =
@@ -697,7 +697,7 @@ export const GoogleCloudDialogflowV2beta1Tool =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Tool" });
 
 export interface GoogleCloudDialogflowV2beta1ListToolsResponse {
-  tools?: Array<GoogleCloudDialogflowV2beta1Tool>;
+  tools?: ReadonlyArray<GoogleCloudDialogflowV2beta1Tool>;
   nextPageToken?: string;
 }
 
@@ -733,7 +733,7 @@ export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckR
   });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult {
-  duplicateSuggestions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
+  duplicateSuggestions?: ReadonlyArray<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult =
@@ -782,7 +782,7 @@ export const GoogleCloudDialogflowV2beta1AgentCoachingInstruction =
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingContext {
   overarchingGuidance?: string;
-  instructions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingInstruction>;
+  instructions?: ReadonlyArray<GoogleCloudDialogflowV2beta1AgentCoachingInstruction>;
   version?: string;
   outputLanguageCode?: string;
 }
@@ -846,7 +846,7 @@ export const GoogleCloudDialogflowV2beta1MessageEntry =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1MessageEntry" });
 
 export interface GoogleCloudDialogflowV2beta1ConversationContext {
-  messageEntries?: Array<GoogleCloudDialogflowV2beta1MessageEntry>;
+  messageEntries?: ReadonlyArray<GoogleCloudDialogflowV2beta1MessageEntry>;
 }
 
 export const GoogleCloudDialogflowV2beta1ConversationContext =
@@ -859,7 +859,7 @@ export const GoogleCloudDialogflowV2beta1ConversationContext =
   });
 
 export interface GoogleCloudDialogflowV2beta1SummarizationSectionList {
-  summarizationSections?: Array<GoogleCloudDialogflowV2beta1SummarizationSection>;
+  summarizationSections?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationSection>;
 }
 
 export const GoogleCloudDialogflowV2beta1SummarizationSectionList =
@@ -894,7 +894,7 @@ export const GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection =
   });
 
 export interface GoogleCloudDialogflowV2beta1SummarySuggestion {
-  summarySections?: Array<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>;
+  summarySections?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>;
 }
 
 export const GoogleCloudDialogflowV2beta1SummarySuggestion =
@@ -905,7 +905,7 @@ export const GoogleCloudDialogflowV2beta1SummarySuggestion =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SummarySuggestion" });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources {
-  instructionIndexes?: Array<number>;
+  instructionIndexes?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources =
@@ -936,7 +936,7 @@ export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckRe
   });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult {
-  duplicateSuggestions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
+  duplicateSuggestions?: ReadonlyArray<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult =
@@ -992,9 +992,9 @@ export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestion {
-  applicableInstructions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingInstruction>;
-  agentActionSuggestions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion>;
-  sampleResponses?: Array<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse>;
+  applicableInstructions?: ReadonlyArray<GoogleCloudDialogflowV2beta1AgentCoachingInstruction>;
+  agentActionSuggestions?: ReadonlyArray<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion>;
+  sampleResponses?: ReadonlyArray<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse>;
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestion =
@@ -1106,7 +1106,7 @@ export interface GoogleCloudDialogflowV2beta1GeneratorSuggestion {
   freeFormSuggestion?: GoogleCloudDialogflowV2beta1FreeFormSuggestion;
   summarySuggestion?: GoogleCloudDialogflowV2beta1SummarySuggestion;
   agentCoachingSuggestion?: GoogleCloudDialogflowV2beta1AgentCoachingSuggestion;
-  toolCallInfo?: Array<GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo>;
+  toolCallInfo?: ReadonlyArray<GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo>;
 }
 
 export const GoogleCloudDialogflowV2beta1GeneratorSuggestion =
@@ -1147,8 +1147,8 @@ export const GoogleCloudDialogflowV2beta1FewShotExample =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1FewShotExample" });
 
 export interface GoogleCloudDialogflowV2beta1SummarizationContext {
-  summarizationSections?: Array<GoogleCloudDialogflowV2beta1SummarizationSection>;
-  fewShotExamples?: Array<GoogleCloudDialogflowV2beta1FewShotExample>;
+  summarizationSections?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationSection>;
+  fewShotExamples?: ReadonlyArray<GoogleCloudDialogflowV2beta1FewShotExample>;
   version?: string;
   outputLanguageCode?: string;
 }
@@ -1259,11 +1259,11 @@ export interface GoogleCloudDialogflowV2beta1Generator {
   publishedModel?: string;
   createTime?: string;
   updateTime?: string;
-  tools?: Array<string>;
+  tools?: ReadonlyArray<string>;
   suggestionDedupingConfig?: GoogleCloudDialogflowV2beta1SuggestionDedupingConfig;
-  toolsetTools?: Array<GoogleCloudDialogflowV2beta1ToolsetTool>;
-  cesToolSpecs?: Array<GoogleCloudDialogflowV2beta1CesToolSpec>;
-  cesAppSpecs?: Array<GoogleCloudDialogflowV2beta1CesAppSpec>;
+  toolsetTools?: ReadonlyArray<GoogleCloudDialogflowV2beta1ToolsetTool>;
+  cesToolSpecs?: ReadonlyArray<GoogleCloudDialogflowV2beta1CesToolSpec>;
+  cesAppSpecs?: ReadonlyArray<GoogleCloudDialogflowV2beta1CesAppSpec>;
 }
 
 export const GoogleCloudDialogflowV2beta1Generator =
@@ -1302,7 +1302,7 @@ export const GoogleCloudDialogflowV2beta1Generator =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Generator" });
 
 export interface GoogleCloudDialogflowV2beta1ListGeneratorsResponse {
-  generators?: Array<GoogleCloudDialogflowV2beta1Generator>;
+  generators?: ReadonlyArray<GoogleCloudDialogflowV2beta1Generator>;
   nextPageToken?: string;
 }
 
@@ -1330,7 +1330,7 @@ export const GoogleCloudDialogflowV2beta1Context =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Context" });
 
 export interface GoogleCloudDialogflowV2beta1ListContextsResponse {
-  contexts?: Array<GoogleCloudDialogflowV2beta1Context>;
+  contexts?: ReadonlyArray<GoogleCloudDialogflowV2beta1Context>;
   nextPageToken?: string;
 }
 
@@ -1364,7 +1364,7 @@ export const GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart =
 export interface GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
   name?: string;
   type?: "TYPE_UNSPECIFIED" | "EXAMPLE" | "TEMPLATE" | (string & {});
-  parts?: Array<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>;
+  parts?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>;
   timesAddedCount?: number;
 }
 
@@ -1387,7 +1387,7 @@ export interface GoogleCloudDialogflowV2beta1IntentParameter {
   defaultValue?: string;
   entityTypeDisplayName?: string;
   mandatory?: boolean;
-  prompts?: Array<string>;
+  prompts?: ReadonlyArray<string>;
   isList?: boolean;
 }
 
@@ -1404,7 +1404,7 @@ export const GoogleCloudDialogflowV2beta1IntentParameter =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentParameter" });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageText {
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageText =
@@ -1425,7 +1425,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageImage =
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
   title?: string;
-  quickReplies?: Array<string>;
+  quickReplies?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageQuickReplies =
@@ -1453,7 +1453,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageCard {
   title?: string;
   subtitle?: string;
   imageUri?: string;
-  buttons?: Array<GoogleCloudDialogflowV2beta1IntentMessageCardButton>;
+  buttons?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageCardButton>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageCard =
@@ -1482,7 +1482,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
-  simpleResponses?: Array<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>;
+  simpleResponses?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses =
@@ -1526,7 +1526,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
   subtitle?: string;
   formattedText?: string;
   image?: GoogleCloudDialogflowV2beta1IntentMessageImage;
-  buttons?: Array<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>;
+  buttons?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageBasicCard =
@@ -1554,7 +1554,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageSuggestion =
   });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
-  suggestions?: Array<GoogleCloudDialogflowV2beta1IntentMessageSuggestion>;
+  suggestions?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSuggestions =
@@ -1581,7 +1581,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion =
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
   key?: string;
-  synonyms?: Array<string>;
+  synonyms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo =
@@ -1613,7 +1613,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageListSelectItem =
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageListSelect {
   title?: string;
-  items?: Array<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem>;
+  items?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem>;
   subtitle?: string;
 }
 
@@ -1648,7 +1648,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem =
   });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
-  items?: Array<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>;
+  items?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect =
@@ -1786,7 +1786,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion =
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmText {
   text?: string;
-  rbmSuggestion?: Array<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>;
+  rbmSuggestion?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmText =
@@ -1819,7 +1819,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
   title?: string;
   description?: string;
   media?: GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia;
-  suggestions?: Array<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>;
+  suggestions?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent =
@@ -1863,7 +1863,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard =
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
   cardWidth?: "CARD_WIDTH_UNSPECIFIED" | "SMALL" | "MEDIUM" | (string & {});
-  cardContents?: Array<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>;
+  cardContents?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard =
@@ -1917,7 +1917,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCa
   });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
-  items?: Array<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
+  items?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
   imageDisplayOptions?:
     | "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED"
     | "GRAY"
@@ -1969,7 +1969,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageTableCardCell =
   });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
-  cells?: Array<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>;
+  cells?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>;
   dividerAfter?: boolean;
 }
 
@@ -1987,9 +1987,9 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTableCard {
   title?: string;
   subtitle?: string;
   image?: GoogleCloudDialogflowV2beta1IntentMessageImage;
-  columnProperties?: Array<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>;
-  rows?: Array<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>;
-  buttons?: Array<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>;
+  columnProperties?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>;
+  rows?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>;
+  buttons?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageTableCard =
@@ -2032,7 +2032,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaO
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
   mediaType?: "RESPONSE_MEDIA_TYPE_UNSPECIFIED" | "AUDIO" | (string & {});
-  mediaObjects?: Array<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>;
+  mediaObjects?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageMediaContent =
@@ -2165,15 +2165,15 @@ export interface GoogleCloudDialogflowV2beta1Intent {
   mlDisabled?: boolean;
   liveAgentHandoff?: boolean;
   endInteraction?: boolean;
-  inputContextNames?: Array<string>;
-  events?: Array<string>;
-  trainingPhrases?: Array<GoogleCloudDialogflowV2beta1IntentTrainingPhrase>;
+  inputContextNames?: ReadonlyArray<string>;
+  events?: ReadonlyArray<string>;
+  trainingPhrases?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentTrainingPhrase>;
   action?: string;
-  outputContexts?: Array<GoogleCloudDialogflowV2beta1Context>;
+  outputContexts?: ReadonlyArray<GoogleCloudDialogflowV2beta1Context>;
   resetContexts?: boolean;
-  parameters?: Array<GoogleCloudDialogflowV2beta1IntentParameter>;
-  messages?: Array<GoogleCloudDialogflowV2beta1IntentMessage>;
-  defaultResponsePlatforms?: Array<
+  parameters?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentParameter>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessage>;
+  defaultResponsePlatforms?: ReadonlyArray<
     | "PLATFORM_UNSPECIFIED"
     | "FACEBOOK"
     | "SLACK"
@@ -2189,7 +2189,7 @@ export interface GoogleCloudDialogflowV2beta1Intent {
   >;
   rootFollowupIntentName?: string;
   parentFollowupIntentName?: string;
-  followupIntentInfo?: Array<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>;
+  followupIntentInfo?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>;
 }
 
 export const GoogleCloudDialogflowV2beta1Intent =
@@ -2228,7 +2228,7 @@ export const GoogleCloudDialogflowV2beta1Intent =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Intent" });
 
 export interface GoogleCloudDialogflowV2beta1ListIntentsResponse {
-  intents?: Array<GoogleCloudDialogflowV2beta1Intent>;
+  intents?: ReadonlyArray<GoogleCloudDialogflowV2beta1Intent>;
   nextPageToken?: string;
 }
 
@@ -2241,7 +2241,7 @@ export const GoogleCloudDialogflowV2beta1ListIntentsResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1IntentBatch {
-  intents?: Array<GoogleCloudDialogflowV2beta1Intent>;
+  intents?: ReadonlyArray<GoogleCloudDialogflowV2beta1Intent>;
 }
 
 export const GoogleCloudDialogflowV2beta1IntentBatch =
@@ -2269,7 +2269,7 @@ export const GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest {
-  intents?: Array<GoogleCloudDialogflowV2beta1Intent>;
+  intents?: ReadonlyArray<GoogleCloudDialogflowV2beta1Intent>;
 }
 
 export const GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest =
@@ -2281,7 +2281,7 @@ export const GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest =
 
 export interface GoogleCloudDialogflowV2beta1EntityTypeEntity {
   value?: string;
-  synonyms?: Array<string>;
+  synonyms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1EntityTypeEntity =
@@ -2303,7 +2303,7 @@ export interface GoogleCloudDialogflowV2beta1EntityType {
     | "AUTO_EXPANSION_MODE_UNSPECIFIED"
     | "AUTO_EXPANSION_MODE_DEFAULT"
     | (string & {});
-  entities?: Array<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
+  entities?: ReadonlyArray<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
   enableFuzzyExtraction?: boolean;
 }
 
@@ -2320,7 +2320,7 @@ export const GoogleCloudDialogflowV2beta1EntityType =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EntityType" });
 
 export interface GoogleCloudDialogflowV2beta1ListEntityTypesResponse {
-  entityTypes?: Array<GoogleCloudDialogflowV2beta1EntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudDialogflowV2beta1EntityType>;
   nextPageToken?: string;
 }
 
@@ -2335,7 +2335,7 @@ export const GoogleCloudDialogflowV2beta1ListEntityTypesResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1EntityTypeBatch {
-  entityTypes?: Array<GoogleCloudDialogflowV2beta1EntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudDialogflowV2beta1EntityType>;
 }
 
 export const GoogleCloudDialogflowV2beta1EntityTypeBatch =
@@ -2365,7 +2365,7 @@ export const GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest {
-  entityTypeNames?: Array<string>;
+  entityTypeNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest =
@@ -2376,7 +2376,7 @@ export const GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest {
-  entities?: Array<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
+  entities?: ReadonlyArray<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
   languageCode?: string;
 }
 
@@ -2391,7 +2391,7 @@ export const GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest {
-  entities?: Array<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
+  entities?: ReadonlyArray<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
   languageCode?: string;
   updateMask?: string;
 }
@@ -2408,7 +2408,7 @@ export const GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest {
-  entityValues?: Array<string>;
+  entityValues?: ReadonlyArray<string>;
   languageCode?: string;
 }
 
@@ -2427,7 +2427,7 @@ export interface GoogleCloudDialogflowV2beta1SessionEntityType {
     | "ENTITY_OVERRIDE_MODE_OVERRIDE"
     | "ENTITY_OVERRIDE_MODE_SUPPLEMENT"
     | (string & {});
-  entities?: Array<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
+  entities?: ReadonlyArray<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
 }
 
 export const GoogleCloudDialogflowV2beta1SessionEntityType =
@@ -2440,7 +2440,7 @@ export const GoogleCloudDialogflowV2beta1SessionEntityType =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SessionEntityType" });
 
 export interface GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse {
-  sessionEntityTypes?: Array<GoogleCloudDialogflowV2beta1SessionEntityType>;
+  sessionEntityTypes?: ReadonlyArray<GoogleCloudDialogflowV2beta1SessionEntityType>;
   nextPageToken?: string;
 }
 
@@ -2489,13 +2489,13 @@ export const GoogleCloudDialogflowV2beta1SubAgent =
 export interface GoogleCloudDialogflowV2beta1QueryParameters {
   timeZone?: string;
   geoLocation?: GoogleTypeLatLng;
-  contexts?: Array<GoogleCloudDialogflowV2beta1Context>;
+  contexts?: ReadonlyArray<GoogleCloudDialogflowV2beta1Context>;
   resetContexts?: boolean;
-  sessionEntityTypes?: Array<GoogleCloudDialogflowV2beta1SessionEntityType>;
+  sessionEntityTypes?: ReadonlyArray<GoogleCloudDialogflowV2beta1SessionEntityType>;
   payload?: Record<string, unknown>;
-  knowledgeBaseNames?: Array<string>;
+  knowledgeBaseNames?: ReadonlyArray<string>;
   sentimentAnalysisRequestConfig?: GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig;
-  subAgents?: Array<GoogleCloudDialogflowV2beta1SubAgent>;
+  subAgents?: ReadonlyArray<GoogleCloudDialogflowV2beta1SubAgent>;
   webhookHeaders?: Record<string, string>;
   platform?: string;
 }
@@ -2526,7 +2526,7 @@ export const GoogleCloudDialogflowV2beta1QueryParameters =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1QueryParameters" });
 
 export interface GoogleCloudDialogflowV2beta1SpeechContext {
-  phrases?: Array<string>;
+  phrases?: ReadonlyArray<string>;
   boost?: number;
 }
 
@@ -2562,8 +2562,8 @@ export interface GoogleCloudDialogflowV2beta1InputAudioConfig {
   sampleRateHertz?: number;
   languageCode?: string;
   enableWordInfo?: boolean;
-  phraseHints?: Array<string>;
-  speechContexts?: Array<GoogleCloudDialogflowV2beta1SpeechContext>;
+  phraseHints?: ReadonlyArray<string>;
+  speechContexts?: ReadonlyArray<GoogleCloudDialogflowV2beta1SpeechContext>;
   model?: string;
   modelVariant?:
     | "SPEECH_MODEL_VARIANT_UNSPECIFIED"
@@ -2576,7 +2576,7 @@ export interface GoogleCloudDialogflowV2beta1InputAudioConfig {
   bargeInConfig?: GoogleCloudDialogflowV2beta1BargeInConfig;
   enableAutomaticPunctuation?: boolean;
   defaultNoSpeechTimeout?: string;
-  phraseSets?: Array<string>;
+  phraseSets?: ReadonlyArray<string>;
   optOutConformerModelMigration?: boolean;
 }
 
@@ -2626,7 +2626,7 @@ export const GoogleCloudDialogflowV2beta1EventInput =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EventInput" });
 
 export interface GoogleCloudDialogflowV2beta1TelephonyDtmfEvents {
-  dtmfEvents?: Array<
+  dtmfEvents?: ReadonlyArray<
     | "TELEPHONY_DTMF_UNSPECIFIED"
     | "DTMF_ONE"
     | "DTMF_TWO"
@@ -2761,7 +2761,7 @@ export const GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer =
   });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAnswers {
-  answers?: Array<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>;
+  answers?: ReadonlyArray<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>;
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAnswers =
@@ -2780,10 +2780,10 @@ export interface GoogleCloudDialogflowV2beta1QueryResult {
   allRequiredParamsPresent?: boolean;
   cancelsSlotFilling?: boolean;
   fulfillmentText?: string;
-  fulfillmentMessages?: Array<GoogleCloudDialogflowV2beta1IntentMessage>;
+  fulfillmentMessages?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessage>;
   webhookSource?: string;
   webhookPayload?: Record<string, unknown>;
-  outputContexts?: Array<GoogleCloudDialogflowV2beta1Context>;
+  outputContexts?: ReadonlyArray<GoogleCloudDialogflowV2beta1Context>;
   intent?: GoogleCloudDialogflowV2beta1Intent;
   intentDetectionConfidence?: number;
   diagnosticInfo?: Record<string, unknown>;
@@ -2827,7 +2827,7 @@ export const GoogleCloudDialogflowV2beta1QueryResult =
 export interface GoogleCloudDialogflowV2beta1DetectIntentResponse {
   responseId?: string;
   queryResult?: GoogleCloudDialogflowV2beta1QueryResult;
-  alternativeQueryResults?: Array<GoogleCloudDialogflowV2beta1QueryResult>;
+  alternativeQueryResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1QueryResult>;
   webhookStatus?: GoogleRpcStatus;
   outputAudio?: string;
   outputAudioConfig?: GoogleCloudDialogflowV2beta1OutputAudioConfig;
@@ -2881,7 +2881,7 @@ export const GoogleCloudDialogflowV2beta1Participant =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Participant" });
 
 export interface GoogleCloudDialogflowV2beta1ListParticipantsResponse {
-  participants?: Array<GoogleCloudDialogflowV2beta1Participant>;
+  participants?: ReadonlyArray<GoogleCloudDialogflowV2beta1Participant>;
   nextPageToken?: string;
 }
 
@@ -3005,7 +3005,7 @@ export const GoogleCloudDialogflowV2beta1OutputAudio =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1OutputAudio" });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageText {
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageText =
@@ -3049,7 +3049,7 @@ export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment =
   });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio {
-  segments?: Array<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment>;
+  segments?: ReadonlyArray<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment>;
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio =
@@ -3106,7 +3106,7 @@ export const GoogleCloudDialogflowV2beta1ResponseMessage =
 
 export interface GoogleCloudDialogflowV2beta1AutomatedAgentReply {
   detectIntentResponse?: GoogleCloudDialogflowV2beta1DetectIntentResponse;
-  responseMessages?: Array<GoogleCloudDialogflowV2beta1ResponseMessage>;
+  responseMessages?: ReadonlyArray<GoogleCloudDialogflowV2beta1ResponseMessage>;
   intent?: string;
   event?: string;
   matchConfidence?: number;
@@ -3161,7 +3161,7 @@ export const GoogleCloudDialogflowV2beta1AnnotatedMessagePart =
   });
 
 export interface GoogleCloudDialogflowV2beta1MessageAnnotation {
-  parts?: Array<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>;
+  parts?: ReadonlyArray<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>;
   containEntities?: boolean;
 }
 
@@ -3176,7 +3176,7 @@ export const GoogleCloudDialogflowV2beta1MessageAnnotation =
 export interface GoogleCloudDialogflowV2beta1Message {
   name?: string;
   content?: string;
-  responseMessages?: Array<GoogleCloudDialogflowV2beta1ResponseMessage>;
+  responseMessages?: ReadonlyArray<GoogleCloudDialogflowV2beta1ResponseMessage>;
   languageCode?: string;
   participant?: string;
   participantRole?:
@@ -3214,7 +3214,7 @@ export const GoogleCloudDialogflowV2beta1Message =
 export interface GoogleCloudDialogflowV2beta1ArticleAnswer {
   title?: string;
   uri?: string;
-  snippets?: Array<string>;
+  snippets?: ReadonlyArray<string>;
   metadata?: Record<string, string>;
   answerRecord?: string;
 }
@@ -3229,7 +3229,7 @@ export const GoogleCloudDialogflowV2beta1ArticleAnswer =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ArticleAnswer" });
 
 export interface GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
-  articleAnswers?: Array<GoogleCloudDialogflowV2beta1ArticleAnswer>;
+  articleAnswers?: ReadonlyArray<GoogleCloudDialogflowV2beta1ArticleAnswer>;
   latestMessage?: string;
   contextSize?: number;
 }
@@ -3288,7 +3288,7 @@ export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGen
   });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource {
-  snippets?: Array<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
+  snippets?: ReadonlyArray<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource =
@@ -3392,7 +3392,7 @@ export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngest
 export interface GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo {
   projectNotAllowlisted?: boolean;
   contextReferenceRetrieved?: boolean;
-  ingestedParametersDebugInfo?: Array<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
+  ingestedParametersDebugInfo?: ReadonlyArray<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
 }
 
 export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo =
@@ -3427,7 +3427,7 @@ export const GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency =
   });
 
 export interface GoogleCloudDialogflowV2beta1ServiceLatency {
-  internalServiceLatencies?: Array<GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency>;
+  internalServiceLatencies?: ReadonlyArray<GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency>;
 }
 
 export const GoogleCloudDialogflowV2beta1ServiceLatency =
@@ -3552,7 +3552,7 @@ export const GoogleCloudDialogflowV2beta1FaqAnswer =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1FaqAnswer" });
 
 export interface GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
-  faqAnswers?: Array<GoogleCloudDialogflowV2beta1FaqAnswer>;
+  faqAnswers?: ReadonlyArray<GoogleCloudDialogflowV2beta1FaqAnswer>;
   latestMessage?: string;
   contextSize?: number;
 }
@@ -3582,7 +3582,7 @@ export const GoogleCloudDialogflowV2beta1SmartReplyAnswer =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SmartReplyAnswer" });
 
 export interface GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
-  smartReplyAnswers?: Array<GoogleCloudDialogflowV2beta1SmartReplyAnswer>;
+  smartReplyAnswers?: ReadonlyArray<GoogleCloudDialogflowV2beta1SmartReplyAnswer>;
   latestMessage?: string;
   contextSize?: number;
 }
@@ -3629,7 +3629,7 @@ export const GoogleCloudDialogflowV2beta1DialogflowAssistAnswer =
   });
 
 export interface GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse {
-  dialogflowAssistAnswers?: Array<GoogleCloudDialogflowV2beta1DialogflowAssistAnswer>;
+  dialogflowAssistAnswers?: ReadonlyArray<GoogleCloudDialogflowV2beta1DialogflowAssistAnswer>;
   latestMessage?: string;
   contextSize?: number;
 }
@@ -3664,7 +3664,7 @@ export const GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSug
   });
 
 export interface GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse {
-  generatorSuggestionAnswers?: Array<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
+  generatorSuggestionAnswers?: ReadonlyArray<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
   latestMessage?: string;
 }
 
@@ -3731,8 +3731,8 @@ export interface GoogleCloudDialogflowV2beta1AnalyzeContentResponse {
   replyAudio?: GoogleCloudDialogflowV2beta1OutputAudio;
   automatedAgentReply?: GoogleCloudDialogflowV2beta1AutomatedAgentReply;
   message?: GoogleCloudDialogflowV2beta1Message;
-  humanAgentSuggestionResults?: Array<GoogleCloudDialogflowV2beta1SuggestionResult>;
-  endUserSuggestionResults?: Array<GoogleCloudDialogflowV2beta1SuggestionResult>;
+  humanAgentSuggestionResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1SuggestionResult>;
+  endUserSuggestionResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1SuggestionResult>;
   dtmfParameters?: GoogleCloudDialogflowV2beta1DtmfParameters;
 }
 
@@ -3822,7 +3822,7 @@ export const GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistRequest =
 export interface GoogleCloudDialogflowV2beta1SuggestionArticle {
   title?: string;
   uri?: string;
-  snippets?: Array<string>;
+  snippets?: ReadonlyArray<string>;
   metadata?: Record<string, string>;
   answerRecord?: string;
 }
@@ -3859,8 +3859,8 @@ export const GoogleCloudDialogflowV2beta1SuggestionFaqAnswer =
 
 export interface GoogleCloudDialogflowV2beta1Suggestion {
   name?: string;
-  articles?: Array<GoogleCloudDialogflowV2beta1SuggestionArticle>;
-  faqAnswers?: Array<GoogleCloudDialogflowV2beta1SuggestionFaqAnswer>;
+  articles?: ReadonlyArray<GoogleCloudDialogflowV2beta1SuggestionArticle>;
+  faqAnswers?: ReadonlyArray<GoogleCloudDialogflowV2beta1SuggestionFaqAnswer>;
   createTime?: string;
   latestMessage?: string;
 }
@@ -3879,7 +3879,7 @@ export const GoogleCloudDialogflowV2beta1Suggestion =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Suggestion" });
 
 export interface GoogleCloudDialogflowV2beta1ListSuggestionsResponse {
-  suggestions?: Array<GoogleCloudDialogflowV2beta1Suggestion>;
+  suggestions?: ReadonlyArray<GoogleCloudDialogflowV2beta1Suggestion>;
   nextPageToken?: string;
 }
 
@@ -3941,7 +3941,7 @@ export const GoogleCloudDialogflowV2beta1AgentAssistantFeedbackSummarizationFeed
 
 export interface GoogleCloudDialogflowV2beta1AgentAssistantFeedbackKnowledgeSearchFeedback {
   answerCopied?: boolean;
-  clickedUris?: Array<string>;
+  clickedUris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1AgentAssistantFeedbackKnowledgeSearchFeedback =
@@ -3955,7 +3955,7 @@ export const GoogleCloudDialogflowV2beta1AgentAssistantFeedbackKnowledgeSearchFe
 
 export interface GoogleCloudDialogflowV2beta1AgentAssistantFeedbackKnowledgeAssistFeedback {
   answerCopied?: boolean;
-  clickedUris?: Array<string>;
+  clickedUris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1AgentAssistantFeedbackKnowledgeAssistFeedback =
@@ -4071,7 +4071,7 @@ export const GoogleCloudDialogflowV2beta1AnswerRecord =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1AnswerRecord" });
 
 export interface GoogleCloudDialogflowV2beta1ListAnswerRecordsResponse {
-  answerRecords?: Array<GoogleCloudDialogflowV2beta1AnswerRecord>;
+  answerRecords?: ReadonlyArray<GoogleCloudDialogflowV2beta1AnswerRecord>;
   nextPageToken?: string;
 }
 
@@ -4102,7 +4102,7 @@ export interface GoogleCloudDialogflowV2beta1Document {
   name?: string;
   displayName?: string;
   mimeType?: string;
-  knowledgeTypes?: Array<
+  knowledgeTypes?: ReadonlyArray<
     | "KNOWLEDGE_TYPE_UNSPECIFIED"
     | "FAQ"
     | "EXTRACTIVE_QA"
@@ -4145,7 +4145,7 @@ export const GoogleCloudDialogflowV2beta1Document =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Document" });
 
 export interface GoogleCloudDialogflowV2beta1ListDocumentsResponse {
-  documents?: Array<GoogleCloudDialogflowV2beta1Document>;
+  documents?: ReadonlyArray<GoogleCloudDialogflowV2beta1Document>;
   nextPageToken?: string;
 }
 
@@ -4160,7 +4160,7 @@ export const GoogleCloudDialogflowV2beta1ListDocumentsResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1GcsSources {
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1GcsSources =
@@ -4170,7 +4170,7 @@ export const GoogleCloudDialogflowV2beta1GcsSources =
 
 export interface GoogleCloudDialogflowV2beta1ImportDocumentTemplate {
   mimeType?: string;
-  knowledgeTypes?: Array<
+  knowledgeTypes?: ReadonlyArray<
     | "KNOWLEDGE_TYPE_UNSPECIFIED"
     | "FAQ"
     | "EXTRACTIVE_QA"
@@ -4302,7 +4302,7 @@ export const GoogleCloudDialogflowV2beta1RaiSettingsRaiCategoryConfig =
   });
 
 export interface GoogleCloudDialogflowV2beta1RaiSettings {
-  raiCategoryConfigs?: Array<GoogleCloudDialogflowV2beta1RaiSettingsRaiCategoryConfig>;
+  raiCategoryConfigs?: ReadonlyArray<GoogleCloudDialogflowV2beta1RaiSettingsRaiCategoryConfig>;
 }
 
 export const GoogleCloudDialogflowV2beta1RaiSettings =
@@ -4327,7 +4327,7 @@ export const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTrig
   });
 
 export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
-  knowledgeBases?: Array<string>;
+  knowledgeBases?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource =
@@ -4339,7 +4339,7 @@ export const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQuer
   });
 
 export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
-  documents?: Array<string>;
+  documents?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource =
@@ -4395,7 +4395,7 @@ export const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQuer
   });
 
 export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigSections {
-  sectionTypes?: Array<
+  sectionTypes?: ReadonlyArray<
     | "SECTION_TYPE_UNSPECIFIED"
     | "SITUATION"
     | "ACTION"
@@ -4522,9 +4522,9 @@ export const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeat
   });
 
 export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
-  featureConfigs?: Array<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig>;
+  featureConfigs?: ReadonlyArray<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig>;
   groupSuggestionResponses?: boolean;
-  generators?: Array<string>;
+  generators?: ReadonlyArray<string>;
   disableHighLatencyFeaturesSyncDelivery?: boolean;
   skipEmptyEventBasedSuggestion?: boolean;
   useUnredactedConversationData?: boolean;
@@ -4654,7 +4654,7 @@ export interface GoogleCloudDialogflowV2beta1SpeechToTextConfig {
     | "USE_ENHANCED"
     | (string & {});
   model?: string;
-  phraseSets?: Array<string>;
+  phraseSets?: ReadonlyArray<string>;
   audioEncoding?:
     | "AUDIO_ENCODING_UNSPECIFIED"
     | "AUDIO_ENCODING_LINEAR_16"
@@ -4742,7 +4742,7 @@ export const GoogleCloudDialogflowV2beta1ConversationProfile =
   });
 
 export interface GoogleCloudDialogflowV2beta1ListConversationProfilesResponse {
-  conversationProfiles?: Array<GoogleCloudDialogflowV2beta1ConversationProfile>;
+  conversationProfiles?: ReadonlyArray<GoogleCloudDialogflowV2beta1ConversationProfile>;
   nextPageToken?: string;
 }
 
@@ -4848,8 +4848,8 @@ export const GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMime
 export interface GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfo {
   dialedNumber?: string;
   sdp?: string;
-  sipHeaders?: Array<GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoSipHeader>;
-  extraMimeContents?: Array<GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent>;
+  sipHeaders?: ReadonlyArray<GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoSipHeader>;
+  extraMimeContents?: ReadonlyArray<GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfoMimeContent>;
 }
 
 export const GoogleCloudDialogflowV2beta1ConversationTelephonyConnectionInfo =
@@ -4894,7 +4894,7 @@ export const GoogleCloudDialogflowV2beta1ConversationContextReferenceContextCont
   });
 
 export interface GoogleCloudDialogflowV2beta1ConversationContextReference {
-  contextContents?: Array<GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent>;
+  contextContents?: ReadonlyArray<GoogleCloudDialogflowV2beta1ConversationContextReferenceContextContent>;
   updateMode?:
     | "UPDATE_MODE_UNSPECIFIED"
     | "APPEND"
@@ -4997,7 +4997,7 @@ export const GoogleCloudDialogflowV2beta1Conversation =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Conversation" });
 
 export interface GoogleCloudDialogflowV2beta1ListConversationsResponse {
-  conversations?: Array<GoogleCloudDialogflowV2beta1Conversation>;
+  conversations?: ReadonlyArray<GoogleCloudDialogflowV2beta1Conversation>;
   nextPageToken?: string;
 }
 
@@ -5070,7 +5070,7 @@ export const GoogleCloudDialogflowV2beta1CreateMessageRequest =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchCreateMessagesRequest {
-  requests?: Array<GoogleCloudDialogflowV2beta1CreateMessageRequest>;
+  requests?: ReadonlyArray<GoogleCloudDialogflowV2beta1CreateMessageRequest>;
 }
 
 export const GoogleCloudDialogflowV2beta1BatchCreateMessagesRequest =
@@ -5083,7 +5083,7 @@ export const GoogleCloudDialogflowV2beta1BatchCreateMessagesRequest =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchCreateMessagesResponse {
-  messages?: Array<GoogleCloudDialogflowV2beta1Message>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowV2beta1Message>;
 }
 
 export const GoogleCloudDialogflowV2beta1BatchCreateMessagesResponse =
@@ -5096,7 +5096,7 @@ export const GoogleCloudDialogflowV2beta1BatchCreateMessagesResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1ListMessagesResponse {
-  messages?: Array<GoogleCloudDialogflowV2beta1Message>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowV2beta1Message>;
   nextPageToken?: string;
 }
 
@@ -5144,7 +5144,7 @@ export const GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSumma
 export interface GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary {
   text?: string;
   textSections?: Record<string, string>;
-  sortedTextSections?: Array<GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummarySummarySection>;
+  sortedTextSections?: ReadonlyArray<GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummarySummarySection>;
   answerRecord?: string;
   baselineModelVersion?: string;
 }
@@ -5184,7 +5184,7 @@ export const GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequestMinimalConversation {
-  messages?: Array<GoogleCloudDialogflowV2beta1Message>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowV2beta1Message>;
 }
 
 export const GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequestMinimalConversation =
@@ -5259,7 +5259,7 @@ export interface GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest 
     GoogleCloudDialogflowV2beta1ConversationContextReference
   >;
   conversationContext?: GoogleCloudDialogflowV2beta1ConversationContext;
-  triggerEvents?: Array<
+  triggerEvents?: ReadonlyArray<
     | "TRIGGER_EVENT_UNSPECIFIED"
     | "END_OF_UTTERANCE"
     | "MANUAL_CALL"
@@ -5329,7 +5329,7 @@ export interface GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigB
     | "INTERPOLATION_TYPE_UNSPECIFIED"
     | "LINEAR"
     | (string & {});
-  controlPoints?: Array<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  controlPoints?: ReadonlyArray<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 }
 
 export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec =
@@ -5366,7 +5366,7 @@ export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoost
   });
 
 export interface GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec {
-  conditionBoostSpecs?: Array<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec>;
+  conditionBoostSpecs?: ReadonlyArray<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec>;
 }
 
 export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec =
@@ -5382,8 +5382,8 @@ export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoost
   });
 
 export interface GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs {
-  dataStores?: Array<string>;
-  spec?: Array<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec>;
+  dataStores?: ReadonlyArray<string>;
+  spec?: ReadonlyArray<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec>;
 }
 
 export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs =
@@ -5400,7 +5400,7 @@ export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoost
   });
 
 export interface GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigFilterSpecs {
-  dataStores?: Array<string>;
+  dataStores?: ReadonlyArray<string>;
   filter?: string;
 }
 
@@ -5414,8 +5414,8 @@ export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigFilte
   });
 
 export interface GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfig {
-  boostSpecs?: Array<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs>;
-  filterSpecs?: Array<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigFilterSpecs>;
+  boostSpecs?: ReadonlyArray<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigBoostSpecs>;
+  filterSpecs?: ReadonlyArray<GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfigFilterSpecs>;
 }
 
 export const GoogleCloudDialogflowV2beta1SearchKnowledgeRequestSearchConfig =
@@ -5497,7 +5497,7 @@ export interface GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer {
     | "GENERATIVE"
     | "INTENT"
     | (string & {});
-  answerSources?: Array<GoogleCloudDialogflowV2beta1SearchKnowledgeAnswerAnswerSource>;
+  answerSources?: ReadonlyArray<GoogleCloudDialogflowV2beta1SearchKnowledgeAnswerAnswerSource>;
   answerRecord?: string;
 }
 
@@ -5564,7 +5564,7 @@ export const GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo =
   });
 
 export interface GoogleCloudDialogflowV2beta1SearchKnowledgeResponse {
-  answers?: Array<GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer>;
+  answers?: ReadonlyArray<GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer>;
   rewrittenQuery?: string;
   searchKnowledgeDebugInfo?: GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo;
 }
@@ -5584,7 +5584,7 @@ export const GoogleCloudDialogflowV2beta1SearchKnowledgeResponse =
 
 export interface GoogleCloudDialogflowV2beta1GenerateSuggestionsRequest {
   latestMessage?: string;
-  triggerEvents?: Array<
+  triggerEvents?: ReadonlyArray<
     | "TRIGGER_EVENT_UNSPECIFIED"
     | "END_OF_UTTERANCE"
     | "MANUAL_CALL"
@@ -5836,8 +5836,8 @@ export interface GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSumma
   section?: string;
   score?: number;
   sectionSummary?: string;
-  decompositions?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition>;
-  evaluationResults?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult>;
+  decompositions?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition>;
+  evaluationResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult>;
 }
 
 export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult =
@@ -5892,7 +5892,7 @@ export interface GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConve
   section?: string;
   score?: number;
   sectionSummary?: string;
-  evaluationResults?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult>;
+  evaluationResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult>;
 }
 
 export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail =
@@ -5913,7 +5913,7 @@ export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversat
 export interface GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail {
   metric?: string;
   score?: number;
-  sectionDetails?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail>;
+  sectionDetails?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail>;
 }
 
 export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail =
@@ -5931,10 +5931,10 @@ export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversat
   });
 
 export interface GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail {
-  messageEntries?: Array<GoogleCloudDialogflowV2beta1MessageEntry>;
-  summarySections?: Array<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>;
-  metricDetails?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail>;
-  sectionTokens?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken>;
+  messageEntries?: ReadonlyArray<GoogleCloudDialogflowV2beta1MessageEntry>;
+  summarySections?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>;
+  metricDetails?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail>;
+  sectionTokens?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken>;
 }
 
 export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail =
@@ -5961,11 +5961,11 @@ export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversat
   });
 
 export interface GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics {
-  summarizationEvaluationResults?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult>;
+  summarizationEvaluationResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult>;
   summarizationEvaluationMergedResultsUri?: string;
-  overallMetrics?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric>;
-  overallSectionTokens?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken>;
-  conversationDetails?: Array<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail>;
+  overallMetrics?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric>;
+  overallSectionTokens?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken>;
+  conversationDetails?: ReadonlyArray<GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail>;
 }
 
 export const GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics =
@@ -6042,7 +6042,7 @@ export const GoogleCloudDialogflowV2beta1GeneratorEvaluation =
   });
 
 export interface GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse {
-  generatorEvaluations?: Array<GoogleCloudDialogflowV2beta1GeneratorEvaluation>;
+  generatorEvaluations?: ReadonlyArray<GoogleCloudDialogflowV2beta1GeneratorEvaluation>;
   nextPageToken?: string;
 }
 
@@ -6070,7 +6070,7 @@ export const GoogleCloudDialogflowV2beta1KnowledgeBase =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1KnowledgeBase" });
 
 export interface GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse {
-  knowledgeBases?: Array<GoogleCloudDialogflowV2beta1KnowledgeBase>;
+  knowledgeBases?: ReadonlyArray<GoogleCloudDialogflowV2beta1KnowledgeBase>;
   nextPageToken?: string;
 }
 
@@ -6085,8 +6085,8 @@ export const GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1PhoneNumberAllowedSipTrunks {
-  sipTrunks?: Array<string>;
-  carrierIds?: Array<string>;
+  sipTrunks?: ReadonlyArray<string>;
+  carrierIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2beta1PhoneNumberAllowedSipTrunks =
@@ -6123,7 +6123,7 @@ export const GoogleCloudDialogflowV2beta1PhoneNumber =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1PhoneNumber" });
 
 export interface GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse {
-  phoneNumbers?: Array<GoogleCloudDialogflowV2beta1PhoneNumber>;
+  phoneNumbers?: ReadonlyArray<GoogleCloudDialogflowV2beta1PhoneNumber>;
   nextPageToken?: string;
 }
 
@@ -6192,8 +6192,8 @@ export const GoogleCloudDialogflowV2beta1Connection =
 
 export interface GoogleCloudDialogflowV2beta1SipTrunk {
   name?: string;
-  expectedHostname?: Array<string>;
-  connections?: Array<GoogleCloudDialogflowV2beta1Connection>;
+  expectedHostname?: ReadonlyArray<string>;
+  connections?: ReadonlyArray<GoogleCloudDialogflowV2beta1Connection>;
   displayName?: string;
 }
 
@@ -6208,7 +6208,7 @@ export const GoogleCloudDialogflowV2beta1SipTrunk =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SipTrunk" });
 
 export interface GoogleCloudDialogflowV2beta1ListSipTrunksResponse {
-  sipTrunks?: Array<GoogleCloudDialogflowV2beta1SipTrunk>;
+  sipTrunks?: ReadonlyArray<GoogleCloudDialogflowV2beta1SipTrunk>;
   nextPageToken?: string;
 }
 
@@ -6245,7 +6245,7 @@ export const GoogleCloudDialogflowV2beta1Version =
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Version" });
 
 export interface GoogleCloudDialogflowV2beta1ListVersionsResponse {
-  versions?: Array<GoogleCloudDialogflowV2beta1Version>;
+  versions?: ReadonlyArray<GoogleCloudDialogflowV2beta1Version>;
   nextPageToken?: string;
 }
 
@@ -6277,7 +6277,7 @@ export const GoogleCloudLocationLocation =
   }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface GoogleCloudLocationListLocationsResponse {
-  locations?: Array<GoogleCloudLocationLocation>;
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
   nextPageToken?: string;
 }
 
@@ -6366,8 +6366,8 @@ export const GoogleCloudDialogflowCxV3ImportEntityTypesMetadata =
   });
 
 export interface GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources {
-  entityTypeDisplayNames?: Array<string>;
-  entityDisplayNames?: Array<string>;
+  entityTypeDisplayNames?: ReadonlyArray<string>;
+  entityDisplayNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources =
@@ -6380,7 +6380,7 @@ export const GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResour
   });
 
 export interface GoogleCloudDialogflowCxV3ImportEntityTypesResponse {
-  entityTypes?: Array<string>;
+  entityTypes?: ReadonlyArray<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources;
 }
 
@@ -6424,8 +6424,8 @@ export const GoogleCloudDialogflowCxV3ImportIntentsMetadata =
   });
 
 export interface GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources {
-  intentDisplayNames?: Array<string>;
-  entityDisplayNames?: Array<string>;
+  intentDisplayNames?: ReadonlyArray<string>;
+  entityDisplayNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources =
@@ -6438,7 +6438,7 @@ export const GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources 
   });
 
 export interface GoogleCloudDialogflowCxV3ImportIntentsResponse {
-  intents?: Array<string>;
+  intents?: ReadonlyArray<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources;
 }
 
@@ -6525,7 +6525,7 @@ export const GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo =
   });
 
 export interface GoogleCloudDialogflowCxV3PageInfoFormInfo {
-  parameterInfo?: Array<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo>;
+  parameterInfo?: ReadonlyArray<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo>;
 }
 
 export const GoogleCloudDialogflowCxV3PageInfoFormInfo =
@@ -6560,7 +6560,7 @@ export const GoogleCloudDialogflowCxV3SessionInfo =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3SessionInfo" });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageText {
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
   allowPlaybackInterruption?: boolean;
 }
 
@@ -6643,7 +6643,7 @@ export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment =
   });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
-  segments?: Array<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>;
+  segments?: ReadonlyArray<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>;
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudio =
@@ -6781,7 +6781,7 @@ export interface GoogleCloudDialogflowCxV3WebhookRequest {
   intentInfo?: GoogleCloudDialogflowCxV3WebhookRequestIntentInfo;
   pageInfo?: GoogleCloudDialogflowCxV3PageInfo;
   sessionInfo?: GoogleCloudDialogflowCxV3SessionInfo;
-  messages?: Array<GoogleCloudDialogflowCxV3ResponseMessage>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowCxV3ResponseMessage>;
   payload?: Record<string, unknown>;
   sentimentAnalysisResult?: GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult;
   languageInfo?: GoogleCloudDialogflowCxV3LanguageInfo;
@@ -6815,7 +6815,7 @@ export const GoogleCloudDialogflowCxV3WebhookRequest =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3WebhookRequest" });
 
 export interface GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
-  messages?: Array<GoogleCloudDialogflowCxV3ResponseMessage>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowCxV3ResponseMessage>;
   mergeBehavior?:
     | "MERGE_BEHAVIOR_UNSPECIFIED"
     | "APPEND"
@@ -6868,7 +6868,7 @@ export const GoogleCloudDialogflowCxV3TestError =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestError" });
 
 export interface GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata {
-  errors?: Array<GoogleCloudDialogflowCxV3TestError>;
+  errors?: ReadonlyArray<GoogleCloudDialogflowCxV3TestError>;
 }
 
 export const GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata =
@@ -6921,7 +6921,7 @@ export interface GoogleCloudDialogflowCxV3InputAudioConfig {
     | (string & {});
   sampleRateHertz?: number;
   enableWordInfo?: boolean;
-  phraseHints?: Array<string>;
+  phraseHints?: ReadonlyArray<string>;
   model?: string;
   modelVariant?:
     | "SPEECH_MODEL_VARIANT_UNSPECIFIED"
@@ -7077,7 +7077,7 @@ export const GoogleCloudDialogflowCxV3IntentTrainingPhrasePart =
 
 export interface GoogleCloudDialogflowCxV3IntentTrainingPhrase {
   id?: string;
-  parts?: Array<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart>;
+  parts?: ReadonlyArray<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart>;
   repeatCount?: number;
 }
 
@@ -7108,8 +7108,8 @@ export const GoogleCloudDialogflowCxV3IntentParameter =
 export interface GoogleCloudDialogflowCxV3Intent {
   name?: string;
   displayName?: string;
-  trainingPhrases?: Array<GoogleCloudDialogflowCxV3IntentTrainingPhrase>;
-  parameters?: Array<GoogleCloudDialogflowCxV3IntentParameter>;
+  trainingPhrases?: ReadonlyArray<GoogleCloudDialogflowCxV3IntentTrainingPhrase>;
+  parameters?: ReadonlyArray<GoogleCloudDialogflowCxV3IntentParameter>;
   priority?: number;
   isFallback?: boolean;
   labels?: Record<string, string>;
@@ -7167,7 +7167,7 @@ export const GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent
 
 export interface GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase {
   condition?: string;
-  caseContent?: Array<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>;
+  caseContent?: ReadonlyArray<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>;
 }
 
 export const GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase: Schema.Schema<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase> =
@@ -7185,7 +7185,7 @@ export const GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase: Schema.Sc
   }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>;
 
 export interface GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
-  cases?: Array<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>;
+  cases?: ReadonlyArray<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>;
 }
 
 export const GoogleCloudDialogflowCxV3FulfillmentConditionalCases: Schema.Schema<GoogleCloudDialogflowCxV3FulfillmentConditionalCases> =
@@ -7300,15 +7300,15 @@ export const GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings =
   });
 
 export interface GoogleCloudDialogflowCxV3Fulfillment {
-  messages?: Array<GoogleCloudDialogflowCxV3ResponseMessage>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowCxV3ResponseMessage>;
   webhook?: string;
   returnPartialResponses?: boolean;
   tag?: string;
-  setParameterActions?: Array<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>;
-  conditionalCases?: Array<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>;
+  setParameterActions?: ReadonlyArray<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>;
+  conditionalCases?: ReadonlyArray<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>;
   advancedSettings?: GoogleCloudDialogflowCxV3AdvancedSettings;
   enableGenerativeFallback?: boolean;
-  generators?: Array<GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings>;
+  generators?: ReadonlyArray<GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings>;
 }
 
 export const GoogleCloudDialogflowCxV3Fulfillment =
@@ -7355,7 +7355,7 @@ export const GoogleCloudDialogflowCxV3EventHandler =
 
 export interface GoogleCloudDialogflowCxV3FormParameterFillBehavior {
   initialPromptFulfillment?: GoogleCloudDialogflowCxV3Fulfillment;
-  repromptEventHandlers?: Array<GoogleCloudDialogflowCxV3EventHandler>;
+  repromptEventHandlers?: ReadonlyArray<GoogleCloudDialogflowCxV3EventHandler>;
 }
 
 export const GoogleCloudDialogflowCxV3FormParameterFillBehavior =
@@ -7398,7 +7398,7 @@ export const GoogleCloudDialogflowCxV3FormParameter =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3FormParameter" });
 
 export interface GoogleCloudDialogflowCxV3Form {
-  parameters?: Array<GoogleCloudDialogflowCxV3FormParameter>;
+  parameters?: ReadonlyArray<GoogleCloudDialogflowCxV3FormParameter>;
 }
 
 export const GoogleCloudDialogflowCxV3Form =
@@ -7456,7 +7456,7 @@ export interface GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
   triggerFulfillment?: GoogleCloudDialogflowCxV3Fulfillment;
   targetPage?: string;
   targetFlow?: string;
-  dataStoreConnections?: Array<GoogleCloudDialogflowCxV3DataStoreConnection>;
+  dataStoreConnections?: ReadonlyArray<GoogleCloudDialogflowCxV3DataStoreConnection>;
 }
 
 export const GoogleCloudDialogflowCxV3KnowledgeConnectorSettings =
@@ -7478,9 +7478,9 @@ export interface GoogleCloudDialogflowCxV3Page {
   description?: string;
   entryFulfillment?: GoogleCloudDialogflowCxV3Fulfillment;
   form?: GoogleCloudDialogflowCxV3Form;
-  transitionRouteGroups?: Array<string>;
-  transitionRoutes?: Array<GoogleCloudDialogflowCxV3TransitionRoute>;
-  eventHandlers?: Array<GoogleCloudDialogflowCxV3EventHandler>;
+  transitionRouteGroups?: ReadonlyArray<string>;
+  transitionRoutes?: ReadonlyArray<GoogleCloudDialogflowCxV3TransitionRoute>;
+  eventHandlers?: ReadonlyArray<GoogleCloudDialogflowCxV3EventHandler>;
   advancedSettings?: GoogleCloudDialogflowCxV3AdvancedSettings;
   knowledgeConnectorSettings?: GoogleCloudDialogflowCxV3KnowledgeConnectorSettings;
 }
@@ -7509,11 +7509,11 @@ export const GoogleCloudDialogflowCxV3Page =
 
 export interface GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   sessionParameters?: Record<string, unknown>;
-  differences?: Array<GoogleCloudDialogflowCxV3TestRunDifference>;
+  differences?: ReadonlyArray<GoogleCloudDialogflowCxV3TestRunDifference>;
   diagnosticInfo?: Record<string, unknown>;
   triggeredIntent?: GoogleCloudDialogflowCxV3Intent;
   currentPage?: GoogleCloudDialogflowCxV3Page;
-  textResponses?: Array<GoogleCloudDialogflowCxV3ResponseMessageText>;
+  textResponses?: ReadonlyArray<GoogleCloudDialogflowCxV3ResponseMessageText>;
   status?: GoogleRpcStatus;
 }
 
@@ -7556,7 +7556,7 @@ export const GoogleCloudDialogflowCxV3ConversationTurn =
 export interface GoogleCloudDialogflowCxV3TestCaseResult {
   name?: string;
   environment?: string;
-  conversationTurns?: Array<GoogleCloudDialogflowCxV3ConversationTurn>;
+  conversationTurns?: ReadonlyArray<GoogleCloudDialogflowCxV3ConversationTurn>;
   testResult?: "TEST_RESULT_UNSPECIFIED" | "PASSED" | "FAILED" | (string & {});
   testTime?: string;
 }
@@ -7573,7 +7573,7 @@ export const GoogleCloudDialogflowCxV3TestCaseResult =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestCaseResult" });
 
 export interface GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
-  results?: Array<GoogleCloudDialogflowCxV3TestCaseResult>;
+  results?: ReadonlyArray<GoogleCloudDialogflowCxV3TestCaseResult>;
 }
 
 export const GoogleCloudDialogflowCxV3BatchRunTestCasesResponse =
@@ -7622,7 +7622,7 @@ export const GoogleCloudDialogflowCxV3ExportTestCasesResponse =
   });
 
 export interface GoogleCloudDialogflowCxV3TestConfig {
-  trackingParameters?: Array<string>;
+  trackingParameters?: ReadonlyArray<string>;
   flow?: string;
   page?: string;
 }
@@ -7636,11 +7636,11 @@ export const GoogleCloudDialogflowCxV3TestConfig =
 
 export interface GoogleCloudDialogflowCxV3TestCase {
   name?: string;
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   displayName?: string;
   notes?: string;
   testConfig?: GoogleCloudDialogflowCxV3TestConfig;
-  testCaseConversationTurns?: Array<GoogleCloudDialogflowCxV3ConversationTurn>;
+  testCaseConversationTurns?: ReadonlyArray<GoogleCloudDialogflowCxV3ConversationTurn>;
   creationTime?: string;
   lastTestResult?: GoogleCloudDialogflowCxV3TestCaseResult;
 }
@@ -7671,7 +7671,7 @@ export const GoogleCloudDialogflowCxV3TestCaseError =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestCaseError" });
 
 export interface GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
-  errors?: Array<GoogleCloudDialogflowCxV3TestCaseError>;
+  errors?: ReadonlyArray<GoogleCloudDialogflowCxV3TestCaseError>;
 }
 
 export const GoogleCloudDialogflowCxV3ImportTestCasesMetadata =
@@ -7684,7 +7684,7 @@ export const GoogleCloudDialogflowCxV3ImportTestCasesMetadata =
   });
 
 export interface GoogleCloudDialogflowCxV3ImportTestCasesResponse {
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3ImportTestCasesResponse =
@@ -7695,7 +7695,7 @@ export const GoogleCloudDialogflowCxV3ImportTestCasesResponse =
   });
 
 export interface GoogleCloudDialogflowCxV3RunContinuousTestMetadata {
-  errors?: Array<GoogleCloudDialogflowCxV3TestError>;
+  errors?: ReadonlyArray<GoogleCloudDialogflowCxV3TestError>;
 }
 
 export const GoogleCloudDialogflowCxV3RunContinuousTestMetadata =
@@ -7712,7 +7712,7 @@ export interface GoogleCloudDialogflowCxV3ContinuousTestResult {
     | "PASSED"
     | "FAILED"
     | (string & {});
-  testCaseResults?: Array<string>;
+  testCaseResults?: ReadonlyArray<string>;
   runTime?: string;
 }
 
@@ -7738,7 +7738,7 @@ export const GoogleCloudDialogflowCxV3RunContinuousTestResponse =
   });
 
 export interface GoogleCloudDialogflowCxV3DeployFlowMetadata {
-  testErrors?: Array<GoogleCloudDialogflowCxV3TestError>;
+  testErrors?: ReadonlyArray<GoogleCloudDialogflowCxV3TestError>;
 }
 
 export const GoogleCloudDialogflowCxV3DeployFlowMetadata =
@@ -7760,7 +7760,7 @@ export const GoogleCloudDialogflowCxV3EnvironmentVersionConfig =
   });
 
 export interface GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
-  testCases?: Array<string>;
+  testCases?: ReadonlyArray<string>;
   enableContinuousRun?: boolean;
   enablePredeploymentRun?: boolean;
 }
@@ -7791,7 +7791,7 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
   clientSecret?: string;
   secretVersionForClientSecret?: string;
   tokenEndpoint?: string;
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig =
@@ -7827,7 +7827,7 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebService {
     string,
     GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue
   >;
-  allowedCaCerts?: Array<string>;
+  allowedCaCerts?: ReadonlyArray<string>;
   oauthConfig?: GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig;
   serviceAgentAuth?:
     | "SERVICE_AGENT_AUTH_UNSPECIFIED"
@@ -7927,7 +7927,7 @@ export const GoogleCloudDialogflowCxV3Webhook =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3Webhook" });
 
 export interface GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
-  webhookOverrides?: Array<GoogleCloudDialogflowCxV3Webhook>;
+  webhookOverrides?: ReadonlyArray<GoogleCloudDialogflowCxV3Webhook>;
 }
 
 export const GoogleCloudDialogflowCxV3EnvironmentWebhookConfig =
@@ -7943,7 +7943,7 @@ export interface GoogleCloudDialogflowCxV3Environment {
   name?: string;
   displayName?: string;
   description?: string;
-  versionConfigs?: Array<GoogleCloudDialogflowCxV3EnvironmentVersionConfig>;
+  versionConfigs?: ReadonlyArray<GoogleCloudDialogflowCxV3EnvironmentVersionConfig>;
   updateTime?: string;
   testCasesConfig?: GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig;
   webhookConfig?: GoogleCloudDialogflowCxV3EnvironmentWebhookConfig;
@@ -7984,8 +7984,8 @@ export interface GoogleCloudDialogflowCxV3TurnSignals {
   userEscalated?: boolean;
   agentEscalated?: boolean;
   reachedEndPage?: boolean;
-  webhookStatuses?: Array<string>;
-  failureReasons?: Array<
+  webhookStatuses?: ReadonlyArray<string>;
+  failureReasons?: ReadonlyArray<
     | "FAILURE_REASON_UNSPECIFIED"
     | "FAILED_INTENT"
     | "FAILED_WEBHOOK"
@@ -8109,8 +8109,8 @@ export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources {
-  entityTypeDisplayNames?: Array<string>;
-  entityDisplayNames?: Array<string>;
+  entityTypeDisplayNames?: ReadonlyArray<string>;
+  entityDisplayNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources =
@@ -8123,7 +8123,7 @@ export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingR
   });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse {
-  entityTypes?: Array<string>;
+  entityTypes?: ReadonlyArray<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources;
 }
 
@@ -8167,8 +8167,8 @@ export const GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources {
-  intentDisplayNames?: Array<string>;
-  entityDisplayNames?: Array<string>;
+  intentDisplayNames?: ReadonlyArray<string>;
+  entityDisplayNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources =
@@ -8181,7 +8181,7 @@ export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResou
   });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportIntentsResponse {
-  intents?: Array<string>;
+  intents?: ReadonlyArray<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources;
 }
 
@@ -8270,7 +8270,7 @@ export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
-  parameterInfo?: Array<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>;
+  parameterInfo?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfo =
@@ -8305,7 +8305,7 @@ export const GoogleCloudDialogflowCxV3beta1SessionInfo =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1SessionInfo" });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageText {
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
   allowPlaybackInterruption?: boolean;
 }
 
@@ -8392,7 +8392,7 @@ export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
-  segments?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>;
+  segments?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio =
@@ -8527,7 +8527,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequest {
   intentInfo?: GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo;
   pageInfo?: GoogleCloudDialogflowCxV3beta1PageInfo;
   sessionInfo?: GoogleCloudDialogflowCxV3beta1SessionInfo;
-  messages?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
   payload?: Record<string, unknown>;
   sentimentAnalysisResult?: GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult;
   languageInfo?: GoogleCloudDialogflowCxV3beta1LanguageInfo;
@@ -8561,7 +8561,7 @@ export const GoogleCloudDialogflowCxV3beta1WebhookRequest =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1WebhookRequest" });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
-  messages?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
   mergeBehavior?:
     | "MERGE_BEHAVIOR_UNSPECIFIED"
     | "APPEND"
@@ -8615,7 +8615,7 @@ export const GoogleCloudDialogflowCxV3beta1TestError =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestError" });
 
 export interface GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata {
-  errors?: Array<GoogleCloudDialogflowCxV3beta1TestError>;
+  errors?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestError>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata =
@@ -8670,7 +8670,7 @@ export interface GoogleCloudDialogflowCxV3beta1InputAudioConfig {
     | (string & {});
   sampleRateHertz?: number;
   enableWordInfo?: boolean;
-  phraseHints?: Array<string>;
+  phraseHints?: ReadonlyArray<string>;
   model?: string;
   modelVariant?:
     | "SPEECH_MODEL_VARIANT_UNSPECIFIED"
@@ -8832,7 +8832,7 @@ export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart =
 
 export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
   id?: string;
-  parts?: Array<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>;
+  parts?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>;
   repeatCount?: number;
 }
 
@@ -8865,8 +8865,8 @@ export const GoogleCloudDialogflowCxV3beta1IntentParameter =
 export interface GoogleCloudDialogflowCxV3beta1Intent {
   name?: string;
   displayName?: string;
-  trainingPhrases?: Array<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>;
-  parameters?: Array<GoogleCloudDialogflowCxV3beta1IntentParameter>;
+  trainingPhrases?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>;
+  parameters?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1IntentParameter>;
   priority?: number;
   isFallback?: boolean;
   labels?: Record<string, string>;
@@ -8924,7 +8924,7 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseCo
 
 export interface GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
   condition?: string;
-  caseContent?: Array<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>;
+  caseContent?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase: Schema.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase> =
@@ -8942,7 +8942,7 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase: Sche
   }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>;
 
 export interface GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases {
-  cases?: Array<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>;
+  cases?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases: Schema.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases> =
@@ -9059,15 +9059,15 @@ export const GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1Fulfillment {
-  messages?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
   webhook?: string;
   returnPartialResponses?: boolean;
   tag?: string;
-  setParameterActions?: Array<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>;
-  conditionalCases?: Array<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>;
+  setParameterActions?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>;
+  conditionalCases?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>;
   advancedSettings?: GoogleCloudDialogflowCxV3beta1AdvancedSettings;
   enableGenerativeFallback?: boolean;
-  generators?: Array<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>;
+  generators?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1Fulfillment =
@@ -9116,7 +9116,7 @@ export const GoogleCloudDialogflowCxV3beta1EventHandler =
 
 export interface GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
   initialPromptFulfillment?: GoogleCloudDialogflowCxV3beta1Fulfillment;
-  repromptEventHandlers?: Array<GoogleCloudDialogflowCxV3beta1EventHandler>;
+  repromptEventHandlers?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1EventHandler>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior =
@@ -9159,7 +9159,7 @@ export const GoogleCloudDialogflowCxV3beta1FormParameter =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1FormParameter" });
 
 export interface GoogleCloudDialogflowCxV3beta1Form {
-  parameters?: Array<GoogleCloudDialogflowCxV3beta1FormParameter>;
+  parameters?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1FormParameter>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1Form =
@@ -9221,7 +9221,7 @@ export interface GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
   triggerFulfillment?: GoogleCloudDialogflowCxV3beta1Fulfillment;
   targetPage?: string;
   targetFlow?: string;
-  dataStoreConnections?: Array<GoogleCloudDialogflowCxV3beta1DataStoreConnection>;
+  dataStoreConnections?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1DataStoreConnection>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings =
@@ -9245,9 +9245,9 @@ export interface GoogleCloudDialogflowCxV3beta1Page {
   description?: string;
   entryFulfillment?: GoogleCloudDialogflowCxV3beta1Fulfillment;
   form?: GoogleCloudDialogflowCxV3beta1Form;
-  transitionRouteGroups?: Array<string>;
-  transitionRoutes?: Array<GoogleCloudDialogflowCxV3beta1TransitionRoute>;
-  eventHandlers?: Array<GoogleCloudDialogflowCxV3beta1EventHandler>;
+  transitionRouteGroups?: ReadonlyArray<string>;
+  transitionRoutes?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1TransitionRoute>;
+  eventHandlers?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1EventHandler>;
   advancedSettings?: GoogleCloudDialogflowCxV3beta1AdvancedSettings;
   knowledgeConnectorSettings?: GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings;
 }
@@ -9278,11 +9278,11 @@ export const GoogleCloudDialogflowCxV3beta1Page =
 
 export interface GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   sessionParameters?: Record<string, unknown>;
-  differences?: Array<GoogleCloudDialogflowCxV3beta1TestRunDifference>;
+  differences?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestRunDifference>;
   diagnosticInfo?: Record<string, unknown>;
   triggeredIntent?: GoogleCloudDialogflowCxV3beta1Intent;
   currentPage?: GoogleCloudDialogflowCxV3beta1Page;
-  textResponses?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessageText>;
+  textResponses?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1ResponseMessageText>;
   status?: GoogleRpcStatus;
 }
 
@@ -9326,7 +9326,7 @@ export const GoogleCloudDialogflowCxV3beta1ConversationTurn =
 export interface GoogleCloudDialogflowCxV3beta1TestCaseResult {
   name?: string;
   environment?: string;
-  conversationTurns?: Array<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
+  conversationTurns?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
   testResult?: "TEST_RESULT_UNSPECIFIED" | "PASSED" | "FAILED" | (string & {});
   testTime?: string;
 }
@@ -9343,7 +9343,7 @@ export const GoogleCloudDialogflowCxV3beta1TestCaseResult =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestCaseResult" });
 
 export interface GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
-  results?: Array<GoogleCloudDialogflowCxV3beta1TestCaseResult>;
+  results?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestCaseResult>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse =
@@ -9394,7 +9394,7 @@ export const GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1TestConfig {
-  trackingParameters?: Array<string>;
+  trackingParameters?: ReadonlyArray<string>;
   flow?: string;
   page?: string;
 }
@@ -9408,11 +9408,11 @@ export const GoogleCloudDialogflowCxV3beta1TestConfig =
 
 export interface GoogleCloudDialogflowCxV3beta1TestCase {
   name?: string;
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   displayName?: string;
   notes?: string;
   testConfig?: GoogleCloudDialogflowCxV3beta1TestConfig;
-  testCaseConversationTurns?: Array<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
+  testCaseConversationTurns?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
   creationTime?: string;
   lastTestResult?: GoogleCloudDialogflowCxV3beta1TestCaseResult;
 }
@@ -9445,7 +9445,7 @@ export const GoogleCloudDialogflowCxV3beta1TestCaseError =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestCaseError" });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
-  errors?: Array<GoogleCloudDialogflowCxV3beta1TestCaseError>;
+  errors?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestCaseError>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata =
@@ -9458,7 +9458,7 @@ export const GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse {
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse =
@@ -9469,7 +9469,7 @@ export const GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata {
-  errors?: Array<GoogleCloudDialogflowCxV3beta1TestError>;
+  errors?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestError>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata =
@@ -9488,7 +9488,7 @@ export interface GoogleCloudDialogflowCxV3beta1ContinuousTestResult {
     | "PASSED"
     | "FAILED"
     | (string & {});
-  testCaseResults?: Array<string>;
+  testCaseResults?: ReadonlyArray<string>;
   runTime?: string;
 }
 
@@ -9516,7 +9516,7 @@ export const GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1DeployFlowMetadata {
-  testErrors?: Array<GoogleCloudDialogflowCxV3beta1TestError>;
+  testErrors?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1TestError>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1DeployFlowMetadata =
@@ -9540,7 +9540,7 @@ export const GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig =
   });
 
 export interface GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
-  testCases?: Array<string>;
+  testCases?: ReadonlyArray<string>;
   enableContinuousRun?: boolean;
   enablePredeploymentRun?: boolean;
 }
@@ -9571,7 +9571,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConf
   clientSecret?: string;
   secretVersionForClientSecret?: string;
   tokenEndpoint?: string;
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig =
@@ -9608,7 +9608,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
     string,
     GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue
   >;
-  allowedCaCerts?: Array<string>;
+  allowedCaCerts?: ReadonlyArray<string>;
   oauthConfig?: GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig;
   serviceAgentAuth?:
     | "SERVICE_AGENT_AUTH_UNSPECIFIED"
@@ -9708,7 +9708,7 @@ export const GoogleCloudDialogflowCxV3beta1Webhook =
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Webhook" });
 
 export interface GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig {
-  webhookOverrides?: Array<GoogleCloudDialogflowCxV3beta1Webhook>;
+  webhookOverrides?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1Webhook>;
 }
 
 export const GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig =
@@ -9724,7 +9724,7 @@ export interface GoogleCloudDialogflowCxV3beta1Environment {
   name?: string;
   displayName?: string;
   description?: string;
-  versionConfigs?: Array<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>;
+  versionConfigs?: ReadonlyArray<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>;
   updateTime?: string;
   testCasesConfig?: GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig;
   webhookConfig?: GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig;
@@ -9767,8 +9767,8 @@ export interface GoogleCloudDialogflowCxV3beta1TurnSignals {
   userEscalated?: boolean;
   agentEscalated?: boolean;
   reachedEndPage?: boolean;
-  webhookStatuses?: Array<string>;
-  failureReasons?: Array<
+  webhookStatuses?: ReadonlyArray<string>;
+  failureReasons?: ReadonlyArray<
     | "FAILURE_REASON_UNSPECIFIED"
     | "FAILED_INTENT"
     | "FAILED_WEBHOOK"
@@ -9805,7 +9805,7 @@ export const GoogleCloudDialogflowCxV3beta1ConversationSignals =
 
 export interface GoogleCloudDialogflowV2EntityTypeEntity {
   value?: string;
-  synonyms?: Array<string>;
+  synonyms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2EntityTypeEntity =
@@ -9827,7 +9827,7 @@ export interface GoogleCloudDialogflowV2EntityType {
     | "AUTO_EXPANSION_MODE_UNSPECIFIED"
     | "AUTO_EXPANSION_MODE_DEFAULT"
     | (string & {});
-  entities?: Array<GoogleCloudDialogflowV2EntityTypeEntity>;
+  entities?: ReadonlyArray<GoogleCloudDialogflowV2EntityTypeEntity>;
   enableFuzzyExtraction?: boolean;
 }
 
@@ -9844,7 +9844,7 @@ export const GoogleCloudDialogflowV2EntityType =
   }).annotate({ identifier: "GoogleCloudDialogflowV2EntityType" });
 
 export interface GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
-  entityTypes?: Array<GoogleCloudDialogflowV2EntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudDialogflowV2EntityType>;
 }
 
 export const GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse =
@@ -9876,7 +9876,7 @@ export const GoogleCloudDialogflowV2IntentTrainingPhrasePart =
 export interface GoogleCloudDialogflowV2IntentTrainingPhrase {
   name?: string;
   type?: "TYPE_UNSPECIFIED" | "EXAMPLE" | "TEMPLATE" | (string & {});
-  parts?: Array<GoogleCloudDialogflowV2IntentTrainingPhrasePart>;
+  parts?: ReadonlyArray<GoogleCloudDialogflowV2IntentTrainingPhrasePart>;
   timesAddedCount?: number;
 }
 
@@ -9910,7 +9910,7 @@ export interface GoogleCloudDialogflowV2IntentParameter {
   defaultValue?: string;
   entityTypeDisplayName?: string;
   mandatory?: boolean;
-  prompts?: Array<string>;
+  prompts?: ReadonlyArray<string>;
   isList?: boolean;
 }
 
@@ -9927,7 +9927,7 @@ export const GoogleCloudDialogflowV2IntentParameter =
   }).annotate({ identifier: "GoogleCloudDialogflowV2IntentParameter" });
 
 export interface GoogleCloudDialogflowV2IntentMessageText {
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageText =
@@ -9948,7 +9948,7 @@ export const GoogleCloudDialogflowV2IntentMessageImage =
 
 export interface GoogleCloudDialogflowV2IntentMessageQuickReplies {
   title?: string;
-  quickReplies?: Array<string>;
+  quickReplies?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageQuickReplies =
@@ -9974,7 +9974,7 @@ export interface GoogleCloudDialogflowV2IntentMessageCard {
   title?: string;
   subtitle?: string;
   imageUri?: string;
-  buttons?: Array<GoogleCloudDialogflowV2IntentMessageCardButton>;
+  buttons?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageCardButton>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageCard =
@@ -10003,7 +10003,7 @@ export const GoogleCloudDialogflowV2IntentMessageSimpleResponse =
   });
 
 export interface GoogleCloudDialogflowV2IntentMessageSimpleResponses {
-  simpleResponses?: Array<GoogleCloudDialogflowV2IntentMessageSimpleResponse>;
+  simpleResponses?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageSimpleResponse>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSimpleResponses =
@@ -10047,7 +10047,7 @@ export interface GoogleCloudDialogflowV2IntentMessageBasicCard {
   subtitle?: string;
   formattedText?: string;
   image?: GoogleCloudDialogflowV2IntentMessageImage;
-  buttons?: Array<GoogleCloudDialogflowV2IntentMessageBasicCardButton>;
+  buttons?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageBasicCardButton>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageBasicCard =
@@ -10071,7 +10071,7 @@ export const GoogleCloudDialogflowV2IntentMessageSuggestion =
   }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageSuggestion" });
 
 export interface GoogleCloudDialogflowV2IntentMessageSuggestions {
-  suggestions?: Array<GoogleCloudDialogflowV2IntentMessageSuggestion>;
+  suggestions?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSuggestions =
@@ -10098,7 +10098,7 @@ export const GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion =
 
 export interface GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
   key?: string;
-  synonyms?: Array<string>;
+  synonyms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSelectItemInfo =
@@ -10128,7 +10128,7 @@ export const GoogleCloudDialogflowV2IntentMessageListSelectItem =
 
 export interface GoogleCloudDialogflowV2IntentMessageListSelect {
   title?: string;
-  items?: Array<GoogleCloudDialogflowV2IntentMessageListSelectItem>;
+  items?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageListSelectItem>;
   subtitle?: string;
 }
 
@@ -10159,7 +10159,7 @@ export const GoogleCloudDialogflowV2IntentMessageCarouselSelectItem =
   });
 
 export interface GoogleCloudDialogflowV2IntentMessageCarouselSelect {
-  items?: Array<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>;
+  items?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageCarouselSelect =
@@ -10212,7 +10212,7 @@ export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouse
   });
 
 export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
-  items?: Array<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
+  items?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
   imageDisplayOptions?:
     | "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED"
     | "GRAY"
@@ -10264,7 +10264,7 @@ export const GoogleCloudDialogflowV2IntentMessageTableCardCell =
   });
 
 export interface GoogleCloudDialogflowV2IntentMessageTableCardRow {
-  cells?: Array<GoogleCloudDialogflowV2IntentMessageTableCardCell>;
+  cells?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageTableCardCell>;
   dividerAfter?: boolean;
 }
 
@@ -10282,9 +10282,9 @@ export interface GoogleCloudDialogflowV2IntentMessageTableCard {
   title?: string;
   subtitle?: string;
   image?: GoogleCloudDialogflowV2IntentMessageImage;
-  columnProperties?: Array<GoogleCloudDialogflowV2IntentMessageColumnProperties>;
-  rows?: Array<GoogleCloudDialogflowV2IntentMessageTableCardRow>;
-  buttons?: Array<GoogleCloudDialogflowV2IntentMessageBasicCardButton>;
+  columnProperties?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageColumnProperties>;
+  rows?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageTableCardRow>;
+  buttons?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageBasicCardButton>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageTableCard =
@@ -10325,7 +10325,7 @@ export const GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
 
 export interface GoogleCloudDialogflowV2IntentMessageMediaContent {
   mediaType?: "RESPONSE_MEDIA_TYPE_UNSPECIFIED" | "AUDIO" | (string & {});
-  mediaObjects?: Array<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>;
+  mediaObjects?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>;
 }
 
 export const GoogleCloudDialogflowV2IntentMessageMediaContent =
@@ -10428,15 +10428,15 @@ export interface GoogleCloudDialogflowV2Intent {
   mlDisabled?: boolean;
   liveAgentHandoff?: boolean;
   endInteraction?: boolean;
-  inputContextNames?: Array<string>;
-  events?: Array<string>;
-  trainingPhrases?: Array<GoogleCloudDialogflowV2IntentTrainingPhrase>;
+  inputContextNames?: ReadonlyArray<string>;
+  events?: ReadonlyArray<string>;
+  trainingPhrases?: ReadonlyArray<GoogleCloudDialogflowV2IntentTrainingPhrase>;
   action?: string;
-  outputContexts?: Array<GoogleCloudDialogflowV2Context>;
+  outputContexts?: ReadonlyArray<GoogleCloudDialogflowV2Context>;
   resetContexts?: boolean;
-  parameters?: Array<GoogleCloudDialogflowV2IntentParameter>;
-  messages?: Array<GoogleCloudDialogflowV2IntentMessage>;
-  defaultResponsePlatforms?: Array<
+  parameters?: ReadonlyArray<GoogleCloudDialogflowV2IntentParameter>;
+  messages?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessage>;
+  defaultResponsePlatforms?: ReadonlyArray<
     | "PLATFORM_UNSPECIFIED"
     | "FACEBOOK"
     | "SLACK"
@@ -10451,7 +10451,7 @@ export interface GoogleCloudDialogflowV2Intent {
   >;
   rootFollowupIntentName?: string;
   parentFollowupIntentName?: string;
-  followupIntentInfo?: Array<GoogleCloudDialogflowV2IntentFollowupIntentInfo>;
+  followupIntentInfo?: ReadonlyArray<GoogleCloudDialogflowV2IntentFollowupIntentInfo>;
 }
 
 export const GoogleCloudDialogflowV2Intent =
@@ -10489,7 +10489,7 @@ export const GoogleCloudDialogflowV2Intent =
   }).annotate({ identifier: "GoogleCloudDialogflowV2Intent" });
 
 export interface GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
-  intents?: Array<GoogleCloudDialogflowV2Intent>;
+  intents?: ReadonlyArray<GoogleCloudDialogflowV2Intent>;
 }
 
 export const GoogleCloudDialogflowV2BatchUpdateIntentsResponse =
@@ -10544,7 +10544,7 @@ export const GoogleCloudDialogflowV2AnnotatedMessagePart =
   }).annotate({ identifier: "GoogleCloudDialogflowV2AnnotatedMessagePart" });
 
 export interface GoogleCloudDialogflowV2MessageAnnotation {
-  parts?: Array<GoogleCloudDialogflowV2AnnotatedMessagePart>;
+  parts?: ReadonlyArray<GoogleCloudDialogflowV2AnnotatedMessagePart>;
   containEntities?: boolean;
 }
 
@@ -10634,7 +10634,7 @@ export interface GoogleCloudDialogflowV2StreamingRecognitionResult {
   transcript?: string;
   isFinal?: boolean;
   confidence?: number;
-  speechWordInfo?: Array<GoogleCloudDialogflowV2SpeechWordInfo>;
+  speechWordInfo?: ReadonlyArray<GoogleCloudDialogflowV2SpeechWordInfo>;
   speechEndOffset?: string;
   languageCode?: string;
 }
@@ -10695,7 +10695,7 @@ export const GoogleCloudDialogflowV2ExportAgentResponse =
 export interface GoogleCloudDialogflowV2ArticleAnswer {
   title?: string;
   uri?: string;
-  snippets?: Array<string>;
+  snippets?: ReadonlyArray<string>;
   confidence?: number;
   metadata?: Record<string, string>;
   answerRecord?: string;
@@ -10712,7 +10712,7 @@ export const GoogleCloudDialogflowV2ArticleAnswer =
   }).annotate({ identifier: "GoogleCloudDialogflowV2ArticleAnswer" });
 
 export interface GoogleCloudDialogflowV2SuggestArticlesResponse {
-  articleAnswers?: Array<GoogleCloudDialogflowV2ArticleAnswer>;
+  articleAnswers?: ReadonlyArray<GoogleCloudDialogflowV2ArticleAnswer>;
   latestMessage?: string;
   contextSize?: number;
 }
@@ -10768,7 +10768,7 @@ export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerati
   });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource {
-  snippets?: Array<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
+  snippets?: ReadonlyArray<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource =
@@ -10871,7 +10871,7 @@ export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedPar
 export interface GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo {
   projectNotAllowlisted?: boolean;
   contextReferenceRetrieved?: boolean;
-  ingestedParametersDebugInfo?: Array<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
+  ingestedParametersDebugInfo?: ReadonlyArray<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
 }
 
 export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo =
@@ -10905,7 +10905,7 @@ export const GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency =
   });
 
 export interface GoogleCloudDialogflowV2ServiceLatency {
-  internalServiceLatencies?: Array<GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency>;
+  internalServiceLatencies?: ReadonlyArray<GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency>;
 }
 
 export const GoogleCloudDialogflowV2ServiceLatency =
@@ -11026,7 +11026,7 @@ export const GoogleCloudDialogflowV2FaqAnswer =
   }).annotate({ identifier: "GoogleCloudDialogflowV2FaqAnswer" });
 
 export interface GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
-  faqAnswers?: Array<GoogleCloudDialogflowV2FaqAnswer>;
+  faqAnswers?: ReadonlyArray<GoogleCloudDialogflowV2FaqAnswer>;
   latestMessage?: string;
   contextSize?: number;
 }
@@ -11054,7 +11054,7 @@ export const GoogleCloudDialogflowV2SmartReplyAnswer =
   }).annotate({ identifier: "GoogleCloudDialogflowV2SmartReplyAnswer" });
 
 export interface GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
-  smartReplyAnswers?: Array<GoogleCloudDialogflowV2SmartReplyAnswer>;
+  smartReplyAnswers?: ReadonlyArray<GoogleCloudDialogflowV2SmartReplyAnswer>;
   latestMessage?: string;
   contextSize?: number;
 }
@@ -11093,7 +11093,7 @@ export const GoogleCloudDialogflowV2SummarySuggestionSummarySection =
   });
 
 export interface GoogleCloudDialogflowV2SummarySuggestion {
-  summarySections?: Array<GoogleCloudDialogflowV2SummarySuggestionSummarySection>;
+  summarySections?: ReadonlyArray<GoogleCloudDialogflowV2SummarySuggestionSummarySection>;
 }
 
 export const GoogleCloudDialogflowV2SummarySuggestion =
@@ -11120,7 +11120,7 @@ export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult
   });
 
 export interface GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult {
-  duplicateSuggestions?: Array<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
+  duplicateSuggestions?: ReadonlyArray<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult =
@@ -11168,7 +11168,7 @@ export const GoogleCloudDialogflowV2AgentCoachingInstruction =
   });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestionSources {
-  instructionIndexes?: Array<number>;
+  instructionIndexes?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestionSources =
@@ -11199,7 +11199,7 @@ export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultD
   });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult {
-  duplicateSuggestions?: Array<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
+  duplicateSuggestions?: ReadonlyArray<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult =
@@ -11254,9 +11254,9 @@ export const GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse =
   });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestion {
-  applicableInstructions?: Array<GoogleCloudDialogflowV2AgentCoachingInstruction>;
-  agentActionSuggestions?: Array<GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion>;
-  sampleResponses?: Array<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse>;
+  applicableInstructions?: ReadonlyArray<GoogleCloudDialogflowV2AgentCoachingInstruction>;
+  agentActionSuggestions?: ReadonlyArray<GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion>;
+  sampleResponses?: ReadonlyArray<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse>;
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestion =
@@ -11364,7 +11364,7 @@ export interface GoogleCloudDialogflowV2GeneratorSuggestion {
   freeFormSuggestion?: GoogleCloudDialogflowV2FreeFormSuggestion;
   summarySuggestion?: GoogleCloudDialogflowV2SummarySuggestion;
   agentCoachingSuggestion?: GoogleCloudDialogflowV2AgentCoachingSuggestion;
-  toolCallInfo?: Array<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo>;
+  toolCallInfo?: ReadonlyArray<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo>;
 }
 
 export const GoogleCloudDialogflowV2GeneratorSuggestion =
@@ -11402,7 +11402,7 @@ export const GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggesti
   });
 
 export interface GoogleCloudDialogflowV2GenerateSuggestionsResponse {
-  generatorSuggestionAnswers?: Array<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
+  generatorSuggestionAnswers?: ReadonlyArray<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
   latestMessage?: string;
 }
 
@@ -11450,7 +11450,7 @@ export const GoogleCloudDialogflowV2SuggestionResult =
 export interface GoogleCloudDialogflowV2HumanAgentAssistantEvent {
   conversation?: string;
   participant?: string;
-  suggestionResults?: Array<GoogleCloudDialogflowV2SuggestionResult>;
+  suggestionResults?: ReadonlyArray<GoogleCloudDialogflowV2SuggestionResult>;
 }
 
 export const GoogleCloudDialogflowV2HumanAgentAssistantEvent =
@@ -11465,7 +11465,7 @@ export const GoogleCloudDialogflowV2HumanAgentAssistantEvent =
   });
 
 export interface GoogleCloudDialogflowV2ImportDocumentsResponse {
-  warnings?: Array<GoogleRpcStatus>;
+  warnings?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDialogflowV2ImportDocumentsResponse =
@@ -11567,10 +11567,10 @@ export interface GoogleCloudDialogflowV2QueryResult {
   allRequiredParamsPresent?: boolean;
   cancelsSlotFilling?: boolean;
   fulfillmentText?: string;
-  fulfillmentMessages?: Array<GoogleCloudDialogflowV2IntentMessage>;
+  fulfillmentMessages?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessage>;
   webhookSource?: string;
   webhookPayload?: Record<string, unknown>;
-  outputContexts?: Array<GoogleCloudDialogflowV2Context>;
+  outputContexts?: ReadonlyArray<GoogleCloudDialogflowV2Context>;
   intent?: GoogleCloudDialogflowV2Intent;
   intentDetectionConfidence?: number;
   diagnosticInfo?: Record<string, unknown>;
@@ -11644,7 +11644,7 @@ export interface GoogleCloudDialogflowV2SessionEntityType {
     | "ENTITY_OVERRIDE_MODE_OVERRIDE"
     | "ENTITY_OVERRIDE_MODE_SUPPLEMENT"
     | (string & {});
-  entities?: Array<GoogleCloudDialogflowV2EntityTypeEntity>;
+  entities?: ReadonlyArray<GoogleCloudDialogflowV2EntityTypeEntity>;
 }
 
 export const GoogleCloudDialogflowV2SessionEntityType =
@@ -11658,12 +11658,12 @@ export const GoogleCloudDialogflowV2SessionEntityType =
 
 export interface GoogleCloudDialogflowV2WebhookResponse {
   fulfillmentText?: string;
-  fulfillmentMessages?: Array<GoogleCloudDialogflowV2IntentMessage>;
+  fulfillmentMessages?: ReadonlyArray<GoogleCloudDialogflowV2IntentMessage>;
   source?: string;
   payload?: Record<string, unknown>;
-  outputContexts?: Array<GoogleCloudDialogflowV2Context>;
+  outputContexts?: ReadonlyArray<GoogleCloudDialogflowV2Context>;
   followupEventInput?: GoogleCloudDialogflowV2EventInput;
-  sessionEntityTypes?: Array<GoogleCloudDialogflowV2SessionEntityType>;
+  sessionEntityTypes?: ReadonlyArray<GoogleCloudDialogflowV2SessionEntityType>;
 }
 
 export const GoogleCloudDialogflowV2WebhookResponse =
@@ -11707,7 +11707,7 @@ export const GoogleCloudDialogflowV2ImportConversationDataOperationResponse =
 
 export interface GoogleCloudDialogflowV2ImportConversationDataOperationMetadata {
   conversationDataset?: string;
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   createTime?: string;
 }
 
@@ -11809,7 +11809,7 @@ export interface GoogleCloudDialogflowV2ConversationModel {
   name?: string;
   displayName?: string;
   createTime?: string;
-  datasets?: Array<GoogleCloudDialogflowV2InputDataset>;
+  datasets?: ReadonlyArray<GoogleCloudDialogflowV2InputDataset>;
   state?:
     | "STATE_UNSPECIFIED"
     | "CREATING"
@@ -11948,7 +11948,7 @@ export const GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMe
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
-  entityTypes?: Array<GoogleCloudDialogflowV2beta1EntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudDialogflowV2beta1EntityType>;
 }
 
 export const GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse =
@@ -11961,7 +11961,7 @@ export const GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse =
   });
 
 export interface GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
-  intents?: Array<GoogleCloudDialogflowV2beta1Intent>;
+  intents?: ReadonlyArray<GoogleCloudDialogflowV2beta1Intent>;
 }
 
 export const GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse =
@@ -12030,7 +12030,7 @@ export interface GoogleCloudDialogflowV2beta1StreamingRecognitionResult {
   isFinal?: boolean;
   confidence?: number;
   stability?: number;
-  speechWordInfo?: Array<GoogleCloudDialogflowV2beta1SpeechWordInfo>;
+  speechWordInfo?: ReadonlyArray<GoogleCloudDialogflowV2beta1SpeechWordInfo>;
   speechEndOffset?: string;
   languageCode?: string;
   dtmfDigits?: GoogleCloudDialogflowV2beta1TelephonyDtmfEvents;
@@ -12098,7 +12098,7 @@ export const GoogleCloudDialogflowV2beta1ExportAgentResponse =
 export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
   conversation?: string;
   participant?: string;
-  suggestionResults?: Array<GoogleCloudDialogflowV2beta1SuggestionResult>;
+  suggestionResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1SuggestionResult>;
 }
 
 export const GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent =
@@ -12113,7 +12113,7 @@ export const GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent =
   });
 
 export interface GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
-  warnings?: Array<GoogleRpcStatus>;
+  warnings?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDialogflowV2beta1ImportDocumentsResponse =
@@ -12228,7 +12228,7 @@ export interface GoogleCloudDialogflowV2beta1WebhookRequest {
   session?: string;
   responseId?: string;
   queryResult?: GoogleCloudDialogflowV2beta1QueryResult;
-  alternativeQueryResults?: Array<GoogleCloudDialogflowV2beta1QueryResult>;
+  alternativeQueryResults?: ReadonlyArray<GoogleCloudDialogflowV2beta1QueryResult>;
   originalDetectIntentRequest?: GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest;
 }
 
@@ -12247,14 +12247,14 @@ export const GoogleCloudDialogflowV2beta1WebhookRequest =
 
 export interface GoogleCloudDialogflowV2beta1WebhookResponse {
   fulfillmentText?: string;
-  fulfillmentMessages?: Array<GoogleCloudDialogflowV2beta1IntentMessage>;
+  fulfillmentMessages?: ReadonlyArray<GoogleCloudDialogflowV2beta1IntentMessage>;
   source?: string;
   payload?: Record<string, unknown>;
-  outputContexts?: Array<GoogleCloudDialogflowV2beta1Context>;
+  outputContexts?: ReadonlyArray<GoogleCloudDialogflowV2beta1Context>;
   followupEventInput?: GoogleCloudDialogflowV2beta1EventInput;
   liveAgentHandoff?: boolean;
   endInteraction?: boolean;
-  sessionEntityTypes?: Array<GoogleCloudDialogflowV2beta1SessionEntityType>;
+  sessionEntityTypes?: ReadonlyArray<GoogleCloudDialogflowV2beta1SessionEntityType>;
 }
 
 export const GoogleCloudDialogflowV2beta1WebhookResponse =
@@ -12284,8 +12284,8 @@ export interface GoogleCloudDialogflowV3alpha1TurnSignals {
   agentEscalated?: boolean;
   triggeredAbandonmentEvent?: boolean;
   reachedEndPage?: boolean;
-  webhookStatuses?: Array<string>;
-  failureReasons?: Array<
+  webhookStatuses?: ReadonlyArray<string>;
+  failureReasons?: ReadonlyArray<
     | "FAILURE_REASON_UNSPECIFIED"
     | "FAILED_INTENT"
     | "FAILED_WEBHOOK"
@@ -12333,7 +12333,7 @@ export const GetAgentProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/projects/{projectsId}/agent" }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/agent" }),
     svc,
   ) as unknown as Schema.Schema<GetAgentProjectsRequest>;
 
@@ -12367,11 +12367,7 @@ export const SetAgentProjectsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowV2beta1Agent).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{parent}/agent", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetAgentProjectsRequest>;
 
@@ -12400,7 +12396,7 @@ export const DeleteAgentProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v2beta1/projects/{projectsId}/agent" }),
+    T.Http({ method: "DELETE", path: "v2beta1/{parent}/agent" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAgentProjectsRequest>;
 
@@ -12439,7 +12435,7 @@ export const ListProjectsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/projects/{projectsId}/operations" }),
+    T.Http({ method: "GET", path: "v2beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
 
@@ -12473,10 +12469,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
@@ -12505,11 +12498,7 @@ export const CancelProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsOperationsRequest>;
 
@@ -12538,10 +12527,7 @@ export const GetFulfillmentProjectsAgentRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/fulfillment",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFulfillmentProjectsAgentRequest>;
 
@@ -12578,11 +12564,7 @@ export const UpdateFulfillmentProjectsAgentRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/fulfillment",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateFulfillmentProjectsAgentRequest>;
 
@@ -12616,10 +12598,7 @@ export const SearchProjectsAgentRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent:search",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/agent:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsAgentRequest>;
 
@@ -12660,7 +12639,7 @@ export const TrainProjectsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent:train",
+      path: "v2beta1/{parent}/agent:train",
       hasBody: true,
     }),
     svc,
@@ -12698,7 +12677,7 @@ export const ExportProjectsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent:export",
+      path: "v2beta1/{parent}/agent:export",
       hasBody: true,
     }),
     svc,
@@ -12736,7 +12715,7 @@ export const ImportProjectsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent:import",
+      path: "v2beta1/{parent}/agent:import",
       hasBody: true,
     }),
     svc,
@@ -12774,7 +12753,7 @@ export const RestoreProjectsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent:restore",
+      path: "v2beta1/{parent}/agent:restore",
       hasBody: true,
     }),
     svc,
@@ -12809,10 +12788,7 @@ export const GetValidationResultProjectsAgentRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/validationResult",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/agent/validationResult" }),
     svc,
   ) as unknown as Schema.Schema<GetValidationResultProjectsAgentRequest>;
 
@@ -12846,10 +12822,7 @@ export const ListProjectsAgentEnvironmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/environments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentEnvironmentsRequest>;
 
@@ -12883,10 +12856,7 @@ export const GetProjectsAgentEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentEnvironmentsRequest>;
 
@@ -12927,7 +12897,7 @@ export const CreateProjectsAgentEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/environments",
+      path: "v2beta1/{parent}/environments",
       hasBody: true,
     }),
     svc,
@@ -12970,11 +12940,7 @@ export const PatchProjectsAgentEnvironmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentEnvironmentsRequest>;
 
@@ -13004,10 +12970,7 @@ export const DeleteProjectsAgentEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentEnvironmentsRequest>;
 
@@ -13040,10 +13003,7 @@ export const GetHistoryProjectsAgentEnvironmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/history",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/history" }),
     svc,
   ) as unknown as Schema.Schema<GetHistoryProjectsAgentEnvironmentsRequest>;
 
@@ -13077,10 +13037,7 @@ export const DeleteContextsProjectsAgentEnvironmentsUsersSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContextsProjectsAgentEnvironmentsUsersSessionsRequest>;
 
@@ -13118,7 +13075,7 @@ export const DetectIntentProjectsAgentEnvironmentsUsersSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}:detectIntent",
+      path: "v2beta1/{session}:detectIntent",
       hasBody: true,
     }),
     svc,
@@ -13155,10 +13112,7 @@ export const ListProjectsAgentEnvironmentsUsersSessionsContextsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -13193,10 +13147,7 @@ export const GetProjectsAgentEnvironmentsUsersSessionsContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -13234,7 +13185,7 @@ export const CreateProjectsAgentEnvironmentsUsersSessionsContextsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
+      path: "v2beta1/{parent}/contexts",
       hasBody: true,
     }),
     svc,
@@ -13274,11 +13225,7 @@ export const PatchProjectsAgentEnvironmentsUsersSessionsContextsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -13309,10 +13256,7 @@ export const DeleteProjectsAgentEnvironmentsUsersSessionsContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -13347,10 +13291,7 @@ export const ListProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -13385,10 +13326,7 @@ export const GetProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -13426,7 +13364,7 @@ export const CreateProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
+      path: "v2beta1/{parent}/entityTypes",
       hasBody: true,
     }),
     svc,
@@ -13466,11 +13404,7 @@ export const PatchProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -13501,10 +13435,7 @@ export const DeleteProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -13545,10 +13476,7 @@ export const ListProjectsAgentEnvironmentsIntentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/environments/{environmentsId}/intents",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/intents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentEnvironmentsIntentsRequest>;
 
@@ -13582,10 +13510,7 @@ export const DeleteContextsProjectsAgentSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContextsProjectsAgentSessionsRequest>;
 
@@ -13621,7 +13546,7 @@ export const DetectIntentProjectsAgentSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}:detectIntent",
+      path: "v2beta1/{session}:detectIntent",
       hasBody: true,
     }),
     svc,
@@ -13657,10 +13582,7 @@ export const ListProjectsAgentSessionsContextsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentSessionsContextsRequest>;
 
@@ -13694,10 +13616,7 @@ export const GetProjectsAgentSessionsContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentSessionsContextsRequest>;
 
@@ -13734,7 +13653,7 @@ export const CreateProjectsAgentSessionsContextsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
+      path: "v2beta1/{parent}/contexts",
       hasBody: true,
     }),
     svc,
@@ -13773,11 +13692,7 @@ export const PatchProjectsAgentSessionsContextsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentSessionsContextsRequest>;
 
@@ -13807,10 +13722,7 @@ export const DeleteProjectsAgentSessionsContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentSessionsContextsRequest>;
 
@@ -13843,10 +13755,7 @@ export const ListProjectsAgentSessionsEntityTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentSessionsEntityTypesRequest>;
 
@@ -13880,10 +13789,7 @@ export const GetProjectsAgentSessionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentSessionsEntityTypesRequest>;
 
@@ -13920,7 +13826,7 @@ export const CreateProjectsAgentSessionsEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
+      path: "v2beta1/{parent}/entityTypes",
       hasBody: true,
     }),
     svc,
@@ -13959,11 +13865,7 @@ export const PatchProjectsAgentSessionsEntityTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentSessionsEntityTypesRequest>;
 
@@ -13993,10 +13895,7 @@ export const DeleteProjectsAgentSessionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentSessionsEntityTypesRequest>;
 
@@ -14036,10 +13935,7 @@ export const ListProjectsAgentIntentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/intents",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/intents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentIntentsRequest>;
 
@@ -14079,10 +13975,7 @@ export const GetProjectsAgentIntentsRequest =
     ),
     intentView: Schema.optional(Schema.String).pipe(T.HttpQuery("intentView")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentIntentsRequest>;
 
@@ -14123,11 +14016,7 @@ export const CreateProjectsAgentIntentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/intents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{parent}/intents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsAgentIntentsRequest>;
 
@@ -14170,11 +14059,7 @@ export const PatchProjectsAgentIntentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentIntentsRequest>;
 
@@ -14204,10 +14089,7 @@ export const DeleteProjectsAgentIntentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentIntentsRequest>;
 
@@ -14243,7 +14125,7 @@ export const BatchUpdateProjectsAgentIntentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/intents:batchUpdate",
+      path: "v2beta1/{parent}/intents:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -14282,7 +14164,7 @@ export const BatchDeleteProjectsAgentIntentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/intents:batchDelete",
+      path: "v2beta1/{parent}/intents:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -14322,10 +14204,7 @@ export const ListProjectsAgentEntityTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentEntityTypesRequest>;
 
@@ -14363,10 +14242,7 @@ export const GetProjectsAgentEntityTypesRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentEntityTypesRequest>;
 
@@ -14407,7 +14283,7 @@ export const CreateProjectsAgentEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes",
+      path: "v2beta1/{parent}/entityTypes",
       hasBody: true,
     }),
     svc,
@@ -14450,11 +14326,7 @@ export const PatchProjectsAgentEntityTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentEntityTypesRequest>;
 
@@ -14484,10 +14356,7 @@ export const DeleteProjectsAgentEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentEntityTypesRequest>;
 
@@ -14523,7 +14392,7 @@ export const BatchUpdateProjectsAgentEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes:batchUpdate",
+      path: "v2beta1/{parent}/entityTypes:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -14562,7 +14431,7 @@ export const BatchDeleteProjectsAgentEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes:batchDelete",
+      path: "v2beta1/{parent}/entityTypes:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -14601,7 +14470,7 @@ export const BatchCreateProjectsAgentEntityTypesEntitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
+      path: "v2beta1/{parent}/entities:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -14640,7 +14509,7 @@ export const BatchUpdateProjectsAgentEntityTypesEntitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
+      path: "v2beta1/{parent}/entities:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -14679,7 +14548,7 @@ export const BatchDeleteProjectsAgentEntityTypesEntitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
+      path: "v2beta1/{parent}/entities:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -14717,10 +14586,7 @@ export const ListProjectsAgentKnowledgeBasesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/knowledgeBases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentKnowledgeBasesRequest>;
 
@@ -14754,10 +14620,7 @@ export const GetProjectsAgentKnowledgeBasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentKnowledgeBasesRequest>;
 
@@ -14794,7 +14657,7 @@ export const CreateProjectsAgentKnowledgeBasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases",
+      path: "v2beta1/{parent}/knowledgeBases",
       hasBody: true,
     }),
     svc,
@@ -14828,10 +14691,7 @@ export const DeleteProjectsAgentKnowledgeBasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentKnowledgeBasesRequest>;
 
@@ -14867,11 +14727,7 @@ export const PatchProjectsAgentKnowledgeBasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentKnowledgeBasesRequest>;
 
@@ -14907,10 +14763,7 @@ export const ListProjectsAgentKnowledgeBasesDocumentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/documents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentKnowledgeBasesDocumentsRequest>;
 
@@ -14944,10 +14797,7 @@ export const GetProjectsAgentKnowledgeBasesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentKnowledgeBasesDocumentsRequest>;
 
@@ -14988,7 +14838,7 @@ export const CreateProjectsAgentKnowledgeBasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents",
+      path: "v2beta1/{parent}/documents",
       hasBody: true,
     }),
     svc,
@@ -15020,10 +14870,7 @@ export const DeleteProjectsAgentKnowledgeBasesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentKnowledgeBasesDocumentsRequest>;
 
@@ -15060,11 +14907,7 @@ export const PatchProjectsAgentKnowledgeBasesDocumentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentKnowledgeBasesDocumentsRequest>;
 
@@ -15099,11 +14942,7 @@ export const ReloadProjectsAgentKnowledgeBasesDocumentsRequest =
       GoogleCloudDialogflowV2beta1ReloadDocumentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}:reload",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:reload", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReloadProjectsAgentKnowledgeBasesDocumentsRequest>;
 
@@ -15137,10 +14976,7 @@ export const ListProjectsAgentVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/versions",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentVersionsRequest>;
 
@@ -15174,10 +15010,7 @@ export const GetProjectsAgentVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/agent/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentVersionsRequest>;
 
@@ -15214,7 +15047,7 @@ export const CreateProjectsAgentVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/agent/versions",
+      path: "v2beta1/{parent}/versions",
       hasBody: true,
     }),
     svc,
@@ -15253,11 +15086,7 @@ export const PatchProjectsAgentVersionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/agent/versions/{versionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentVersionsRequest>;
 
@@ -15287,10 +15116,7 @@ export const DeleteProjectsAgentVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/agent/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentVersionsRequest>;
 
@@ -15319,10 +15145,7 @@ export const GetAgentProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/agent" }),
     svc,
   ) as unknown as Schema.Schema<GetAgentProjectsLocationsRequest>;
 
@@ -15357,11 +15180,7 @@ export const SetAgentProjectsLocationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowV2beta1Agent).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{parent}/agent", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetAgentProjectsLocationsRequest>;
 
@@ -15391,10 +15210,7 @@ export const DeleteAgentProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{parent}/agent" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAgentProjectsLocationsRequest>;
 
@@ -15423,10 +15239,7 @@ export const GetEncryptionSpecProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/encryptionSpec",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEncryptionSpecProjectsLocationsRequest>;
 
@@ -15466,7 +15279,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v2beta1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -15500,10 +15313,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -15542,10 +15352,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -15579,10 +15386,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -15611,11 +15415,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -15644,10 +15444,7 @@ export const GetFulfillmentProjectsLocationsAgentRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/fulfillment",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFulfillmentProjectsLocationsAgentRequest>;
 
@@ -15684,11 +15481,7 @@ export const UpdateFulfillmentProjectsLocationsAgentRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/fulfillment",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateFulfillmentProjectsLocationsAgentRequest>;
 
@@ -15722,10 +15515,7 @@ export const SearchProjectsLocationsAgentRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent:search",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/agent:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsAgentRequest>;
 
@@ -15766,7 +15556,7 @@ export const TrainProjectsLocationsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent:train",
+      path: "v2beta1/{parent}/agent:train",
       hasBody: true,
     }),
     svc,
@@ -15804,7 +15594,7 @@ export const ExportProjectsLocationsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent:export",
+      path: "v2beta1/{parent}/agent:export",
       hasBody: true,
     }),
     svc,
@@ -15842,7 +15632,7 @@ export const ImportProjectsLocationsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent:import",
+      path: "v2beta1/{parent}/agent:import",
       hasBody: true,
     }),
     svc,
@@ -15880,7 +15670,7 @@ export const RestoreProjectsLocationsAgentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent:restore",
+      path: "v2beta1/{parent}/agent:restore",
       hasBody: true,
     }),
     svc,
@@ -15915,10 +15705,7 @@ export const GetValidationResultProjectsLocationsAgentRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/validationResult",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/agent/validationResult" }),
     svc,
   ) as unknown as Schema.Schema<GetValidationResultProjectsLocationsAgentRequest>;
 
@@ -15952,10 +15739,7 @@ export const ListProjectsLocationsAgentEnvironmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/environments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentEnvironmentsRequest>;
 
@@ -15989,10 +15773,7 @@ export const GetProjectsLocationsAgentEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentEnvironmentsRequest>;
 
@@ -16033,7 +15814,7 @@ export const CreateProjectsLocationsAgentEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments",
+      path: "v2beta1/{parent}/environments",
       hasBody: true,
     }),
     svc,
@@ -16076,11 +15857,7 @@ export const PatchProjectsLocationsAgentEnvironmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentEnvironmentsRequest>;
 
@@ -16110,10 +15887,7 @@ export const DeleteProjectsLocationsAgentEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentEnvironmentsRequest>;
 
@@ -16147,10 +15921,7 @@ export const GetHistoryProjectsLocationsAgentEnvironmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/history",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/history" }),
     svc,
   ) as unknown as Schema.Schema<GetHistoryProjectsLocationsAgentEnvironmentsRequest>;
 
@@ -16184,10 +15955,7 @@ export const DeleteContextsProjectsLocationsAgentEnvironmentsUsersSessionsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContextsProjectsLocationsAgentEnvironmentsUsersSessionsRequest>;
 
@@ -16225,7 +15993,7 @@ export const DetectIntentProjectsLocationsAgentEnvironmentsUsersSessionsRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}:detectIntent",
+      path: "v2beta1/{session}:detectIntent",
       hasBody: true,
     }),
     svc,
@@ -16262,10 +16030,7 @@ export const ListProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest 
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -16300,10 +16065,7 @@ export const GetProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -16341,7 +16103,7 @@ export const CreateProjectsLocationsAgentEnvironmentsUsersSessionsContextsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
+      path: "v2beta1/{parent}/contexts",
       hasBody: true,
     }),
     svc,
@@ -16381,11 +16143,7 @@ export const PatchProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -16416,10 +16174,7 @@ export const DeleteProjectsLocationsAgentEnvironmentsUsersSessionsContextsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentEnvironmentsUsersSessionsContextsRequest>;
 
@@ -16454,10 +16209,7 @@ export const ListProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesReque
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -16493,10 +16245,7 @@ export const GetProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -16534,7 +16283,7 @@ export const CreateProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
+      path: "v2beta1/{parent}/entityTypes",
       hasBody: true,
     }),
     svc,
@@ -16576,11 +16325,7 @@ export const PatchProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequ
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -16612,10 +16357,7 @@ export const DeleteProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesRequest>;
 
@@ -16658,10 +16400,7 @@ export const ListProjectsLocationsAgentEnvironmentsIntentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/intents",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/intents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentEnvironmentsIntentsRequest>;
 
@@ -16695,10 +16434,7 @@ export const DeleteContextsProjectsLocationsAgentSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContextsProjectsLocationsAgentSessionsRequest>;
 
@@ -16735,7 +16471,7 @@ export const DetectIntentProjectsLocationsAgentSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}:detectIntent",
+      path: "v2beta1/{session}:detectIntent",
       hasBody: true,
     }),
     svc,
@@ -16771,10 +16507,7 @@ export const ListProjectsLocationsAgentSessionsContextsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentSessionsContextsRequest>;
 
@@ -16808,10 +16541,7 @@ export const GetProjectsLocationsAgentSessionsContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentSessionsContextsRequest>;
 
@@ -16848,7 +16578,7 @@ export const CreateProjectsLocationsAgentSessionsContextsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts",
+      path: "v2beta1/{parent}/contexts",
       hasBody: true,
     }),
     svc,
@@ -16887,11 +16617,7 @@ export const PatchProjectsLocationsAgentSessionsContextsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentSessionsContextsRequest>;
 
@@ -16921,10 +16647,7 @@ export const DeleteProjectsLocationsAgentSessionsContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentSessionsContextsRequest>;
 
@@ -16958,10 +16681,7 @@ export const ListProjectsLocationsAgentSessionsEntityTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentSessionsEntityTypesRequest>;
 
@@ -16995,10 +16715,7 @@ export const GetProjectsLocationsAgentSessionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentSessionsEntityTypesRequest>;
 
@@ -17035,7 +16752,7 @@ export const CreateProjectsLocationsAgentSessionsEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes",
+      path: "v2beta1/{parent}/entityTypes",
       hasBody: true,
     }),
     svc,
@@ -17075,11 +16792,7 @@ export const PatchProjectsLocationsAgentSessionsEntityTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentSessionsEntityTypesRequest>;
 
@@ -17109,10 +16822,7 @@ export const DeleteProjectsLocationsAgentSessionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentSessionsEntityTypesRequest>;
 
@@ -17153,10 +16863,7 @@ export const ListProjectsLocationsAgentIntentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/intents",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/intents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentIntentsRequest>;
 
@@ -17196,10 +16903,7 @@ export const GetProjectsLocationsAgentIntentsRequest =
     ),
     intentView: Schema.optional(Schema.String).pipe(T.HttpQuery("intentView")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentIntentsRequest>;
 
@@ -17240,11 +16944,7 @@ export const CreateProjectsLocationsAgentIntentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/intents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{parent}/intents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAgentIntentsRequest>;
 
@@ -17287,11 +16987,7 @@ export const PatchProjectsLocationsAgentIntentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentIntentsRequest>;
 
@@ -17321,10 +17017,7 @@ export const DeleteProjectsLocationsAgentIntentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentIntentsRequest>;
 
@@ -17360,7 +17053,7 @@ export const BatchUpdateProjectsLocationsAgentIntentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/intents:batchUpdate",
+      path: "v2beta1/{parent}/intents:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -17399,7 +17092,7 @@ export const BatchDeleteProjectsLocationsAgentIntentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/intents:batchDelete",
+      path: "v2beta1/{parent}/intents:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -17439,10 +17132,7 @@ export const ListProjectsLocationsAgentEntityTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentEntityTypesRequest>;
 
@@ -17480,10 +17170,7 @@ export const GetProjectsLocationsAgentEntityTypesRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentEntityTypesRequest>;
 
@@ -17524,7 +17211,7 @@ export const CreateProjectsLocationsAgentEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes",
+      path: "v2beta1/{parent}/entityTypes",
       hasBody: true,
     }),
     svc,
@@ -17567,11 +17254,7 @@ export const PatchProjectsLocationsAgentEntityTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentEntityTypesRequest>;
 
@@ -17601,10 +17284,7 @@ export const DeleteProjectsLocationsAgentEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentEntityTypesRequest>;
 
@@ -17641,7 +17321,7 @@ export const BatchUpdateProjectsLocationsAgentEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes:batchUpdate",
+      path: "v2beta1/{parent}/entityTypes:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -17680,7 +17360,7 @@ export const BatchDeleteProjectsLocationsAgentEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes:batchDelete",
+      path: "v2beta1/{parent}/entityTypes:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -17719,7 +17399,7 @@ export const BatchCreateProjectsLocationsAgentEntityTypesEntitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
+      path: "v2beta1/{parent}/entities:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -17759,7 +17439,7 @@ export const BatchUpdateProjectsLocationsAgentEntityTypesEntitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
+      path: "v2beta1/{parent}/entities:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -17799,7 +17479,7 @@ export const BatchDeleteProjectsLocationsAgentEntityTypesEntitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
+      path: "v2beta1/{parent}/entities:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -17836,10 +17516,7 @@ export const ListProjectsLocationsAgentVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/versions",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAgentVersionsRequest>;
 
@@ -17873,10 +17550,7 @@ export const GetProjectsLocationsAgentVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAgentVersionsRequest>;
 
@@ -17913,7 +17587,7 @@ export const CreateProjectsLocationsAgentVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/versions",
+      path: "v2beta1/{parent}/versions",
       hasBody: true,
     }),
     svc,
@@ -17952,11 +17626,7 @@ export const PatchProjectsLocationsAgentVersionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAgentVersionsRequest>;
 
@@ -17986,10 +17656,7 @@ export const DeleteProjectsLocationsAgentVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAgentVersionsRequest>;
 
@@ -18023,11 +17690,7 @@ export const CreateProjectsLocationsToolsRequest =
     toolId: Schema.optional(Schema.String).pipe(T.HttpQuery("toolId")),
     body: Schema.optional(GoogleCloudDialogflowV2beta1Tool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/tools",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{parent}/tools", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsToolsRequest>;
 
@@ -18057,10 +17720,7 @@ export const GetProjectsLocationsToolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/tools/{toolsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsToolsRequest>;
 
@@ -18094,10 +17754,7 @@ export const ListProjectsLocationsToolsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/tools",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/tools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsToolsRequest>;
 
@@ -18131,10 +17788,7 @@ export const DeleteProjectsLocationsToolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/tools/{toolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsToolsRequest>;
 
@@ -18168,11 +17822,7 @@ export const PatchProjectsLocationsToolsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowV2beta1Tool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/tools/{toolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsToolsRequest>;
 
@@ -18213,7 +17863,7 @@ export const CreateProjectsLocationsGeneratorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators",
+      path: "v2beta1/{parent}/generators",
       hasBody: true,
     }),
     svc,
@@ -18245,10 +17895,7 @@ export const GetProjectsLocationsGeneratorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators/{generatorsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGeneratorsRequest>;
 
@@ -18282,10 +17929,7 @@ export const ListProjectsLocationsGeneratorsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/generators" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGeneratorsRequest>;
 
@@ -18319,10 +17963,7 @@ export const DeleteProjectsLocationsGeneratorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators/{generatorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGeneratorsRequest>;
 
@@ -18358,11 +17999,7 @@ export const PatchProjectsLocationsGeneratorsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators/{generatorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGeneratorsRequest>;
 
@@ -18399,7 +18036,7 @@ export const CreateProjectsLocationsGeneratorsEvaluationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators/{generatorsId}/evaluations",
+      path: "v2beta1/{parent}/evaluations",
       hasBody: true,
     }),
     svc,
@@ -18431,10 +18068,7 @@ export const GetProjectsLocationsGeneratorsEvaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators/{generatorsId}/evaluations/{evaluationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGeneratorsEvaluationsRequest>;
 
@@ -18468,10 +18102,7 @@ export const ListProjectsLocationsGeneratorsEvaluationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators/{generatorsId}/evaluations",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/evaluations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGeneratorsEvaluationsRequest>;
 
@@ -18505,10 +18136,7 @@ export const DeleteProjectsLocationsGeneratorsEvaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/generators/{generatorsId}/evaluations/{evaluationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGeneratorsEvaluationsRequest>;
 
@@ -18538,10 +18166,7 @@ export const GetProjectsLocationsAnswerRecordsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/answerRecords/{answerRecordsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAnswerRecordsRequest>;
 
@@ -18577,10 +18202,7 @@ export const ListProjectsLocationsAnswerRecordsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/answerRecords",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/answerRecords" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAnswerRecordsRequest>;
 
@@ -18621,11 +18243,7 @@ export const PatchProjectsLocationsAnswerRecordsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/answerRecords/{answerRecordsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAnswerRecordsRequest>;
 
@@ -18659,10 +18277,7 @@ export const ListProjectsLocationsConversationProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversationProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/conversationProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationProfilesRequest>;
 
@@ -18696,10 +18311,7 @@ export const GetProjectsLocationsConversationProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConversationProfilesRequest>;
 
@@ -18736,7 +18348,7 @@ export const CreateProjectsLocationsConversationProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversationProfiles",
+      path: "v2beta1/{parent}/conversationProfiles",
       hasBody: true,
     }),
     svc,
@@ -18775,11 +18387,7 @@ export const PatchProjectsLocationsConversationProfilesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConversationProfilesRequest>;
 
@@ -18809,10 +18417,7 @@ export const DeleteProjectsLocationsConversationProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationProfilesRequest>;
 
@@ -18849,7 +18454,7 @@ export const SetSuggestionFeatureConfigProjectsLocationsConversationProfilesRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}:setSuggestionFeatureConfig",
+      path: "v2beta1/{conversationProfile}:setSuggestionFeatureConfig",
       hasBody: true,
     }),
     svc,
@@ -18890,7 +18495,7 @@ export const ClearSuggestionFeatureConfigProjectsLocationsConversationProfilesRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}:clearSuggestionFeatureConfig",
+      path: "v2beta1/{conversationProfile}:clearSuggestionFeatureConfig",
       hasBody: true,
     }),
     svc,
@@ -18936,7 +18541,7 @@ export const CreateProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations",
+      path: "v2beta1/{parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -18974,10 +18579,7 @@ export const ListProjectsLocationsConversationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsRequest>;
 
@@ -19011,10 +18613,7 @@ export const GetProjectsLocationsConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConversationsRequest>;
 
@@ -19049,11 +18648,7 @@ export const CompleteProjectsLocationsConversationsRequest =
       GoogleCloudDialogflowV2beta1CompleteConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}:complete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:complete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CompleteProjectsLocationsConversationsRequest>;
 
@@ -19090,7 +18685,7 @@ export const IngestContextReferencesProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}:ingestContextReferences",
+      path: "v2beta1/{conversation}:ingestContextReferences",
       hasBody: true,
     }),
     svc,
@@ -19130,7 +18725,7 @@ export const CreateProjectsLocationsConversationsParticipantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants",
+      path: "v2beta1/{parent}/participants",
       hasBody: true,
     }),
     svc,
@@ -19163,10 +18758,7 @@ export const GetProjectsLocationsConversationsParticipantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConversationsParticipantsRequest>;
 
@@ -19200,10 +18792,7 @@ export const ListProjectsLocationsConversationsParticipantsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/participants" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsParticipantsRequest>;
 
@@ -19244,11 +18833,7 @@ export const PatchProjectsLocationsConversationsParticipantsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConversationsParticipantsRequest>;
 
@@ -19286,7 +18871,7 @@ export const AnalyzeContentProjectsLocationsConversationsParticipantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}:analyzeContent",
+      path: "v2beta1/{participant}:analyzeContent",
       hasBody: true,
     }),
     svc,
@@ -19326,7 +18911,7 @@ export const SuggestArticlesProjectsLocationsConversationsParticipantsSuggestion
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestArticles",
+      path: "v2beta1/{parent}/suggestions:suggestArticles",
       hasBody: true,
     }),
     svc,
@@ -19368,7 +18953,7 @@ export const SuggestFaqAnswersProjectsLocationsConversationsParticipantsSuggesti
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestFaqAnswers",
+      path: "v2beta1/{parent}/suggestions:suggestFaqAnswers",
       hasBody: true,
     }),
     svc,
@@ -19410,7 +18995,7 @@ export const SuggestSmartRepliesProjectsLocationsConversationsParticipantsSugges
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestSmartReplies",
+      path: "v2beta1/{parent}/suggestions:suggestSmartReplies",
       hasBody: true,
     }),
     svc,
@@ -19452,7 +19037,7 @@ export const SuggestKnowledgeAssistProjectsLocationsConversationsParticipantsSug
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestKnowledgeAssist",
+      path: "v2beta1/{parent}/suggestions:suggestKnowledgeAssist",
       hasBody: true,
     }),
     svc,
@@ -19494,7 +19079,7 @@ export const BatchCreateProjectsLocationsConversationsMessagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/messages:batchCreate",
+      path: "v2beta1/{parent}/messages:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -19533,10 +19118,7 @@ export const ListProjectsLocationsConversationsMessagesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/messages",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/messages" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsMessagesRequest>;
 
@@ -19577,7 +19159,7 @@ export const SuggestConversationSummaryProjectsLocationsConversationsSuggestions
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/suggestions:suggestConversationSummary",
+      path: "v2beta1/{conversation}/suggestions:suggestConversationSummary",
       hasBody: true,
     }),
     svc,
@@ -19619,7 +19201,7 @@ export const SearchKnowledgeProjectsLocationsConversationsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/suggestions:searchKnowledge",
+      path: "v2beta1/{conversation}/suggestions:searchKnowledge",
       hasBody: true,
     }),
     svc,
@@ -19659,7 +19241,7 @@ export const GenerateProjectsLocationsConversationsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/suggestions:generate",
+      path: "v2beta1/{conversation}/suggestions:generate",
       hasBody: true,
     }),
     svc,
@@ -19699,7 +19281,7 @@ export const GenerateStatelessSummaryProjectsLocationsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/suggestions:generateStatelessSummary",
+      path: "v2beta1/{parent}/suggestions:generateStatelessSummary",
       hasBody: true,
     }),
     svc,
@@ -19739,7 +19321,7 @@ export const SearchKnowledgeProjectsLocationsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/suggestions:searchKnowledge",
+      path: "v2beta1/{parent}/suggestions:searchKnowledge",
       hasBody: true,
     }),
     svc,
@@ -19778,7 +19360,7 @@ export const GenerateProjectsLocationsStatelessSuggestionRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/statelessSuggestion:generate",
+      path: "v2beta1/{parent}/statelessSuggestion:generate",
       hasBody: true,
     }),
     svc,
@@ -19817,7 +19399,7 @@ export const InitializeProjectsLocationsEncryptionSpecRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/encryptionSpec:initialize",
+      path: "v2beta1/{name}:initialize",
       hasBody: true,
     }),
     svc,
@@ -19855,10 +19437,7 @@ export const ListProjectsLocationsKnowledgeBasesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/knowledgeBases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKnowledgeBasesRequest>;
 
@@ -19892,10 +19471,7 @@ export const GetProjectsLocationsKnowledgeBasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKnowledgeBasesRequest>;
 
@@ -19932,7 +19508,7 @@ export const CreateProjectsLocationsKnowledgeBasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases",
+      path: "v2beta1/{parent}/knowledgeBases",
       hasBody: true,
     }),
     svc,
@@ -19966,10 +19542,7 @@ export const DeleteProjectsLocationsKnowledgeBasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsKnowledgeBasesRequest>;
 
@@ -20005,11 +19578,7 @@ export const PatchProjectsLocationsKnowledgeBasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsKnowledgeBasesRequest>;
 
@@ -20045,10 +19614,7 @@ export const ListProjectsLocationsKnowledgeBasesDocumentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/documents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKnowledgeBasesDocumentsRequest>;
 
@@ -20082,10 +19648,7 @@ export const GetProjectsLocationsKnowledgeBasesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKnowledgeBasesDocumentsRequest>;
 
@@ -20126,7 +19689,7 @@ export const CreateProjectsLocationsKnowledgeBasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents",
+      path: "v2beta1/{parent}/documents",
       hasBody: true,
     }),
     svc,
@@ -20165,7 +19728,7 @@ export const ImportProjectsLocationsKnowledgeBasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents:import",
+      path: "v2beta1/{parent}/documents:import",
       hasBody: true,
     }),
     svc,
@@ -20197,10 +19760,7 @@ export const DeleteProjectsLocationsKnowledgeBasesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsKnowledgeBasesDocumentsRequest>;
 
@@ -20237,11 +19797,7 @@ export const PatchProjectsLocationsKnowledgeBasesDocumentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsKnowledgeBasesDocumentsRequest>;
 
@@ -20276,11 +19832,7 @@ export const ReloadProjectsLocationsKnowledgeBasesDocumentsRequest =
       GoogleCloudDialogflowV2beta1ReloadDocumentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}:reload",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:reload", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReloadProjectsLocationsKnowledgeBasesDocumentsRequest>;
 
@@ -20318,10 +19870,7 @@ export const ListProjectsLocationsPhoneNumbersRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/phoneNumbers",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/phoneNumbers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPhoneNumbersRequest>;
 
@@ -20362,11 +19911,7 @@ export const PatchProjectsLocationsPhoneNumbersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/phoneNumbers/{phoneNumbersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPhoneNumbersRequest>;
 
@@ -20396,10 +19941,7 @@ export const DeleteProjectsLocationsPhoneNumbersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/phoneNumbers/{phoneNumbersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPhoneNumbersRequest>;
 
@@ -20434,11 +19976,7 @@ export const UndeleteProjectsLocationsPhoneNumbersRequest =
       GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/phoneNumbers/{phoneNumbersId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsLocationsPhoneNumbersRequest>;
 
@@ -20475,7 +20013,7 @@ export const CreateProjectsLocationsSipTrunksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/sipTrunks",
+      path: "v2beta1/{parent}/sipTrunks",
       hasBody: true,
     }),
     svc,
@@ -20507,10 +20045,7 @@ export const DeleteProjectsLocationsSipTrunksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/sipTrunks/{sipTrunksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSipTrunksRequest>;
 
@@ -20543,10 +20078,7 @@ export const ListProjectsLocationsSipTrunksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/sipTrunks",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/sipTrunks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSipTrunksRequest>;
 
@@ -20580,10 +20112,7 @@ export const GetProjectsLocationsSipTrunksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/sipTrunks/{sipTrunksId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSipTrunksRequest>;
 
@@ -20620,11 +20149,7 @@ export const PatchProjectsLocationsSipTrunksRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/locations/{locationsId}/sipTrunks/{sipTrunksId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSipTrunksRequest>;
 
@@ -20665,7 +20190,7 @@ export const CreateProjectsGeneratorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/generators",
+      path: "v2beta1/{parent}/generators",
       hasBody: true,
     }),
     svc,
@@ -20701,7 +20226,7 @@ export const ListProjectsGeneratorsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/projects/{projectsId}/generators" }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/generators" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGeneratorsRequest>;
 
@@ -20735,10 +20260,7 @@ export const GetProjectsAnswerRecordsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/answerRecords/{answerRecordsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAnswerRecordsRequest>;
 
@@ -20774,10 +20296,7 @@ export const ListProjectsAnswerRecordsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/answerRecords",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/answerRecords" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAnswerRecordsRequest>;
 
@@ -20818,11 +20337,7 @@ export const PatchProjectsAnswerRecordsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/answerRecords/{answerRecordsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAnswerRecordsRequest>;
 
@@ -20856,10 +20371,7 @@ export const ListProjectsConversationProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversationProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/conversationProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConversationProfilesRequest>;
 
@@ -20893,10 +20405,7 @@ export const GetProjectsConversationProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsConversationProfilesRequest>;
 
@@ -20933,7 +20442,7 @@ export const CreateProjectsConversationProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversationProfiles",
+      path: "v2beta1/{parent}/conversationProfiles",
       hasBody: true,
     }),
     svc,
@@ -20972,11 +20481,7 @@ export const PatchProjectsConversationProfilesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsConversationProfilesRequest>;
 
@@ -21006,10 +20511,7 @@ export const DeleteProjectsConversationProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsConversationProfilesRequest>;
 
@@ -21045,7 +20547,7 @@ export const SetSuggestionFeatureConfigProjectsConversationProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversationProfiles/{conversationProfilesId}:setSuggestionFeatureConfig",
+      path: "v2beta1/{conversationProfile}:setSuggestionFeatureConfig",
       hasBody: true,
     }),
     svc,
@@ -21085,7 +20587,7 @@ export const ClearSuggestionFeatureConfigProjectsConversationProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversationProfiles/{conversationProfilesId}:clearSuggestionFeatureConfig",
+      path: "v2beta1/{conversationProfile}:clearSuggestionFeatureConfig",
       hasBody: true,
     }),
     svc,
@@ -21129,7 +20631,7 @@ export const CreateProjectsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations",
+      path: "v2beta1/{parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -21167,10 +20669,7 @@ export const ListProjectsConversationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConversationsRequest>;
 
@@ -21204,10 +20703,7 @@ export const GetProjectsConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsConversationsRequest>;
 
@@ -21242,11 +20738,7 @@ export const CompleteProjectsConversationsRequest =
       GoogleCloudDialogflowV2beta1CompleteConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}:complete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:complete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CompleteProjectsConversationsRequest>;
 
@@ -21283,7 +20775,7 @@ export const CreateProjectsConversationsParticipantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants",
+      path: "v2beta1/{parent}/participants",
       hasBody: true,
     }),
     svc,
@@ -21315,10 +20807,7 @@ export const GetProjectsConversationsParticipantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsConversationsParticipantsRequest>;
 
@@ -21352,10 +20841,7 @@ export const ListProjectsConversationsParticipantsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/participants" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConversationsParticipantsRequest>;
 
@@ -21396,11 +20882,7 @@ export const PatchProjectsConversationsParticipantsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsConversationsParticipantsRequest>;
 
@@ -21437,7 +20919,7 @@ export const AnalyzeContentProjectsConversationsParticipantsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}:analyzeContent",
+      path: "v2beta1/{participant}:analyzeContent",
       hasBody: true,
     }),
     svc,
@@ -21477,7 +20959,7 @@ export const SuggestArticlesProjectsConversationsParticipantsSuggestionsRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestArticles",
+      path: "v2beta1/{parent}/suggestions:suggestArticles",
       hasBody: true,
     }),
     svc,
@@ -21517,7 +20999,7 @@ export const SuggestFaqAnswersProjectsConversationsParticipantsSuggestionsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestFaqAnswers",
+      path: "v2beta1/{parent}/suggestions:suggestFaqAnswers",
       hasBody: true,
     }),
     svc,
@@ -21557,7 +21039,7 @@ export const SuggestSmartRepliesProjectsConversationsParticipantsSuggestionsRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestSmartReplies",
+      path: "v2beta1/{parent}/suggestions:suggestSmartReplies",
       hasBody: true,
     }),
     svc,
@@ -21598,7 +21080,7 @@ export const SuggestKnowledgeAssistProjectsConversationsParticipantsSuggestionsR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:suggestKnowledgeAssist",
+      path: "v2beta1/{parent}/suggestions:suggestKnowledgeAssist",
       hasBody: true,
     }),
     svc,
@@ -21639,10 +21121,7 @@ export const ListProjectsConversationsParticipantsSuggestionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/suggestions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConversationsParticipantsSuggestionsRequest>;
 
@@ -21684,7 +21163,7 @@ export const CompileProjectsConversationsParticipantsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/participants/{participantsId}/suggestions:compile",
+      path: "v2beta1/{parent}/suggestions:compile",
       hasBody: true,
     }),
     svc,
@@ -21724,7 +21203,7 @@ export const BatchCreateProjectsConversationsMessagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/messages:batchCreate",
+      path: "v2beta1/{parent}/messages:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -21762,10 +21241,7 @@ export const ListProjectsConversationsMessagesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/messages",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/messages" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsConversationsMessagesRequest>;
 
@@ -21806,7 +21282,7 @@ export const SuggestConversationSummaryProjectsConversationsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/suggestions:suggestConversationSummary",
+      path: "v2beta1/{conversation}/suggestions:suggestConversationSummary",
       hasBody: true,
     }),
     svc,
@@ -21846,7 +21322,7 @@ export const SearchKnowledgeProjectsConversationsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/suggestions:searchKnowledge",
+      path: "v2beta1/{conversation}/suggestions:searchKnowledge",
       hasBody: true,
     }),
     svc,
@@ -21886,7 +21362,7 @@ export const GenerateProjectsConversationsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/conversations/{conversationsId}/suggestions:generate",
+      path: "v2beta1/{conversation}/suggestions:generate",
       hasBody: true,
     }),
     svc,
@@ -21925,7 +21401,7 @@ export const GenerateStatelessSummaryProjectsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/suggestions:generateStatelessSummary",
+      path: "v2beta1/{parent}/suggestions:generateStatelessSummary",
       hasBody: true,
     }),
     svc,
@@ -21964,7 +21440,7 @@ export const SearchKnowledgeProjectsSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/suggestions:searchKnowledge",
+      path: "v2beta1/{parent}/suggestions:searchKnowledge",
       hasBody: true,
     }),
     svc,
@@ -22002,10 +21478,7 @@ export const ListProjectsKnowledgeBasesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/knowledgeBases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsKnowledgeBasesRequest>;
 
@@ -22039,10 +21512,7 @@ export const GetProjectsKnowledgeBasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsKnowledgeBasesRequest>;
 
@@ -22079,7 +21549,7 @@ export const CreateProjectsKnowledgeBasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases",
+      path: "v2beta1/{parent}/knowledgeBases",
       hasBody: true,
     }),
     svc,
@@ -22113,10 +21583,7 @@ export const DeleteProjectsKnowledgeBasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsKnowledgeBasesRequest>;
 
@@ -22152,11 +21619,7 @@ export const PatchProjectsKnowledgeBasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsKnowledgeBasesRequest>;
 
@@ -22192,10 +21655,7 @@ export const ListProjectsKnowledgeBasesDocumentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/documents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsKnowledgeBasesDocumentsRequest>;
 
@@ -22229,10 +21689,7 @@ export const GetProjectsKnowledgeBasesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsKnowledgeBasesDocumentsRequest>;
 
@@ -22273,7 +21730,7 @@ export const CreateProjectsKnowledgeBasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents",
+      path: "v2beta1/{parent}/documents",
       hasBody: true,
     }),
     svc,
@@ -22312,7 +21769,7 @@ export const ImportProjectsKnowledgeBasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents:import",
+      path: "v2beta1/{parent}/documents:import",
       hasBody: true,
     }),
     svc,
@@ -22344,10 +21801,7 @@ export const DeleteProjectsKnowledgeBasesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsKnowledgeBasesDocumentsRequest>;
 
@@ -22384,11 +21838,7 @@ export const PatchProjectsKnowledgeBasesDocumentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsKnowledgeBasesDocumentsRequest>;
 
@@ -22423,11 +21873,7 @@ export const ReloadProjectsKnowledgeBasesDocumentsRequest =
       GoogleCloudDialogflowV2beta1ReloadDocumentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/knowledgeBases/{knowledgeBasesId}/documents/{documentsId}:reload",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:reload", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReloadProjectsKnowledgeBasesDocumentsRequest>;
 
@@ -22465,10 +21911,7 @@ export const ListProjectsPhoneNumbersRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/phoneNumbers",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/phoneNumbers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPhoneNumbersRequest>;
 
@@ -22509,11 +21952,7 @@ export const PatchProjectsPhoneNumbersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/phoneNumbers/{phoneNumbersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsPhoneNumbersRequest>;
 
@@ -22543,10 +21982,7 @@ export const DeleteProjectsPhoneNumbersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/phoneNumbers/{phoneNumbersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsPhoneNumbersRequest>;
 
@@ -22581,11 +22017,7 @@ export const UndeleteProjectsPhoneNumbersRequest =
       GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta1/projects/{projectsId}/phoneNumbers/{phoneNumbersId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta1/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsPhoneNumbersRequest>;
 

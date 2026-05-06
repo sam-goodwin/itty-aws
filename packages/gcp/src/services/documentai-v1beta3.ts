@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,11 +63,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -100,7 +100,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment =
 
 export interface GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
   /** The text segments from the Document.text. */
-  textSegments?: Array<GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment>;
+  textSegments?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment>;
   /** Contains the content of the text span so that users do not have to look it up in the text_segments. It is always populated for formFields. */
   content?: string;
 }
@@ -263,9 +263,9 @@ export const GoogleCloudDocumentaiV1beta3NormalizedVertex =
 
 export interface GoogleCloudDocumentaiV1beta3BoundingPoly {
   /** The bounding polygon vertices. */
-  vertices?: Array<GoogleCloudDocumentaiV1beta3Vertex>;
+  vertices?: ReadonlyArray<GoogleCloudDocumentaiV1beta3Vertex>;
   /** The bounding polygon normalized vertices. */
-  normalizedVertices?: Array<GoogleCloudDocumentaiV1beta3NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<GoogleCloudDocumentaiV1beta3NormalizedVertex>;
 }
 
 export const GoogleCloudDocumentaiV1beta3BoundingPoly =
@@ -340,7 +340,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentProvenance {
   /** The Id of this operation. Needs to be unique within the scope of the revision. */
   id?: number;
   /** References to the original elements that are replaced. */
-  parents?: Array<GoogleCloudDocumentaiV1beta3DocumentProvenanceParent>;
+  parents?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentProvenanceParent>;
   /** The type of provenance operation. */
   type?:
     | "OPERATION_TYPE_UNSPECIFIED"
@@ -368,7 +368,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageBlock {
   /** Layout for Block. */
   layout?: GoogleCloudDocumentaiV1beta3DocumentPageLayout;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** The history of this annotation. */
   provenance?: GoogleCloudDocumentaiV1beta3DocumentProvenance;
 }
@@ -386,7 +386,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageParagraph {
   /** Layout for Paragraph. */
   layout?: GoogleCloudDocumentaiV1beta3DocumentPageLayout;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** The history of this annotation. */
   provenance?: GoogleCloudDocumentaiV1beta3DocumentProvenance;
 }
@@ -406,7 +406,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageLine {
   /** Layout for Line. */
   layout?: GoogleCloudDocumentaiV1beta3DocumentPageLayout;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** The history of this annotation. */
   provenance?: GoogleCloudDocumentaiV1beta3DocumentProvenance;
 }
@@ -492,7 +492,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageToken {
   /** Detected break at the end of a Token. */
   detectedBreak?: GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** The history of this annotation. */
   provenance?: GoogleCloudDocumentaiV1beta3DocumentProvenance;
   /** Text style attributes. */
@@ -520,7 +520,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageVisualElement {
   /** Type of the VisualElement. */
   type?: string;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentPageVisualElement =
@@ -542,7 +542,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell {
   /** How many columns this cell spans. */
   colSpan?: number;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell =
@@ -559,7 +559,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell =
 
 export interface GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow {
   /** Cells that make up this row. */
-  cells?: Array<GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell>;
+  cells?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow =
@@ -575,11 +575,11 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageTable {
   /** Layout for Table. */
   layout?: GoogleCloudDocumentaiV1beta3DocumentPageLayout;
   /** Header rows of the table. */
-  headerRows?: Array<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow>;
+  headerRows?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow>;
   /** Body rows of the table. */
-  bodyRows?: Array<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow>;
+  bodyRows?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow>;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** The history of this table. */
   provenance?: GoogleCloudDocumentaiV1beta3DocumentProvenance;
 }
@@ -605,9 +605,9 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageFormField {
   /** Layout for the FormField value. */
   fieldValue?: GoogleCloudDocumentaiV1beta3DocumentPageLayout;
   /** A list of detected languages for name together with confidence. */
-  nameDetectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  nameDetectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** A list of detected languages for value together with confidence. */
-  valueDetectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  valueDetectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox` */
   valueType?: string;
   /** Created for Labeling UI to export key text. If corrections were made to the text identified by the `field_name.text_anchor`, this field will contain the correction. */
@@ -640,7 +640,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageSymbol {
   /** Layout for Symbol. */
   layout?: GoogleCloudDocumentaiV1beta3DocumentPageLayout;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentPageSymbol =
@@ -702,7 +702,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores {
   /** The overall quality score. Range `[0, 1]` where `1` is perfect quality. */
   qualityScore?: number;
   /** A list of detected defects. */
-  detectedDefects?: Array<GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect>;
+  detectedDefects?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores =
@@ -723,31 +723,31 @@ export interface GoogleCloudDocumentaiV1beta3DocumentPage {
   /** Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned. */
   image?: GoogleCloudDocumentaiV1beta3DocumentPageImage;
   /** Transformation matrices that were applied to the original document image to produce Page.image. */
-  transforms?: Array<GoogleCloudDocumentaiV1beta3DocumentPageMatrix>;
+  transforms?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageMatrix>;
   /** Physical dimension of the page. */
   dimension?: GoogleCloudDocumentaiV1beta3DocumentPageDimension;
   /** Layout for the page. */
   layout?: GoogleCloudDocumentaiV1beta3DocumentPageLayout;
   /** A list of detected languages together with confidence. */
-  detectedLanguages?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
+  detectedLanguages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>;
   /** A list of visually detected text blocks on the page. A block has a set of lines (collected into paragraphs) that have a common line-spacing and orientation. */
-  blocks?: Array<GoogleCloudDocumentaiV1beta3DocumentPageBlock>;
+  blocks?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageBlock>;
   /** A list of visually detected text paragraphs on the page. A collection of lines that a human would perceive as a paragraph. */
-  paragraphs?: Array<GoogleCloudDocumentaiV1beta3DocumentPageParagraph>;
+  paragraphs?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageParagraph>;
   /** A list of visually detected text lines on the page. A collection of tokens that a human would perceive as a line. */
-  lines?: Array<GoogleCloudDocumentaiV1beta3DocumentPageLine>;
+  lines?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageLine>;
   /** A list of visually detected tokens on the page. */
-  tokens?: Array<GoogleCloudDocumentaiV1beta3DocumentPageToken>;
+  tokens?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageToken>;
   /** A list of detected non-text visual elements, for example, checkbox, signature etc. on the page. */
-  visualElements?: Array<GoogleCloudDocumentaiV1beta3DocumentPageVisualElement>;
+  visualElements?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageVisualElement>;
   /** A list of visually detected tables on the page. */
-  tables?: Array<GoogleCloudDocumentaiV1beta3DocumentPageTable>;
+  tables?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageTable>;
   /** A list of visually detected form fields on the page. */
-  formFields?: Array<GoogleCloudDocumentaiV1beta3DocumentPageFormField>;
+  formFields?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageFormField>;
   /** A list of visually detected symbols on the page. */
-  symbols?: Array<GoogleCloudDocumentaiV1beta3DocumentPageSymbol>;
+  symbols?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageSymbol>;
   /** A list of detected barcodes. */
-  detectedBarcodes?: Array<GoogleCloudDocumentaiV1beta3DocumentPageDetectedBarcode>;
+  detectedBarcodes?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageDetectedBarcode>;
   /** Image quality scores. */
   imageQualityScores?: GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores;
   /** The history of this page. */
@@ -836,7 +836,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef =
 
 export interface GoogleCloudDocumentaiV1beta3DocumentPageAnchor {
   /** One or more references to visual page elements */
-  pageRefs?: Array<GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef>;
+  pageRefs?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentPageAnchor =
@@ -939,9 +939,9 @@ export interface GoogleTypePostalAddress {
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
   sublocality?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. The name of the organization at the address. */
   organization?: string;
 }
@@ -1015,7 +1015,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentEntity {
   /** Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (for example, address) is not supported for certain parsers. This field is also only populated for certain supported document types. */
   normalizedValue?: GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue;
   /** Optional. Entities can be nested to form a hierarchical data structure representing the content in the document. */
-  properties?: Array<GoogleCloudDocumentaiV1beta3DocumentEntity>;
+  properties?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentEntity>;
   /** Optional. The history of this annotation. */
   provenance?: GoogleCloudDocumentaiV1beta3DocumentProvenance;
   /** Optional. Whether the entity will be redacted for de-identification purposes. */
@@ -1078,7 +1078,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentTextChange {
   /** The text that replaces the text identified in the `text_anchor`. */
   changedText?: string;
   /** The history of this annotation. */
-  provenance?: Array<GoogleCloudDocumentaiV1beta3DocumentProvenance>;
+  provenance?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentProvenance>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentTextChange =
@@ -1132,9 +1132,9 @@ export interface GoogleCloudDocumentaiV1beta3DocumentRevision {
   /** Id of the revision, internally generated by doc proto storage. Unique within the context of the document. */
   id?: string;
   /** The revisions that this revision is based on. This can include one or more parent (when documents are merged.) This field represents the index into the `revisions` field. */
-  parent?: Array<number>;
+  parent?: ReadonlyArray<number>;
   /** The revisions that this revision is based on. Must include all the ids that have anything to do with this revision - eg. there are `provenance.parent.revision` fields that index into this field. */
-  parentIds?: Array<string>;
+  parentIds?: ReadonlyArray<string>;
   /** The time that the revision was created, internally generated by doc proto storage at the time of create. */
   createTime?: string;
   /** Human Review information of this revision. */
@@ -1172,7 +1172,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayou
   /** Type of the text in the block. Available options are: `paragraph`, `subtitle`, `heading-1`, `heading-2`, `heading-3`, `heading-4`, `heading-5`, `header`, `footer`. */
   type?: string;
   /** A text block could further have child blocks. Repeated blocks support further hierarchies and nested blocks. */
-  blocks?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
+  blocks?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
   /** Annotation of the text block. */
   annotations?: GoogleCloudDocumentaiV1beta3DocumentAnnotations;
 }
@@ -1198,7 +1198,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlo
 
 export interface GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell {
   /** A table cell is a list of blocks. Repeated blocks support further hierarchies and nested blocks. */
-  blocks?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
+  blocks?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
   /** How many rows this cell spans. */
   rowSpan?: number;
   /** How many columns this cell spans. */
@@ -1223,7 +1223,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlo
 
 export interface GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow {
   /** A table row is a list of table cells. */
-  cells?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>;
+  cells?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> =
@@ -1242,9 +1242,9 @@ export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlo
 
 export interface GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock {
   /** Header rows at the top of the table. */
-  headerRows?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
+  headerRows?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
   /** Body rows containing main table content. */
-  bodyRows?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
+  bodyRows?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
   /** Table caption/title. */
   caption?: string;
   /** Annotation of the table block. */
@@ -1276,7 +1276,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlo
 
 export interface GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry {
   /** A list entry is a list of blocks. Repeated blocks support further hierarchies and nested blocks. */
-  blocks?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
+  blocks?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry> =
@@ -1295,7 +1295,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlo
 
 export interface GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock {
   /** List entries that constitute a list block. */
-  listEntries?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>;
+  listEntries?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>;
   /** Type of the list_entries (if exist). Available options are `ordered` and `unordered`. */
   type?: string;
 }
@@ -1406,7 +1406,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlo
 
 export interface GoogleCloudDocumentaiV1beta3DocumentDocumentLayout {
   /** List of blocks in the document. */
-  blocks?: Array<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
+  blocks?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentDocumentLayout =
@@ -1535,17 +1535,17 @@ export interface GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk {
   /** ID of the chunk. */
   chunkId?: string;
   /** Unused. */
-  sourceBlockIds?: Array<string>;
+  sourceBlockIds?: ReadonlyArray<string>;
   /** Text content of the chunk. */
   content?: string;
   /** Page span of the chunk. */
   pageSpan?: GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan;
   /** Page headers associated with the chunk. */
-  pageHeaders?: Array<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader>;
+  pageHeaders?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageHeader>;
   /** Page footers associated with the chunk. */
-  pageFooters?: Array<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter>;
+  pageFooters?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageFooter>;
   /** Chunk fields inside this chunk. */
-  chunkFields?: Array<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField>;
+  chunkFields?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk =
@@ -1577,7 +1577,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk =
 
 export interface GoogleCloudDocumentaiV1beta3DocumentChunkedDocument {
   /** List of chunks. */
-  chunks?: Array<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk>;
+  chunks?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunk>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentChunkedDocument =
@@ -1638,7 +1638,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidatio
 
 export interface GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput {
   /** The result of each validation rule. */
-  validationResults?: Array<GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult>;
+  validationResults?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult>;
   /** The overall result of the validation, true if all applicable rules are valid. */
   passAllRules?: boolean;
 }
@@ -1659,7 +1659,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision {
   /** The revision id. */
   revisionId?: string;
   /** The entities in this revision. */
-  entities?: Array<GoogleCloudDocumentaiV1beta3DocumentEntity>;
+  entities?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentEntity>;
   /** The entity validation output for this revision. */
   entityValidationOutput?: GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput;
   /** Optional. The history of this revision. */
@@ -1692,31 +1692,31 @@ export interface GoogleCloudDocumentaiV1beta3Document {
   /** Optional. UTF-8 encoded text in reading order from the document. */
   text?: string;
   /** Styles for the Document.text. */
-  textStyles?: Array<GoogleCloudDocumentaiV1beta3DocumentStyle>;
+  textStyles?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentStyle>;
   /** Visual page layout for the Document. */
-  pages?: Array<GoogleCloudDocumentaiV1beta3DocumentPage>;
+  pages?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentPage>;
   /** A list of entities detected on Document.text. For document shards, entities in this list may cross shard boundaries. */
-  entities?: Array<GoogleCloudDocumentaiV1beta3DocumentEntity>;
+  entities?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentEntity>;
   /** Placeholder. Relationship among Document.entities. */
-  entityRelations?: Array<GoogleCloudDocumentaiV1beta3DocumentEntityRelation>;
+  entityRelations?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentEntityRelation>;
   /** Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other. */
-  textChanges?: Array<GoogleCloudDocumentaiV1beta3DocumentTextChange>;
+  textChanges?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentTextChange>;
   /** Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified. */
   shardInfo?: GoogleCloudDocumentaiV1beta3DocumentShardInfo;
   /** Any error that occurred while processing this document. */
   error?: GoogleRpcStatus;
   /** Placeholder. Revision history of this document. */
-  revisions?: Array<GoogleCloudDocumentaiV1beta3DocumentRevision>;
+  revisions?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentRevision>;
   /** Parsed layout of the document. */
   documentLayout?: GoogleCloudDocumentaiV1beta3DocumentDocumentLayout;
   /** Document chunked based on chunking config. */
   chunkedDocument?: GoogleCloudDocumentaiV1beta3DocumentChunkedDocument;
   /** Optional. The blob assets in this document. This is used to store the content of the inline blobs in this document, for example, image bytes, such that it can be referenced by other fields in the document via asset id. */
-  blobAssets?: Array<GoogleCloudDocumentaiV1beta3DocumentBlobAsset>;
+  blobAssets?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentBlobAsset>;
   /** The entity validation output for the document. This is the validation output for `document.entities` field. */
   entityValidationOutput?: GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput;
   /** A list of entity revisions. The entity revisions are appended to the document in the processing order. This field can be used for comparing the entity extraction results at different stages of the processing. */
-  entitiesRevisions?: Array<GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision>;
+  entitiesRevisions?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision>;
   /** The entity revision ID that `document.entities` field is based on. If this field is set and `entities_revisions` is not empty, the entities in `document.entities` field are the entities in the entity revision with this id and `document.entity_validation_output` field is the `entity_validation_output` field in this entity revision. */
   entitiesRevisionId?: string;
 }
@@ -1797,7 +1797,7 @@ export const GoogleCloudDocumentaiV1beta3GcsDocument =
 
 export interface GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector {
   /** Optional. Indices of the pages (starting from 1). */
-  pages?: Array<number>;
+  pages?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector =
@@ -1810,7 +1810,7 @@ export const GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector =
 
 export interface GoogleCloudDocumentaiV1beta3OcrConfigHints {
   /** List of BCP-47 language codes to use for OCR. In most cases, not specifying it yields the best results since it enables automatic language detection. For languages based on the Latin alphabet, setting hints is not needed. In rare cases, when the language of the text in the image is known, setting a hint will help get better results (although it will be a significant hindrance if the hint is wrong). */
-  languageHints?: Array<string>;
+  languageHints?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDocumentaiV1beta3OcrConfigHints =
@@ -1844,7 +1844,7 @@ export interface GoogleCloudDocumentaiV1beta3OcrConfig {
   /** Enables intelligent document quality scores after OCR. Can help with diagnosing why OCR responses are of poor quality for a given input. Adds additional latency comparable to regular OCR to the process call. */
   enableImageQualityScores?: boolean;
   /** A list of advanced OCR options to further fine-tune OCR behavior. Current valid values are: - `legacy_layout`: a heuristics layout detection algorithm, which serves as an alternative to the current ML-based layout detection algorithm. Customers can choose the best suitable layout algorithm based on their situation. */
-  advancedOcrOptions?: Array<string>;
+  advancedOcrOptions?: ReadonlyArray<string>;
   /** Includes symbol level OCR information if set to true. */
   enableSymbol?: boolean;
   /** Turn on font identification model and return font style information. Deprecated, use PremiumFeatures.compute_style_info instead. */
@@ -1928,7 +1928,7 @@ export const GoogleCloudDocumentaiV1beta3ProcessOptionsLayoutConfig =
 
 export interface GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues {
   /** The individual values that this enum values type can include. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues =
@@ -2047,9 +2047,9 @@ export interface GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType {
   /** The description of the entity type. Could be used to provide more information about the entity type for model calls. */
   description?: string;
   /** The entity type that this type is derived from. For now, one and only one should be set. */
-  baseTypes?: Array<string>;
+  baseTypes?: ReadonlyArray<string>;
   /** Description the nested structure, or composition of an entity. */
-  properties?: Array<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty>;
+  properties?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty>;
   /** Metadata for the entity type. */
   entityTypeMetadata?: GoogleCloudDocumentaiV1beta3EntityTypeMetadata;
 }
@@ -2102,7 +2102,7 @@ export interface GoogleCloudDocumentaiV1beta3DocumentSchema {
   /** Description of the schema. */
   description?: string;
   /** Entity types of the schema. */
-  entityTypes?: Array<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType>;
   /** Metadata of the schema. */
   metadata?: GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata;
   /** Optional. Document level prompt provided by the user. This custom text is injected into the AI model's prompt to provide extra, document-wide guidance for processing. */
@@ -2266,7 +2266,7 @@ export const GoogleCloudDocumentaiV1beta3GcsPrefix =
 
 export interface GoogleCloudDocumentaiV1beta3GcsDocuments {
   /** The list of documents. */
-  documents?: Array<GoogleCloudDocumentaiV1beta3GcsDocument>;
+  documents?: ReadonlyArray<GoogleCloudDocumentaiV1beta3GcsDocument>;
 }
 
 export const GoogleCloudDocumentaiV1beta3GcsDocuments =
@@ -2344,7 +2344,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentOutputConfig =
 
 export interface GoogleCloudDocumentaiV1beta3BatchProcessRequest {
   /** The input config for each single document in the batch process. */
-  inputConfigs?: Array<GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig>;
+  inputConfigs?: ReadonlyArray<GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig>;
   /** The overall output config for batch process. */
   outputConfig?: GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig;
   /** The input documents for the BatchProcessDocuments method. */
@@ -2402,7 +2402,7 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorType {
   /** The processor category, used by UI to group processor types. */
   category?: string;
   /** The locations in which this processor is available. */
-  availableLocations?: Array<GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo>;
+  availableLocations?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo>;
   /** Whether the processor type allows creation. If true, users can create a processor of this processor type. Otherwise, users need to request access. */
   allowCreation?: boolean;
   /** Launch stage of the processor type */
@@ -2417,7 +2417,7 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorType {
     | "DEPRECATED"
     | (string & {});
   /** A set of Cloud Storage URIs of sample documents for this processor. */
-  sampleDocumentUris?: Array<string>;
+  sampleDocumentUris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDocumentaiV1beta3ProcessorType =
@@ -2435,7 +2435,7 @@ export const GoogleCloudDocumentaiV1beta3ProcessorType =
 
 export interface GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse {
   /** The list of processor types. */
-  processorTypes?: Array<GoogleCloudDocumentaiV1beta3ProcessorType>;
+  processorTypes?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ProcessorType>;
 }
 
 export const GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse =
@@ -2449,7 +2449,7 @@ export const GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse =
 
 export interface GoogleCloudDocumentaiV1beta3ListProcessorTypesResponse {
   /** The processor types. */
-  processorTypes?: Array<GoogleCloudDocumentaiV1beta3ProcessorType>;
+  processorTypes?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ProcessorType>;
   /** Points to the next page, otherwise empty. */
   nextPageToken?: string;
 }
@@ -2500,7 +2500,7 @@ export interface GoogleCloudDocumentaiV1beta3Processor {
   /** The default processor version. */
   defaultProcessorVersion?: string;
   /** Output only. The processor version aliases. */
-  processorVersionAliases?: Array<GoogleCloudDocumentaiV1beta3ProcessorVersionAlias>;
+  processorVersionAliases?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ProcessorVersionAlias>;
   /** Output only. Immutable. The http endpoint that can be called to invoke processing. */
   processEndpoint?: string;
   /** Output only. The time the processor was created. */
@@ -2535,7 +2535,7 @@ export const GoogleCloudDocumentaiV1beta3Processor =
 
 export interface GoogleCloudDocumentaiV1beta3ListProcessorsResponse {
   /** The list of processors. */
-  processors?: Array<GoogleCloudDocumentaiV1beta3Processor>;
+  processors?: ReadonlyArray<GoogleCloudDocumentaiV1beta3Processor>;
   /** Points to the next processor, otherwise empty. */
   nextPageToken?: string;
 }
@@ -2847,7 +2847,7 @@ export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest =
 
 export interface GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse {
   /** The list of processors. */
-  processorVersions?: Array<GoogleCloudDocumentaiV1beta3ProcessorVersion>;
+  processorVersions?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ProcessorVersion>;
   /** Points to the next processor, otherwise empty. */
   nextPageToken?: string;
 }
@@ -2976,9 +2976,9 @@ export const GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics =
 
 export interface GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics {
   /** Metrics across confidence levels with fuzzy matching enabled. */
-  confidenceLevelMetrics?: Array<GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics>;
+  confidenceLevelMetrics?: ReadonlyArray<GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics>;
   /** Metrics across confidence levels with only exact matching. */
-  confidenceLevelMetricsExact?: Array<GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics>;
+  confidenceLevelMetricsExact?: ReadonlyArray<GoogleCloudDocumentaiV1beta3EvaluationConfidenceLevelMetrics>;
   /** The calculated area under the precision recall curve (AUPRC), computed by integrating over all confidence thresholds. */
   auprc?: number;
   /** The Estimated Calibration Error (ECE) of the confidence of the predicted entities. */
@@ -3064,7 +3064,7 @@ export interface GoogleCloudDocumentaiV1beta3Evaluation {
   /** The KMS key version with which data is encrypted. */
   kmsKeyVersionName?: string;
   /** Contains all revisions of the evaluation, excluding the latest one. */
-  revisions?: Array<GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision>;
+  revisions?: ReadonlyArray<GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision>;
 }
 
 export const GoogleCloudDocumentaiV1beta3Evaluation =
@@ -3092,7 +3092,7 @@ export const GoogleCloudDocumentaiV1beta3Evaluation =
 
 export interface GoogleCloudDocumentaiV1beta3ListEvaluationsResponse {
   /** The evaluations requested. */
-  evaluations?: Array<GoogleCloudDocumentaiV1beta3Evaluation>;
+  evaluations?: ReadonlyArray<GoogleCloudDocumentaiV1beta3Evaluation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3259,7 +3259,7 @@ export const GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImp
 
 export interface GoogleCloudDocumentaiV1beta3ImportDocumentsRequest {
   /** Required. The Cloud Storage uri containing raw documents that must be imported. */
-  batchDocumentsImportConfigs?: Array<GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig>;
+  batchDocumentsImportConfigs?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig>;
 }
 
 export const GoogleCloudDocumentaiV1beta3ImportDocumentsRequest =
@@ -3410,7 +3410,7 @@ export const GoogleCloudDocumentaiV1beta3DocumentMetadata =
 
 export interface GoogleCloudDocumentaiV1beta3ListDocumentsResponse {
   /** Document metadata corresponding to the listed documents. */
-  documentMetadata?: Array<GoogleCloudDocumentaiV1beta3DocumentMetadata>;
+  documentMetadata?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentMetadata>;
   /** A token, which can be sent as ListDocumentsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Total count of documents queried. */
@@ -3430,7 +3430,7 @@ export const GoogleCloudDocumentaiV1beta3ListDocumentsResponse =
 
 export interface GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds {
   /** Required. List of Document IDs indicating where the actual documents are stored. */
-  documentIds?: Array<GoogleCloudDocumentaiV1beta3DocumentId>;
+  documentIds?: ReadonlyArray<GoogleCloudDocumentaiV1beta3DocumentId>;
 }
 
 export const GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds =
@@ -3517,7 +3517,7 @@ export const GoogleCloudDocumentaiV1beta3NextSchema =
 
 export interface GoogleCloudDocumentaiV1beta3ListSchemasResponse {
   /** The list of Schemas. */
-  schemas?: Array<GoogleCloudDocumentaiV1beta3NextSchema>;
+  schemas?: ReadonlyArray<GoogleCloudDocumentaiV1beta3NextSchema>;
   /** Points to the next Schema, otherwise empty. */
   nextPageToken?: string;
 }
@@ -3556,7 +3556,7 @@ export const GoogleCloudDocumentaiV1beta3SchemaVersion =
 
 export interface GoogleCloudDocumentaiV1beta3Documents {
   /** The list of documents. */
-  documents?: Array<GoogleCloudDocumentaiV1beta3Document>;
+  documents?: ReadonlyArray<GoogleCloudDocumentaiV1beta3Document>;
 }
 
 export const GoogleCloudDocumentaiV1beta3Documents =
@@ -3568,7 +3568,7 @@ export const GoogleCloudDocumentaiV1beta3Documents =
 
 export interface GoogleCloudDocumentaiV1beta3RawDocuments {
   /** Specifies raw document content and mime type. */
-  documents?: Array<GoogleCloudDocumentaiV1beta3RawDocument>;
+  documents?: ReadonlyArray<GoogleCloudDocumentaiV1beta3RawDocument>;
 }
 
 export const GoogleCloudDocumentaiV1beta3RawDocuments =
@@ -3598,7 +3598,7 @@ export const GoogleCloudDocumentaiV1beta3SchemaGenerationIteration =
 
 export interface GoogleCloudDocumentaiV1beta3SchemaGenerationHistory {
   /** Required. Previous prompt-answers in a chronological order. */
-  iterations?: Array<GoogleCloudDocumentaiV1beta3SchemaGenerationIteration>;
+  iterations?: ReadonlyArray<GoogleCloudDocumentaiV1beta3SchemaGenerationIteration>;
 }
 
 export const GoogleCloudDocumentaiV1beta3SchemaGenerationHistory =
@@ -3671,7 +3671,7 @@ export const GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse =
 
 export interface GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse {
   /** The list of SchemaVersions. */
-  schemaVersions?: Array<GoogleCloudDocumentaiV1beta3SchemaVersion>;
+  schemaVersions?: ReadonlyArray<GoogleCloudDocumentaiV1beta3SchemaVersion>;
   /** Points to the next SchemaVersion, otherwise empty. */
   nextPageToken?: string;
 }
@@ -3710,7 +3710,7 @@ export const GoogleCloudLocationLocation =
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<GoogleCloudLocationLocation>;
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -3789,11 +3789,11 @@ export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRul
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation {
   /** A list of fields to be used as operands. */
-  fields?: Array<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>;
+  fields?: ReadonlyArray<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>;
   /** A list of constants to be used as operands. */
-  constants?: Array<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant>;
+  constants?: ReadonlyArray<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant>;
   /** A list of recursive operations to be used as operands. */
-  operations?: Array<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation>;
+  operations?: ReadonlyArray<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation>;
   /** The operation type to be applied to all the operands. */
   operationType?:
     | "OPERATION_TYPE_UNSPECIFIED"
@@ -3886,7 +3886,7 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   /** The full path of the parent field. */
   parentField?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField;
   /** The child fields to be aligned within the parent field. */
-  childFields?: Array<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>;
+  childFields?: ReadonlyArray<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>;
   /** The alignment rule to apply to the child fields. */
   alignmentRule?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule;
 }
@@ -3911,7 +3911,7 @@ export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRul
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule {
   /** The fields to be aligned. */
-  fields?: Array<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>;
+  fields?: ReadonlyArray<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>;
   /** The alignment rule to apply to the fields. */
   alignmentRule?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule;
 }
@@ -3971,7 +3971,7 @@ export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRul
   });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInput {
-  validationRules?: Array<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule>;
+  validationRules?: ReadonlyArray<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule>;
 }
 
 export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInput =
@@ -4056,7 +4056,7 @@ export interface GoogleCloudDocumentaiV1BatchProcessMetadata {
   /** The last update time of the operation. */
   updateTime?: string;
   /** The list of response details of each document. */
-  individualProcessStatuses?: Array<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus>;
+  individualProcessStatuses?: ReadonlyArray<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus>;
 }
 
 export const GoogleCloudDocumentaiV1BatchProcessMetadata =
@@ -4269,9 +4269,9 @@ export interface GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetVali
   /** The total number of dataset errors. */
   datasetErrorCount?: number;
   /** Error information pertaining to specific documents. A maximum of 10 document errors will be returned. Any document with errors will not be used throughout training. */
-  documentErrors?: Array<GoogleRpcStatus>;
+  documentErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Error information for the dataset as a whole. A maximum of 10 dataset errors will be returned. A single dataset error is terminal for training. */
-  datasetErrors?: Array<GoogleRpcStatus>;
+  datasetErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation =
@@ -4399,7 +4399,7 @@ export interface GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   /** The last update time of the operation. */
   updateTime?: string;
   /** The list of response details of each document. */
-  individualProcessStatuses?: Array<GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>;
+  individualProcessStatuses?: ReadonlyArray<GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>;
 }
 
 export const GoogleCloudDocumentaiV1beta3BatchProcessMetadata =
@@ -4657,9 +4657,9 @@ export interface GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatase
   /** The total number of dataset errors. */
   datasetErrorCount?: number;
   /** Error information pertaining to specific documents. A maximum of 10 document errors will be returned. Any document with errors will not be used throughout training. */
-  documentErrors?: Array<GoogleRpcStatus>;
+  documentErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Error information for the dataset as a whole. A maximum of 10 dataset errors will be returned. A single dataset error is terminal for training. */
-  datasetErrors?: Array<GoogleRpcStatus>;
+  datasetErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation =
@@ -4814,9 +4814,9 @@ export interface GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
   /** The list of response details of each document. */
-  individualImportStatuses?: Array<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus>;
+  individualImportStatuses?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus>;
   /** Validation statuses of the batch documents import config. */
-  importConfigValidationResults?: Array<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult>;
+  importConfigValidationResults?: ReadonlyArray<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult>;
   /** Total number of the documents that are qualified for importing. */
   totalDocumentCount?: number;
 }
@@ -4868,7 +4868,7 @@ export interface GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
   /** The list of response details of each document. */
-  individualBatchDeleteStatuses?: Array<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>;
+  individualBatchDeleteStatuses?: ReadonlyArray<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>;
   /** Total number of documents deleting from dataset. */
   totalDocumentCount?: number;
   /** Total number of documents that failed to be deleted in storage. */
@@ -5021,7 +5021,7 @@ export interface GoogleCloudDocumentaiUiv1beta3Processor {
   /** The default processor version. */
   defaultProcessorVersion?: string;
   /** Output only. The processor version aliases. */
-  processorVersionAliases?: Array<GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias>;
+  processorVersionAliases?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias>;
   /** Output only. Immutable. The http endpoint that can be called to invoke processing. */
   processEndpoint?: string;
   /** Output only. The time the processor was created. */
@@ -5083,11 +5083,11 @@ export interface GoogleCloudDocumentaiUiv1beta3SchemaEntityType {
   /** Description of the entity type. */
   description?: string;
   /** Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For example, in a document there can be an EntityType `ID`, which consists of EntityType `name` and `address`, with corresponding attributes, such as TEXT for both types and ONCE for occurrence types. */
-  properties?: Array<GoogleCloudDocumentaiUiv1beta3SchemaEntityType>;
+  properties?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3SchemaEntityType>;
   /** Source of this entity type. */
   source?: "SOURCE_UNSPECIFIED" | "PREDEFINED" | "USER_INPUT" | (string & {});
   /** If specified, lists all the possible values for this entity. */
-  enumValues?: Array<string>;
+  enumValues?: ReadonlyArray<string>;
   /** If the entity type is hidden in the schema. This provides the functionality to temporally "disable" an entity without deleting it. */
   hide?: boolean;
   /** Specifies how the entity's value is obtained. */
@@ -5124,7 +5124,7 @@ export interface GoogleCloudDocumentaiUiv1beta3Schema {
   /** Description of the schema. */
   description?: string;
   /** Entity types of the schema. */
-  entityTypes?: Array<GoogleCloudDocumentaiUiv1beta3SchemaEntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3SchemaEntityType>;
 }
 
 export const GoogleCloudDocumentaiUiv1beta3Schema =
@@ -5138,7 +5138,7 @@ export const GoogleCloudDocumentaiUiv1beta3Schema =
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues {
   /** The individual values that this enum values type can include. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues =
@@ -5180,7 +5180,7 @@ export interface GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata {
   /** Explicit flag that controls whether the label is editable. */
   editable?: boolean;
   /** Full resource name of processor versions that contain this label. e.g. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` */
-  processorVersions?: Array<string>;
+  processorVersions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata =
@@ -5396,9 +5396,9 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType {
   /** The description of the entity type. Could be used to provide more information about the entity type for model calls. */
   description?: string;
   /** The entity type that this type is derived from. For now, one and only one should be set. */
-  baseTypes?: Array<string>;
+  baseTypes?: ReadonlyArray<string>;
   /** Description the nested structure, or composition of an entity. */
-  properties?: Array<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty>;
+  properties?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty>;
   /** Metadata for the entity type. */
   entityTypeMetadata?: GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata;
 }
@@ -5451,7 +5451,7 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentSchema {
   /** Description of the schema. */
   description?: string;
   /** Entity types of the schema. */
-  entityTypes?: Array<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType>;
   /** Metadata of the schema. */
   metadata?: GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata;
   /** Optional. Document level prompt provided by the user. This custom text is injected into the AI model's prompt to provide extra, document-wide guidance for processing. */
@@ -5691,9 +5691,9 @@ export interface GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataData
   /** The total number of dataset errors. */
   datasetErrorCount?: number;
   /** Error information pertaining to specific documents. A maximum of 10 document errors will be returned. Any document with errors will not be used throughout training. */
-  documentErrors?: Array<GoogleRpcStatus>;
+  documentErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Error information for the dataset as a whole. A maximum of 10 dataset errors will be returned. A single dataset error is terminal for training. */
-  datasetErrors?: Array<GoogleRpcStatus>;
+  datasetErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation =
@@ -6094,9 +6094,9 @@ export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
   /** The list of response details of each document. */
-  individualImportStatuses?: Array<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus>;
+  individualImportStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus>;
   /** Validation statuses of the batch documents import config. */
-  importConfigValidationResults?: Array<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult>;
+  importConfigValidationResults?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult>;
   /** Total number of the documents that are qualified for importing. */
   totalDocumentCount?: number;
 }
@@ -6148,7 +6148,7 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
   /** The list of response details of each document. */
-  individualBatchMoveStatuses?: Array<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus>;
+  individualBatchMoveStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus>;
   /** The destination dataset split type. */
   destDatasetType?:
     | "DATASET_SPLIT_TYPE_UNSPECIFIED"
@@ -6208,7 +6208,7 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
   /** The list of response details of each document. */
-  individualBatchUpdateStatuses?: Array<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus>;
+  individualBatchUpdateStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus>;
 }
 
 export const GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata =
@@ -6252,7 +6252,7 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
   /** The list of response details of each document. */
-  individualBatchDeleteStatuses?: Array<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>;
+  individualBatchDeleteStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>;
   /** Total number of documents deleting from dataset. */
   totalDocumentCount?: number;
   /** Total number of documents that failed to be deleted in storage. */
@@ -6329,9 +6329,9 @@ export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
   /** The list of document resync statuses. The same document could have multiple `individual_document_resync_statuses` if it has multiple inconsistencies. */
-  individualDocumentResyncStatuses?: Array<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus>;
+  individualDocumentResyncStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus>;
   /** The list of dataset resync statuses. Not checked when ResyncDatasetRequest.dataset_documents is specified. */
-  datasetResyncStatuses?: Array<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus>;
+  datasetResyncStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus>;
 }
 
 export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata =
@@ -6404,9 +6404,9 @@ export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
   /** The list of response details of each document. */
-  individualExportStatuses?: Array<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus>;
+  individualExportStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus>;
   /** The list of statistics for each dataset split type. */
-  splitExportStats?: Array<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat>;
+  splitExportStats?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat>;
 }
 
 export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata =
@@ -6455,7 +6455,7 @@ export interface GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
   /** The list of individual auto-labeling statuses of the dataset documents. */
-  individualAutoLabelStatuses?: Array<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus>;
+  individualAutoLabelStatuses?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus>;
   /** Total number of the auto-labeling documents. */
   totalDocumentCount?: number;
 }
@@ -6490,7 +6490,7 @@ export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocume
 
 export interface GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse {
   /** The result of the sampling process. */
-  selectedDocuments?: Array<GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument>;
+  selectedDocuments?: ReadonlyArray<GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument>;
   /** The status of sampling documents in test split. */
   sampleTestStatus?: GoogleRpcStatus;
   /** The status of sampling documents in training split. */
@@ -6537,10 +6537,7 @@ export const FetchProcessorTypesProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}:fetchProcessorTypes",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{parent}:fetchProcessorTypes" }),
     svc,
   ) as unknown as Schema.Schema<FetchProcessorTypesProjectsLocationsRequest>;
 
@@ -6586,7 +6583,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta3/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1beta3/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -6622,10 +6619,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -6670,10 +6664,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -6709,10 +6700,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -6743,11 +6731,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -6783,11 +6767,7 @@ export const ProcessProjectsLocationsProcessorsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:process",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{name}:process", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ProcessProjectsLocationsProcessorsRequest>;
 
@@ -6826,7 +6806,7 @@ export const BatchProcessProjectsLocationsProcessorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:batchProcess",
+      path: "v1beta3/{name}:batchProcess",
       hasBody: true,
     }),
     svc,
@@ -6866,10 +6846,7 @@ export const ListProjectsLocationsProcessorsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{parent}/processors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProcessorsRequest>;
 
@@ -6905,10 +6882,7 @@ export const GetProjectsLocationsProcessorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProcessorsRequest>;
 
@@ -6947,7 +6921,7 @@ export const CreateProjectsLocationsProcessorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors",
+      path: "v1beta3/{parent}/processors",
       hasBody: true,
     }),
     svc,
@@ -6981,10 +6955,7 @@ export const DeleteProjectsLocationsProcessorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessorsRequest>;
 
@@ -7021,11 +6992,7 @@ export const EnableProjectsLocationsProcessorsRequest =
       GoogleCloudDocumentaiV1beta3EnableProcessorRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:enable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableProjectsLocationsProcessorsRequest>;
 
@@ -7062,11 +7029,7 @@ export const DisableProjectsLocationsProcessorsRequest =
       GoogleCloudDocumentaiV1beta3DisableProcessorRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:disable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsLocationsProcessorsRequest>;
 
@@ -7105,7 +7068,7 @@ export const SetDefaultProcessorVersionProjectsLocationsProcessorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:setDefaultProcessorVersion",
+      path: "v1beta3/{processor}:setDefaultProcessorVersion",
       hasBody: true,
     }),
     svc,
@@ -7148,11 +7111,7 @@ export const UpdateDatasetProjectsLocationsProcessorsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/dataset",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDatasetProjectsLocationsProcessorsRequest>;
 
@@ -7189,11 +7148,7 @@ export const ProcessProjectsLocationsProcessorsProcessorVersionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}:process",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{name}:process", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ProcessProjectsLocationsProcessorsProcessorVersionsRequest>;
 
@@ -7233,7 +7188,7 @@ export const BatchProcessProjectsLocationsProcessorsProcessorVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}:batchProcess",
+      path: "v1beta3/{name}:batchProcess",
       hasBody: true,
     }),
     svc,
@@ -7275,7 +7230,7 @@ export const TrainProjectsLocationsProcessorsProcessorVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions:train",
+      path: "v1beta3/{parent}/processorVersions:train",
       hasBody: true,
     }),
     svc,
@@ -7310,10 +7265,7 @@ export const GetProjectsLocationsProcessorsProcessorVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProcessorsProcessorVersionsRequest>;
 
@@ -7352,10 +7304,7 @@ export const ListProjectsLocationsProcessorsProcessorVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{parent}/processorVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProcessorsProcessorVersionsRequest>;
 
@@ -7392,10 +7341,7 @@ export const DeleteProjectsLocationsProcessorsProcessorVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsProcessorsProcessorVersionsRequest>;
 
@@ -7433,11 +7379,7 @@ export const DeployProjectsLocationsProcessorsProcessorVersionsRequest =
       GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}:deploy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{name}:deploy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeployProjectsLocationsProcessorsProcessorVersionsRequest>;
 
@@ -7475,11 +7417,7 @@ export const UndeployProjectsLocationsProcessorsProcessorVersionsRequest =
       GoogleCloudDocumentaiV1beta3UndeployProcessorVersionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}:undeploy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{name}:undeploy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeployProjectsLocationsProcessorsProcessorVersionsRequest>;
 
@@ -7519,7 +7457,7 @@ export const EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersion
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}:evaluateProcessorVersion",
+      path: "v1beta3/{processorVersion}:evaluateProcessorVersion",
       hasBody: true,
     }),
     svc,
@@ -7563,7 +7501,7 @@ export const ImportProcessorVersionProjectsLocationsProcessorsProcessorVersionsR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions:importProcessorVersion",
+      path: "v1beta3/{parent}/processorVersions:importProcessorVersion",
       hasBody: true,
     }),
     svc,
@@ -7600,10 +7538,7 @@ export const GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}/evaluations/{evaluationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest>;
 
@@ -7642,10 +7577,7 @@ export const ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest 
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/processorVersions/{processorVersionsId}/evaluations",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{parent}/evaluations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest>;
 
@@ -7689,7 +7621,7 @@ export const ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/humanReviewConfig:reviewDocument",
+      path: "v1beta3/{humanReviewConfig}:reviewDocument",
       hasBody: true,
     }),
     svc,
@@ -7731,7 +7663,7 @@ export const ImportDocumentsProjectsLocationsProcessorsDatasetRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/dataset:importDocuments",
+      path: "v1beta3/{dataset}:importDocuments",
       hasBody: true,
     }),
     svc,
@@ -7814,10 +7746,7 @@ export const GetDocumentProjectsLocationsProcessorsDatasetRequest =
       T.HttpQuery("pageRange.end"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/dataset:getDocument",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{dataset}:getDocument" }),
     svc,
   ) as unknown as Schema.Schema<GetDocumentProjectsLocationsProcessorsDatasetRequest>;
 
@@ -7856,7 +7785,7 @@ export const ListDocumentsProjectsLocationsProcessorsDatasetRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/dataset:listDocuments",
+      path: "v1beta3/{dataset}:listDocuments",
       hasBody: true,
     }),
     svc,
@@ -7898,7 +7827,7 @@ export const BatchDeleteDocumentsProjectsLocationsProcessorsDatasetRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/dataset:batchDeleteDocuments",
+      path: "v1beta3/{dataset}:batchDeleteDocuments",
       hasBody: true,
     }),
     svc,
@@ -7938,10 +7867,7 @@ export const GetDatasetSchemaProjectsLocationsProcessorsDatasetRequest =
       T.HttpQuery("visibleFieldsOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/dataset/datasetSchema",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDatasetSchemaProjectsLocationsProcessorsDatasetRequest>;
 
@@ -7982,11 +7908,7 @@ export const UpdateDatasetSchemaProjectsLocationsProcessorsDatasetRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}/dataset/datasetSchema",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDatasetSchemaProjectsLocationsProcessorsDatasetRequest>;
 
@@ -8025,10 +7947,7 @@ export const ListProjectsLocationsProcessorTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processorTypes",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{parent}/processorTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProcessorTypesRequest>;
 
@@ -8064,10 +7983,7 @@ export const GetProjectsLocationsProcessorTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/processorTypes/{processorTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProcessorTypesRequest>;
 
@@ -8104,11 +8020,7 @@ export const CreateProjectsLocationsSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta3/{parent}/schemas", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSchemasRequest>;
 
@@ -8148,11 +8060,7 @@ export const PatchProjectsLocationsSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSchemasRequest>;
 
@@ -8187,10 +8095,7 @@ export const DeleteProjectsLocationsSchemasRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemasRequest>;
 
@@ -8227,10 +8132,7 @@ export const ListProjectsLocationsSchemasRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{parent}/schemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSchemasRequest>;
 
@@ -8266,10 +8168,7 @@ export const GetProjectsLocationsSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSchemasRequest>;
 
@@ -8308,7 +8207,7 @@ export const CreateProjectsLocationsSchemasSchemaVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}/schemaVersions",
+      path: "v1beta3/{parent}/schemaVersions",
       hasBody: true,
     }),
     svc,
@@ -8350,11 +8249,7 @@ export const PatchProjectsLocationsSchemasSchemaVersionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}/schemaVersions/{schemaVersionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSchemasSchemaVersionsRequest>;
 
@@ -8393,7 +8288,7 @@ export const GenerateProjectsLocationsSchemasSchemaVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}/schemaVersions:generate",
+      path: "v1beta3/{parent}/schemaVersions:generate",
       hasBody: true,
     }),
     svc,
@@ -8427,10 +8322,7 @@ export const DeleteProjectsLocationsSchemasSchemaVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}/schemaVersions/{schemaVersionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSchemasSchemaVersionsRequest>;
 
@@ -8468,10 +8360,7 @@ export const ListProjectsLocationsSchemasSchemaVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}/schemaVersions",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{parent}/schemaVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSchemasSchemaVersionsRequest>;
 
@@ -8507,10 +8396,7 @@ export const GetProjectsLocationsSchemasSchemaVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta3/projects/{projectsId}/locations/{locationsId}/schemas/{schemasId}/schemaVersions/{schemaVersionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSchemasSchemaVersionsRequest>;
 

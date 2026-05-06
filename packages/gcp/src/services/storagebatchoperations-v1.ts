@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -95,7 +95,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -125,7 +125,7 @@ export interface CustomContextUpdates {
   /** Optional. Insert or update the existing custom contexts. */
   updates?: Record<string, ObjectCustomContextPayload>;
   /** Optional. Custom contexts to clear by key. A key cannot be present in both `updates` and `keys_to_clear`. */
-  keysToClear?: Array<string>;
+  keysToClear?: ReadonlyArray<string>;
 }
 
 export const CustomContextUpdates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -146,11 +146,11 @@ export const CancelJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LoggingConfig {
   /** Required. Specifies the actions to be logged. */
-  logActions?: Array<
+  logActions?: ReadonlyArray<
     "LOGGABLE_ACTION_UNSPECIFIED" | "TRANSFORM" | (string & {})
   >;
   /** Required. States in which Action are logged.If empty, no logs are generated. */
-  logActionStates?: Array<
+  logActionStates?: ReadonlyArray<
     "LOGGABLE_ACTION_STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | (string & {})
   >;
 }
@@ -268,7 +268,7 @@ export interface ErrorLogEntry {
   /** Required. Output only. Object URL. e.g. gs://my_bucket/object.txt */
   objectUri?: string;
   /** Optional. Output only. At most 5 error log entries are recorded for a given error code for a job. */
-  errorDetails?: Array<string>;
+  errorDetails?: ReadonlyArray<string>;
 }
 
 export const ErrorLogEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -300,7 +300,7 @@ export interface ErrorSummary {
   /** Required. Number of errors encountered per `error_code`. */
   errorCount?: string;
   /** Required. Sample error logs. */
-  errorLogEntries?: Array<ErrorLogEntry>;
+  errorLogEntries?: ReadonlyArray<ErrorLogEntry>;
 }
 
 export const ErrorSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -320,7 +320,7 @@ export const Manifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PrefixList {
   /** Optional. Include prefixes of the objects to be transformed. * Supports full object name * Supports prefix of the object name * Wildcards are not supported * Supports empty string for all objects in a bucket. */
-  includedObjectPrefixes?: Array<string>;
+  includedObjectPrefixes?: ReadonlyArray<string>;
 }
 
 export const PrefixList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -344,7 +344,7 @@ export const Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BucketList {
   /** Required. List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned. */
-  buckets?: Array<Bucket>;
+  buckets?: ReadonlyArray<Bucket>;
 }
 
 export const BucketList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -388,7 +388,7 @@ export interface Job {
     | "QUEUED"
     | (string & {});
   /** Output only. Summarizes errors encountered with sample error log entries. */
-  errorSummaries?: Array<ErrorSummary>;
+  errorSummaries?: ReadonlyArray<ErrorSummary>;
   /** Optional. A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded. */
   description?: string;
   /** Specifies a list of buckets and their objects to be transformed. */
@@ -417,9 +417,9 @@ export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListJobsResponse {
   /** A list of storage batch jobs. */
-  jobs?: Array<Job>;
+  jobs?: ReadonlyArray<Job>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token identifying a page of results. */
   nextPageToken?: string;
 }
@@ -440,7 +440,7 @@ export interface BucketOperation {
   /** Output only. The time that the BucketOperation was started. */
   startTime?: string;
   /** Output only. Summarizes errors encountered with sample error log entries. */
-  errorSummaries?: Array<ErrorSummary>;
+  errorSummaries?: ReadonlyArray<ErrorSummary>;
   /** Output only. State of the BucketOperation. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -498,9 +498,9 @@ export interface ListBucketOperationsResponse {
   /** A token identifying a page of results. */
   nextPageToken?: string;
   /** A list of storage batch bucket operations. */
-  bucketOperations?: Array<BucketOperation>;
+  bucketOperations?: ReadonlyArray<BucketOperation>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBucketOperationsResponse =
@@ -542,11 +542,11 @@ export const CancelJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -584,7 +584,7 @@ export const ListProjectsLocationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -619,10 +619,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -667,10 +664,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -705,10 +699,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -739,10 +730,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -776,11 +764,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -820,11 +804,7 @@ export const CreateProjectsLocationsJobsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Job).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/jobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsJobsRequest>;
 
@@ -858,11 +838,7 @@ export const CancelProjectsLocationsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsJobsRequest>;
 
@@ -893,10 +869,7 @@ export const GetProjectsLocationsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsRequest>;
 
@@ -938,10 +911,7 @@ export const ListProjectsLocationsJobsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsRequest>;
 
@@ -982,10 +952,7 @@ export const DeleteProjectsLocationsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsJobsRequest>;
 
@@ -1028,10 +995,7 @@ export const ListProjectsLocationsJobsBucketOperationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/bucketOperations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/bucketOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsBucketOperationsRequest>;
 
@@ -1067,10 +1031,7 @@ export const GetProjectsLocationsJobsBucketOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/bucketOperations/{bucketOperationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsBucketOperationsRequest>;
 

@@ -186,7 +186,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsRe
   /** Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. */
   nextPageToken?: string;
   /** List of detailed lead reports uniquely identified by external lead id. */
-  detailedLeadReports?: Array<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
+  detailedLeadReports?: ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse =
@@ -264,7 +264,7 @@ export const GoogleAdsHomeservicesLocalservicesV1AccountReport =
 
 export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
   /** List of account reports which maps 1:1 to a particular linked GLS account. */
-  accountReports?: Array<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
+  accountReports?: ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
   /** Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. */
   nextPageToken?: string;
 }

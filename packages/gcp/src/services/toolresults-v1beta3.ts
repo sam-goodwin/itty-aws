@@ -142,7 +142,7 @@ export interface NonSdkApiInsight {
   /** An insight indicating that the hidden API usage originates from the use of a library that needs to be upgraded. */
   upgradeInsight?: UpgradeInsight;
   /** Optional sample stack traces, for which this insight applies (there should be at least one). */
-  exampleTraceMessages?: Array<string>;
+  exampleTraceMessages?: ReadonlyArray<string>;
   /** A unique ID, to be used for determining the effectiveness of this particular insight in the context of a matcher. (required) */
   matcherId?: string;
   /** An insight indicating that the hidden API usage originates from a Google-provided library. */
@@ -174,9 +174,9 @@ export interface NonSdkApi {
   /** The signature of the Non-SDK API */
   apiSignature?: string;
   /** Example stack traces of this API being called. */
-  exampleStackTraces?: Array<string>;
+  exampleStackTraces?: ReadonlyArray<string>;
   /** Optional debugging insights for non-SDK API violations. */
-  insights?: Array<NonSdkApiInsight>;
+  insights?: ReadonlyArray<NonSdkApiInsight>;
 }
 
 export const NonSdkApi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -336,7 +336,7 @@ export interface AndroidInstrumentationTest {
   /** The flag indicates whether Android Test Orchestrator will be used to run test or not. */
   useOrchestrator?: boolean;
   /** Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run. */
-  testTargets?: Array<string>;
+  testTargets?: ReadonlyArray<string>;
 }
 
 export const AndroidInstrumentationTest =
@@ -363,9 +363,9 @@ export interface TestCase {
   /** Test case reference, e.g. name, class name and test suite name. Required. */
   testCaseReference?: TestCaseReference;
   /** References to opaque files of any format output by the tool execution. @OutputOnly */
-  toolOutputs?: Array<ToolOutputReference>;
+  toolOutputs?: ReadonlyArray<ToolOutputReference>;
   /** The stack trace details if the test case failed or encountered an error. The maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated. Zero if the test case passed. */
-  stackTraces?: Array<StackTrace>;
+  stackTraces?: ReadonlyArray<StackTrace>;
 }
 
 export const TestCase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -416,11 +416,11 @@ export interface ToolExecution {
   /** Tool execution exit code. This field will be set once the tool has exited. - In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set. */
   exitCode?: ToolExitCode;
   /** References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list */
-  toolOutputs?: Array<ToolOutputReference>;
+  toolOutputs?: ReadonlyArray<ToolOutputReference>;
   /** The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set */
-  commandLineArguments?: Array<string>;
+  commandLineArguments?: ReadonlyArray<string>;
   /** References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list */
-  toolLogs?: Array<FileReference>;
+  toolLogs?: ReadonlyArray<FileReference>;
 }
 
 export const ToolExecution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -450,7 +450,7 @@ export interface PrimaryStep {
     | "flaky"
     | (string & {});
   /** Step Id and outcome of each individual step. */
-  individualOutcome?: Array<IndividualOutcome>;
+  individualOutcome?: ReadonlyArray<IndividualOutcome>;
 }
 
 export const PrimaryStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -598,9 +598,9 @@ export interface TestExecutionStep {
   /** The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional */
   testTiming?: TestTiming;
   /** List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead) */
-  testSuiteOverviews?: Array<TestSuiteOverview>;
+  testSuiteOverviews?: ReadonlyArray<TestSuiteOverview>;
   /** Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional */
-  testIssues?: Array<TestIssue>;
+  testIssues?: ReadonlyArray<TestIssue>;
 }
 
 export const TestExecutionStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -618,11 +618,11 @@ export interface Step {
   /** The time when the step status was set to complete. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set */
   completionTime?: Timestamp;
   /** If the execution containing this step has any dimension_definition set, then this field allows the child to specify the values of the dimensions. The keys must exactly match the dimension_definition of the execution. For example, if the execution has `dimension_definition = ['attempt', 'device']` then a step must define values for those dimensions, eg. `dimension_value = ['attempt': '1', 'device': 'Nexus 6']` If a step does not participate in one dimension of the matrix, the value for that dimension should be empty string. For example, if one of the tests is executed by a runner which does not support retries, the step could have `dimension_value = ['attempt': '', 'device': 'Nexus 6']` If the step does not participate in any dimensions of the matrix, it may leave dimension_value unset. A PRECONDITION_FAILED will be returned if any of the keys do not exist in the dimension_definition of the execution. A PRECONDITION_FAILED will be returned if another step in this execution already has the same name and dimension_value, but differs on other data fields, for example, step field is different. A PRECONDITION_FAILED will be returned if dimension_value is set, and there is a dimension_definition in the execution which is not specified as one of the keys. - In response: present if set by create - In create request: optional - In update request: never set */
-  dimensionValue?: Array<StepDimensionValueEntry>;
+  dimensionValue?: ReadonlyArray<StepDimensionValueEntry>;
   /** Details when multiple steps are run with the same configuration as a group. These details can be used identify which group this step is part of. It also identifies the groups 'primary step' which indexes all the group members. - In response: present if previously set. - In create request: optional, set iff this step was performed more than once. - In update request: optional */
   multiStep?: MultiStep;
   /** Arbitrary user-supplied key/value pairs that are associated with the step. Users are responsible for managing the key namespace such that keys don't accidentally collide. An INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or if the length of any of the keys or values exceeds 100 characters. - In response: always set - In create request: optional - In update request: optional; any new key/value pair will be added to the map, and any new value for an existing key will update that key's value */
-  labels?: Array<StepLabelsEntry>;
+  labels?: ReadonlyArray<StepLabelsEntry>;
   /** The time when the step was created. - In response: always set - In create/update request: never set */
   creationTime?: Timestamp;
   /** A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set */
@@ -668,7 +668,7 @@ export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListStepsResponse {
   /** Steps. */
-  steps?: Array<Step>;
+  steps?: ReadonlyArray<Step>;
   /** A continuation token to resume the query at the next item. If set, indicates that there are more steps to read, by calling list again with this value in the page_token field. */
   nextPageToken?: string;
 }
@@ -760,7 +760,7 @@ export const SuggestionProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SuggestionClusterProto {
   /** A sequence of suggestions. All of the suggestions within a cluster must have the same SuggestionPriority and belong to the same SuggestionCategory. Suggestions with the same screenshot URL should be adjacent. */
-  suggestions?: Array<SuggestionProto>;
+  suggestions?: ReadonlyArray<SuggestionProto>;
   /** Category in which these types of suggestions should appear. Always set. */
   category?:
     | "unknownCategory"
@@ -780,7 +780,7 @@ export const SuggestionClusterProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListStepAccessibilityClustersResponse {
   /** A sequence of accessibility suggestions, grouped into clusters. Within the sequence, clusters that belong to the same SuggestionCategory should be adjacent. Within each category, clusters should be ordered by their SuggestionPriority (ERRORs first). The categories should be ordered by their highest priority cluster. */
-  clusters?: Array<SuggestionClusterProto>;
+  clusters?: ReadonlyArray<SuggestionClusterProto>;
   /** A full resource name of the step. For example, projects/my-project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef Always presents. */
   name?: string;
 }
@@ -792,7 +792,7 @@ export const ListStepAccessibilityClustersResponse =
   }).annotate({ identifier: "ListStepAccessibilityClustersResponse" });
 
 export interface ListPerfSamplesResponse {
-  perfSamples?: Array<PerfSample>;
+  perfSamples?: ReadonlyArray<PerfSample>;
   /** Optional, returned if result size exceeds the page size specified in the request (or the default page size, 500, if unspecified). It indicates the last sample timestamp to be used as page_token in subsequent request */
   nextPageToken?: string;
 }
@@ -833,7 +833,7 @@ export const StepSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface MergedResult {
   /** The combined and rolled-up result of each test suite that was run as part of this environment. Combining: When the test cases from a suite are run in different steps (sharding), the results are added back together in one overview. (e.g., if shard1 has 2 failures and shard2 has 1 failure than the overview failure_count = 3). Rollup: When test cases from the same suite are run multiple times (flaky), the results are combined (e.g., if testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and testcase2.run2 fail then the overview flaky_count = 1 and failure_count = 1). */
-  testSuiteOverviews?: Array<TestSuiteOverview>;
+  testSuiteOverviews?: ReadonlyArray<TestSuiteOverview>;
   /** State of the resource */
   state?:
     | "unknownState"
@@ -853,7 +853,7 @@ export const MergedResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ShardSummary {
   /** Summaries of the steps belonging to the shard. With flaky_test_attempts enabled from TestExecutionService, more than one run (Step) can present. And the runs will be sorted by multistep_number. */
-  runs?: Array<StepSummary>;
+  runs?: ReadonlyArray<StepSummary>;
   /** Merged result of the shard. */
   shardResult?: MergedResult;
 }
@@ -879,9 +879,9 @@ export interface Environment {
   /** Output only. A History id. */
   historyId?: string;
   /** Dimension values describing the environment. Dimension values always consist of "Model", "Version", "Locale", and "Orientation". - In response: always set - In create request: always set - In update request: never set */
-  dimensionValue?: Array<EnvironmentDimensionValueEntry>;
+  dimensionValue?: ReadonlyArray<EnvironmentDimensionValueEntry>;
   /** Output only. Summaries of shards. Only one shard will present unless sharding feature is enabled in TestExecutionService. */
-  shardSummaries?: Array<ShardSummary>;
+  shardSummaries?: ReadonlyArray<ShardSummary>;
   /** Merged result of the environment. */
   environmentResult?: MergedResult;
   /** A short human-readable name to display in the UI. Maximum of 100 characters. For example: Nexus 5, API 27. */
@@ -910,7 +910,7 @@ export interface ListEnvironmentsResponse {
   /** A Project id. Always set. */
   projectId?: string;
   /** Environments. Always set. */
-  environments?: Array<Environment>;
+  environments?: ReadonlyArray<Environment>;
   /** A continuation token to resume the query at the next item. Will only be set if there are more Environments to fetch. */
   nextPageToken?: string;
 }
@@ -935,7 +935,7 @@ export const ANR = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PublishXunitXmlFilesRequest {
   /** URI of the Xunit XML files to publish. The maximum size of the file this reference is pointing to is 50MB. Required. */
-  xunitXmlFiles?: Array<FileReference>;
+  xunitXmlFiles?: ReadonlyArray<FileReference>;
 }
 
 export const PublishXunitXmlFilesRequest =
@@ -993,7 +993,7 @@ export const FatalException = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1049,7 +1049,7 @@ export interface NonSdkApiUsageViolationReport {
   /** Minimum API level required for the application to run. */
   minSdkVersion?: number;
   /** Examples of the detected API usages. */
-  exampleApis?: Array<NonSdkApi>;
+  exampleApis?: ReadonlyArray<NonSdkApi>;
   /** Total number of unique Non-SDK API's accessed. */
   uniqueApis?: number;
   /** Specifies the API Level on which the application is designed to run. */
@@ -1162,7 +1162,7 @@ export const PerfSampleSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPerfSampleSeriesResponse {
   /** The resulting PerfSampleSeries sorted by id */
-  perfSampleSeries?: Array<PerfSampleSeries>;
+  perfSampleSeries?: ReadonlyArray<PerfSampleSeries>;
 }
 
 export const ListPerfSampleSeriesResponse =
@@ -1186,7 +1186,7 @@ export interface NonSdkApiUsageViolation {
   /** Total number of unique hidden API's accessed. */
   uniqueApis?: number;
   /** Signatures of a subset of those hidden API's. */
-  apiSignatures?: Array<string>;
+  apiSignatures?: ReadonlyArray<string>;
 }
 
 export const NonSdkApiUsageViolation =
@@ -1344,7 +1344,7 @@ export interface GraphicsStats {
   /** 95th percentile frame render time in milliseconds. */
   p95Millis?: string;
   /** Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity) */
-  buckets?: Array<GraphicsStatsBucket>;
+  buckets?: ReadonlyArray<GraphicsStatsBucket>;
   /** Total "high input latency" events. */
   highInputLatencyCount?: string;
   /** 50th percentile frame render time in milliseconds. */
@@ -1374,7 +1374,7 @@ export const GraphicsStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PerfMetricsSummary {
   /** Set of resource collected */
-  perfMetrics?: Array<
+  perfMetrics?: ReadonlyArray<
     | "perfMetricTypeUnspecified"
     | "memory"
     | "cpu"
@@ -1442,7 +1442,7 @@ export const FailedToInstall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "FailedToInstall" });
 
 export interface BatchCreatePerfSamplesResponse {
-  perfSamples?: Array<PerfSample>;
+  perfSamples?: ReadonlyArray<PerfSample>;
 }
 
 export const BatchCreatePerfSamplesResponse =
@@ -1464,7 +1464,7 @@ export interface EncounteredNonAndroidUiWidgetScreen {
   /** Number of encountered distinct screens with non Android UI widgets. */
   distinctScreens?: number;
   /** Subset of screens which contain non Android UI widgets. */
-  screenIds?: Array<string>;
+  screenIds?: ReadonlyArray<string>;
 }
 
 export const EncounteredNonAndroidUiWidgetScreen =
@@ -1529,7 +1529,7 @@ export const UIElementTooDeep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListStepThumbnailsResponse {
   /** A list of image data. Images are returned in a deterministic order; they are ordered by these factors, in order of importance: * First, by their associated test case. Images without a test case are considered greater than images with one. * Second, by their creation time. Images without a creation time are greater than images with one. * Third, by the order in which they were added to the step (by calls to CreateStep or UpdateStep). */
-  thumbnails?: Array<Image>;
+  thumbnails?: ReadonlyArray<Image>;
   /** A continuation token to resume the query at the next item. If set, indicates that there are more thumbnails to read, by calling list again with this value in the page_token field. */
   nextPageToken?: string;
 }
@@ -1542,7 +1542,7 @@ export const ListStepThumbnailsResponse =
 
 export interface BatchCreatePerfSamplesRequest {
   /** The set of PerfSamples to create should not include existing timestamps */
-  perfSamples?: Array<PerfSample>;
+  perfSamples?: ReadonlyArray<PerfSample>;
 }
 
 export const BatchCreatePerfSamplesRequest =
@@ -1597,7 +1597,7 @@ export interface Execution {
   /** Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional */
   outcome?: Outcome;
   /** The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set */
-  dimensionDefinitions?: Array<MatrixDimensionDefinition>;
+  dimensionDefinitions?: ReadonlyArray<MatrixDimensionDefinition>;
   /** Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional */
   specification?: Specification;
 }
@@ -1617,7 +1617,7 @@ export const Execution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListExecutionsResponse {
   /** Executions. Always set. */
-  executions?: Array<Execution>;
+  executions?: ReadonlyArray<Execution>;
   /** A continuation token to resume the query at the next item. Will only be set if there are more Executions to fetch. */
   nextPageToken?: string;
 }
@@ -1639,7 +1639,7 @@ export interface OverlappingUIElements {
   /** The screen id of the elements */
   screenId?: string;
   /** Resource names of the overlapping screen elements */
-  resourceName?: Array<string>;
+  resourceName?: ReadonlyArray<string>;
 }
 
 export const OverlappingUIElements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1651,7 +1651,7 @@ export interface EncounteredLoginScreen {
   /** Number of encountered distinct login screens. */
   distinctScreens?: number;
   /** Subset of login screens. */
-  screenIds?: Array<string>;
+  screenIds?: ReadonlyArray<string>;
 }
 
 export const EncounteredLoginScreen = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1663,7 +1663,7 @@ export const EncounteredLoginScreen = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListTestCasesResponse {
   /** List of test cases. */
-  testCases?: Array<TestCase>;
+  testCases?: ReadonlyArray<TestCase>;
   nextPageToken?: string;
 }
 
@@ -1705,7 +1705,7 @@ export interface ListHistoriesResponse {
   /** A continuation token to resume the query at the next item. Will only be set if there are more histories to fetch. Tokens are valid for up to one hour from the time of the first list request. For instance, if you make a list request at 1PM and use the token from this first request 10 minutes later, the token from this second response will only be valid for 50 minutes. */
   nextPageToken?: string;
   /** Histories. */
-  histories?: Array<History>;
+  histories?: ReadonlyArray<History>;
 }
 
 export const ListHistoriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1717,7 +1717,7 @@ export interface ScreenshotCluster {
   /** A string that describes the activity of every screen in the cluster. */
   activity?: string;
   /** Full list of screens. */
-  screens?: Array<Screen>;
+  screens?: ReadonlyArray<Screen>;
   /** A unique identifier for the cluster. @OutputOnly */
   clusterId?: string;
   /** A singular screen that represents the cluster as a whole. This screen will act as the "cover" of the entire cluster. When users look at the clusters, only the key screen from each cluster will be shown. Which screen is the key screen is determined by the ClusteringAlgorithm */
@@ -1733,7 +1733,7 @@ export const ScreenshotCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListScreenshotClustersResponse {
   /** The set of clusters associated with an execution Always set */
-  clusters?: Array<ScreenshotCluster>;
+  clusters?: ReadonlyArray<ScreenshotCluster>;
 }
 
 export const ListScreenshotClustersResponse =
@@ -2185,7 +2185,7 @@ export const AccessibilityClustersProjectsHistoriesExecutionsStepsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "toolresults/v1beta3/projects/{projectsId}/histories/{historiesId}/executions/{executionsId}/steps/{stepsId}:accessibilityClusters",
+      path: "toolresults/v1beta3/{name}:accessibilityClusters",
     }),
     svc,
   ) as unknown as Schema.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>;

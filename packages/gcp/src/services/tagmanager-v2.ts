@@ -35,7 +35,7 @@ export interface Parameter {
     | "tagReference"
     | (string & {});
   /** This map parameter's parameters (must have keys; keys must be unique). */
-  map?: Array<Parameter>;
+  map?: ReadonlyArray<Parameter>;
   /** The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values. */
   key?: string;
   /** Whether or not a reference type parameter is strongly or weakly referenced. Only used by Transformations. */
@@ -43,7 +43,7 @@ export interface Parameter {
   /** A parameter's value (may contain variable references). as appropriate to the specified type. */
   value?: string;
   /** This list parameter's parameters (keys will be ignored). */
-  list?: Array<Parameter>;
+  list?: ReadonlyArray<Parameter>;
 }
 
 export const Parameter: Schema.Schema<Parameter> =
@@ -60,7 +60,7 @@ export const Parameter: Schema.Schema<Parameter> =
 
 export interface Condition {
   /** A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** The type of operator for this condition. */
   type?:
     | "conditionTypeUnspecified"
@@ -85,9 +85,9 @@ export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ZoneBoundary {
   /** The conditions that, when conjoined, make up the boundary. */
-  condition?: Array<Condition>;
+  condition?: ReadonlyArray<Condition>;
   /** Custom evaluation trigger IDs. A zone will evaluate its boundary conditions when any of the listed triggers are true. */
-  customEvaluationTriggerId?: Array<string>;
+  customEvaluationTriggerId?: ReadonlyArray<string>;
 }
 
 export const ZoneBoundary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -157,7 +157,7 @@ export const ZoneChildContainer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ZoneTypeRestriction {
   /** List of type public ids that have been whitelisted for use in this Zone. */
-  whitelistedTypeId?: Array<string>;
+  whitelistedTypeId?: ReadonlyArray<string>;
   /** True if type restrictions have been enabled for this Zone. */
   enable?: boolean;
 }
@@ -177,7 +177,7 @@ export interface Zone {
   /** The fingerprint of the GTM Zone as computed at storage time. This value is recomputed whenever the zone is modified. */
   fingerprint?: string;
   /** Containers that are children of this Zone. */
-  childContainer?: Array<ZoneChildContainer>;
+  childContainer?: ReadonlyArray<ZoneChildContainer>;
   /** GTM Container ID. */
   containerId?: string;
   /** This Zone's boundary. */
@@ -356,7 +356,7 @@ export interface ListEnvironmentsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All Environments of a GTM Container. */
-  environment?: Array<Environment>;
+  environment?: ReadonlyArray<Environment>;
 }
 
 export const ListEnvironmentsResponse =
@@ -424,7 +424,7 @@ export interface Tag {
   /** If non-empty, then the tag display name will be included in the monitoring metadata map using the key specified. */
   monitoringMetadataTagNameKey?: string;
   /** The list of teardown tags. Currently we only allow one. */
-  teardownTag?: Array<TeardownTag>;
+  teardownTag?: ReadonlyArray<TeardownTag>;
   /** GTM Tag Type. */
   type?: string;
   /** GTM Account ID. */
@@ -438,15 +438,15 @@ export interface Tag {
   /** User notes on how to apply this tag in the container. */
   notes?: string;
   /** The tag's parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** A map of key-value pairs of tag metadata to be included in the event data for tag monitoring. Notes: - This parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot contain variable references. */
   monitoringMetadata?: Parameter;
   /** GTM Tag's API relative path. */
   path?: string;
   /** Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. */
-  blockingTriggerId?: Array<string>;
+  blockingTriggerId?: ReadonlyArray<string>;
   /** Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false. */
-  firingTriggerId?: Array<string>;
+  firingTriggerId?: ReadonlyArray<string>;
   /** GTM Workspace ID. */
   workspaceId?: string;
   /** The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified. */
@@ -454,7 +454,7 @@ export interface Tag {
   /** Indicates whether the tag is paused, which prevents the tag from firing. */
   paused?: boolean;
   /** The list of setup tags. Currently we only allow one. */
-  setupTag?: Array<SetupTag>;
+  setupTag?: ReadonlyArray<SetupTag>;
   /** GTM Container ID. */
   containerId?: string;
 }
@@ -498,7 +498,7 @@ export const RevertTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListZonesResponse {
   /** All GTM Zones of a GTM Container. */
-  zone?: Array<Zone>;
+  zone?: ReadonlyArray<Zone>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -524,7 +524,7 @@ export interface Transformation {
   /** Auto generated link to the tag manager UI */
   tagManagerUrl?: string;
   /** The transformation's parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** User notes on how to apply this transformation in the container. */
   notes?: string;
   /** Transformation type. */
@@ -741,7 +741,7 @@ export interface Variable {
   /** GTM Variable Type. */
   type?: string;
   /** For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set. */
-  disablingTriggerId?: Array<string>;
+  disablingTriggerId?: ReadonlyArray<string>;
   /** The end timestamp in milliseconds to schedule a variable. */
   scheduleEndMs?: string;
   /** GTM Account ID. */
@@ -755,11 +755,11 @@ export interface Variable {
   /** User notes on how to apply this variable in the container. */
   notes?: string;
   /** The variable's parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** Auto generated link to the tag manager UI */
   tagManagerUrl?: string;
   /** For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set. */
-  enablingTriggerId?: Array<string>;
+  enablingTriggerId?: ReadonlyArray<string>;
   /** GTM Variable's API relative path. */
   path?: string;
   /** GTM Container ID. */
@@ -808,7 +808,7 @@ export interface GtagConfig {
   /** Auto generated link to the tag manager UI */
   tagManagerUrl?: string;
   /** The Google tag config's parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** Google tag config type. */
   type?: string;
 }
@@ -909,7 +909,7 @@ export interface Client {
   /** Auto generated link to the tag manager UI */
   tagManagerUrl?: string;
   /** The client's parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** User notes on how to apply this tag in the container. */
   notes?: string;
   /** The Client ID uniquely identifies the GTM client. */
@@ -938,13 +938,13 @@ export const Client = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Container {
   /** All Tag IDs that refer to this Container. */
-  tagIds?: Array<string>;
+  tagIds?: ReadonlyArray<string>;
   /** GTM Account ID. */
   accountId?: string;
   /** List of domain names associated with the Container. */
-  domainName?: Array<string>;
+  domainName?: ReadonlyArray<string>;
   /** List of Usage Contexts for the Container. Valid values include: web, android, or ios. */
-  usageContext?: Array<
+  usageContext?: ReadonlyArray<
     | "usageContextUnspecified"
     | "web"
     | "android"
@@ -964,7 +964,7 @@ export interface Container {
   /** Read-only Container feature set. */
   features?: ContainerFeatures;
   /** List of server-side container URLs for the Container. If multiple URLs are provided, all URL paths must match. */
-  taggingServerUrls?: Array<string>;
+  taggingServerUrls?: ReadonlyArray<string>;
   /** GTM Container's API relative path. */
   path?: string;
   /** Container display name. */
@@ -997,7 +997,7 @@ export interface Trigger {
   /** User notes on how to apply this trigger in the container. */
   notes?: string;
   /** Additional parameters. */
-  parameter?: Array<Parameter>;
+  parameter?: ReadonlyArray<Parameter>;
   /** Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers. */
   uniqueTriggerId?: Parameter;
   /** Parent folder id. */
@@ -1059,7 +1059,7 @@ export interface Trigger {
     | "elementVisibility"
     | (string & {});
   /** Used in the case of custom event, which is fired iff all Conditions are true. */
-  customEventFilter?: Array<Condition>;
+  customEventFilter?: ReadonlyArray<Condition>;
   /** GTM Account ID. */
   accountId?: string;
   /** A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. */
@@ -1069,7 +1069,7 @@ export interface Trigger {
   /** Auto generated link to the tag manager UI */
   tagManagerUrl?: string;
   /** The trigger will only fire iff all Conditions are true. */
-  filter?: Array<Condition>;
+  filter?: ReadonlyArray<Condition>;
   /** Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. */
   limit?: Parameter;
   /** List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. */
@@ -1085,7 +1085,7 @@ export interface Trigger {
   /** Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. */
   checkValidation?: Parameter;
   /** Used in the case of auto event tracking. */
-  autoEventFilter?: Array<Condition>;
+  autoEventFilter?: ReadonlyArray<Condition>;
   /** A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. */
   visibilitySelector?: Parameter;
   /** Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. */
@@ -1133,21 +1133,21 @@ export interface ContainerVersion {
   /** The Container Version ID uniquely identifies the GTM Container Version. */
   containerVersionId?: string;
   /** The zones in the container that this version was taken from. */
-  zone?: Array<Zone>;
+  zone?: ReadonlyArray<Zone>;
   /** GTM Account ID. */
   accountId?: string;
   /** A value of true indicates this container version has been deleted. */
   deleted?: boolean;
   /** The tags in the container that this version was taken from. */
-  tag?: Array<Tag>;
+  tag?: ReadonlyArray<Tag>;
   /** The transformations in the container that this version was taken from. */
-  transformation?: Array<Transformation>;
+  transformation?: ReadonlyArray<Transformation>;
   /** The built-in variables in the container that this version was taken from. */
-  builtInVariable?: Array<BuiltInVariable>;
+  builtInVariable?: ReadonlyArray<BuiltInVariable>;
   /** The variables in the container that this version was taken from. */
-  variable?: Array<Variable>;
+  variable?: ReadonlyArray<Variable>;
   /** The Google tag configs in the container that this version was taken from. */
-  gtagConfig?: Array<GtagConfig>;
+  gtagConfig?: ReadonlyArray<GtagConfig>;
   /** Container version description. */
   description?: string;
   /** The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified. */
@@ -1157,9 +1157,9 @@ export interface ContainerVersion {
   /** Container version display name. */
   name?: string;
   /** The custom templates in the container that this version was taken from. */
-  customTemplate?: Array<CustomTemplate>;
+  customTemplate?: ReadonlyArray<CustomTemplate>;
   /** The clients in the container that this version was taken from. */
-  client?: Array<Client>;
+  client?: ReadonlyArray<Client>;
   /** GTM Container Version's API relative path. */
   path?: string;
   /** Auto generated link to the tag manager UI */
@@ -1167,9 +1167,9 @@ export interface ContainerVersion {
   /** The container that this version was taken from. */
   container?: Container;
   /** The triggers in the container that this version was taken from. */
-  trigger?: Array<Trigger>;
+  trigger?: ReadonlyArray<Trigger>;
   /** The folders in the container that this version was taken from. */
-  folder?: Array<Folder>;
+  folder?: ReadonlyArray<Folder>;
 }
 
 export const ContainerVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1235,7 +1235,7 @@ export const ContainerAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTransformationsResponse {
   /** All GTM Transformations of a GTM Container. */
-  transformation?: Array<Transformation>;
+  transformation?: ReadonlyArray<Transformation>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1314,9 +1314,9 @@ export const MergeConflict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetWorkspaceStatusResponse {
   /** Entities that have been changed in the workspace. */
-  workspaceChange?: Array<Entity>;
+  workspaceChange?: ReadonlyArray<Entity>;
   /** The merge conflict after sync. */
-  mergeConflict?: Array<MergeConflict>;
+  mergeConflict?: ReadonlyArray<MergeConflict>;
 }
 
 export const GetWorkspaceStatusResponse =
@@ -1327,7 +1327,7 @@ export const GetWorkspaceStatusResponse =
 
 export interface ListVariablesResponse {
   /** All GTM Variables of a GTM Container. */
-  variable?: Array<Variable>;
+  variable?: ReadonlyArray<Variable>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1361,7 +1361,7 @@ export interface UserPermission {
   /** User's email address. */
   emailAddress?: string;
   /** GTM Container access permissions. */
-  containerAccess?: Array<ContainerAccess>;
+  containerAccess?: ReadonlyArray<ContainerAccess>;
 }
 
 export const UserPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1419,7 +1419,7 @@ export const QuickPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkUpdateWorkspaceResponse {
   /** The entities that were added or updated during the bulk-update. Does not include entities that were deleted or updated by the system. */
-  changes?: Array<Entity>;
+  changes?: ReadonlyArray<Entity>;
 }
 
 export const BulkUpdateWorkspaceResponse =
@@ -1429,7 +1429,7 @@ export const BulkUpdateWorkspaceResponse =
 
 export interface ListGtagConfigResponse {
   /** All Google tag configs in a Container. */
-  gtagConfig?: Array<GtagConfig>;
+  gtagConfig?: ReadonlyArray<GtagConfig>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1445,7 +1445,7 @@ export interface ListContainerVersionsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All container version headers of a GTM Container. */
-  containerVersionHeader?: Array<ContainerVersionHeader>;
+  containerVersionHeader?: ReadonlyArray<ContainerVersionHeader>;
 }
 
 export const ListContainerVersionsResponse =
@@ -1458,7 +1458,7 @@ export const ListContainerVersionsResponse =
 
 export interface CreateBuiltInVariableResponse {
   /** List of created built-in variables. */
-  builtInVariable?: Array<BuiltInVariable>;
+  builtInVariable?: ReadonlyArray<BuiltInVariable>;
 }
 
 export const CreateBuiltInVariableResponse =
@@ -1468,13 +1468,13 @@ export const CreateBuiltInVariableResponse =
 
 export interface FolderEntities {
   /** The list of tags inside the folder. */
-  tag?: Array<Tag>;
+  tag?: ReadonlyArray<Tag>;
   /** The list of variables inside the folder. */
-  variable?: Array<Variable>;
+  variable?: ReadonlyArray<Variable>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The list of triggers inside the folder. */
-  trigger?: Array<Trigger>;
+  trigger?: ReadonlyArray<Trigger>;
 }
 
 export const FolderEntities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1486,7 +1486,7 @@ export const FolderEntities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTemplatesResponse {
   /** All GTM Custom Templates of a GTM Container. */
-  template?: Array<CustomTemplate>;
+  template?: ReadonlyArray<CustomTemplate>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1498,7 +1498,7 @@ export const ListTemplatesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListClientsResponse {
   /** All GTM Clients of a GTM Container. */
-  client?: Array<Client>;
+  client?: ReadonlyArray<Client>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1525,7 +1525,7 @@ export interface ListDestinationsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All Destinations linked to a GTM Container. */
-  destination?: Array<Destination>;
+  destination?: ReadonlyArray<Destination>;
 }
 
 export const ListDestinationsResponse =
@@ -1569,7 +1569,7 @@ export const CreateContainerVersionRequestVersionOptions =
 
 export interface ListUserPermissionsResponse {
   /** All GTM UserPermissions of a GTM Account. */
-  userPermission?: Array<UserPermission>;
+  userPermission?: ReadonlyArray<UserPermission>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1605,7 +1605,7 @@ export interface ListTriggersResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All GTM Triggers of a GTM Container. */
-  trigger?: Array<Trigger>;
+  trigger?: ReadonlyArray<Trigger>;
 }
 
 export const ListTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1647,7 +1647,7 @@ export interface ListWorkspacesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All Workspaces of a GTM Container. */
-  workspace?: Array<Workspace>;
+  workspace?: ReadonlyArray<Workspace>;
 }
 
 export const ListWorkspacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1659,7 +1659,7 @@ export const ListWorkspacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface SyncWorkspaceResponse {
   /** The merge conflict after sync. If this field is not empty, the sync is still treated as successful. But a version cannot be created until all conflicts are resolved. */
-  mergeConflict?: Array<MergeConflict>;
+  mergeConflict?: ReadonlyArray<MergeConflict>;
   /** Indicates whether synchronization caused a merge conflict or sync error. */
   syncStatus?: SyncStatus;
 }
@@ -1671,7 +1671,7 @@ export const SyncWorkspaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEnabledBuiltInVariablesResponse {
   /** All GTM BuiltInVariables of a GTM container. */
-  builtInVariable?: Array<BuiltInVariable>;
+  builtInVariable?: ReadonlyArray<BuiltInVariable>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1693,7 +1693,7 @@ export const RevertTriggerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTagsResponse {
   /** All GTM Tags of a GTM Container. */
-  tag?: Array<Tag>;
+  tag?: ReadonlyArray<Tag>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1728,7 +1728,7 @@ export const GetContainerSnippetResponse =
 
 export interface ListFoldersResponse {
   /** All GTM Folders of a GTM Container. */
-  folder?: Array<Folder>;
+  folder?: ReadonlyArray<Folder>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1752,7 +1752,7 @@ export const AccountFeatures = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProposedChange {
   /** The list of workspace changes to be applied. */
-  changes?: Array<Entity>;
+  changes?: ReadonlyArray<Entity>;
 }
 
 export const ProposedChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1788,7 +1788,7 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountsResponse {
   /** List of GTM Accounts that a user has access to. */
-  account?: Array<Account>;
+  account?: ReadonlyArray<Account>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1802,7 +1802,7 @@ export interface ListContainersResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** All Containers of a GTM Account. */
-  container?: Array<Container>;
+  container?: ReadonlyArray<Container>;
 }
 
 export const ListContainersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1863,7 +1863,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   path: Schema.String.pipe(T.HttpPath("path")),
 }).pipe(
-  T.Http({ method: "GET", path: "tagmanager/v2/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -1898,11 +1898,7 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   fingerprint: Schema.optional(Schema.String).pipe(T.HttpQuery("fingerprint")),
   body: Schema.optional(Account).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PUT",
-    path: "tagmanager/v2/accounts/{accountsId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UpdateAccountsRequest>;
 
@@ -1935,10 +1931,7 @@ export const ListAccountsUser_permissionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/user_permissions",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/user_permissions" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsUser_permissionsRequest>;
 
@@ -1973,10 +1966,7 @@ export const GetAccountsUser_permissionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/user_permissions/{user_permissionsId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsUser_permissionsRequest>;
 
@@ -2007,10 +1997,7 @@ export const DeleteAccountsUser_permissionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/user_permissions/{user_permissionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsUser_permissionsRequest>;
 
@@ -2048,7 +2035,7 @@ export const CreateAccountsUser_permissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/user_permissions",
+      path: "tagmanager/v2/{parent}/user_permissions",
       hasBody: true,
     }),
     svc,
@@ -2084,11 +2071,7 @@ export const UpdateAccountsUser_permissionsRequest =
     path: Schema.String.pipe(T.HttpPath("path")),
     body: Schema.optional(UserPermission).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/user_permissions/{user_permissionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsUser_permissionsRequest>;
 
@@ -2140,7 +2123,7 @@ export const CombineAccountsContainersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}:combine",
+      path: "tagmanager/v2/{path}:combine",
       hasBody: true,
     }),
     svc,
@@ -2199,7 +2182,7 @@ export const Move_tag_idAccountsContainersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}:move_tag_id",
+      path: "tagmanager/v2/{path}:move_tag_id",
       hasBody: true,
     }),
     svc,
@@ -2232,10 +2215,7 @@ export const GetAccountsContainersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersRequest>;
 
@@ -2271,7 +2251,7 @@ export const CreateAccountsContainersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers",
+      path: "tagmanager/v2/{parent}/containers",
       hasBody: true,
     }),
     svc,
@@ -2312,11 +2292,7 @@ export const UpdateAccountsContainersRequest =
     ),
     body: Schema.optional(Container).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersRequest>;
 
@@ -2383,10 +2359,7 @@ export const SnippetAccountsContainersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}:snippet",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}:snippet" }),
     svc,
   ) as unknown as Schema.Schema<SnippetAccountsContainersRequest>;
 
@@ -2417,10 +2390,7 @@ export const DeleteAccountsContainersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersRequest>;
 
@@ -2456,10 +2426,7 @@ export const ListAccountsContainersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/containers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersRequest>;
 
@@ -2496,7 +2463,7 @@ export const Set_latestAccountsContainersVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}:set_latest",
+      path: "tagmanager/v2/{path}:set_latest",
       hasBody: true,
     }),
     svc,
@@ -2529,10 +2496,7 @@ export const LiveAccountsContainersVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions:live",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/versions:live" }),
     svc,
   ) as unknown as Schema.Schema<LiveAccountsContainersVersionsRequest>;
 
@@ -2571,11 +2535,7 @@ export const UpdateAccountsContainersVersionsRequest =
     ),
     body: Schema.optional(ContainerVersion).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersVersionsRequest>;
 
@@ -2613,7 +2573,7 @@ export const PublishAccountsContainersVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}:publish",
+      path: "tagmanager/v2/{path}:publish",
       hasBody: true,
     }),
     svc,
@@ -2649,7 +2609,7 @@ export const UndeleteAccountsContainersVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}:undelete",
+      path: "tagmanager/v2/{path}:undelete",
       hasBody: true,
     }),
     svc,
@@ -2687,10 +2647,7 @@ export const GetAccountsContainersVersionsRequest =
     ),
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersVersionsRequest>;
 
@@ -2721,10 +2678,7 @@ export const DeleteAccountsContainersVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersVersionsRequest>;
 
@@ -2765,10 +2719,7 @@ export const ListAccountsContainersVersion_headersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/version_headers",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/version_headers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersVersion_headersRequest>;
 
@@ -2806,7 +2757,7 @@ export const LatestAccountsContainersVersion_headersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/version_headers:latest",
+      path: "tagmanager/v2/{parent}/version_headers:latest",
     }),
     svc,
   ) as unknown as Schema.Schema<LatestAccountsContainersVersion_headersRequest>;
@@ -2844,7 +2795,7 @@ export const ReauthorizeAccountsContainersEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}:reauthorize",
+      path: "tagmanager/v2/{path}:reauthorize",
       hasBody: true,
     }),
     svc,
@@ -2882,7 +2833,7 @@ export const CreateAccountsContainersEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments",
+      path: "tagmanager/v2/{parent}/environments",
       hasBody: true,
     }),
     svc,
@@ -2923,11 +2874,7 @@ export const UpdateAccountsContainersEnvironmentsRequest =
     ),
     body: Schema.optional(Environment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersEnvironmentsRequest>;
 
@@ -2961,10 +2908,7 @@ export const ListAccountsContainersEnvironmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/environments" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersEnvironmentsRequest>;
 
@@ -3000,10 +2944,7 @@ export const GetAccountsContainersEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersEnvironmentsRequest>;
 
@@ -3034,10 +2975,7 @@ export const DeleteAccountsContainersEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersEnvironmentsRequest>;
 
@@ -3072,7 +3010,7 @@ export const Quick_previewAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:quick_preview",
+      path: "tagmanager/v2/{path}:quick_preview",
       hasBody: true,
     }),
     svc,
@@ -3106,10 +3044,7 @@ export const GetStatusAccountsContainersWorkspacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/status",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}/status" }),
     svc,
   ) as unknown as Schema.Schema<GetStatusAccountsContainersWorkspacesRequest>;
 
@@ -3146,7 +3081,7 @@ export const CreateAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces",
+      path: "tagmanager/v2/{parent}/workspaces",
       hasBody: true,
     }),
     svc,
@@ -3187,11 +3122,7 @@ export const UpdateAccountsContainersWorkspacesRequest =
     ),
     body: Schema.optional(Workspace).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesRequest>;
 
@@ -3225,10 +3156,7 @@ export const ListAccountsContainersWorkspacesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/workspaces" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesRequest>;
 
@@ -3263,10 +3191,7 @@ export const DeleteAccountsContainersWorkspacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesRequest>;
 
@@ -3309,7 +3234,7 @@ export const Resolve_conflictAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:resolve_conflict",
+      path: "tagmanager/v2/{path}:resolve_conflict",
       hasBody: true,
     }),
     svc,
@@ -3351,7 +3276,7 @@ export const Create_versionAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:create_version",
+      path: "tagmanager/v2/{path}:create_version",
       hasBody: true,
     }),
     svc,
@@ -3387,7 +3312,7 @@ export const SyncAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:sync",
+      path: "tagmanager/v2/{path}:sync",
       hasBody: true,
     }),
     svc,
@@ -3425,7 +3350,7 @@ export const Bulk_updateAccountsContainersWorkspacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/bulk_update",
+      path: "tagmanager/v2/{path}/bulk_update",
       hasBody: true,
     }),
     svc,
@@ -3459,10 +3384,7 @@ export const GetAccountsContainersWorkspacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesRequest>;
 
@@ -3498,7 +3420,7 @@ export const CreateAccountsContainersWorkspacesZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones",
+      path: "tagmanager/v2/{parent}/zones",
       hasBody: true,
     }),
     svc,
@@ -3539,11 +3461,7 @@ export const UpdateAccountsContainersWorkspacesZonesRequest =
     ),
     body: Schema.optional(Zone).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesZonesRequest>;
 
@@ -3577,10 +3495,7 @@ export const ListAccountsContainersWorkspacesZonesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/zones" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesZonesRequest>;
 
@@ -3615,10 +3530,7 @@ export const GetAccountsContainersWorkspacesZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesZonesRequest>;
 
@@ -3649,10 +3561,7 @@ export const DeleteAccountsContainersWorkspacesZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesZonesRequest>;
 
@@ -3692,7 +3601,7 @@ export const RevertAccountsContainersWorkspacesZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -3731,7 +3640,7 @@ export const CreateAccountsContainersWorkspacesClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/clients",
+      path: "tagmanager/v2/{parent}/clients",
       hasBody: true,
     }),
     svc,
@@ -3772,11 +3681,7 @@ export const UpdateAccountsContainersWorkspacesClientsRequest =
     ),
     body: Schema.optional(Client).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/clients/{clientsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesClientsRequest>;
 
@@ -3807,10 +3712,7 @@ export const GetAccountsContainersWorkspacesClientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/clients/{clientsId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesClientsRequest>;
 
@@ -3841,10 +3743,7 @@ export const DeleteAccountsContainersWorkspacesClientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/clients/{clientsId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesClientsRequest>;
 
@@ -3884,7 +3783,7 @@ export const RevertAccountsContainersWorkspacesClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/clients/{clientsId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -3921,10 +3820,7 @@ export const ListAccountsContainersWorkspacesClientsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/clients",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/clients" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesClientsRequest>;
 
@@ -3965,7 +3861,7 @@ export const CreateAccountsContainersWorkspacesTransformationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/transformations",
+      path: "tagmanager/v2/{parent}/transformations",
       hasBody: true,
     }),
     svc,
@@ -4008,11 +3904,7 @@ export const UpdateAccountsContainersWorkspacesTransformationsRequest =
     ),
     body: Schema.optional(Transformation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/transformations/{transformationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTransformationsRequest>;
 
@@ -4045,10 +3937,7 @@ export const GetAccountsContainersWorkspacesTransformationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/transformations/{transformationsId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTransformationsRequest>;
 
@@ -4080,10 +3969,7 @@ export const DeleteAccountsContainersWorkspacesTransformationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/transformations/{transformationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTransformationsRequest>;
 
@@ -4124,7 +4010,7 @@ export const RevertAccountsContainersWorkspacesTransformationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/transformations/{transformationsId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -4162,10 +4048,7 @@ export const ListAccountsContainersWorkspacesTransformationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/transformations",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/transformations" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTransformationsRequest>;
 
@@ -4207,7 +4090,7 @@ export const CreateAccountsContainersWorkspacesTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags",
+      path: "tagmanager/v2/{parent}/tags",
       hasBody: true,
     }),
     svc,
@@ -4248,11 +4131,7 @@ export const UpdateAccountsContainersWorkspacesTagsRequest =
     ),
     body: Schema.optional(Tag).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTagsRequest>;
 
@@ -4286,10 +4165,7 @@ export const ListAccountsContainersWorkspacesTagsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/tags" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTagsRequest>;
 
@@ -4324,10 +4200,7 @@ export const GetAccountsContainersWorkspacesTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTagsRequest>;
 
@@ -4358,10 +4231,7 @@ export const DeleteAccountsContainersWorkspacesTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTagsRequest>;
 
@@ -4401,7 +4271,7 @@ export const RevertAccountsContainersWorkspacesTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -4434,10 +4304,7 @@ export const GetAccountsContainersWorkspacesGtag_configRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/gtag_config/{gtag_configId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesGtag_configRequest>;
 
@@ -4468,10 +4335,7 @@ export const DeleteAccountsContainersWorkspacesGtag_configRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/gtag_config/{gtag_configId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>;
 
@@ -4507,10 +4371,7 @@ export const ListAccountsContainersWorkspacesGtag_configRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/gtag_config",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/gtag_config" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesGtag_configRequest>;
 
@@ -4551,7 +4412,7 @@ export const CreateAccountsContainersWorkspacesGtag_configRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/gtag_config",
+      path: "tagmanager/v2/{parent}/gtag_config",
       hasBody: true,
     }),
     svc,
@@ -4592,11 +4453,7 @@ export const UpdateAccountsContainersWorkspacesGtag_configRequest =
     ),
     body: Schema.optional(GtagConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/gtag_config/{gtag_configId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesGtag_configRequest>;
 
@@ -4632,7 +4489,7 @@ export const ListAccountsContainersWorkspacesBuilt_in_variablesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables",
+      path: "tagmanager/v2/{parent}/built_in_variables",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>;
@@ -4793,10 +4650,7 @@ export const DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest =
     ),
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
@@ -4953,7 +4807,7 @@ export const RevertAccountsContainersWorkspacesBuilt_in_variablesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables:revert",
+      path: "tagmanager/v2/{path}/built_in_variables:revert",
       hasBody: true,
     }),
     svc,
@@ -5113,7 +4967,7 @@ export const CreateAccountsContainersWorkspacesBuilt_in_variablesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables",
+      path: "tagmanager/v2/{parent}/built_in_variables",
       hasBody: true,
     }),
     svc,
@@ -5153,7 +5007,7 @@ export const CreateAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders",
+      path: "tagmanager/v2/{parent}/folders",
       hasBody: true,
     }),
     svc,
@@ -5194,11 +5048,7 @@ export const UpdateAccountsContainersWorkspacesFoldersRequest =
     ),
     body: Schema.optional(Folder).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesFoldersRequest>;
 
@@ -5234,7 +5084,7 @@ export const EntitiesAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}:entities",
+      path: "tagmanager/v2/{path}:entities",
       hasBody: true,
     }),
     svc,
@@ -5292,7 +5142,7 @@ export const Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}:move_entities_to_folder",
+      path: "tagmanager/v2/{path}:move_entities_to_folder",
       hasBody: true,
     }),
     svc,
@@ -5328,10 +5178,7 @@ export const GetAccountsContainersWorkspacesFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesFoldersRequest>;
 
@@ -5362,10 +5209,7 @@ export const DeleteAccountsContainersWorkspacesFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesFoldersRequest>;
 
@@ -5405,7 +5249,7 @@ export const RevertAccountsContainersWorkspacesFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -5442,10 +5286,7 @@ export const ListAccountsContainersWorkspacesFoldersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/folders" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesFoldersRequest>;
 
@@ -5484,10 +5325,7 @@ export const ListAccountsContainersWorkspacesTemplatesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/templates" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTemplatesRequest>;
 
@@ -5523,10 +5361,7 @@ export const GetAccountsContainersWorkspacesTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTemplatesRequest>;
 
@@ -5557,10 +5392,7 @@ export const DeleteAccountsContainersWorkspacesTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTemplatesRequest>;
 
@@ -5600,7 +5432,7 @@ export const RevertAccountsContainersWorkspacesTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -5654,7 +5486,7 @@ export const Import_from_galleryAccountsContainersWorkspacesTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates:import_from_gallery",
+      path: "tagmanager/v2/{parent}/templates:import_from_gallery",
       hasBody: true,
     }),
     svc,
@@ -5694,7 +5526,7 @@ export const CreateAccountsContainersWorkspacesTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates",
+      path: "tagmanager/v2/{parent}/templates",
       hasBody: true,
     }),
     svc,
@@ -5736,11 +5568,7 @@ export const UpdateAccountsContainersWorkspacesTemplatesRequest =
     ),
     body: Schema.optional(CustomTemplate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTemplatesRequest>;
 
@@ -5772,10 +5600,7 @@ export const GetAccountsContainersWorkspacesVariablesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesVariablesRequest>;
 
@@ -5806,10 +5631,7 @@ export const DeleteAccountsContainersWorkspacesVariablesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesVariablesRequest>;
 
@@ -5849,7 +5671,7 @@ export const RevertAccountsContainersWorkspacesVariablesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -5886,10 +5708,7 @@ export const ListAccountsContainersWorkspacesVariablesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/variables" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesVariablesRequest>;
 
@@ -5930,7 +5749,7 @@ export const CreateAccountsContainersWorkspacesVariablesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables",
+      path: "tagmanager/v2/{parent}/variables",
       hasBody: true,
     }),
     svc,
@@ -5971,11 +5790,7 @@ export const UpdateAccountsContainersWorkspacesVariablesRequest =
     ),
     body: Schema.optional(Variable).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesVariablesRequest>;
 
@@ -6011,7 +5826,7 @@ export const CreateAccountsContainersWorkspacesTriggersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers",
+      path: "tagmanager/v2/{parent}/triggers",
       hasBody: true,
     }),
     svc,
@@ -6052,11 +5867,7 @@ export const UpdateAccountsContainersWorkspacesTriggersRequest =
     ),
     body: Schema.optional(Trigger).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "tagmanager/v2/{path}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAccountsContainersWorkspacesTriggersRequest>;
 
@@ -6090,10 +5901,7 @@ export const ListAccountsContainersWorkspacesTriggersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/triggers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersWorkspacesTriggersRequest>;
 
@@ -6129,10 +5937,7 @@ export const GetAccountsContainersWorkspacesTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersWorkspacesTriggersRequest>;
 
@@ -6163,10 +5968,7 @@ export const DeleteAccountsContainersWorkspacesTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}",
-    }),
+    T.Http({ method: "DELETE", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsContainersWorkspacesTriggersRequest>;
 
@@ -6206,7 +6008,7 @@ export const RevertAccountsContainersWorkspacesTriggersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}:revert",
+      path: "tagmanager/v2/{path}:revert",
       hasBody: true,
     }),
     svc,
@@ -6240,10 +6042,7 @@ export const GetAccountsContainersDestinationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.String.pipe(T.HttpPath("path")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/destinations/{destinationsId}",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{path}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsContainersDestinationsRequest>;
 
@@ -6286,7 +6085,7 @@ export const LinkAccountsContainersDestinationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/destinations:link",
+      path: "tagmanager/v2/{parent}/destinations:link",
       hasBody: true,
     }),
     svc,
@@ -6319,10 +6118,7 @@ export const ListAccountsContainersDestinationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/destinations",
-    }),
+    T.Http({ method: "GET", path: "tagmanager/v2/{parent}/destinations" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsContainersDestinationsRequest>;
 

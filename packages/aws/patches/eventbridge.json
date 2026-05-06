@@ -1,0 +1,28 @@
+{
+  "errorCategories": {
+    "ThrottlingException": ["ThrottlingError", "RetryableError"],
+    "InternalException": ["ServerError", "RetryableError"],
+    "ConcurrentModificationException": ["ConflictError", "RetryableError"],
+    "IllegalStatusException": ["ConflictError"],
+    "InvalidStateException": ["ConflictError"],
+    "InvalidEventPatternException": ["BadRequestError"],
+    "ManagedRuleException": ["BadRequestError"],
+    "OperationDisabledException": ["BadRequestError"],
+    "LimitExceededException": ["QuotaError"],
+    "PolicyLengthExceededException": ["QuotaError"]
+  },
+  "operations": {
+    "deleteEventBus": {
+      "errors": ["ResourceNotFoundException"]
+    },
+    "tagResource": {
+      "errors": ["ThrottlingException"]
+    },
+    "untagResource": {
+      "errors": ["ThrottlingException"]
+    },
+    "listTagsForResource": {
+      "errors": ["ThrottlingException"]
+    }
+  }
+}

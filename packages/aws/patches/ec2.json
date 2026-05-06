@@ -1,6 +1,7 @@
 {
   "errorCategories": {
-    "RequestLimitExceeded": ["ThrottlingError"]
+    "RequestLimitExceeded": ["ThrottlingError"],
+    "IncorrectState": ["ConflictError"]
   },
   "operations": {
     "createVpc": {

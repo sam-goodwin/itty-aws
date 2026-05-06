@@ -45,7 +45,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -96,7 +96,7 @@ export const CloudLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCloudLocationsResponse {
   /** Output only. List of cloud locations. */
-  cloudLocations?: Array<CloudLocation>;
+  cloudLocations?: ReadonlyArray<CloudLocation>;
   /** Output only. The continuation token, used to page through large result sets. Provide this value in a subsequent request as page_token in subsequent requests to retrieve the next page. If this field is not present, there are no subsequent results. */
   nextPageToken?: string;
 }
@@ -109,7 +109,7 @@ export const ListCloudLocationsResponse =
 
 export interface SearchCloudLocationsResponse {
   /** Output only. List of cloud locations. */
-  cloudLocations?: Array<CloudLocation>;
+  cloudLocations?: ReadonlyArray<CloudLocation>;
   /** Output only. The continuation token, used to page through large result sets. Provide this value in a subsequent request as page_token in subsequent requests to retrieve the next page. If this field is not present, there are no subsequent results. */
   nextPageToken?: string;
 }
@@ -147,7 +147,7 @@ export const ListProjectsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -182,10 +182,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -216,10 +213,7 @@ export const GetProjectsLocationsCloudLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/cloudLocations/{cloudLocationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCloudLocationsRequest>;
 
@@ -259,10 +253,7 @@ export const ListProjectsLocationsCloudLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/cloudLocations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/cloudLocations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCloudLocationsRequest>;
 
@@ -312,10 +303,7 @@ export const SearchProjectsLocationsCloudLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/cloudLocations:search",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/cloudLocations:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsCloudLocationsRequest>;
 

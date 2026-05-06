@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -180,7 +180,7 @@ export interface ComputeEngineDisk {
     | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY"
     | (string & {});
   /** Optional. Replication zones of the regional disk. Should be of the form: projects/{target-project}/locations/{replica-zone} Currently only one replica zone is supported. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
 }
 
 export const ComputeEngineDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -282,7 +282,7 @@ export interface DiskMigrationJob {
   /** Required. Details of the target Disk in Compute Engine. */
   targetDetails?: DiskMigrationJobTargetDetails;
   /** Output only. Provides details on the errors that led to the disk migration job's state in case of an error. */
-  errors?: Array<Status>;
+  errors?: ReadonlyArray<Status>;
   /** Output only. Identifier. The identifier of the DiskMigrationJob. */
   name?: string;
   /** Output only. State of the DiskMigrationJob. */
@@ -302,7 +302,7 @@ export interface DiskMigrationJob {
   /** Output only. The last time the DiskMigrationJob resource was updated. */
   updateTime?: string;
   /** Output only. The disk migration steps list representing its progress. */
-  steps?: Array<DiskMigrationStep>;
+  steps?: ReadonlyArray<DiskMigrationStep>;
 }
 
 export const DiskMigrationJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -386,7 +386,7 @@ export interface AwsVmDetails {
   /** The total size of the storage allocated to the VM in MB. */
   committedStorageMb?: string;
   /** The security groups the VM belongs to. */
-  securityGroups?: Array<AwsSecurityGroup>;
+  securityGroups?: ReadonlyArray<AwsSecurityGroup>;
   /** The tags of the VM. */
   tags?: Record<string, string>;
 }
@@ -415,7 +415,7 @@ export const AwsVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AwsVmsDetails {
   /** The details of the AWS VMs. */
-  details?: Array<AwsVmDetails>;
+  details?: ReadonlyArray<AwsVmDetails>;
 }
 
 export const AwsVmsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -454,7 +454,7 @@ export interface MigrationWarning {
   /** Output only. Suggested action for solving the warning. */
   actionItem?: LocalizedMessage;
   /** Output only. URL(s) pointing to additional information on handling the current warning. */
-  helpLinks?: Array<Link>;
+  helpLinks?: ReadonlyArray<Link>;
   /** Output only. The localized warning message. */
   warningMessage?: LocalizedMessage;
 }
@@ -531,7 +531,7 @@ export interface ReplicationCycle {
   /** The accumulated duration the replication cycle was paused. */
   totalPauseDuration?: string;
   /** Output only. Warnings that occurred during the cycle. */
-  warnings?: Array<MigrationWarning>;
+  warnings?: ReadonlyArray<MigrationWarning>;
   /** The cycle's ordinal number. */
   cycleNumber?: number;
   /** State of the ReplicationCycle. */
@@ -545,7 +545,7 @@ export interface ReplicationCycle {
   /** The time the replication cycle has started. */
   startTime?: string;
   /** The cycle's steps list representing its progress. */
-  steps?: Array<CycleStep>;
+  steps?: ReadonlyArray<CycleStep>;
 }
 
 export const ReplicationCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -648,7 +648,7 @@ export interface ServiceAccount {
   /** Required. The email address of the service account. */
   email?: string;
   /** Optional. The list of scopes to be made available for this service account. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -709,7 +709,7 @@ export interface ImageImportOsAdaptationParameters {
   /** Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID). */
   generalize?: boolean;
   /** Optional. Modifiers to be used as configuration of the OS adaptation process. */
-  adaptationModifiers?: Array<AdaptationModifier>;
+  adaptationModifiers?: ReadonlyArray<AdaptationModifier>;
 }
 
 export const ImageImportOsAdaptationParameters =
@@ -738,9 +738,9 @@ export interface MachineImageTargetDetails {
   /** Optional. Set to true to set the machine image storageLocations to the single region of the import job. When false, the closest multi-region is selected. */
   singleRegionStorage?: boolean;
   /** Optional. The tags to apply to the instance created by the machine image. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Optional. The network interfaces to create with the instance created by the machine image. Internal and external IP addresses, and network tiers are ignored for machine image import. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** Optional. The labels to apply to the instance created by the machine image. */
   labels?: Record<string, string>;
   /** Optional. Use to set the parameters relevant for the OS adaptation process. */
@@ -748,7 +748,7 @@ export interface MachineImageTargetDetails {
   /** Required. The name of the machine image to be created. */
   machineImageName?: string;
   /** Optional. Additional licenses to assign to the instance created by the machine image. Format: https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME Or https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME */
-  additionalLicenses?: Array<string>;
+  additionalLicenses?: ReadonlyArray<string>;
 }
 
 export const MachineImageTargetDetails =
@@ -773,7 +773,7 @@ export const MachineImageTargetDetails =
 
 export interface DataDiskImageImport {
   /** Optional. A list of guest OS features to apply to the imported image. These features are flags that are used by Compute Engine to enable certain capabilities for virtual machine instances that are created from the image. This field does not change the OS of the image; it only marks the image with the specified features. The user must ensure that the OS is compatible with the features. For a list of available features, see https://cloud.google.com/compute/docs/images/create-custom#guest-os-features. */
-  guestOsFeatures?: Array<string>;
+  guestOsFeatures?: ReadonlyArray<string>;
 }
 
 export const DataDiskImageImport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -796,7 +796,7 @@ export interface DiskImageTargetDetails {
   /** Required. Reference to the TargetProject resource that represents the target project in which the imported image will be created. */
   targetProject?: string;
   /** Optional. Additional licenses to assign to the image. Format: https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME Or https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME */
-  additionalLicenses?: Array<string>;
+  additionalLicenses?: ReadonlyArray<string>;
   /** Optional. The name of the image family to which the new image belongs. */
   familyName?: string;
   /** Optional. An optional description of the image. */
@@ -820,9 +820,9 @@ export const DiskImageTargetDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ImageImportJob {
   /** Output only. Warnings that occurred during the image import. */
-  warnings?: Array<MigrationWarning>;
+  warnings?: ReadonlyArray<MigrationWarning>;
   /** Output only. The image import steps list representing its progress. */
-  steps?: Array<ImageImportStep>;
+  steps?: ReadonlyArray<ImageImportStep>;
   /** Output only. The path to the Cloud Storage file from which the image should be imported. */
   cloudStorageUri?: string;
   /** Output only. The state of the image import. */
@@ -838,13 +838,13 @@ export interface ImageImportJob {
   /** Output only. Target details used to import a machine image. */
   machineImageTargetDetails?: MachineImageTargetDetails;
   /** Output only. Provides details on the error that led to the image import state in case of an error. */
-  errors?: Array<Status>;
+  errors?: ReadonlyArray<Status>;
   /** Output only. The time the image import was created (as an API call, not when it was actually created in the target). */
   createTime?: string;
   /** Output only. Target details used to import a disk image. */
   diskImageTargetDetails?: DiskImageTargetDetails;
   /** Output only. The resource paths of the resources created by the image import job. */
-  createdResources?: Array<string>;
+  createdResources?: ReadonlyArray<string>;
   /** Output only. The time the image import was ended. */
   endTime?: string;
   /** Output only. The resource path of the ImageImportJob. */
@@ -871,7 +871,7 @@ export interface ImageImport {
   /** Output only. The time the image import was created. */
   createTime?: string;
   /** Output only. The result of the most recent runs for this ImageImport. All jobs for this ImageImport can be listed via ListImageImportJobs. */
-  recentImageImportJobs?: Array<ImageImportJob>;
+  recentImageImportJobs?: ReadonlyArray<ImageImportJob>;
   /** Immutable. The encryption details used by the image import process during the image adaptation for Compute Engine. */
   encryption?: Encryption;
   /** Immutable. Target details for importing a machine image, will be used by ImageImportJob. */
@@ -894,9 +894,9 @@ export const ImageImport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListReplicationCyclesResponse {
   /** Output only. The list of replication cycles response. */
-  replicationCycles?: Array<ReplicationCycle>;
+  replicationCycles?: ReadonlyArray<ReplicationCycle>;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -919,7 +919,7 @@ export const ReplicationSync = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VmCapabilities {
   /** Output only. Unordered list. List of certain VM OS capabilities needed for some Compute Engine features. */
-  osCapabilities?: Array<
+  osCapabilities?: ReadonlyArray<
     | "OS_CAPABILITY_UNSPECIFIED"
     | "OS_CAPABILITY_NVME_STORAGE_ACCESS"
     | "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE"
@@ -941,7 +941,7 @@ export interface SchedulingNodeAffinity {
   /** The label key of Node resource to reference. */
   key?: string;
   /** Corresponds to the label values of Node resource. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const SchedulingNodeAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -962,7 +962,7 @@ export interface ComputeScheduling {
   /** The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured. */
   minNodeCpus?: number;
   /** A set of node affinity and anti-affinity configurations for sole tenant nodes. */
-  nodeAffinities?: Array<SchedulingNodeAffinity>;
+  nodeAffinities?: ReadonlyArray<SchedulingNodeAffinity>;
   /** Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart. */
   restartType?:
     | "RESTART_TYPE_UNSPECIFIED"
@@ -1005,7 +1005,7 @@ export interface ComputeEngineTargetDetails {
   /** Optional. Defines whether the instance has vTPM enabled. */
   enableVtpm?: boolean;
   /** A list of network tags to associate with the VM. */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
   /** The hostname to assign to the VM. */
   hostname?: string;
   /** The zone in which to create the VM. */
@@ -1021,13 +1021,13 @@ export interface ComputeEngineTargetDetails {
     | "BIOS_TO_EFI"
     | (string & {});
   /** Additional licenses to assign to the VM. */
-  additionalLicenses?: Array<string>;
+  additionalLicenses?: ReadonlyArray<string>;
   /** A map of labels to associate with the VM. */
   labels?: Record<string, string>;
   /** Optional. Additional replica zones of the target regional disks. If this list is not empty a regional disk will be created. The first supported zone would be the one stated in the zone field. The rest are taken from this list. Please refer to the [regional disk creation API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources) for further details about regional vs zonal disks. If not specified, a zonal disk will be created in the same zone the VM is created. */
-  diskReplicaZones?: Array<string>;
+  diskReplicaZones?: ReadonlyArray<string>;
   /** List of NICs connected to this VM. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** The metadata key/value pairs to assign to the VM. */
   metadata?: Record<string, string>;
   /** The VM Boot Option, as set in the source VM. */
@@ -1049,7 +1049,7 @@ export interface ComputeEngineTargetDetails {
   /** Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI. */
   secureBoot?: boolean;
   /** Optional. Modifiers to be used as configuration of the OS adaptation process. */
-  adaptationModifiers?: Array<AdaptationModifier>;
+  adaptationModifiers?: ReadonlyArray<AdaptationModifier>;
   /** The OS license returned from the adaptation module report. */
   appliedLicense?: AppliedLicense;
   /** The license type to use in OS adaptation. */
@@ -1116,9 +1116,9 @@ export interface ListTargetProjectsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. The list of target response. */
-  targetProjects?: Array<TargetProject>;
+  targetProjects?: ReadonlyArray<TargetProject>;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListTargetProjectsResponse =
@@ -1204,9 +1204,9 @@ export interface AwsSourceDetails {
   /** Output only. State of the source as determined by the health check. */
   state?: "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE" | (string & {});
   /** AWS resource tags to limit the scope of the source inventory. */
-  inventoryTagList?: Array<Tag>;
+  inventoryTagList?: ReadonlyArray<Tag>;
   /** AWS security group names to limit the scope of the source inventory. */
-  inventorySecurityGroupNames?: Array<string>;
+  inventorySecurityGroupNames?: ReadonlyArray<string>;
   /** Output only. The source's public IP. All communication initiated by this source will originate from this IP. */
   publicIp?: string;
   /** Immutable. The AWS region that the source VMs will be migrated from. */
@@ -1435,7 +1435,7 @@ export interface AzureVmDetails {
   /** The memory size of the VM in MB. */
   memoryMb?: number;
   /** Description of the data disks. */
-  disks?: Array<Disk>;
+  disks?: ReadonlyArray<Disk>;
   /** The VM's ComputerName. */
   computerName?: string;
   /** Description of the OS disk. */
@@ -1486,7 +1486,7 @@ export const AzureVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AzureVmsDetails {
   /** The details of the Azure VMs. */
-  details?: Array<AzureVmDetails>;
+  details?: ReadonlyArray<AzureVmDetails>;
 }
 
 export const AzureVmsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1514,7 +1514,7 @@ export interface ComputeEngineDisksTargetDetails {
   /** Details for the VM the migrated data disks are attached to. */
   vmTargetDetails?: DisksMigrationVmTargetDetails;
   /** The details of each created Persistent Disk. */
-  disks?: Array<PersistentDisk>;
+  disks?: ReadonlyArray<PersistentDisk>;
   /** Details of the disks-only migration target. */
   disksTargetDetails?: DisksMigrationDisksTargetDetails;
 }
@@ -1553,7 +1553,7 @@ export interface CloneJob {
     | "ADAPTING_OS"
     | (string & {});
   /** Output only. The clone steps list representing its progress. */
-  steps?: Array<CloneStep>;
+  steps?: ReadonlyArray<CloneStep>;
 }
 
 export const CloneJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1700,9 +1700,9 @@ export interface DisksMigrationVmTargetDefaults {
   /** Optional. The hostname to assign to the VM. */
   hostname?: string;
   /** Optional. Additional licenses to assign to the VM. */
-  additionalLicenses?: Array<string>;
+  additionalLicenses?: ReadonlyArray<string>;
   /** Optional. NICs to attach to the VM. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI. */
   secureBoot?: boolean;
   /** Required. The name of the VM to create. */
@@ -1710,7 +1710,7 @@ export interface DisksMigrationVmTargetDefaults {
   /** Optional. Defines whether the instance has vTPM enabled. */
   enableVtpm?: boolean;
   /** Optional. A list of network tags to associate with the VM. */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
 }
 
 export const DisksMigrationVmTargetDefaults =
@@ -1742,7 +1742,7 @@ export const DisksMigrationDisksTargetDefaults =
 
 export interface ComputeEngineDisksTargetDefaults {
   /** The details of each Persistent Disk to create. */
-  disks?: Array<PersistentDiskDefaults>;
+  disks?: ReadonlyArray<PersistentDiskDefaults>;
   /** Details of the VM migration target. */
   vmTargetDefaults?: DisksMigrationVmTargetDefaults;
   /** Details of the disk only migration target. */
@@ -1802,13 +1802,13 @@ export interface ComputeEngineTargetDefaults {
   /** The machine type series to create the VM with. */
   machineTypeSeries?: string;
   /** Optional. AdaptationModifiers are the set of modifiers used during OS adaptation. */
-  adaptationModifiers?: Array<AdaptationModifier>;
+  adaptationModifiers?: ReadonlyArray<AdaptationModifier>;
   /** Additional licenses to assign to the VM. */
-  additionalLicenses?: Array<string>;
+  additionalLicenses?: ReadonlyArray<string>;
   /** Optional. Defines whether the instance has integrity monitoring enabled. This can be set to true only if the VM boot option is EFI, and vTPM is enabled. */
   enableIntegrityMonitoring?: boolean;
   /** Optional. Additional replica zones of the target regional disks. If this list is not empty a regional disk will be created. The first supported zone would be the one stated in the zone field. The rest are taken from this list. Please refer to the [regional disk creation API](https://cloud.google.com/compute/docs/regions-zones/global-regional-zonal-resources) for further details about regional vs zonal disks. If not specified, a zonal disk will be created in the same zone the VM is created. */
-  diskReplicaZones?: Array<string>;
+  diskReplicaZones?: ReadonlyArray<string>;
   /** Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI. */
   secureBoot?: boolean;
   /** The metadata key/value pairs to assign to the VM. */
@@ -1818,9 +1818,9 @@ export interface ComputeEngineTargetDefaults {
   /** A map of labels to associate with the VM. */
   labels?: Record<string, string>;
   /** A list of network tags to associate with the VM. */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
   /** List of NICs connected to this VM. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM. */
   targetProject?: string;
   /** The disk type to use in the VM. */
@@ -1892,7 +1892,7 @@ export interface VmwareSourceVmDetails {
   /** Output only. The total size of the disks being migrated in bytes. */
   committedStorageBytes?: string;
   /** Output only. The disks attached to the source VM. */
-  disks?: Array<VmwareDiskDetails>;
+  disks?: ReadonlyArray<VmwareDiskDetails>;
 }
 
 export const VmwareSourceVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1968,7 +1968,7 @@ export interface CutoverJob {
     | "ADAPTING_OS"
     | (string & {});
   /** Output only. The cutover steps list representing its progress. */
-  steps?: Array<CutoverStep>;
+  steps?: ReadonlyArray<CutoverStep>;
 }
 
 export const CutoverJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2017,7 +2017,7 @@ export interface AwsSourceVmDetails {
   /** Output only. The total size of the disks being migrated in bytes. */
   committedStorageBytes?: string;
   /** Output only. The disks attached to the source VM. */
-  disks?: Array<AwsDiskDetails>;
+  disks?: ReadonlyArray<AwsDiskDetails>;
   /** Output only. The VM architecture. */
   architecture?:
     | "VM_ARCHITECTURE_UNSPECIFIED"
@@ -2059,7 +2059,7 @@ export interface AzureSourceVmDetails {
   /** Output only. The total size of the disks being migrated in bytes. */
   committedStorageBytes?: string;
   /** Output only. The disks attached to the source VM. */
-  disks?: Array<AzureDiskDetails>;
+  disks?: ReadonlyArray<AzureDiskDetails>;
   /** Output only. The VM architecture. */
   architecture?:
     | "VM_ARCHITECTURE_UNSPECIFIED"
@@ -2078,7 +2078,7 @@ export const AzureSourceVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MigratingVm {
   /** Output only. The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request. */
-  recentCloneJobs?: Array<CloneJob>;
+  recentCloneJobs?: ReadonlyArray<CloneJob>;
   /** Output only. The last time the migrating VM resource was updated. */
   updateTime?: string;
   /** Output only. Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles. */
@@ -2125,7 +2125,7 @@ export interface MigratingVm {
   /** Output only. Details of the VM from a Vmware source. */
   vmwareSourceVmDetails?: VmwareSourceVmDetails;
   /** Output only. The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request. */
-  recentCutoverJobs?: Array<CutoverJob>;
+  recentCutoverJobs?: ReadonlyArray<CutoverJob>;
   /** Output only. Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable. */
   cutoverForecast?: CutoverForecast;
   /** Output only. Details of the current running replication cycle. */
@@ -2194,11 +2194,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2265,7 +2265,7 @@ export const VmwareVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VmwareVmsDetails {
   /** The details of the vmware VMs. */
-  details?: Array<VmwareVmDetails>;
+  details?: ReadonlyArray<VmwareVmDetails>;
 }
 
 export const VmwareVmsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2308,7 +2308,7 @@ export interface FetchStorageInventoryResponse {
   /** Output only. The timestamp when the source was last queried (if the result is from the cache). */
   updateTime?: string;
   /** The list of storage resources in the source. */
-  resources?: Array<SourceStorageResource>;
+  resources?: ReadonlyArray<SourceStorageResource>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2330,9 +2330,9 @@ export interface ListSourcesResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. The list of sources response. */
-  sources?: Array<Source>;
+  sources?: ReadonlyArray<Source>;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListSourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2374,7 +2374,7 @@ export interface UtilizationReport {
   /** The report display name, as assigned by the user. */
   displayName?: string;
   /** List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored. */
-  vms?: Array<VmUtilizationInfo>;
+  vms?: ReadonlyArray<VmUtilizationInfo>;
   /** Output only. Total number of VMs included in the report. */
   vmCount?: number;
   /** Output only. The time the report was created (this refers to the time of the request, not the time the report creation completed). */
@@ -2413,9 +2413,9 @@ export interface ListUtilizationReportsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. The list of reports. */
-  utilizationReports?: Array<UtilizationReport>;
+  utilizationReports?: ReadonlyArray<UtilizationReport>;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListUtilizationReportsResponse =
@@ -2461,11 +2461,11 @@ export const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGroupsResponse {
   /** Output only. The list of groups response. */
-  groups?: Array<Group>;
+  groups?: ReadonlyArray<Group>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2476,9 +2476,9 @@ export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMigratingVmsResponse {
   /** Output only. The list of Migrating VMs response. */
-  migratingVms?: Array<MigratingVm>;
+  migratingVms?: ReadonlyArray<MigratingVm>;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2494,9 +2494,9 @@ export interface ListCutoverJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Output only. The list of cutover jobs response. */
-  cutoverJobs?: Array<CutoverJob>;
+  cutoverJobs?: ReadonlyArray<CutoverJob>;
 }
 
 export const ListCutoverJobsResponse =
@@ -2531,7 +2531,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2551,9 +2551,9 @@ export const UpgradeApplianceRequest =
 
 export interface ListDatacenterConnectorsResponse {
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Output only. The list of sources response. */
-  datacenterConnectors?: Array<DatacenterConnector>;
+  datacenterConnectors?: ReadonlyArray<DatacenterConnector>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2577,11 +2577,11 @@ export const AddGroupMigrationRequest =
 
 export interface ListImageImportsResponse {
   /** Output only. The list of target response. */
-  imageImports?: Array<ImageImport>;
+  imageImports?: ReadonlyArray<ImageImport>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListImageImportsResponse =
@@ -2616,11 +2616,11 @@ export const PauseMigrationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListImageImportJobsResponse {
   /** Output only. The list of target response. */
-  imageImportJobs?: Array<ImageImportJob>;
+  imageImportJobs?: ReadonlyArray<ImageImportJob>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListImageImportJobsResponse =
@@ -2651,7 +2651,7 @@ export interface MigrationError {
   /** Output only. Suggested action for solving the error. */
   actionItem?: LocalizedMessage;
   /** Output only. URL(s) pointing to additional information on handling the current error. */
-  helpLinks?: Array<Link>;
+  helpLinks?: ReadonlyArray<Link>;
   /** Output only. The time the error occurred. */
   errorTime?: string;
 }
@@ -2674,9 +2674,9 @@ export interface ListDiskMigrationJobsResponse {
   /** Optional. Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Output only. The list of the disk migration jobs. */
-  diskMigrationJobs?: Array<DiskMigrationJob>;
+  diskMigrationJobs?: ReadonlyArray<DiskMigrationJob>;
 }
 
 export const ListDiskMigrationJobsResponse =
@@ -2717,9 +2717,9 @@ export interface ListCloneJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Output only. The list of clone jobs response. */
-  cloneJobs?: Array<CloneJob>;
+  cloneJobs?: ReadonlyArray<CloneJob>;
 }
 
 export const ListCloneJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2768,7 +2768,7 @@ export const ListProjectsLocationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2803,10 +2803,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2837,10 +2834,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2885,10 +2879,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2926,11 +2917,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2961,10 +2948,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -3000,7 +2984,7 @@ export const RemoveGroupMigrationProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groups/{groupsId}:removeGroupMigration",
+      path: "v1/{group}:removeGroupMigration",
       hasBody: true,
     }),
     svc,
@@ -3042,11 +3026,7 @@ export const PatchProjectsLocationsGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groups/{groupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGroupsRequest>;
 
@@ -3077,10 +3057,7 @@ export const GetProjectsLocationsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGroupsRequest>;
 
@@ -3120,11 +3097,7 @@ export const CreateProjectsLocationsGroupsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groups",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/groups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsGroupsRequest>;
 
@@ -3160,7 +3133,7 @@ export const AddGroupMigrationProjectsLocationsGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groups/{groupsId}:addGroupMigration",
+      path: "v1/{group}:addGroupMigration",
       hasBody: true,
     }),
     svc,
@@ -3196,10 +3169,7 @@ export const DeleteProjectsLocationsGroupsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGroupsRequest>;
 
@@ -3242,10 +3212,7 @@ export const ListProjectsLocationsGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/groups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGroupsRequest>;
 
@@ -3291,11 +3258,7 @@ export const CreateProjectsLocationsImageImportsRequest =
     ),
     body: Schema.optional(ImageImport).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/imageImports",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/imageImports", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsImageImportsRequest>;
 
@@ -3338,10 +3301,7 @@ export const ListProjectsLocationsImageImportsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/imageImports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/imageImports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsImageImportsRequest>;
 
@@ -3380,10 +3340,7 @@ export const DeleteProjectsLocationsImageImportsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/imageImports/{imageImportsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsImageImportsRequest>;
 
@@ -3414,10 +3371,7 @@ export const GetProjectsLocationsImageImportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/imageImports/{imageImportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsImageImportsRequest>;
 
@@ -3460,10 +3414,7 @@ export const ListProjectsLocationsImageImportsImageImportJobsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/imageImports/{imageImportsId}/imageImportJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/imageImportJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsImageImportsImageImportJobsRequest>;
 
@@ -3500,10 +3451,7 @@ export const GetProjectsLocationsImageImportsImageImportJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/imageImports/{imageImportsId}/imageImportJobs/{imageImportJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsImageImportsImageImportJobsRequest>;
 
@@ -3539,11 +3487,7 @@ export const CancelProjectsLocationsImageImportsImageImportJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelImageImportJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/imageImports/{imageImportsId}/imageImportJobs/{imageImportJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>;
 
@@ -3579,10 +3523,7 @@ export const DeleteProjectsLocationsTargetProjectsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/targetProjects/{targetProjectsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTargetProjectsRequest>;
 
@@ -3622,11 +3563,7 @@ export const PatchProjectsLocationsTargetProjectsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(TargetProject).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/targetProjects/{targetProjectsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTargetProjectsRequest>;
 
@@ -3657,10 +3594,7 @@ export const GetProjectsLocationsTargetProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/targetProjects/{targetProjectsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTargetProjectsRequest>;
 
@@ -3704,7 +3638,7 @@ export const CreateProjectsLocationsTargetProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/targetProjects",
+      path: "v1/{parent}/targetProjects",
       hasBody: true,
     }),
     svc,
@@ -3749,10 +3683,7 @@ export const ListProjectsLocationsTargetProjectsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/targetProjects",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/targetProjects" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTargetProjectsRequest>;
 
@@ -3802,10 +3733,7 @@ export const FetchStorageInventoryProjectsLocationsSourcesRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}:fetchStorageInventory",
-    }),
+    T.Http({ method: "GET", path: "v1/{source}:fetchStorageInventory" }),
     svc,
   ) as unknown as Schema.Schema<FetchStorageInventoryProjectsLocationsSourcesRequest>;
 
@@ -3850,11 +3778,7 @@ export const CreateProjectsLocationsSourcesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Source).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sources", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesRequest>;
 
@@ -3885,10 +3809,7 @@ export const GetProjectsLocationsSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesRequest>;
 
@@ -3922,10 +3843,7 @@ export const DeleteProjectsLocationsSourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesRequest>;
 
@@ -3967,10 +3885,7 @@ export const FetchInventoryProjectsLocationsSourcesRequest =
       T.HttpQuery("forceRefresh"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}:fetchInventory",
-    }),
+    T.Http({ method: "GET", path: "v1/{source}:fetchInventory" }),
     svc,
   ) as unknown as Schema.Schema<FetchInventoryProjectsLocationsSourcesRequest>;
 
@@ -4018,10 +3933,7 @@ export const ListProjectsLocationsSourcesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesRequest>;
 
@@ -4065,11 +3977,7 @@ export const PatchProjectsLocationsSourcesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Source).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSourcesRequest>;
 
@@ -4100,10 +4008,7 @@ export const GetProjectsLocationsSourcesDatacenterConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/datacenterConnectors/{datacenterConnectorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
@@ -4139,10 +4044,7 @@ export const DeleteProjectsLocationsSourcesDatacenterConnectorsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/datacenterConnectors/{datacenterConnectorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
@@ -4180,7 +4082,7 @@ export const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/datacenterConnectors/{datacenterConnectorsId}:upgradeAppliance",
+      path: "v1/{datacenterConnector}:upgradeAppliance",
       hasBody: true,
     }),
     svc,
@@ -4228,7 +4130,7 @@ export const CreateProjectsLocationsSourcesDatacenterConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/datacenterConnectors",
+      path: "v1/{parent}/datacenterConnectors",
       hasBody: true,
     }),
     svc,
@@ -4275,10 +4177,7 @@ export const ListProjectsLocationsSourcesDatacenterConnectorsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/datacenterConnectors",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/datacenterConnectors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
@@ -4328,7 +4227,7 @@ export const CreateProjectsLocationsSourcesDiskMigrationJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/diskMigrationJobs",
+      path: "v1/{parent}/diskMigrationJobs",
       hasBody: true,
     }),
     svc,
@@ -4374,10 +4273,7 @@ export const ListProjectsLocationsSourcesDiskMigrationJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/diskMigrationJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/diskMigrationJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
@@ -4422,11 +4318,7 @@ export const PatchProjectsLocationsSourcesDiskMigrationJobsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DiskMigrationJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/diskMigrationJobs/{diskMigrationJobsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
@@ -4460,11 +4352,7 @@ export const CancelProjectsLocationsSourcesDiskMigrationJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelDiskMigrationJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/diskMigrationJobs/{diskMigrationJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
@@ -4496,10 +4384,7 @@ export const GetProjectsLocationsSourcesDiskMigrationJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/diskMigrationJobs/{diskMigrationJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
@@ -4534,11 +4419,7 @@ export const RunProjectsLocationsSourcesDiskMigrationJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RunDiskMigrationJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/diskMigrationJobs/{diskMigrationJobsId}:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
@@ -4569,10 +4450,7 @@ export const DeleteProjectsLocationsSourcesDiskMigrationJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/diskMigrationJobs/{diskMigrationJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
@@ -4623,10 +4501,7 @@ export const ListProjectsLocationsSourcesUtilizationReportsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/utilizationReports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/utilizationReports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
 
@@ -4669,10 +4544,7 @@ export const GetProjectsLocationsSourcesUtilizationReportsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/utilizationReports/{utilizationReportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesUtilizationReportsRequest>;
 
@@ -4717,7 +4589,7 @@ export const CreateProjectsLocationsSourcesUtilizationReportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/utilizationReports",
+      path: "v1/{parent}/utilizationReports",
       hasBody: true,
     }),
     svc,
@@ -4755,10 +4627,7 @@ export const DeleteProjectsLocationsSourcesUtilizationReportsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/utilizationReports/{utilizationReportsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesUtilizationReportsRequest>;
 
@@ -4791,10 +4660,7 @@ export const DeleteProjectsLocationsSourcesMigratingVmsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>;
 
@@ -4830,7 +4696,7 @@ export const StartMigrationProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}:startMigration",
+      path: "v1/{migratingVm}:startMigration",
       hasBody: true,
     }),
     svc,
@@ -4876,11 +4742,7 @@ export const CreateProjectsLocationsSourcesMigratingVmsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(MigratingVm).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/migratingVms", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>;
 
@@ -4930,10 +4792,7 @@ export const ListProjectsLocationsSourcesMigratingVmsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/migratingVms" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
 
@@ -4974,7 +4833,7 @@ export const ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}:extendMigration",
+      path: "v1/{migratingVm}:extendMigration",
       hasBody: true,
     }),
     svc,
@@ -5014,7 +4873,7 @@ export const ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}:resumeMigration",
+      path: "v1/{migratingVm}:resumeMigration",
       hasBody: true,
     }),
     svc,
@@ -5056,10 +4915,7 @@ export const GetProjectsLocationsSourcesMigratingVmsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>;
 
@@ -5095,7 +4951,7 @@ export const PauseMigrationProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}:pauseMigration",
+      path: "v1/{migratingVm}:pauseMigration",
       hasBody: true,
     }),
     svc,
@@ -5139,11 +4995,7 @@ export const PatchProjectsLocationsSourcesMigratingVmsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(MigratingVm).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>;
 
@@ -5179,7 +5031,7 @@ export const FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}:finalizeMigration",
+      path: "v1/{migratingVm}:finalizeMigration",
       hasBody: true,
     }),
     svc,
@@ -5214,10 +5066,7 @@ export const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cutoverJobs/{cutoverJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
@@ -5253,11 +5102,7 @@ export const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelCutoverJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cutoverJobs/{cutoverJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
@@ -5302,10 +5147,7 @@ export const ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cutoverJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cutoverJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
@@ -5353,11 +5195,7 @@ export const CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(CutoverJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cutoverJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/cutoverJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
@@ -5393,11 +5231,7 @@ export const CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelCloneJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cloneJobs/{cloneJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
@@ -5442,10 +5276,7 @@ export const ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cloneJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cloneJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
@@ -5482,10 +5313,7 @@ export const GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cloneJobs/{cloneJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
@@ -5526,11 +5354,7 @@ export const CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CloneJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/cloneJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/cloneJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
@@ -5575,10 +5399,7 @@ export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/replicationCycles",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/replicationCycles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
@@ -5615,10 +5436,7 @@ export const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sources/{sourcesId}/migratingVms/{migratingVmsId}/replicationCycles/{replicationCyclesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 

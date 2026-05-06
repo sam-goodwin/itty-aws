@@ -47,7 +47,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -126,11 +126,11 @@ export const UpdateMembershipRolesParams =
 
 export interface ModifyMembershipRolesRequest {
   /** The `MembershipRole`s to be added. Adding or removing roles in the same request as updating roles is not supported. Must not be set if `update_roles_params` is set. */
-  addRoles?: Array<MembershipRole>;
+  addRoles?: ReadonlyArray<MembershipRole>;
   /** The `name`s of the `MembershipRole`s to be removed. Adding or removing roles in the same request as updating roles is not supported. It is not possible to remove the `MEMBER` `MembershipRole`. If you wish to delete a `Membership`, call MembershipsService.DeleteMembership instead. Must not contain `MEMBER`. Must not be set if `update_roles_params` is set. */
-  removeRoles?: Array<string>;
+  removeRoles?: ReadonlyArray<string>;
   /** The `MembershipRole`s to be updated. Updating roles in the same request as adding or removing roles is not supported. Must not be set if either `add_roles` or `remove_roles` is set. */
-  updateRolesParams?: Array<UpdateMembershipRolesParams>;
+  updateRolesParams?: ReadonlyArray<UpdateMembershipRolesParams>;
 }
 
 export const ModifyMembershipRolesRequest =
@@ -184,7 +184,7 @@ export const DynamicGroupStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DynamicGroupMetadata {
   /** Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups. */
-  queries?: Array<DynamicGroupQuery>;
+  queries?: ReadonlyArray<DynamicGroupQuery>;
   /** Output only. Status of the dynamic group. */
   status?: DynamicGroupStatus;
 }
@@ -211,7 +211,7 @@ export const PosixGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Group {
   /** Output only. Additional group keys associated with the Group. */
-  additionalGroupKeys?: Array<EntityKey>;
+  additionalGroupKeys?: ReadonlyArray<EntityKey>;
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`. */
   name?: string;
   /** Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793) */
@@ -223,7 +223,7 @@ export interface Group {
   /** Output only. The time when the `Group` was created. */
   createTime?: string;
   /** Optional. The POSIX groups associated with the `Group`. */
-  posixGroups?: Array<PosixGroup>;
+  posixGroups?: ReadonlyArray<PosixGroup>;
   /** Output only. The time when the `Group` was last updated. */
   updateTime?: string;
   /** Required. The `EntityKey` of the `Group`. */
@@ -252,7 +252,7 @@ export interface ListGroupsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
   nextPageToken?: string;
   /** The `Group` resources under the specified `parent`. */
-  groups?: Array<Group>;
+  groups?: ReadonlyArray<Group>;
 }
 
 export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -280,7 +280,7 @@ export const SamlIdpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Membership {
   /** The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`. */
-  roles?: Array<MembershipRole>;
+  roles?: ReadonlyArray<MembershipRole>;
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`. */
   name?: string;
   /** Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned. */
@@ -327,7 +327,7 @@ export interface MembershipAdjacencyList {
   /** Resource name of the group that the members belong to. */
   group?: string;
   /** Each edge contains information about the member that belongs to this group. Note: Fields returned here will help identify the specific Membership resource (e.g `name`, `preferred_member_key` and `role`), but may not be a comprehensive list of all fields. */
-  edges?: Array<Membership>;
+  edges?: ReadonlyArray<Membership>;
 }
 
 export const MembershipAdjacencyList =
@@ -348,7 +348,7 @@ export const TransitiveMembershipRole =
 
 export interface MemberRelation {
   /** The membership role details (i.e name of role and expiry time). */
-  roles?: Array<TransitiveMembershipRole>;
+  roles?: ReadonlyArray<TransitiveMembershipRole>;
   /** The relation between the group and the transitive membership. */
   relationType?:
     | "RELATION_TYPE_UNSPECIFIED"
@@ -357,7 +357,7 @@ export interface MemberRelation {
     | "DIRECT_AND_INDIRECT"
     | (string & {});
   /** Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace. */
-  preferredMemberKey?: Array<EntityKey>;
+  preferredMemberKey?: ReadonlyArray<EntityKey>;
   /** Resource name for this member. */
   member?: string;
 }
@@ -373,7 +373,7 @@ export interface SearchTransitiveMembershipsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
   /** List of transitive memberships satisfying the query. */
-  memberships?: Array<MemberRelation>;
+  memberships?: ReadonlyArray<MemberRelation>;
 }
 
 export const SearchTransitiveMembershipsResponse =
@@ -439,7 +439,7 @@ export interface ChromePolicy {
     | "RESTRICTED_MANAGED_GUEST_SESSION_OVERRIDE"
     | (string & {});
   /** Output only. A list of other policy values for the same policy name that were not applied due to lower precedence. This field is empty if there were no conflicts. */
-  conflicts?: Array<PolicyConflict>;
+  conflicts?: ReadonlyArray<PolicyConflict>;
   /** Output only. The unique name of the Chrome policy. These names correspond to the policy names listed in [Chrome Enterprise Policy List](https://chromeenterprise.google/policies/) */
   name?: string;
 }
@@ -468,7 +468,7 @@ export interface BrowserInfo {
   /** Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins). */
   isSiteIsolationEnabled?: boolean;
   /** Output only. Chrome policies information for the browser as can be seen in chrome://policy. Full possibilities of policies can be consulted in [Chrome Enterprise Policy List](https://chromeenterprise.google/policies/). */
-  policies?: Array<ChromePolicy>;
+  policies?: ReadonlyArray<ChromePolicy>;
   /** Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled). */
   isThirdPartyBlockingEnabled?: boolean;
   /** Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty. */
@@ -590,9 +590,9 @@ export interface EndpointVerificationSpecificAttributes {
   /** [Additional signals](https://cloud.google.com/endpoint-verification/docs/device-information) reported by Endpoint Verification. It includes the following attributes: * Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. * [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist. */
   additionalSignals?: Record<string, unknown>;
   /** Details of certificates. */
-  certificateAttributes?: Array<CertificateAttributes>;
+  certificateAttributes?: ReadonlyArray<CertificateAttributes>;
   /** Details of browser profiles reported by Endpoint Verification. */
-  browserAttributes?: Array<BrowserAttributes>;
+  browserAttributes?: ReadonlyArray<BrowserAttributes>;
 }
 
 export const EndpointVerificationSpecificAttributes =
@@ -653,23 +653,23 @@ export interface Device {
   /** Output only. Device manufacturer. Example: Motorola. */
   manufacturer?: string;
   /** WiFi MAC addresses of device. */
-  wifiMacAddresses?: Array<string>;
+  wifiMacAddresses?: ReadonlyArray<string>;
   /** Output only. IMEI number of device if GSM device; empty otherwise. */
   imei?: string;
   /** Host name of the device. */
   hostname?: string;
   /** Output only. Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com". */
-  otherAccounts?: Array<string>;
+  otherAccounts?: ReadonlyArray<string>;
   /** Output only. Model name of device. Example: Pixel 3. */
   model?: string;
   /** Browser profiles on the device. This is a copy of the BrowserAttributes message defined in EndpointVerificationSpecificAttributes. We are replicating it here since EndpointVerification isn't the only client reporting browser profiles. */
-  browserProfiles?: Array<BrowserAttributes>;
+  browserProfiles?: ReadonlyArray<BrowserAttributes>;
   /** Output only. Unified device id of the device. */
   unifiedDeviceId?: string;
   /** Output only. Kernel version of the device. */
   kernelVersion?: string;
   /** List of the clients the device is reporting to. */
-  clientTypes?: Array<
+  clientTypes?: ReadonlyArray<
     | "CLIENT_TYPE_UNSPECIFIED"
     | "DRIVE_FS"
     | "FUNDAMENTAL"
@@ -876,7 +876,7 @@ export interface MembershipRelation {
   /** The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`. */
   group?: string;
   /** The `MembershipRole`s that apply to the `Membership`. */
-  roles?: Array<MembershipRole>;
+  roles?: ReadonlyArray<MembershipRole>;
   /** The display name of the `Group`. */
   displayName?: string;
 }
@@ -893,7 +893,7 @@ export const MembershipRelation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchDirectGroupsResponse {
   /** List of direct groups satisfying the query. */
-  memberships?: Array<MembershipRelation>;
+  memberships?: ReadonlyArray<MembershipRelation>;
   /** Token to retrieve the next page of results, or empty if there are no more results available for listing. */
   nextPageToken?: string;
 }
@@ -1085,7 +1085,7 @@ export interface GroupRelation {
   /** Display name for this group. */
   displayName?: string;
   /** Membership roles of the member for the group. */
-  roles?: Array<TransitiveMembershipRole>;
+  roles?: ReadonlyArray<TransitiveMembershipRole>;
   /** The relation between the member and the transitive group. */
   relationType?:
     | "RELATION_TYPE_UNSPECIFIED"
@@ -1114,7 +1114,7 @@ export interface SearchTransitiveGroupsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results available for listing. */
   nextPageToken?: string;
   /** List of transitive groups satisfying the query. */
-  memberships?: Array<GroupRelation>;
+  memberships?: ReadonlyArray<GroupRelation>;
 }
 
 export const SearchTransitiveGroupsResponse =
@@ -1203,7 +1203,7 @@ export interface OidcRpConfig {
   /** OAuth2 client ID for OIDC. */
   clientId?: string;
   /** Output only. The URL(s) that this client may use in authentication requests. */
-  redirectUris?: Array<string>;
+  redirectUris?: ReadonlyArray<string>;
   /** Input only. OAuth2 client secret for OIDC. */
   clientSecret?: string;
 }
@@ -1237,7 +1237,7 @@ export const InboundOidcSsoProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInboundOidcSsoProfilesResponse {
   /** List of InboundOidcSsoProfiles. */
-  inboundOidcSsoProfiles?: Array<InboundOidcSsoProfile>;
+  inboundOidcSsoProfiles?: ReadonlyArray<InboundOidcSsoProfile>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1481,9 +1481,9 @@ export const CheckTransitiveMembershipResponse =
 
 export interface GetMembershipGraphResponse {
   /** The membership graph's path information represented as an adjacency list. */
-  adjacencyList?: Array<MembershipAdjacencyList>;
+  adjacencyList?: ReadonlyArray<MembershipAdjacencyList>;
   /** The resources representing each group in the adjacency list. Each group in this list can be correlated to a 'group' of the MembershipAdjacencyList using the 'name' of the Group resource. */
-  groups?: Array<Group>;
+  groups?: ReadonlyArray<Group>;
 }
 
 export const GetMembershipGraphResponse =
@@ -1592,9 +1592,9 @@ export const GoogleAppsCloudidentityDevicesV1CertificateAttributes =
 
 export interface GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
   /** Details of certificates. */
-  certificateAttributes?: Array<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
+  certificateAttributes?: ReadonlyArray<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
   /** Details of browser profiles reported by Endpoint Verification. */
-  browserAttributes?: Array<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
+  browserAttributes?: ReadonlyArray<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
   /** [Additional signals](https://cloud.google.com/endpoint-verification/docs/device-information) reported by Endpoint Verification. It includes the following attributes: * Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. * [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist. */
   additionalSignals?: Record<string, unknown>;
 }
@@ -1648,7 +1648,7 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
     | "CHROME_OS"
     | (string & {});
   /** WiFi MAC addresses of device. */
-  wifiMacAddresses?: Array<string>;
+  wifiMacAddresses?: ReadonlyArray<string>;
   /** Most recent time when device synced with this service. */
   lastSyncTime?: string;
   /** Unique identifier for the device. */
@@ -1662,7 +1662,7 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
   /** Host name of the device. */
   hostname?: string;
   /** Output only. Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com". */
-  otherAccounts?: Array<string>;
+  otherAccounts?: ReadonlyArray<string>;
   /** Output only. Baseband version of the device. */
   basebandVersion?: string;
   /** Output only. Build number of the device. */
@@ -1785,7 +1785,7 @@ export const SecuritySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInboundSamlSsoProfilesResponse {
   /** List of InboundSamlSsoProfiles. */
-  inboundSamlSsoProfiles?: Array<InboundSamlSsoProfile>;
+  inboundSamlSsoProfiles?: ReadonlyArray<InboundSamlSsoProfile>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1832,7 +1832,7 @@ export interface LookupSelfDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
   /** [Resource names](https://cloud.google.com/apis/design/resource_names) of the DeviceUsers in the format: `devices/{device_id}/deviceUsers/{user_resource_id}`, where device_id is the unique ID assigned to a Device and user_resource_id is the unique user ID */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
   /** The customer Id that may be passed back to other Devices API methods such as List, Get, etc. */
   customer?: string;
 }
@@ -1855,7 +1855,7 @@ export interface SearchGroupsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
   nextPageToken?: string;
   /** The `Group` resources that match the search query. */
-  groups?: Array<Group>;
+  groups?: ReadonlyArray<Group>;
 }
 
 export const SearchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1900,7 +1900,7 @@ export const OrgMembership = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOrgMembershipsResponse {
   /** The non-vacuous membership in an orgUnit. */
-  orgMemberships?: Array<OrgMembership>;
+  orgMemberships?: ReadonlyArray<OrgMembership>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1913,7 +1913,7 @@ export const ListOrgMembershipsResponse =
 
 export interface ListPoliciesResponse {
   /** The results */
-  policies?: Array<Policy>;
+  policies?: ReadonlyArray<Policy>;
   /** The pagination token to retrieve the next page of results. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1986,7 +1986,7 @@ export interface GoogleAppsCloudidentityDevicesV1ClientState {
     | "UNMANAGED"
     | (string & {});
   /** The caller can specify asset tags for this resource */
-  assetTags?: Array<string>;
+  assetTags?: ReadonlyArray<string>;
   /** The Health score of the resource. The Health score is the callers specification of the condition of the device from a usability point of view. For example, a third-party device management provider may specify a health score based on its compliance with organizational policies. */
   healthScore?:
     | "HEALTH_SCORE_UNSPECIFIED"
@@ -2115,7 +2115,7 @@ export interface ClientState {
   /** The token that needs to be passed back for concurrency control in updates. Token needs to be passed back in UpdateRequest */
   etag?: string;
   /** The caller can specify asset tags for this resource */
-  assetTags?: Array<string>;
+  assetTags?: ReadonlyArray<string>;
   /** The Health score of the resource */
   healthScore?:
     | "HEALTH_SCORE_UNSPECIFIED"
@@ -2146,7 +2146,7 @@ export const ClientState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListClientStatesResponse {
   /** Client states meeting the list restrictions. */
-  clientStates?: Array<ClientState>;
+  clientStates?: ReadonlyArray<ClientState>;
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
 }
@@ -2205,7 +2205,7 @@ export interface ListDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
   /** Devices meeting the list restrictions. */
-  deviceUsers?: Array<DeviceUser>;
+  deviceUsers?: ReadonlyArray<DeviceUser>;
 }
 
 export const ListDeviceUsersResponse =
@@ -2360,7 +2360,7 @@ export interface ListMembershipsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
   nextPageToken?: string;
   /** The `Membership`s under the specified `parent`. */
-  memberships?: Array<Membership>;
+  memberships?: ReadonlyArray<Membership>;
 }
 
 export const ListMembershipsResponse =
@@ -2389,7 +2389,7 @@ export const BlockDeviceUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListUserInvitationsResponse {
   /** The list of UserInvitation resources. */
-  userInvitations?: Array<UserInvitation>;
+  userInvitations?: ReadonlyArray<UserInvitation>;
   /** The token for the next page. If not empty, indicates that there may be more `UserInvitation` resources that match the listing request; this value can be used in a subsequent ListUserInvitationsRequest to get continued results with the current list call. */
   nextPageToken?: string;
 }
@@ -2402,7 +2402,7 @@ export const ListUserInvitationsResponse =
 
 export interface ListIdpCredentialsResponse {
   /** The IdpCredentials from the specified InboundSamlSsoProfile. */
-  idpCredentials?: Array<IdpCredential>;
+  idpCredentials?: ReadonlyArray<IdpCredential>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2415,7 +2415,7 @@ export const ListIdpCredentialsResponse =
 
 export interface ListDevicesResponse {
   /** Devices meeting the list restrictions. */
-  devices?: Array<Device>;
+  devices?: ReadonlyArray<Device>;
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
 }
@@ -2448,7 +2448,7 @@ export interface ListInboundSsoAssignmentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The assignments. */
-  inboundSsoAssignments?: Array<InboundSsoAssignment>;
+  inboundSsoAssignments?: ReadonlyArray<InboundSsoAssignment>;
 }
 
 export const ListInboundSsoAssignmentsResponse =
@@ -2472,7 +2472,7 @@ export const GetDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   customer: Schema.optional(Schema.String).pipe(T.HttpQuery("customer")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/devices/{devicesId}" }),
+  T.Http({ method: "GET", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDevicesRequest>;
 
@@ -2557,7 +2557,7 @@ export const DeleteDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   customer: Schema.optional(Schema.String).pipe(T.HttpQuery("customer")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1beta1/devices/{devicesId}" }),
+  T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteDevicesRequest>;
 
@@ -2589,11 +2589,7 @@ export const WipeDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(WipeDeviceRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1beta1/devices/{devicesId}:wipe",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1beta1/{name}:wipe", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<WipeDevicesRequest>;
 
@@ -2657,7 +2653,7 @@ export const CancelWipeDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/devices/{devicesId}:cancelWipe",
+      path: "v1beta1/{name}:cancelWipe",
       hasBody: true,
     }),
     svc,
@@ -2692,10 +2688,7 @@ export const GetDevicesDeviceUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     customer: Schema.optional(Schema.String).pipe(T.HttpQuery("customer")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDevicesDeviceUsersRequest>;
 
@@ -2741,7 +2734,7 @@ export const ListDevicesDeviceUsersRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/devices/{devicesId}/deviceUsers" }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/deviceUsers" }),
     svc,
   ) as unknown as Schema.Schema<ListDevicesDeviceUsersRequest>;
 
@@ -2779,10 +2772,7 @@ export const DeleteDevicesDeviceUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     customer: Schema.optional(Schema.String).pipe(T.HttpQuery("customer")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDevicesDeviceUsersRequest>;
 
@@ -2838,10 +2828,7 @@ export const LookupDevicesDeviceUsersRequest =
       T.HttpQuery("rawResourceId"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/devices/{devicesId}/deviceUsers:lookup",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}:lookup" }),
     svc,
   ) as unknown as Schema.Schema<LookupDevicesDeviceUsersRequest>;
 
@@ -2879,11 +2866,7 @@ export const WipeDevicesDeviceUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WipeDeviceUserRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:wipe",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:wipe", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WipeDevicesDeviceUsersRequest>;
 
@@ -2917,11 +2900,7 @@ export const ApproveDevicesDeviceUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveDeviceUserRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:approve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveDevicesDeviceUsersRequest>;
 
@@ -2955,11 +2934,7 @@ export const BlockDevicesDeviceUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(BlockDeviceUserRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:block",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:block", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BlockDevicesDeviceUsersRequest>;
 
@@ -2995,7 +2970,7 @@ export const CancelWipeDevicesDeviceUsersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:cancelWipe",
+      path: "v1beta1/{name}:cancelWipe",
       hasBody: true,
     }),
     svc,
@@ -3031,10 +3006,7 @@ export const GetDevicesDeviceUsersClientStatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     customer: Schema.optional(Schema.String).pipe(T.HttpQuery("customer")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}/clientStates/{clientStatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDevicesDeviceUsersClientStatesRequest>;
 
@@ -3074,11 +3046,7 @@ export const PatchDevicesDeviceUsersClientStatesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ClientState).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}/clientStates/{clientStatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchDevicesDeviceUsersClientStatesRequest>;
 
@@ -3109,10 +3077,7 @@ export const GetInboundOidcSsoProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/inboundOidcSsoProfiles/{inboundOidcSsoProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetInboundOidcSsoProfilesRequest>;
 
@@ -3149,11 +3114,7 @@ export const PatchInboundOidcSsoProfilesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(InboundOidcSsoProfile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/inboundOidcSsoProfiles/{inboundOidcSsoProfilesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchInboundOidcSsoProfilesRequest>;
 
@@ -3184,10 +3145,7 @@ export const DeleteInboundOidcSsoProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/inboundOidcSsoProfiles/{inboundOidcSsoProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteInboundOidcSsoProfilesRequest>;
 
@@ -3301,11 +3259,7 @@ export const PatchInboundSamlSsoProfilesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(InboundSamlSsoProfile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/inboundSamlSsoProfiles/{inboundSamlSsoProfilesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchInboundSamlSsoProfilesRequest>;
 
@@ -3336,10 +3290,7 @@ export const GetInboundSamlSsoProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/inboundSamlSsoProfiles/{inboundSamlSsoProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetInboundSamlSsoProfilesRequest>;
 
@@ -3370,10 +3321,7 @@ export const DeleteInboundSamlSsoProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/inboundSamlSsoProfiles/{inboundSamlSsoProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteInboundSamlSsoProfilesRequest>;
 
@@ -3481,10 +3429,7 @@ export const DeleteInboundSamlSsoProfilesIdpCredentialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/inboundSamlSsoProfiles/{inboundSamlSsoProfilesId}/idpCredentials/{idpCredentialsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>;
 
@@ -3521,10 +3466,7 @@ export const ListInboundSamlSsoProfilesIdpCredentialsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/inboundSamlSsoProfiles/{inboundSamlSsoProfilesId}/idpCredentials",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/idpCredentials" }),
     svc,
   ) as unknown as Schema.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
 
@@ -3565,7 +3507,7 @@ export const AddInboundSamlSsoProfilesIdpCredentialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/inboundSamlSsoProfiles/{inboundSamlSsoProfilesId}/idpCredentials:add",
+      path: "v1beta1/{parent}/idpCredentials:add",
       hasBody: true,
     }),
     svc,
@@ -3598,10 +3540,7 @@ export const GetInboundSamlSsoProfilesIdpCredentialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/inboundSamlSsoProfiles/{inboundSamlSsoProfilesId}/idpCredentials/{idpCredentialsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>;
 
@@ -3644,10 +3583,7 @@ export const ListCustomersUserinvitationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/customers/{customersId}/userinvitations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/userinvitations" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersUserinvitationsRequest>;
 
@@ -3685,11 +3621,7 @@ export const CancelCustomersUserinvitationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelUserInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/customers/{customersId}/userinvitations/{userinvitationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelCustomersUserinvitationsRequest>;
 
@@ -3720,10 +3652,7 @@ export const GetCustomersUserinvitationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/customers/{customersId}/userinvitations/{userinvitationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersUserinvitationsRequest>;
 
@@ -3757,11 +3686,7 @@ export const SendCustomersUserinvitationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SendUserInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/customers/{customersId}/userinvitations/{userinvitationsId}:send",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:send", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SendCustomersUserinvitationsRequest>;
 
@@ -3792,10 +3717,7 @@ export const IsInvitableUserCustomersUserinvitationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/customers/{customersId}/userinvitations/{userinvitationsId}:isInvitableUser",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}:isInvitableUser" }),
     svc,
   ) as unknown as Schema.Schema<IsInvitableUserCustomersUserinvitationsRequest>;
 
@@ -3868,11 +3790,7 @@ export const PatchInboundSsoAssignmentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(InboundSsoAssignment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/inboundSsoAssignments/{inboundSsoAssignmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchInboundSsoAssignmentsRequest>;
 
@@ -3903,10 +3821,7 @@ export const GetInboundSsoAssignmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/inboundSsoAssignments/{inboundSsoAssignmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetInboundSsoAssignmentsRequest>;
 
@@ -3937,10 +3852,7 @@ export const DeleteInboundSsoAssignmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/inboundSsoAssignments/{inboundSsoAssignmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteInboundSsoAssignmentsRequest>;
 
@@ -4025,10 +3937,7 @@ export const ListOrgUnitsMembershipsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/orgUnits/{orgUnitsId}/memberships",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/memberships" }),
     svc,
   ) as unknown as Schema.Schema<ListOrgUnitsMembershipsRequest>;
 
@@ -4066,11 +3975,7 @@ export const MoveOrgUnitsMembershipsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MoveOrgMembershipRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/orgUnits/{orgUnitsId}/memberships/{membershipsId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveOrgUnitsMembershipsRequest>;
 
@@ -4129,7 +4034,7 @@ export interface GetPoliciesRequest {
 export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/policies/{policiesId}" }),
+  T.Http({ method: "GET", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPoliciesRequest>;
 
@@ -4161,11 +4066,7 @@ export const PatchPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(Policy).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1beta1/policies/{policiesId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchPoliciesRequest>;
 
@@ -4234,7 +4135,7 @@ export interface DeletePoliciesRequest {
 export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1beta1/policies/{policiesId}" }),
+  T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeletePoliciesRequest>;
 
@@ -4267,10 +4168,7 @@ export const GetSecuritySettingsGroupsRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/groups/{groupsId}/securitySettings",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSecuritySettingsGroupsRequest>;
 
@@ -4338,7 +4236,7 @@ export interface DeleteGroupsRequest {
 export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1beta1/groups/{groupsId}" }),
+  T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteGroupsRequest>;
 
@@ -4411,11 +4309,7 @@ export const UpdateSecuritySettingsGroupsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecuritySettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/groups/{groupsId}/securitySettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecuritySettingsGroupsRequest>;
 
@@ -4451,7 +4345,7 @@ export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Group).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1beta1/groups/{groupsId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchGroupsRequest>;
 
@@ -4526,7 +4420,7 @@ export interface GetGroupsRequest {
 export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/groups/{groupsId}" }),
+  T.Http({ method: "GET", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetGroupsRequest>;
 
@@ -4604,7 +4498,7 @@ export const ModifyMembershipRolesGroupsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/groups/{groupsId}/memberships/{membershipsId}:modifyMembershipRoles",
+      path: "v1beta1/{name}:modifyMembershipRoles",
       hasBody: true,
     }),
     svc,
@@ -4646,7 +4540,7 @@ export const SearchTransitiveMembershipsGroupsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/groups/{groupsId}/memberships:searchTransitiveMemberships",
+      path: "v1beta1/{parent}/memberships:searchTransitiveMemberships",
     }),
     svc,
   ) as unknown as Schema.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>;
@@ -4683,10 +4577,7 @@ export const GetGroupsMembershipsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/groups/{groupsId}/memberships/{membershipsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetGroupsMembershipsRequest>;
 
@@ -4726,7 +4617,7 @@ export const ListGroupsMembershipsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/groups/{groupsId}/memberships" }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/memberships" }),
     svc,
   ) as unknown as Schema.Schema<ListGroupsMembershipsRequest>;
 
@@ -4775,7 +4666,7 @@ export const SearchDirectGroupsGroupsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/groups/{groupsId}/memberships:searchDirectGroups",
+      path: "v1beta1/{parent}/memberships:searchDirectGroups",
     }),
     svc,
   ) as unknown as Schema.Schema<SearchDirectGroupsGroupsMembershipsRequest>;
@@ -4817,7 +4708,7 @@ export const CheckTransitiveMembershipGroupsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/groups/{groupsId}/memberships:checkTransitiveMembership",
+      path: "v1beta1/{parent}/memberships:checkTransitiveMembership",
     }),
     svc,
   ) as unknown as Schema.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>;
@@ -4855,7 +4746,7 @@ export const CreateGroupsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/groups/{groupsId}/memberships",
+      path: "v1beta1/{parent}/memberships",
       hasBody: true,
     }),
     svc,
@@ -4899,7 +4790,7 @@ export const SearchTransitiveGroupsGroupsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/groups/{groupsId}/memberships:searchTransitiveGroups",
+      path: "v1beta1/{parent}/memberships:searchTransitiveGroups",
     }),
     svc,
   ) as unknown as Schema.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>;
@@ -4936,10 +4827,7 @@ export const DeleteGroupsMembershipsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/groups/{groupsId}/memberships/{membershipsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteGroupsMembershipsRequest>;
 
@@ -4980,10 +4868,7 @@ export const LookupGroupsMembershipsRequest =
       T.HttpQuery("memberKey.id"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/groups/{groupsId}/memberships:lookup",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/memberships:lookup" }),
     svc,
   ) as unknown as Schema.Schema<LookupGroupsMembershipsRequest>;
 
@@ -5019,7 +4904,7 @@ export const GetMembershipGraphGroupsMembershipsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/groups/{groupsId}/memberships:getMembershipGraph",
+      path: "v1beta1/{parent}/memberships:getMembershipGraph",
     }),
     svc,
   ) as unknown as Schema.Schema<GetMembershipGraphGroupsMembershipsRequest>;

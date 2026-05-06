@@ -68,11 +68,11 @@ export interface CseKeyPair {
   /** Output only. The public key and its certificate chain, in [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) format. */
   pem?: string;
   /** Output only. The email address identities that are specified on the leaf certificate. */
-  subjectEmailAddresses?: Array<string>;
+  subjectEmailAddresses?: ReadonlyArray<string>;
   /** Output only. The current state of the key pair. */
   enablementState?: "stateUnspecified" | "enabled" | "disabled" | (string & {});
   /** Metadata for instances of this key pair's private key. */
-  privateKeyMetadata?: Array<CsePrivateKeyMetadata>;
+  privateKeyMetadata?: ReadonlyArray<CsePrivateKeyMetadata>;
 }
 
 export const CseKeyPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -87,7 +87,7 @@ export const CseKeyPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCseKeyPairsResponse {
   /** One page of the list of CSE key pairs installed for the user. */
-  cseKeyPairs?: Array<CseKeyPair>;
+  cseKeyPairs?: ReadonlyArray<CseKeyPair>;
   /** Pagination token to be passed to a subsequent ListCseKeyPairs call in order to retrieve the next page of key pairs. If this value is not returned, then no further pages remain. */
   nextPageToken?: string;
 }
@@ -172,7 +172,7 @@ export const MessagePartHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MessagePart {
   /** The child MIME message parts of this part. This only applies to container MIME message parts, for example `multipart/*`. For non- container MIME message part types, such as `text/plain`, this field is empty. For more information, see RFC 1521. */
-  parts?: Array<MessagePart>;
+  parts?: ReadonlyArray<MessagePart>;
   /** The immutable ID of the message part. */
   partId?: string;
   /** The MIME type of the message part. */
@@ -182,7 +182,7 @@ export interface MessagePart {
   /** The message part body for this part, which may be empty for container MIME message parts. */
   body?: MessagePartBody;
   /** List of headers on this message part. For the top-level message part, representing the entire message payload, it will contain the standard RFC 2822 email headers such as `To`, `From`, and `Subject`. */
-  headers?: Array<MessagePartHeader>;
+  headers?: ReadonlyArray<MessagePartHeader>;
 }
 
 export const MessagePart: Schema.Schema<MessagePart> =
@@ -216,7 +216,7 @@ export interface ClassificationLabelValue {
   /** Required. The canonical or raw alphanumeric classification label ID. Maps to the ID field of the Google Drive Label resource. */
   labelId?: string;
   /** Field values for the given classification label ID. */
-  fields?: Array<ClassificationLabelFieldValue>;
+  fields?: ReadonlyArray<ClassificationLabelFieldValue>;
 }
 
 export const ClassificationLabelValue =
@@ -231,11 +231,11 @@ export interface Message {
   /** The ID of the thread the message belongs to. To add a message or draft to a thread, the following criteria must be met: 1. The requested `threadId` must be specified on the `Message` or `Draft.Message` you supply with your request. 2. The `References` and `In-Reply-To` headers must be set in compliance with the [RFC 2822](https://tools.ietf.org/html/rfc2822) standard. 3. The `Subject` headers must match. */
   threadId?: string;
   /** List of IDs of labels applied to this message. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
   /** The parsed email structure in the message parts. */
   payload?: MessagePart;
   /** Classification Label values on the message. Available Classification Label schemas can be queried using the Google Drive Labels API. Each classification label ID must be unique. If duplicate IDs are provided, only one will be retained, and the selection is arbitrary. Only used for Google Workspace accounts. */
-  classificationLabelValues?: Array<ClassificationLabelValue>;
+  classificationLabelValues?: ReadonlyArray<ClassificationLabelValue>;
   /** The ID of the last history record that modified this message. */
   historyId?: string;
   /** The internal message creation timestamp (epoch ms), which determines ordering in the inbox. For normal SMTP-received email, this represents the time the message was originally accepted by Google, which is more reliable than the `Date` header. However, for API-migrated mail, it can be configured by client to be based on the `Date` header. */
@@ -269,7 +269,7 @@ export interface Thread {
   /** A short part of the message text. */
   snippet?: string;
   /** The list of messages in the thread. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The ID of the last history record that modified this thread. */
   historyId?: string;
 }
@@ -301,7 +301,7 @@ export const Delegate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDelegatesResponse {
   /** List of the user's delegates (with any verification status). If an account doesn't have delegates, this field doesn't appear. */
-  delegates?: Array<Delegate>;
+  delegates?: ReadonlyArray<Delegate>;
 }
 
 export const ListDelegatesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -376,7 +376,7 @@ export const Label = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLabelsResponse {
   /** List of labels. Note that each label resource only contains an `id`, `name`, `messageListVisibility`, `labelListVisibility`, and `type`. The [`labels.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/labels/get) method can fetch additional label details. */
-  labels?: Array<Label>;
+  labels?: ReadonlyArray<Label>;
 }
 
 export const ListLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -415,7 +415,7 @@ export const VacationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSmimeInfoResponse {
   /** List of SmimeInfo. */
-  smimeInfo?: Array<SmimeInfo>;
+  smimeInfo?: ReadonlyArray<SmimeInfo>;
 }
 
 export const ListSmimeInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -424,9 +424,9 @@ export const ListSmimeInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FilterAction {
   /** List of labels to add to the message. */
-  addLabelIds?: Array<string>;
+  addLabelIds?: ReadonlyArray<string>;
   /** List of labels to remove from the message. */
-  removeLabelIds?: Array<string>;
+  removeLabelIds?: ReadonlyArray<string>;
   /** Email address that the message should be forwarded to. */
   forward?: string;
 }
@@ -511,7 +511,7 @@ export const ForwardingAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListForwardingAddressesResponse {
   /** List of addresses that may be used for forwarding. */
-  forwardingAddresses?: Array<ForwardingAddress>;
+  forwardingAddresses?: ReadonlyArray<ForwardingAddress>;
 }
 
 export const ListForwardingAddressesResponse =
@@ -568,7 +568,7 @@ export interface ListMessagesResponse {
   /** Token to retrieve the next page of results in the list. */
   nextPageToken?: string;
   /** List of messages. Note that each message resource contains only an `id` and a `threadId`. Additional message details can be fetched using the messages.get method. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Estimated total number of results. */
   resultSizeEstimate?: number;
 }
@@ -644,7 +644,7 @@ export const SendAs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSendAsResponse {
   /** List of send-as aliases. */
-  sendAs?: Array<SendAs>;
+  sendAs?: ReadonlyArray<SendAs>;
 }
 
 export const ListSendAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -693,7 +693,7 @@ export const LanguageSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface HistoryLabelRemoved {
   message?: Message;
   /** Label IDs removed from the message. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
 }
 
 export const HistoryLabelRemoved = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -704,7 +704,7 @@ export const HistoryLabelRemoved = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface HistoryLabelAdded {
   message?: Message;
   /** Label IDs added to the message. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
 }
 
 export const HistoryLabelAdded = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -722,17 +722,17 @@ export const HistoryMessageDeleted = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface History {
   /** Labels removed from messages in this history record. */
-  labelsRemoved?: Array<HistoryLabelRemoved>;
+  labelsRemoved?: ReadonlyArray<HistoryLabelRemoved>;
   /** Messages added to the mailbox in this history record. */
-  messagesAdded?: Array<HistoryMessageAdded>;
+  messagesAdded?: ReadonlyArray<HistoryMessageAdded>;
   /** List of messages changed in this history record. The fields for specific change types, such as `messagesAdded` may duplicate messages in this field. We recommend using the specific change-type fields instead of this. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The mailbox sequence ID. */
   id?: string;
   /** Labels added to messages in this history record. */
-  labelsAdded?: Array<HistoryLabelAdded>;
+  labelsAdded?: ReadonlyArray<HistoryLabelAdded>;
   /** Messages deleted (not Trashed) from the mailbox in this history record. */
-  messagesDeleted?: Array<HistoryMessageDeleted>;
+  messagesDeleted?: ReadonlyArray<HistoryMessageDeleted>;
 }
 
 export const History = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -746,7 +746,7 @@ export const History = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListHistoryResponse {
   /** List of history records. Any `messages` contained in the response will typically only have `id` and `threadId` fields populated. */
-  history?: Array<History>;
+  history?: ReadonlyArray<History>;
   /** Page token to retrieve the next page of results in the list. */
   nextPageToken?: string;
   /** The ID of the mailbox's current history record. */
@@ -761,9 +761,9 @@ export const ListHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ModifyMessageRequest {
   /** A list of IDs of labels to add to this message. You can add up to 100 labels with each update. */
-  addLabelIds?: Array<string>;
+  addLabelIds?: ReadonlyArray<string>;
   /** A list IDs of labels to remove from this message. You can remove up to 100 labels with each update. */
-  removeLabelIds?: Array<string>;
+  removeLabelIds?: ReadonlyArray<string>;
 }
 
 export const ModifyMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -795,7 +795,7 @@ export const CseIdentity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCseIdentitiesResponse {
   /** One page of the list of CSE identities configured for the user. */
-  cseIdentities?: Array<CseIdentity>;
+  cseIdentities?: ReadonlyArray<CseIdentity>;
   /** Pagination token to be passed to a subsequent ListCseIdentities call in order to retrieve the next page of identities. If this value is not returned or is the empty string, then no further pages remain. */
   nextPageToken?: string;
 }
@@ -810,7 +810,7 @@ export interface ListDraftsResponse {
   /** Estimated total number of results. */
   resultSizeEstimate?: number;
   /** List of drafts. Note that the `Message` property in each `Draft` resource only contains an `id` and a `threadId`. The [`messages.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/messages/get) method can fetch additional message details. */
-  drafts?: Array<Draft>;
+  drafts?: ReadonlyArray<Draft>;
   /** Token to retrieve the next page of results in the list. */
   nextPageToken?: string;
 }
@@ -823,11 +823,11 @@ export const ListDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchModifyMessagesRequest {
   /** A list of label IDs to add to messages. */
-  addLabelIds?: Array<string>;
+  addLabelIds?: ReadonlyArray<string>;
   /** A list of label IDs to remove from messages. */
-  removeLabelIds?: Array<string>;
+  removeLabelIds?: ReadonlyArray<string>;
   /** The IDs of the messages to modify. There is a limit of 1000 ids per request. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const BatchModifyMessagesRequest =
@@ -843,7 +843,7 @@ export interface WatchRequest {
   /** Filtering behavior of `labelIds list` specified. This field replaces `label_filter_action`; if set, `label_filter_action` is ignored. */
   labelFilterBehavior?: "include" | "exclude" | (string & {});
   /** List of label_ids to restrict notifications about. By default, if unspecified, all changes are pushed out. If specified then dictates which labels are required for a push notification to be generated. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
   /** Filtering behavior of `labelIds list` specified. This field is deprecated because it caused incorrect behavior in some cases; use `label_filter_behavior` instead. */
   labelFilterAction?: "include" | "exclude" | (string & {});
 }
@@ -861,7 +861,7 @@ export interface ListThreadsResponse {
   /** Estimated total number of results. */
   resultSizeEstimate?: number;
   /** List of threads. Note that each thread resource does not contain a list of `messages`. The list of `messages` for a given thread can be fetched using the [`threads.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/threads/get) method. */
-  threads?: Array<Thread>;
+  threads?: ReadonlyArray<Thread>;
 }
 
 export const ListThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -872,7 +872,7 @@ export const ListThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchDeleteMessagesRequest {
   /** The IDs of the messages to delete. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const BatchDeleteMessagesRequest =
@@ -889,9 +889,9 @@ export const EnableCseKeyPairRequest =
 
 export interface ModifyThreadRequest {
   /** A list of IDs of labels to add to this thread. You can add up to 100 labels with each update. */
-  addLabelIds?: Array<string>;
+  addLabelIds?: ReadonlyArray<string>;
   /** A list of IDs of labels to remove from this thread. You can remove up to 100 labels with each update. */
-  removeLabelIds?: Array<string>;
+  removeLabelIds?: ReadonlyArray<string>;
 }
 
 export const ModifyThreadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -901,7 +901,7 @@ export const ModifyThreadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFiltersResponse {
   /** List of a user's filters. */
-  filter?: Array<Filter>;
+  filter?: ReadonlyArray<Filter>;
 }
 
 export const ListFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

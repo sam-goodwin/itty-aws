@@ -189,7 +189,7 @@ export interface LineItemDetails {
   /** Required. The Content API REST ID of the product, in the form channel:contentLanguage:targetCountry:offerId. */
   productId?: string;
   /** Optional. The Global Trade Item Numbers. */
-  gtins?: Array<string>;
+  gtins?: ReadonlyArray<string>;
   /** Required. The ID for this line item. */
   lineItemId?: string;
   /** Optional. The Global Trade Item Number. */
@@ -213,7 +213,7 @@ export interface OrderTrackingSignal {
   /** Optional. The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the shipping destination. */
   deliveryRegionCode?: string;
   /** Required. The shipping information for the order. */
-  shippingInfo?: Array<ShippingInfo>;
+  shippingInfo?: ReadonlyArray<ShippingInfo>;
   /** Optional. The shipping fee of the order; this value should be set to zero in the case of free shipping. */
   customerShippingFee?: Price;
   /** Optional. The delivery postal code, as a continuous string without spaces or dashes, for example "95016". This field will be anonymized in returned OrderTrackingSignal creation response. */
@@ -225,9 +225,9 @@ export interface OrderTrackingSignal {
   /** Required. The ID of the order on the businesses side. This field will be hashed in returned OrderTrackingSignal creation response. */
   orderId?: string;
   /** Required. Information about line items in the order. */
-  lineItems?: Array<LineItemDetails>;
+  lineItems?: ReadonlyArray<LineItemDetails>;
   /** Optional. The mapping of the line items to the shipment information. */
-  shipmentLineItemMapping?: Array<ShipmentLineItemMapping>;
+  shipmentLineItemMapping?: ReadonlyArray<ShipmentLineItemMapping>;
 }
 
 export const OrderTrackingSignal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -259,7 +259,7 @@ export interface ProductStatusChangeMessage {
   /** The resource that changed, in this case it will always be `Product`. */
   resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
   eventTime?: string;
   /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
@@ -302,7 +302,7 @@ export const CreateAccountsOrderTrackingSignalsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "ordertracking/v1beta/accounts/{accountsId}/orderTrackingSignals",
+      path: "ordertracking/v1beta/{parent}/orderTrackingSignals",
       hasBody: true,
     }),
     svc,

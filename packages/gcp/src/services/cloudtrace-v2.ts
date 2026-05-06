@@ -79,7 +79,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -127,7 +127,7 @@ export interface TimeEvents {
   /** The number of dropped annotations in all the included time events. If the value is 0, then no annotations were dropped. */
   droppedAnnotationsCount?: number;
   /** A collection of `TimeEvent`s. */
-  timeEvent?: Array<TimeEvent>;
+  timeEvent?: ReadonlyArray<TimeEvent>;
   /** The number of dropped message events in all the included time events. If the value is 0, then no message events were dropped. */
   droppedMessageEventsCount?: number;
 }
@@ -179,7 +179,7 @@ export const StackFrame = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StackFrames {
   /** Stack frames in this call stack. */
-  frame?: Array<StackFrame>;
+  frame?: ReadonlyArray<StackFrame>;
   /** The number of stack frames that were dropped because there were too many stack frames. If this value is 0, then no stack frames were dropped. */
   droppedFramesCount?: number;
 }
@@ -225,7 +225,7 @@ export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Links {
   /** A collection of links. */
-  link?: Array<Link>;
+  link?: ReadonlyArray<Link>;
   /** The number of dropped links after the maximum size was enforced. If this value is 0, then no links were dropped. */
   droppedLinksCount?: number;
 }
@@ -292,7 +292,7 @@ export const Span = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchWriteSpansRequest {
   /** Required. A list of new spans. The span names must not match existing spans, otherwise the results are undefined. */
-  spans?: Array<Span>;
+  spans?: ReadonlyArray<Span>;
 }
 
 export const BatchWriteSpansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -325,7 +325,7 @@ export const BatchWriteProjectsTracesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/traces:batchWrite",
+      path: "v2/{name}/traces:batchWrite",
       hasBody: true,
     }),
     svc,
@@ -361,11 +361,7 @@ export const CreateSpanProjectsTracesSpansRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Span).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/traces/{tracesId}/spans/{spansId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpanProjectsTracesSpansRequest>;
 

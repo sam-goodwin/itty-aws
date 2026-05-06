@@ -11009,7 +11009,7 @@ export class DBClusterNotFoundFault extends S.TaggedErrorClass<DBClusterNotFound
   "DBClusterNotFoundFault",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "DBClusterNotFoundFault", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class DBClusterRoleAlreadyExistsFault extends S.TaggedErrorClass<DBClusterRoleAlreadyExistsFault>()(
   "DBClusterRoleAlreadyExistsFault",
   { message: S.optional(S.String) },
@@ -11033,7 +11033,7 @@ export class InvalidDBClusterStateFault extends S.TaggedErrorClass<InvalidDBClus
     code: "InvalidDBClusterStateFault",
     httpResponseCode: 400,
   }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withConflictError, C.withRetryableError) {}
 export class DBInstanceNotFoundFault extends S.TaggedErrorClass<DBInstanceNotFoundFault>()(
   "DBInstanceNotFoundFault",
   { message: S.optional(S.String) },
@@ -11160,7 +11160,7 @@ export class DBSecurityGroupNotFoundFault extends S.TaggedErrorClass<DBSecurityG
   "DBSecurityGroupNotFoundFault",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "DBSecurityGroupNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class InvalidDBSecurityGroupStateFault extends S.TaggedErrorClass<InvalidDBSecurityGroupStateFault>()(
   "InvalidDBSecurityGroupStateFault",
   { message: S.optional(S.String) },
@@ -11194,7 +11194,7 @@ export class DBParameterGroupNotFoundFault extends S.TaggedErrorClass<DBParamete
   "DBParameterGroupNotFoundFault",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "DBParameterGroupNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class DBParameterGroupQuotaExceededFault extends S.TaggedErrorClass<DBParameterGroupQuotaExceededFault>()(
   "DBParameterGroupQuotaExceededFault",
   { message: S.optional(S.String) },
@@ -11299,7 +11299,7 @@ export class DBClusterQuotaExceededFault extends S.TaggedErrorClass<DBClusterQuo
     code: "DBClusterQuotaExceededFault",
     httpResponseCode: 403,
   }),
-).pipe(C.withAuthError) {}
+).pipe(C.withAuthError, C.withQuotaError) {}
 export class InstanceQuotaExceededFault extends S.TaggedErrorClass<InstanceQuotaExceededFault>()(
   "InstanceQuotaExceededFault",
   { message: S.optional(S.String) },
@@ -11381,7 +11381,7 @@ export class DBClusterAlreadyExistsFault extends S.TaggedErrorClass<DBClusterAlr
     code: "DBClusterAlreadyExistsFault",
     httpResponseCode: 400,
   }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+).pipe(C.withBadRequestError, C.withConflictError, C.withAlreadyExistsError) {}
 export class DBSubnetGroupDoesNotCoverEnoughAZs extends S.TaggedErrorClass<DBSubnetGroupDoesNotCoverEnoughAZs>()(
   "DBSubnetGroupDoesNotCoverEnoughAZs",
   { message: S.optional(S.String) },
@@ -11397,7 +11397,7 @@ export class DBSubnetGroupNotFoundFault extends S.TaggedErrorClass<DBSubnetGroup
     code: "DBSubnetGroupNotFoundFault",
     httpResponseCode: 404,
   }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class DomainNotFoundFault extends S.TaggedErrorClass<DomainNotFoundFault>()(
   "DomainNotFoundFault",
   { message: S.optional(S.String) },
@@ -11522,7 +11522,7 @@ export class ProvisionedIopsNotAvailableInAZFault extends S.TaggedErrorClass<Pro
     code: "ProvisionedIopsNotAvailableInAZFault",
     httpResponseCode: 400,
   }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withQuotaError) {}
 export class TenantDatabaseQuotaExceededFault extends S.TaggedErrorClass<TenantDatabaseQuotaExceededFault>()(
   "TenantDatabaseQuotaExceededFault",
   { message: S.optional(S.String) },
@@ -11630,7 +11630,7 @@ export class DBSubnetGroupQuotaExceededFault extends S.TaggedErrorClass<DBSubnet
     code: "DBSubnetGroupQuotaExceeded",
     httpResponseCode: 400,
   }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withQuotaError) {}
 export class DBSubnetQuotaExceededFault extends S.TaggedErrorClass<DBSubnetQuotaExceededFault>()(
   "DBSubnetQuotaExceededFault",
   { message: S.optional(S.String) },
@@ -11975,7 +11975,7 @@ export class InsufficientDBClusterCapacityFault extends S.TaggedErrorClass<Insuf
     code: "InsufficientDBClusterCapacityFault",
     httpResponseCode: 403,
   }),
-).pipe(C.withAuthError) {}
+).pipe(C.withAuthError, C.withQuotaError) {}
 export class InvalidRestoreFault extends S.TaggedErrorClass<InvalidRestoreFault>()(
   "InvalidRestoreFault",
   { message: S.optional(S.String) },
