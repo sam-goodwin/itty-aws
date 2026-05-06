@@ -156,7 +156,7 @@ export const GoogleCloudSecuritycenterV2PortRange =
 
 export interface GoogleCloudSecuritycenterV2IpRule {
   /** Optional. An optional list of ports to which this rule applies. This field is only applicable for the UDP or (S)TCP protocols. Each entry must be either an integer or a range including a min and max port number. */
-  portRanges?: Array<GoogleCloudSecuritycenterV2PortRange>;
+  portRanges?: ReadonlyArray<GoogleCloudSecuritycenterV2PortRange>;
   /** The IP protocol this rule applies to. This value can either be one of the following well known protocol strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the integer value. */
   protocol?: string;
 }
@@ -171,7 +171,7 @@ export const GoogleCloudSecuritycenterV2IpRule =
 
 export interface GoogleCloudSecuritycenterV2Denied {
   /** Optional. Optional list of denied IP rules. */
-  ipRules?: Array<GoogleCloudSecuritycenterV2IpRule>;
+  ipRules?: ReadonlyArray<GoogleCloudSecuritycenterV2IpRule>;
 }
 
 export const GoogleCloudSecuritycenterV2Denied =
@@ -290,7 +290,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Resource {
   /** The project id that the resource belongs to. */
   projectDisplayName?: string;
   /** Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<GoogleCloudSecuritycenterV1p1beta1Folder>;
+  folders?: ReadonlyArray<GoogleCloudSecuritycenterV1p1beta1Folder>;
   /** The full resource name of project that the resource belongs to. */
   project?: string;
   /** The human readable name of resource's parent. */
@@ -405,7 +405,7 @@ export interface Container {
   /** Optional container image ID, if provided by the container runtime. Uniquely identifies the container image launched using a container image digest. */
   imageId?: string;
   /** Container labels, as provided by the container runtime. */
-  labels?: Array<Label>;
+  labels?: ReadonlyArray<Label>;
   /** The time that the container was created. */
   createTime?: string;
 }
@@ -612,7 +612,7 @@ export interface Cve {
   /** Date of the earliest known exploitation. */
   firstExploitationDate?: string;
   /** Additional information about the CVE. e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527 */
-  references?: Array<Reference>;
+  references?: ReadonlyArray<Reference>;
   /** Describe Common Vulnerability Scoring System specified at https://www.first.org/cvss/v3.1/specification-document */
   cvssv3?: Cvssv3;
 }
@@ -634,7 +634,7 @@ export interface Cwe {
   /** The CWE identifier, e.g. CWE-94 */
   id?: string;
   /** Any reference to the details on the CWE, for example, https://cwe.mitre.org/data/definitions/94.html */
-  references?: Array<Reference>;
+  references?: ReadonlyArray<Reference>;
 }
 
 export const Cwe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -654,7 +654,7 @@ export interface Vulnerability {
   /** CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/) */
   cve?: Cve;
   /** Represents one or more Common Weakness Enumeration (CWE) information on this vulnerability. */
-  cwes?: Array<Cwe>;
+  cwes?: ReadonlyArray<Cwe>;
   /** The fixed package is relevant to the finding. */
   fixedPackage?: Package;
 }
@@ -727,7 +727,7 @@ export interface ListFindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
   /** Findings matching the list request. */
-  findings?: Array<GoogleCloudSecuritycenterV1beta1Finding>;
+  findings?: ReadonlyArray<GoogleCloudSecuritycenterV1beta1Finding>;
   /** The total number of findings matching the query. */
   totalSize?: number;
   /** Time used for executing the list request. */
@@ -798,13 +798,13 @@ export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
   /** User-defined criticality information. */
   criticality?: GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality;
   /** Business team that ensures user needs are met and value is delivered */
-  businessOwners?: Array<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
+  businessOwners?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
   /** User-defined environment information. */
   environment?: GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment;
   /** Developer team that owns development and coding. */
-  developerOwners?: Array<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
+  developerOwners?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
   /** Operator team that ensures runtime and operations. */
-  operatorOwners?: Array<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
+  operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
 }
 
 export const GoogleCloudSecuritycenterV1ResourceApplicationAttributes =
@@ -967,7 +967,7 @@ export interface GoogleCloudSecuritycenterV2Cve {
   /** Date of the earliest known exploitation. */
   firstExploitationDate?: string;
   /** Additional information about the CVE. e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527 */
-  references?: Array<GoogleCloudSecuritycenterV2Reference>;
+  references?: ReadonlyArray<GoogleCloudSecuritycenterV2Reference>;
   /** The unique identifier for the vulnerability. e.g. CVE-2021-34527 */
   id?: string;
   /** The potential impact of the vulnerability if it was to be exploited. */
@@ -1039,7 +1039,7 @@ export const GoogleCloudSecuritycenterV2Package =
 
 export interface GoogleCloudSecuritycenterV2Cwe {
   /** Any reference to the details on the CWE, for example, https://cwe.mitre.org/data/definitions/94.html */
-  references?: Array<GoogleCloudSecuritycenterV2Reference>;
+  references?: ReadonlyArray<GoogleCloudSecuritycenterV2Reference>;
   /** The CWE identifier, e.g. CWE-94 */
   id?: string;
 }
@@ -1066,7 +1066,7 @@ export interface GoogleCloudSecuritycenterV2Vulnerability {
   /** The fixed package is relevant to the finding. */
   fixedPackage?: GoogleCloudSecuritycenterV2Package;
   /** Represents one or more Common Weakness Enumeration (CWE) information on this vulnerability. */
-  cwes?: Array<GoogleCloudSecuritycenterV2Cwe>;
+  cwes?: ReadonlyArray<GoogleCloudSecuritycenterV2Cwe>;
 }
 
 export const GoogleCloudSecuritycenterV2Vulnerability =
@@ -1086,7 +1086,7 @@ export interface GoogleCloudSecuritycenterV2ToxicCombination {
   /** The [Attack exposure score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores) of this toxic combination. The score is a measure of how much this toxic combination exposes one or more high-value resources to potential attack. */
   attackExposureScore?: number;
   /** List of resource names of findings associated with this toxic combination. For example, `organizations/123/sources/456/findings/789`. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2ToxicCombination =
@@ -1123,7 +1123,7 @@ export interface Securitycenter_Object {
   /** Kubernetes object group, such as "policy.k8s.io/v1". */
   group?: string;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
 }
 
 export const Securitycenter_Object = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1193,7 +1193,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
@@ -1229,11 +1229,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1268,7 +1268,7 @@ export const Network = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Chokepoint {
   /** List of resource names of findings associated with this chokepoint. For example, organizations/123/sources/456/findings/789. This list will have at most 100 findings. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
 }
 
 export const Chokepoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1328,7 +1328,7 @@ export interface GoogleCloudSecuritycenterV2NodePool {
   /** Kubernetes node pool name. */
   name?: string;
   /** Nodes associated with the finding. */
-  nodes?: Array<GoogleCloudSecuritycenterV2Node>;
+  nodes?: ReadonlyArray<GoogleCloudSecuritycenterV2Node>;
 }
 
 export const GoogleCloudSecuritycenterV2NodePool =
@@ -1343,7 +1343,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1409,7 +1409,7 @@ export interface ArtifactGuardPolicies {
   /** The ID of the resource that has policies configured for it. */
   resourceId?: string;
   /** A list of failing policies. */
-  failingPolicies?: Array<ArtifactGuardPolicy>;
+  failingPolicies?: ReadonlyArray<ArtifactGuardPolicy>;
 }
 
 export const ArtifactGuardPolicies = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1587,7 +1587,7 @@ export interface GoogleCloudSecuritycenterV2Container {
   /** Optional container image ID, if provided by the container runtime. Uniquely identifies the container image launched using a container image digest. */
   imageId?: string;
   /** Container labels, as provided by the container runtime. */
-  labels?: Array<GoogleCloudSecuritycenterV2Label>;
+  labels?: ReadonlyArray<GoogleCloudSecuritycenterV2Label>;
   /** The time that the container was created. */
   createTime?: string;
 }
@@ -1603,9 +1603,9 @@ export const GoogleCloudSecuritycenterV2Container =
 
 export interface GoogleCloudSecuritycenterV2Pod {
   /** Pod labels. For Kubernetes containers, these are applied to the container. */
-  labels?: Array<GoogleCloudSecuritycenterV2Label>;
+  labels?: ReadonlyArray<GoogleCloudSecuritycenterV2Label>;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<GoogleCloudSecuritycenterV2Container>;
+  containers?: ReadonlyArray<GoogleCloudSecuritycenterV2Container>;
   /** Kubernetes Pod namespace. */
   ns?: string;
   /** Kubernetes Pod name. */
@@ -1667,7 +1667,7 @@ export interface GoogleCloudSecuritycenterV2Binding {
   /** The Role or ClusterRole referenced by the binding. */
   role?: GoogleCloudSecuritycenterV2Role;
   /** Represents one or more subjects that are bound to the role. Not always available for PATCH requests. */
-  subjects?: Array<GoogleCloudSecuritycenterV2Subject>;
+  subjects?: ReadonlyArray<GoogleCloudSecuritycenterV2Subject>;
 }
 
 export const GoogleCloudSecuritycenterV2Binding =
@@ -1686,7 +1686,7 @@ export interface GoogleCloudSecuritycenterV2Object {
   /** Kubernetes object group, such as "policy.k8s.io/v1". */
   group?: string;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<GoogleCloudSecuritycenterV2Container>;
+  containers?: ReadonlyArray<GoogleCloudSecuritycenterV2Container>;
   /** Kubernetes object namespace. Must be a valid DNS label. Named "ns" to avoid collision with C++ namespace keyword. For details see https://kubernetes.io/docs/tasks/administer-cluster/namespaces/. */
   ns?: string;
 }
@@ -1732,19 +1732,19 @@ export const GoogleCloudSecuritycenterV2AccessReview =
 
 export interface GoogleCloudSecuritycenterV2Kubernetes {
   /** Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding. This field contains Pod records for each container that is owned by a Pod. */
-  pods?: Array<GoogleCloudSecuritycenterV2Pod>;
+  pods?: ReadonlyArray<GoogleCloudSecuritycenterV2Pod>;
   /** Provides Kubernetes role binding information for findings that involve [RoleBindings or ClusterRoleBindings](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  bindings?: Array<GoogleCloudSecuritycenterV2Binding>;
+  bindings?: ReadonlyArray<GoogleCloudSecuritycenterV2Binding>;
   /** Provides Kubernetes [node](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes) information. */
-  nodes?: Array<GoogleCloudSecuritycenterV2Node>;
+  nodes?: ReadonlyArray<GoogleCloudSecuritycenterV2Node>;
   /** Provides Kubernetes role information for findings that involve [Roles or ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  roles?: Array<GoogleCloudSecuritycenterV2Role>;
+  roles?: ReadonlyArray<GoogleCloudSecuritycenterV2Role>;
   /** GKE [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools) associated with the finding. This field contains node pool information for each node, when it is available. */
-  nodePools?: Array<GoogleCloudSecuritycenterV2NodePool>;
+  nodePools?: ReadonlyArray<GoogleCloudSecuritycenterV2NodePool>;
   /** Kubernetes objects related to the finding. */
-  objects?: Array<GoogleCloudSecuritycenterV2Object>;
+  objects?: ReadonlyArray<GoogleCloudSecuritycenterV2Object>;
   /** Provides information on any Kubernetes access reviews (privilege checks) relevant to the finding. */
-  accessReviews?: Array<GoogleCloudSecuritycenterV2AccessReview>;
+  accessReviews?: ReadonlyArray<GoogleCloudSecuritycenterV2AccessReview>;
 }
 
 export const GoogleCloudSecuritycenterV2Kubernetes =
@@ -1820,15 +1820,15 @@ export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnviro
 
 export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes {
   /** Operator team that ensures runtime and operations. */
-  operatorOwners?: Array<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
+  operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
   /** Developer team that owns development and coding. */
-  developerOwners?: Array<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
+  developerOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
   /** User-defined environment information. */
   environment?: GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment;
   /** User-defined criticality information. */
   criticality?: GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality;
   /** Business team that ensures user needs are met and value is delivered */
-  businessOwners?: Array<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
+  businessOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes =
@@ -1872,7 +1872,7 @@ export interface GoogleCloudSecuritycenterV2Framework {
   /** Name of the framework associated with the finding */
   name?: string;
   /** Category of the framework associated with the finding. E.g. Security Benchmark, or Assured Workloads */
-  category?: Array<
+  category?: ReadonlyArray<
     | "FRAMEWORK_CATEGORY_UNSPECIFIED"
     | "SECURITY_BENCHMARKS"
     | "ASSURED_WORKLOADS"
@@ -1884,7 +1884,7 @@ export interface GoogleCloudSecuritycenterV2Framework {
   /** Display name of the framework. For a standard framework, this will look like e.g. PCI DSS 3.2.1, whereas for a custom framework it can be a user defined string like MyFramework */
   displayName?: string;
   /** The controls associated with the framework. */
-  controls?: Array<GoogleCloudSecuritycenterV2Control>;
+  controls?: ReadonlyArray<GoogleCloudSecuritycenterV2Control>;
   /** Type of the framework associated with the finding, to specify whether the framework is built-in (pre-defined and immutable) or a custom framework defined by the customer (equivalent to security posture) */
   type?:
     | "FRAMEWORK_TYPE_UNSPECIFIED"
@@ -1950,7 +1950,7 @@ export const AzureTenant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AzureMetadata {
   /** A list of Azure management groups associated with the resource, ordered from lowest level (closest to the subscription) to highest level. */
-  managementGroups?: Array<AzureManagementGroup>;
+  managementGroups?: ReadonlyArray<AzureManagementGroup>;
   /** The Azure subscription associated with the resource. */
   subscription?: AzureSubscription;
   /** The Azure resource group associated with the resource. */
@@ -2004,7 +2004,7 @@ export const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodePool {
   /** Nodes associated with the finding. */
-  nodes?: Array<Node>;
+  nodes?: ReadonlyArray<Node>;
   /** Kubernetes node pool name. */
   name?: string;
 }
@@ -2079,9 +2079,9 @@ export const GoogleCloudSecuritycenterV2Pipeline =
 
 export interface GoogleCloudSecuritycenterV2VertexAi {
   /** Datasets associated with the finding. */
-  datasets?: Array<GoogleCloudSecuritycenterV2Dataset>;
+  datasets?: ReadonlyArray<GoogleCloudSecuritycenterV2Dataset>;
   /** Pipelines associated with the finding. */
-  pipelines?: Array<GoogleCloudSecuritycenterV2Pipeline>;
+  pipelines?: ReadonlyArray<GoogleCloudSecuritycenterV2Pipeline>;
 }
 
 export const GoogleCloudSecuritycenterV2VertexAi =
@@ -2245,13 +2245,13 @@ export interface Framework {
     | "FRAMEWORK_TYPE_CUSTOM"
     | (string & {});
   /** The controls associated with the framework. */
-  controls?: Array<Control>;
+  controls?: ReadonlyArray<Control>;
   /** Display name of the framework. For a standard framework, this will look like e.g. PCI DSS 3.2.1, whereas for a custom framework it can be a user defined string like MyFramework */
   displayName?: string;
   /** Name of the framework associated with the finding */
   name?: string;
   /** Category of the framework associated with the finding. E.g. Security Benchmark, or Assured Workloads */
-  category?: Array<
+  category?: ReadonlyArray<
     | "FRAMEWORK_CATEGORY_UNSPECIFIED"
     | "SECURITY_BENCHMARKS"
     | "ASSURED_WORKLOADS"
@@ -2272,11 +2272,11 @@ export const Framework = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ComplianceDetails {
   /** Cloud Control Deployments associated with the finding. For example, organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier */
-  cloudControlDeploymentNames?: Array<string>;
+  cloudControlDeploymentNames?: ReadonlyArray<string>;
   /** CloudControl associated with the finding */
   cloudControl?: CloudControl;
   /** Details of Frameworks associated with the finding */
-  frameworks?: Array<Framework>;
+  frameworks?: ReadonlyArray<Framework>;
 }
 
 export const ComplianceDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2339,7 +2339,7 @@ export interface GoogleCloudSecuritycenterV2MemoryHashSignature {
   /** The binary family. */
   binaryFamily?: string;
   /** The list of memory hash detections contributing to the binary family match. */
-  detections?: Array<GoogleCloudSecuritycenterV2Detection>;
+  detections?: ReadonlyArray<GoogleCloudSecuritycenterV2Detection>;
 }
 
 export const GoogleCloudSecuritycenterV2MemoryHashSignature =
@@ -2386,13 +2386,13 @@ export const GoogleCloudSecuritycenterV2ProcessSignature =
 
 export interface GoogleCloudSecuritycenterV2Indicator {
   /** The list of IP addresses that are associated with the finding. */
-  ipAddresses?: Array<string>;
+  ipAddresses?: ReadonlyArray<string>;
   /** The list of matched signatures indicating that the given process is present in the environment. */
-  signatures?: Array<GoogleCloudSecuritycenterV2ProcessSignature>;
+  signatures?: ReadonlyArray<GoogleCloudSecuritycenterV2ProcessSignature>;
   /** The list of URIs associated to the Findings. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** List of domains associated to the Finding. */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2Indicator =
@@ -2494,7 +2494,7 @@ export interface GoogleCloudSecuritycenterV2AwsMetadata {
   /** The AWS organization associated with the resource. */
   organization?: GoogleCloudSecuritycenterV2AwsOrganization;
   /** A list of AWS organizational units associated with the resource, ordered from lowest level (closest to the account) to highest level. */
-  organizationalUnits?: Array<GoogleCloudSecuritycenterV2AwsOrganizationalUnit>;
+  organizationalUnits?: ReadonlyArray<GoogleCloudSecuritycenterV2AwsOrganizationalUnit>;
   /** The AWS account associated with the resource. */
   account?: GoogleCloudSecuritycenterV2AwsAccount;
 }
@@ -2562,7 +2562,7 @@ export const GoogleCloudSecuritycenterV2CloudControl =
 
 export interface GoogleCloudSecuritycenterV2Allowed {
   /** Optional. Optional list of allowed IP rules. */
-  ipRules?: Array<GoogleCloudSecuritycenterV2IpRule>;
+  ipRules?: ReadonlyArray<GoogleCloudSecuritycenterV2IpRule>;
 }
 
 export const GoogleCloudSecuritycenterV2Allowed =
@@ -2572,9 +2572,9 @@ export const GoogleCloudSecuritycenterV2Allowed =
 
 export interface GoogleCloudSecuritycenterV2BackupDisasterRecovery {
   /** The names of Backup and DR policies that are associated with a template and that define when to run a backup, how frequently to run a backup, and how long to retain the backup image. For example, `onvaults`. */
-  policies?: Array<string>;
+  policies?: ReadonlyArray<string>;
   /** The names of Backup and DR applications. An application is a VM, database, or file system on a managed host monitored by a backup and recovery appliance. For example, `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`. */
-  applications?: Array<string>;
+  applications?: ReadonlyArray<string>;
   /** The name of the Backup and DR resource profile that specifies the storage media for backups of application and VM data. See the [Backup and DR documentation on profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile). For example, `GCP`. */
   profile?: string;
   /** The name of a Backup and DR template which comprises one or more backup policies. See the [Backup and DR documentation](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#temp) for more information. For example, `snap-ov`. */
@@ -2590,7 +2590,7 @@ export interface GoogleCloudSecuritycenterV2BackupDisasterRecovery {
   /** The name of a Backup and DR host, which is managed by the backup and recovery appliance and known to the management console. The host can be of type Generic (for example, Compute Engine, SQL Server, Oracle DB, SMB file system, etc.), vCenter, or an ESX server. See the [Backup and DR documentation on hosts](https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-hosts-and-their-applications) for more information. For example, `centos7-01`. */
   host?: string;
   /** The names of Backup and DR advanced policy options of a policy applying to an application. See the [Backup and DR documentation on policy options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings). For example, `skipofflineappsincongrp, nounmap`. */
-  policyOptions?: Array<string>;
+  policyOptions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2BackupDisasterRecovery =
@@ -2638,7 +2638,7 @@ export interface GoogleCloudSecuritycenterV2IssueSecurityContextContext {
   /** Context type. */
   type?: string;
   /** Context values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2IssueSecurityContextContext =
@@ -2734,11 +2734,11 @@ export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributes {
   /** User-defined criticality information. */
   criticality?: GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality;
   /** Business team that ensures user needs are met and value is delivered */
-  businessOwners?: Array<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
+  businessOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
   /** Operator team that ensures runtime and operations. */
-  operatorOwners?: Array<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
+  operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
   /** Developer team that owns development and coding. */
-  developerOwners?: Array<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
+  developerOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
 }
 
 export const GoogleCloudSecuritycenterV2ResourceApplicationAttributes =
@@ -2783,7 +2783,7 @@ export const GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision =
 
 export interface MemoryHashSignature {
   /** The list of memory hash detections contributing to the binary family match. */
-  detections?: Array<Detection>;
+  detections?: ReadonlyArray<Detection>;
   /** The binary family. */
   binaryFamily?: string;
 }
@@ -2797,7 +2797,7 @@ export interface GoogleCloudSecuritycenterV2ExfilResource {
   /** The resource's [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name). */
   name?: string;
   /** Subcomponents of the asset that was exfiltrated, like URIs used during exfiltration, table names, databases, and filenames. For example, multiple tables might have been exfiltrated from the same Cloud SQL instance, or multiple files might have been exfiltrated from the same Cloud Storage bucket. */
-  components?: Array<string>;
+  components?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2ExfilResource =
@@ -2885,9 +2885,9 @@ export const GoogleCloudSecuritycenterV2IamBinding =
 
 export interface GoogleCloudSecuritycenterV2Exfiltration {
   /** If there are multiple sources, then the data is considered "joined" between them. For instance, BigQuery can join multiple tables, and each table would be considered a source. */
-  sources?: Array<GoogleCloudSecuritycenterV2ExfilResource>;
+  sources?: ReadonlyArray<GoogleCloudSecuritycenterV2ExfilResource>;
   /** If there are multiple targets, each target would get a complete copy of the "joined" source data. */
-  targets?: Array<GoogleCloudSecuritycenterV2ExfilResource>;
+  targets?: ReadonlyArray<GoogleCloudSecuritycenterV2ExfilResource>;
   /** Total exfiltrated bytes processed for the entire job. */
   totalExfiltratedBytes?: string;
 }
@@ -2944,7 +2944,7 @@ export interface GoogleCloudSecuritycenterV2Access {
   /** A string that represents a username. The username provided depends on the type of the finding and is likely not an IAM principal. For example, this can be a system username if the finding is related to a virtual machine, or it can be an application login username. */
   userName?: string;
   /** The identity delegation history of an authenticated service account that made the request. The `serviceAccountDelegationInfo[]` object contains information about the real authorities that try to access Google Cloud resources by delegating on a service account. When multiple authorities are present, they are guaranteed to be sorted based on the original ordering of the identity delegation events. */
-  serviceAccountDelegationInfo?: Array<GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo>;
+  serviceAccountDelegationInfo?: ReadonlyArray<GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo>;
   /** The caller IP's geolocation, which identifies where the call came from. */
   callerIpGeo?: GoogleCloudSecuritycenterV2Geolocation;
   /** The name of the service account key that was used to create or exchange credentials when authenticating the service account that made the request. This is a scheme-less URI full resource name. For example: "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}". */
@@ -3025,7 +3025,7 @@ export interface SecurityCenterProperties {
   /** The full resource name of the immediate parent of the resource. See: https://cloud.google.com/apis/design/resource_names#full_resource_name */
   resourceParent?: string;
   /** Owners of the Google Cloud resource. */
-  resourceOwners?: Array<string>;
+  resourceOwners?: ReadonlyArray<string>;
 }
 
 export const SecurityCenterProperties =
@@ -3083,7 +3083,7 @@ export const ListAssetsResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourcePath {
   /** The list of nodes that make the up resource path, ordered from lowest level to highest level. */
-  nodes?: Array<ResourcePathNode>;
+  nodes?: ReadonlyArray<ResourcePathNode>;
 }
 
 export const ResourcePath = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3134,7 +3134,7 @@ export const PortRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IpRule {
   /** Optional. An optional list of ports to which this rule applies. This field is only applicable for the UDP or (S)TCP protocols. Each entry must be either an integer or a range including a min and max port number. */
-  portRanges?: Array<PortRange>;
+  portRanges?: ReadonlyArray<PortRange>;
   /** The IP protocol this rule applies to. This value can either be one of the following well known protocol strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the integer value. */
   protocol?: string;
 }
@@ -3164,7 +3164,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
     | "IMPACT"
     | (string & {});
   /** Additional MITRE ATT&CK techniques related to this finding, if any, along with any of their respective parent techniques. */
-  additionalTechniques?: Array<
+  additionalTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -3309,7 +3309,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
   /** The MITRE ATT&CK version referenced by the above fields. E.g. "8". */
   version?: string;
   /** The MITRE ATT&CK technique most closely represented by this finding, if any. primary_techniques is a repeated field because there are multiple levels of MITRE ATT&CK techniques. If the technique most closely represented by this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the sub-technique and its parent technique(s) will be listed (e.g. `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`). */
-  primaryTechniques?: Array<
+  primaryTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -3452,7 +3452,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
     | (string & {})
   >;
   /** Additional MITRE ATT&CK tactics related to this finding, if any. */
-  additionalTactics?: Array<
+  additionalTactics?: ReadonlyArray<
     | "TACTIC_UNSPECIFIED"
     | "RECONNAISSANCE"
     | "RESOURCE_DEVELOPMENT"
@@ -3628,7 +3628,7 @@ export interface GoogleCloudSecuritycenterV2File {
   /** Path of the file in terms of underlying disk/partition identifiers. */
   diskPath?: GoogleCloudSecuritycenterV2DiskPath;
   /** Operation(s) performed on a file. */
-  operations?: Array<GoogleCloudSecuritycenterV2FileOperation>;
+  operations?: ReadonlyArray<GoogleCloudSecuritycenterV2FileOperation>;
   /** The load state of the file. */
   fileLoadState?:
     | "FILE_LOAD_STATE_UNSPECIFIED"
@@ -3654,7 +3654,7 @@ export const GoogleCloudSecuritycenterV2File =
 
 export interface GoogleCloudSecuritycenterV2Process {
   /** Process arguments as JSON encoded strings. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** When the process represents the invocation of a script, `binary` provides information about the interpreter, while `script` provides information about the script file provided to the interpreter. */
   script?: GoogleCloudSecuritycenterV2File;
   /** True if `env_variables` is incomplete. */
@@ -3662,9 +3662,9 @@ export interface GoogleCloudSecuritycenterV2Process {
   /** The process name, as displayed in utilities like `top` and `ps`. This name can be accessed through `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`. */
   name?: string;
   /** File information for libraries loaded by the process. */
-  libraries?: Array<GoogleCloudSecuritycenterV2File>;
+  libraries?: ReadonlyArray<GoogleCloudSecuritycenterV2File>;
   /** Process environment variables. */
-  envVariables?: Array<GoogleCloudSecuritycenterV2EnvironmentVariable>;
+  envVariables?: ReadonlyArray<GoogleCloudSecuritycenterV2EnvironmentVariable>;
   /** The process ID. */
   pid?: string;
   /** The ID of the user that executed the process. E.g. If this is the root user this will always be 0. */
@@ -3696,7 +3696,7 @@ export const GoogleCloudSecuritycenterV2Process =
 
 export interface Allowed {
   /** Optional. Optional list of allowed IP rules. */
-  ipRules?: Array<IpRule>;
+  ipRules?: ReadonlyArray<IpRule>;
 }
 
 export const Allowed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3779,7 +3779,7 @@ export const GoogleCloudSecuritycenterV2ResourcePathNode =
 
 export interface GoogleCloudSecuritycenterV2ResourcePath {
   /** The list of nodes that make the up resource path, ordered from lowest level to highest level. */
-  nodes?: Array<GoogleCloudSecuritycenterV2ResourcePathNode>;
+  nodes?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourcePathNode>;
 }
 
 export const GoogleCloudSecuritycenterV2ResourcePath =
@@ -3832,7 +3832,7 @@ export const GoogleCloudSecuritycenterV2AzureTenant =
 
 export interface GoogleCloudSecuritycenterV2AzureMetadata {
   /** A list of Azure management groups associated with the resource, ordered from lowest level (closest to the subscription) to highest level. */
-  managementGroups?: Array<GoogleCloudSecuritycenterV2AzureManagementGroup>;
+  managementGroups?: ReadonlyArray<GoogleCloudSecuritycenterV2AzureManagementGroup>;
   /** The Azure subscription associated with the resource. */
   subscription?: GoogleCloudSecuritycenterV2AzureSubscription;
   /** The Azure resource group associated with the resource. */
@@ -3874,7 +3874,7 @@ export interface GcpMetadata {
   /** The human readable name of resource's parent. */
   parentDisplayName?: string;
   /** Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<GoogleCloudSecuritycenterV2Folder>;
+  folders?: ReadonlyArray<GoogleCloudSecuritycenterV2Folder>;
   /** The project ID that the resource belongs to. */
   projectDisplayName?: string;
   /** The name of the organization that the resource belongs to. */
@@ -4043,7 +4043,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4055,7 +4055,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4065,7 +4065,7 @@ export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudSecuritycenterV1ResourceSelector {
   /** The resource types to run the detector on. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV1ResourceSelector =
@@ -4075,7 +4075,7 @@ export const GoogleCloudSecuritycenterV1ResourceSelector =
 
 export interface GoogleCloudSecuritycenterV1CustomOutputSpec {
   /** A list of custom output properties to add to the finding. */
-  properties?: Array<GoogleCloudSecuritycenterV1Property>;
+  properties?: ReadonlyArray<GoogleCloudSecuritycenterV1Property>;
 }
 
 export const GoogleCloudSecuritycenterV1CustomOutputSpec =
@@ -4168,7 +4168,7 @@ export interface MuteInfo {
   /** If set, the static mute applied to this finding. Static mutes override dynamic mutes. If unset, there is no static mute. */
   staticMute?: StaticMute;
   /** The list of dynamic mute rules that currently match the finding. */
-  dynamicMuteRecords?: Array<DynamicMuteRecord>;
+  dynamicMuteRecords?: ReadonlyArray<DynamicMuteRecord>;
 }
 
 export const MuteInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4194,7 +4194,7 @@ export interface GoogleCloudSecuritycenterV2ExternalSystem {
   /** The priority of the finding's corresponding case in the external system. */
   casePriority?: string;
   /** References primary/secondary etc assignees in the external system. */
-  assignees?: Array<string>;
+  assignees?: ReadonlyArray<string>;
   /** Information about the ticket, if any, that is being used to track the resolution of the issue that is identified by this finding. */
   ticketInfo?: GoogleCloudSecuritycenterV2TicketInfo;
   /** Full resource name of the external system. The following list shows some examples: + `organizations/1234/sources/5678/findings/123456/externalSystems/jira` + `organizations/1234/sources/5678/locations/us/findings/123456/externalSystems/jira` + `folders/1234/sources/5678/findings/123456/externalSystems/jira` + `folders/1234/sources/5678/locations/us/findings/123456/externalSystems/jira` + `projects/1234/sources/5678/findings/123456/externalSystems/jira` + `projects/1234/sources/5678/locations/us/findings/123456/externalSystems/jira` */
@@ -4263,7 +4263,7 @@ export interface Compliance {
   /** Version of the standard or benchmark, for example, 1.1 */
   version?: string;
   /** Policies within the standard or benchmark, for example, A.12.4.1 */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
   /** Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP. */
   standard?: string;
 }
@@ -4337,9 +4337,9 @@ export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VertexAi {
   /** Datasets associated with the finding. */
-  datasets?: Array<Dataset>;
+  datasets?: ReadonlyArray<Dataset>;
   /** Pipelines associated with the finding. */
-  pipelines?: Array<Pipeline>;
+  pipelines?: ReadonlyArray<Pipeline>;
 }
 
 export const VertexAi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4545,7 +4545,7 @@ export interface Database {
   /** The human-readable name of the database that the user connected to. */
   displayName?: string;
   /** The target usernames, roles, or groups of an SQL privilege grant, which is not an IAM policy change. */
-  grantees?: Array<string>;
+  grantees?: ReadonlyArray<string>;
   /** The username used to connect to the database. The username might not be an IAM principal and does not have a set format. */
   userName?: string;
   /** The SQL statement that is associated with the database access. */
@@ -4605,7 +4605,7 @@ export interface Access {
   /** The name of the service account key that was used to create or exchange credentials when authenticating the service account that made the request. This is a scheme-less URI full resource name. For example: "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}". */
   serviceAccountKeyName?: string;
   /** The identity delegation history of an authenticated service account that made the request. The `serviceAccountDelegationInfo[]` object contains information about the real authorities that try to access Google Cloud resources by delegating on a service account. When multiple authorities are present, they are guaranteed to be sorted based on the original ordering of the identity delegation events. */
-  serviceAccountDelegationInfo?: Array<ServiceAccountDelegationInfo>;
+  serviceAccountDelegationInfo?: ReadonlyArray<ServiceAccountDelegationInfo>;
   /** A string that represents a username. The username provided depends on the type of the finding and is likely not an IAM principal. For example, this can be a system username if the finding is related to a virtual machine, or it can be an application login username. */
   userName?: string;
 }
@@ -4628,7 +4628,7 @@ export const Access = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MitreAttack {
   /** Additional MITRE ATT&CK techniques related to this finding, if any, along with any of their respective parent techniques. */
-  additionalTechniques?: Array<
+  additionalTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -4789,7 +4789,7 @@ export interface MitreAttack {
     | "IMPACT"
     | (string & {});
   /** The MITRE ATT&CK technique most closely represented by this finding, if any. primary_techniques is a repeated field because there are multiple levels of MITRE ATT&CK techniques. If the technique most closely represented by this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the sub-technique and its parent technique(s) will be listed (e.g. `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`). */
-  primaryTechniques?: Array<
+  primaryTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -4932,7 +4932,7 @@ export interface MitreAttack {
     | (string & {})
   >;
   /** Additional MITRE ATT&CK tactics related to this finding, if any. */
-  additionalTactics?: Array<
+  additionalTactics?: ReadonlyArray<
     | "TACTIC_UNSPECIFIED"
     | "RECONNAISSANCE"
     | "RESOURCE_DEVELOPMENT"
@@ -4966,9 +4966,9 @@ export interface BackupDisasterRecovery {
   /** The name of the Backup and DR resource profile that specifies the storage media for backups of application and VM data. See the [Backup and DR documentation on profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile). For example, `GCP`. */
   profile?: string;
   /** The names of Backup and DR policies that are associated with a template and that define when to run a backup, how frequently to run a backup, and how long to retain the backup image. For example, `onvaults`. */
-  policies?: Array<string>;
+  policies?: ReadonlyArray<string>;
   /** The names of Backup and DR applications. An application is a VM, database, or file system on a managed host monitored by a backup and recovery appliance. For example, `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`. */
-  applications?: Array<string>;
+  applications?: ReadonlyArray<string>;
   /** The name of a Backup and DR template which comprises one or more backup policies. See the [Backup and DR documentation](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#temp) for more information. For example, `snap-ov`. */
   backupTemplate?: string;
   /** The name of the Backup and DR appliance that captures, moves, and manages the lifecycle of backup data. For example, `backup-server-57137`. */
@@ -4982,7 +4982,7 @@ export interface BackupDisasterRecovery {
   /** The name of a Backup and DR host, which is managed by the backup and recovery appliance and known to the management console. The host can be of type Generic (for example, Compute Engine, SQL Server, Oracle DB, SMB file system, etc.), vCenter, or an ESX server. See the [Backup and DR documentation on hosts](https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-hosts-and-their-applications) for more information. For example, `centos7-01`. */
   host?: string;
   /** The names of Backup and DR advanced policy options of a policy applying to an application. See the [Backup and DR documentation on policy options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings). For example, `skipofflineappsincongrp, nounmap`. */
-  policyOptions?: Array<string>;
+  policyOptions?: ReadonlyArray<string>;
 }
 
 export const BackupDisasterRecovery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -5022,7 +5022,7 @@ export interface File {
   /** Path of the file in terms of underlying disk/partition identifiers. */
   diskPath?: DiskPath;
   /** Operation(s) performed on a file. */
-  operations?: Array<FileOperation>;
+  operations?: ReadonlyArray<FileOperation>;
   /** The load state of the file. */
   fileLoadState?:
     | "FILE_LOAD_STATE_UNSPECIFIED"
@@ -5065,15 +5065,15 @@ export interface Process {
   /** The process name, as displayed in utilities like `top` and `ps`. This name can be accessed through `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`. */
   name?: string;
   /** File information for libraries loaded by the process. */
-  libraries?: Array<File>;
+  libraries?: ReadonlyArray<File>;
   /** Process environment variables. */
-  envVariables?: Array<EnvironmentVariable>;
+  envVariables?: ReadonlyArray<EnvironmentVariable>;
   /** The process ID. */
   pid?: string;
   /** The ID of the user that executed the process. E.g. If this is the root user this will always be 0. */
   userId?: string;
   /** Process arguments as JSON encoded strings. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** When the process represents the invocation of a script, `binary` provides information about the interpreter, while `script` provides information about the script file provided to the interpreter. */
   script?: File;
   /** True if `env_variables` is incomplete. */
@@ -5143,7 +5143,7 @@ export interface GoogleCloudSecuritycenterV1Binding {
   /** The Role or ClusterRole referenced by the binding. */
   role?: Role;
   /** Represents one or more subjects that are bound to the role. Not always available for PATCH requests. */
-  subjects?: Array<Subject>;
+  subjects?: ReadonlyArray<Subject>;
 }
 
 export const GoogleCloudSecuritycenterV1Binding =
@@ -5160,9 +5160,9 @@ export interface Pod {
   /** Kubernetes Pod name. */
   name?: string;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
   /** Pod labels. For Kubernetes containers, these are applied to the container. */
-  labels?: Array<Label>;
+  labels?: ReadonlyArray<Label>;
 }
 
 export const Pod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5174,19 +5174,19 @@ export const Pod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Kubernetes {
   /** Provides information on any Kubernetes access reviews (privilege checks) relevant to the finding. */
-  accessReviews?: Array<AccessReview>;
+  accessReviews?: ReadonlyArray<AccessReview>;
   /** Provides Kubernetes [node](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes) information. */
-  nodes?: Array<Node>;
+  nodes?: ReadonlyArray<Node>;
   /** Provides Kubernetes role information for findings that involve [Roles or ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  roles?: Array<Role>;
+  roles?: ReadonlyArray<Role>;
   /** GKE [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools) associated with the finding. This field contains node pool information for each node, when it is available. */
-  nodePools?: Array<NodePool>;
+  nodePools?: ReadonlyArray<NodePool>;
   /** Kubernetes objects related to the finding. */
-  objects?: Array<Securitycenter_Object>;
+  objects?: ReadonlyArray<Securitycenter_Object>;
   /** Provides Kubernetes role binding information for findings that involve [RoleBindings or ClusterRoleBindings](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  bindings?: Array<GoogleCloudSecuritycenterV1Binding>;
+  bindings?: ReadonlyArray<GoogleCloudSecuritycenterV1Binding>;
   /** Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding. This field contains Pod records for each container that is owned by a Pod. */
-  pods?: Array<Pod>;
+  pods?: ReadonlyArray<Pod>;
 }
 
 export const Kubernetes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5209,7 +5209,7 @@ export interface CloudDlpDataProfile {
     | "PROJECT"
     | (string & {});
   /** Type of information detected by SDP. Info type includes name, version and sensitivity of the detected information type. */
-  infoTypes?: Array<InfoType>;
+  infoTypes?: ReadonlyArray<InfoType>;
 }
 
 export const CloudDlpDataProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5267,7 +5267,7 @@ export const Notebook = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ToxicCombination {
   /** List of resource names of findings associated with this toxic combination. For example, `organizations/123/sources/456/findings/789`. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
   /** The [Attack exposure score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores) of this toxic combination. The score is a measure of how much this toxic combination exposes one or more high-value resources to potential attack. */
   attackExposureScore?: number;
 }
@@ -5319,7 +5319,7 @@ export interface GoogleCloudSecuritycenterV1ExternalSystem {
   /** Information about the ticket, if any, that is being used to track the resolution of the issue that is identified by this finding. */
   ticketInfo?: TicketInfo;
   /** References primary/secondary etc assignees in the external system. */
-  assignees?: Array<string>;
+  assignees?: ReadonlyArray<string>;
   /** The most recent status of the finding's corresponding case, as reported by the external system. */
   status?: string;
   /** The priority of the finding's corresponding case in the external system. */
@@ -5387,13 +5387,13 @@ export const ProcessSignature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Indicator {
   /** The list of URIs associated to the Findings. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** List of domains associated to the Finding. */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
   /** The list of IP addresses that are associated with the finding. */
-  ipAddresses?: Array<string>;
+  ipAddresses?: ReadonlyArray<string>;
   /** The list of matched signatures indicating that the given process is present in the environment. */
-  signatures?: Array<ProcessSignature>;
+  signatures?: ReadonlyArray<ProcessSignature>;
 }
 
 export const Indicator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5414,7 +5414,7 @@ export const Contact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ContactDetails {
   /** A list of contacts */
-  contacts?: Array<Contact>;
+  contacts?: ReadonlyArray<Contact>;
 }
 
 export const ContactDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5459,7 +5459,7 @@ export const AiModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Denied {
   /** Optional. Optional list of denied IP rules. */
-  ipRules?: Array<IpRule>;
+  ipRules?: ReadonlyArray<IpRule>;
 }
 
 export const Denied = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5468,7 +5468,7 @@ export const Denied = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IpRules {
   /** If destination IP ranges are specified, the firewall rule applies only to traffic that has a destination IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  destinationIpRanges?: Array<string>;
+  destinationIpRanges?: ReadonlyArray<string>;
   /** Tuple with denied rules. */
   denied?: Denied;
   /** The direction that the rule is applicable to, one of ingress or egress. */
@@ -5476,9 +5476,9 @@ export interface IpRules {
   /** Tuple with allowed rules. */
   allowed?: Allowed;
   /** If source IP ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  sourceIpRanges?: Array<string>;
+  sourceIpRanges?: ReadonlyArray<string>;
   /** Name of the network protocol service, such as FTP, that is exposed by the open port. Follows the naming convention available at: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml. */
-  exposedServices?: Array<string>;
+  exposedServices?: ReadonlyArray<string>;
 }
 
 export const IpRules = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5573,7 +5573,7 @@ export interface SecurityPosture {
   /** The name of the updated policyset, for example, `cis-policyset`. */
   policySet?: string;
   /** The details about a change in an updated policy that violates the deployed posture. */
-  policyDriftDetails?: Array<PolicyDriftDetails>;
+  policyDriftDetails?: ReadonlyArray<PolicyDriftDetails>;
   /** The name of the updated policy, for example, `projects/{project_id}/policies/{constraint_name}`. */
   changedPolicy?: string;
   /** The ID of the updated policy, for example, `compute-policy-1`. */
@@ -5625,7 +5625,7 @@ export const OrgPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExfilResource {
   /** Subcomponents of the asset that was exfiltrated, like URIs used during exfiltration, table names, databases, and filenames. For example, multiple tables might have been exfiltrated from the same Cloud SQL instance, or multiple files might have been exfiltrated from the same Cloud Storage bucket. */
-  components?: Array<string>;
+  components?: ReadonlyArray<string>;
   /** The resource's [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name). */
   name?: string;
 }
@@ -5637,9 +5637,9 @@ export const ExfilResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Exfiltration {
   /** If there are multiple sources, then the data is considered "joined" between them. For instance, BigQuery can join multiple tables, and each table would be considered a source. */
-  sources?: Array<ExfilResource>;
+  sources?: ReadonlyArray<ExfilResource>;
   /** If there are multiple targets, each target would get a complete copy of the "joined" source data. */
-  targets?: Array<ExfilResource>;
+  targets?: ReadonlyArray<ExfilResource>;
   /** Total exfiltrated bytes processed for the entire job. */
   totalExfiltratedBytes?: string;
 }
@@ -5656,11 +5656,11 @@ export interface Finding {
   /** The additional taxonomy group within findings from a given source. This field is immutable after creation time. Example: "XSS_FLASH_INJECTION" */
   category?: string;
   /** Contains compliance information for security standards associated to the finding. */
-  compliances?: Array<Compliance>;
+  compliances?: ReadonlyArray<Compliance>;
   /** Contains information about the IP connection associated with the finding. */
-  connections?: Array<Connection>;
+  connections?: ReadonlyArray<Connection>;
   /** The load balancers associated with the finding. */
-  loadBalancers?: Array<LoadBalancer>;
+  loadBalancers?: ReadonlyArray<LoadBalancer>;
   /** Disk associated with the finding. */
   disk?: Disk;
   /** VertexAi associated with the finding. */
@@ -5672,11 +5672,11 @@ export interface Finding {
   /** Fields related to Cloud Armor findings. */
   cloudArmor?: CloudArmor;
   /** Data flow events associated with the finding. */
-  dataFlowEvents?: Array<DataFlowEvent>;
+  dataFlowEvents?: ReadonlyArray<DataFlowEvent>;
   /** The results of an attack path simulation relevant to this finding. */
   attackExposure?: AttackExposure;
   /** Data retention deletion events associated with the finding. */
-  dataRetentionDeletionEvents?: Array<DataRetentionDeletionEvent>;
+  dataRetentionDeletionEvents?: ReadonlyArray<DataRetentionDeletionEvent>;
   /** Database associated with the finding. */
   database?: Database;
   /** The relative resource name of the source the finding belongs to. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after creation time. For example: "organizations/{organization_id}/sources/{source_id}" */
@@ -5692,7 +5692,7 @@ export interface Finding {
   /** The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor of the resource associated with the finding. */
   canonicalName?: string;
   /** Containers associated with the finding. This field provides information for both Kubernetes and non-Kubernetes containers. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
   /** MITRE ATT&CK tactics and techniques related to this finding. See: https://attack.mitre.org */
   mitreAttack?: MitreAttack;
   /** Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding. */
@@ -5704,7 +5704,7 @@ export interface Finding {
   /** Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/) */
   vulnerability?: Vulnerability;
   /** Represents operating system processes associated with the Finding. */
-  processes?: Array<Process>;
+  processes?: ReadonlyArray<Process>;
   /** Cloud Data Loss Prevention (Cloud DLP) inspection results that are associated with the finding. */
   cloudDlpInspection?: CloudDlpInspection;
   /** AffectedResources associated with the finding. */
@@ -5712,7 +5712,7 @@ export interface Finding {
   /** For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is immutable after creation time. */
   resourceName?: string;
   /** Represents the VPC networks that the resource is attached to. */
-  networks?: Array<Network>;
+  networks?: ReadonlyArray<Network>;
   /** Kubernetes resources associated with the finding. */
   kubernetes?: Kubernetes;
   /** Cloud DLP data profile that is associated with the finding. */
@@ -5722,7 +5722,7 @@ export interface Finding {
   /** DiscoveredWorkload associated with the finding. */
   discoveredWorkload?: DiscoveredWorkload;
   /** Log entries that are relevant to the finding. */
-  logEntries?: Array<LogEntry>;
+  logEntries?: ReadonlyArray<LogEntry>;
   /** ArtifactGuardPolicies associated with the finding. */
   artifactGuardPolicies?: ArtifactGuardPolicies;
   /** PolicyViolationSummary associated with the finding. */
@@ -5740,7 +5740,7 @@ export interface Finding {
   /** Output only. Third party SIEM/SOAR fields within SCC, contains external system information and external system finding fields. */
   externalSystems?: Record<string, GoogleCloudSecuritycenterV1ExternalSystem>;
   /** Contains details about groups of which this finding is a member. A group is a collection of findings that are related in some way. This field cannot be updated. Its value is ignored in all update requests. */
-  groupMemberships?: Array<GroupMembership>;
+  groupMemberships?: ReadonlyArray<GroupMembership>;
   /** Represents what's commonly known as an *indicator of compromise* (IoC) in computer forensics. This is an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. For more information, see [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise). */
   indicator?: Indicator;
   /** Output only. Map containing the points of contact for the given finding. The key represents the type of contact, while the value contains a list of all the contacts that pertain. Please refer to: https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories { "security": { "contacts": [ { "email": "person1@company.com" }, { "email": "person2@company.com" } ] } } */
@@ -5768,9 +5768,9 @@ export interface Finding {
   /** Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths converge, based on [attack path simulations] (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations). This field cannot be updated. Its value is ignored in all update requests. */
   chokepoint?: Chokepoint;
   /** Data access events associated with the finding. */
-  dataAccessEvents?: Array<DataAccessEvent>;
+  dataAccessEvents?: ReadonlyArray<DataAccessEvent>;
   /** Agent data access events associated with the finding. */
-  agentDataAccessEvents?: Array<AgentDataAccessEvent>;
+  agentDataAccessEvents?: ReadonlyArray<AgentDataAccessEvent>;
   /** Secret associated with the finding. */
   secret?: Secret;
   /** Source specific properties. These properties are managed by the source that writes the finding. The key names in the source_properties map must be between 1 and 255 characters, and must start with a letter and contain alphanumeric characters or underscores only. */
@@ -5782,7 +5782,7 @@ export interface Finding {
   /** The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}", "projects/{project_id}/sources/{source_id}/findings/{finding_id}". */
   name?: string;
   /** Represents IAM bindings associated with the finding. */
-  iamBindings?: Array<IamBinding>;
+  iamBindings?: ReadonlyArray<IamBinding>;
   /** The class of the finding. */
   findingClass?:
     | "FINDING_CLASS_UNSPECIFIED"
@@ -5798,9 +5798,9 @@ export interface Finding {
     | "EXTERNAL_EXPOSURE"
     | (string & {});
   /** File associated with the finding. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
   /** Contains information about the org policies associated with the finding. */
-  orgPolicies?: Array<OrgPolicy>;
+  orgPolicies?: ReadonlyArray<OrgPolicy>;
   /** Represents exfiltrations associated with the finding. */
   exfiltration?: Exfiltration;
   /** Steps to address the finding. */
@@ -5900,7 +5900,7 @@ export interface AwsMetadata {
   /** The AWS organization associated with the resource. */
   organization?: AwsOrganization;
   /** A list of AWS organizational units associated with the resource, ordered from lowest level (closest to the account) to highest level. */
-  organizationalUnits?: Array<AwsOrganizationalUnit>;
+  organizationalUnits?: ReadonlyArray<AwsOrganizationalUnit>;
   /** The AWS account associated with the resource. */
   account?: AwsAccount;
 }
@@ -5961,7 +5961,7 @@ export interface GoogleCloudSecuritycenterV1Resource {
   /** The human readable name of resource's parent. */
   parentDisplayName?: string;
   /** Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
   /** The App Hub application this resource belongs to. */
   application?: GoogleCloudSecuritycenterV1ResourceApplication;
   /** Indicates which cloud provider the resource resides in. */
@@ -6074,7 +6074,7 @@ export interface GoogleCloudSecuritycenterV2Database {
   /** The human-readable name of the database that the user connected to. */
   displayName?: string;
   /** The target usernames, roles, or groups of an SQL privilege grant, which is not an IAM policy change. */
-  grantees?: Array<string>;
+  grantees?: ReadonlyArray<string>;
   /** The username used to connect to the database. The username might not be an IAM principal and does not have a set format. */
   userName?: string;
   /** The SQL statement that is associated with the database access. */
@@ -6118,7 +6118,7 @@ export const ExportFindingsMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListSourcesResponse {
   /** Sources belonging to the requested parent. */
-  sources?: Array<Source>;
+  sources?: ReadonlyArray<Source>;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
@@ -6164,7 +6164,7 @@ export const GoogleCloudSecuritycenterV2InfoType =
 
 export interface GoogleCloudSecuritycenterV2CloudDlpDataProfile {
   /** Type of information detected by SDP. Info type includes name, version and sensitivity of the detected information type. */
-  infoTypes?: Array<GoogleCloudSecuritycenterV2InfoType>;
+  infoTypes?: ReadonlyArray<GoogleCloudSecuritycenterV2InfoType>;
   /** Name of the data profile, for example, `projects/123/locations/europe/tableProfiles/8383929`. */
   dataProfile?: string;
   /** The resource hierarchy level at which the data profile was generated. */
@@ -6210,7 +6210,7 @@ export interface GoogleCloudSecuritycenterV2SecurityPosture {
   /** The name of the updated policy set, for example, `cis-policyset`. */
   policySet?: string;
   /** The details about a change in an updated policy that violates the deployed posture. */
-  policyDriftDetails?: Array<GoogleCloudSecuritycenterV2PolicyDriftDetails>;
+  policyDriftDetails?: ReadonlyArray<GoogleCloudSecuritycenterV2PolicyDriftDetails>;
   /** The project, folder, or organization on which the posture is deployed, for example, `projects/{project_number}`. */
   postureDeploymentResource?: string;
   /** The name of the updated policy, for example, `projects/{project_id}/policies/{constraint_name}`. */
@@ -6235,7 +6235,7 @@ export const GoogleCloudSecuritycenterV2SecurityPosture =
 
 export interface GoogleCloudSecuritycenterV2Chokepoint {
   /** List of resource names of findings associated with this chokepoint. For example, organizations/123/sources/456/findings/789. This list will have at most 100 findings. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2Chokepoint =
@@ -6271,11 +6271,11 @@ export const GoogleCloudSecuritycenterV2AgentDataAccessEvent =
 
 export interface GoogleCloudSecuritycenterV2IpRules {
   /** If source IP ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  sourceIpRanges?: Array<string>;
+  sourceIpRanges?: ReadonlyArray<string>;
   /** Name of the network protocol service, such as FTP, that is exposed by the open port. Follows the naming convention available at: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml. */
-  exposedServices?: Array<string>;
+  exposedServices?: ReadonlyArray<string>;
   /** If destination IP ranges are specified, the firewall rule applies only to traffic that has a destination IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  destinationIpRanges?: Array<string>;
+  destinationIpRanges?: ReadonlyArray<string>;
   /** Tuple with denied rules. */
   denied?: GoogleCloudSecuritycenterV2Denied;
   /** The direction that the rule is applicable to, one of ingress or egress. */
@@ -6341,7 +6341,7 @@ export interface GoogleCloudSecuritycenterV2MuteInfo {
   /** If set, the static mute applied to this finding. Static mutes override dynamic mutes. If unset, there is no static mute. */
   staticMute?: GoogleCloudSecuritycenterV2StaticMute;
   /** The list of dynamic mute rules that currently match the finding. */
-  dynamicMuteRecords?: Array<GoogleCloudSecuritycenterV2DynamicMuteRecord>;
+  dynamicMuteRecords?: ReadonlyArray<GoogleCloudSecuritycenterV2DynamicMuteRecord>;
 }
 
 export const GoogleCloudSecuritycenterV2MuteInfo =
@@ -6387,7 +6387,7 @@ export interface GoogleCloudSecuritycenterV2ArtifactGuardPolicies {
   /** The ID of the resource that has policies configured for it. */
   resourceId?: string;
   /** A list of failing policies. */
-  failingPolicies?: Array<GoogleCloudSecuritycenterV2ArtifactGuardPolicy>;
+  failingPolicies?: ReadonlyArray<GoogleCloudSecuritycenterV2ArtifactGuardPolicy>;
 }
 
 export const GoogleCloudSecuritycenterV2ArtifactGuardPolicies =
@@ -6402,7 +6402,7 @@ export const GoogleCloudSecuritycenterV2ArtifactGuardPolicies =
 
 export interface GoogleCloudSecuritycenterV2ContactDetails {
   /** A list of contacts */
-  contacts?: Array<GoogleCloudSecuritycenterV2Contact>;
+  contacts?: ReadonlyArray<GoogleCloudSecuritycenterV2Contact>;
 }
 
 export const GoogleCloudSecuritycenterV2ContactDetails =
@@ -6412,11 +6412,11 @@ export const GoogleCloudSecuritycenterV2ContactDetails =
 
 export interface GoogleCloudSecuritycenterV2ComplianceDetails {
   /** Cloud Control Deployments associated with the finding. For example, organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier */
-  cloudControlDeploymentNames?: Array<string>;
+  cloudControlDeploymentNames?: ReadonlyArray<string>;
   /** CloudControl associated with the finding */
   cloudControl?: GoogleCloudSecuritycenterV2CloudControl;
   /** Details of Frameworks associated with the finding */
-  frameworks?: Array<GoogleCloudSecuritycenterV2Framework>;
+  frameworks?: ReadonlyArray<GoogleCloudSecuritycenterV2Framework>;
 }
 
 export const GoogleCloudSecuritycenterV2ComplianceDetails =
@@ -6502,7 +6502,7 @@ export interface GoogleCloudSecuritycenterV2Compliance {
   /** Version of the standard or benchmark, for example, 1.1 */
   version?: string;
   /** Policies within the standard or benchmark, for example, A.12.4.1 */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2Compliance =
@@ -6600,7 +6600,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Source specific properties. These properties are managed by the source that writes the finding. The key names in the source_properties map must be between 1 and 255 characters, and must start with a letter and contain alphanumeric characters or underscores only. */
   sourceProperties?: Record<string, unknown>;
   /** Represents IAM bindings associated with the finding. */
-  iamBindings?: Array<GoogleCloudSecuritycenterV2IamBinding>;
+  iamBindings?: ReadonlyArray<GoogleCloudSecuritycenterV2IamBinding>;
   /** Identifier. The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}` + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` */
   name?: string;
   /** Output only. The human readable display name of the finding source such as "Event Threat Detection" or "Security Health Analytics". */
@@ -6608,9 +6608,9 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths converge, based on [attack path simulations] (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations). This field cannot be updated. Its value is ignored in all update requests. */
   chokepoint?: GoogleCloudSecuritycenterV2Chokepoint;
   /** Data access events associated with the finding. */
-  dataAccessEvents?: Array<GoogleCloudSecuritycenterV2DataAccessEvent>;
+  dataAccessEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2DataAccessEvent>;
   /** Agent data access events associated with the finding. */
-  agentDataAccessEvents?: Array<GoogleCloudSecuritycenterV2AgentDataAccessEvent>;
+  agentDataAccessEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2AgentDataAccessEvent>;
   /** IP rules associated with the finding. */
   ipRules?: GoogleCloudSecuritycenterV2IpRules;
   /** Secret associated with the finding. */
@@ -6634,9 +6634,9 @@ export interface GoogleCloudSecuritycenterV2Finding {
     | "EXTERNAL_EXPOSURE"
     | (string & {});
   /** File associated with the finding. */
-  files?: Array<GoogleCloudSecuritycenterV2File>;
+  files?: ReadonlyArray<GoogleCloudSecuritycenterV2File>;
   /** Contains information about the org policies associated with the finding. */
-  orgPolicies?: Array<GoogleCloudSecuritycenterV2OrgPolicy>;
+  orgPolicies?: ReadonlyArray<GoogleCloudSecuritycenterV2OrgPolicy>;
   /** Output only. The mute information regarding this finding. */
   muteInfo?: GoogleCloudSecuritycenterV2MuteInfo;
   /** Output only. The most recent time this finding was muted or unmuted. */
@@ -6656,7 +6656,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** DiscoveredWorkload associated with the finding. */
   discoveredWorkload?: GoogleCloudSecuritycenterV2DiscoveredWorkload;
   /** Log entries that are relevant to the finding. */
-  logEntries?: Array<GoogleCloudSecuritycenterV2LogEntry>;
+  logEntries?: ReadonlyArray<GoogleCloudSecuritycenterV2LogEntry>;
   /** ArtifactGuardPolicies associated with the finding. */
   artifactGuardPolicies?: GoogleCloudSecuritycenterV2ArtifactGuardPolicies;
   /** Records additional information about the mute operation, for example, the [mute configuration](https://cloud.google.com/security-command-center/docs/how-to-mute-findings) that muted the finding and the user who muted the finding. */
@@ -6672,7 +6672,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Details about the compliance implications of the finding. */
   complianceDetails?: GoogleCloudSecuritycenterV2ComplianceDetails;
   /** Contains details about groups of which this finding is a member. A group is a collection of findings that are related in some way. This field cannot be updated. Its value is ignored in all update requests. */
-  groupMemberships?: Array<GoogleCloudSecuritycenterV2GroupMembership>;
+  groupMemberships?: ReadonlyArray<GoogleCloudSecuritycenterV2GroupMembership>;
   /** Output only. The state of the finding. */
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | (string & {});
   /** The severity of the finding. This field is managed by the source that writes the finding. */
@@ -6684,7 +6684,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
     | "LOW"
     | (string & {});
   /** Containers associated with the finding. This field provides information for both Kubernetes and non-Kubernetes containers. */
-  containers?: Array<GoogleCloudSecuritycenterV2Container>;
+  containers?: ReadonlyArray<GoogleCloudSecuritycenterV2Container>;
   /** Output only. The canonical name of the finding. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` The prefix is the closest CRM ancestor of the resource associated with the finding. */
   canonicalName?: string;
   /** The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL. */
@@ -6706,13 +6706,13 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/) */
   vulnerability?: GoogleCloudSecuritycenterV2Vulnerability;
   /** Represents operating system processes associated with the Finding. */
-  processes?: Array<GoogleCloudSecuritycenterV2Process>;
+  processes?: ReadonlyArray<GoogleCloudSecuritycenterV2Process>;
   /** Cloud Data Loss Prevention (Cloud DLP) inspection results that are associated with the finding. */
   cloudDlpInspection?: GoogleCloudSecuritycenterV2CloudDlpInspection;
   /** Immutable. For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. */
   resourceName?: string;
   /** Represents the VPC networks that the resource is attached to. */
-  networks?: Array<GoogleCloudSecuritycenterV2Network>;
+  networks?: ReadonlyArray<GoogleCloudSecuritycenterV2Network>;
   /** Kubernetes resources associated with the finding. */
   kubernetes?: GoogleCloudSecuritycenterV2Kubernetes;
   /** Cloud DLP data profile that is associated with the finding. */
@@ -6724,9 +6724,9 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Unique identifier of the module which generated the finding. Example: folders/598186756061/securityHealthAnalyticsSettings/customModules/56799441161885 */
   moduleName?: string;
   /** The load balancers associated with the finding. */
-  loadBalancers?: Array<GoogleCloudSecuritycenterV2LoadBalancer>;
+  loadBalancers?: ReadonlyArray<GoogleCloudSecuritycenterV2LoadBalancer>;
   /** Contains information about the IP connection associated with the finding. */
-  connections?: Array<GoogleCloudSecuritycenterV2Connection>;
+  connections?: ReadonlyArray<GoogleCloudSecuritycenterV2Connection>;
   /** VertexAi associated with the finding. */
   vertexAi?: GoogleCloudSecuritycenterV2VertexAi;
   /** Disk associated with the finding. */
@@ -6734,13 +6734,13 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** External exposure associated with the finding. */
   externalExposure?: GoogleCloudSecuritycenterV2ExternalExposure;
   /** Contains compliance information for security standards associated to the finding. */
-  compliances?: Array<GoogleCloudSecuritycenterV2Compliance>;
+  compliances?: ReadonlyArray<GoogleCloudSecuritycenterV2Compliance>;
   /** Immutable. The additional taxonomy group within findings from a given source. Example: "XSS_FLASH_INJECTION" */
   category?: string;
   /** The results of an attack path simulation relevant to this finding. */
   attackExposure?: GoogleCloudSecuritycenterV2AttackExposure;
   /** Data retention deletion events associated with the finding. */
-  dataRetentionDeletionEvents?: Array<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent>;
+  dataRetentionDeletionEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent>;
   /** Job associated with the finding. */
   job?: GoogleCloudSecuritycenterV2Job;
   /** Contains more details about the finding. */
@@ -6748,7 +6748,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Fields related to Cloud Armor findings. */
   cloudArmor?: GoogleCloudSecuritycenterV2CloudArmor;
   /** Data flow events associated with the finding. */
-  dataFlowEvents?: Array<GoogleCloudSecuritycenterV2DataFlowEvent>;
+  dataFlowEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2DataFlowEvent>;
 }
 
 export const GoogleCloudSecuritycenterV2Finding =
@@ -6886,7 +6886,7 @@ export const ExportFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface AssetDiscoveryConfig {
   /** The project ids to use for filtering asset discovery. */
-  projectIds?: Array<string>;
+  projectIds?: ReadonlyArray<string>;
   /** The mode to use for filtering asset discovery. */
   inclusionMode?:
     | "INCLUSION_MODE_UNSPECIFIED"
@@ -6917,7 +6917,7 @@ export const OrganizationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -6929,7 +6929,7 @@ export interface GroupFindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
   /** Group results. There exists an element for each existing unique combination of property/values. The element contains a count for the number of times those specific property/values appear. */
-  groupByResults?: Array<GroupResult>;
+  groupByResults?: ReadonlyArray<GroupResult>;
   /** Time used for executing the groupBy request. */
   readTime?: string;
 }
@@ -6944,9 +6944,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -7026,7 +7026,7 @@ export const GroupFindingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -7133,7 +7133,7 @@ export interface GoogleCloudSecuritycenterV1ResourceValueConfig {
   /** A mapping of the sensitivity on Sensitive Data Protection finding to resource values. This mapping can only be used in combination with a resource_type that is related to BigQuery, e.g. "bigquery.googleapis.com/Dataset". */
   sensitiveDataProtectionMapping?: GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping;
   /** Required. Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value IDs in the form of "tagValues/123". Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing */
-  tagValues?: Array<string>;
+  tagValues?: ReadonlyArray<string>;
   /** Description of the resource value configuration. */
   description?: string;
   /** List of resource labels to search for, evaluated with `AND`. For example, `"resource_labels_selector": {"key": "value", "env": "prod"}` will match resources with labels "key": "value" `AND` "env": "prod" https://cloud.google.com/resource-manager/docs/creating-managing-labels */
@@ -7231,7 +7231,7 @@ export interface GoogleCloudSecuritycenterV2ResourceValueConfig {
   /** List of resource labels to search for, evaluated with `AND`. For example, "resource_labels_selector": {"key": "value", "env": "prod"} will match resources with labels "key": "value" `AND` "env": "prod" https://cloud.google.com/resource-manager/docs/creating-managing-labels */
   resourceLabelsSelector?: Record<string, string>;
   /** Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value IDs in the form of "tagValues/123". Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing */
-  tagValues?: Array<string>;
+  tagValues?: ReadonlyArray<string>;
   /** Description of the resource value configuration. */
   description?: string;
   /** Cloud provider this configuration applies to */
@@ -7356,7 +7356,7 @@ export interface ListAssetsResponse {
   /** Time used for executing the list request. */
   readTime?: string;
   /** Assets matching the list request. */
-  listAssetsResults?: Array<ListAssetsResult>;
+  listAssetsResults?: ReadonlyArray<ListAssetsResult>;
   /** The total number of assets matching the query. */
   totalSize?: number;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
@@ -7379,7 +7379,7 @@ export const GoogleCloudSecuritycenterV2BulkMuteFindingsResponse =
 
 export interface GroupAssetsResponse {
   /** Group results. There exists an element for each existing unique combination of property/values. The element contains a count for the number of times those specific property/values appear. */
-  groupByResults?: Array<GroupResult>;
+  groupByResults?: ReadonlyArray<GroupResult>;
   /** Time used for executing the groupBy request. */
   readTime?: string;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
@@ -7512,11 +7512,11 @@ export interface GoogleCloudSecuritycenterV2Issue {
   /** The description of the issue in Markdown format. */
   description?: string;
   /** The security context of the issue. */
-  securityContexts?: Array<GoogleCloudSecuritycenterV2IssueSecurityContext>;
+  securityContexts?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueSecurityContext>;
   /** Output only. The time the issue was last updated. */
   updateTime?: string;
   /** Additional resources associated with the issue. */
-  secondaryResources?: Array<GoogleCloudSecuritycenterV2IssueResource>;
+  secondaryResources?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResource>;
   /** The severity of the issue. */
   severity?:
     | "SEVERITY_UNSPECIFIED"
@@ -7539,9 +7539,9 @@ export interface GoogleCloudSecuritycenterV2Issue {
   /** Identifier. The name of the issue. Format: organizations/{organization}/locations/{location}/issues/{issue} */
   name?: string;
   /** The domains of the issue. */
-  domains?: Array<GoogleCloudSecuritycenterV2IssueDomain>;
+  domains?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueDomain>;
   /** The findings related to the issue. */
-  relatedFindings?: Array<GoogleCloudSecuritycenterV2IssueFinding>;
+  relatedFindings?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueFinding>;
   /** The finding category or rule name that generated the issue. */
   detection?: string;
   /** Output only. The time the issue was created. */
@@ -7549,7 +7549,7 @@ export interface GoogleCloudSecuritycenterV2Issue {
   /** The mute information of the issue. */
   mute?: GoogleCloudSecuritycenterV2IssueMute;
   /** Approaches to remediate the issue in Markdown format. */
-  remediations?: Array<string>;
+  remediations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2Issue =
@@ -7638,10 +7638,7 @@ export const GetOrganizationSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/organizationSettings",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationSettingsOrganizationsRequest>;
 
@@ -7678,11 +7675,7 @@ export const UpdateOrganizationSettingsOrganizationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(OrganizationSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/organizations/{organizationsId}/organizationSettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationSettingsOrganizationsRequest>;
 
@@ -7719,7 +7712,7 @@ export const RunDiscoveryOrganizationsAssetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/assets:runDiscovery",
+      path: "v1beta1/{parent}/assets:runDiscovery",
       hasBody: true,
     }),
     svc,
@@ -7757,7 +7750,7 @@ export const GroupOrganizationsAssetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/assets:group",
+      path: "v1beta1/{parent}/assets:group",
       hasBody: true,
     }),
     svc,
@@ -7813,10 +7806,7 @@ export const ListOrganizationsAssetsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readTime: Schema.optional(Schema.String).pipe(T.HttpQuery("readTime")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/assets",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/assets" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAssetsRequest>;
 
@@ -7862,11 +7852,7 @@ export const UpdateSecurityMarksOrganizationsAssetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/organizations/{organizationsId}/assets/{assetsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksOrganizationsAssetsRequest>;
 
@@ -7912,10 +7898,7 @@ export const ListOrganizationsOperationsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsOperationsRequest>;
 
@@ -7953,11 +7936,7 @@ export const CancelOrganizationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOrganizationsOperationsRequest>;
 
@@ -7988,10 +7967,7 @@ export const GetOrganizationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsOperationsRequest>;
 
@@ -8022,10 +7998,7 @@ export const DeleteOrganizationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/organizations/{organizationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsOperationsRequest>;
 
@@ -8061,7 +8034,7 @@ export const GetIamPolicyOrganizationsSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:getIamPolicy",
+      path: "v1beta1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -8097,11 +8070,7 @@ export const CreateOrganizationsSourcesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Source).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/sources",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/sources", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsSourcesRequest>;
 
@@ -8137,7 +8106,7 @@ export const TestIamPermissionsOrganizationsSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:testIamPermissions",
+      path: "v1beta1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -8177,11 +8146,7 @@ export const PatchOrganizationsSourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Source).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSourcesRequest>;
 
@@ -8212,10 +8177,7 @@ export const GetOrganizationsSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSourcesRequest>;
 
@@ -8252,10 +8214,7 @@ export const ListOrganizationsSourcesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/sources",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/sources" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSourcesRequest>;
 
@@ -8295,7 +8254,7 @@ export const SetIamPolicyOrganizationsSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
+      path: "v1beta1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -8333,7 +8292,7 @@ export const GroupOrganizationsSourcesFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings:group",
+      path: "v1beta1/{parent}/findings:group",
       hasBody: true,
     }),
     svc,
@@ -8384,10 +8343,7 @@ export const ListOrganizationsSourcesFindingsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/findings" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSourcesFindingsRequest>;
 
@@ -8425,11 +8381,7 @@ export const SetStateOrganizationsSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetFindingStateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}:setState",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:setState", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetStateOrganizationsSourcesFindingsRequest>;
 
@@ -8469,11 +8421,7 @@ export const PatchOrganizationsSourcesFindingsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSourcesFindingsRequest>;
 
@@ -8515,7 +8463,7 @@ export const CreateOrganizationsSourcesFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
+      path: "v1beta1/{parent}/findings",
       hasBody: true,
     }),
     svc,
@@ -8560,11 +8508,7 @@ export const UpdateSecurityMarksOrganizationsSourcesFindingsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksOrganizationsSourcesFindingsRequest>;
 

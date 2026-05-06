@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface PortabilityArchiveState {
   /** If the state is complete, this method returns the signed URLs of the objects in the Cloud Storage bucket. */
-  urls?: Array<string>;
+  urls?: ReadonlyArray<string>;
   /** The timestamp that represents the end point for the data you are exporting. If the end_time value is set in the InitiatePortabilityArchiveRequest, this field is set to that value. If end_time is not set, this value is set to the time the export was requested. */
   exportTime?: string;
   /** Resource that represents the state of the Archive job. */
@@ -59,9 +59,9 @@ export const RetryPortabilityArchiveRequest =
 
 export interface CheckAccessTypeResponse {
   /** Jobs initiated with this token will be time-based if all requested resources have time-based access. */
-  timeBasedResources?: Array<string>;
+  timeBasedResources?: ReadonlyArray<string>;
   /** Jobs initiated with this token will be one-time if any requested resources have one-time access. */
-  oneTimeResources?: Array<string>;
+  oneTimeResources?: ReadonlyArray<string>;
 }
 
 export const CheckAccessTypeResponse =
@@ -108,7 +108,7 @@ export const CancelPortabilityArchiveRequest =
 
 export interface InitiatePortabilityArchiveRequest {
   /** The resources from which you're exporting data. These values have a 1:1 correspondence with the OAuth scopes. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** Optional. The timestamp that represents the starting point for the data you are exporting. If the start_time is not specified in the InitiatePortabilityArchiveRequest, the field is set to the earliest available data. */
   startTime?: string;
   /** Optional. The timestamp that represents the end point for the data you are exporting. If the end_time is not specified in the InitiatePortabilityArchiveRequest, this field is set to the latest available data. */
@@ -198,11 +198,7 @@ export const CancelArchiveJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelPortabilityArchiveRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/archiveJobs/{archiveJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelArchiveJobsRequest>;
 
@@ -236,11 +232,7 @@ export const RetryArchiveJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RetryPortabilityArchiveRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/archiveJobs/{archiveJobsId}:retry",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:retry", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RetryArchiveJobsRequest>;
 
@@ -271,10 +263,7 @@ export const GetPortabilityArchiveStateArchiveJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/archiveJobs/{archiveJobsId}/portabilityArchiveState",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPortabilityArchiveStateArchiveJobsRequest>;
 

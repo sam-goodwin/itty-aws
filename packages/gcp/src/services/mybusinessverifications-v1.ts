@@ -36,7 +36,7 @@ export interface PostalAddress {
   /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
   sortingCode?: string;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
   locality?: string;
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
@@ -44,7 +44,7 @@ export interface PostalAddress {
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
   postalCode?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
 }
 
 export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -177,7 +177,7 @@ export const Verification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVerificationsResponse {
   /** List of the verifications. */
-  verifications?: Array<Verification>;
+  verifications?: ReadonlyArray<Verification>;
   /** If the number of verifications exceeded the requested page size, this field will be populated with a token to fetch the next page of verification on a subsequent call. If there are no more attributes, this field will not be present in the response. */
   nextPageToken?: string;
 }
@@ -307,7 +307,7 @@ export const VerificationOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FetchVerificationOptionsResponse {
   /** The available verification options. */
-  options?: Array<VerificationOption>;
+  options?: ReadonlyArray<VerificationOption>;
 }
 
 export const FetchVerificationOptionsResponse =
@@ -393,10 +393,7 @@ export const GetVoiceOfMerchantStateLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/{locationsId}/VoiceOfMerchantState",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/VoiceOfMerchantState" }),
     svc,
   ) as unknown as Schema.Schema<GetVoiceOfMerchantStateLocationsRequest>;
 
@@ -432,7 +429,7 @@ export const FetchVerificationOptionsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/locations/{locationsId}:fetchVerificationOptions",
+      path: "v1/{location}:fetchVerificationOptions",
       hasBody: true,
     }),
     svc,
@@ -470,11 +467,7 @@ export const VerifyLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(VerifyLocationRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/locations/{locationsId}:verify",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{name}:verify", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<VerifyLocationsRequest>;
 
@@ -508,11 +501,7 @@ export const CompleteLocationsVerificationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CompleteVerificationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/locations/{locationsId}/verifications/{verificationsId}:complete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:complete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CompleteLocationsVerificationsRequest>;
 
@@ -550,7 +539,7 @@ export const ListLocationsVerificationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/locations/{locationsId}/verifications" }),
+    T.Http({ method: "GET", path: "v1/{parent}/verifications" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsVerificationsRequest>;
 

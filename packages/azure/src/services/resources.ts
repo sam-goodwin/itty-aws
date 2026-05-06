@@ -10991,9 +10991,9 @@ export const ManagementLocksListByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "api-version": Schema.String,
-}).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
   T.Http({ method: "GET", path: "/providers/Microsoft.Resources/operations" }),
 );
 export type OperationsListInput = typeof OperationsListInput.Type;
@@ -11004,7 +11004,6 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
-        isDataAction: Schema.optional(Schema.Boolean),
         display: Schema.optional(
           Schema.Struct({
             provider: Schema.optional(Schema.String),
@@ -11013,10 +11012,6 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             description: Schema.optional(Schema.String),
           }),
         ),
-        origin: Schema.optional(
-          Schema.Literals(["user", "system", "user,system"]),
-        ),
-        actionType: Schema.optional(Schema.Literals(["Internal"])),
       }),
     ),
   ),
@@ -11026,9 +11021,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * List the operations for the provider
- *
- * @param api-version - The API version to use for this operation.
+ * Lists all of the available Microsoft.Resources REST API operations.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,

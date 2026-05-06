@@ -49,7 +49,7 @@ export interface Account {
   /** Output only. The identifier of the service provider that this account was created against. Each service provider is assigned a unique provider value when they onboard with Cloud Commerce platform. */
   provider?: string;
   /** Output only. The approvals for this account. These approvals are used to track actions that are permitted or have been completed by a customer within the context of the provider. This might include a sign up flow or a provisioning step, for example, that the provider can admit to having happened. */
-  approvals?: Array<Approval>;
+  approvals?: ReadonlyArray<Approval>;
   /** Output only. The state of the account. This is used to decide whether the customer is in good standing with the provider and is able to make purchases. An account might not be able to make a purchase if the billing account is suspended, for example. */
   state?:
     | "ACCOUNT_STATE_UNSPECIFIED"
@@ -83,7 +83,7 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountsResponse {
   /** The list of accounts in this response. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
   /** The token for fetching the next page. */
   nextPageToken?: string;
 }
@@ -151,7 +151,7 @@ export interface Entitlement {
   /** Output only. The name of the offer that was procured. Field is empty if order wasn't made using an offer. Format: 'projects/{project}/services/{service}/privateOffers/{offer}' OR 'projects/{project}/services/{service}/standardOffers/{offer}', depending on whether the offer is private or public. The {service} in the name is the listing service of the offer. It could be either the product service that the offer is referencing, or a generic private offer parent service. We recommend that you don't build your integration to rely on the meaning of this {service} part. * If the entitlement is in the state ENTITLEMENT_ACTIVATION_REQUESTED, this field is populated with the upcoming offer. * If the entitlement is in the state ENTITLEMENT_ACTIVE, ENTITLEMENT_PENDING_CANCELLATION, ENTITLEMENT_PENDING_PLAN_CHANGE, or ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL, this field is populated with the current offer. * If the entitlement is in the state ENTITLEMENT_CANCELLED, then this field is populated with the latest offer that the order was associated with. */
   offer?: string;
   /** Output only. The resources using this entitlement, if applicable. */
-  consumers?: Array<Consumer>;
+  consumers?: ReadonlyArray<Consumer>;
   /** Output only. The timestamp when the new offer becomes effective. This field is populated even if the entitlement isn't active yet. If there's no upcoming offer, the field is empty. * If the entitlement is in the state ENTITLEMENT_ACTIVATION_REQUESTED, this field isn't populated when the entitlement isn't yet approved. After the entitlement is approved, this field is populated with the effective time of the upcoming offer. * If the entitlement is in the state ENTITLEMENT_ACTIVE or ENTITLEMENT_PENDING_CANCELLATION, this field isn't populated. * If the entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL, this field isn't populated, because the entitlement change is waiting on approval. * If the entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE, this field is populated with the expected effective time of the upcoming offer, which is in the future. * If the entitlement is in the state ENTITLEMENT_CANCELLED, then this field is empty. */
   newOfferStartTime?: string;
   /** Output only. Upon a pending plan change, the name of the offer that the entitlement is switching to. Only exists if the pending plan change is moving to an offer. This field isn't populated for entitlements which aren't active yet. Format: 'projects/{project}/services/{service}/privateOffers/{offer}' OR 'projects/{project}/services/{service}/standardOffers/{offer}', depending on whether the offer is private or public. The {service} in the name is the listing service of the offer. It could be either the product service that the offer is referencing, or a generic private offer parent service. We recommend that you don't build your integration to rely on the meaning of this {service} part. * If the entitlement is in the state ENTITLEMENT_ACTIVATION_REQUESTED, ENTITLEMENT_ACTIVE or ENTITLEMENT_PENDING_CANCELLATION, then this field is empty. * If the entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL or ENTITLEMENT_PENDING_PLAN_CHANGE, then this field is populated with the upcoming offer. * If the entitlement is in the state ENTITLEMENT_CANCELLED, then this is empty. */
@@ -159,7 +159,7 @@ export interface Entitlement {
   /** Output only. The creation timestamp. */
   createTime?: string;
   /** Output only. The entitlement benefit IDs associated with the purchase. */
-  entitlementBenefitIds?: Array<string>;
+  entitlementBenefitIds?: ReadonlyArray<string>;
   /** Output only. The resource name of the entitlement. Entitlement names have the form `providers/{provider_id}/entitlements/{entitlement_id}`. */
   name?: string;
   /** Output only. End time for the current term of the Offer associated with this entitlement. The value of this field can change naturally over time due to auto-renewal, even if the offer isn't changed. * If the entitlement is in the state ENTITLEMENT_ACTIVATION_REQUESTED, then: * If the entitlement isn't approved yet approved, and the offer has a specified end date, then this field is populated with the expected end time of the upcoming offer, in the future. Otherwise, this field is empty. * If the entitlement is approved, then this field is populated with the expected end time of the upcoming offer, in the future. This means that this field and the field offer_duration can both exist. * If the entitlement is in the state ENTITLEMENT_ACTIVE or ENTITLEMENT_PENDING_CANCELLATION, then this field is populated with the expected end time of the current offer, in the future. This field's value is set regardless of whether the offer has a specific end date or a duration. This means that this field and the field offer_duration can both exist. * If the entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL or ENTITLEMENT_PENDING_PLAN_CHANGE: * If the entitlement's pricing model is usage based and the associated offer is a private offer whose term has ended, then this field reflects the ACTUAL end time of the entitlement's associated offer (in the past), even though the entitlement associated with this private offer does not terminate at the end of that private offer's term. * Otherwise, this is the expected end date of the current offer, in the future. * If the entitlement is in the state ENTITLEMENT_CANCELLED, then this field is populated with the end time, in the past, of the latest offer that the order was associated with. If the entitlement was cancelled before any offer started, then this field is empty. */
@@ -199,7 +199,7 @@ export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEntitlementsResponse {
   /** The list of entitlements in this response. */
-  entitlements?: Array<Entitlement>;
+  entitlements?: ReadonlyArray<Entitlement>;
   /** The token for fetching the next page. */
   nextPageToken?: string;
 }
@@ -321,11 +321,7 @@ export const ApproveProvidersEntitlementsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/providers/{providersId}/entitlements/{entitlementsId}:approve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProvidersEntitlementsRequest>;
 
@@ -363,7 +359,7 @@ export const RejectPlanChangeProvidersEntitlementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/providers/{providersId}/entitlements/{entitlementsId}:rejectPlanChange",
+      path: "v1/{name}:rejectPlanChange",
       hasBody: true,
     }),
     svc,
@@ -396,10 +392,7 @@ export const GetProvidersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/providers/{providersId}/entitlements/{entitlementsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProvidersEntitlementsRequest>;
 
@@ -436,11 +429,7 @@ export const PatchProvidersEntitlementsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Entitlement).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/providers/{providersId}/entitlements/{entitlementsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProvidersEntitlementsRequest>;
 
@@ -474,11 +463,7 @@ export const RejectProvidersEntitlementsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/providers/{providersId}/entitlements/{entitlementsId}:reject",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:reject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RejectProvidersEntitlementsRequest>;
 
@@ -518,7 +503,7 @@ export const ListProvidersEntitlementsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/providers/{providersId}/entitlements" }),
+    T.Http({ method: "GET", path: "v1/{parent}/entitlements" }),
     svc,
   ) as unknown as Schema.Schema<ListProvidersEntitlementsRequest>;
 
@@ -560,7 +545,7 @@ export const ApprovePlanChangeProvidersEntitlementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/providers/{providersId}/entitlements/{entitlementsId}:approvePlanChange",
+      path: "v1/{name}:approvePlanChange",
       hasBody: true,
     }),
     svc,
@@ -596,11 +581,7 @@ export const SuspendProvidersEntitlementsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/providers/{providersId}/entitlements/{entitlementsId}:suspend",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:suspend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SuspendProvidersEntitlementsRequest>;
 
@@ -634,11 +615,7 @@ export const RejectProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/providers/{providersId}/accounts/{accountsId}:reject",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:reject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RejectProvidersAccountsRequest>;
 
@@ -675,7 +652,7 @@ export const ListProvidersAccountsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/providers/{providersId}/accounts" }),
+    T.Http({ method: "GET", path: "v1/{parent}/accounts" }),
     svc,
   ) as unknown as Schema.Schema<ListProvidersAccountsRequest>;
 
@@ -713,11 +690,7 @@ export const ApproveProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/providers/{providersId}/accounts/{accountsId}:approve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProvidersAccountsRequest>;
 
@@ -755,10 +728,7 @@ export const GetProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/providers/{providersId}/accounts/{accountsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProvidersAccountsRequest>;
 
@@ -791,11 +761,7 @@ export const ResetProvidersAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResetAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/providers/{providersId}/accounts/{accountsId}:reset",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:reset", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResetProvidersAccountsRequest>;
 

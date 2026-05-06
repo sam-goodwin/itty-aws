@@ -46,7 +46,7 @@ export interface ListClientUsersResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListClientUsersRequest.pageToken field in the subsequent call to the list method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The returned list of client users. */
-  clientUsers?: Array<ClientUser>;
+  clientUsers?: ReadonlyArray<ClientUser>;
 }
 
 export const ListClientUsersResponse =
@@ -79,9 +79,9 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface UriTargeting {
   /** A list of URLs to be included. */
-  targetedUris?: Array<string>;
+  targetedUris?: ReadonlyArray<string>;
   /** A list of URLs to be excluded. */
-  excludedUris?: Array<string>;
+  excludedUris?: ReadonlyArray<string>;
 }
 
 export const UriTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -171,7 +171,7 @@ export interface PublisherProfile {
   /** Indicates if this profile is the parent profile of the seller. A parent profile represents all the inventory from the seller, as opposed to child profile that is created to brand a portion of inventory. One seller has only one parent publisher profile, and can have multiple child profiles. See https://support.google.com/admanager/answer/6035806 for details. Can be used to filter the response of the publisherProfiles.list method by setting the filter to "is_parent: true". */
   isParent?: boolean;
   /** Up to three key metrics and rankings. For example, "#1 Mobile News Site for 20 Straight Months". */
-  topHeadlines?: Array<string>;
+  topHeadlines?: ReadonlyArray<string>;
   /** A unique identifying code for the seller. This value is the same for all of the seller's parent and child publisher profiles. Can be used to filter the response of the publisherProfiles.list method. */
   publisherCode?: string;
   /** URL to a sample content page. */
@@ -179,9 +179,9 @@ export interface PublisherProfile {
   /** Contact information for direct reservation deals. This is free text entered by the publisher and may include information like names, phone numbers and email addresses. */
   directDealsContact?: string;
   /** The list of domains represented in this publisher profile. Empty if this is a parent profile. These are top private domains, meaning that these will not contain a string like "photos.google.co.uk/123", but will instead contain "google.co.uk". Can be used to filter the response of the publisherProfiles.list method. */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
   /** The list of apps represented in this publisher profile. Empty if this is a parent profile. */
-  mobileApps?: Array<PublisherProfileMobileApplication>;
+  mobileApps?: ReadonlyArray<PublisherProfileMobileApplication>;
   /** A Google public URL to the logo for this publisher profile. The logo is stored as a PNG, JPG, or GIF image. */
   logoUrl?: string;
   /** Display name of the publisher profile. Can be used to filter the response of the publisherProfiles.list method. */
@@ -265,7 +265,7 @@ export interface MediaPlanner {
   /** Output only. Account ID of the media planner. */
   accountId?: string;
   /** Output only. The ancestor names of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}` Can be used to filter the response of the mediaPlanners.list method. */
-  ancestorNames?: Array<string>;
+  ancestorNames?: ReadonlyArray<string>;
 }
 
 export const MediaPlanner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -289,9 +289,9 @@ export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CriteriaTargeting {
   /** A list of numeric IDs to be excluded. */
-  excludedCriteriaIds?: Array<string>;
+  excludedCriteriaIds?: ReadonlyArray<string>;
   /** A list of numeric IDs to be included. */
-  targetedCriteriaIds?: Array<string>;
+  targetedCriteriaIds?: ReadonlyArray<string>;
 }
 
 export const CriteriaTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -329,7 +329,7 @@ export const TechnologyTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VideoTargeting {
   /** A list of video positions to be excluded. When this field is populated, the targeted_position_types field must be empty. */
-  excludedPositionTypes?: Array<
+  excludedPositionTypes?: ReadonlyArray<
     | "POSITION_TYPE_UNSPECIFIED"
     | "PREROLL"
     | "MIDROLL"
@@ -337,7 +337,7 @@ export interface VideoTargeting {
     | (string & {})
   >;
   /** A list of video positions to be included. When this field is populated, the excluded_position_types field must be empty. */
-  targetedPositionTypes?: Array<
+  targetedPositionTypes?: ReadonlyArray<
     | "POSITION_TYPE_UNSPECIFIED"
     | "PREROLL"
     | "MIDROLL"
@@ -374,9 +374,9 @@ export const AdSize = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InventorySizeTargeting {
   /** A list of inventory sizes to be included. */
-  targetedInventorySizes?: Array<AdSize>;
+  targetedInventorySizes?: ReadonlyArray<AdSize>;
   /** A list of inventory sizes to be excluded. */
-  excludedInventorySizes?: Array<AdSize>;
+  excludedInventorySizes?: ReadonlyArray<AdSize>;
 }
 
 export const InventorySizeTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -436,7 +436,7 @@ export interface DayPartTargeting {
     | "USER"
     | (string & {});
   /** The targeted weekdays and times */
-  dayParts?: Array<DayPart>;
+  dayParts?: ReadonlyArray<DayPart>;
 }
 
 export const DayPartTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -446,7 +446,7 @@ export const DayPartTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InventoryTypeTargeting {
   /** The list of targeted inventory types for the bid request. */
-  inventoryTypes?: Array<
+  inventoryTypes?: ReadonlyArray<
     | "INVENTORY_TYPE_UNSPECIFIED"
     | "BROWSER"
     | "MOBILE_APP"
@@ -463,9 +463,9 @@ export const InventoryTypeTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface FirstPartyMobileApplicationTargeting {
   /** A list of application IDs to be excluded. */
-  excludedAppIds?: Array<string>;
+  excludedAppIds?: ReadonlyArray<string>;
   /** A list of application IDs to be included. */
-  targetedAppIds?: Array<string>;
+  targetedAppIds?: ReadonlyArray<string>;
 }
 
 export const FirstPartyMobileApplicationTargeting =
@@ -514,7 +514,7 @@ export interface MarketplaceTargeting {
   /** Output only. Placement targeting information, for example, URL, mobile applications. */
   placementTargeting?: PlacementTargeting;
   /** Output only. The sensitive content category label IDs excluded. Refer to this file https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt for category IDs. */
-  excludedSensitiveCategoryIds?: Array<string>;
+  excludedSensitiveCategoryIds?: ReadonlyArray<string>;
   /** Buyer user list targeting information. User lists can be uploaded using https://developers.google.com/authorized-buyers/rtb/bulk-uploader. */
   userListTargeting?: CriteriaTargeting;
 }
@@ -559,7 +559,7 @@ export const FrequencyCap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeliveryControl {
   /** Output only. Specifies any frequency caps. Cannot be filtered within ListDealsRequest. */
-  frequencyCap?: Array<FrequencyCap>;
+  frequencyCap?: ReadonlyArray<FrequencyCap>;
   /** Output only. Specifies roadblocking in a main companion lineitem. */
   companionDeliveryType?:
     | "COMPANION_DELIVERY_TYPE_UNSPECIFIED"
@@ -645,7 +645,7 @@ export interface Deal {
   /** Output only. Refers to a buyer in Real-time Bidding API's Buyer resource. Format: `buyers/{buyerAccountId}` */
   buyer?: string;
   /** Output only. If set, this field contains the list of DSP specific seat ids set by media planners that are eligible to transact on this deal. The seat ID is in the calling DSP's namespace. */
-  eligibleSeatIds?: Array<string>;
+  eligibleSeatIds?: ReadonlyArray<string>;
   /** Output only. When the client field is populated, this field refers to the buyer who creates and manages the client buyer and gets billed on behalf of the client buyer; when the buyer field is populated, this field is the same value as buyer; when the deal belongs to a media planner account, this field will be empty. Format : `buyers/{buyerAccountId}` */
   billedBuyer?: string;
   /** Specified by buyers in request for proposal (RFP) to notify publisher the total estimated spend for the proposal. Publishers will receive this information and send back proposed deals accordingly. */
@@ -740,7 +740,7 @@ export const UpdateDealRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateDealsRequest {
   /** Required. List of request messages to update deals. */
-  requests?: Array<UpdateDealRequest>;
+  requests?: ReadonlyArray<UpdateDealRequest>;
 }
 
 export const BatchUpdateDealsRequest =
@@ -776,7 +776,7 @@ export interface SendRfpRequest {
   /** Required. The profile of the publisher who will receive this RFP in the format: `buyers/{accountId}/publisherProfiles/{publisherProfileId}`. */
   publisherProfile?: string;
   /** Contact information for the buyer. */
-  buyerContacts?: Array<Contact>;
+  buyerContacts?: ReadonlyArray<Contact>;
   /** Required. Proposed flight start time of the RFP. A timestamp in RFC3339 UTC "Zulu" format. Note that the specified value will be truncated to a granularity of one second. */
   flightStartTime?: string;
   /** A message that is sent to the publisher. Maximum length is 1024 characters. */
@@ -804,7 +804,7 @@ export const SendRfpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SubscribeClientsRequest {
   /** Optional. A list of client buyers to subscribe to the auction package, with client buyer in the format `buyers/{accountId}/clients/{clientAccountId}`. The current buyer will be subscribed to the auction package regardless of the list contents if not already. */
-  clients?: Array<string>;
+  clients?: ReadonlyArray<string>;
 }
 
 export const SubscribeClientsRequest =
@@ -923,7 +923,7 @@ export const ActivateClientUserRequest =
 
 export interface ListDealsResponse {
   /** The list of deals. */
-  deals?: Array<Deal>;
+  deals?: ReadonlyArray<Deal>;
   /** Token to fetch the next page of results. */
   nextPageToken?: string;
 }
@@ -944,7 +944,7 @@ export const AddCreativeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFinalizedDealsResponse {
   /** The list of finalized deals. */
-  finalizedDeals?: Array<FinalizedDeal>;
+  finalizedDeals?: ReadonlyArray<FinalizedDeal>;
   /** Token to fetch the next page of results. */
   nextPageToken?: string;
 }
@@ -969,7 +969,7 @@ export interface ListClientsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListClientsRequest.pageToken field in the subsequent call to the list method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The returned list of clients. */
-  clients?: Array<Client>;
+  clients?: ReadonlyArray<Client>;
 }
 
 export const ListClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -986,7 +986,7 @@ export const ResumeFinalizedDealRequest =
 
 export interface UnsubscribeClientsRequest {
   /** Optional. A list of client buyers to unsubscribe from the auction package, with client buyer in the format `buyers/{accountId}/clients/{clientAccountId}`. */
-  clients?: Array<string>;
+  clients?: ReadonlyArray<string>;
 }
 
 export const UnsubscribeClientsRequest =
@@ -1031,7 +1031,7 @@ export const AddNoteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Proposal {
   /** Output only. Contact information for the seller. */
-  sellerContacts?: Array<Contact>;
+  sellerContacts?: ReadonlyArray<Contact>;
   /** Output only. Indicates whether the buyer/seller created the proposal. */
   originatorRole?:
     | "BUYER_SELLER_ROLE_UNSPECIFIED"
@@ -1069,7 +1069,7 @@ export interface Proposal {
     | "SELLER"
     | (string & {});
   /** Contact information for the buyer. */
-  buyerContacts?: Array<Contact>;
+  buyerContacts?: ReadonlyArray<Contact>;
   /** Output only. Type of deal the proposal contains. */
   dealType?:
     | "DEAL_TYPE_UNSPECIFIED"
@@ -1087,7 +1087,7 @@ export interface Proposal {
     | "TERMINATED"
     | (string & {});
   /** A list of notes from the buyer and the seller attached to this proposal. */
-  notes?: Array<Note>;
+  notes?: ReadonlyArray<Note>;
 }
 
 export const Proposal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1116,7 +1116,7 @@ export interface ListProposalsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The list of proposals. */
-  proposals?: Array<Proposal>;
+  proposals?: ReadonlyArray<Proposal>;
 }
 
 export const ListProposalsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1135,7 +1135,7 @@ export interface AuctionPackage {
   /** Output only. The buyer that created this auction package. Format: `buyers/{buyerAccountId}` */
   creator?: string;
   /** Output only. The list of media planners that are subscribed to the AuctionPackage. This field is only populated when calling as a bidder. */
-  subscribedMediaPlanners?: Array<MediaPlanner>;
+  subscribedMediaPlanners?: ReadonlyArray<MediaPlanner>;
   /** Output only. The minimum price a buyer has to bid to compete in this auction package. If this is field is not populated, there is no floor price. */
   floorPriceCpm?: Money;
   /** Immutable. The unique identifier for the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` The auction_package_id part of name is sent in the BidRequest to all RTB bidders and is returned as deal_id by the bidder in the BidResponse. */
@@ -1145,9 +1145,9 @@ export interface AuctionPackage {
   /** Output only. If set, this field contains the DSP specific seat id set by the media planner account that is considered the owner of this deal. The seat ID is in the calling DSP's namespace. */
   dealOwnerSeatId?: string;
   /** Output only. If set, this field identifies a seat that the media planner selected as the owner of this auction package. This is a seat ID in the DSP's namespace that was provided to the media planner. */
-  eligibleSeatIds?: Array<string>;
+  eligibleSeatIds?: ReadonlyArray<string>;
   /** Output only. When calling as a buyer, the list of clients of the current buyer that are subscribed to the AuctionPackage. When calling as a bidder, the list of clients that are subscribed to the AuctionPackage owned by the bidder or its buyers. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` */
-  subscribedClients?: Array<string>;
+  subscribedClients?: ReadonlyArray<string>;
   /** Output only. Time the auction package was last updated. This value is only increased when this auction package is updated but never when a buyer subscribed. */
   updateTime?: string;
   /** The display_name assigned to the auction package. */
@@ -1155,7 +1155,7 @@ export interface AuctionPackage {
   /** Output only. A description of the auction package. */
   description?: string;
   /** Output only. The list of buyers that are subscribed to the AuctionPackage. This field is only populated when calling as a bidder. Format: `buyers/{buyerAccountId}` */
-  subscribedBuyers?: Array<string>;
+  subscribedBuyers?: ReadonlyArray<string>;
 }
 
 export const AuctionPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1175,7 +1175,7 @@ export const AuctionPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuctionPackagesResponse {
   /** The list of auction packages. */
-  auctionPackages?: Array<AuctionPackage>;
+  auctionPackages?: ReadonlyArray<AuctionPackage>;
   /** Continuation token for fetching the next page of results. Pass this value in the ListAuctionPackagesRequest.pageToken field in the subsequent call to the `ListAuctionPackages` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1202,7 +1202,7 @@ export interface ListPublisherProfilesResponse {
   /** Token to fetch the next page of results. */
   nextPageToken?: string;
   /** The list of matching publisher profiles. */
-  publisherProfiles?: Array<PublisherProfile>;
+  publisherProfiles?: ReadonlyArray<PublisherProfile>;
 }
 
 export const ListPublisherProfilesResponse =
@@ -1236,7 +1236,7 @@ export const AcceptProposalRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateDealsResponse {
   /** Deals updated. */
-  deals?: Array<Deal>;
+  deals?: ReadonlyArray<Deal>;
 }
 
 export const BatchUpdateDealsResponse =
@@ -1260,11 +1260,7 @@ export const CreateBuyersClientsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Client).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/clients",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/clients", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersClientsRequest>;
 
@@ -1297,11 +1293,7 @@ export const ActivateBuyersClientsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateClientRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateBuyersClientsRequest>;
 
@@ -1331,7 +1323,7 @@ export const GetBuyersClientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/clients/{clientsId}" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersClientsRequest>;
 
@@ -1367,11 +1359,7 @@ export const PatchBuyersClientsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Client).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersClientsRequest>;
 
@@ -1404,11 +1392,7 @@ export const DeactivateBuyersClientsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateClientRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}:deactivate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:deactivate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeactivateBuyersClientsRequest>;
 
@@ -1448,7 +1432,7 @@ export const ListBuyersClientsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/clients" }),
+    T.Http({ method: "GET", path: "v1/{parent}/clients" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersClientsRequest>;
 
@@ -1486,11 +1470,7 @@ export const CreateBuyersClientsUsersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ClientUser).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}/users",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/users", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersClientsUsersRequest>;
 
@@ -1524,11 +1504,7 @@ export const ActivateBuyersClientsUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateClientUserRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}/users/{usersId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateBuyersClientsUsersRequest>;
 
@@ -1559,10 +1535,7 @@ export const GetBuyersClientsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}/users/{usersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersClientsUsersRequest>;
 
@@ -1596,11 +1569,7 @@ export const DeactivateBuyersClientsUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateClientUserRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}/users/{usersId}:deactivate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:deactivate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeactivateBuyersClientsUsersRequest>;
 
@@ -1637,10 +1606,7 @@ export const ListBuyersClientsUsersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}/users",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/users" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersClientsUsersRequest>;
 
@@ -1675,10 +1641,7 @@ export const DeleteBuyersClientsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/buyers/{buyersId}/clients/{clientsId}/users/{usersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBuyersClientsUsersRequest>;
 
@@ -1709,10 +1672,7 @@ export const GetBuyersProposalsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersProposalsRequest>;
 
@@ -1747,7 +1707,7 @@ export const CancelNegotiationBuyersProposalsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}:cancelNegotiation",
+      path: "v1/{proposal}:cancelNegotiation",
       hasBody: true,
     }),
     svc,
@@ -1786,11 +1746,7 @@ export const PatchBuyersProposalsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Proposal).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersProposalsRequest>;
 
@@ -1824,11 +1780,7 @@ export const AcceptBuyersProposalsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AcceptProposalRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}:accept",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:accept", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AcceptBuyersProposalsRequest>;
 
@@ -1868,7 +1820,7 @@ export const ListBuyersProposalsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/proposals" }),
+    T.Http({ method: "GET", path: "v1/{parent}/proposals" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersProposalsRequest>;
 
@@ -1906,11 +1858,7 @@ export const AddNoteBuyersProposalsRequest =
     proposal: Schema.String.pipe(T.HttpPath("proposal")),
     body: Schema.optional(AddNoteRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}:addNote",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{proposal}:addNote", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddNoteBuyersProposalsRequest>;
 
@@ -1946,7 +1894,7 @@ export const SendRfpBuyersProposalsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/buyers/{buyersId}/proposals:sendRfp",
+      path: "v1/{buyer}/proposals:sendRfp",
       hasBody: true,
     }),
     svc,
@@ -1984,7 +1932,7 @@ export const BatchUpdateBuyersProposalsDealsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}/deals:batchUpdate",
+      path: "v1/{parent}/deals:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -2017,10 +1965,7 @@ export const GetBuyersProposalsDealsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}/deals/{dealsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersProposalsDealsRequest>;
 
@@ -2056,11 +2001,7 @@ export const PatchBuyersProposalsDealsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Deal).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}/deals/{dealsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersProposalsDealsRequest>;
 
@@ -2097,10 +2038,7 @@ export const ListBuyersProposalsDealsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/proposals/{proposalsId}/deals",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/deals" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersProposalsDealsRequest>;
 
@@ -2135,10 +2073,7 @@ export const GetBuyersFinalizedDealsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/finalizedDeals/{finalizedDealsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersFinalizedDealsRequest>;
 
@@ -2181,7 +2116,7 @@ export const ListBuyersFinalizedDealsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/finalizedDeals" }),
+    T.Http({ method: "GET", path: "v1/{parent}/finalizedDeals" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFinalizedDealsRequest>;
 
@@ -2219,11 +2154,7 @@ export const ResumeBuyersFinalizedDealsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumeFinalizedDealRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/finalizedDeals/{finalizedDealsId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeBuyersFinalizedDealsRequest>;
 
@@ -2257,11 +2188,7 @@ export const AddCreativeBuyersFinalizedDealsRequest =
     deal: Schema.String.pipe(T.HttpPath("deal")),
     body: Schema.optional(AddCreativeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/finalizedDeals/{finalizedDealsId}:addCreative",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{deal}:addCreative", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddCreativeBuyersFinalizedDealsRequest>;
 
@@ -2297,7 +2224,7 @@ export const SetReadyToServeBuyersFinalizedDealsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/buyers/{buyersId}/finalizedDeals/{finalizedDealsId}:setReadyToServe",
+      path: "v1/{deal}:setReadyToServe",
       hasBody: true,
     }),
     svc,
@@ -2333,11 +2260,7 @@ export const PauseBuyersFinalizedDealsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PauseFinalizedDealRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/finalizedDeals/{finalizedDealsId}:pause",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseBuyersFinalizedDealsRequest>;
 
@@ -2368,10 +2291,7 @@ export const GetBuyersPublisherProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/publisherProfiles/{publisherProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersPublisherProfilesRequest>;
 
@@ -2411,7 +2331,7 @@ export const ListBuyersPublisherProfilesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/publisherProfiles" }),
+    T.Http({ method: "GET", path: "v1/{parent}/publisherProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersPublisherProfilesRequest>;
 
@@ -2446,10 +2366,7 @@ export const GetBuyersAuctionPackagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/auctionPackages/{auctionPackagesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersAuctionPackagesRequest>;
 
@@ -2485,7 +2402,7 @@ export const SubscribeClientsBuyersAuctionPackagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/buyers/{buyersId}/auctionPackages/{auctionPackagesId}:subscribeClients",
+      path: "v1/{auctionPackage}:subscribeClients",
       hasBody: true,
     }),
     svc,
@@ -2523,7 +2440,7 @@ export const UnsubscribeClientsBuyersAuctionPackagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/buyers/{buyersId}/auctionPackages/{auctionPackagesId}:unsubscribeClients",
+      path: "v1/{auctionPackage}:unsubscribeClients",
       hasBody: true,
     }),
     svc,
@@ -2559,11 +2476,7 @@ export const SubscribeBuyersAuctionPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SubscribeAuctionPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/auctionPackages/{auctionPackagesId}:subscribe",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:subscribe", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SubscribeBuyersAuctionPackagesRequest>;
 
@@ -2606,7 +2519,7 @@ export const ListBuyersAuctionPackagesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/auctionPackages" }),
+    T.Http({ method: "GET", path: "v1/{parent}/auctionPackages" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersAuctionPackagesRequest>;
 
@@ -2644,11 +2557,7 @@ export const UnsubscribeBuyersAuctionPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UnsubscribeAuctionPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/auctionPackages/{auctionPackagesId}:unsubscribe",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:unsubscribe", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UnsubscribeBuyersAuctionPackagesRequest>;
 
@@ -2691,7 +2600,7 @@ export const ListBiddersAuctionPackagesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/bidders/{biddersId}/auctionPackages" }),
+    T.Http({ method: "GET", path: "v1/{parent}/auctionPackages" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAuctionPackagesRequest>;
 
@@ -2738,7 +2647,7 @@ export const ListBiddersFinalizedDealsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/bidders/{biddersId}/finalizedDeals" }),
+    T.Http({ method: "GET", path: "v1/{parent}/finalizedDeals" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFinalizedDealsRequest>;
 
@@ -2778,7 +2687,7 @@ export const SetReadyToServeBiddersFinalizedDealsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/finalizedDeals/{finalizedDealsId}:setReadyToServe",
+      path: "v1/{deal}:setReadyToServe",
       hasBody: true,
     }),
     svc,

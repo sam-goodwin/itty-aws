@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface BatchGetAmpUrlsRequest {
   /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
-  urls?: Array<string>;
+  urls?: ReadonlyArray<string>;
   /** The lookup_strategy being requested. */
   lookupStrategy?: "FETCH_LIVE_DOC" | "IN_INDEX_DOC" | (string & {});
 }
@@ -75,9 +75,9 @@ export const AmpUrlError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchGetAmpUrlsResponse {
   /** The errors for requested URLs that have no AMP URL. */
-  urlErrors?: Array<AmpUrlError>;
+  urlErrors?: ReadonlyArray<AmpUrlError>;
   /** For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once. */
-  ampUrls?: Array<AmpUrl>;
+  ampUrls?: ReadonlyArray<AmpUrl>;
 }
 
 export const BatchGetAmpUrlsResponse =

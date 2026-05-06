@@ -39,7 +39,7 @@ export const PcRequestDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PcDeviceIntegrity {
   /** Details about the integrity of the device the app is running on. */
-  deviceRecognitionVerdict?: Array<
+  deviceRecognitionVerdict?: ReadonlyArray<
     | "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED"
     | "MEETS_PC_INTEGRITY"
     | (string & {})
@@ -105,7 +105,7 @@ export const DecodePcIntegrityTokenResponse =
 
 export interface AppAccessRiskVerdict {
   /** List of detected app types signalled for App Access Risk. */
-  appsDetected?: Array<
+  appsDetected?: ReadonlyArray<
     | "APPS_DETECTED_UNSPECIFIED"
     | "KNOWN_INSTALLED"
     | "KNOWN_CAPTURING"
@@ -214,7 +214,7 @@ export interface DeviceIntegrity {
   /** Attributes of the device where the integrity token was generated. */
   deviceAttributes?: DeviceAttributes;
   /** Contains legacy details about the integrity of the device the app is running on. Only for devices with Android version T or higher and only for apps opted in to the new verdicts. Only available during the transition period to the new verdicts system and will be removed afterwards. */
-  legacyDeviceRecognitionVerdict?: Array<
+  legacyDeviceRecognitionVerdict?: ReadonlyArray<
     | "UNKNOWN"
     | "MEETS_BASIC_INTEGRITY"
     | "MEETS_DEVICE_INTEGRITY"
@@ -227,7 +227,7 @@ export interface DeviceIntegrity {
   /** Details about the device recall bits set by the developer. */
   deviceRecall?: DeviceRecall;
   /** Details about the integrity of the device the app is running on. */
-  deviceRecognitionVerdict?: Array<
+  deviceRecognitionVerdict?: ReadonlyArray<
     | "UNKNOWN"
     | "MEETS_BASIC_INTEGRITY"
     | "MEETS_DEVICE_INTEGRITY"
@@ -282,7 +282,7 @@ export interface AppIntegrity {
   /** Package name of the application under attestation. Set iff app_recognition_verdict != UNEVALUATED. */
   packageName?: string;
   /** The SHA256 hash of the requesting app's signing certificates (base64 web-safe encoded). Set iff app_recognition_verdict != UNEVALUATED. */
-  certificateSha256Digest?: Array<string>;
+  certificateSha256Digest?: ReadonlyArray<string>;
   /** Required. Details about the app recognition verdict */
   appRecognitionVerdict?:
     | "UNKNOWN"
@@ -420,7 +420,7 @@ export const DecodeIntegrityTokenV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{v1Id}:decodeIntegrityToken",
+      path: "v1/{packageName}:decodeIntegrityToken",
       hasBody: true,
     }),
     svc,
@@ -458,7 +458,7 @@ export const DecodePcIntegrityTokenV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{v1Id}:decodePcIntegrityToken",
+      path: "v1/{packageName}:decodePcIntegrityToken",
       hasBody: true,
     }),
     svc,
@@ -496,7 +496,7 @@ export const WriteDeviceRecallRequest_Op =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{v1Id}/deviceRecall:write",
+      path: "v1/{packageName}/deviceRecall:write",
       hasBody: true,
     }),
     svc,

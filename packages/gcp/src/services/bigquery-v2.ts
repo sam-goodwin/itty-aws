@@ -52,7 +52,7 @@ export const AggregateClassificationMetrics =
 
 export interface AggregationThresholdPolicy {
   /** Optional. The privacy unit column(s) associated with this policy. For now, only one column per data source object (table, view) is allowed as a privacy unit column. Representing as a repeated field in metadata for extensibility to multiple columns in future. Duplicates and Repeated struct fields are not allowed. For nested fields, use dot notation ("outer.inner") */
-  privacyUnitColumns?: Array<string>;
+  privacyUnitColumns?: ReadonlyArray<string>;
   /** Optional. The threshold for the "aggregation threshold" policy. */
   threshold?: string;
 }
@@ -82,7 +82,7 @@ export const StandardSqlField: Schema.Schema<StandardSqlField> =
 
 export interface StandardSqlStructType {
   /** Fields within the struct. */
-  fields?: Array<StandardSqlField>;
+  fields?: ReadonlyArray<StandardSqlField>;
 }
 
 export const StandardSqlStructType: Schema.Schema<StandardSqlStructType> =
@@ -163,11 +163,11 @@ export const Argument = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ArimaCoefficients {
   /** Auto-regressive coefficients, an array of double. */
-  autoRegressiveCoefficients?: Array<number>;
+  autoRegressiveCoefficients?: ReadonlyArray<number>;
   /** Intercept coefficient, just a double not an array. */
   interceptCoefficient?: number;
   /** Moving-average coefficients, an array of double. */
-  movingAverageCoefficients?: Array<number>;
+  movingAverageCoefficients?: ReadonlyArray<number>;
 }
 
 export const ArimaCoefficients = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -220,7 +220,7 @@ export interface ArimaSingleModelForecastingMetrics {
   /** Non-seasonal order. */
   nonSeasonalOrder?: ArimaOrder;
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
-  seasonalPeriods?: Array<
+  seasonalPeriods?: ReadonlyArray<
     | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
     | "NO_SEASONALITY"
     | "DAILY"
@@ -234,7 +234,7 @@ export interface ArimaSingleModelForecastingMetrics {
   /** The time_series_id value for this time series. It will be one of the unique values from the time_series_id_column specified during ARIMA model training. Only present when time_series_id_column training option was used. */
   timeSeriesId?: string;
   /** The tuple of time_series_ids identifying this time series. It will be one of the unique tuples of values present in the time_series_id_columns specified during ARIMA model training. Only present when time_series_id_columns training option was used and the order of values here are same as the order of time_series_id_columns. */
-  timeSeriesIds?: Array<string>;
+  timeSeriesIds?: ReadonlyArray<string>;
 }
 
 export const ArimaSingleModelForecastingMetrics =
@@ -252,15 +252,15 @@ export const ArimaSingleModelForecastingMetrics =
 
 export interface ArimaForecastingMetrics {
   /** Arima model fitting metrics. */
-  arimaFittingMetrics?: Array<ArimaFittingMetrics>;
+  arimaFittingMetrics?: ReadonlyArray<ArimaFittingMetrics>;
   /** Repeated as there can be many metric sets (one for each model) in auto-arima and the large-scale case. */
-  arimaSingleModelForecastingMetrics?: Array<ArimaSingleModelForecastingMetrics>;
+  arimaSingleModelForecastingMetrics?: ReadonlyArray<ArimaSingleModelForecastingMetrics>;
   /** Whether Arima model fitted with drift or not. It is always false when d is not 1. */
-  hasDrift?: Array<boolean>;
+  hasDrift?: ReadonlyArray<boolean>;
   /** Non-seasonal order. */
-  nonSeasonalOrder?: Array<ArimaOrder>;
+  nonSeasonalOrder?: ReadonlyArray<ArimaOrder>;
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
-  seasonalPeriods?: Array<
+  seasonalPeriods?: ReadonlyArray<
     | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
     | "NO_SEASONALITY"
     | "DAILY"
@@ -272,7 +272,7 @@ export interface ArimaForecastingMetrics {
     | (string & {})
   >;
   /** Id to differentiate different time series for the large-scale case. */
-  timeSeriesId?: Array<string>;
+  timeSeriesId?: ReadonlyArray<string>;
 }
 
 export const ArimaForecastingMetrics =
@@ -303,7 +303,7 @@ export interface ArimaModelInfo {
   /** Non-seasonal order. */
   nonSeasonalOrder?: ArimaOrder;
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
-  seasonalPeriods?: Array<
+  seasonalPeriods?: ReadonlyArray<
     | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
     | "NO_SEASONALITY"
     | "DAILY"
@@ -317,7 +317,7 @@ export interface ArimaModelInfo {
   /** The time_series_id value for this time series. It will be one of the unique values from the time_series_id_column specified during ARIMA model training. Only present when time_series_id_column training option was used. */
   timeSeriesId?: string;
   /** The tuple of time_series_ids identifying this time series. It will be one of the unique tuples of values present in the time_series_id_columns specified during ARIMA model training. Only present when time_series_id_columns training option was used and the order of values here are same as the order of time_series_id_columns. */
-  timeSeriesIds?: Array<string>;
+  timeSeriesIds?: ReadonlyArray<string>;
 }
 
 export const ArimaModelInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -335,9 +335,9 @@ export const ArimaModelInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ArimaResult {
   /** This message is repeated because there are multiple arima models fitted in auto-arima. For non-auto-arima model, its size is one. */
-  arimaModelInfo?: Array<ArimaModelInfo>;
+  arimaModelInfo?: ReadonlyArray<ArimaModelInfo>;
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
-  seasonalPeriods?: Array<
+  seasonalPeriods?: ReadonlyArray<
     | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
     | "NO_SEASONALITY"
     | "DAILY"
@@ -357,7 +357,7 @@ export const ArimaResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
   /** The log type that this config enables. */
   logType?:
     | "LOG_TYPE_UNSPECIFIED"
@@ -374,7 +374,7 @@ export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
@@ -397,7 +397,7 @@ export interface BatchDeleteRowAccessPoliciesRequest {
   /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
   force?: boolean;
   /** Required. Policy IDs of the row access policies. */
-  policyIds?: Array<string>;
+  policyIds?: ReadonlyArray<string>;
 }
 
 export const BatchDeleteRowAccessPoliciesRequest =
@@ -443,7 +443,7 @@ export interface BiEngineStatistics {
     | "FULL"
     | (string & {});
   /** In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated. */
-  biEngineReasons?: Array<BiEngineReason>;
+  biEngineReasons?: ReadonlyArray<BiEngineReason>;
 }
 
 export const BiEngineStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -523,7 +523,7 @@ export const BigtableColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BigtableColumnFamily {
   /** Optional. Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as `.`. Other columns can be accessed as a list through the `.Column` field. */
-  columns?: Array<BigtableColumn>;
+  columns?: ReadonlyArray<BigtableColumn>;
   /** Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. PROTO_BINARY - indicates values are encoded using serialized proto messages. This can only be used in combination with JSON type. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it. */
   encoding?: string;
   /** Identifier of the column family. */
@@ -547,7 +547,7 @@ export const BigtableColumnFamily = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BigtableOptions {
   /** Optional. List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable. */
-  columnFamilies?: Array<BigtableColumnFamily>;
+  columnFamilies?: ReadonlyArray<BigtableColumnFamily>;
   /** Optional. If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false. */
   ignoreUnspecifiedColumnFamilies?: boolean;
   /** Optional. If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false. */
@@ -600,7 +600,7 @@ export interface BinaryClassificationMetrics {
   /** Aggregate classification metrics. */
   aggregateClassificationMetrics?: AggregateClassificationMetrics;
   /** Binary confusion matrix at multiple thresholds. */
-  binaryConfusionMatrixList?: Array<BinaryConfusionMatrix>;
+  binaryConfusionMatrixList?: ReadonlyArray<BinaryConfusionMatrix>;
   /** Label representing the negative class. */
   negativeLabel?: string;
   /** Label representing the positive class. */
@@ -641,7 +641,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
@@ -675,7 +675,7 @@ export const BqmlIterationResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BqmlTrainingRun {
   /** Deprecated. */
-  iterationResults?: Array<BqmlIterationResult>;
+  iterationResults?: ReadonlyArray<BqmlIterationResult>;
   /** Deprecated. */
   startTime?: string;
   /** Deprecated. */
@@ -727,7 +727,7 @@ export const CategoryCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CategoricalValue {
   /** Counts of all categories for the categorical feature. If there are more than ten categories, we return top ten (by count) and return one more CategoryCount with category "_OTHER_" and count as aggregate counts of remaining categories. */
-  categoryCounts?: Array<CategoryCount>;
+  categoryCounts?: ReadonlyArray<CategoryCount>;
 }
 
 export const CategoricalValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -782,7 +782,7 @@ export interface Cluster {
   /** Count of training data rows that were assigned to this cluster. */
   count?: string;
   /** Values of highly variant features for this cluster. */
-  featureValues?: Array<FeatureValue>;
+  featureValues?: ReadonlyArray<FeatureValue>;
 }
 
 export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -808,7 +808,7 @@ export const ClusterInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Clustering {
   /** One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The ordering of the clustering fields should be prioritized from most to least important for filtering purposes. For additional information, see [Introduction to clustered tables](https://cloud.google.com/bigquery/docs/clustered-tables#limitations). */
-  fields?: Array<string>;
+  fields?: ReadonlyArray<string>;
 }
 
 export const Clustering = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -817,7 +817,7 @@ export const Clustering = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClusteringMetrics {
   /** Information for all clusters. */
-  clusters?: Array<Cluster>;
+  clusters?: ReadonlyArray<Cluster>;
   /** Davies-Bouldin index. */
   daviesBouldinIndex?: number;
   /** Mean of squared distances between each sample to its cluster centroid. */
@@ -846,7 +846,7 @@ export interface Row {
   /** The original label of this row. */
   actualLabel?: string;
   /** Info describing predicted label distribution. */
-  entries?: Array<Entry>;
+  entries?: ReadonlyArray<Entry>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -858,7 +858,7 @@ export interface ConfusionMatrix {
   /** Confidence threshold used when computing the entries of the confusion matrix. */
   confidenceThreshold?: number;
   /** One row per actual label. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
 }
 
 export const ConfusionMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -890,7 +890,7 @@ export interface CsvOptions {
   /** Optional. Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when querying a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value. */
   nullMarker?: string;
   /** Optional. A list of strings represented as SQL NULL value in a CSV file. null_marker and null_markers can't be set at the same time. If null_marker is set, null_markers has to be not set. If null_markers is set, null_marker has to be not set. If both null_marker and null_markers are set at the same time, a user error would be thrown. Any strings listed in null_markers, including empty string would be interpreted as SQL NULL. This applies to all column types. */
-  nullMarkers?: Array<string>;
+  nullMarkers?: ReadonlyArray<string>;
   /** Optional. Indicates if the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') are preserved. */
   preserveAsciiControlCharacters?: boolean;
   /** Optional. The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ("). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character ' " ', use ' "" '. */
@@ -980,7 +980,7 @@ export interface DatasetAccessEntry {
   /** The dataset this entry applies to */
   dataset?: DatasetReference;
   /** Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. */
-  targetTypes?: Array<
+  targetTypes?: ReadonlyArray<
     "TARGET_TYPE_UNSPECIFIED" | "VIEWS" | "ROUTINES" | (string & {})
   >;
 }
@@ -1073,7 +1073,7 @@ export const RestrictionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Dataset {
   /** Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER; If you patch a dataset, then this field is overwritten by the patched dataset's access field. To add entities, you must supply the entire existing access array in addition to any new entities that you want to add. */
-  access?: Array<{
+  access?: ReadonlyArray<{
     condition?: Expr;
     dataset?: DatasetAccessEntry;
     domain?: string;
@@ -1150,7 +1150,7 @@ export interface Dataset {
     | "PHYSICAL"
     | (string & {});
   /** Output only. Tags for the dataset. To provide tags as inputs, use the `resourceTags` field. */
-  tags?: Array<{ tagKey?: string; tagValue?: string }>;
+  tags?: ReadonlyArray<{ tagKey?: string; tagValue?: string }>;
   /** Output only. Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, * EXTERNAL - dataset with definition in external metadata catalog, * BIGLAKE_ICEBERG - a Biglake dataset accessible through the Iceberg API, * BIGLAKE_HIVE - a Biglake dataset accessible through the Hive API. */
   type?: string;
 }
@@ -1213,7 +1213,7 @@ export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DatasetList {
   /** An array of the dataset resources in the project. Each resource contains basic information. For full information about a particular dataset resource, use the Datasets: get method. This property is omitted when there are no datasets in the project. */
-  datasets?: Array<{
+  datasets?: ReadonlyArray<{
     catalogSource?: string;
     datasetReference?: DatasetReference;
     externalDatasetReference?: ExternalDatasetReference;
@@ -1231,7 +1231,7 @@ export interface DatasetList {
   /** A token that can be used to request the next results page. This property is omitted on the final results page. */
   nextPageToken?: string;
   /** A list of skipped locations that were unreachable. For more information about BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations. Example: "europe-west5" */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const DatasetList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1348,7 +1348,7 @@ export const DmlStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DoubleCandidates {
   /** Candidates for the double parameter in increasing order. */
-  candidates?: Array<number>;
+  candidates?: ReadonlyArray<number>;
 }
 
 export const DoubleCandidates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1402,7 +1402,7 @@ export interface MultiClassClassificationMetrics {
   /** Aggregate classification metrics. */
   aggregateClassificationMetrics?: AggregateClassificationMetrics;
   /** Confusion matrix at different thresholds. */
-  confusionMatrixList?: Array<ConfusionMatrix>;
+  confusionMatrixList?: ReadonlyArray<ConfusionMatrix>;
 }
 
 export const MultiClassClassificationMetrics =
@@ -1487,7 +1487,7 @@ export interface ExplainQueryStep {
   /** Machine-readable operation type. */
   kind?: string;
   /** Human-readable description of the step(s). */
-  substeps?: Array<string>;
+  substeps?: ReadonlyArray<string>;
 }
 
 export const ExplainQueryStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1517,7 +1517,7 @@ export interface ExplainQueryStage {
   /** Unique ID for the stage within the plan. */
   id?: string;
   /** IDs for stages that are inputs to this stage. */
-  inputStages?: Array<string>;
+  inputStages?: ReadonlyArray<string>;
   /** Human-readable name for the stage. */
   name?: string;
   /** Number of parallel input segments to be processed */
@@ -1545,7 +1545,7 @@ export interface ExplainQueryStage {
   /** Current status for this stage. */
   status?: string;
   /** List of operations within the stage in dependency order (approximately chronological). */
-  steps?: Array<ExplainQueryStep>;
+  steps?: ReadonlyArray<ExplainQueryStep>;
   /** Milliseconds the average shard spent waiting to be scheduled. */
   waitMsAvg?: string;
   /** Milliseconds the slowest shard spent waiting to be scheduled. */
@@ -1685,7 +1685,7 @@ export const GoogleSheetsOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HivePartitioningOptions {
   /** Output only. For permanent external tables, this field is populated with the hive partition keys in the order they were inferred. The types of the partition keys can be deduced by checking the table schema (which will include the partition keys). Not every API will populate this field in the output. For example, Tables.Get will populate it, but Tables.List will not contain this field. */
-  fields?: Array<string>;
+  fields?: ReadonlyArray<string>;
   /** Optional. When set, what mode of hive partitioning to use when reading data. The following modes are supported: * AUTO: automatically infer partition key name(s) and type(s). * STRINGS: automatically infer partition key name(s). All types are strings. * CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported formats are: JSON, CSV, ORC, Avro and Parquet. */
   mode?: string;
   /** Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with require_partition_filter explicitly set to true will fail. */
@@ -1763,17 +1763,17 @@ export const GeneratedColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableFieldSchema {
   /** Deprecated. */
-  categories?: { names?: Array<string> };
+  categories?: { names?: ReadonlyArray<string> };
   /** Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior. */
   collation?: string;
   /** Optional. Data policies attached to this field, used for field-level access control. */
-  dataPolicies?: Array<DataPolicyOption>;
+  dataPolicies?: ReadonlyArray<DataPolicyOption>;
   /** Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field. */
   defaultValueExpression?: string;
   /** Optional. The field description. The maximum length is 1,024 characters. */
   description?: string;
   /** Optional. Describes the nested schema fields if the type property is set to RECORD. */
-  fields?: Array<TableFieldSchema>;
+  fields?: ReadonlyArray<TableFieldSchema>;
   /** Optional. Definition of the foreign data type. Only valid for top-level schema fields (not nested fields). If the type is FOREIGN, this field is required. */
   foreignTypeDefinition?: string;
   /** Optional. Definition of how values are generated for the field. Only valid for top-level schema fields (not nested fields). */
@@ -1785,7 +1785,7 @@ export interface TableFieldSchema {
   /** Required. The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters. */
   name?: string;
   /** Optional. The policy tags attached to this field, used for field-level access control. If not set, defaults to empty policy_tags. */
-  policyTags?: { names?: Array<string> };
+  policyTags?: { names?: ReadonlyArray<string> };
   /** Optional. Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: * Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] * Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: * If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. * If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): * If type = "NUMERIC": 1 ≤ precision ≤ 29. * If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid. */
   precision?: string;
   /** Represents the type of a field element. */
@@ -1847,7 +1847,7 @@ export const ForeignTypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableSchema {
   /** Describes the fields in a table. */
-  fields?: Array<TableFieldSchema>;
+  fields?: ReadonlyArray<TableFieldSchema>;
   /** Optional. Specifies metadata of the foreign data type definition in field schema (TableFieldSchema.foreign_type_definition). */
   foreignTypeInfo?: ForeignTypeInfo;
 }
@@ -1875,7 +1875,7 @@ export interface ExternalDataConfiguration {
   /** Optional. Format used to parse DATETIME values. Supports C-style and SQL-style values. */
   datetimeFormat?: string;
   /** Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exceeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats. */
-  decimalTargetTypes?: Array<
+  decimalTargetTypes?: ReadonlyArray<
     | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
     | "NUMERIC"
     | "BIGNUMERIC"
@@ -1920,7 +1920,7 @@ export interface ExternalDataConfiguration {
   /** [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". For Apache Iceberg tables, specify "ICEBERG". For ORC files, specify "ORC". For Parquet files, specify "PARQUET". [Beta] For Google Cloud Bigtable, specify "BIGTABLE". */
   sourceFormat?: string;
   /** [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed. */
-  sourceUris?: Array<string>;
+  sourceUris?: ReadonlyArray<string>;
   /** Optional. Format used to parse TIME values. Supports C-style and SQL-style values. */
   timeFormat?: string;
   /** Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g. 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles). */
@@ -1928,7 +1928,7 @@ export interface ExternalDataConfiguration {
   /** Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values. */
   timestampFormat?: string;
   /** Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated. */
-  timestampTargetPrecision?: Array<number>;
+  timestampTargetPrecision?: ReadonlyArray<number>;
 }
 
 export const ExternalDataConfiguration =
@@ -2023,7 +2023,7 @@ export const ForeignViewDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GenAiErrorStats {
   /** A list of unique errors at query level (up to 5, truncated to 100 chars) */
-  errors?: Array<string>;
+  errors?: ReadonlyArray<string>;
 }
 
 export const GenAiErrorStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2045,7 +2045,7 @@ export const GenAiFunctionCostOptimizationStats =
 
 export interface GenAiFunctionErrorStats {
   /** A list of unique errors at function level (up to 5, truncated to 100 chars). */
-  errors?: Array<string>;
+  errors?: ReadonlyArray<string>;
   /** Number of failed rows processed by the function */
   numFailedRows?: string;
 }
@@ -2081,7 +2081,7 @@ export interface GenAiStats {
   /** Job level error stats across all GenAi functions */
   errorStats?: GenAiErrorStats;
   /** Function level stats for GenAi Functions. See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview */
-  functionStats?: Array<GenAiFunctionStats>;
+  functionStats?: ReadonlyArray<GenAiFunctionStats>;
 }
 
 export const GenAiStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2132,7 +2132,7 @@ export const TableCell = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableRow {
   /** Represents a single row in the result set, consisting of one or more fields. */
-  f?: Array<TableCell>;
+  f?: ReadonlyArray<TableCell>;
 }
 
 export const TableRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2143,7 +2143,7 @@ export interface GetQueryResultsResponse {
   /** Whether the query result was fetched from the query cache. */
   cacheHit?: boolean;
   /** Output only. The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful. For more information about error messages, see [Error messages](https://cloud.google.com/bigquery/docs/error-messages). */
-  errors?: Array<ErrorProto>;
+  errors?: ReadonlyArray<ErrorProto>;
   /** A hash of this response. */
   etag?: string;
   /** Whether the query has completed or not. If rows or totalRows are present, this will always be true. If this is false, totalRows will not be available. */
@@ -2157,7 +2157,7 @@ export interface GetQueryResultsResponse {
   /** A token used for paging results. When this token is non-empty, it indicates additional results are available. */
   pageToken?: string;
   /** An object with as many results as can be contained within the maximum permitted reply size. To get any additional rows, you can call GetQueryResults and specify the jobReference returned above. Present only when the query completes successfully. The REST-based representation of this data leverages a series of JSON f,v objects for indicating fields and values. */
-  rows?: Array<TableRow>;
+  rows?: ReadonlyArray<TableRow>;
   /** The schema of the results. Present only when the query completes successfully. */
   schema?: TableSchema;
   /** The total number of bytes processed for this query. */
@@ -2199,7 +2199,7 @@ export interface GlobalExplanation {
   /** Class label for this set of global explanations. Will be empty/null for binary logistic and linear regression models. Sorted alphabetically in descending order. */
   classLabel?: string;
   /** A list of the top global explanations. Sorted by absolute value of attribution in descending order. */
-  explanations?: Array<Explanation>;
+  explanations?: ReadonlyArray<Explanation>;
 }
 
 export const GlobalExplanation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2227,7 +2227,7 @@ export const HighCardinalityJoin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StringHparamSearchSpace {
   /** Canididates for the string or enum parameter in lower case. */
-  candidates?: Array<string>;
+  candidates?: ReadonlyArray<string>;
 }
 
 export const StringHparamSearchSpace =
@@ -2237,7 +2237,7 @@ export const StringHparamSearchSpace =
 
 export interface IntCandidates {
   /** Candidates for the int parameter in increasing order. */
-  candidates?: Array<string>;
+  candidates?: ReadonlyArray<string>;
 }
 
 export const IntCandidates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2270,7 +2270,7 @@ export const IntHparamSearchSpace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IntArray {
   /** Elements in the int array. */
-  elements?: Array<string>;
+  elements?: ReadonlyArray<string>;
 }
 
 export const IntArray = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2279,7 +2279,7 @@ export const IntArray = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IntArrayHparamSearchSpace {
   /** Candidates for the int array parameter. */
-  candidates?: Array<IntArray>;
+  candidates?: ReadonlyArray<IntArray>;
 }
 
 export const IntArrayHparamSearchSpace =
@@ -2442,7 +2442,7 @@ export interface TrainingOptions {
   /** If true, perform decompose time series and save the results. */
   decomposeTimeSeries?: boolean;
   /** Optional. Names of the columns to slice on. Applies to contribution analysis models. */
-  dimensionIdColumns?: Array<string>;
+  dimensionIdColumns?: ReadonlyArray<string>;
   /** Distance type for clustering models. */
   distanceType?:
     | "DISTANCE_TYPE_UNSPECIFIED"
@@ -2470,7 +2470,7 @@ export interface TrainingOptions {
   /** The forecast limit upper bound that was used during ARIMA model training with limits. */
   forecastLimitUpperBound?: number;
   /** Hidden units for dnn models. */
-  hiddenUnits?: Array<string>;
+  hiddenUnits?: ReadonlyArray<string>;
   /** The geographical region based on which the holidays are considered in time series modeling. If a valid value is specified, then holiday effects modeling is enabled. */
   holidayRegion?:
     | "HOLIDAY_REGION_UNSPECIFIED"
@@ -2544,7 +2544,7 @@ export interface TrainingOptions {
     | "ZA"
     | (string & {});
   /** A list of geographical regions that are used for time series modeling. */
-  holidayRegions?: Array<
+  holidayRegions?: ReadonlyArray<
     | "HOLIDAY_REGION_UNSPECIFIED"
     | "GLOBAL"
     | "NA"
@@ -2619,7 +2619,7 @@ export interface TrainingOptions {
   /** The number of periods ahead that need to be forecasted. */
   horizon?: string;
   /** The target evaluation metrics to optimize the hyperparameters for. */
-  hparamTuningObjectives?: Array<
+  hparamTuningObjectives?: ReadonlyArray<
     | "HPARAM_TUNING_OBJECTIVE_UNSPECIFIED"
     | "MEAN_ABSOLUTE_ERROR"
     | "MEAN_SQUARED_ERROR"
@@ -2646,7 +2646,7 @@ export interface TrainingOptions {
   /** Specifies the initial learning rate for the line search learn rate strategy. */
   initialLearnRate?: number;
   /** Name of input label columns in training data. */
-  inputLabelColumns?: Array<string>;
+  inputLabelColumns?: ReadonlyArray<string>;
   /** Name of the instance weight column for training data. This column isn't be used as a feature. */
   instanceWeightColumn?: string;
   /** Number of integral steps for the integrated gradients explain method. */
@@ -2750,7 +2750,7 @@ export interface TrainingOptions {
     | "SPECIFIC_RESERVATION"
     | (string & {});
   /** Corresponds to the label values of a reservation resource used by Vertex AI. This must be the full resource name of the reservation or reservation block. */
-  reservationAffinityValues?: Array<string>;
+  reservationAffinityValues?: ReadonlyArray<string>;
   /** Number of paths for the sampled Shapley explain method. */
   sampledShapleyNumPaths?: string;
   /** If true, scale the feature values by dividing the feature standard deviation. Currently only apply to PCA. */
@@ -2766,7 +2766,7 @@ export interface TrainingOptions {
   /** The time series id column that was used during ARIMA model training. */
   timeSeriesIdColumn?: string;
   /** The time series id columns that were used during ARIMA model training. */
-  timeSeriesIdColumns?: Array<string>;
+  timeSeriesIdColumns?: ReadonlyArray<string>;
   /** The fraction of the interpolated length of the time series that's used to model the time series trend component. All of the time points of the time series are used to model the non-trend component. This training option accelerates modeling training without sacrificing much forecasting accuracy. You can use this option with `minTimeSeriesLength` but not with `maxTimeSeriesLength`. */
   timeSeriesLengthFraction?: number;
   /** Column to be designated as time series timestamp for ARIMA model. */
@@ -2784,7 +2784,7 @@ export interface TrainingOptions {
   /** User column specified for matrix factorization models. */
   userColumn?: string;
   /** The version aliases to apply in Vertex AI model registry. Always overwrite if the version aliases exists in a existing model. */
-  vertexAiModelVersionAliases?: Array<string>;
+  vertexAiModelVersionAliases?: ReadonlyArray<string>;
   /** Hyperparameter for matrix factoration when implicit feedback type is specified. */
   walsAlpha?: number;
   /** Whether to train a model from the last checkpoint. */
@@ -3068,7 +3068,7 @@ export interface IterationResult {
   /** Arima result. */
   arimaResult?: ArimaResult;
   /** Information about top clusters for clustering models. */
-  clusterInfos?: Array<ClusterInfo>;
+  clusterInfos?: ReadonlyArray<ClusterInfo>;
   /** Time taken to run the iteration in milliseconds. */
   durationMs?: string;
   /** Loss computed on the eval data at the end of iteration. */
@@ -3078,7 +3078,7 @@ export interface IterationResult {
   /** Learn rate used for this iteration. */
   learnRate?: number;
   /** The information of the principal components. */
-  principalComponentInfos?: Array<PrincipalComponentInfo>;
+  principalComponentInfos?: ReadonlyArray<PrincipalComponentInfo>;
   /** Loss computed on the training data at the end of iteration. */
   trainingLoss?: number;
 }
@@ -3116,7 +3116,7 @@ export interface JobConfigurationTableCopy {
   /** [Pick one] Source table to copy. */
   sourceTable?: TableReference;
   /** [Pick one] Source tables to copy. */
-  sourceTables?: Array<TableReference>;
+  sourceTables?: ReadonlyArray<TableReference>;
   /** Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema and table constraints from the source table. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion. */
   writeDisposition?: string;
 }
@@ -3167,7 +3167,7 @@ export interface JobConfigurationExtract {
   /** [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified Google Cloud Storage URI where the extracted table should be written. */
   destinationUri?: string;
   /** [Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written. */
-  destinationUris?: Array<string>;
+  destinationUris?: ReadonlyArray<string>;
   /** Optional. When extracting data in CSV format, this defines the delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models. */
   fieldDelimiter?: string;
   /** Optional. Model extract options only applicable when extracting models. */
@@ -3249,7 +3249,7 @@ export interface JobConfigurationLoad {
     | "V2"
     | (string & {});
   /** Optional. Connection properties which can modify the load job behavior. Currently, only the 'session_id' connection property is supported, and is used to resolve _SESSION appearing as the dataset id. */
-  connectionProperties?: Array<ConnectionProperty>;
+  connectionProperties?: ReadonlyArray<ConnectionProperty>;
   /** Optional. [Experimental] Configures the load job to copy files directly to the destination BigLake managed table, bypassing file content reading and rewriting. Copying files only is supported when all the following are true: * `source_uris` are located in the same Cloud Storage location as the destination table's `storage_uri` location. * `source_format` is `PARQUET`. * `destination_table` is an existing BigLake managed table. The table's schema does not have flexible column names. The table's columns do not have type parameters other than precision and scale. * No options other than the above are specified. */
   copyFilesOnly?: boolean;
   /** Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion. */
@@ -3261,7 +3261,7 @@ export interface JobConfigurationLoad {
   /** Optional. Date format used for parsing DATETIME values. */
   datetimeFormat?: string;
   /** Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exceeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats. */
-  decimalTargetTypes?: Array<
+  decimalTargetTypes?: ReadonlyArray<
     | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
     | "NUMERIC"
     | "BIGNUMERIC"
@@ -3294,13 +3294,13 @@ export interface JobConfigurationLoad {
   /** Optional. Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value. */
   nullMarker?: string;
   /** Optional. A list of strings represented as SQL NULL value in a CSV file. null_marker and null_markers can't be set at the same time. If null_marker is set, null_markers has to be not set. If null_markers is set, null_marker has to be not set. If both null_marker and null_markers are set at the same time, a user error would be thrown. Any strings listed in null_markers, including empty string would be interpreted as SQL NULL. This applies to all column types. */
-  nullMarkers?: Array<string>;
+  nullMarkers?: ReadonlyArray<string>;
   /** Optional. Additional properties to set if sourceFormat is set to PARQUET. */
   parquetOptions?: ParquetOptions;
   /** Optional. When sourceFormat is set to "CSV", this indicates whether the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') are preserved. */
   preserveAsciiControlCharacters?: boolean;
   /** If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result. */
-  projectionFields?: Array<string>;
+  projectionFields?: ReadonlyArray<string>;
   /** Optional. The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character ' " ', use ' "" '. @default " */
   quote?: string;
   /** Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified. */
@@ -3314,7 +3314,7 @@ export interface JobConfigurationLoad {
   /** [Deprecated] The format of the schemaInline property. */
   schemaInlineFormat?: string;
   /** Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in three cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE_DATA; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable. */
-  schemaUpdateOptions?: Array<string>;
+  schemaUpdateOptions?: ReadonlyArray<string>;
   /** Optional. The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema. */
   skipLeadingRows?: number;
   /** Optional. Controls the strategy used to match loaded columns to the schema. If not set, a sensible default is chosen based on how the schema is provided. If autodetect is used, then columns are matched by name. Otherwise, columns are matched by position. This is done to keep the behavior backward-compatible. */
@@ -3326,7 +3326,7 @@ export interface JobConfigurationLoad {
   /** Optional. The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV. */
   sourceFormat?: string;
   /** [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed. */
-  sourceUris?: Array<string>;
+  sourceUris?: ReadonlyArray<string>;
   /** Optional. Date format used for parsing TIME values. */
   timeFormat?: string;
   /** Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified. */
@@ -3336,7 +3336,7 @@ export interface JobConfigurationLoad {
   /** Optional. Date format used for parsing TIMESTAMP values. */
   timestampFormat?: string;
   /** Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated. */
-  timestampTargetPrecision?: Array<number>;
+  timestampTargetPrecision?: ReadonlyArray<number>;
   /** Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER). */
   useAvroLogicalTypes?: boolean;
   /** Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints and uses the schema from the load job. * WRITE_TRUNCATE_DATA: If the table already exists, BigQuery overwrites the data, but keeps the constraints and schema of the existing table. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion. */
@@ -3397,7 +3397,7 @@ export interface QueryParameterType {
   /** Optional. The element type of the range, if this is a range. */
   rangeElementType?: QueryParameterType;
   /** Optional. The types of the fields of this struct, in order, if this is a struct. */
-  structTypes?: Array<{
+  structTypes?: ReadonlyArray<{
     description?: string;
     name?: string;
     type?: QueryParameterType;
@@ -3446,7 +3446,7 @@ export const RangeValue: Schema.Schema<RangeValue> =
 
 export interface QueryParameterValue {
   /** Optional. The array values, if this is an array type. */
-  arrayValues?: Array<QueryParameterValue>;
+  arrayValues?: ReadonlyArray<QueryParameterValue>;
   /** Optional. The range value, if this is a range type. */
   rangeValue?: RangeValue;
   /** The struct field values. */
@@ -3534,7 +3534,7 @@ export interface JobConfigurationQuery {
   /** Clustering specification for the destination table. */
   clustering?: Clustering;
   /** Connection properties which can modify the query behavior. */
-  connectionProperties?: Array<ConnectionProperty>;
+  connectionProperties?: ReadonlyArray<ConnectionProperty>;
   /** [Optional] Specifies whether the query should be executed as a continuous query. The default value is false. */
   continuous?: boolean;
   /** Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion. */
@@ -3562,11 +3562,11 @@ export interface JobConfigurationQuery {
   /** [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or GoogleSQL. */
   query?: string;
   /** Query parameters for GoogleSQL queries. */
-  queryParameters?: Array<QueryParameter>;
+  queryParameters?: ReadonlyArray<QueryParameter>;
   /** Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified. */
   rangePartitioning?: RangePartitioning;
   /** Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in three cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE_DATA; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable. */
-  schemaUpdateOptions?: Array<string>;
+  schemaUpdateOptions?: ReadonlyArray<string>;
   /** Options controlling the execution of scripts. */
   scriptOptions?: ScriptOptions;
   /** Output only. System variables for GoogleSQL queries. A system variable is output if the variable is settable and its value differs from the system default. "@@" prefix is not included in the name of the System variables. */
@@ -3580,7 +3580,7 @@ export interface JobConfigurationQuery {
   /** Optional. Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true. */
   useQueryCache?: boolean;
   /** Describes user-defined function resources used in the query. */
-  userDefinedFunctionResources?: Array<UserDefinedFunctionResource>;
+  userDefinedFunctionResources?: ReadonlyArray<UserDefinedFunctionResource>;
   /** Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints, and uses the schema from the query result. * WRITE_TRUNCATE_DATA: If the table already exists, BigQuery overwrites the data, but keeps the constraints and schema of the existing table. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion. */
   writeDisposition?: string;
   /** Optional. This is only supported for a SELECT query using a temporary table. If set, the query is allowed to write results incrementally to the temporary result table. This may incur a performance penalty. This option cannot be used with Legacy SQL. This feature is not yet available. */
@@ -3714,11 +3714,11 @@ export const QueryTimelineSample = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobStatistics4 {
   /** Output only. Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field. */
-  destinationUriFileCounts?: Array<string>;
+  destinationUriFileCounts?: ReadonlyArray<string>;
   /** Output only. Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes and doesn't have any relationship with the number of actual result bytes extracted in the desired format. */
   inputBytes?: string;
   /** Output only. Describes a timeline of job execution. */
-  timeline?: Array<QueryTimelineSample>;
+  timeline?: ReadonlyArray<QueryTimelineSample>;
 }
 
 export const JobStatistics4 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3739,7 +3739,7 @@ export interface JobStatistics3 {
   /** Output only. Number of rows imported in a load job. Note that while an import job is in the running state, this value may change. */
   outputRows?: string;
   /** Output only. Describes a timeline of job execution. */
-  timeline?: Array<QueryTimelineSample>;
+  timeline?: ReadonlyArray<QueryTimelineSample>;
 }
 
 export const JobStatistics3 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3827,7 +3827,7 @@ export const MaterializedView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MaterializedViewStatistics {
   /** Materialized views considered for the query job. Only certain materialized views are used. For a detailed list, see the child message. If many materialized views are considered, then the list might be incomplete. */
-  materializedView?: Array<MaterializedView>;
+  materializedView?: ReadonlyArray<MaterializedView>;
 }
 
 export const MaterializedViewStatistics =
@@ -3882,7 +3882,7 @@ export const TableMetadataCacheUsage =
 
 export interface MetadataCacheStatistics {
   /** Set for the Metadata caching eligible tables referenced in the query. */
-  tableMetadataCacheUsage?: Array<TableMetadataCacheUsage>;
+  tableMetadataCacheUsage?: ReadonlyArray<TableMetadataCacheUsage>;
 }
 
 export const MetadataCacheStatistics =
@@ -3894,9 +3894,9 @@ export const MetadataCacheStatistics =
 
 export interface MlStatistics {
   /** Output only. Trials of a [hyperparameter tuning job](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) sorted by trial_id. */
-  hparamTrials?: Array<HparamTuningTrial>;
+  hparamTrials?: ReadonlyArray<HparamTuningTrial>;
   /** Results for all completed iterations. Empty for [hyperparameter tuning jobs](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview). */
-  iterationResults?: Array<IterationResult>;
+  iterationResults?: ReadonlyArray<IterationResult>;
   /** Output only. Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop. */
   maxIterations?: string;
   /** Output only. The type of the model that is being trained. */
@@ -3968,7 +3968,7 @@ export const SkewSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PartitionSkew {
   /** Output only. Source stages which produce skewed data. */
-  skewSources?: Array<SkewSource>;
+  skewSources?: ReadonlyArray<SkewSource>;
 }
 
 export const PartitionSkew = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3977,9 +3977,9 @@ export const PartitionSkew = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StagePerformanceStandaloneInsight {
   /** Output only. If present, the stage had the following reasons for being disqualified from BI Engine execution. */
-  biEngineReasons?: Array<BiEngineReason>;
+  biEngineReasons?: ReadonlyArray<BiEngineReason>;
   /** Output only. High cardinality joins in the stage. */
-  highCardinalityJoins?: Array<HighCardinalityJoin>;
+  highCardinalityJoins?: ReadonlyArray<HighCardinalityJoin>;
   /** Output only. True if the stage has insufficient shuffle quota. */
   insufficientShuffleQuota?: boolean;
   /** Output only. Partition skew in the stage. */
@@ -4004,9 +4004,9 @@ export interface PerformanceInsights {
   /** Output only. Average execution ms of previous runs. Indicates the job ran slow compared to previous executions. To find previous executions, use INFORMATION_SCHEMA tables and filter jobs with same query hash. */
   avgPreviousExecutionMs?: string;
   /** Output only. Query stage performance insights compared to previous runs, for diagnosing performance regression. */
-  stagePerformanceChangeInsights?: Array<StagePerformanceChangeInsight>;
+  stagePerformanceChangeInsights?: ReadonlyArray<StagePerformanceChangeInsight>;
   /** Output only. Standalone query stage performance insights, for exploring potential improvements. */
-  stagePerformanceStandaloneInsights?: Array<StagePerformanceStandaloneInsight>;
+  stagePerformanceStandaloneInsights?: ReadonlyArray<StagePerformanceStandaloneInsight>;
 }
 
 export const PerformanceInsights = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4049,9 +4049,9 @@ export const PropertyGraphReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface SearchStatistics {
   /** Search index pruning statistics, one for each base table that has a search index. If a base table does not have a search index or the index does not help with pruning on the base table, then there is no pruning statistics for that table. */
-  indexPruningStats?: Array<IndexPruningStats>;
+  indexPruningStats?: ReadonlyArray<IndexPruningStats>;
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
-  indexUnusedReasons?: Array<IndexUnusedReason>;
+  indexUnusedReasons?: ReadonlyArray<IndexUnusedReason>;
   /** Specifies the index usage mode for the query. */
   indexUsageMode?:
     | "INDEX_USAGE_MODE_UNSPECIFIED"
@@ -4117,7 +4117,7 @@ export interface StoredColumnsUnusedReason {
   /** Specifies the detailed description for the scenario. */
   message?: string;
   /** Specifies which columns were not covered by the stored columns for the specified code up to 20 columns. This is populated when the code is STORED_COLUMNS_COVER_INSUFFICIENT and BASE_TABLE_HAS_CLS. */
-  uncoveredColumns?: Array<string>;
+  uncoveredColumns?: ReadonlyArray<string>;
 }
 
 export const StoredColumnsUnusedReason =
@@ -4133,7 +4133,7 @@ export interface StoredColumnsUsage {
   /** Specifies whether the query was accelerated with stored columns. */
   isQueryAccelerated?: boolean;
   /** If stored columns were not used, explain why. */
-  storedColumnsUnusedReasons?: Array<StoredColumnsUnusedReason>;
+  storedColumnsUnusedReasons?: ReadonlyArray<StoredColumnsUnusedReason>;
 }
 
 export const StoredColumnsUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4146,7 +4146,7 @@ export const StoredColumnsUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VectorSearchStatistics {
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the vector search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
-  indexUnusedReasons?: Array<IndexUnusedReason>;
+  indexUnusedReasons?: ReadonlyArray<IndexUnusedReason>;
   /** Specifies the index usage mode for the query. */
   indexUsageMode?:
     | "INDEX_USAGE_MODE_UNSPECIFIED"
@@ -4155,7 +4155,7 @@ export interface VectorSearchStatistics {
     | "FULLY_USED"
     | (string & {});
   /** Specifies the usage of stored columns in the query when stored columns are used in the query. */
-  storedColumnsUsages?: Array<StoredColumnsUsage>;
+  storedColumnsUsages?: ReadonlyArray<StoredColumnsUsage>;
 }
 
 export const VectorSearchStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -4200,7 +4200,7 @@ export interface JobStatistics2 {
   /** Output only. Stats for EXPORT DATA statement. */
   exportDataStatistics?: ExportDataStatistics;
   /** Output only. Job cost breakdown as bigquery internal cost and external service costs. */
-  externalServiceCosts?: Array<ExternalServiceCost>;
+  externalServiceCosts?: ReadonlyArray<ExternalServiceCost>;
   /** Output only. Statistics related to GenAI usage in the query. */
   genAiStats?: GenAiStats;
   /** Output only. Statistics related to incremental query results, if enabled for the query. This feature is not yet available. */
@@ -4226,15 +4226,15 @@ export interface JobStatistics2 {
   /** Output only. Query optimization information for a QUERY job. */
   queryInfo?: QueryInfo;
   /** Output only. Describes execution plan for the query. */
-  queryPlan?: Array<ExplainQueryStage>;
+  queryPlan?: ReadonlyArray<ExplainQueryStage>;
   /** Output only. Referenced property graphs for the job. Queries that reference more than 50 property graphs will not have a complete list. */
-  referencedPropertyGraphs?: Array<PropertyGraphReference>;
+  referencedPropertyGraphs?: ReadonlyArray<PropertyGraphReference>;
   /** Output only. Referenced routines for the job. */
-  referencedRoutines?: Array<RoutineReference>;
+  referencedRoutines?: ReadonlyArray<RoutineReference>;
   /** Output only. Referenced tables for the job. */
-  referencedTables?: Array<TableReference>;
+  referencedTables?: ReadonlyArray<TableReference>;
   /** Output only. Job resource usage breakdown by reservation. This field reported misleading information and will no longer be populated. */
-  reservationUsage?: Array<{ name?: string; slotMs?: string }>;
+  reservationUsage?: ReadonlyArray<{ name?: string; slotMs?: string }>;
   /** Output only. The schema of the results. Present only for successful dry run of non-legacy SQL queries. */
   schema?: TableSchema;
   /** Output only. Search query specific statistics. */
@@ -4244,7 +4244,7 @@ export interface JobStatistics2 {
   /** Output only. The type of query statement, if valid. Possible values: * `SELECT`: [`SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list) statement. * `ASSERT`: [`ASSERT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/debugging-statements#assert) statement. * `INSERT`: [`INSERT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement) statement. * `UPDATE`: [`UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#update_statement) statement. * `DELETE`: [`DELETE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `MERGE`: [`MERGE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `CREATE_TABLE`: [`CREATE TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement) statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: [`CREATE TABLE AS SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement) statement. * `CREATE_VIEW`: [`CREATE VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement) statement. * `CREATE_MODEL`: [`CREATE MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement) statement. * `CREATE_MATERIALIZED_VIEW`: [`CREATE MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement) statement. * `CREATE_FUNCTION`: [`CREATE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement) statement. * `CREATE_TABLE_FUNCTION`: [`CREATE TABLE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement) statement. * `CREATE_PROCEDURE`: [`CREATE PROCEDURE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure) statement. * `CREATE_ROW_ACCESS_POLICY`: [`CREATE ROW ACCESS POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement) statement. * `CREATE_SCHEMA`: [`CREATE SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement) statement. * `CREATE_SNAPSHOT_TABLE`: [`CREATE SNAPSHOT TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement) statement. * `CREATE_SEARCH_INDEX`: [`CREATE SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement) statement. * `DROP_TABLE`: [`DROP TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement) statement. * `DROP_EXTERNAL_TABLE`: [`DROP EXTERNAL TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement) statement. * `DROP_VIEW`: [`DROP VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement) statement. * `DROP_MODEL`: [`DROP MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model) statement. * `DROP_MATERIALIZED_VIEW`: [`DROP MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement) statement. * `DROP_FUNCTION` : [`DROP FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement) statement. * `DROP_TABLE_FUNCTION` : [`DROP TABLE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function) statement. * `DROP_PROCEDURE`: [`DROP PROCEDURE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement) statement. * `DROP_SEARCH_INDEX`: [`DROP SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index) statement. * `DROP_SCHEMA`: [`DROP SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement) statement. * `DROP_SNAPSHOT_TABLE`: [`DROP SNAPSHOT TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement) statement. * `DROP_ROW_ACCESS_POLICY`: [`DROP [ALL] ROW ACCESS POLICY|POLICIES`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement) statement. * `ALTER_TABLE`: [`ALTER TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement) statement. * `ALTER_VIEW`: [`ALTER VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement) statement. * `ALTER_MATERIALIZED_VIEW`: [`ALTER MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement) statement. * `ALTER_SCHEMA`: [`ALTER SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_schema_set_options_statement) statement. * `SCRIPT`: [`SCRIPT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language). * `TRUNCATE_TABLE`: [`TRUNCATE TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement) statement. * `CREATE_EXTERNAL_TABLE`: [`CREATE EXTERNAL TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement) statement. * `EXPORT_DATA`: [`EXPORT DATA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/other-statements#export_data_statement) statement. * `EXPORT_MODEL`: [`EXPORT MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model) statement. * `LOAD_DATA`: [`LOAD DATA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/other-statements#load_data_statement) statement. * `CALL`: [`CALL`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#call) statement. */
   statementType?: string;
   /** Output only. Describes a timeline of job execution. */
-  timeline?: Array<QueryTimelineSample>;
+  timeline?: ReadonlyArray<QueryTimelineSample>;
   /** Output only. If the project is configured to use on-demand pricing, then this field contains the total bytes billed for the job. If the project is configured to use flat-rate pricing, then you are not billed for bytes and this field is informational only. */
   totalBytesBilled?: string;
   /** Output only. Total bytes processed for the job. */
@@ -4260,7 +4260,7 @@ export interface JobStatistics2 {
   /** Output only. Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS). */
   transferredBytes?: string;
   /** Output only. GoogleSQL only: list of undeclared query parameters detected during a dry run validation. */
-  undeclaredQueryParameters?: Array<QueryParameter>;
+  undeclaredQueryParameters?: ReadonlyArray<QueryParameter>;
   /** Output only. Vector Search query specific statistics. */
   vectorSearchStatistics?: VectorSearchStatistics;
 }
@@ -4367,7 +4367,7 @@ export interface ScriptStatistics {
     | "EXPRESSION"
     | (string & {});
   /** Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty. */
-  stackFrames?: Array<ScriptStackFrame>;
+  stackFrames?: ReadonlyArray<ScriptStackFrame>;
 }
 
 export const ScriptStatistics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4424,11 +4424,11 @@ export interface JobStatistics {
   /** Output only. Statistics for a query job. */
   query?: JobStatistics2;
   /** Output only. Quotas which delayed this job's start time. */
-  quotaDeferments?: Array<string>;
+  quotaDeferments?: ReadonlyArray<string>;
   /** Output only. The reservation group path of the reservation assigned to this job. This field has a limit of 10 nested reservation groups. This is to maintain consistency between reservatins info schema and jobs info schema. The first reservation group is the root reservation group and the last is the leaf or lowest level reservation group. */
-  reservationGroupPath?: Array<string>;
+  reservationGroupPath?: ReadonlyArray<string>;
   /** Output only. Job resource usage breakdown by reservation. This field reported misleading information and will no longer be populated. */
-  reservationUsage?: Array<{ name?: string; slotMs?: string }>;
+  reservationUsage?: ReadonlyArray<{ name?: string; slotMs?: string }>;
   /** Output only. Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job. */
   reservation_id?: string;
   /** Output only. Statistics for row-level security. Present only for query and extract jobs. */
@@ -4484,7 +4484,7 @@ export interface JobStatus {
   /** Output only. Final error result of the job. If present, indicates that the job has completed and was unsuccessful. */
   errorResult?: ErrorProto;
   /** Output only. The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has not completed or was unsuccessful. */
-  errors?: Array<ErrorProto>;
+  errors?: ReadonlyArray<ErrorProto>;
   /** Output only. Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'. */
   state?: string;
 }
@@ -4550,7 +4550,7 @@ export interface JobList {
   /** A hash of this page of results. */
   etag?: string;
   /** List of jobs that were requested. */
-  jobs?: Array<{
+  jobs?: ReadonlyArray<{
     configuration?: JobConfiguration;
     errorResult?: ErrorProto;
     id?: string;
@@ -4567,7 +4567,7 @@ export interface JobList {
   /** A token to request the next page of results. */
   nextPageToken?: string;
   /** A list of skipped locations that were unreachable. For more information about BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations. Example: "europe-west5" */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const JobList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4595,7 +4595,7 @@ export const JobList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JoinRestrictionPolicy {
   /** Optional. The only columns that joins are allowed on. This field is must be specified for join_conditions JOIN_ANY and JOIN_ALL and it cannot be set for JOIN_BLOCKED. */
-  joinAllowedColumns?: Array<string>;
+  joinAllowedColumns?: ReadonlyArray<string>;
   /** Optional. Specifies if a join is required or not on queries for the view. Default is JOIN_CONDITION_UNSPECIFIED. */
   joinCondition?:
     | "JOIN_CONDITION_UNSPECIFIED"
@@ -4653,7 +4653,7 @@ export const RemoteModelInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TrainingRun {
   /** Output only. Global explanation contains the explanation of top features on the class level. Applies to classification models only. */
-  classLevelGlobalExplanations?: Array<GlobalExplanation>;
+  classLevelGlobalExplanations?: ReadonlyArray<GlobalExplanation>;
   /** Output only. Data split result of the training run. Only set when the input data is actually split. */
   dataSplitResult?: DataSplitResult;
   /** Output only. The evaluation metrics over training/eval data that were computed at the end of training. */
@@ -4661,7 +4661,7 @@ export interface TrainingRun {
   /** Output only. Global explanation contains the explanation of top features on the model level. Applies to both regression and classification models. */
   modelLevelGlobalExplanation?: GlobalExplanation;
   /** Output only. Output of each iteration run, results.size() <= max_iterations. */
-  results?: Array<IterationResult>;
+  results?: ReadonlyArray<IterationResult>;
   /** Output only. The start time of this training run. */
   startTime?: string;
   /** Output only. Options that were used for this training run, includes user specified and default options that were used. */
@@ -4720,15 +4720,15 @@ export interface Model {
   /** Optional. The time when this model expires, in milliseconds since the epoch. If not present, the model will persist indefinitely. Expired models will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created models. */
   expirationTime?: string;
   /** Output only. Input feature columns for the model inference. If the model is trained with TRANSFORM clause, these are the input of the TRANSFORM clause. */
-  featureColumns?: Array<StandardSqlField>;
+  featureColumns?: ReadonlyArray<StandardSqlField>;
   /** Optional. A descriptive name for this model. */
   friendlyName?: string;
   /** Output only. All hyperparameter search spaces in this model. */
   hparamSearchSpaces?: HparamSearchSpaces;
   /** Output only. Trials of a [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) model sorted by trial_id. */
-  hparamTrials?: Array<HparamTuningTrial>;
+  hparamTrials?: ReadonlyArray<HparamTuningTrial>;
   /** Output only. Label columns that were used to train this model. The output of the model will have a "predicted_" prefix to these columns. */
-  labelColumns?: Array<StandardSqlField>;
+  labelColumns?: ReadonlyArray<StandardSqlField>;
   /** The labels associated with this model. You can use these to organize and group your models. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key. */
   labels?: Record<string, string>;
   /** Output only. The time when this model was last modified, in millisecs since the epoch. */
@@ -4767,13 +4767,13 @@ export interface Model {
     | "CONTRIBUTION_ANALYSIS"
     | (string & {});
   /** Output only. For single-objective [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, it only contains the best trial. For multi-objective [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, it contains all Pareto optimal trials sorted by trial_id. */
-  optimalTrialIds?: Array<string>;
+  optimalTrialIds?: ReadonlyArray<string>;
   /** Output only. Remote model info */
   remoteModelInfo?: RemoteModelInfo;
   /** Information for all training runs in increasing order of start_time. */
-  trainingRuns?: Array<TrainingRun>;
+  trainingRuns?: ReadonlyArray<TrainingRun>;
   /** Output only. This field will be populated if a TRANSFORM clause was used to train a model. TRANSFORM clause (if used) takes feature_columns as input and outputs transform_columns. transform_columns then are used to train the model. */
-  transformColumns?: Array<TransformColumn>;
+  transformColumns?: ReadonlyArray<TransformColumn>;
 }
 
 export const Model = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4802,7 +4802,7 @@ export const Model = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListModelsResponse {
   /** Models in the requested dataset. Only the following fields are populated: model_reference, model_type, creation_time, last_modified_time and labels. */
-  models?: Array<Model>;
+  models?: ReadonlyArray<Model>;
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
@@ -4842,7 +4842,7 @@ export interface PythonOptions {
   /** Required. The name of the function defined in Python code as the entry point when the Python UDF is invoked. */
   entryPoint?: string;
   /** Optional. A list of Python package names along with versions to be installed. Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more information, see [Use third-party packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages). */
-  packages?: Array<string>;
+  packages?: ReadonlyArray<string>;
 }
 
 export const PythonOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4872,7 +4872,7 @@ export const RemoteFunctionOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StandardSqlTableType {
   /** The columns in this table type */
-  columns?: Array<StandardSqlField>;
+  columns?: ReadonlyArray<StandardSqlField>;
 }
 
 export const StandardSqlTableType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4881,15 +4881,15 @@ export const StandardSqlTableType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SparkOptions {
   /** Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html). */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
   /** Fully qualified name of the user-provided Spark connection object. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"``` */
   connection?: string;
   /** Custom container image for the runtime environment. */
   containerImage?: string;
   /** Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html). */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html). */
-  jarUris?: Array<string>;
+  jarUris?: ReadonlyArray<string>;
   /** The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type. */
   mainClass?: string;
   /** The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type. */
@@ -4897,7 +4897,7 @@ export interface SparkOptions {
   /** Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list). */
   properties?: Record<string, string>;
   /** Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html). */
-  pyFileUris?: Array<string>;
+  pyFileUris?: ReadonlyArray<string>;
   /** Runtime version. If not specified, the default runtime version is used. */
   runtimeVersion?: string;
 }
@@ -4917,7 +4917,7 @@ export const SparkOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Routine {
   /** Optional. */
-  arguments?: Array<Argument>;
+  arguments?: ReadonlyArray<Argument>;
   /** Output only. The build status of the routine. This field is only applicable to Python UDFs. [Preview](https://cloud.google.com/products/#product-launch-stages) */
   buildStatus?: RoutineBuildStatus;
   /** Output only. The time when this routine was created, in milliseconds since the epoch. */
@@ -4942,7 +4942,7 @@ export interface Routine {
   /** Optional. Options for the runtime of the external system executing the routine. This field is only applicable for Python UDFs. [Preview](https://cloud.google.com/products/#product-launch-stages) */
   externalRuntimeOptions?: ExternalRuntimeOptions;
   /** Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries. */
-  importedLibraries?: Array<string>;
+  importedLibraries?: ReadonlyArray<string>;
   /** Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise. */
   language?:
     | "LANGUAGE_UNSPECIFIED"
@@ -5012,7 +5012,7 @@ export interface ListRoutinesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
   /** Routines in the requested dataset. Unless read_mask is set in the request, only the following fields are populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, language, and remote_function_options. */
-  routines?: Array<Routine>;
+  routines?: ReadonlyArray<Routine>;
 }
 
 export const ListRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5028,7 +5028,7 @@ export interface RowAccessPolicy {
   /** Required. A SQL boolean expression that represents the rows defined by this row access policy, similar to the boolean expression in a WHERE clause of a SELECT query on a table. References to other tables, routines, and temporary functions are not supported. Examples: region="EU" date_field = CAST('2019-9-27' as DATE) nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0 */
   filterPredicate?: string;
   /** Optional. Input only. The optional list of iam_member users or groups that specifies the initial members that the row-level access policy should be created with. grantees types: - "user:alice@example.com": An email address that represents a specific Google account. - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email address that represents a service account. - "group:admins@example.com": An email address that represents a Google group. - "domain:example.com":The Google Workspace domain (primary) that represents all the users of that domain. - "allAuthenticatedUsers": A special identifier that represents all service accounts and all users on the internet who have authenticated with a Google Account. This identifier includes accounts that aren't connected to a Google Workspace or Cloud Identity domain, such as personal Gmail accounts. Users who aren't authenticated, such as anonymous visitors, aren't included. - "allUsers":A special identifier that represents anyone who is on the internet, including authenticated and unauthenticated users. Because BigQuery requires authentication before a user can access the service, allUsers includes only authenticated users. */
-  grantees?: Array<string>;
+  grantees?: ReadonlyArray<string>;
   /** Output only. The time when this row access policy was last modified, in milliseconds since the epoch. */
   lastModifiedTime?: string;
   /** Required. Reference describing the ID of this row access policy. */
@@ -5048,7 +5048,7 @@ export interface ListRowAccessPoliciesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
   /** Row access policies on the requested table. */
-  rowAccessPolicies?: Array<RowAccessPolicy>;
+  rowAccessPolicies?: ReadonlyArray<RowAccessPolicy>;
 }
 
 export const ListRowAccessPoliciesResponse =
@@ -5108,12 +5108,12 @@ export const MaterializedViewStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface ModelDefinition {
   /** Deprecated. */
   modelOptions?: {
-    labels?: Array<string>;
+    labels?: ReadonlyArray<string>;
     lossType?: string;
     modelType?: string;
   };
   /** Deprecated. */
-  trainingRuns?: Array<BqmlTrainingRun>;
+  trainingRuns?: ReadonlyArray<BqmlTrainingRun>;
 }
 
 export const ModelDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5138,7 +5138,7 @@ export const PartitionedColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PartitioningDefinition {
   /** Optional. Details about each partitioning column. This field is output only for all partitioning types other than metastore partitioned tables. BigQuery native tables only support 1 partitioning column. Other table types may support 0, 1 or more partitioning columns. For metastore partitioned tables, the order must match the definition order in the Hive Metastore, where it must match the physical layout of the table. For example, CREATE TABLE a_table(id BIGINT, name STRING) PARTITIONED BY (city STRING, state STRING). In this case the values must be ['city', 'state'] in that order. */
-  partitionedColumn?: Array<PartitionedColumn>;
+  partitionedColumn?: ReadonlyArray<PartitionedColumn>;
 }
 
 export const PartitioningDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -5149,9 +5149,9 @@ export const PartitioningDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -5197,7 +5197,7 @@ export interface ProjectList {
   /** Use this token to request the next page of results. */
   nextPageToken?: string;
   /** Projects to which the user has at least READ access. This field can be omitted if `totalItems` is 0. */
-  projects?: Array<{
+  projects?: ReadonlyArray<{
     friendlyName?: string;
     id?: string;
     kind?: string;
@@ -5228,7 +5228,7 @@ export const ProjectList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryRequest {
   /** Optional. Connection properties which can modify the query behavior. */
-  connectionProperties?: Array<ConnectionProperty>;
+  connectionProperties?: ReadonlyArray<ConnectionProperty>;
   /** [Optional] Specifies whether the query should be executed as a continuous query. The default value is false. */
   continuous?: boolean;
   /** Optional. If true, creates a new session using a randomly generated session_id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode. The session location will be set to QueryRequest.location if it is present, otherwise it's set to the default location based on existing routing logic. */
@@ -5268,7 +5268,7 @@ export interface QueryRequest {
   /** Required. A query string to execute, using Google Standard SQL or legacy SQL syntax. Example: "SELECT COUNT(f1) FROM myProjectId.myDatasetId.myTableId". */
   query?: string;
   /** Query parameters for GoogleSQL queries. */
-  queryParameters?: Array<QueryParameter>;
+  queryParameters?: ReadonlyArray<QueryParameter>;
   /** Optional. A unique user provided identifier to ensure idempotent behavior for queries. Note that this is different from the job_id. It has the following properties: 1. It is case-sensitive, limited to up to 36 ASCII characters. A UUID is recommended. 2. Read only queries can ignore this token since they are nullipotent by definition. 3. For the purposes of idempotency ensured by the request_id, a request is considered duplicate of another only if they have the same request_id and are actually duplicates. When determining whether a request is a duplicate of another request, all parameters in the request that may affect the result are considered. For example, query, connection_properties, query_parameters, use_legacy_sql are parameters that affect the result and are considered when determining whether a request is a duplicate, but properties like timeout_ms don't affect the result and are thus not considered. Dry run query requests are never considered duplicate of another request. 4. When a duplicate mutating query request is detected, it returns: a. the results of the mutation if it completes successfully within the timeout. b. the running operation if it is still in progress at the end of the timeout. 5. Its lifetime is limited to 15 minutes. In other words, if two requests are sent with the same request_id, but more than 15 minutes apart, idempotency is not guaranteed. */
   requestId?: string;
   /** Optional. The reservation that jobs.query request would use. User can specify a reservation to execute the job.query. The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`. */
@@ -5321,7 +5321,7 @@ export interface QueryResponse {
   /** Output only. End time of this query, in milliseconds since the epoch. This field will be present whenever a query job is in the DONE state. */
   endTime?: string;
   /** Output only. The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful. For more information about error messages, see [Error messages](https://cloud.google.com/bigquery/docs/error-messages). */
-  errors?: Array<ErrorProto>;
+  errors?: ReadonlyArray<ErrorProto>;
   /** Whether the query has completed or not. If rows or totalRows are present, this will always be true. If this is false, totalRows will not be available. */
   jobComplete?: boolean;
   /** Optional. The reason why a Job was created. Only relevant when a job_reference is present in the response. If job_reference is not present it will always be unset. */
@@ -5339,7 +5339,7 @@ export interface QueryResponse {
   /** Auto-generated ID for the query. */
   queryId?: string;
   /** An object with as many results as can be contained within the maximum permitted reply size. To get any additional rows, you can call GetQueryResults and specify the jobReference returned above. */
-  rows?: Array<TableRow>;
+  rows?: ReadonlyArray<TableRow>;
   /** The schema of the results. Present only when the query completes successfully. */
   schema?: TableSchema;
   /** Output only. Information of the session if this job is part of one. */
@@ -5421,8 +5421,8 @@ export const Streamingbuffer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableConstraints {
   /** Optional. Present only if the table has a foreign key. The foreign key is not enforced. */
-  foreignKeys?: Array<{
-    columnReferences?: Array<{
+  foreignKeys?: ReadonlyArray<{
+    columnReferences?: ReadonlyArray<{
       referencedColumn?: string;
       referencingColumn?: string;
     }>;
@@ -5434,7 +5434,7 @@ export interface TableConstraints {
     };
   }>;
   /** Represents the primary key constraint on a table's columns. */
-  primaryKey?: { columns?: Array<string> };
+  primaryKey?: { columns?: ReadonlyArray<string> };
 }
 
 export const TableConstraints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5494,7 +5494,7 @@ export const TableReplicationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ViewDefinition {
   /** Optional. Foreign view representations. */
-  foreignDefinitions?: Array<ForeignViewDefinition>;
+  foreignDefinitions?: ReadonlyArray<ForeignViewDefinition>;
   /** Optional. Specifies the privacy policy for the view. */
   privacyPolicy?: PrivacyPolicy;
   /** Required. A query that BigQuery executes when the view is referenced. */
@@ -5504,7 +5504,7 @@ export interface ViewDefinition {
   /** Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). Queries and views that reference this view must use the same flag value. A wrapper is used here because the default value is True. */
   useLegacySql?: boolean;
   /** Describes user-defined function resources used in the query. */
-  userDefinedFunctionResources?: Array<UserDefinedFunctionResource>;
+  userDefinedFunctionResources?: ReadonlyArray<UserDefinedFunctionResource>;
 }
 
 export const ViewDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5604,7 +5604,7 @@ export interface Table {
   /** If specified, configures range partitioning for this table. */
   rangePartitioning?: RangePartitioning;
   /** Optional. Output only. Table references of all replicas currently active on the table. */
-  replicas?: Array<TableReference>;
+  replicas?: ReadonlyArray<TableReference>;
   /** Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. */
   requirePartitionFilter?: boolean;
   /** [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production". */
@@ -5693,7 +5693,7 @@ export interface TableDataInsertAllRequest {
   ignoreUnknownValues?: boolean;
   /** Optional. The resource type of the response. The value is not checked at the backend. Historically, it has been set to "bigquery#tableDataInsertAllRequest" but you are not required to set it. */
   kind?: string;
-  rows?: Array<{ insertId?: string; json?: JsonObject }>;
+  rows?: ReadonlyArray<{ insertId?: string; json?: JsonObject }>;
   /** Optional. Insert all valid rows of a request, even if invalid rows exist. The default value is false, which causes the entire request to fail if any invalid rows exist. */
   skipInvalidRows?: boolean;
   /** Optional. If specified, treats the destination table as a base template, and inserts the rows into an instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance table, using the schema of the base template table. See https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables for considerations when working with templates tables. */
@@ -5721,7 +5721,10 @@ export const TableDataInsertAllRequest =
 
 export interface TableDataInsertAllResponse {
   /** Describes specific errors encountered while processing the request. */
-  insertErrors?: Array<{ errors?: Array<ErrorProto>; index?: number }>;
+  insertErrors?: ReadonlyArray<{
+    errors?: ReadonlyArray<ErrorProto>;
+    index?: number;
+  }>;
   /** Returns "bigquery#tableDataInsertAllResponse". */
   kind?: string;
 }
@@ -5747,7 +5750,7 @@ export interface TableDataList {
   /** A token used for paging results. Providing this token instead of the startIndex parameter can help you retrieve stable results when an underlying table is changing. */
   pageToken?: string;
   /** Rows of results. */
-  rows?: Array<TableRow>;
+  rows?: ReadonlyArray<TableRow>;
   /** Total rows of the entire table. In order to show default value 0 we have to present it as string. */
   totalRows?: string;
 }
@@ -5768,7 +5771,7 @@ export interface TableList {
   /** A token to request the next page of results. */
   nextPageToken?: string;
   /** Tables in the requested dataset. */
-  tables?: Array<{
+  tables?: ReadonlyArray<{
     clustering?: Clustering;
     creationTime?: string;
     expirationTime?: string;
@@ -5820,7 +5823,7 @@ export const TableList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -5830,7 +5833,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -5871,7 +5874,7 @@ export const DeleteDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "projects/{projectsId}/datasets/{datasetsId}",
+    path: "projects/{projectId}/datasets/{datasetId}",
   }),
   svc,
 ) as unknown as Schema.Schema<DeleteDatasetsRequest>;
@@ -5920,10 +5923,7 @@ export const GetDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasetView: Schema.optional(Schema.String).pipe(T.HttpQuery("datasetView")),
   projectId: Schema.String.pipe(T.HttpPath("projectId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}",
-  }),
+  T.Http({ method: "GET", path: "projects/{projectId}/datasets/{datasetId}" }),
   svc,
 ) as unknown as Schema.Schema<GetDatasetsRequest>;
 
@@ -5962,7 +5962,7 @@ export const InsertDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "projects/{projectsId}/datasets",
+    path: "projects/{projectId}/datasets",
     hasBody: true,
   }),
   svc,
@@ -6005,7 +6005,7 @@ export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   projectId: Schema.String.pipe(T.HttpPath("projectId")),
 }).pipe(
-  T.Http({ method: "GET", path: "projects/{projectsId}/datasets" }),
+  T.Http({ method: "GET", path: "projects/{projectId}/datasets" }),
   svc,
 ) as unknown as Schema.Schema<ListDatasetsRequest>;
 
@@ -6059,7 +6059,7 @@ export const PatchDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "projects/{projectsId}/datasets/{datasetsId}",
+    path: "projects/{projectId}/datasets/{datasetId}",
     hasBody: true,
   }),
   svc,
@@ -6099,7 +6099,7 @@ export const UndeleteDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}:undelete",
+      path: "projects/{projectId}/datasets/{datasetId}:undelete",
       hasBody: true,
     }),
     svc,
@@ -6151,7 +6151,7 @@ export const UpdateDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "projects/{projectsId}/datasets/{datasetsId}",
+    path: "projects/{projectId}/datasets/{datasetId}",
     hasBody: true,
   }),
   svc,
@@ -6190,7 +6190,7 @@ export const CancelJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "projects/{projectsId}/jobs/{jobsId}/cancel",
+    path: "projects/{projectId}/jobs/{jobId}/cancel",
     hasBody: true,
   }),
   svc,
@@ -6229,7 +6229,7 @@ export const DeleteJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "projects/{projectsId}/jobs/{jobsId}/delete",
+    path: "projects/{projectId}/jobs/{jobId}/delete",
   }),
   svc,
 ) as unknown as Schema.Schema<DeleteJobsRequest>;
@@ -6268,7 +6268,7 @@ export const GetJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   location: Schema.optional(Schema.String).pipe(T.HttpQuery("location")),
   projectId: Schema.String.pipe(T.HttpPath("projectId")),
 }).pipe(
-  T.Http({ method: "GET", path: "projects/{projectsId}/jobs/{jobsId}" }),
+  T.Http({ method: "GET", path: "projects/{projectId}/jobs/{jobId}" }),
   svc,
 ) as unknown as Schema.Schema<GetJobsRequest>;
 
@@ -6331,10 +6331,7 @@ export const GetQueryResultsJobsRequest =
     startIndex: Schema.optional(Schema.String).pipe(T.HttpQuery("startIndex")),
     timeoutMs: Schema.optional(Schema.Number).pipe(T.HttpQuery("timeoutMs")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "projects/{projectsId}/queries/{queriesId}",
-    }),
+    T.Http({ method: "GET", path: "projects/{projectId}/queries/{jobId}" }),
     svc,
   ) as unknown as Schema.Schema<GetQueryResultsJobsRequest>;
 
@@ -6367,7 +6364,7 @@ export const InsertJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   projectId: Schema.String.pipe(T.HttpPath("projectId")),
   body: Schema.optional(Job).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "projects/{projectsId}/jobs", hasBody: true }),
+  T.Http({ method: "POST", path: "projects/{projectId}/jobs", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<InsertJobsRequest>;
 
@@ -6426,7 +6423,7 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("stateFilter"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "projects/{projectsId}/jobs" }),
+  T.Http({ method: "GET", path: "projects/{projectId}/jobs" }),
   svc,
 ) as unknown as Schema.Schema<ListJobsRequest>;
 
@@ -6464,7 +6461,7 @@ export const QueryJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "projects/{projectsId}/queries",
+    path: "projects/{projectId}/queries",
     hasBody: true,
   }),
   svc,
@@ -6503,7 +6500,7 @@ export const DeleteModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "projects/{projectsId}/datasets/{datasetsId}/models/{modelsId}",
+    path: "projects/{projectId}/datasets/{datasetId}/models/{modelId}",
   }),
   svc,
 ) as unknown as Schema.Schema<DeleteModelsRequest>;
@@ -6544,7 +6541,7 @@ export const GetModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}/models/{modelsId}",
+    path: "projects/{projectId}/datasets/{datasetId}/models/{modelId}",
   }),
   svc,
 ) as unknown as Schema.Schema<GetModelsRequest>;
@@ -6585,7 +6582,7 @@ export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}/models",
+    path: "projects/{projectId}/datasets/{datasetId}/models",
   }),
   svc,
 ) as unknown as Schema.Schema<ListModelsRequest>;
@@ -6631,7 +6628,7 @@ export const PatchModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "projects/{projectsId}/datasets/{datasetsId}/models/{modelsId}",
+    path: "projects/{projectId}/datasets/{datasetId}/models/{modelId}",
     hasBody: true,
   }),
   svc,
@@ -6663,7 +6660,7 @@ export const GetServiceAccountProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
   }).pipe(
-    T.Http({ method: "GET", path: "projects/{projectsId}/serviceAccount" }),
+    T.Http({ method: "GET", path: "projects/{projectId}/serviceAccount" }),
     svc,
   ) as unknown as Schema.Schema<GetServiceAccountProjectsRequest>;
 
@@ -6737,7 +6734,7 @@ export const DeleteRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}",
+    path: "projects/{projectId}/datasets/{datasetId}/routines/{routineId}",
   }),
   svc,
 ) as unknown as Schema.Schema<DeleteRoutinesRequest>;
@@ -6781,7 +6778,7 @@ export const GetRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}",
+    path: "projects/{projectId}/datasets/{datasetId}/routines/{routineId}",
   }),
   svc,
 ) as unknown as Schema.Schema<GetRoutinesRequest>;
@@ -6815,11 +6812,7 @@ export const GetIamPolicyRoutinesRequest =
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}:getIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "{resource}:getIamPolicy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyRoutinesRequest>;
 
@@ -6856,7 +6849,7 @@ export const InsertRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "projects/{projectsId}/datasets/{datasetsId}/routines",
+    path: "projects/{projectId}/datasets/{datasetId}/routines",
     hasBody: true,
   }),
   svc,
@@ -6904,7 +6897,7 @@ export const ListRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}/routines",
+    path: "projects/{projectId}/datasets/{datasetId}/routines",
   }),
   svc,
 ) as unknown as Schema.Schema<ListRoutinesRequest>;
@@ -6943,11 +6936,7 @@ export const SetIamPolicyRoutinesRequest =
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}:setIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "{resource}:setIamPolicy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetIamPolicyRoutinesRequest>;
 
@@ -6982,7 +6971,7 @@ export const TestIamPermissionsRoutinesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}:testIamPermissions",
+      path: "{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7025,7 +7014,7 @@ export const UpdateRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "projects/{projectsId}/datasets/{datasetsId}/routines/{routinesId}",
+    path: "projects/{projectId}/datasets/{datasetId}/routines/{routineId}",
     hasBody: true,
   }),
   svc,
@@ -7070,7 +7059,7 @@ export const BatchDeleteRowAccessPoliciesRequest_Op =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies:batchDelete",
+      path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/rowAccessPolicies:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -7119,7 +7108,7 @@ export const DeleteRowAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}",
+      path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/rowAccessPolicies/{policyId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteRowAccessPoliciesRequest>;
@@ -7164,7 +7153,7 @@ export const GetRowAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}",
+      path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/rowAccessPolicies/{policyId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetRowAccessPoliciesRequest>;
@@ -7199,11 +7188,7 @@ export const GetIamPolicyRowAccessPoliciesRequest =
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}:getIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "{resource}:getIamPolicy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyRowAccessPoliciesRequest>;
 
@@ -7245,7 +7230,7 @@ export const InsertRowAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies",
+      path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/rowAccessPolicies",
       hasBody: true,
     }),
     svc,
@@ -7292,7 +7277,7 @@ export const ListRowAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies",
+      path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/rowAccessPolicies",
     }),
     svc,
   ) as unknown as Schema.Schema<ListRowAccessPoliciesRequest>;
@@ -7333,7 +7318,7 @@ export const TestIamPermissionsRowAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}:testIamPermissions",
+      path: "{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7381,7 +7366,7 @@ export const UpdateRowAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/rowAccessPolicies/{rowAccessPoliciesId}",
+      path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/rowAccessPolicies/{policyId}",
       hasBody: true,
     }),
     svc,
@@ -7425,7 +7410,7 @@ export const InsertAllTabledataRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/insertAll",
+      path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll",
       hasBody: true,
     }),
     svc,
@@ -7494,7 +7479,7 @@ export const ListTabledataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}/data",
+    path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}/data",
   }),
   svc,
 ) as unknown as Schema.Schema<ListTabledataRequest>;
@@ -7532,7 +7517,7 @@ export const DeleteTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}",
+    path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}",
   }),
   svc,
 ) as unknown as Schema.Schema<DeleteTablesRequest>;
@@ -7586,7 +7571,7 @@ export const GetTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}",
+    path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}",
   }),
   svc,
 ) as unknown as Schema.Schema<GetTablesRequest>;
@@ -7620,11 +7605,7 @@ export const GetIamPolicyTablesRequest =
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:getIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "{resource}:getIamPolicy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyTablesRequest>;
 
@@ -7661,7 +7642,7 @@ export const InsertTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "projects/{projectsId}/datasets/{datasetsId}/tables",
+    path: "projects/{projectId}/datasets/{datasetId}/tables",
     hasBody: true,
   }),
   svc,
@@ -7703,7 +7684,7 @@ export const ListTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "projects/{projectsId}/datasets/{datasetsId}/tables",
+    path: "projects/{projectId}/datasets/{datasetId}/tables",
   }),
   svc,
 ) as unknown as Schema.Schema<ListTablesRequest>;
@@ -7753,7 +7734,7 @@ export const PatchTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}",
+    path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}",
     hasBody: true,
   }),
   svc,
@@ -7788,11 +7769,7 @@ export const SetIamPolicyTablesRequest =
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:setIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "{resource}:setIamPolicy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetIamPolicyTablesRequest>;
 
@@ -7827,7 +7804,7 @@ export const TestIamPermissionsTablesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:testIamPermissions",
+      path: "{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7875,7 +7852,7 @@ export const UpdateTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}",
+    path: "projects/{projectId}/datasets/{datasetId}/tables/{tableId}",
     hasBody: true,
   }),
   svc,

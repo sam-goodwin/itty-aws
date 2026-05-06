@@ -89,7 +89,7 @@ export const XPSVideoActionMetricsEntryConfidenceMetricsEntry =
 
 export interface XPSVideoActionMetricsEntry {
   /** Metrics for each label-match confidence_threshold from 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. */
-  confidenceMetricsEntries?: Array<XPSVideoActionMetricsEntryConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<XPSVideoActionMetricsEntryConfidenceMetricsEntry>;
   /** This VideoActionMetricsEntry is calculated based on this prediction window length. If the predicted action's timestamp is inside the time window whose center is the ground truth action's timestamp with this specific length, the prediction result is treated as a true positive. */
   precisionWindowLength?: string;
   /** The mean average precision. */
@@ -107,7 +107,7 @@ export const XPSVideoActionMetricsEntry =
 
 export interface XPSVideoActionRecognitionEvaluationMetrics {
   /** Output only. The metric entries for precision window lengths: 1s,2s,3s,4s, 5s. */
-  videoActionMetricsEntries?: Array<XPSVideoActionMetricsEntry>;
+  videoActionMetricsEntries?: ReadonlyArray<XPSVideoActionMetricsEntry>;
   /** Output only. The number of ground truth actions used to create this evaluation. */
   evaluatedActionCount?: number;
 }
@@ -122,9 +122,9 @@ export const XPSVideoActionRecognitionEvaluationMetrics =
 
 export interface XPSConfusionMatrixRow {
   /** Value of the specific cell in the confusion matrix. The number of values each row has (i.e. the length of the row) is equal to the length of the annotation_spec_id_token field. */
-  exampleCount?: Array<number>;
+  exampleCount?: ReadonlyArray<number>;
   /** Same as above except intended to represent other counts (for e.g. for segmentation this is pixel count). NOTE(params): Only example_count or count is set (oneoff does not support repeated fields unless they are embedded inside another message). */
-  count?: Array<string>;
+  count?: ReadonlyArray<string>;
 }
 
 export const XPSConfusionMatrixRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -134,13 +134,13 @@ export const XPSConfusionMatrixRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface XPSConfusionMatrix {
   /** Rows in the confusion matrix. The number of rows is equal to the size of `annotation_spec_id_token`. `row[i].value[j]` is the number of examples that have ground truth of the `annotation_spec_id_token[i]` and are predicted as `annotation_spec_id_token[j]` by the model being evaluated. */
-  row?: Array<XPSConfusionMatrixRow>;
+  row?: ReadonlyArray<XPSConfusionMatrixRow>;
   /** Sentiment labels used in the confusion matrix. Set only for text sentiment models. For AutoML Text Revamp, use `annotation_spec_id_token` instead and leave this field empty. */
-  sentimentLabel?: Array<number>;
+  sentimentLabel?: ReadonlyArray<number>;
   /** Category (mainly for segmentation). Set only for image segmentation models. Note: uCAIP Image Segmentation should use annotation_spec_id_token. */
-  category?: Array<number>;
+  category?: ReadonlyArray<number>;
   /** For the following three repeated fields, only one is intended to be set. annotation_spec_id_token is preferable to be set. ID tokens of the annotation specs used in the confusion matrix. */
-  annotationSpecIdToken?: Array<string>;
+  annotationSpecIdToken?: ReadonlyArray<string>;
 }
 
 export const XPSConfusionMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -211,7 +211,7 @@ export interface XPSClassificationEvaluationMetrics {
   /** The Area Under Receiver Operating Characteristic curve metric. Micro-averaged for the overall evaluation. */
   auRoc?: number;
   /** Metrics that have confidence thresholds. Precision-recall curve can be derived from it. */
-  confidenceMetricsEntries?: Array<XPSConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<XPSConfidenceMetricsEntry>;
   /** The number of examples used for model evaluation. */
   evaluatedExamplesCount?: number;
 }
@@ -231,7 +231,7 @@ export const XPSClassificationEvaluationMetrics =
 
 export interface XPSTextExtractionEvaluationMetrics {
   /** If the enclosing EvaluationMetrics.label is empty, confidence_metrics_entries is an evaluation of the entire model across all labels. If the enclosing EvaluationMetrics.label is set, confidence_metrics_entries applies to that label. */
-  confidenceMetricsEntries?: Array<XPSConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<XPSConfidenceMetricsEntry>;
   /** Values are at the highest F1 score on the precision-recall curve. Only confidence_threshold, recall, precision, and f1_score will be set. */
   bestF1ConfidenceMetrics?: XPSConfidenceMetricsEntry;
   /** Only recall, precision, and f1_score will be set. */
@@ -314,7 +314,7 @@ export interface XPSTablesClassificationMetricsCurveMetrics {
   /** The Log loss metric. */
   logLoss?: number;
   /** Metrics that have confidence thresholds. Precision-recall curve and ROC curve can be derived from them. */
-  confidenceMetricsEntries?: Array<XPSTablesConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<XPSTablesConfidenceMetricsEntry>;
 }
 
 export const XPSTablesClassificationMetricsCurveMetrics =
@@ -331,7 +331,7 @@ export const XPSTablesClassificationMetricsCurveMetrics =
 
 export interface XPSTablesClassificationMetrics {
   /** Metrics building a curve. */
-  curveMetrics?: Array<XPSTablesClassificationMetricsCurveMetrics>;
+  curveMetrics?: ReadonlyArray<XPSTablesClassificationMetricsCurveMetrics>;
 }
 
 export const XPSTablesClassificationMetrics =
@@ -358,7 +358,7 @@ export interface XPSTablesRegressionMetrics {
   /** Root mean squared log error. */
   rootMeanSquaredLogError?: number;
   /** A list of actual versus predicted points for the model being evaluated. */
-  regressionMetricsEntries?: Array<XPSRegressionMetricsEntry>;
+  regressionMetricsEntries?: ReadonlyArray<XPSRegressionMetricsEntry>;
   /** Mean absolute error. */
   meanAbsoluteError?: number;
   /** R squared. */
@@ -402,7 +402,7 @@ export interface XPSTrackMetricsEntry {
   /** Output only. The mean mismatch rate over all confidence thresholds. */
   meanMismatchRate?: number;
   /** Output only. Metrics for each label-match confidence_threshold from 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. Precision-recall curve is derived from them. */
-  confidenceMetricsEntries?: Array<XPSTrackMetricsEntryConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<XPSTrackMetricsEntryConfidenceMetricsEntry>;
   /** Output only. The mean bounding box iou over all confidence thresholds. */
   meanBoundingBoxIou?: number;
 }
@@ -444,7 +444,7 @@ export interface XPSBoundingBoxMetricsEntry {
   /** The intersection-over-union threshold value used to compute this metrics entry. */
   iouThreshold?: number;
   /** Metrics for each label-match confidence_threshold from 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. */
-  confidenceMetricsEntries?: Array<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry>;
 }
 
 export const XPSBoundingBoxMetricsEntry =
@@ -468,9 +468,9 @@ export interface XPSVideoObjectTrackingEvaluationMetrics {
   /** The number of tracks used for model evaluation. */
   evaluatedTrackCount?: number;
   /** Output only. The tracks match metrics for each Intersection-over-union threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. */
-  trackMetricsEntries?: Array<XPSTrackMetricsEntry>;
+  trackMetricsEntries?: ReadonlyArray<XPSTrackMetricsEntry>;
   /** Output only. The bounding boxes match metrics for each Intersection-over-union threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. */
-  boundingBoxMetricsEntries?: Array<XPSBoundingBoxMetricsEntry>;
+  boundingBoxMetricsEntries?: ReadonlyArray<XPSBoundingBoxMetricsEntry>;
   /** Output only. The single metric for tracking consistency evaluation: the mean_mismatch_rate averaged over all track_metrics_entries. */
   trackMeanMismatchRate?: number;
   /** Output only. The single metric for tracks accuracy evaluation: the mean_average_precision averaged over all track_metrics_entries. */
@@ -527,7 +527,7 @@ export interface XPSImageObjectDetectionEvaluationMetrics {
   /** The total number of bounding boxes (i.e. summed over all images) the ground truth used to create this evaluation had. */
   evaluatedBoundingBoxCount?: number;
   /** The bounding boxes match metrics for each Intersection-over-union threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 and each label confidence threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 pair. */
-  boundingBoxMetricsEntries?: Array<XPSBoundingBoxMetricsEntry>;
+  boundingBoxMetricsEntries?: ReadonlyArray<XPSBoundingBoxMetricsEntry>;
   /** The single metric for bounding boxes evaluation: the mean_average_precision averaged over all bounding_box_metrics_entries. */
   boundingBoxMeanAveragePrecision?: number;
 }
@@ -551,7 +551,7 @@ export interface XPSRegressionEvaluationMetrics {
   /** Root mean squared log error. */
   rootMeanSquaredLogError?: number;
   /** A list of actual versus predicted points for the model being evaluated. */
-  regressionMetricsEntries?: Array<XPSRegressionMetricsEntry>;
+  regressionMetricsEntries?: ReadonlyArray<XPSRegressionMetricsEntry>;
   /** Mean Absolute Error (MAE). */
   meanAbsoluteError?: number;
 }
@@ -597,7 +597,7 @@ export const XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry =
 
 export interface XPSImageSegmentationEvaluationMetrics {
   /** Metrics that have confidence thresholds. Precision-recall curve can be derived from it. */
-  confidenceMetricsEntries?: Array<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry>;
 }
 
 export const XPSImageSegmentationEvaluationMetrics =
@@ -689,9 +689,9 @@ export interface XPSFloat64Stats {
   /** The mean of the series. */
   mean?: number;
   /** Histogram buckets of the data series. Sorted by the min value of the bucket, ascendingly, and the number of the buckets is dynamically generated. The buckets are non-overlapping and completely cover whole FLOAT64 range with min of first bucket being `"-Infinity"`, and max of the last one being `"Infinity"`. */
-  histogramBuckets?: Array<XPSFloat64StatsHistogramBucket>;
+  histogramBuckets?: ReadonlyArray<XPSFloat64StatsHistogramBucket>;
   /** Ordered from 0 to k k-quantile values of the data series of n values. The value at index i is, approximately, the i*n/k-th smallest value in the series; for i = 0 and i = k these are, respectively, the min and max values. */
-  quantiles?: Array<number>;
+  quantiles?: ReadonlyArray<number>;
   commonStats?: XPSCommonStats;
   /** The standard deviation of the series. */
   standardDeviation?: number;
@@ -763,7 +763,7 @@ export const XPSCategoryStatsSingleCategoryStats =
 
 export interface XPSCategoryStats {
   /** The statistics of the top 20 CATEGORY values, ordered by CategoryStats.SingleCategoryStats.count. */
-  topCategoryStats?: Array<XPSCategoryStatsSingleCategoryStats>;
+  topCategoryStats?: ReadonlyArray<XPSCategoryStatsSingleCategoryStats>;
   commonStats?: XPSCommonStats;
 }
 
@@ -805,7 +805,7 @@ export const XPSStringStatsUnigramStats =
 
 export interface XPSStringStats {
   /** The statistics of the top 20 unigrams, ordered by StringStats.UnigramStats.count. */
-  topUnigramStats?: Array<XPSStringStatsUnigramStats>;
+  topUnigramStats?: ReadonlyArray<XPSStringStatsUnigramStats>;
   commonStats?: XPSCommonStats;
 }
 
@@ -958,7 +958,7 @@ export interface XPSImageModelServingSpec {
   /** ## The fields below are only populated under uCAIP request scope. https://cloud.google.com/ml-engine/docs/runtime-version-list */
   tfRuntimeVersion?: string;
   /** Populate under uCAIP request scope. */
-  modelThroughputEstimation?: Array<XPSImageModelServingSpecModelThroughputEstimation>;
+  modelThroughputEstimation?: ReadonlyArray<XPSImageModelServingSpecModelThroughputEstimation>;
   /** An estimated value of how much traffic a node can serve. Populated for AutoMl request only. */
   nodeQps?: number;
 }
@@ -998,7 +998,7 @@ export interface XPSImageModelArtifactSpec {
   /** The default model binary file used for serving (e.g. online predict, batch predict) via public Cloud AI Platform API. */
   servingArtifact?: XPSModelArtifactItem;
   /** The model binary files in different formats for model export. */
-  exportArtifact?: Array<XPSModelArtifactItem>;
+  exportArtifact?: ReadonlyArray<XPSModelArtifactItem>;
   /** Google Cloud Storage URI of decoded labels file for model export 'dict.txt'. */
   labelGcsUri?: string;
   /** Google Cloud Storage URI prefix of Tensorflow JavaScript binary files 'groupX-shardXofX.bin'. Deprecated. */
@@ -1095,7 +1095,7 @@ export const XPSExportModelOutputConfig =
 
 export interface XPSImageExportModelSpec {
   /** Contains the model format and internal location of the model files to be exported/downloaded. Use the Google Cloud Storage bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files. */
-  exportModelOutputConfig?: Array<XPSExportModelOutputConfig>;
+  exportModelOutputConfig?: ReadonlyArray<XPSExportModelOutputConfig>;
 }
 
 export const XPSImageExportModelSpec =
@@ -1109,7 +1109,7 @@ export interface XPSImageSegmentationTrainResponse {
   /** The actual train cost of creating this model, expressed in node seconds, i.e. 3,600 value in this field means 1 node hour. */
   trainCostNodeSeconds?: string;
   /** Color map of the model. */
-  colorMaps?: Array<XPSColorMap>;
+  colorMaps?: ReadonlyArray<XPSColorMap>;
   /** Stop reason for training job, e.g. 'TRAIN_BUDGET_REACHED', 'MODEL_CONVERGED'. */
   stopReason?:
     | "TRAIN_STOP_REASON_UNSPECIFIED"
@@ -1192,7 +1192,7 @@ export interface XPSDataType {
   /** If true, this DataType can also be `null`. */
   nullable?: boolean;
   /** The highly compatible data types to this data type. */
-  compatibleDataTypes?: Array<XPSDataType>;
+  compatibleDataTypes?: ReadonlyArray<XPSDataType>;
   /** If type_code == TIMESTAMP then `time_format` provides the format in which that time field is expressed. The time_format must be written in `strftime` syntax. If time_format is not set, then the default format as described on the field is used. */
   timeFormat?: string;
   /** Required. The TypeCode for this type. */
@@ -1226,7 +1226,7 @@ export interface XPSColumnSpec {
   displayName?: string;
   forecastingMetadata?: XPSColumnSpecForecastingMetadata;
   /** It's outputed in RefreshTablesStats, and a required input in Train. */
-  topCorrelatedColumns?: Array<XPSColumnSpecCorrelatedColumn>;
+  topCorrelatedColumns?: ReadonlyArray<XPSColumnSpecCorrelatedColumn>;
   /** The unique id of the column. When Preprocess, the Tables BE will popuate the order id of the column, which reflects the order of the column inside the table, i.e. 0 means the first column in the table, N-1 means the last column. AutoML BE will persist this order id in Spanner and set the order id here when calling RefreshTablesStats and Train. Note: it's different than the column_spec_id that is generated in AutoML BE. */
   columnId?: number;
   /** The data type of the column. It's outputed in Preprocess rpc and a required input for RefreshTablesStats and Train. */
@@ -1330,7 +1330,7 @@ export interface XPSMetricEntry {
   /** A double value. */
   doubleValue?: number;
   /** Billing system labels for this (metric, value) pair. */
-  systemLabels?: Array<XPSMetricEntryLabel>;
+  systemLabels?: ReadonlyArray<XPSMetricEntryLabel>;
 }
 
 export const XPSMetricEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1343,9 +1343,9 @@ export const XPSMetricEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface XPSRow {
   /** The ids of the columns. Note: The below `values` field must match order of this field, if this field is set. */
-  columnIds?: Array<number>;
+  columnIds?: ReadonlyArray<number>;
   /** The values of the row cells, given in the same order as the column_ids. If column_ids is not set, then in the same order as the input_feature_column_ids in TablesModelMetadata. */
-  values?: Array<unknown>;
+  values?: ReadonlyArray<unknown>;
 }
 
 export const XPSRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1470,7 +1470,7 @@ export interface XPSSpeechPreprocessStats {
   /** The number of samples found in the previously recorded logs data. */
   numLogsExamples?: number;
   /** Different types of data errors and the counts associated with them. */
-  dataErrors?: Array<XPSDataErrors>;
+  dataErrors?: ReadonlyArray<XPSDataErrors>;
   /** The number of sentences in the test data set. */
   testSentencesCount?: number;
   /** The number of rows marked as MACHINE_TRANSCRIBED */
@@ -1682,7 +1682,7 @@ export const XPSSpeechEvaluationMetricsSubModelEvaluationMetric =
 
 export interface XPSSpeechEvaluationMetrics {
   /** Evaluation metrics for all submodels contained in this model. */
-  subModelEvaluationMetrics?: Array<XPSSpeechEvaluationMetricsSubModelEvaluationMetric>;
+  subModelEvaluationMetrics?: ReadonlyArray<XPSSpeechEvaluationMetricsSubModelEvaluationMetric>;
 }
 
 export const XPSSpeechEvaluationMetrics =
@@ -1694,7 +1694,7 @@ export const XPSSpeechEvaluationMetrics =
 
 export interface XPSVideoExportModelSpec {
   /** Contains the model format and internal location of the model files to be exported/downloaded. Use the Google Cloud Storage bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files. */
-  exportModelOutputConfig?: Array<XPSExportModelOutputConfig>;
+  exportModelOutputConfig?: ReadonlyArray<XPSExportModelOutputConfig>;
 }
 
 export const XPSVideoExportModelSpec =
@@ -1726,7 +1726,7 @@ export const XPSTablesModelStructureModelParametersParameter =
   });
 
 export interface XPSTablesModelStructureModelParameters {
-  hyperparameters?: Array<XPSTablesModelStructureModelParametersParameter>;
+  hyperparameters?: ReadonlyArray<XPSTablesModelStructureModelParametersParameter>;
 }
 
 export const XPSTablesModelStructureModelParameters =
@@ -1738,7 +1738,7 @@ export const XPSTablesModelStructureModelParameters =
 
 export interface XPSTablesModelStructure {
   /** A list of models. */
-  modelParameters?: Array<XPSTablesModelStructureModelParameters>;
+  modelParameters?: ReadonlyArray<XPSTablesModelStructureModelParameters>;
 }
 
 export const XPSTablesModelStructure =
@@ -1779,7 +1779,7 @@ export interface XPSTablesTrainingOperationMetadata {
   /** Timestamp when training process starts. */
   trainingStartTime?: string;
   /** This field is for training. When the operation is terminated successfully, AutoML Backend post this field to operation metadata in spanner. If the metadata has no trials returned, the training operation is supposed to be a failure. */
-  topTrials?: Array<XPSTuningTrial>;
+  topTrials?: ReadonlyArray<XPSTuningTrial>;
   /** Creating model budget. */
   trainBudgetMilliNodeHours?: string;
   /** Current stage of creating model. */
@@ -1791,7 +1791,7 @@ export interface XPSTablesTrainingOperationMetadata {
     | "MODEL_POST_PROCESSING"
     | (string & {});
   /** This field records the training objective value with respect to time, giving insight into how the model architecture search is performing as training time elapses. */
-  trainingObjectivePoints?: Array<XPSTrainingObjectivePoint>;
+  trainingObjectivePoints?: ReadonlyArray<XPSTrainingObjectivePoint>;
 }
 
 export const XPSTablesTrainingOperationMetadata =
@@ -1981,7 +1981,7 @@ export const XPSResponseExplanationSpec =
 
 export interface XPSSpeechModelSpec {
   /** Model specs for all submodels contained in this model. */
-  subModelSpecs?: Array<XPSSpeechModelSpecSubModelSpec>;
+  subModelSpecs?: ReadonlyArray<XPSSpeechModelSpecSubModelSpec>;
   /** Required for speech xps backend. Speech xps has to use dataset_id and model_id as the primary key in db so that speech API can query the db directly. */
   datasetId?: string;
   language?: string;
@@ -2027,7 +2027,7 @@ export interface Entity {
   /** The representative name for the entity. */
   name?: string;
   /** The mentions of this entity in the input document. The API currently supports proper noun mentions. */
-  mentions?: Array<EntityMention>;
+  mentions?: ReadonlyArray<EntityMention>;
   /** For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this field will contain the aggregate sentiment expressed for this entity in the provided document. */
   sentiment?: Sentiment;
   /** Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below. */
@@ -2049,7 +2049,7 @@ export interface AnalyzeEntitySentimentResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
   /** The recognized entities in the input document with associated sentiments. */
-  entities?: Array<Entity>;
+  entities?: ReadonlyArray<Entity>;
 }
 
 export const AnalyzeEntitySentimentResponse =
@@ -2060,7 +2060,7 @@ export const AnalyzeEntitySentimentResponse =
 
 export interface XPSTextTrainResponse {
   /** Component submodels. */
-  componentModel?: Array<XPSTextComponentModel>;
+  componentModel?: ReadonlyArray<XPSTextComponentModel>;
 }
 
 export const XPSTextTrainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2774,7 +2774,7 @@ export interface AnalyzeEntitiesResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
   /** The recognized entities in the input document. */
-  entities?: Array<Entity>;
+  entities?: ReadonlyArray<Entity>;
 }
 
 export const AnalyzeEntitiesResponse =
@@ -2787,7 +2787,7 @@ export interface XPSReportingMetrics {
   /** The effective time training used. If set, this is used for quota management and billing. Deprecated. AutoML BE doesn't use this. Don't set. */
   effectiveTrainingDuration?: string;
   /** One entry per metric name. The values must be aggregated per metric name. */
-  metricEntries?: Array<XPSMetricEntry>;
+  metricEntries?: ReadonlyArray<XPSMetricEntry>;
 }
 
 export const XPSReportingMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2811,7 +2811,7 @@ export interface XPSVideoModelArtifactSpec {
   /** The default model binary file used for serving (e.g. batch predict) via public Cloud AI Platform API. */
   servingArtifact?: XPSModelArtifactItem;
   /** The model binary files in different formats for model export. */
-  exportArtifact?: Array<XPSModelArtifactItem>;
+  exportArtifact?: ReadonlyArray<XPSModelArtifactItem>;
 }
 
 export const XPSVideoModelArtifactSpec =
@@ -3216,15 +3216,15 @@ export const CpuMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InfraUsage {
   /** Aggregated tpu metrics since requested start_time. */
-  tpuMetrics?: Array<TpuMetric>;
+  tpuMetrics?: ReadonlyArray<TpuMetric>;
   /** Aggregated ram metrics since requested start_time. */
-  ramMetrics?: Array<RamMetric>;
+  ramMetrics?: ReadonlyArray<RamMetric>;
   /** Aggregated persistent disk metrics since requested start_time. */
-  diskMetrics?: Array<DiskMetric>;
+  diskMetrics?: ReadonlyArray<DiskMetric>;
   /** Aggregated core metrics since requested start_time. */
-  cpuMetrics?: Array<CpuMetric>;
+  cpuMetrics?: ReadonlyArray<CpuMetric>;
   /** Aggregated gpu metrics since requested start_time. */
-  gpuMetrics?: Array<GpuMetric>;
+  gpuMetrics?: ReadonlyArray<GpuMetric>;
 }
 
 export const InfraUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3257,7 +3257,7 @@ export const XPSVideoTrainingOperationMetadata =
 
 export interface XPSVideoBatchPredictOperationMetadata {
   /** All the partial batch prediction results that are completed at the moment. Output examples are sorted by completion time. The order will not be changed. Each output example should be the path of a single RecordIO file of AnnotatedExamples. */
-  outputExamples?: Array<string>;
+  outputExamples?: ReadonlyArray<string>;
 }
 
 export const XPSVideoBatchPredictOperationMetadata =
@@ -3296,9 +3296,9 @@ export const XPSXpsOperationMetadata =
 
 export interface XPSTablesTrainResponse {
   /** Sample rows from the dataset this model was trained. */
-  predictionSampleRows?: Array<XPSRow>;
+  predictionSampleRows?: ReadonlyArray<XPSRow>;
   /** Output only. Auxiliary information for each of the input_feature_column_specs, with respect to this particular model. */
-  tablesModelColumnInfo?: Array<XPSTablesModelColumnInfo>;
+  tablesModelColumnInfo?: ReadonlyArray<XPSTablesModelColumnInfo>;
   /** The actual training cost of the model, expressed in milli node hours, i.e. 1,000 value in this field means 1 node hour. Guaranteed to not exceed the train budget. */
   trainCostMilliNodeHours?: string;
   modelStructure?: XPSTablesModelStructure;
@@ -3633,9 +3633,9 @@ export const Token = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AnalyzeSyntaxResponse {
   /** Sentences in the input document. */
-  sentences?: Array<Sentence>;
+  sentences?: ReadonlyArray<Sentence>;
   /** Tokens, along with their syntactic information, in the input document. */
-  tokens?: Array<Token>;
+  tokens?: ReadonlyArray<Token>;
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
 }
@@ -3684,7 +3684,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3757,7 +3757,7 @@ export const XPSImageObjectDetectionModelSpec =
 
 export interface XPSEvaluationMetricsSet {
   /** Inline EvaluationMetrics - should be relatively small. For passing large quantities of exhaustive metrics, use file_spec. */
-  evaluationMetrics?: Array<XPSEvaluationMetrics>;
+  evaluationMetrics?: ReadonlyArray<XPSEvaluationMetrics>;
   /** Number of the evaluation metrics (usually one per label plus overall). */
   numEvaluationMetrics?: string;
   /** File spec containing evaluation metrics of a model, must point to RecordIO file(s) of intelligence.cloud.automl.xps.EvaluationMetrics messages. */
@@ -3786,7 +3786,7 @@ export interface XPSTrainResponse {
   /** The trained model evaluation metrics. This can be optionally returned. */
   evaluationMetricsSet?: XPSEvaluationMetricsSet;
   /** VisionExplanationConfig for XAI on test set. Optional for when XAI is enable in training request. */
-  explanationConfigs?: Array<XPSResponseExplanationSpec>;
+  explanationConfigs?: ReadonlyArray<XPSResponseExplanationSpec>;
   imageSegmentationTrainResp?: XPSImageSegmentationTrainResponse;
   videoActionRecognitionTrainResp?: XPSVideoActionRecognitionTrainResponse;
   translationTrainResp?: XPSTranslationTrainResponse;
@@ -3795,7 +3795,7 @@ export interface XPSTrainResponse {
   /** Examples used to evaluate the model (usually the test set), with the predicted annotations. The file_spec should point to recordio file(s) of AnnotatedExample. For each returned example, the example_id_token and annotations predicted by the model must be set. The example payload can and is recommended to be omitted. */
   evaluatedExampleSet?: XPSExampleSet;
   /** Optional vision model error analysis configuration. The field is set when model error analysis is enabled in the training request. The results of error analysis will be binded together with evaluation results (in the format of AnnotatedExample). */
-  errorAnalysisConfigs?: Array<XPSVisionErrorAnalysisConfig>;
+  errorAnalysisConfigs?: ReadonlyArray<XPSVisionErrorAnalysisConfig>;
 }
 
 export const XPSTrainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3836,7 +3836,7 @@ export interface AnalyzeSentimentResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
   /** The sentiment for all the sentences in the document. */
-  sentences?: Array<Sentence>;
+  sentences?: ReadonlyArray<Sentence>;
   /** The overall sentiment of the input document. */
   documentSentiment?: Sentiment;
 }
@@ -3850,7 +3850,7 @@ export const AnalyzeSentimentResponse =
 
 export interface ModerateTextResponse {
   /** Harmful and sensitive categories representing the input document. */
-  moderationCategories?: Array<ClassificationCategory>;
+  moderationCategories?: ReadonlyArray<ClassificationCategory>;
 }
 
 export const ModerateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3874,19 +3874,19 @@ export const AnnotateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AnnotateTextResponse {
   /** Sentences in the input document. Populated if the user enables AnnotateTextRequest.Features.extract_syntax. */
-  sentences?: Array<Sentence>;
+  sentences?: ReadonlyArray<Sentence>;
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language field for more details. */
   language?: string;
   /** Entities, along with their semantic information, in the input document. Populated if the user enables AnnotateTextRequest.Features.extract_entities. */
-  entities?: Array<Entity>;
+  entities?: ReadonlyArray<Entity>;
   /** Categories identified in the input document. */
-  categories?: Array<ClassificationCategory>;
+  categories?: ReadonlyArray<ClassificationCategory>;
   /** The overall sentiment for the document. Populated if the user enables AnnotateTextRequest.Features.extract_document_sentiment. */
   documentSentiment?: Sentiment;
   /** Tokens, along with their syntactic information, in the input document. Populated if the user enables AnnotateTextRequest.Features.extract_syntax. */
-  tokens?: Array<Token>;
+  tokens?: ReadonlyArray<Token>;
   /** Harmful and sensitive categories identified in the input document. */
-  moderationCategories?: Array<ClassificationCategory>;
+  moderationCategories?: ReadonlyArray<ClassificationCategory>;
 }
 
 export const AnnotateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3901,7 +3901,7 @@ export const AnnotateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClassifyTextResponse {
   /** Categories representing the input document. */
-  categories?: Array<ClassificationCategory>;
+  categories?: ReadonlyArray<ClassificationCategory>;
 }
 
 export const ClassifyTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

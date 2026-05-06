@@ -72,7 +72,7 @@ export interface Question {
   /** Output only. The timestamp for when the question was last modified. */
   updateTime?: string;
   /** Output only. A list of answers to the question, sorted by upvotes. This may not be a complete list of answers depending on the request parameters (answers_per_question) */
-  topAnswers?: Array<Answer>;
+  topAnswers?: ReadonlyArray<Answer>;
   /** Output only. The number of upvotes for the question. */
   upvoteCount?: number;
   /** Required. The text of the question. It should contain at least three words and the total length should be greater than or equal to 10 characters. The maximum length is 4096 characters. */
@@ -100,7 +100,7 @@ export interface ListQuestionsResponse {
   /** The total number of questions posted for this location across all pages. */
   totalSize?: number;
   /** The requested questions, */
-  questions?: Array<Question>;
+  questions?: ReadonlyArray<Question>;
   /** If the number of questions exceeds the requested max page size, this field is populated with a token to fetch the next page of questions on a subsequent call. If there are no more questions, this field is not present in the response. */
   nextPageToken?: string;
 }
@@ -121,7 +121,7 @@ export interface ListAnswersResponse {
   /** The total number of answers posted for this question across all pages. */
   totalSize?: number;
   /** The requested answers. */
-  answers?: Array<Answer>;
+  answers?: ReadonlyArray<Answer>;
   /** If the number of answers exceeds the requested max page size, this field is populated with a token to fetch the next page of answers on a subsequent call. If there are no more answers, this field is not present in the response. */
   nextPageToken?: string;
 }
@@ -171,7 +171,7 @@ export const ListLocationsQuestionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/locations/{locationsId}/questions" }),
+    T.Http({ method: "GET", path: "v1/{parent}" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsQuestionsRequest>;
 
@@ -209,11 +209,7 @@ export const CreateLocationsQuestionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Question).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/locations/{locationsId}/questions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateLocationsQuestionsRequest>;
 
@@ -250,11 +246,7 @@ export const PatchLocationsQuestionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Question).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/locations/{locationsId}/questions/{questionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchLocationsQuestionsRequest>;
 
@@ -285,10 +277,7 @@ export const DeleteLocationsQuestionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/locations/{locationsId}/questions/{questionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLocationsQuestionsRequest>;
 
@@ -328,10 +317,7 @@ export const ListLocationsQuestionsAnswersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/{locationsId}/questions/{questionsId}/answers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/answers" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsQuestionsAnswersRequest>;
 
@@ -371,7 +357,7 @@ export const UpsertLocationsQuestionsAnswersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/locations/{locationsId}/questions/{questionsId}/answers:upsert",
+      path: "v1/{parent}/answers:upsert",
       hasBody: true,
     }),
     svc,
@@ -404,10 +390,7 @@ export const DeleteLocationsQuestionsAnswersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/locations/{locationsId}/questions/{questionsId}/answers:delete",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}/answers:delete" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLocationsQuestionsAnswersRequest>;
 

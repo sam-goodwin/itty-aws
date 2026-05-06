@@ -53,7 +53,7 @@ export const GoogleSecuritySafebrowsingV4ThreatEntry =
 
 export interface GoogleSecuritySafebrowsingV4ThreatInfo {
   /** The threat types to be checked. */
-  threatTypes?: Array<
+  threatTypes?: ReadonlyArray<
     | "THREAT_TYPE_UNSPECIFIED"
     | "MALWARE"
     | "SOCIAL_ENGINEERING"
@@ -75,7 +75,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatInfo {
     | (string & {})
   >;
   /** The platform types to be checked. */
-  platformTypes?: Array<
+  platformTypes?: ReadonlyArray<
     | "PLATFORM_TYPE_UNSPECIFIED"
     | "WINDOWS"
     | "LINUX"
@@ -88,7 +88,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatInfo {
     | (string & {})
   >;
   /** The entry types to be checked. */
-  threatEntryTypes?: Array<
+  threatEntryTypes?: ReadonlyArray<
     | "THREAT_ENTRY_TYPE_UNSPECIFIED"
     | "URL"
     | "EXECUTABLE"
@@ -99,7 +99,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatInfo {
     | (string & {})
   >;
   /** The threat entries to be checked. */
-  threatEntries?: Array<GoogleSecuritySafebrowsingV4ThreatEntry>;
+  threatEntries?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntry>;
 }
 
 export const GoogleSecuritySafebrowsingV4ThreatInfo =
@@ -144,7 +144,7 @@ export const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry =
 
 export interface GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
   /** The metadata entries. */
-  entries?: Array<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
+  entries?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
 }
 
 export const GoogleSecuritySafebrowsingV4ThreatEntryMetadata =
@@ -224,7 +224,7 @@ export const GoogleSecuritySafebrowsingV4ThreatMatch =
 
 export interface GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
   /** The threat list matches. */
-  matches?: Array<GoogleSecuritySafebrowsingV4ThreatMatch>;
+  matches?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatMatch>;
 }
 
 export const GoogleSecuritySafebrowsingV4FindThreatMatchesResponse =
@@ -244,7 +244,7 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUp
   /** Requests the list for a specific geographic location. If not set the server may pick that value based on the user's IP address. Expects ISO 3166-1 alpha-2 format. */
   region?: string;
   /** The compression types supported by the client. */
-  supportedCompressions?: Array<
+  supportedCompressions?: ReadonlyArray<
     "COMPRESSION_TYPE_UNSPECIFIED" | "RAW" | "RICE" | (string & {})
   >;
   /** Requests the lists for a specific language. Expects ISO 639 alpha-2 format. */
@@ -334,7 +334,7 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
   /** The client metadata. */
   client?: GoogleSecuritySafebrowsingV4ClientInfo;
   /** The requested threat list updates. */
-  listUpdateRequests?: Array<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
+  listUpdateRequests?: ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
 }
 
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest =
@@ -364,7 +364,7 @@ export const GoogleSecuritySafebrowsingV4RawHashes =
 
 export interface GoogleSecuritySafebrowsingV4RawIndices {
   /** The indices to remove from a lexicographically-sorted local list. */
-  indices?: Array<number>;
+  indices?: ReadonlyArray<number>;
 }
 
 export const GoogleSecuritySafebrowsingV4RawIndices =
@@ -478,9 +478,9 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListU
     | "FULL_UPDATE"
     | (string & {});
   /** A set of entries to add to a local threat type's list. Repeated to allow for a combination of compressed and raw data to be sent in a single response. */
-  additions?: Array<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
+  additions?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
   /** A set of entries to remove from a local threat type's list. In practice, this field is empty or contains exactly one ThreatEntrySet. */
-  removals?: Array<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
+  removals?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
   /** The new client state, in encrypted format. Opaque to clients. */
   newClientState?: string;
   /** The expected SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database after applying the provided update. If the client state doesn't match the expected state, the client must disregard this update and retry later. */
@@ -508,7 +508,7 @@ export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdat
 
 export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
   /** The list updates requested by the clients. The number of responses here may be less than the number of requests sent by clients. This is the case, for example, if the server has no updates for a particular list. */
-  listUpdateResponses?: Array<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
+  listUpdateResponses?: ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
   /** The minimum duration the client must wait before issuing any update request. If this field is not set clients may update as soon as they want. */
   minimumWaitDuration?: string;
 }
@@ -529,7 +529,7 @@ export interface GoogleSecuritySafebrowsingV4FindFullHashesRequest {
   /** The client metadata. */
   client?: GoogleSecuritySafebrowsingV4ClientInfo;
   /** The current client states for each of the client's local threat lists. */
-  clientStates?: Array<string>;
+  clientStates?: ReadonlyArray<string>;
   /** The lists and hashes to be checked. */
   threatInfo?: GoogleSecuritySafebrowsingV4ThreatInfo;
   /** Client metadata associated with callers of higher-level APIs built on top of the client's implementation. */
@@ -548,7 +548,7 @@ export const GoogleSecuritySafebrowsingV4FindFullHashesRequest =
 
 export interface GoogleSecuritySafebrowsingV4FindFullHashesResponse {
   /** The full hashes that matched the requested prefixes. */
-  matches?: Array<GoogleSecuritySafebrowsingV4ThreatMatch>;
+  matches?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatMatch>;
   /** The minimum duration the client must wait before issuing any find hashes request. If this field is not set, clients can issue a request as soon as they want. */
   minimumWaitDuration?: string;
   /** For requested entities that did not match the threat list, how long to cache the response. */
@@ -643,7 +643,7 @@ export interface GoogleSecuritySafebrowsingV4ThreatHit {
   /** The threat entry responsible for the hit. Full hash should be reported for hash-based hits. */
   entry?: GoogleSecuritySafebrowsingV4ThreatEntry;
   /** The resources related to the threat hit. */
-  resources?: Array<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
+  resources?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
   /** Client-reported identification. */
   clientInfo?: GoogleSecuritySafebrowsingV4ClientInfo;
   /** Details about the user that encountered the threat. */
@@ -725,7 +725,7 @@ export const GoogleSecuritySafebrowsingV4ThreatListDescriptor =
 
 export interface GoogleSecuritySafebrowsingV4ListThreatListsResponse {
   /** The lists available for download by the client. */
-  threatLists?: Array<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
+  threatLists?: ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
 }
 
 export const GoogleSecuritySafebrowsingV4ListThreatListsResponse =

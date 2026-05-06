@@ -58,7 +58,7 @@ export const AgentDeviceId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryRequestPayload {
   /** Third-party device IDs for which to get the device states. */
-  devices?: Array<AgentDeviceId>;
+  devices?: ReadonlyArray<AgentDeviceId>;
 }
 
 export const QueryRequestPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -104,9 +104,9 @@ export interface DeviceNames {
   /** Primary name of the device, generally provided by the user. Names will be truncated if over the 60 Unicode code point (character) limit and no errors will be thrown. Developers are responsible for handling long names. */
   name?: string;
   /** Additional names provided by the user for the device. */
-  nicknames?: Array<string>;
+  nicknames?: ReadonlyArray<string>;
   /** List of names provided by the manufacturer rather than the user, such as serial numbers, SKUs, etc. */
-  defaultNames?: Array<string>;
+  defaultNames?: ReadonlyArray<string>;
 }
 
 export const DeviceNames = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -164,11 +164,11 @@ export interface Device {
   /** Third-party device ID. */
   id?: string;
   /** Traits supported by the device. See [device traits](https://developers.home.google.com/cloud-to-cloud/traits). */
-  traits?: Array<string>;
+  traits?: ReadonlyArray<string>;
   /** Suggested name for the room where this device is installed. Google attempts to use this value during user setup. */
   roomHint?: string;
   /** Alternate IDs associated with this device. This is used to identify cloud synced devices enabled for [local fulfillment](https://developers.home.google.com/local-home/overview). */
-  otherDeviceIds?: Array<AgentOtherDeviceId>;
+  otherDeviceIds?: ReadonlyArray<AgentOtherDeviceId>;
   /** Suggested name for the structure where this device is installed. Google attempts to use this value during user setup. */
   structureHint?: string;
 }
@@ -231,7 +231,7 @@ export interface SyncResponsePayload {
   /** Third-party user ID */
   agentUserId?: string;
   /** Devices associated with the third-party user. */
-  devices?: Array<Device>;
+  devices?: ReadonlyArray<Device>;
 }
 
 export const SyncResponsePayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -266,7 +266,7 @@ export interface QueryRequest {
   /** Request ID used for debugging. */
   requestId?: string;
   /** Required. Inputs containing third-party device IDs for which to get the device states. */
-  inputs?: Array<QueryRequestInput>;
+  inputs?: ReadonlyArray<QueryRequestInput>;
 }
 
 export const QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -309,7 +309,7 @@ export const DeleteAgentUsersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     agentUserId: Schema.String.pipe(T.HttpPath("agentUserId")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/agentUsers/{agentUsersId}" }),
+    T.Http({ method: "DELETE", path: "v1/{agentUserId}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAgentUsersRequest>;
 

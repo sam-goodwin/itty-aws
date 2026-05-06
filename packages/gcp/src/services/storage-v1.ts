@@ -118,22 +118,22 @@ export const ObjectAccessControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Bucket {
   /** Access controls on the bucket. */
-  acl?: Array<BucketAccessControl>;
+  acl?: ReadonlyArray<BucketAccessControl>;
   /** The bucket's billing configuration. */
   billing?: { requesterPays?: boolean };
   /** The bucket's Cross-Origin Resource Sharing (CORS) configuration. */
-  cors?: Array<{
+  cors?: ReadonlyArray<{
     maxAgeSeconds?: number;
-    method?: Array<string>;
-    origin?: Array<string>;
-    responseHeader?: Array<string>;
+    method?: ReadonlyArray<string>;
+    origin?: ReadonlyArray<string>;
+    responseHeader?: ReadonlyArray<string>;
   }>;
   /** The bucket's custom placement configuration for Custom Dual Regions. */
-  customPlacementConfig?: { dataLocations?: Array<string> };
+  customPlacementConfig?: { dataLocations?: ReadonlyArray<string> };
   /** The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed. */
   defaultEventBasedHold?: boolean;
   /** Default access controls to apply to new objects when no ACL is provided. */
-  defaultObjectAcl?: Array<ObjectAccessControl>;
+  defaultObjectAcl?: ReadonlyArray<ObjectAccessControl>;
   /** Encryption configuration for a bucket. */
   encryption?: {
     defaultKmsKeyName?: string;
@@ -165,10 +165,10 @@ export interface Bucket {
   /** The bucket's IP filter configuration. Specifies the network sources that are allowed to access the operations on the bucket, as well as its underlying objects. Only enforced when the mode is set to 'Enabled'. */
   ipFilter?: {
     mode?: string;
-    publicNetworkSource?: { allowedIpCidrRanges?: Array<string> };
-    vpcNetworkSources?: Array<{
+    publicNetworkSource?: { allowedIpCidrRanges?: ReadonlyArray<string> };
+    vpcNetworkSources?: ReadonlyArray<{
       network?: string;
-      allowedIpCidrRanges?: Array<string>;
+      allowedIpCidrRanges?: ReadonlyArray<string>;
     }>;
     allowCrossOrgVpcs?: boolean;
     allowAllServiceAgentAccess?: boolean;
@@ -179,7 +179,7 @@ export interface Bucket {
   labels?: Record<string, string>;
   /** The bucket's lifecycle configuration. See [Lifecycle Management](https://cloud.google.com/storage/docs/lifecycle) for more information. */
   lifecycle?: {
-    rule?: Array<{
+    rule?: ReadonlyArray<{
       action?: { storageClass?: string; type?: string };
       condition?: {
         age?: number;
@@ -189,9 +189,9 @@ export interface Bucket {
         daysSinceNoncurrentTime?: number;
         isLive?: boolean;
         matchesPattern?: string;
-        matchesPrefix?: Array<string>;
-        matchesSuffix?: Array<string>;
-        matchesStorageClass?: Array<string>;
+        matchesPrefix?: ReadonlyArray<string>;
+        matchesSuffix?: ReadonlyArray<string>;
+        matchesStorageClass?: ReadonlyArray<string>;
         noncurrentTimeBefore?: string;
         numNewerVersions?: number;
       };
@@ -506,7 +506,7 @@ export interface AnywhereCaches {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
   /** The list of items. */
-  items?: Array<AnywhereCache>;
+  items?: ReadonlyArray<AnywhereCache>;
 }
 
 export const AnywhereCaches = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -517,7 +517,7 @@ export const AnywhereCaches = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BucketAccessControls {
   /** The list of items. */
-  items?: Array<BucketAccessControl>;
+  items?: ReadonlyArray<BucketAccessControl>;
   /** The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls. */
   kind?: string;
 }
@@ -531,7 +531,7 @@ export interface BucketStorageLayout {
   /** The name of the bucket. */
   bucket?: string;
   /** The bucket's custom placement configuration for Custom Dual Regions. */
-  customPlacementConfig?: { dataLocations?: Array<string> };
+  customPlacementConfig?: { dataLocations?: ReadonlyArray<string> };
   /** The bucket's hierarchical namespace configuration. */
   hierarchicalNamespace?: { enabled?: boolean };
   /** The kind of item this is. For storage layout, this is always storage#storageLayout. */
@@ -559,13 +559,13 @@ export const BucketStorageLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Buckets {
   /** The list of items. */
-  items?: Array<Bucket>;
+  items?: ReadonlyArray<Bucket>;
   /** The kind of item this is. For lists of buckets, this is always storage#buckets. */
   kind?: string;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
   /** The list of bucket resource names that could not be reached during the listing operation. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const Buckets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -629,7 +629,7 @@ export const ObjectCustomContextPayload =
 
 export interface Storage_Object {
   /** Access controls on the object. */
-  acl?: Array<ObjectAccessControl>;
+  acl?: ReadonlyArray<ObjectAccessControl>;
   /** The name of the bucket containing this object. */
   bucket?: string;
   /** Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600. */
@@ -774,7 +774,7 @@ export interface ComposeRequest {
   /** The kind of item this is. */
   kind?: string;
   /** The list of source objects that will be concatenated into a single object. */
-  sourceObjects?: Array<{
+  sourceObjects?: ReadonlyArray<{
     generation?: string;
     name?: string;
     objectPreconditions?: { ifGenerationMatch?: string };
@@ -837,7 +837,7 @@ export const Folder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Folders {
   /** The list of items. */
-  items?: Array<Folder>;
+  items?: ReadonlyArray<Folder>;
   /** The kind of item this is. For lists of folders, this is always storage#folders. */
   kind?: string;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
@@ -872,7 +872,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. */
   message?: string;
 }
@@ -917,7 +917,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The kind of item this is. For lists of operations, this is always storage#operations. */
   kind?: string;
 }
@@ -982,7 +982,7 @@ export const HmacKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HmacKeysMetadata {
   /** The list of items. */
-  items?: Array<HmacKeyMetadata>;
+  items?: ReadonlyArray<HmacKeyMetadata>;
   /** The kind of item this is. For lists of hmacKeys, this is always storage#hmacKeysMetadata. */
   kind?: string;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
@@ -1027,7 +1027,7 @@ export const ManagedFolder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ManagedFolders {
   /** The list of items. */
-  items?: Array<ManagedFolder>;
+  items?: ReadonlyArray<ManagedFolder>;
   /** The kind of item this is. For lists of managed folders, this is always storage#managedFolders. */
   kind?: string;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
@@ -1046,7 +1046,7 @@ export interface Notification {
   /** HTTP 1.1 Entity tag for this subscription notification. */
   etag?: string;
   /** If present, only send notifications about listed event types. If empty, sent notifications for all event types. */
-  event_types?: Array<string>;
+  event_types?: ReadonlyArray<string>;
   /** The ID of the notification. */
   id?: string;
   /** The kind of item this is. For notifications, this is always storage#notification. */
@@ -1077,7 +1077,7 @@ export const Notification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Notifications {
   /** The list of items. */
-  items?: Array<Notification>;
+  items?: ReadonlyArray<Notification>;
   /** The kind of item this is. For lists of notifications, this is always storage#notifications. */
   kind?: string;
 }
@@ -1089,7 +1089,7 @@ export const Notifications = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ObjectAccessControls {
   /** The list of items. */
-  items?: Array<ObjectAccessControl>;
+  items?: ReadonlyArray<ObjectAccessControl>;
   /** The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls. */
   kind?: string;
 }
@@ -1101,13 +1101,13 @@ export const ObjectAccessControls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Objects {
   /** The list of items. */
-  items?: Array<Storage_Object>;
+  items?: ReadonlyArray<Storage_Object>;
   /** The kind of item this is. For lists of objects, this is always storage#objects. */
   kind?: string;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
   /** The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter. */
-  prefixes?: Array<string>;
+  prefixes?: ReadonlyArray<string>;
 }
 
 export const Objects = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1119,9 +1119,9 @@ export const Objects = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Policy {
   /** An association between a role, which comes with a set of permissions, and members who may assume that role. */
-  bindings?: Array<{
+  bindings?: ReadonlyArray<{
     condition?: Expr;
-    members?: Array<string>;
+    members?: ReadonlyArray<string>;
     role?: string;
   }>;
   /** HTTP 1.1 Entity tag for the policy. */
@@ -1154,7 +1154,7 @@ export interface RelocateBucketRequest {
   /** The new location the bucket will be relocated to. */
   destinationLocation?: string;
   /** The bucket's new custom placement configuration if relocating to a Custom Dual Region. */
-  destinationCustomPlacementConfig?: { dataLocations?: Array<string> };
+  destinationCustomPlacementConfig?: { dataLocations?: ReadonlyArray<string> };
   /** If true, validate the operation, but do not actually relocate the bucket. */
   validateOnly?: boolean;
   /** Resource name of a Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key. If set, is used to encrypt all objects in the destination bucket. */
@@ -1212,7 +1212,7 @@ export interface TestIamPermissionsResponse {
   /** The kind of item this is. */
   kind?: string;
   /** The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets, objects, or managedFolders. The supported permissions are as follows: - storage.buckets.delete - Delete bucket. - storage.buckets.get - Read bucket metadata. - storage.buckets.getIamPolicy - Read bucket IAM policy. - storage.buckets.create - Create bucket. - storage.buckets.list - List buckets. - storage.buckets.setIamPolicy - Update bucket IAM policy. - storage.buckets.update - Update bucket metadata. - storage.objects.delete - Delete object. - storage.objects.get - Read object data and metadata. - storage.objects.getIamPolicy - Read object IAM policy. - storage.objects.create - Create object. - storage.objects.list - List objects. - storage.objects.setIamPolicy - Update object IAM policy. - storage.objects.update - Update object metadata. - storage.managedFolders.delete - Delete managed folder. - storage.managedFolders.get - Read managed folder metadata. - storage.managedFolders.getIamPolicy - Read managed folder IAM policy. - storage.managedFolders.create - Create managed folder. - storage.managedFolders.list - List managed folders. - storage.managedFolders.setIamPolicy - Update managed folder IAM policy. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -1229,7 +1229,7 @@ export interface BulkRestoreObjectsRequest {
   /** Restores only the objects that were soft-deleted before this time. */
   softDeletedBeforeTime?: string;
   /** Restores only the objects matching any of the specified glob(s). If this parameter is not specified, all objects will be restored within the specified time range. */
-  matchGlobs?: Array<string>;
+  matchGlobs?: ReadonlyArray<string>;
   /** If true, copies the source object's ACL; otherwise, uses the bucket's default object ACL. The default is false. */
   copySourceAcl?: boolean;
   /** Restores only the objects that were created after this time. */
